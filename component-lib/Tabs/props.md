@@ -1,6 +1,6 @@
 # Tabs — Props
 
-> **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [figma.md](figma.md)
+> **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [Tabs-figma.md](Tabs-figma.md)
 
 ## Installation
 

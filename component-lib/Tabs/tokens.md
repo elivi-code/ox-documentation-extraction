@@ -1,6 +1,6 @@
 # Tabs — Tokens
 
-> **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [figma.md](figma.md)
+> **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [Tabs-figma.md](Tabs-figma.md)
 
 ## MCP token search results
 

@@ -1,6 +1,6 @@
 # Tabs — Accessibility
 
-> **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [figma.md](figma.md)
+> **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [Tabs-figma.md](Tabs-figma.md)
 
 > _Guidelines to ensure compliant, and keyboard-accessible interactions within the Tabs component._
 

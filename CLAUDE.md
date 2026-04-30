@@ -13,7 +13,7 @@ Track progress in [components-to-extract.md](components-to-extract.md) — 34 pa
 Each component lives in `component-lib/{ComponentName}/`. Filenames are produced by specific skills and consumed by later stages:
 
 | File | Source skill | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `props.md`, `examples.md`, `tokens.md`, `accessibility.md` | `oxygen-mcp-extract` | Always lowercase, no component prefix. |
 | `{component}-figma.md` + `figma-screenshot-{component}.png` | `figma-extract` | Casing of the prefix is inconsistent across existing folders (e.g. `Avatar-figma.md` vs `accordion-figma.md`) — match the casing already used in the folder rather than changing it. |
 | `{component}-pui.md` | `pui-mcp-extract` | Only present when the component has Platform UI infra concerns (notifications, navigation, session, event bus). Many components don't need one. |
@@ -38,10 +38,12 @@ When a user asks to "document X", route to the skill that fits the current stage
 ## MCP servers (and the SessionStart check)
 
 Project-level (in `.claude/settings.local.json`):
+
 - **figma-console** — write/execute against Figma (variants, screenshots, variables). Required by `figma-extract`, `figma-extract-usage`, `figma-draw`.
 - **workshop-mcp** — project-specific.
 
 Available via claude.ai:
+
 - **oxygen-mcp** — `mcp__oxygen-mcp__*` tools for Oxygen docs/props/examples/tokens/icons.
 - **platform-ui-mcp** — `mcp__platform-ui-mcp__*` tools for PUI docs and events.
 - **pencil** — `.pen` design files (only needed if a `.pen` file is in scope).
