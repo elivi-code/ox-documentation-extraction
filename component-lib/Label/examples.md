@@ -1,0 +1,77 @@
+# Label — Examples
+
+> **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)
+
+## Basic label
+
+```tsx
+import Label from '@8x8/oxygen-label';
+import Input from '@8x8/oxygen-input';
+
+<Label value="Email address" htmlFor="email-input" />
+<Input id="email-input" />
+```
+
+## Required field
+
+```tsx
+<Label value="Password" htmlFor="password-input" isRequired />
+<Input id="password-input" type="password" />
+```
+
+## Disabled state
+
+```tsx
+<Label value="Username" htmlFor="username-input" isDisabled />
+<Input id="username-input" isDisabled />
+```
+
+## With inline action link
+
+```tsx
+<Label
+  value="Password"
+  htmlFor="password-input"
+  actionLabel="Forgot password?"
+  action={() => console.log('action clicked')}
+/>
+<Input id="password-input" type="password" />
+```
+
+## With info box
+
+```tsx
+<Label
+  value="API Key"
+  htmlFor="api-key-input"
+  infoBoxText="Your API key can be found in your account settings."
+  infoBoxButtonLabel="More information about API key"
+/>
+<Input id="api-key-input" />
+```
+
+## Text overflow tooltip
+
+```tsx
+<Label
+  value="A very long label that might overflow its container"
+  htmlFor="my-input"
+  showTooltipOnOverflow
+/>
+<Input id="my-input" />
+```
+
+## Wrapped text
+
+```tsx
+<Label
+  value="A label with longer text that needs to wrap across multiple lines"
+  htmlFor="my-input"
+  shouldWrapText
+/>
+<Input id="my-input" />
+```
+
+> **Note:** The MCP returned no clean Storybook snippets for this component. Examples above are derived from the documentation story and prop shapes. Verify against Storybook before production use.
+
+_Source: Oxygen MCP · Extracted 2026-05-01_
