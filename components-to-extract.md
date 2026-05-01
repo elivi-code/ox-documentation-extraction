@@ -3,7 +3,7 @@
 Components selected for documentation extraction from the Oxygen Design System (`@8x8/oxygen-*` v2.107.0).
 Deprecated packages are excluded unless noted.
 
-> **Progress: 15 / 34 complete** — update as components are extracted.
+> **Progress: 17 / 34 complete** — update as components are extracted.
 
 ---
 
@@ -36,7 +36,7 @@ Deprecated packages are excluded unless noted.
 |---------|---------------|-------|:------:|
 | ~~`accordion`~~ | ~~`Accordion`, `AccordionGroup`~~ | ~~15~~ | ✅ |
 | ~~`tabs`~~ | ~~`Tabs`, `Tab`~~ | ~~2~~ | ✅ |
-| `modal` | `Modal`, `ModalHeader`, `ModalFooter`, `ModalContent` | 18 | ⬜ |
+| ~~`modal`~~ | ~~`Modal`, `ModalHeader`, `ModalFooter`, `ModalContent`~~ | ~~18~~ | ✅ |
 | `slideOut` | `SlideOut` | 9 | ⬜ |
 | `card` | `Card` | 2 | ⬜ *(deprecated — check for replacement)* |
 
@@ -47,7 +47,7 @@ Deprecated packages are excluded unless noted.
 | Package | Key Components | Props | Status |
 |---------|---------------|-------|:------:|
 | ~~`breadcrumbs`~~ | ~~`Breadcrumbs`, `Breadcrumb`~~ | ~~7~~ | ✅ |
-| `pagination` | `Pagination` | 11 | ⬜ |
+| ~~`pagination`~~ | ~~`Pagination`~~ | ~~11~~ | ✅ |
 | `link` | `Link` | 6 | ⬜ |
 | `sidebarMenu` | `Sidebar`, `MenuItem`, `SubMenuItem` | 9 | ⬜ |
 
