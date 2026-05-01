@@ -3,7 +3,7 @@
 Components selected for documentation extraction from the Oxygen Design System (`@8x8/oxygen-*` v2.107.0).
 Deprecated packages are excluded unless noted.
 
-> **Progress: 18 / 34 complete** — update as components are extracted.
+> **Progress: 19 / 34 complete** — update as components are extracted.
 
 ---
 
@@ -61,7 +61,7 @@ Deprecated packages are excluded unless noted.
 | `list` | `List`, `ListItem` | 4 | ⬜ |
 | ~~`avatar`~~ | ~~`Avatar`, `AvatarStack`~~ | ~~15~~ | ✅ |
 | ~~`badge`~~ | ~~`Badge`, `AIBadge`~~ | ~~—~~ | ✅ |
-| `tag` | `Tag` | 8 | ⬜ |
+| ~~`tag`~~ | ~~`Tag`~~ | ~~8~~ | ✅ |
 | `label` | `Label` | 14 | ⬜ |
 
 ---
