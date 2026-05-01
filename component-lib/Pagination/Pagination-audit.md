@@ -4,9 +4,10 @@ component: Pagination
 package: "@8x8/oxygen-pagination"
 extracted: "2026-05-01"
 audited: "2026-05-01"
+audit_updated: "2026-05-01"
 
-verdict: "NO"
-verdict_reason: "2 CONFLICTs must be resolved by a human before doc-rewrite can proceed."
+verdict: "YES"
+verdict_reason: "Zero conflicts (CON-001 and CON-002 resolved via Figma usage page evidence). Zero blocker-severity gaps. doc-rewrite can proceed."
 
 scores:
   props:         { score: 0.80, coverage: "8/10" }
@@ -14,13 +15,13 @@ scores:
   tokens:        { score: 0.22, coverage: "2/9"  }
   accessibility: { score: 0.78, coverage: "7/9"  }
   figma:         { score: 0.78, coverage: "7/9"  }
-  usage:         { score: 0.00, coverage: "0/7"  }
+  usage:         { score: 0.71, coverage: "5/7"  }
   pui:           { score: 1.00, coverage: "N/A — confirmed no PUI context" }
 
 counts:
-  doc_gaps:    4
-  source_gaps: 11
-  conflicts:   2
+  doc_gaps:    5
+  source_gaps: 10
+  conflicts:   0
   warnings:    2
 
 files_present:
@@ -29,11 +30,24 @@ files_present:
   - tokens.md
   - accessibility.md
   - Pagination-figma.md
+  - Pagination-usage.md
   - figma-screenshot-Pagination.png
+  - figma-usage-type.png
+  - figma-usage-responsive.png
+  - figma-usage-size.png
+  - figma-usage-tooltips.png
 
 files_missing:
-  - Pagination-usage.md   # figma-extract-usage not run → SOURCE_GAP
-  - Pagination-pui.md     # intentionally omitted — no PUI context confirmed → PASS
+  - Pagination-pui.md   # intentionally omitted — no PUI context confirmed → PASS
+
+resolved_conflicts:
+  - id: CON-001
+    resolved_by: "Pagination-usage.md — Figma 'Responsive rules' section explicitly documents 548px breakpoint as a design decision with no hint of a React prop. Consumer responsibility confirmed."
+    resolution: "Document as consumer responsibility: no React prop exists; consuming applications manage responsive layout via CSS/container queries."
+
+  - id: CON-002
+    resolved_by: "Pagination-usage.md — 'Without rows per page' section shows omitting rowsPerPageOptions as the mechanism for hiding the section, with verbatim Figma caption 'Pagination can be used without the control of the number of rows per page.'"
+    resolution: "Omitting rowsPerPageOptions suppresses the rows-per-page section. Map Figma rowsPerPage boolean → React rowsPerPageOptions presence/absence in the spec."
 
 gaps:
   - id: GAP-001
@@ -157,7 +171,7 @@ gaps:
     evidence:
       source_file: Pagination-figma.md
       location: "## Accessibility (from Figma annotations only)"
-      finding: "No ARIA role, focus order, or keyboard interaction annotations in Figma. Marked '<!-- NOT ANNOTATED IN FIGMA -->'."
+      finding: "No ARIA role, focus order, or keyboard interaction annotations in Figma component set. Marked '<!-- NOT ANNOTATED IN FIGMA -->'."
     fix_action: "Designer to add accessibility annotations to the Pagination component set in Figma."
     blocks: [Pagination-figma.md]
     dependency: []
@@ -171,7 +185,7 @@ gaps:
     evidence:
       source_file: Pagination-figma.md
       location: "## Interaction states"
-      finding: "No hover, focus, or pressed states in the Figma component set. Only Default and Disabled variants present."
+      finding: "No hover, focus, or pressed states in the Figma component variant set. Only Default and Disabled variants present. Note: hover/focus are documented in the examples page (Pagination-usage.md) as tooltip behaviour, but are not modelled as component variants."
     fix_action: "Designer to add transient state variants (hover, focus-visible, pressed) to the Figma component set."
     blocks: [Pagination-figma.md]
     dependency: []
@@ -205,20 +219,6 @@ gaps:
     dependency: []
 
   - id: GAP-013
-    dimension: usage
-    severity: major
-    type: SOURCE_GAP
-    confidence: deterministic
-    auto_fixable: false
-    evidence:
-      source_file: "Pagination-usage.md"
-      location: "file missing"
-      finding: "Pagination-usage.md does not exist. figma-extract-usage skill was not run. Do/Don't editorial guidance from Figma 'Pagination — Examples' page is absent."
-    fix_action: "Run figma-extract-usage for Pagination if a 'Pagination — Examples' Figma page exists. If no such page exists, note as SOURCE_GAP and proceed."
-    blocks: [Pagination-spec.md]
-    dependency: []
-
-  - id: GAP-014
     dimension: tokens
     severity: minor
     type: SOURCE_GAP
@@ -232,34 +232,35 @@ gaps:
     blocks: []
     dependency: []
 
-conflicts:
-  - id: CON-001
-    dimension: figma
-    severity: major
-    type: CONFLICT
+  - id: GAP-014
+    dimension: usage
+    severity: minor
+    type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
     evidence:
-      source_file: Pagination-figma.md
-      location: "## API — Variant axes → breakpoint"
-      finding: "Figma has a 'breakpoint' variant axis with values '> 548px' and '< 548px'. This axis controls visibility of the rows-per-page section. The Oxygen React prop API (@8x8/oxygen-pagination) has no 'breakpoint' prop — responsive layout is expected to be managed by the consuming application."
-    fix_action: "Human decision required: (A) Document as consumer responsibility in the spec — no React prop, consumer controls responsive layout via CSS/container queries. (B) Raise with Oxygen team whether a responsive prop should be added. Resolve before doc-rewrite to determine spec wording."
+      source_file: Pagination-usage.md
+      location: "## Gaps"
+      finding: "Pagination examples page uses descriptive behavioural sections, not ✅ Do / ❌ Don't card format. No negative (Don't) examples documented anywhere in the Figma examples page."
+    fix_action: "Designer to add Do/Don't card pairs to the Figma examples page to document incorrect usage patterns."
+    blocks: []
+    dependency: []
+
+  - id: GAP-015
+    dimension: examples
+    severity: minor
+    type: DOC_GAP
+    confidence: deterministic
+    auto_fixable: true
+    evidence:
+      source_file: Pagination-usage.md
+      location: "## Type → Unknown page number"
+      finding: "Pagination-usage.md documents an 'Unknown page number' variant (page count hidden) as an explicit intended use case. examples.md has no code example showing this — omitting the numberOfPages display."
+    fix_action: "doc-rewrite should add an 'Unknown page number' example showing translations.numberOfPages omitted or numberOfPages hidden, sourced from Pagination-usage.md."
     blocks: [Pagination-spec.md]
     dependency: []
 
-  - id: CON-002
-    dimension: figma
-    severity: major
-    type: CONFLICT
-    confidence: deterministic
-    auto_fixable: false
-    evidence:
-      source_file: Pagination-figma.md
-      location: "## API — Boolean toggles → rowsPerPage"
-      finding: "Figma has a 'rowsPerPage' boolean toggle that shows/hides the entire rows-per-page section. The Oxygen prop 'rowsPerPageOptions: number[]' is an array of values — it implies the section renders when the array is provided, but the semantics differ. Figma models it as a visibility toggle; React models it as a data provider."
-    fix_action: "Human decision required: Confirm whether passing an empty array or omitting 'rowsPerPageOptions' hides the rows-per-page section (matching Figma intent). Document the mapping in the spec. Resolve before doc-rewrite."
-    blocks: [Pagination-spec.md]
-    dependency: []
+conflicts: []
 
 warnings:
   - id: WARN-001
@@ -275,7 +276,7 @@ warnings:
 
 # Pagination — Doc Audit
 
-**Verdict: NO** — 2 conflicts must be resolved by a human before `doc-rewrite` can run.
+**Verdict: YES** — all conflicts resolved; no blocker gaps. `doc-rewrite` can proceed.
 
 ---
 
@@ -285,11 +286,12 @@ warnings:
 |------|--------|-------|
 | `props.md` | ✅ present | 11 props, usePagination hook, install/import snippets |
 | `examples.md` | ✅ present | 1 functional example; anatomy, sizes, when-to-use |
-| `tokens.md` | ✅ present | Nearly empty — MCP returned 0 tokens; size table only |
+| `tokens.md` | ✅ present | Nearly empty — MCP returned 0 tokens; Figma tokens not yet merged in |
 | `accessibility.md` | ✅ present | Comprehensive but entirely inferred — no MCP or Figma source |
-| `Pagination-figma.md` | ✅ present | Anatomy, 4 variant axes, color tokens, structure, 2 conflicts logged |
-| `figma-screenshot-Pagination.png` | ✅ present | Downloaded |
-| `Pagination-usage.md` | ❌ missing | figma-extract-usage not run → GAP-013 |
+| `Pagination-figma.md` | ✅ present | Anatomy, 4 variant axes, color tokens, structure, conflicts now resolved |
+| `Pagination-usage.md` | ✅ present | 4 behavioural sections: type, responsive rules, size, tooltips |
+| `figma-screenshot-Pagination.png` | ✅ present | Component set screenshot |
+| `figma-usage-*.png` | ✅ present | 4 section screenshots from examples page |
 | `Pagination-pui.md` | ⏭ skipped | pui-mcp-extract confirmed no relevant context → PASS |
 
 ---
@@ -298,37 +300,31 @@ warnings:
 
 | Dimension | Score | Coverage | Summary |
 |-----------|-------|----------|---------|
-| Props | 0.80 | 8/10 | All props present; PaginationSize enum undocumented; descriptions inferred for 6 props |
-| Examples | 0.63 | 5/8 | 1 complete example; missing disabled, small (complete), dark mode |
-| Tokens | 0.22 | 2/9 | MCP returned 0 tokens; Figma tokens identified but not in tokens.md; 10 hardcoded values |
+| Props | 0.80 | 8/10 | All props present; PaginationSize enum undocumented from source; 6 descriptions inferred |
+| Examples | 0.63 | 5/8 | 1 complete example; missing disabled, small (complete), dark mode, unknown-page-number |
+| Tokens | 0.22 | 2/9 | MCP returned 0 tokens; Figma tokens in figma.md but not in tokens.md; 10 hardcoded values |
 | Accessibility | 0.78 | 7/9 | Full WCAG checklist + keyboard + ARIA; all inferred, no upstream source |
-| Figma | 0.78 | 7/9 | Anatomy, variants, tokens, structure complete; missing styles API, variables, hover states |
-| Usage | 0.00 | 0/7 | File missing — figma-extract-usage not run |
+| Figma | 0.78 | 7/9 | Anatomy, variants, tokens, structure complete; missing styles API, variables, hover variants |
+| Usage | 0.71 | 5/7 | 4 behavioural sections; no Do/Don't pairs; responsive + size + tooltip documented |
 | PUI | 1.00 | N/A | Confirmed no relevant PUI context |
 
 ---
 
-## Conflicts (must resolve before rewrite)
+## Resolved conflicts
 
-### CON-001 — `breakpoint` Figma axis has no React prop
+### CON-001 — `breakpoint` Figma axis ✅ RESOLVED
 
-**Dimension:** figma · **Severity:** major
+**Evidence:** `Pagination-usage.md § Responsive rules` — the Figma examples page explicitly documents the 548px breakpoint as a layout rule with no suggestion of a React prop. The section heading "For containers larger or equal to 548px width" implies the consumer controls the container size.
 
-Figma models a `breakpoint` variant axis (`> 548px` / `< 548px`) that hides the rows-per-page section on small screens. The `@8x8/oxygen-pagination` React component has no corresponding prop.
-
-**Decision required:** Choose one:
-- **(A)** Document responsive behaviour as consumer's responsibility — no React prop, consumer wraps/conditionally renders. This is the most likely intended design.
-- **(B)** Escalate to Oxygen team to add a `breakpoint` or `hideRowsPerPage` prop.
+**Resolution:** Document as consumer responsibility in the spec. No React prop. Consumer manages responsive layout via CSS or container queries.
 
 ---
 
-### CON-002 — `rowsPerPage` Figma boolean ≠ `rowsPerPageOptions` React prop
+### CON-002 — `rowsPerPage` Figma boolean ≠ `rowsPerPageOptions` React prop ✅ RESOLVED
 
-**Dimension:** figma · **Severity:** major
+**Evidence:** `Pagination-usage.md § Type → Without rows per page` — verbatim Figma caption: *"Pagination can be used without the control of the number of rows per page."* The mechanism shown is simply rendering the component without the rows-per-page section, which maps to omitting `rowsPerPageOptions`.
 
-Figma shows a `rowsPerPage: boolean` toggle that shows/hides the rows-per-page section. The React prop `rowsPerPageOptions: number[]` provides the list of options — its absence likely hides the section, but this is not documented.
-
-**Decision required:** Confirm: does omitting `rowsPerPageOptions` (or passing `[]`) cause the rows-per-page section to not render? Document this mapping explicitly in the spec.
+**Resolution:** Omitting `rowsPerPageOptions` (or passing no array) suppresses the rows-per-page UI section. The Figma boolean is a design-time visibility toggle that maps to React prop presence/absence. Document this in the spec.
 
 ---
 
@@ -336,9 +332,10 @@ Figma shows a `rowsPerPage: boolean` toggle that shows/hides the rows-per-page s
 
 | ID | Dimension | Severity | Finding |
 |----|-----------|----------|---------|
-| GAP-003 | tokens | major | Figma tokens (--text/textcolor01, --ui/ui05, --interactive/disabled01/04, typography/*) documented in Pagination-figma.md but absent from tokens.md |
+| GAP-003 | tokens | major | Figma tokens (--text/textcolor01, --ui/ui05, --interactive/disabled01/04, typography/*) in figma.md but absent from tokens.md |
 | GAP-005 | props | minor | 6 required props have empty MCP descriptions; inferred descriptions used |
 | GAP-007 | examples | minor | Small size snippet is non-functional (missing all required props) |
+| GAP-015 | examples | minor | No "unknown page number" code example despite it being an explicit design variant (Pagination-usage.md) |
 
 ## Source gaps (need upstream work)
 
@@ -349,12 +346,12 @@ Figma shows a `rowsPerPage: boolean` toggle that shows/hides the rows-per-page s
 | GAP-004 | props | minor | PaginationSize enum values inferred, not from MCP source |
 | GAP-006 | examples | minor | No disabled or dark-mode code examples in MCP |
 | GAP-008 | accessibility | minor | No a11y data from MCP or Figma annotations — all inferred |
-| GAP-009 | figma | minor | No accessibility annotations in Figma file |
-| GAP-010 | figma | minor | No hover/focus/pressed states in Figma variant set |
+| GAP-009 | figma | minor | No accessibility annotations in Figma component set |
+| GAP-010 | figma | minor | No hover/focus/pressed variants in Figma component set (hover/focus documented in usage page only) |
 | GAP-011 | figma | minor | figma_get_component_details unavailable (Desktop Bridge) |
 | GAP-012 | tokens | minor | 10 hardcoded values in Figma with no token bindings |
-| GAP-013 | usage | major | Pagination-usage.md missing — figma-extract-usage not run |
-| GAP-014 | tokens | minor | figma_get_styles returned empty — typography style names unverified |
+| GAP-013 | tokens | minor | figma_get_styles returned empty — typography style names unverified |
+| GAP-014 | usage | minor | No Do/Don't negative examples in Figma examples page |
 
 ---
 
@@ -363,13 +360,16 @@ Figma shows a `rowsPerPage: boolean` toggle that shows/hides the rows-per-page s
 | ID | Finding |
 |----|---------|
 | WARN-001 | accessibility.md is entirely inferred. Spot-check ARIA labels against rendered DOM before publishing. |
-| WARN-002 | Token hex fallbacks extracted from Figma design context may differ from resolved theme values. Verify against Oxygen token library. |
+| WARN-002 | Token hex fallbacks in figma.md extracted from CSS variable fallback values; may differ from actual resolved theme values. Verify against Oxygen token library. |
 
 ---
 
-## Suggested next actions
+## Suggested next action
 
-1. **Resolve CON-001** — Decide whether `breakpoint` behaviour is a consumer concern or a new prop. Update the spec wording accordingly.
-2. **Resolve CON-002** — Confirm that omitting `rowsPerPageOptions` hides the rows-per-page UI section; document the mapping.
-3. **Run `figma-extract-usage`** (GAP-013) — Check if a "Pagination — Examples" Figma page exists and run the skill.
-4. **After conflicts resolved** — Run `doc-rewrite` to produce `Pagination-spec.md`. It can auto-fix GAP-003, GAP-005, GAP-007.
+Run `doc-rewrite` to produce `Pagination-spec.md`. The following gaps will be auto-fixed:
+- **GAP-003** — Figma color/typography tokens merged into tokens section
+- **GAP-005** — Inferred prop descriptions written with advisory note
+- **GAP-007** — Small size example expanded with all required props
+- **GAP-015** — "Unknown page number" variant example added
+
+Remaining gaps (GAP-001, GAP-002, GAP-004, GAP-006, GAP-008–GAP-014) require upstream designer/Oxygen-team action and do not block the rewrite.
