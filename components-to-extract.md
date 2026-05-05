@@ -3,7 +3,7 @@
 Components selected for documentation extraction from the Oxygen Design System (`@8x8/oxygen-*` v2.107.0).
 Deprecated packages are excluded unless noted.
 
-> **Progress: 22 / 34 complete** — update as components are extracted.
+> **Progress: 25 / 34 complete** — update as components are extracted.
 
 ---
 
@@ -37,8 +37,8 @@ Deprecated packages are excluded unless noted.
 | ~~`accordion`~~ | ~~`Accordion`, `AccordionGroup`~~ | ~~15~~ | ✅ |
 | ~~`tabs`~~ | ~~`Tabs`, `Tab`~~ | ~~2~~ | ✅ |
 | ~~`modal`~~ | ~~`Modal`, `ModalHeader`, `ModalFooter`, `ModalContent`~~ | ~~18~~ | ✅ |
-| `slideOut` | `SlideOut` | 9 | ⬜ |
-| `card` | `Card` | 2 | ⬜ *(deprecated — check for replacement)* |
+| ~~`slideOut`~~ | ~~`SlideOut`~~ | ~~9~~ | ✅ *(no Figma design — SOURCE_GAP; audit verdict: PARTIAL)* |
+| ~~`card`~~ | ~~`Card`, `Header`, `Separator`, `Statistics`~~ | ~~2~~ | ✅ *(deprecated in code — `@8x8/oxygen-card` marked deprecated; no replacement specified; no Platform UI concerns; usage guidelines page has no Do/Don't content)* |
 
 ---
 
@@ -73,7 +73,7 @@ Deprecated packages are excluded unless noted.
 | ~~`alertBanner`~~ | ~~`AlertBanner`~~ | ~~5~~ | ✅ |
 | ~~`toast`~~ | ~~`Toast`, `ToastStack`, `InlineNotification`~~ | ~~11~~ | ✅ |
 | ~~`toaster`~~ | ~~`Toaster`~~ | ~~—~~ | ✅ *(no figma-extract — shares Toast's design; imperative API only — see [toaster-note.md](component-lib/Toaster/toaster-note.md))* |
-| `loaders` | `Spinner`, `ProgressBar` | 5 | ⬜ |
+| ~~`loaders`~~ | ~~`Spinner`~~ ✅, ~~`ProgressBar`~~ ✅ | ~~5~~ | ✅ |
 | `skeletons` | `SkeletonBlock`, `SkeletonCircle` | — | ⬜ |
 
 ---
