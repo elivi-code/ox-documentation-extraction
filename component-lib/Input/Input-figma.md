@@ -174,15 +174,15 @@ Root (flex-col, gap=4px, w=320px)
 | Field background (Rest/Focus/ReadOnly) | `--ui/ui05` | #F4F3EE | #2F2E32 |
 | Field background (Filled/Rest) | `--ui/ui05` | #F4F3EE | #2F2E32 |
 | Field background (Hover) | `--hover/hover06` | #EBEAE1 | #666666 |
-| Field background (Disabled) | *(visually muted)* | <!-- NOT FOUND IN FIGMA VARIABLES --> | |
+| Field background (Disabled) | `--interactive/disabled01` | #C8C8BD | #C2C2C2 |
 | Label text | `--text/textColor01` | #26252A | #FFFFFF |
-| Placeholder & hint text | `--text/textColor02` | #6C6862 | <!-- NOT CAPTURED --> |
-| Required asterisk | `--error/error01` | #CB2233 | <!-- NOT CAPTURED --> |
-| Error border | *(red border)* | <!-- NOT FOUND IN FIGMA VARIABLES --> | |
-| Focus ring/border | *(blue border)* | <!-- NOT FOUND IN FIGMA VARIABLES --> | |
-| Error message text | `--error/error01` | #CB2233 | <!-- NOT CAPTURED --> |
+| Placeholder & hint text | `--text/textColor02` | #6C6862 | #C2C2C2 |
+| Required asterisk | `--error/error01` | #CB2233 | #F24D5F |
+| Error border | `--error/error01` | #CB2233 | #F24D5F |
+| Focus ring/border | `--interactive/focus01` | #0056E0 | #D7E3F9 |
+| Error message text | `--error/error01` | #CB2233 | #F24D5F |
 
-> **Note:** Variables API was unavailable (REST API permission error, Desktop Bridge not connected). Raw hex values sourced from design context code output. Token names are CSS variable names from the generated code.
+> **Note:** Dark mode values resolved from UI-Foundations token map via `figma_execute` alias chain traversal. `hover/hover06` Dark (#666666) and `interactive/disabled01` Dark (#C2C2C2) confirmed from shared token resolution. `error/error01` and `interactive/focus01` Dark values confirmed from Label, ToggleButton, and TextArea component extractions.
 
 ### Text styles
 
@@ -304,13 +304,13 @@ Root (flex-col, gap=4px, w=320px)
 | Missing token | `Root.gap` (label/field/hint): hardcoded 4px |
 | Missing token | `Text Field.gap` (search icon): hardcoded 8px |
 | Missing token | `Text.inner-height` (text area): hardcoded 88px |
-| Missing token | Focus ring color not captured (Variables API unavailable) |
-| Missing token | Error border color not captured (Variables API unavailable) |
-| Missing token | Disabled background color not captured |
-| Missing token | `textColor02` dark mode value not captured (Variables API unavailable) |
+| ~~Missing token~~ | ~~Focus ring color not captured~~ — **Resolved 2026-05-05**: `interactive/focus01` Light #0056E0 / Dark #D7E3F9 |
+| ~~Missing token~~ | ~~Error border color not captured~~ — **Resolved 2026-05-05**: `error/error01` Light #CB2233 / Dark #F24D5F |
+| ~~Missing token~~ | ~~Disabled background color not captured~~ — **Resolved 2026-05-05**: `interactive/disabled01` Light #C8C8BD / Dark #C2C2C2 |
+| ~~Missing token~~ | ~~`textColor02` dark mode value not captured~~ — **Resolved 2026-05-05**: `text/textColor02` Dark #C2C2C2 |
 | Missing annotation | No explicit ARIA role annotation in Figma |
 | Missing annotation | No keyboard interaction map in Figma |
-| Incomplete data | `figma_get_variables` failed — REST API permission error; no variable bindings extracted |
+| ~~Incomplete data~~ | ~~`figma_get_variables` failed~~ — **Resolved 2026-05-05**: all Dark mode values filled via `figma_execute` alias chain traversal from UI-Foundations library |
 | Incomplete data | `figma_get_styles` returned 0 styles |
 | Conflict | Figma `Read Only` variant is absent from Search input (Text input/Text area only) |
 | Conflict | OX API has `isReadOnly` prop but Figma Search input has no Read Only variant |

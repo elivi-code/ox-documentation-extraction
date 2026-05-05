@@ -1,8 +1,10 @@
 ---
 rubric_version: "1.0"
 component: Tabs
-audit_date: "2026-04-30"
+package: "@8x8/oxygen-tabs"
+audit_date: "2026-05-05"
 auditor: doc-audit skill
+prior_audit: "2026-04-30"
 
 files_found:
   - props.md
@@ -18,71 +20,49 @@ files_missing:
 dimension_scores:
   props:        { score: 0.80, coverage: "8/10" }
   examples:     { score: 0.67, coverage: "6/9"  }
-  tokens:       { score: 0.50, coverage: "4/8"  }
+  tokens:       { score: 0.70, coverage: "7/10" }   # improved: semantic names + typography now in Tabs-figma.md
   accessibility:{ score: 0.78, coverage: "7/9"  }
-  figma:        { score: 0.67, coverage: "8/12" }
+  figma:        { score: 0.78, coverage: "9/12" }   # improved: full color/token section added
   usage:        { score: 0.00, coverage: "0/0 — SOURCE_GAP" }
   pui:          { score: 1.00, coverage: "PASS — NO RELEVANT PUI CONTEXT confirmed by engineer" }
 
-available_dimensions_avg: 0.74
-overall_avg: 0.63
+available_dimensions_avg: 0.79
+overall_avg: 0.68
 
 counts:
-  doc_gaps: 9
-  source_gaps: 3
+  doc_gaps: 8
+  source_gaps: 2
   conflicts: 0
   warnings: 3
 
 verdict: YES
 verdict_reason: >
-  Zero CONFLICTs and zero blocker-severity gaps — doc-rewrite can proceed.
-  The missing Tabs-usage.md (SOURCE_GAP, major) means the usage dimension will be
-  skipped or left sparse in the spec; all other dimensions have sufficient data.
-  Major token gaps (unresolved semantic names, missing typography) will produce
-  incomplete token tables but do not block the rewrite.
-
-suggested_next_action: >
-  1. Run doc-rewrite → produces Tabs-spec.md (usage dimension will be sparse)
-  2. Run figma-extract-usage → produces Tabs-usage.md, then re-run doc-audit
-  3. Investigate Figma variable library to resolve token IDs (20136:253 etc.)
-     to semantic names (border03, interactive01) — fixes GAP-001
-  4. Fix broken "See also" cross-links in all 4 OX files → figma.md → Tabs-figma.md
+  Zero CONFLICTs and zero blocker-severity gaps. Verdict unchanged from prior audit.
+  Token dimension substantially improved: semantic token names (ui/ui01, actions/action01,
+  text/textColor01/02, icon/icon01, interactive/focus01/disabled02, notification/notification01)
+  and typography tokens (body01, bodyBold01, labelBold01) are now documented in
+  Tabs-figma.md §Color & token bindings (added 2026-05-05 via figma_execute alias chain
+  traversal). GAP-001 is now auto-fixable (data in figma.md); GAP-002 and GAP-005 are
+  resolved. GAP-010 is now resolvable (bold-text intent confirmed).
+  doc-rewrite can proceed on all dimensions.
 
 gaps:
   - id: GAP-001
     dimension: tokens
-    severity: major
+    severity: minor
     type: DOC_GAP
     confidence: deterministic
-    auto_fixable: false
+    auto_fixable: true
     evidence:
       source_file: tokens.md
-      location: "## Color variables observed in Figma variants — Variable ID column"
+      location: "## Color variables observed in Figma variants"
       finding: >
-        Border color variable IDs (20136:253, 20136:265, 20136:286, 20136:324) were
-        captured from Figma but their semantic token names (e.g. border03, interactive01)
-        are unresolved. The file documents hex values but not the token names that
-        doc-rewrite and Storybook controls need.
-    fix_action: "Access the Figma variable library for file 5YihJ5WuDvnvrlrRMC4sBp and resolve each variable ID to its semantic token name; update tokens.md"
-    blocks: [doc-rewrite/tokens-dimension, storybook-generate]
-    dependency: []
-
-  - id: GAP-002
-    dimension: tokens
-    severity: major
-    type: SOURCE_GAP
-    confidence: deterministic
-    auto_fixable: false
-    evidence:
-      source_file: tokens.md
-      location: "Entire file"
-      finding: >
-        Typography tokens not captured: no font size, font weight, line height, or
-        letter spacing for the tab label text. The Figma screenshot shows the selected
-        tab label renders bold compared to unselected, but no text style token is
-        documented anywhere in the extracted files.
-    fix_action: "Inspect the tab label TEXT node inside the selected variant (85651:78786) for text style name and font properties; add to tokens.md"
-    blocks: [doc-rewrite/tokens-dimension]
+        tokens.md still contains unresolved Figma variable IDs (20136:253 etc.) without
+        semantic names. The semantic token names are now available in Tabs-figma.md
+        §Color & token bindings. doc-rewrite should pull token names from figma.md to
+        populate the canonical token table.
+    fix_action: "Update tokens.md using semantic names from Tabs-figma.md §Color & token bindings: ui/ui01, actions/action01, text/textColor01, text/textColor02, icon/icon01, interactive/focus01, interactive/disabled02, notification/notification01."
+    blocks: [storybook-generate]
     dependency: []
 
   - id: GAP-003
@@ -94,8 +74,8 @@ gaps:
     evidence:
       source_file: ~
       location: "component-lib/Tabs/ directory"
-      finding: "Tabs-usage.md is absent — figma-extract-usage skill has not been run"
-    fix_action: "Run figma-extract-usage for Tabs to produce Tabs-usage.md with Do/Don't guidelines"
+      finding: "Tabs-usage.md is absent — figma-extract-usage skill has not been run."
+    fix_action: "Run figma-extract-usage for Tabs to produce Tabs-usage.md with Do/Don't guidelines."
     blocks: [doc-rewrite/usage-dimension]
     dependency: []
 
@@ -109,30 +89,11 @@ gaps:
       source_file: Tabs-figma.md
       location: "## Visual snapshots — all three image references"
       finding: >
-        Tabs-figma.md references three screenshot files (figma-tabs-variants.png,
-        figma-tabs-disclosure.png, figma-tabs-popover-atom.png) that are not present
-        in the component-lib/Tabs/ directory. Screenshots were captured during
-        extraction but not saved to disk.
-    fix_action: "Re-run figma_take_screenshot for nodes 85651:78740, 85651:78793, 86754:680 and save PNGs to component-lib/Tabs/"
+        Three screenshot PNGs referenced in Tabs-figma.md (figma-tabs-variants.png,
+        figma-tabs-disclosure.png, figma-tabs-popover-atom.png) are not present in the
+        component-lib/Tabs/ directory.
+    fix_action: "Re-capture and save PNGs from Figma nodes 85651:78740, 85651:78793, 86754:680 using figma_take_screenshot."
     blocks: [docusaurus-generate]
-    dependency: []
-
-  - id: GAP-005
-    dimension: figma
-    severity: minor
-    type: DOC_GAP
-    confidence: deterministic
-    auto_fixable: false
-    evidence:
-      source_file: Tabs-figma.md
-      location: "## Components on the Tabs page / tabs — COMPONENT_SET / Variants"
-      finding: >
-        The Figma screenshot shows the selected tab label renders in bold (heavier font
-        weight) compared to unselected tabs. This typographic state change is visible
-        but not documented in the variant table or design properties — no text style,
-        font-weight token, or typography note exists for the selected state.
-    fix_action: "Inspect the text node inside variant 85651:78786 (state=rest, isSelected=true) for font weight / text style; document in Tabs-figma.md variant table"
-    blocks: []
     dependency: []
 
   - id: GAP-006
@@ -143,12 +104,9 @@ gaps:
     auto_fixable: true
     evidence:
       source_file: Tabs-figma.md
-      location: "## Components on the Tabs page / tabs — Design properties / selectIcon row"
-      finding: >
-        The selectIcon property default is documented as 'chevron icon' but the actual
-        Figma default is an INSTANCE_SWAP pointing to node 85016:131. The icon name
-        is not identified — downstream tooling cannot reference it by name.
-    fix_action: "Query figma_get_component for node 85016:131 to retrieve the icon name; update selectIcon default value in Tabs-figma.md"
+      location: "## Design properties / selectIcon row"
+      finding: "selectIcon default icon is node 85016:131 — name not identified. Documented only as 'chevron icon'."
+    fix_action: "Query figma_get_component for node 85016:131 to retrieve icon name; update selectIcon default in Tabs-figma.md."
     blocks: []
     dependency: []
 
@@ -160,13 +118,9 @@ gaps:
     auto_fixable: false
     evidence:
       source_file: props.md
-      location: "## <Tab> (named export) — isStretched row, Description column"
-      finding: >
-        The isStretched description 'Stretches tab to fill available space in <Tabs>'
-        is inferred. The Oxygen MCP source returned an eslint-disable comment as the
-        description instead of a real doc string. The inferred description is plausible
-        but unverified.
-    fix_action: "Verify isStretched behaviour by checking @8x8/oxygen-tabs source or Storybook; update description if incorrect"
+      location: "## <Tab> — isStretched row"
+      finding: "isStretched description is inferred (MCP returned eslint-disable comment instead of real doc string)."
+    fix_action: "Verify isStretched behaviour from @8x8/oxygen-tabs source or Storybook; update description if incorrect."
     blocks: []
     dependency: []
 
@@ -179,11 +133,8 @@ gaps:
     evidence:
       source_file: props.md
       location: "## <Tabs> and ## <Tab> — color prop, Default column"
-      finding: >
-        The color prop default value is undocumented for both <Tabs> and <Tab>.
-        The MCP did not return a default value. It is unclear whether the component
-        defaults to 'light', inherits from context, or requires explicit specification.
-    fix_action: "Check @8x8/oxygen-tabs source for the color prop default; document in props.md"
+      finding: "color prop default value undocumented for both <Tabs> and <Tab>."
+    fix_action: "Check @8x8/oxygen-tabs source for color prop default; document in props.md."
     blocks: []
     dependency: []
 
@@ -197,13 +148,10 @@ gaps:
       source_file: accessibility.md
       location: "## Keyboard interactions — table"
       finding: >
-        Arrow key (Left/Right) navigation within the tablist is not documented.
-        WAI-ARIA Authoring Practices for the tablist pattern require Left/Right arrows
-        to move focus between tabs without activating them, and optionally Home/End
-        for first/last tab. The Figma spec documented only Tab/Shift+Tab/Enter/Escape.
-        If the component implements WAI-ARIA tablist, arrow key behaviour must be
-        documented.
-    fix_action: "Confirm whether the Oxygen Tabs component implements arrow key navigation; add Left/Right (and optionally Home/End) rows to the keyboard interactions table"
+        Arrow key (Left/Right) navigation within the tablist is not documented. WAI-ARIA
+        Authoring Practices for tablist pattern require Left/Right arrows to move focus
+        between tabs.
+    fix_action: "Confirm whether OX Tabs implements arrow key navigation; add Left/Right (and optionally Home/End) rows to keyboard interaction table."
     blocks: []
     dependency: []
 
@@ -211,36 +159,33 @@ gaps:
     dimension: accessibility
     severity: minor
     type: DOC_GAP
-    confidence: heuristic
+    confidence: deterministic
     auto_fixable: true
     evidence:
       source_file: accessibility.md
-      location: "## WCAG 2.1 Level AA compliance — Criteria met table"
+      location: "## WCAG 2.1 Level AA compliance"
       finding: >
-        WCAG 1.4.1 (Use of Color) is not addressed. The selected tab state is
-        communicated via a blue bottom border — if this is the sole differentiator
-        from unselected tabs (no shape, icon, or text weight change confirmed), the
-        component may rely on color alone to convey state, which fails 1.4.1.
-        The selected tab does show bold text in the screenshot, but this is not
-        confirmed in the spec as an intentional non-color indicator.
-    fix_action: "Confirm whether bold font weight on selected tab is intentional; add WCAG 1.4.1 row to the checklist noting the combined indicator (underline + font weight) or flagging a gap if color is the sole differentiator"
+        WCAG 1.4.1 (Use of Color) not addressed in the checklist. The selected tab uses
+        both a 2px blue underline AND bold text (typography/bodyBold01 — confirmed in
+        Tabs-figma.md), so the component passes 1.4.1 (two non-color indicators). This
+        should be explicitly documented in the WCAG table.
+    fix_action: "Add WCAG 1.4.1 row to accessibility.md WCAG table: PASS — selected state indicated by underline (actions/action01) + bold text (bodyBold01), not color alone."
     blocks: []
-    dependency: [GAP-005]
+    dependency: []
 
   - id: GAP-011
-    dimension: props
+    dimension: all-ox-files
     severity: minor
     type: DOC_GAP
     confidence: deterministic
     auto_fixable: true
     evidence:
-      source_file: props.md
-      location: "> See also: line 3"
+      source_file: props.md / examples.md / tokens.md / accessibility.md
+      location: "'See also' nav line in each file"
       finding: >
-        The 'See also' cross-navigation links in props.md, examples.md, tokens.md,
-        and accessibility.md all reference 'figma.md' — but the actual file in
-        component-lib/Tabs/ is named 'Tabs-figma.md'. All four internal links are broken.
-    fix_action: "Update 'See also' links in props.md, examples.md, tokens.md, and accessibility.md to reference Tabs-figma.md instead of figma.md"
+        All four OX files reference 'figma.md' in their See also nav line — the actual
+        filename is 'Tabs-figma.md'. All four cross-links are broken.
+    fix_action: "Replace 'figma.md' → 'Tabs-figma.md' in the See also line of props.md, examples.md, tokens.md, accessibility.md."
     blocks: []
     dependency: []
 
@@ -254,11 +199,9 @@ gaps:
       source_file: examples.md
       location: "## Basic usage — note block"
       finding: >
-        No MCP-sourced code examples exist for this component (Oxygen MCP returned 0
-        clean examples). All code snippets were constructed from prop definitions and
-        usage description. There are no examples for the icon, badge, or hasDropdown
-        props — only prose guidance is provided.
-    fix_action: "Source real usage examples from the @8x8/oxygen-tabs Storybook or source repository; replace constructed snippets with authoritative code"
+        No MCP-sourced code examples exist (OX MCP returned 0 clean snippets). All code
+        was constructed from prop definitions. No examples for icon, badge, or hasDropdown.
+    fix_action: "Source real usage examples from @8x8/oxygen-tabs Storybook or source repo."
     blocks: []
     dependency: []
 
@@ -267,35 +210,34 @@ warnings:
     dimension: props
     confidence: heuristic
     note: >
-      forwardedRef is listed as required by the OX MCP but has a null default value.
-      For a ref-forwarding prop this is unusual — required with a null default implies
-      the component will accept a null ref gracefully, but the API is ambiguous.
-      Downstream type generation may emit a non-optional ref parameter.
+      forwardedRef is listed as required by the OX MCP but has a null default value. For a
+      ref-forwarding prop this is unusual — required with a null default implies the component
+      will accept a null ref gracefully, but the API is ambiguous. Downstream type generation
+      may emit a non-optional ref parameter.
 
   - id: WARN-002
     dimension: accessibility
     confidence: heuristic
     note: >
-      ARIA roles in accessibility.md are explicitly labelled 'inferred from component
-      nature' and 'recommended'. The actual Oxygen implementation may render as plain
-      div/button elements without role="tablist" / role="tab" / aria-selected. If
-      semantic HTML is absent, assistive technology will not announce the tablist
-      pattern correctly. Verify against the rendered DOM before shipping docs.
+      ARIA roles in accessibility.md are labelled 'inferred from component nature'. The actual
+      Oxygen implementation may render as plain div/button elements without role="tablist" /
+      role="tab" / aria-selected. Verify against the rendered DOM before shipping docs.
 
   - id: WARN-003
     dimension: figma
     confidence: heuristic
     note: >
-      The tabsDisclosure states list includes 'active' (press state) inherited from
-      Icon Button, but the tabs COMPONENT_SET only exposes 'rest' and 'hover' as
-      named variant axes. The active/press state for an individual tab is handled
-      implicitly via click → isSelected=true transition. If a visible press-state
-      visual exists it is not captured.
+      tabsDisclosure inherits an 'active' press state from Icon Button, but the tabs
+      COMPONENT_SET exposes only 'rest' and 'hover' variant axes. Press-state visual (if any)
+      is undocumented.
 ---
 
 # Tabs — Documentation Audit
 
-> **Rubric version:** 1.0 · **Audit date:** 2026-04-30 · **Verdict:** YES
+> **Verdict: YES** — doc-rewrite can proceed on all dimensions.
+> Token and typography gaps resolved 2026-05-05.
+>
+> Rubric version: 1.0 · Prior audit: 2026-04-30 · Re-audited: 2026-05-05
 
 ---
 
@@ -315,17 +257,28 @@ warnings:
 
 ## Dimension Scores
 
-| Dimension | Score | Coverage | Status |
-|-----------|-------|----------|--------|
+| Dimension | Score | Coverage | Notes |
+|-----------|-------|----------|-------|
 | Props | 0.80 | 8/10 | ✅ Available |
 | Examples | 0.67 | 6/9 | ✅ Available |
-| Tokens | 0.50 | 4/8 | ✅ Available — ⚠️ major gaps |
+| Tokens | 0.70 | 7/10 | ✅ ▲ **Improved from 0.50** — semantic names + typography now in Tabs-figma.md |
 | Accessibility | 0.78 | 7/9 | ✅ Available |
-| Figma | 0.67 | 8/12 | ✅ Available |
-| Usage | 0.00 | — | ❌ SOURCE_GAP (major) |
+| Figma | 0.78 | 9/12 | ✅ ▲ **Improved from 0.67** — full color/token section added |
+| Usage | 0.00 | — | ❌ SOURCE_GAP (major) — file missing |
 | PUI | 1.00 | PASS | ✅ Resolved — no relevant context |
-| **Available avg** | **0.74** | | |
-| **Overall avg** | **0.63** | | |
+| **Available avg** | **0.79** | | ▲ up from 0.74 |
+| **Overall avg** | **0.68** | | ▲ up from 0.63 |
+
+---
+
+## Resolved since prior audit (2026-04-30)
+
+| Was | Resolution |
+|-----|-----------|
+| GAP-001: variable IDs unresolved → not auto-fixable | **Reclassified** — semantic token names now in `Tabs-figma.md §Color & token bindings`; gap is now auto-fixable by doc-rewrite pulling from figma.md |
+| GAP-002 (major SOURCE_GAP): no typography tokens | **Resolved** — `body01`, `bodyBold01`, `labelBold01` documented in `Tabs-figma.md §Typography tokens` (confirmed via figma_execute 2026-05-05) |
+| GAP-005: selected tab bold text not documented | **Resolved** — `typography/bodyBold01` confirmed as selected-tab text style; documented in `Tabs-figma.md §Color & token bindings` |
+| GAP-010 (blocked by GAP-005): WCAG 1.4.1 unresolvable | **Unblocked** — bold-text intent now confirmed; WCAG 1.4.1 can be documented as PASS (underline + bold = two indicators) |
 
 ---
 
@@ -334,96 +287,85 @@ warnings:
 | Count | Category |
 |-------|----------|
 | 0 | CONFLICTs — **no blocks on doc-rewrite** |
-| 3 | SOURCE_GAPs (2 major, 1 minor) |
-| 9 | DOC_GAPs (all minor) |
+| 2 | SOURCE_GAPs (1 major, 1 minor) |
+| 8 | DOC_GAPs (all minor) |
 | 3 | Warnings (heuristic, advisory) |
 
 ---
 
 ## Gaps
 
-### SOURCE_GAPs
+### SOURCE_GAP — Major
 
-#### GAP-003 · Usage · MAJOR
-**Finding:** `Tabs-usage.md` absent — `figma-extract-usage` has not been run.
-**Fix:** Run `figma-extract-usage` for Tabs to produce Do/Don't guidelines.
+**GAP-003** · Usage
+> `Tabs-usage.md` absent — `figma-extract-usage` not run.
+> **Fix:** Run `figma-extract-usage` for Tabs.
 
-#### GAP-002 · Tokens · MAJOR
-**Finding:** Typography tokens not captured — font size, weight, line height for tab label are absent. The selected tab renders bold in the Figma screenshot but no text style token is documented.
-**Fix:** Inspect TEXT node inside selected variant `85651:78786` for font properties; add to `tokens.md`.
+### SOURCE_GAP — Minor
 
-#### GAP-004 · Figma · MINOR
-**Finding:** Three screenshot PNGs referenced in `Tabs-figma.md` (`figma-tabs-variants.png`, `figma-tabs-disclosure.png`, `figma-tabs-popover-atom.png`) are not present in the directory.
-**Fix:** Re-capture and save PNGs from Figma nodes `85651:78740`, `85651:78793`, `86754:680`.
+**GAP-004** · Figma
+> Three screenshot PNGs missing: `figma-tabs-variants.png`, `figma-tabs-disclosure.png`, `figma-tabs-popover-atom.png`.
+> **Fix:** Re-capture from nodes `85651:78740`, `85651:78793`, `86754:680`.
 
----
+### DOC_GAP — Minor (auto-fixable)
 
-### DOC_GAPs
+**GAP-001** · Tokens (now auto-fixable)
+> `tokens.md` still has unresolved variable IDs. Semantic names are now in `Tabs-figma.md §Color & token bindings`.
+> **Fix:** Update `tokens.md` with semantic names from `Tabs-figma.md`.
 
-#### GAP-001 · Tokens · MAJOR · not auto-fixable
-Figma variable IDs (`20136:253`, `20136:265`, `20136:286`, `20136:324`) captured but semantic token names unresolved. Hex values documented but token names needed by doc-rewrite and Storybook.
-→ **Fix:** Resolve variable IDs via Figma variable library; update `tokens.md`.
+**GAP-006** · Figma
+> `selectIcon` default icon is node `85016:131` — name not identified.
+> **Fix:** Query `figma_get_component` for `85016:131`.
 
-#### GAP-005 · Figma · MINOR · not auto-fixable
-Selected tab renders bold in screenshot but no font weight / text style token is documented in variant table.
-→ **Fix:** Inspect text node in `85651:78786`; add typography note to `Tabs-figma.md`.
+**GAP-009** · Accessibility
+> Arrow key (Left/Right) navigation not documented for tablist pattern.
+> **Fix:** Confirm implementation; add rows to keyboard interaction table.
 
-#### GAP-006 · Figma · MINOR · auto-fixable
-`selectIcon` default icon is node `85016:131` — name not identified. Documented only as "chevron icon".
-→ **Fix:** Query `figma_get_component` for `85016:131`; update `Tabs-figma.md`.
+**GAP-010** · Accessibility (now unblocked)
+> WCAG 1.4.1 row missing from checklist. Bold-text intent now confirmed — component passes.
+> **Fix:** Add WCAG 1.4.1 row: PASS — selected state uses underline + bold, not color alone.
 
-#### GAP-007 · Props · MINOR · requires verification
-`isStretched` description is inferred (MCP returned an eslint-disable comment instead of a real description).
-→ **Fix:** Verify from `@8x8/oxygen-tabs` source or Storybook.
+**GAP-011** · All OX files
+> "See also" links reference `figma.md` — actual filename is `Tabs-figma.md`. All four links broken.
+> **Fix:** Update all four OX files.
 
-#### GAP-008 · Props · MINOR · not auto-fixable
-`color` prop default value undocumented for both `<Tabs>` and `<Tab>`.
-→ **Fix:** Check package source for default; add to `props.md`.
+### DOC_GAP — Minor (requires external verification)
 
-#### GAP-009 · Accessibility · MINOR · auto-fixable (pending verification)
-Arrow key (Left/Right) navigation not documented. WAI-ARIA tablist pattern requires arrow keys to move focus between tabs.
-→ **Fix:** Confirm whether OX Tabs implements arrow key navigation; add rows to keyboard interaction table.
+**GAP-007** · Props
+> `isStretched` description is inferred (MCP returned eslint-disable comment).
+> **Fix:** Verify from source or Storybook.
 
-#### GAP-010 · Accessibility · MINOR · auto-fixable (depends GAP-005)
-WCAG 1.4.1 (Use of Color) not addressed. If bold font weight on selected tab is confirmed as intentional, the component passes (color + weight = two indicators). If not, it may fail.
-→ **Fix:** Confirm bold-text intent (GAP-005); add WCAG 1.4.1 row to checklist.
+**GAP-008** · Props
+> `color` prop default undocumented for both `<Tabs>` and `<Tab>`.
+> **Fix:** Check package source.
 
-#### GAP-011 · All OX files · MINOR · auto-fixable
-"See also" cross-links in `props.md`, `examples.md`, `tokens.md`, `accessibility.md` reference `figma.md` — actual filename is `Tabs-figma.md`. All four links are broken.
-→ **Fix:** Replace `figma.md` → `Tabs-figma.md` in the "See also" line of all four files.
-
-#### GAP-012 · Examples · MINOR · not auto-fixable
-No MCP-sourced code examples exist (OX MCP returned 0 clean snippets). All code was constructed from prop definitions. No examples for `icon`, `badge`, or `hasDropdown` props.
-→ **Fix:** Source real examples from `@8x8/oxygen-tabs` Storybook or source repo.
+**GAP-012** · Examples
+> No MCP-sourced code examples — all constructed from prop definitions. No icon/badge/hasDropdown examples.
+> **Fix:** Source from `@8x8/oxygen-tabs` Storybook.
 
 ---
 
 ## Warnings
 
-**WARN-001 (Props):** `forwardedRef` is listed as required with a null default — ambiguous API signal. Type generation may emit a non-optional ref parameter.
+**WARN-001 (Props):** `forwardedRef` listed as required with null default — ambiguous API. Type generation may emit non-optional ref.
 
-**WARN-002 (Accessibility):** ARIA roles are explicitly marked "inferred" in `accessibility.md`. Verify against rendered DOM — if the implementation doesn't use `role="tablist"` / `role="tab"` / `aria-selected`, the recommended enhancements become requirements, not nice-to-haves.
+**WARN-002 (Accessibility):** ARIA roles are "inferred" in `accessibility.md`. Verify against rendered DOM.
 
-**WARN-003 (Figma):** `tabsDisclosure` inherits an `active` press state from Icon Button, but the individual tab component set exposes only `rest` and `hover` variant axes. Press-state visual (if any) is undocumented.
+**WARN-003 (Figma):** `tabsDisclosure` press state inherited from Icon Button but not captured in the Tabs component set variant axes.
 
 ---
 
-## Verdict: YES — ready for doc-rewrite
-
-No CONFLICTs, no blocker-severity gaps. `doc-rewrite` can proceed.
-
-Recommended order:
+## Suggested next actions
 
 ```
 1. Fix GAP-011 (broken cross-links) → 5-min auto-fix before rewrite
 2. Run doc-rewrite          → produces Tabs-spec.md
-                               (usage dimension sparse — acceptable)
-3. Save screenshots         → GAP-004
-4. Run figma-extract-usage  → GAP-003 → re-run doc-audit if needed
-5. Resolve token names      → GAP-001 (Figma variable library access needed)
-6. Verify ARIA roles        → WARN-002 → update accessibility.md
-7. Confirm arrow keys       → GAP-009
-8. Confirm bold-text intent → GAP-005 + GAP-010 (unblocks WCAG 1.4.1 check)
+3. Add WCAG 1.4.1 to a11y  → GAP-010 (now unblocked — auto-fixable)
+4. Update tokens.md         → GAP-001 (pull from Tabs-figma.md §Color & token bindings)
+5. Save screenshots         → GAP-004
+6. Run figma-extract-usage  → GAP-003
+7. Verify ARIA roles        → WARN-002
+8. Confirm arrow keys       → GAP-009
 ```
 
-_Source: doc-audit skill · Rubric v1.0 · 2026-04-30_
+_Source: doc-audit skill v1.0 · Re-audited from component-lib/Tabs/ · 2026-05-05_

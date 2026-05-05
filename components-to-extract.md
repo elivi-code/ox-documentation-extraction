@@ -3,7 +3,7 @@
 Components selected for documentation extraction from the Oxygen Design System (`@8x8/oxygen-*` v2.107.0).
 Deprecated packages are excluded unless noted.
 
-> **Progress: 20 / 34 complete** — update as components are extracted.
+> **Progress: 21 / 34 complete** — update as components are extracted.
 
 ---
 
@@ -71,7 +71,7 @@ Deprecated packages are excluded unless noted.
 | Package | Key Components | Props | Status |
 |---------|---------------|-------|:------:|
 | ~~`alertBanner`~~ | ~~`AlertBanner`~~ | ~~5~~ | ✅ |
-| `toast` | `Toast`, `ToastStack`, `InlineNotification` | 11 | ⬜ |
+| ~~`toast`~~ | ~~`Toast`, `ToastStack`, `InlineNotification`~~ | ~~11~~ | ✅ |
 | `toaster` | `Toaster` | — | ⬜ |
 | `loaders` | `Spinner`, `ProgressBar` | 5 | ⬜ |
 | `skeletons` | `SkeletonBlock`, `SkeletonCircle` | — | ⬜ |

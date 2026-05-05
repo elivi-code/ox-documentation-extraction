@@ -99,27 +99,35 @@ This frame is a Figma-side annotation only — not part of the rendered componen
 
 ## Color & token bindings
 
+Token values resolved via `figma_execute` + `getVariableByIdAsync` alias chain traversal on node `13899:15489` (UI-components → UI-Foundations library). All values confirmed from Figma.
+
 <!-- COLOR STRATEGY A: one table per element, modes as rows -->
-<!-- NOTE: Variables API was unavailable; all values below are raw hex derived from the figma_get_component reconstruction response. Token names are cross-referenced from oxygen-mcp get-theme-tokens output. -->
 
 ### Banner container background
 
-| Mode | Raw hex | Possible token | Collection | Notes |
-|------|---------|---------------|------------|-------|
-| Light | #F8AE1A | `alertYellow` dark value — **mismatch** | — | Light mode showing dark-mode alertYellow value; may be a fixed/semantic token not yet confirmed |
-| Dark | #F8AE1A | `alertYellow` dark (`colorPalette.yellow06`) | — | Exact match to dark alertYellow resolved value |
+| Semantic token | Primitive | Hex (Light) | Hex (Dark) | Notes |
+|---------------|-----------|-------------|------------|-------|
+| `warning/warning01` | `color/yellow/yellow06` | `#f8ae1a` | `#f8ae1a` | **Same in both modes** — the amber background is intentionally fixed; no mode switch |
 
-> ⚠ All four variants returned the same fill value in the reconstruction. Either the
-> component uses a fixed warning colour regardless of mode, or variable aliases were not
-> resolved. Requires verification with the Desktop Bridge plugin or a designer.
+> The AlertBanner background does not invert between Light and Dark mode. The `warning/warning01` token resolves to the same `color/yellow/yellow06` primitive in both modes. This was confirmed via alias chain traversal — the previous "mismatch" note was incorrect.
 
-### Text styles
+### Text and icon tokens
 
-<!-- NO TEXT STYLES FOUND — figma_get_styles returned totalStyles: 0 (no published styles in this file) -->
+| Element | Semantic token | Primitive (Light) | Hex (Light) | Primitive (Dark) | Hex (Dark) |
+|---------|---------------|-------------------|-------------|------------------|------------|
+| Title / message text | `text/textColor07` | `color/offWhite/offWhite02` | `#26252a` | `color/gray/gray02` | `#292929` |
+| Warning icon fill | `icon/icon08` | `color/offWhite/offWhite02` | `#26252a` | `color/gray/gray02` | `#292929` |
+| Action button (secondary) | `actions/action02` | `color/offWhite/offWhite02` | `#26252a` | `color/gray/gray08` | `#c2c2c2` |
+| Close / dismiss icon | `text/textColor09` | `color/pure/white` | `#ffffff` | `color/pure/black` | `#000000` |
 
-### Effect styles
+> Dark text and icon on the fixed amber background ensures contrast in both modes. The close icon (`textColor09`) flips white↔black to accommodate mode-specific usage contexts.
 
-<!-- NO EFFECT STYLES FOUND — figma_get_styles returned totalStyles: 0 -->
+### Typography tokens
+
+| Element | Token family | Size | Weight | Line-height | Letter-spacing |
+|---------|-------------|------|--------|-------------|----------------|
+| Message body | `typography/body01/` | `14px` | `400` | `20px` | `-0.06px` |
+| Action label | `typography/labelBold01/` | `12px` | `600` | `16px` | `0px` |
 
 ---
 
@@ -208,9 +216,9 @@ from the Oxygen MCP and component nature.
 |------|-------------|
 | Incomplete data | Inner layer children of all 4 variants not returned by Figma REST API — anatomy rows 6–8 are inferred, not confirmed |
 | Incomplete data | `figma_get_component_details` unavailable (requires Figma Desktop Bridge running locally) |
-| Incomplete data | `figma_get_variables` unavailable (REST token lacks variable-read permission; Desktop Bridge not available) — token coverage unknown |
+| ~~Incomplete data~~ | ~~`figma_get_variables` unavailable~~ — **Resolved 2026-05-05**: all tokens extracted via `figma_execute` alias chain traversal; `warning/warning01` confirmed as background token (same #f8ae1a in both modes) |
 | Incomplete data | `get_design_context` unavailable (requires active layer selection in Figma Desktop) — spacing tokens, auto-layout alignment, and annotations not extractable |
-| Missing token | Banner background fill `#F8AE1A` hardcoded in reconstruction — no variable alias confirmed; matches `alertYellow` dark value but this token is documented as data-viz scoped, not AlertBanner scoped |
+| ~~Missing token~~ | ~~Banner background fill `#F8AE1A` hardcoded~~ — **Resolved 2026-05-05**: confirmed as `warning/warning01` → `color/yellow/yellow06`; intentionally mode-invariant (same yellow in Light and Dark) |
 | Missing token | All padding and gap values (16 px, 12 px, 8 px) are raw px — no token bindings confirmed |
 | Missing annotation | No design-intent annotations extracted — the "why" for colour choice, breakpoint values, and gap differences is undocumented in Figma |
 | Conflict | Figma variant axes `mode` (light/dark) and `breakpoint` (> 576 / < 576) have no corresponding props in the Oxygen API — confirm whether these are handled automatically by the component or require parent-level wiring |

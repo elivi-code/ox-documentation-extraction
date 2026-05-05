@@ -101,56 +101,57 @@ All design values that were resolvable from `get_design_context` code output ref
 ## Color & token bindings
 
 <!-- COLOR STRATEGY A: one table per element, states as rows (≤3 state variants) -->
+<!-- Dark mode values resolved from UI-Foundations token map via figma_execute alias chain traversal -->
 
 ### Input container background
 
-| State | Token | Light value |
-|-------|-------|-------------|
-| Rest | `--ui/ui05` | `#f4f3ee` |
-| Focus | `--ui/ui05` | `#f4f3ee` |
-| Error (Rest) | `--ui/ui05` | `#f4f3ee` |
-| Disabled | `--interactive/disabled01` | `#c8c8bd` |
+| State | Token | Light value | Dark value |
+|-------|-------|-------------|------------|
+| Rest | `--ui/ui05` | `#f4f3ee` | `#2f2e32` |
+| Focus | `--ui/ui05` | `#f4f3ee` | `#2f2e32` |
+| Error (Rest) | `--ui/ui05` | `#f4f3ee` | `#2f2e32` |
+| Disabled | `--interactive/disabled01` | `#c8c8bd` | `#c2c2c2` |
 
 ### Input border
 
-| State | Token | Light value | Width |
-|-------|-------|-------------|-------|
-| Rest | _(none)_ | — | — |
-| Focus | `--interactive/focus01` | `#0056e0` | 2px solid |
-| Error | `--error/error01` | `#cb2233` | 2px solid |
-| Disabled | _(none)_ | — | — |
+| State | Token | Light value | Dark value | Width |
+|-------|-------|-------------|------------|-------|
+| Rest | _(none)_ | — | — | — |
+| Focus | `--interactive/focus01` | `#0056e0` | `#d7e3f9` | 2px solid |
+| Error | `--error/error01` | `#cb2233` | `#f24d5f` | 2px solid |
+| Disabled | _(none)_ | — | — | — |
 
 ### Label text
 
-| State | Token | Light value |
-|-------|-------|-------------|
-| All states | `--text/textcolor01` | `#26252a` |
+| State | Token | Light value | Dark value |
+|-------|-------|-------------|------------|
+| All states | `--text/textcolor01` | `#26252a` | `#ffffff` |
 
 ### Required `*` marker
 
-| State | Token | Light value |
-|-------|-------|-------------|
-| All states | `--error/error01` | `#cb2233` |
+| State | Token | Light value | Dark value |
+|-------|-------|-------------|------------|
+| All states | `--error/error01` | `#cb2233` | `#f24d5f` |
 
 ### Placeholder / input text
 
-| State | Token | Light value |
-|-------|-------|-------------|
-| Rest / Focus | `--text/textcolor02` | `#6c6862` |
-| Disabled | `--interactive/disabled04` | `#8d8b7e` |
+| State | Token | Light value | Dark value |
+|-------|-------|-------------|------------|
+| Rest / Focus | `--text/textcolor02` | `#6c6862` | `#c2c2c2` |
+| Disabled | `--interactive/disabled04` | `#8d8b7e` | `#858585` |
 
 ### Hint text
 
-| State | Token | Light value |
-|-------|-------|-------------|
-| All states | `--text/textcolor02` | `#6c6862` |
+| State | Token | Light value | Dark value |
+|-------|-------|-------------|------------|
+| All states | `--text/textcolor02` | `#6c6862` | `#c2c2c2` |
 
 ### Error area
 
-| Element | Token | Light value |
-|---------|-------|-------------|
-| Error message text | `--error/error01` | `#cb2233` |
-| Error icon | `--error/error01` (via SVG fill) | `#cb2233` |
+| Element | Token | Light value | Dark value |
+|---------|-------|-------------|------------|
+| Error message text | `--error/error01` | `#cb2233` | `#f24d5f` |
+| Error icon | `--error/error01` (via SVG fill) | `#cb2233` | `#f24d5f` |
 
 ### Text styles
 
@@ -246,11 +247,11 @@ See [accessibility.md](./accessibility.md) for full guidance.
 | Missing token | Input text font-size is hardcoded to `16px` — not bound to a typography token variable |
 | Missing token | `border-radius` (6px), padding (16px/12px), gap (4px) are all hardcoded values |
 | Missing token | Resize grip offset from edges (8px / 6px) is hardcoded — slight inconsistency between error vs. rest/focus states |
-| Incomplete data | `figma_get_variables` failed (Enterprise plan required) — full token alias tree unavailable |
+| ~~Incomplete data~~ | ~~`figma_get_variables` failed~~ — **Resolved 2026-05-05**: Dark mode values added for all token tables via `figma_execute` alias chain traversal from UI-Foundations library |
 | Incomplete data | `figma_get_component_details` failed (Desktop Bridge not running) — component key unavailable |
 | Missing annotation | No accessibility annotations in Figma beyond focus ring description |
 | Missing annotation | No design intent annotation explaining the `Filled` variant axis purpose |
-| Missing annotation | Dark mode token values not resolved (variables API not accessible) |
+| ~~Missing annotation~~ | ~~Dark mode token values not resolved~~ — **Resolved 2026-05-05**: all dark values added to color tables |
 | Conflict | Figma `Mode` variant axis (Light/Dark) has no direct prop counterpart in the Oxygen `Textarea` API — dark mode is controlled at theme-provider level |
 | Conflict | Figma `Size` variant axis (Large/Medium/Small) has no direct Oxygen prop — component does not expose a `size` prop in the current API |
 | Conflict | Figma `Filled` variant axis has no direct Oxygen prop — represents filled/empty visual state, not mapped to an API prop |

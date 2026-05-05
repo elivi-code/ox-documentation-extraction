@@ -123,6 +123,40 @@ The popover/dropdown menu that renders overflow tabs. Shown in the Atom section 
 
 ---
 
+## Color & token bindings
+
+Token values resolved via `figma_execute` + `getVariableByIdAsync` alias chain traversal on node `85651:78740` (UI-components → UI-Foundations library). All values confirmed from Figma.
+
+<!-- COLOR STRATEGY B: states as columns, elements as rows (4 variants × 2 modes > 3 threshold) -->
+
+### Tab item — color tokens by state
+
+| Element | Semantic token | Primitive (Light) | Hex (Light) | Primitive (Dark) | Hex (Dark) |
+|---------|---------------|-------------------|-------------|------------------|------------|
+| Bottom border — rest/unselected | `ui/ui01` | `color/offWhite/offWhite09` | `#ebeae1` | `color/gray/gray05` | `#666666` |
+| Bottom border — selected (2px) | `actions/action01` | `color/blue/blue05` | `#0056e0` | `color/blue/blue07` | `#4687ed` |
+| Label text — rest | `text/textColor01` | `color/offWhite/offWhite02` | `#26252a` | `color/pure/white` | `#ffffff` |
+| Label text — disabled | `interactive/disabled02` | `color/offWhite/offWhite08` | `#c8c8bd` | `color/gray/gray05` | `#666666` |
+| Icon fill | `icon/icon01` | `color/offWhite/offWhite02` | `#26252a` | `color/pure/white` | `#ffffff` |
+| Focus ring | `interactive/focus01` | `color/blue/blue05` | `#0056e0` | `color/blue/blue10` | `#d7e3f9` |
+| Notification badge | `notification/notification01` | `color/turqouise/turqouise05` | `#048284` | `color/turqouise/turqouise10` | `#78cdcf` |
+
+> The `text/textColor02` token (`#6c6862` Light / `#c2c2c2` Dark) was also found bound in the component set — likely used for secondary/muted label context (e.g. the tab group label or tab count text, not the primary tab label).
+
+### `tabsDisclosure` — overflow button tokens
+
+The `tabsDisclosure` uses the same tokens as the `tabs` component set (inherits from `Icon Button`). Bottom border in rest state uses `ui/ui01`.
+
+### Typography tokens
+
+| Element | Token family | Size | Weight | Line-height | Letter-spacing |
+|---------|-------------|------|--------|-------------|----------------|
+| Tab label (unselected) | `typography/body01/` | `14px` | `400` | `20px` | `-0.06px` |
+| Tab label (selected — bold) | `typography/bodyBold01/` | `14px` | `600` | `20px` | `-0.06px` |
+| Tab disclosure label | `typography/labelBold01/` | `12px` | `600` | `16px` | `0px` |
+
+---
+
 ## Legacy / hidden components
 
 The following components are present on the Tabs page but are marked `visible: false` and are not part of the current design system:
