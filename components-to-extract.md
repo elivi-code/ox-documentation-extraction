@@ -3,7 +3,7 @@
 Components selected for documentation extraction from the Oxygen Design System (`@8x8/oxygen-*` v2.107.0).
 Deprecated packages are excluded unless noted.
 
-> **Progress: 21 / 34 complete** — update as components are extracted.
+> **Progress: 22 / 34 complete** — update as components are extracted.
 
 ---
 
@@ -72,7 +72,7 @@ Deprecated packages are excluded unless noted.
 |---------|---------------|-------|:------:|
 | ~~`alertBanner`~~ | ~~`AlertBanner`~~ | ~~5~~ | ✅ |
 | ~~`toast`~~ | ~~`Toast`, `ToastStack`, `InlineNotification`~~ | ~~11~~ | ✅ |
-| `toaster` | `Toaster` | — | ⬜ |
+| ~~`toaster`~~ | ~~`Toaster`~~ | ~~—~~ | ✅ *(no figma-extract — shares Toast's design; imperative API only — see [toaster-note.md](component-lib/Toaster/toaster-note.md))* |
 | `loaders` | `Spinner`, `ProgressBar` | 5 | ⬜ |
 | `skeletons` | `SkeletonBlock`, `SkeletonCircle` | — | ⬜ |
 

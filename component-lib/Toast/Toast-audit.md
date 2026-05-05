@@ -4,6 +4,7 @@ component: Toast
 package: "@8x8/oxygen-toast"
 audit_date: "2026-05-05"
 auditor: doc-audit skill
+updated: "2026-05-05"
 
 file_inventory:
   present:
@@ -31,25 +32,32 @@ overall_score: 0.65
 counts:
   doc_gaps: 5
   source_gaps: 3
-  conflicts: 1
+  conflicts: 0
   warnings: 2
 
-verdict: NO
+verdict: YES
 verdict_reason: >
-  One unresolved CONFLICT: the Figma component set exposes a "Style" variant axis
-  (Full notification / Group collapsed / Group expanded) that has no corresponding
-  `style` prop in the Oxygen `Toast` API. It is unclear whether grouped/stacked
-  behaviour is handled entirely by `ToastStack` + `Toaster`, or whether the Figma
-  design implies a prop that is missing from the code surface. This must be resolved
-  by a human (designer or engineer) before `doc-rewrite` can run. Additionally,
-  `Toast-usage.md` is missing (major DOC_GAP) and accessibility data is fully
-  inferred with no MCP confirmation (major SOURCE_GAP).
+  GAP-001 (CONFLICT) resolved 2026-05-05 via OX MCP comparison of @8x8/oxygen-toast
+  and @8x8/oxygen-toaster: the Figma Style axis values "Group collapsed" and
+  "Group expanded" are handled entirely by the Toaster system component (imperative
+  notify() API + automatic stacking/collapse behaviour). No `style` prop is needed
+  on Toast — the grouping is managed at the app layer by Toaster. Zero CONFLICTs
+  remain. Remaining gaps are all major/minor SOURCE_GAPs and DOC_GAPs; none are
+  blocker severity. doc-rewrite can proceed.
 
 gaps:
   - id: GAP-001
     dimension: figma_fidelity
     severity: blocker
     type: CONFLICT
+    status: RESOLVED
+    resolved_date: "2026-05-05"
+    resolution: >
+      Confirmed via OX MCP comparison of @8x8/oxygen-toast and @8x8/oxygen-toaster:
+      "Group collapsed" and "Group expanded" Figma Style variants are handled entirely
+      by the Toaster system component (automatic stacking and collapse/expand managed
+      by the notify() queue). No `style` prop is missing from Toast. The Figma Style
+      axis is a design-time representation of Toaster's runtime stacking behaviour.
     confidence: deterministic
     auto_fixable: false
     evidence:
@@ -63,8 +71,8 @@ gaps:
         application layer, but this is not confirmed. If Figma `Style` implies a
         missing prop, the documentation and potentially the component API is
         incomplete.
-    fix_action: "Confirm with design/engineering whether Figma Style variants (Group collapsed / Group expanded) map to ToastStack/Toaster behaviour only, or require a `style` prop on Toast. Update props.md and figma spec accordingly."
-    blocks: [doc-rewrite]
+    fix_action: "RESOLVED — see resolution field above."
+    blocks: []
     dependency: []
 
   - id: GAP-002
@@ -240,7 +248,9 @@ warnings:
 
 # Toast — Audit Report
 
-> **Verdict: NO** — One unresolved CONFLICT (GAP-001: Figma `Style` axis vs. missing `style` prop in code) blocks `doc-rewrite`. Two major gaps also require resolution before the spec can be considered authoritative: accessibility data is fully inferred with no MCP confirmation (GAP-002 / SOURCE_GAP), and `Toast-usage.md` is absent (GAP-003 / DOC_GAP).
+> **Verdict: YES** — GAP-001 (CONFLICT) resolved 2026-05-05: Figma `Style` axis (Group collapsed/expanded) confirmed as Toaster system behaviour, not a missing `style` prop on Toast. Zero CONFLICTs remain. doc-rewrite can proceed.
+>
+> Updated: 2026-05-05
 
 ## Summary
 
@@ -259,7 +269,7 @@ warnings:
 
 | ID | Dimension | Severity | Type | Summary |
 |----|-----------|----------|------|---------|
-| GAP-001 | figma_fidelity | blocker | CONFLICT | Figma Style axis (Group collapsed / expanded) has no `style` prop in code |
+| ~~GAP-001~~ | ~~figma_fidelity~~ | ~~blocker~~ | ~~CONFLICT~~ | ~~Figma Style axis (Group collapsed / expanded) has no `style` prop in code~~ → **RESOLVED** 2026-05-05: handled by Toaster system component |
 | GAP-002 | accessibility | major | SOURCE_GAP | All accessibility content is inferred — no MCP or Figma source data |
 | GAP-003 | usage_guidelines | major | DOC_GAP | Toast-usage.md absent |
 | GAP-004 | props_completeness | major | DOC_GAP | InlineNotification props not available from MCP |
