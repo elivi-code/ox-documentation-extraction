@@ -3,7 +3,7 @@
 Components selected for documentation extraction from the Oxygen Design System (`@8x8/oxygen-*` v2.107.0).
 Deprecated packages are excluded unless noted.
 
-> **Progress: 27 / 34 complete** — update as components are extracted.
+> **Progress: 28 / 34 complete** — update as components are extracted.
 
 ---
 
@@ -57,7 +57,7 @@ Deprecated packages are excluded unless noted.
 
 | Package | Key Components | Props | Status |
 |---------|---------------|-------|:------:|
-| `dataTable` | `Table`, `TableHeader`, `TableContainer`, `Body`, `BodyRow`, `Cell`, `HeaderCell`, `Pagination`, `CheckboxCell` | — | ⬜ |
+| ~~`dataTable`~~ | ~~`Table`, `TableHeader`, `TableContainer`, `Body`, `BodyRow`, `Cell`, `HeaderCell`, `Pagination`, `CheckboxCell`~~ | ~~—~~ | ✅ |
 | `list` | `List`, `ListItem` | 4 | ⬜ |
 | ~~`avatar`~~ | ~~`Avatar`, `AvatarStack`~~ | ~~15~~ | ✅ |
 | ~~`badge`~~ | ~~`Badge`, `AIBadge`~~ | ~~—~~ | ✅ |
