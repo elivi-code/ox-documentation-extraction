@@ -35,6 +35,37 @@ The skills are designed to be run in this order for each component:
 
 When a user asks to "document X", route to the skill that fits the current stage — don't replay earlier steps if their outputs already exist.
 
+### Quick command reference
+
+Since this workspace has no build/test suite, "commands" are skill invocations:
+
+```bash
+# Start extraction for a component (run as parallel batch)
+/oxygen-mcp-extract <ComponentName>
+/figma-extract <ComponentName>
+/figma-extract-usage <ComponentName>
+/pui-mcp-extract <ComponentName>
+
+# Audit after extraction completes
+/doc-audit <ComponentName>
+
+# Rewrite once audit verdict is YES
+/doc-rewrite <ComponentName>
+
+# Update progress tracking (manual)
+# Edit components-to-extract.md: strike through row, bump counter
+```
+
+### Before each skill: MCP verification
+
+SessionStart hook prints an availability reminder. Before starting any extraction skill, verify these MCPs are accessible:
+
+- **OX MCP** — Test: `mcp__oxygen-mcp__list-components` (should return component list)
+- **PUI MCP** — Test: `mcp__platform-ui-mcp__pui-list` (should return Platform UI packages)
+- **Figma Console** — Test: `mcp__figma-console__figma_navigate` with file URL (should navigate; auth failures block figma-extract)
+
+If any MCP is unavailable, tell the user before proceeding. The settings allow list includes most common tool calls, reducing permission prompts.
+
 ## MCP servers (and the SessionStart check)
 
 Project-level (in `.claude/settings.local.json`):
@@ -49,6 +80,17 @@ Available via claude.ai:
 - **pencil** — `.pen` design files (only needed if a `.pen` file is in scope).
 
 A SessionStart hook prints an MCP-availability reminder. Before starting any extraction skill, do a lightweight probe (e.g. `mcp__oxygen-mcp__list-components`) and tell the user if any required MCP is missing — `figma-extract` in particular **must stop and report** on auth failure rather than emitting partial data.
+
+## Progress tracking (standing instruction)
+
+After each component finishes extraction + audit (the extract → audit pipeline):
+
+1. Open [components-to-extract.md](components-to-extract.md)
+2. Find the component's row
+3. Strike it through: change `| ComponentName |` to `| ~~ComponentName~~ |`
+4. Bump the `Progress: N / 34 complete` counter at the top
+
+The counter reflects how many components have completed the full extract + audit pipeline (ready for or past rewrite). This is a visual tracking mechanism for ongoing work.
 
 ## Conventions worth knowing
 
