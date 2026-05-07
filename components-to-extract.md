@@ -3,7 +3,7 @@
 Components selected for documentation extraction from the Oxygen Design System (`@8x8/oxygen-*` v2.107.0).
 Deprecated packages are excluded unless noted.
 
-> **Progress: 28 / 34 complete** — update as components are extracted.
+> **Progress: 29 / 34 complete** — update as components are extracted.
 
 ---
 
@@ -49,7 +49,7 @@ Deprecated packages are excluded unless noted.
 | ~~`breadcrumbs`~~ | ~~`Breadcrumbs`, `Breadcrumb`~~ | ~~7~~ | ✅ |
 | ~~`pagination`~~ | ~~`Pagination`~~ | ~~11~~ | ✅ |
 | ~~`link`~~ | ~~`Link`~~ | ~~6~~ | ✅ |
-| `sidebarMenu` | `Sidebar`, `MenuItem`, `SubMenuItem` | 9 | ⬜ |
+| ~~`sidebarMenu`~~ | ~~`Sidebar`, `MenuItem`, `SubMenuItem`~~ | ~~9~~ | ✅ |
 
 ---
 
