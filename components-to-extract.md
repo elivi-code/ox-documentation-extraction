@@ -3,7 +3,7 @@
 Components selected for documentation extraction from the Oxygen Design System (`@8x8/oxygen-*` v2.107.0).
 Deprecated packages are excluded unless noted.
 
-> **Progress: 28 / 34 complete** — update as components are extracted.
+> **Progress: 29 / 34 complete** — update as components are extracted.
 
 ---
 
@@ -83,7 +83,7 @@ Deprecated packages are excluded unless noted.
 | Package | Key Components | Props | Status |
 |---------|---------------|-------|:------:|
 | ~~`tooltip`~~ | ~~`Tooltip`~~ ✅ | ~~15~~ | ✅ |
-| `popover` | `Popover`, `PopoverMenu` | 11 | ⬜ |
+| ~~`popover`~~ | ~~`Popover`, `PopoverMenu`~~ | ~~11~~ | ✅ |
 
 ---
 
