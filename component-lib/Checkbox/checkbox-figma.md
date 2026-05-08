@@ -1,3 +1,26 @@
+---
+component: Checkbox
+package: "@8x8/oxygen-checkbox"
+category: form_inputs
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Checkbox/props]]"
+  - "[[Checkbox/examples]]"
+  - "[[Checkbox/tokens]]"
+  - "[[Checkbox/accessibility]]"
+  - "[[Checkbox/checkbox-pui]]"
+  - "[[Checkbox/checkbox-audit]]"
+tags:
+  - oxygen
+  - component/Checkbox
+  - role/figma
+  - stage/spec_ready
+  - category/form_inputs
+---
 <!-- FIGMA FILE: 5YihJ5WuDvnvrlrRMC4sBp (UI-components) -->
 <!-- NODE: 51776:5078 (canvas root for Checkbox) -->
 <!-- EXTRACTED: 2026-04-29 -->

@@ -1,3 +1,22 @@
+---
+component: Radio
+package: "@8x8/oxygen-radio"
+category: form_inputs
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: extracted
+pipeline_note: "Core files present; audit not yet run"
+siblings:
+  - "[[Radio/examples]]"
+  - "[[Radio/tokens]]"
+  - "[[Radio/accessibility]]"
+tags:
+  - oxygen
+  - component/Radio
+  - role/props
+  - stage/extracted
+  - category/form_inputs
+---
 # Radio — Props
 
 > **See also:** [Examples](examples.md) · [Tokens](tokens.md) · [Accessibility](accessibility.md)

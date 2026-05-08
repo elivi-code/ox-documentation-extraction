@@ -1,3 +1,25 @@
+---
+component: Card
+package: "@8x8/oxygen-card"
+category: layout_overlay
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Card/examples]]"
+  - "[[Card/tokens]]"
+  - "[[Card/accessibility]]"
+  - "[[Card/Card-figma]]"
+  - "[[Card/Card-audit]]"
+tags:
+  - oxygen
+  - component/Card
+  - role/props
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # Card — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

@@ -1,3 +1,25 @@
+---
+component: ProgressBar
+package: "@8x8/oxygen-loaders"
+category: feedback_status
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[ProgressBar/props]]"
+  - "[[ProgressBar/examples]]"
+  - "[[ProgressBar/tokens]]"
+  - "[[ProgressBar/accessibility]]"
+  - "[[ProgressBar/ProgressBar-audit]]"
+tags:
+  - oxygen
+  - component/ProgressBar
+  - role/figma
+  - stage/spec_ready
+  - category/feedback_status
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 30880:55942 -->

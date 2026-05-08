@@ -1,3 +1,25 @@
+---
+component: Spinner
+package: "@8x8/oxygen-loaders"
+category: feedback_status
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Spinner/props]]"
+  - "[[Spinner/examples]]"
+  - "[[Spinner/accessibility]]"
+  - "[[Spinner/Spinner-figma]]"
+  - "[[Spinner/Spinner-audit]]"
+tags:
+  - oxygen
+  - component/Spinner
+  - role/tokens
+  - stage/blocked
+  - category/feedback_status
+---
 # Spinner — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

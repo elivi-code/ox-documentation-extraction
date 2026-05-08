@@ -1,3 +1,25 @@
+---
+component: Button
+package: "@8x8/oxygen-button"
+category: interaction
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Button/examples]]"
+  - "[[Button/tokens]]"
+  - "[[Button/accessibility]]"
+  - "[[Button/Button-figma]]"
+  - "[[Button/Button-audit]]"
+tags:
+  - oxygen
+  - component/Button
+  - role/props
+  - stage/blocked
+  - category/interaction
+---
 # Button — Props
 
 > **See also:** [Examples](examples.md) · [Tokens](tokens.md) · [Accessibility](accessibility.md)

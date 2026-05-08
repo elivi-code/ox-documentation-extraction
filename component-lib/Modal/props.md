@@ -1,3 +1,26 @@
+---
+component: Modal
+package: "@8x8/oxygen-modal"
+category: layout_overlay
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Modal/examples]]"
+  - "[[Modal/tokens]]"
+  - "[[Modal/accessibility]]"
+  - "[[Modal/Modal-figma]]"
+  - "[[Modal/Modal-pui]]"
+  - "[[Modal/Modal-audit]]"
+tags:
+  - oxygen
+  - component/Modal
+  - role/props
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # Modal — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [Modal-figma.md](Modal-figma.md)

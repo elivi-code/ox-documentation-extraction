@@ -1,0 +1,1033 @@
+# ============================================================
+# OX Design System — Component Documentation Map
+# ============================================================
+# Single source of truth linking all .md files in component-lib/.
+# Pipeline stages: extracted → audited → spec_ready → spec_complete
+# Obsidian wiki-links use [[folder/file]] notation (no .md extension).
+# Audit verdicts: YES (rewrite can proceed), NO (conflicts block rewrite),
+#                 PARTIAL (rewrite can proceed on available dimensions only).
+# Generated: 2026-05-08   Rubric version: 1.0
+# ============================================================
+
+meta:
+  workspace: "OX Documentation Extraction"
+  package_prefix: "@8x8/oxygen-"
+  total_components: 34
+  extracted_and_audited: 28
+  spec_complete: 1
+  progress_tracker: "[[components-to-extract]]"
+  workspace_guide: "[[CLAUDE]]"
+
+pipeline_legend:
+  extracted:      "Core files present (props, examples, tokens, accessibility)"
+  audited:        "Audit report produced; verdict determines next step"
+  spec_ready:     "Audit verdict YES or PARTIAL — doc-rewrite can run"
+  spec_complete:  "Canonical spec.md written by doc-rewrite"
+  blocked:        "Audit verdict NO — CONFLICTs must be resolved first"
+  not_started:    "No extraction run yet"
+
+# ============================================================
+# FORM INPUTS
+# ============================================================
+
+components:
+
+  - name: Input
+    package: "@8x8/oxygen-input"
+    category: form_inputs
+    folder: "component-lib/Input"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "1 CONFLICT — Search input isReadOnly discrepancy between Figma and MCP"
+    audit_date: "2026-04-29"
+    audit_overall_score: 0.70
+    audit_scores:
+      props_api: 0.82
+      examples: 0.83
+      design_tokens: 0.45
+      accessibility: 0.91
+      figma_spec: 0.87
+      usage_do_dont: 0.00
+      pui_context: 1.00
+    gap_counts: { doc_gaps: 4, source_gaps: 12, conflicts: 1, warnings: 4 }
+    files:
+      props:        { path: "component-lib/Input/props.md",         wiki: "[[Input/props]]" }
+      examples:     { path: "component-lib/Input/examples.md",      wiki: "[[Input/examples]]" }
+      tokens:       { path: "component-lib/Input/tokens.md",        wiki: "[[Input/tokens]]" }
+      accessibility: { path: "component-lib/Input/accessibility.md", wiki: "[[Input/accessibility]]" }
+      figma:        { path: "component-lib/Input/Input-figma.md",   wiki: "[[Input/Input-figma]]" }
+      pui:          { path: "component-lib/Input/Input-pui.md",     wiki: "[[Input/Input-pui]]" }
+      audit:        { path: "component-lib/Input/Input-audit.md",   wiki: "[[Input/Input-audit]]" }
+    files_missing:
+      - Input-usage.md  # SOURCE_GAP — figma-extract-usage not run
+    cross_links:
+      audit_depends_on: ["[[Input/props]]", "[[Input/examples]]", "[[Input/tokens]]", "[[Input/accessibility]]", "[[Input/Input-figma]]", "[[Input/Input-pui]]"]
+      spec_depends_on:  ["[[Input/Input-audit]]"]
+
+  - name: TextField
+    package: "@8x8/oxygen-textField"
+    category: form_inputs
+    folder: "component-lib/TextField"
+    pipeline_stage: spec_ready
+    audit_verdict: YES
+    audit_verdict_reason: "No CONFLICTs. No blockers. figma.md uses non-standard name (naming violation only)."
+    audit_date: "2026-04-29"
+    audit_overall_score: 0.68
+    audit_scores:
+      props: 0.78
+      examples: 0.71
+      tokens: 0.75
+      accessibility: 0.80
+      figma: 0.73
+      usage: 0.00
+      pui: 1.00
+    gap_counts: { blockers: 0, major: 5, minor: 8, conflicts: 0, warnings: 4 }
+    files:
+      props:        { path: "component-lib/TextField/props.md",         wiki: "[[TextField/props]]" }
+      examples:     { path: "component-lib/TextField/examples.md",      wiki: "[[TextField/examples]]" }
+      tokens:       { path: "component-lib/TextField/tokens.md",        wiki: "[[TextField/tokens]]" }
+      accessibility: { path: "component-lib/TextField/accessibility.md", wiki: "[[TextField/accessibility]]" }
+      figma:        { path: "component-lib/TextField/figma.md",         wiki: "[[TextField/figma]]",  note: "Non-standard filename — should be TextField-figma.md" }
+      pui:          { path: "component-lib/TextField/TextField-pui.md", wiki: "[[TextField/TextField-pui]]" }
+      audit:        { path: "component-lib/TextField/TextField-audit.md", wiki: "[[TextField/TextField-audit]]" }
+    files_missing:
+      - TextField-usage.md  # SOURCE_GAP major — figma-extract-usage not run
+    cross_links:
+      audit_depends_on: ["[[TextField/props]]", "[[TextField/examples]]", "[[TextField/tokens]]", "[[TextField/accessibility]]", "[[TextField/figma]]", "[[TextField/TextField-pui]]"]
+      spec_depends_on:  ["[[TextField/TextField-audit]]"]
+
+  - name: TextArea
+    package: "@8x8/oxygen-textarea"
+    category: form_inputs
+    folder: "component-lib/TextArea"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "3 CONFLICTs — Size/Mode/Filled Figma axes have no direct prop counterparts"
+    audit_date: "2026-04-29"
+    audit_overall_score: null
+    audit_scores:
+      props_completeness: 0.85
+      examples_quality: 0.78
+      tokens_coverage: 0.75
+      anatomy_structure: 0.89
+      accessibility: 0.78
+      figma_alignment: 0.62
+      pui_context: 1.00
+    gap_counts: { doc_gaps: 6, source_gaps: 5, conflicts: 3, warnings: 2 }
+    files:
+      props:        { path: "component-lib/TextArea/props.md",            wiki: "[[TextArea/props]]" }
+      examples:     { path: "component-lib/TextArea/examples.md",         wiki: "[[TextArea/examples]]" }
+      tokens:       { path: "component-lib/TextArea/tokens.md",           wiki: "[[TextArea/tokens]]" }
+      accessibility: { path: "component-lib/TextArea/accessibility.md",    wiki: "[[TextArea/accessibility]]" }
+      figma:        { path: "component-lib/TextArea/textarea-figma.md",   wiki: "[[TextArea/textarea-figma]]" }
+      pui:          { path: "component-lib/TextArea/textarea-pui.md",     wiki: "[[TextArea/textarea-pui]]" }
+      audit:        { path: "component-lib/TextArea/textarea-audit.md",   wiki: "[[TextArea/textarea-audit]]" }
+    files_missing:
+      - textarea-usage.md  # SOURCE_GAP major
+    cross_links:
+      audit_depends_on: ["[[TextArea/props]]", "[[TextArea/examples]]", "[[TextArea/tokens]]", "[[TextArea/accessibility]]", "[[TextArea/textarea-figma]]", "[[TextArea/textarea-pui]]"]
+      spec_depends_on:  ["[[TextArea/textarea-audit]]"]
+
+  - name: Checkbox
+    package: "@8x8/oxygen-checkbox"
+    category: form_inputs
+    folder: "component-lib/Checkbox"
+    pipeline_stage: spec_ready
+    audit_verdict: YES
+    audit_verdict_reason: "Zero CONFLICTs. Token SOURCE_GAPs from prior audit resolved. doc-rewrite can proceed."
+    audit_date: "2026-05-05"
+    prior_audit_date: "2026-04-29"
+    audit_overall_score: 0.68
+    audit_scores:
+      props_completeness: 0.90
+      examples_quality: 0.67
+      token_coverage: 0.62
+      accessibility: 0.80
+      figma_fidelity: 0.78
+      pui_integration: 1.00
+      usage_guidelines: 0.00
+    gap_counts: { doc_gaps: 6, source_gaps: 5, conflicts: 0, warnings: 2 }
+    files:
+      props:        { path: "component-lib/Checkbox/props.md",           wiki: "[[Checkbox/props]]" }
+      examples:     { path: "component-lib/Checkbox/examples.md",        wiki: "[[Checkbox/examples]]" }
+      tokens:       { path: "component-lib/Checkbox/tokens.md",          wiki: "[[Checkbox/tokens]]" }
+      accessibility: { path: "component-lib/Checkbox/accessibility.md",   wiki: "[[Checkbox/accessibility]]" }
+      figma:        { path: "component-lib/Checkbox/checkbox-figma.md",  wiki: "[[Checkbox/checkbox-figma]]" }
+      pui:          { path: "component-lib/Checkbox/checkbox-pui.md",    wiki: "[[Checkbox/checkbox-pui]]" }
+      audit:        { path: "component-lib/Checkbox/checkbox-audit.md",  wiki: "[[Checkbox/checkbox-audit]]" }
+    files_missing:
+      - checkbox-usage.md  # SOURCE_GAP — figma-extract-usage not run
+    cross_links:
+      audit_depends_on: ["[[Checkbox/props]]", "[[Checkbox/examples]]", "[[Checkbox/tokens]]", "[[Checkbox/accessibility]]", "[[Checkbox/checkbox-figma]]", "[[Checkbox/checkbox-pui]]"]
+      spec_depends_on:  ["[[Checkbox/checkbox-audit]]"]
+
+  - name: Radio
+    package: "@8x8/oxygen-radio"
+    category: form_inputs
+    folder: "component-lib/Radio"
+    pipeline_stage: extracted
+    audit_verdict: null
+    audit_date: null
+    notes: "No audit run yet. No Figma or PUI files extracted."
+    files:
+      props:        { path: "component-lib/Radio/props.md",         wiki: "[[Radio/props]]" }
+      examples:     { path: "component-lib/Radio/examples.md",      wiki: "[[Radio/examples]]" }
+      tokens:       { path: "component-lib/Radio/tokens.md",        wiki: "[[Radio/tokens]]" }
+      accessibility: { path: "component-lib/Radio/accessibility.md", wiki: "[[Radio/accessibility]]" }
+    files_missing:
+      - radio-figma.md
+      - radio-usage.md
+      - radio-pui.md
+      - radio-audit.md
+    cross_links:
+      audit_depends_on: ["[[Radio/props]]", "[[Radio/examples]]", "[[Radio/tokens]]", "[[Radio/accessibility]]"]
+
+  - name: Select
+    package: "@8x8/oxygen-select"
+    category: form_inputs
+    folder: "component-lib/Select"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "2 CONFLICTs — isAsync type mismatch between MCP endpoints; forwardedRef vs ref pattern unclear. Also: select-figma.md missing (blocker SOURCE_GAP)."
+    audit_date: "2026-04-29"
+    audit_overall_score: 0.53
+    audit_scores:
+      props_completeness: 0.78
+      examples_coverage: 0.65
+      token_coverage: 0.35
+      accessibility: 0.78
+      figma_alignment: 0.15
+      usage_guidelines: 0.25
+      cross_file_consistency: 0.78
+    gap_counts: { doc_gaps: 8, source_gaps: 5, conflicts: 2, warnings: 3 }
+    files:
+      props:        { path: "component-lib/Select/props.md",         wiki: "[[Select/props]]" }
+      examples:     { path: "component-lib/Select/examples.md",      wiki: "[[Select/examples]]" }
+      tokens:       { path: "component-lib/Select/tokens.md",        wiki: "[[Select/tokens]]" }
+      accessibility: { path: "component-lib/Select/accessibility.md", wiki: "[[Select/accessibility]]" }
+      pui:          { path: "component-lib/Select/select-pui.md",    wiki: "[[Select/select-pui]]" }
+      audit:        { path: "component-lib/Select/Select-audit.md",  wiki: "[[Select/Select-audit]]" }
+    files_missing:
+      - select-figma.md  # blocker SOURCE_GAP — figma-extract not run
+      - select-usage.md
+    cross_links:
+      audit_depends_on: ["[[Select/props]]", "[[Select/examples]]", "[[Select/tokens]]", "[[Select/accessibility]]", "[[Select/select-pui]]"]
+      spec_depends_on:  ["[[Select/Select-audit]]"]
+
+  - name: Slider
+    package: "@8x8/oxygen-slider"
+    category: form_inputs
+    folder: "component-lib/Slider"
+    pipeline_stage: spec_ready
+    audit_verdict: PARTIAL
+    audit_verdict_reason: "One blocker SOURCE_GAP (slider-figma.md absent). No CONFLICTs. Rewrite can proceed on props, examples, tokens, accessibility, pui dimensions."
+    audit_date: "2026-04-29"
+    audit_scores:
+      props_completeness: 0.75
+      examples_coverage: 0.85
+      token_coverage: 0.78
+      accessibility: 0.90
+      figma_design_context: 0.00
+      usage_guidelines: 0.00
+      pui_context: 1.00
+    gap_counts: { doc_gaps: 4, source_gaps: 3, conflicts: 0, warnings: 2 }
+    files:
+      props:        { path: "component-lib/Slider/props.md",         wiki: "[[Slider/props]]" }
+      examples:     { path: "component-lib/Slider/examples.md",      wiki: "[[Slider/examples]]" }
+      tokens:       { path: "component-lib/Slider/tokens.md",        wiki: "[[Slider/tokens]]" }
+      accessibility: { path: "component-lib/Slider/accessibility.md", wiki: "[[Slider/accessibility]]" }
+      pui:          { path: "component-lib/Slider/slider-pui.md",    wiki: "[[Slider/slider-pui]]" }
+      audit:        { path: "component-lib/Slider/slider-audit.md",  wiki: "[[Slider/slider-audit]]" }
+    files_missing:
+      - slider-figma.md  # blocker SOURCE_GAP
+      - slider-usage.md
+    cross_links:
+      audit_depends_on: ["[[Slider/props]]", "[[Slider/examples]]", "[[Slider/tokens]]", "[[Slider/accessibility]]", "[[Slider/slider-pui]]"]
+      spec_depends_on:  ["[[Slider/slider-audit]]"]
+
+  - name: ToggleButton
+    package: "@8x8/oxygen-toggleButton"
+    category: form_inputs
+    folder: "component-lib/ToggleButton"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "2 CONFLICTs — Figma isOn? vs OX isChecked prop name; Figma ToggleGroup isError variant has no OX API counterpart."
+    audit_date: "2026-04-29"
+    audit_overall_score: 0.73
+    audit_scores:
+      props: 0.83
+      examples: 0.80
+      tokens: 0.80
+      accessibility: 0.88
+      figma: 0.78
+      usage: 0.00
+      pui: 1.00
+    gap_counts: { doc_gaps: 4, source_gaps: 5, conflicts: 2, warnings: 2 }
+    files:
+      props:        { path: "component-lib/ToggleButton/props.md",                wiki: "[[ToggleButton/props]]" }
+      examples:     { path: "component-lib/ToggleButton/examples.md",             wiki: "[[ToggleButton/examples]]" }
+      tokens:       { path: "component-lib/ToggleButton/tokens.md",               wiki: "[[ToggleButton/tokens]]" }
+      accessibility: { path: "component-lib/ToggleButton/accessibility.md",        wiki: "[[ToggleButton/accessibility]]" }
+      figma:        { path: "component-lib/ToggleButton/ToggleButton-figma.md",   wiki: "[[ToggleButton/ToggleButton-figma]]" }
+      pui:          { path: "component-lib/ToggleButton/ToggleButton-pui.md",     wiki: "[[ToggleButton/ToggleButton-pui]]" }
+      audit:        { path: "component-lib/ToggleButton/ToggleButton-audit.md",   wiki: "[[ToggleButton/ToggleButton-audit]]" }
+    files_missing:
+      - ToggleButton-usage.md  # SOURCE_GAP
+    cross_links:
+      audit_depends_on: ["[[ToggleButton/props]]", "[[ToggleButton/examples]]", "[[ToggleButton/tokens]]", "[[ToggleButton/accessibility]]", "[[ToggleButton/ToggleButton-figma]]", "[[ToggleButton/ToggleButton-pui]]"]
+      spec_depends_on:  ["[[ToggleButton/ToggleButton-audit]]"]
+
+# ============================================================
+# INTERACTION
+# ============================================================
+
+  - name: Button
+    package: "@8x8/oxygen-button"
+    category: interaction
+    folder: "component-lib/Button"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "3 CONFLICTs — Secondary rest bg token ($action01 vs action02); Text button active bg ($active17 scope); Primary bg token naming (action09 vs action01) between Figma and tokens.md."
+    audit_date: "2026-04-28"
+    audit_overall_score: null
+    audit_scores:
+      props: 0.75
+      examples: 0.72
+      tokens: 0.78
+      accessibility: 0.80
+      figma: 0.70
+      usage: 0.00
+      pui: 0.00
+    gap_counts: { doc_gaps: 12, source_gaps: 2, conflicts: 3, warnings: 3 }
+    files:
+      props:        { path: "component-lib/Button/props.md",         wiki: "[[Button/props]]" }
+      examples:     { path: "component-lib/Button/examples.md",      wiki: "[[Button/examples]]" }
+      tokens:       { path: "component-lib/Button/tokens.md",        wiki: "[[Button/tokens]]" }
+      accessibility: { path: "component-lib/Button/accessibility.md", wiki: "[[Button/accessibility]]" }
+      figma:        { path: "component-lib/Button/Button-figma.md",  wiki: "[[Button/Button-figma]]" }
+      audit:        { path: "component-lib/Button/Button-audit.md",  wiki: "[[Button/Button-audit]]" }
+    files_missing:
+      - Button-usage.md  # SOURCE_GAP
+      - Button-pui.md    # SOURCE_GAP
+    cross_links:
+      audit_depends_on: ["[[Button/props]]", "[[Button/examples]]", "[[Button/tokens]]", "[[Button/accessibility]]", "[[Button/Button-figma]]"]
+      spec_depends_on:  ["[[Button/Button-audit]]"]
+
+# ============================================================
+# LAYOUT & OVERLAY
+# ============================================================
+
+  - name: Accordion
+    package: "@8x8/oxygen-accordion"
+    category: layout_overlay
+    folder: "component-lib/Accordion"
+    pipeline_stage: spec_ready
+    audit_verdict: YES
+    audit_verdict_reason: "All core files present. No CONFLICTs. Usage and PUI SOURCE_GAPs are non-blocking."
+    audit_date: "2026-04-28"
+    audit_overall_score: 0.73
+    audit_scores:
+      props_completeness: 0.88
+      examples_coverage: 0.72
+      token_coverage: 0.75
+      accessibility: 0.80
+      figma_alignment: 0.74
+      usage_guidelines: 0.30
+      cross_file_consistency: 0.95
+    gap_counts: { doc_gaps: 9, source_gaps: 7, conflicts: 0, warnings: 4 }
+    files:
+      props:        { path: "component-lib/Accordion/props.md",           wiki: "[[Accordion/props]]" }
+      examples:     { path: "component-lib/Accordion/examples.md",        wiki: "[[Accordion/examples]]" }
+      tokens:       { path: "component-lib/Accordion/tokens.md",          wiki: "[[Accordion/tokens]]" }
+      accessibility: { path: "component-lib/Accordion/accessibility.md",   wiki: "[[Accordion/accessibility]]" }
+      figma:        { path: "component-lib/Accordion/accordion-figma.md", wiki: "[[Accordion/accordion-figma]]" }
+      audit:        { path: "component-lib/Accordion/accordion-audit.md", wiki: "[[Accordion/accordion-audit]]" }
+    files_missing:
+      - accordion-usage.md  # SOURCE_GAP — no Do/Don't frames on Figma examples page
+      - accordion-pui.md    # SOURCE_GAP
+    cross_links:
+      audit_depends_on: ["[[Accordion/props]]", "[[Accordion/examples]]", "[[Accordion/tokens]]", "[[Accordion/accessibility]]", "[[Accordion/accordion-figma]]"]
+      spec_depends_on:  ["[[Accordion/accordion-audit]]"]
+
+  - name: Tabs
+    package: "@8x8/oxygen-tabs"
+    category: layout_overlay
+    folder: "component-lib/Tabs"
+    pipeline_stage: spec_complete
+    audit_verdict: YES
+    audit_verdict_reason: "Zero CONFLICTs. Token dimension substantially improved on re-audit 2026-05-05. Spec written."
+    audit_date: "2026-05-05"
+    prior_audit_date: "2026-04-30"
+    audit_overall_score: 0.68
+    audit_scores:
+      props: 0.80
+      examples: 0.67
+      tokens: 0.70
+      accessibility: 0.78
+      figma: 0.78
+      usage: 0.00
+      pui: 1.00
+    gap_counts: { doc_gaps: 8, source_gaps: 2, conflicts: 0, warnings: 3 }
+    files:
+      props:        { path: "component-lib/Tabs/props.md",         wiki: "[[Tabs/props]]" }
+      examples:     { path: "component-lib/Tabs/examples.md",      wiki: "[[Tabs/examples]]" }
+      tokens:       { path: "component-lib/Tabs/tokens.md",        wiki: "[[Tabs/tokens]]" }
+      accessibility: { path: "component-lib/Tabs/accessibility.md", wiki: "[[Tabs/accessibility]]" }
+      figma:        { path: "component-lib/Tabs/Tabs-figma.md",    wiki: "[[Tabs/Tabs-figma]]" }
+      pui:          { path: "component-lib/Tabs/Tabs-pui.md",      wiki: "[[Tabs/Tabs-pui]]" }
+      audit:        { path: "component-lib/Tabs/Tabs-audit.md",    wiki: "[[Tabs/Tabs-audit]]" }
+      spec:         { path: "component-lib/Tabs/Tabs-spec.md",     wiki: "[[Tabs/Tabs-spec]]" }
+    files_missing:
+      - Tabs-usage.md  # SOURCE_GAP (non-blocking)
+    cross_links:
+      audit_depends_on: ["[[Tabs/props]]", "[[Tabs/examples]]", "[[Tabs/tokens]]", "[[Tabs/accessibility]]", "[[Tabs/Tabs-figma]]", "[[Tabs/Tabs-pui]]"]
+      spec_depends_on:  ["[[Tabs/Tabs-audit]]"]
+      spec_output:      ["[[Tabs/Tabs-spec]]"]
+
+  - name: Modal
+    package: "@8x8/oxygen-modal"
+    category: layout_overlay
+    folder: "component-lib/Modal"
+    pipeline_stage: spec_ready
+    audit_verdict: YES
+    audit_verdict_reason: "All core files present, including PUI (confirmed no relevant context). Zero CONFLICTs. Usage SOURCE_GAP is non-blocking."
+    audit_date: "2026-05-01"
+    audit_overall_score: 0.72
+    audit_scores:
+      props_completeness: 0.87
+      examples_coverage: 0.75
+      token_coverage: 0.70
+      accessibility: 0.83
+      figma_alignment: 0.72
+      usage_guidelines: 0.25
+      cross_file_consistency: 0.93
+    gap_counts: { doc_gaps: 7, source_gaps: 6, conflicts: 0, warnings: 4 }
+    files:
+      props:        { path: "component-lib/Modal/props.md",         wiki: "[[Modal/props]]" }
+      examples:     { path: "component-lib/Modal/examples.md",      wiki: "[[Modal/examples]]" }
+      tokens:       { path: "component-lib/Modal/tokens.md",        wiki: "[[Modal/tokens]]" }
+      accessibility: { path: "component-lib/Modal/accessibility.md", wiki: "[[Modal/accessibility]]" }
+      figma:        { path: "component-lib/Modal/Modal-figma.md",   wiki: "[[Modal/Modal-figma]]" }
+      pui:          { path: "component-lib/Modal/Modal-pui.md",     wiki: "[[Modal/Modal-pui]]" }
+      audit:        { path: "component-lib/Modal/Modal-audit.md",   wiki: "[[Modal/Modal-audit]]" }
+    files_missing:
+      - Modal-usage.md  # SOURCE_GAP major (non-blocking)
+    cross_links:
+      audit_depends_on: ["[[Modal/props]]", "[[Modal/examples]]", "[[Modal/tokens]]", "[[Modal/accessibility]]", "[[Modal/Modal-figma]]", "[[Modal/Modal-pui]]"]
+      spec_depends_on:  ["[[Modal/Modal-audit]]"]
+
+  - name: SlideOut
+    package: "@8x8/oxygen-slide-out"
+    category: layout_overlay
+    folder: "component-lib/SlideOut"
+    pipeline_stage: spec_ready
+    audit_verdict: PARTIAL
+    audit_verdict_reason: "Figma design confirmed non-existent (SOURCE_GAP blocker). No CONFLICTs. Rewrite can proceed on available dimensions."
+    audit_date: "2026-05-05"
+    audit_scores:
+      props_completeness: 0.45
+      examples_quality: 0.40
+      token_coverage: 0.10
+      accessibility: 0.50
+      figma_fidelity: 0.00
+      pui_integration: 0.50
+      usage_guidelines: 0.00
+    files:
+      props:        { path: "component-lib/SlideOut/props.md",           wiki: "[[SlideOut/props]]" }
+      examples:     { path: "component-lib/SlideOut/examples.md",        wiki: "[[SlideOut/examples]]" }
+      tokens:       { path: "component-lib/SlideOut/tokens.md",          wiki: "[[SlideOut/tokens]]" }
+      accessibility: { path: "component-lib/SlideOut/accessibility.md",   wiki: "[[SlideOut/accessibility]]" }
+      audit:        { path: "component-lib/SlideOut/SlideOut-audit.md",  wiki: "[[SlideOut/SlideOut-audit]]" }
+    files_missing:
+      - SlideOut-figma.md  # SOURCE_GAP — confirmed no Figma design exists
+      - SlideOut-usage.md
+      - SlideOut-pui.md
+    cross_links:
+      audit_depends_on: ["[[SlideOut/props]]", "[[SlideOut/examples]]", "[[SlideOut/tokens]]", "[[SlideOut/accessibility]]"]
+      spec_depends_on:  ["[[SlideOut/SlideOut-audit]]"]
+
+  - name: Card
+    package: "@8x8/oxygen-card"
+    category: layout_overlay
+    folder: "component-lib/Card"
+    deprecated: true
+    pipeline_stage: spec_ready
+    audit_verdict: YES
+    audit_verdict_reason: "Deprecated package. Zero CONFLICTs. Deprecation banner documented. Rewrite can proceed."
+    audit_date: "2026-05-05"
+    audit_scores:
+      props_completeness: 0.70
+      examples_quality: 0.45
+      token_coverage: 0.50
+      accessibility: 0.50
+    files:
+      props:        { path: "component-lib/Card/props.md",         wiki: "[[Card/props]]" }
+      examples:     { path: "component-lib/Card/examples.md",      wiki: "[[Card/examples]]" }
+      tokens:       { path: "component-lib/Card/tokens.md",        wiki: "[[Card/tokens]]" }
+      accessibility: { path: "component-lib/Card/accessibility.md", wiki: "[[Card/accessibility]]" }
+      figma:        { path: "component-lib/Card/Card-figma.md",    wiki: "[[Card/Card-figma]]" }
+      audit:        { path: "component-lib/Card/Card-audit.md",    wiki: "[[Card/Card-audit]]" }
+    files_missing:
+      - Card-usage.md  # usage page has no Do/Don't content
+      - Card-pui.md    # N/A — no Platform UI concerns
+    cross_links:
+      audit_depends_on: ["[[Card/props]]", "[[Card/examples]]", "[[Card/tokens]]", "[[Card/accessibility]]", "[[Card/Card-figma]]"]
+      spec_depends_on:  ["[[Card/Card-audit]]"]
+
+# ============================================================
+# NAVIGATION
+# ============================================================
+
+  - name: Breadcrumbs
+    package: "@8x8/oxygen-breadcrumbs"
+    category: navigation
+    folder: "component-lib/Breadcrumbs"
+    pipeline_stage: spec_ready
+    audit_verdict: YES
+    audit_verdict_reason: "Zero CONFLICTs. Token dimension re-scored 0.25→0.55 after re-audit. Zero blockers."
+    audit_date: "2026-05-05"
+    prior_audit_date: "2026-04-30"
+    audit_overall_score: 0.62
+    audit_scores:
+      props: 0.70
+      examples: 0.57
+      tokens: 0.55
+      accessibility: 0.78
+      figma: 0.73
+      usage: 0.00
+      pui: 1.00
+    gap_counts: { doc_gaps: 4, source_gaps: 7, conflicts: 0, warnings: 3 }
+    files:
+      props:        { path: "component-lib/Breadcrumbs/props.md",            wiki: "[[Breadcrumbs/props]]" }
+      examples:     { path: "component-lib/Breadcrumbs/examples.md",         wiki: "[[Breadcrumbs/examples]]" }
+      tokens:       { path: "component-lib/Breadcrumbs/tokens.md",           wiki: "[[Breadcrumbs/tokens]]" }
+      accessibility: { path: "component-lib/Breadcrumbs/accessibility.md",    wiki: "[[Breadcrumbs/accessibility]]" }
+      figma:        { path: "component-lib/Breadcrumbs/Breadcrumbs-figma.md",wiki: "[[Breadcrumbs/Breadcrumbs-figma]]" }
+      pui:          { path: "component-lib/Breadcrumbs/Breadcrumbs-pui.md",  wiki: "[[Breadcrumbs/Breadcrumbs-pui]]" }
+      audit:        { path: "component-lib/Breadcrumbs/Breadcrumbs-audit.md",wiki: "[[Breadcrumbs/Breadcrumbs-audit]]" }
+    files_missing:
+      - Breadcrumbs-usage.md  # SOURCE_GAP
+    cross_links:
+      audit_depends_on: ["[[Breadcrumbs/props]]", "[[Breadcrumbs/examples]]", "[[Breadcrumbs/tokens]]", "[[Breadcrumbs/accessibility]]", "[[Breadcrumbs/Breadcrumbs-figma]]", "[[Breadcrumbs/Breadcrumbs-pui]]"]
+      spec_depends_on:  ["[[Breadcrumbs/Breadcrumbs-audit]]"]
+
+  - name: Pagination
+    package: "@8x8/oxygen-pagination"
+    category: navigation
+    folder: "component-lib/Pagination"
+    pipeline_stage: spec_ready
+    audit_verdict: YES
+    audit_verdict_reason: "Zero CONFLICTs. Token hex values confirmed 2026-05-05. doc-rewrite can proceed."
+    audit_date: "2026-05-05"
+    prior_audit_date: "2026-05-01"
+    audit_overall_score: 0.77
+    audit_scores:
+      props: 0.80
+      examples: 0.63
+      tokens: 0.67
+      accessibility: 0.78
+      figma: 0.78
+      usage: 0.71
+      pui: 1.00
+    gap_counts: { doc_gaps: 5, source_gaps: 9, conflicts: 0, warnings: 1 }
+    files:
+      props:        { path: "component-lib/Pagination/props.md",            wiki: "[[Pagination/props]]" }
+      examples:     { path: "component-lib/Pagination/examples.md",         wiki: "[[Pagination/examples]]" }
+      tokens:       { path: "component-lib/Pagination/tokens.md",           wiki: "[[Pagination/tokens]]" }
+      accessibility: { path: "component-lib/Pagination/accessibility.md",    wiki: "[[Pagination/accessibility]]" }
+      figma:        { path: "component-lib/Pagination/Pagination-figma.md", wiki: "[[Pagination/Pagination-figma]]" }
+      usage:        { path: "component-lib/Pagination/Pagination-usage.md", wiki: "[[Pagination/Pagination-usage]]" }
+      audit:        { path: "component-lib/Pagination/Pagination-audit.md", wiki: "[[Pagination/Pagination-audit]]" }
+    files_missing:
+      - Pagination-pui.md  # N/A — confirmed no PUI context
+    cross_links:
+      audit_depends_on: ["[[Pagination/props]]", "[[Pagination/examples]]", "[[Pagination/tokens]]", "[[Pagination/accessibility]]", "[[Pagination/Pagination-figma]]", "[[Pagination/Pagination-usage]]"]
+      spec_depends_on:  ["[[Pagination/Pagination-audit]]"]
+
+  - name: Link
+    package: "@8x8/oxygen-link"
+    category: navigation
+    folder: "component-lib/Link"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "2 CONFLICTs — standalone/size type mismatch (MCP vs Figma); hover token identity conflict (MCP search vs Figma design context)."
+    audit_date: "2026-05-01"
+    audit_overall_score: 0.67
+    audit_scores:
+      props: 0.56
+      examples: 0.50
+      tokens: 0.50
+      accessibility: 0.86
+      figma: 0.78
+      usage: 0.50
+      pui: 1.00
+    gap_counts: { doc_gaps: 9, source_gaps: 9, conflicts: 2, warnings: 4 }
+    files:
+      props:        { path: "component-lib/Link/props.md",         wiki: "[[Link/props]]" }
+      examples:     { path: "component-lib/Link/examples.md",      wiki: "[[Link/examples]]" }
+      tokens:       { path: "component-lib/Link/tokens.md",        wiki: "[[Link/tokens]]" }
+      accessibility: { path: "component-lib/Link/accessibility.md", wiki: "[[Link/accessibility]]" }
+      figma:        { path: "component-lib/Link/Link-figma.md",    wiki: "[[Link/Link-figma]]" }
+      usage:        { path: "component-lib/Link/Link-usage.md",    wiki: "[[Link/Link-usage]]" }
+      audit:        { path: "component-lib/Link/Link-audit.md",    wiki: "[[Link/Link-audit]]" }
+    files_missing:
+      - Link-pui.md  # N/A — confirmed no Platform UI package for Link
+    cross_links:
+      audit_depends_on: ["[[Link/props]]", "[[Link/examples]]", "[[Link/tokens]]", "[[Link/accessibility]]", "[[Link/Link-figma]]", "[[Link/Link-usage]]"]
+      spec_depends_on:  ["[[Link/Link-audit]]"]
+
+  - name: sidebarMenu
+    package: "@8x8/oxygen-sidebarMenu"
+    category: navigation
+    folder: null
+    pipeline_stage: not_started
+    notes: "Not yet extracted. Key components: Sidebar, MenuItem, SubMenuItem (9 props)."
+
+# ============================================================
+# DATA DISPLAY
+# ============================================================
+
+  - name: DataTable
+    package: "@8x8/oxygen-dataTable"
+    category: data_display
+    folder: "component-lib/DataTable"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "2 CONFLICTs — Pagination props interface: (limit/offset/totalResults) vs (pageNumber/rowsPerPage/canGoBack/canGoNext); must confirm which is canonical."
+    audit_date: "2026-05-06"
+    audit_scores:
+      props: 0.70
+      examples: 0.85
+      tokens: 0.45
+      accessibility: 0.80
+      figma: 0.60
+      usage: 0.00
+      pui: null
+    gap_counts: { doc_gaps: 5, source_gaps: 11, conflicts: 2, warnings: 2 }
+    files:
+      props:        { path: "component-lib/DataTable/props.md",           wiki: "[[DataTable/props]]" }
+      examples:     { path: "component-lib/DataTable/examples.md",        wiki: "[[DataTable/examples]]" }
+      tokens:       { path: "component-lib/DataTable/tokens.md",          wiki: "[[DataTable/tokens]]" }
+      accessibility: { path: "component-lib/DataTable/accessibility.md",   wiki: "[[DataTable/accessibility]]" }
+      figma:        { path: "component-lib/DataTable/DataTable-figma.md", wiki: "[[DataTable/DataTable-figma]]" }
+      audit:        { path: "component-lib/DataTable/DataTable-audit.md", wiki: "[[DataTable/DataTable-audit]]" }
+    files_missing:
+      - DataTable-usage.md
+      - DataTable-pui.md
+    cross_links:
+      audit_depends_on: ["[[DataTable/props]]", "[[DataTable/examples]]", "[[DataTable/tokens]]", "[[DataTable/accessibility]]", "[[DataTable/DataTable-figma]]"]
+      spec_depends_on:  ["[[DataTable/DataTable-audit]]"]
+
+  - name: Avatar
+    package: "@8x8/oxygen-avatar"
+    category: data_display
+    folder: "component-lib/Avatar"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "2 CONFLICTs — require human verification before doc-rewrite can proceed."
+    audit_date: "2026-04-28"
+    audit_scores:
+      source_completeness: 0.71
+      props: 0.79
+      tokens: 0.77
+      figma_spec: 0.88
+      examples: 0.80
+      accessibility: 0.89
+      cross_file: 0.90
+    gap_counts: { doc_gaps: 8, source_gaps: 9, conflicts: 2, warnings: 4 }
+    files:
+      props:        { path: "component-lib/Avatar/props.md",         wiki: "[[Avatar/props]]" }
+      examples:     { path: "component-lib/Avatar/examples.md",      wiki: "[[Avatar/examples]]" }
+      tokens:       { path: "component-lib/Avatar/tokens.md",        wiki: "[[Avatar/tokens]]" }
+      accessibility: { path: "component-lib/Avatar/accessibility.md", wiki: "[[Avatar/accessibility]]" }
+      figma:        { path: "component-lib/Avatar/Avatar-figma.md",  wiki: "[[Avatar/Avatar-figma]]" }
+      audit:        { path: "component-lib/Avatar/Avatar-audit.md",  wiki: "[[Avatar/Avatar-audit]]" }
+    files_missing:
+      - Avatar-usage.md  # SOURCE_GAP — figma-extract-usage not run
+      - Avatar-pui.md    # SOURCE_GAP — pui-mcp-extract not run
+    cross_links:
+      audit_depends_on: ["[[Avatar/props]]", "[[Avatar/examples]]", "[[Avatar/tokens]]", "[[Avatar/accessibility]]", "[[Avatar/Avatar-figma]]"]
+      spec_depends_on:  ["[[Avatar/Avatar-audit]]"]
+
+  - name: Badge
+    package: "@8x8/oxygen-badge"
+    category: data_display
+    folder: "component-lib/Badge"
+    pipeline_stage: extracted
+    audit_verdict: null
+    audit_date: null
+    notes: "No audit run yet. PUI file present. No Figma file."
+    files:
+      props:        { path: "component-lib/Badge/props.md",         wiki: "[[Badge/props]]" }
+      examples:     { path: "component-lib/Badge/examples.md",      wiki: "[[Badge/examples]]" }
+      tokens:       { path: "component-lib/Badge/tokens.md",        wiki: "[[Badge/tokens]]" }
+      accessibility: { path: "component-lib/Badge/accessibility.md", wiki: "[[Badge/accessibility]]" }
+      pui:          { path: "component-lib/Badge/badge-pui.md",     wiki: "[[Badge/badge-pui]]" }
+    files_missing:
+      - badge-figma.md
+      - badge-usage.md
+      - badge-audit.md
+    cross_links:
+      audit_depends_on: ["[[Badge/props]]", "[[Badge/examples]]", "[[Badge/tokens]]", "[[Badge/accessibility]]", "[[Badge/badge-pui]]"]
+
+  - name: Tag
+    package: "@8x8/oxygen-tag"
+    category: data_display
+    folder: "component-lib/Tag"
+    pipeline_stage: spec_ready
+    audit_verdict: YES
+    audit_verdict_reason: "Zero CONFLICTs. All required files present. doc-rewrite can proceed."
+    audit_date: "2026-05-01"
+    audit_overall_score: 0.70
+    audit_scores:
+      props: 0.75
+      examples: 0.55
+      tokens: 0.83
+      accessibility: 0.80
+      figma: 0.75
+      usage: 0.20
+      pui: 1.00
+    gap_counts: { doc_gaps: 2, source_gaps: 10, conflicts: 0, warnings: 3 }
+    files:
+      props:        { path: "component-lib/Tag/props.md",         wiki: "[[Tag/props]]" }
+      examples:     { path: "component-lib/Tag/examples.md",      wiki: "[[Tag/examples]]" }
+      tokens:       { path: "component-lib/Tag/tokens.md",        wiki: "[[Tag/tokens]]" }
+      accessibility: { path: "component-lib/Tag/accessibility.md", wiki: "[[Tag/accessibility]]" }
+      figma:        { path: "component-lib/Tag/Tag-figma.md",     wiki: "[[Tag/Tag-figma]]" }
+      audit:        { path: "component-lib/Tag/Tag-audit.md",     wiki: "[[Tag/Tag-audit]]" }
+    files_missing:
+      - Tag-usage.md  # SOURCE_GAP — no Do/Don't frames on Figma examples page
+      - Tag-pui.md    # N/A — confirmed no Platform UI relevance
+    cross_links:
+      audit_depends_on: ["[[Tag/props]]", "[[Tag/examples]]", "[[Tag/tokens]]", "[[Tag/accessibility]]", "[[Tag/Tag-figma]]"]
+      spec_depends_on:  ["[[Tag/Tag-audit]]"]
+
+  - name: Label
+    package: "@8x8/oxygen-label"
+    category: data_display
+    folder: "component-lib/Label"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "2 CONFLICTs — token names/sizes diverge (MCP label01 12px vs Figma body01 14px); Figma information boolean mapping to infoBox props unverified."
+    audit_date: "2026-05-01"
+    audit_scores:
+      props: 0.82
+      examples: 0.65
+      tokens: 0.50
+      accessibility: 0.82
+      figma: 0.78
+      usage: 0.00
+      pui: null
+    files:
+      props:        { path: "component-lib/Label/props.md",         wiki: "[[Label/props]]" }
+      examples:     { path: "component-lib/Label/examples.md",      wiki: "[[Label/examples]]" }
+      tokens:       { path: "component-lib/Label/tokens.md",        wiki: "[[Label/tokens]]" }
+      accessibility: { path: "component-lib/Label/accessibility.md", wiki: "[[Label/accessibility]]" }
+      figma:        { path: "component-lib/Label/Label-figma.md",   wiki: "[[Label/Label-figma]]" }
+      pui:          { path: "component-lib/Label/label-pui.md",     wiki: "[[Label/label-pui]]" }
+      audit:        { path: "component-lib/Label/label-audit.md",   wiki: "[[Label/label-audit]]" }
+    files_missing:
+      - label-usage.md  # SOURCE_GAP — Desktop Bridge required
+    cross_links:
+      audit_depends_on: ["[[Label/props]]", "[[Label/examples]]", "[[Label/tokens]]", "[[Label/accessibility]]", "[[Label/Label-figma]]", "[[Label/label-pui]]"]
+      spec_depends_on:  ["[[Label/label-audit]]"]
+
+  - name: list
+    package: "@8x8/oxygen-list"
+    category: data_display
+    folder: null
+    pipeline_stage: not_started
+    notes: "Not yet extracted. Key components: List, ListItem (4 props)."
+
+# ============================================================
+# FEEDBACK & STATUS
+# ============================================================
+
+  - name: AlertBanner
+    package: "@8x8/oxygen-alertBanner"
+    category: feedback_status
+    folder: "component-lib/AlertBanner"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "2 CONFLICTs — Figma exposes mode and breakpoint variant axes not present in OX API."
+    audit_date: "2026-04-28"
+    audit_overall_score: 0.51
+    audit_scores:
+      anatomy: 0.50
+      api_props: 0.80
+      color_tokens: 0.22
+      structure_spacing: 0.56
+      examples: 0.80
+      accessibility: 0.67
+      usage_patterns: 0.00
+    gap_counts: { doc_gaps: 4, source_gaps: 12, conflicts: 2, warnings: 3 }
+    files:
+      props:        { path: "component-lib/AlertBanner/props.md",              wiki: "[[AlertBanner/props]]" }
+      examples:     { path: "component-lib/AlertBanner/examples.md",           wiki: "[[AlertBanner/examples]]" }
+      tokens:       { path: "component-lib/AlertBanner/tokens.md",             wiki: "[[AlertBanner/tokens]]" }
+      accessibility: { path: "component-lib/AlertBanner/accessibility.md",      wiki: "[[AlertBanner/accessibility]]" }
+      figma:        { path: "component-lib/AlertBanner/alert-banner-figma.md", wiki: "[[AlertBanner/alert-banner-figma]]" }
+      audit:        { path: "component-lib/AlertBanner/alert-banner-audit.md", wiki: "[[AlertBanner/alert-banner-audit]]" }
+    files_missing:
+      - alert-banner-usage.md  # SOURCE_GAP major
+      - alert-banner-pui.md    # SOURCE_GAP major
+    cross_links:
+      audit_depends_on: ["[[AlertBanner/props]]", "[[AlertBanner/examples]]", "[[AlertBanner/tokens]]", "[[AlertBanner/accessibility]]", "[[AlertBanner/alert-banner-figma]]"]
+      spec_depends_on:  ["[[AlertBanner/alert-banner-audit]]"]
+
+  - name: Toast
+    package: "@8x8/oxygen-toast"
+    category: feedback_status
+    folder: "component-lib/Toast"
+    pipeline_stage: spec_ready
+    audit_verdict: YES
+    audit_verdict_reason: "All core files present. Token coverage strong. PUI confirmed no relevant context. doc-rewrite can proceed."
+    audit_date: "2026-05-05"
+    audit_scores:
+      props_completeness: 0.65
+      examples_quality: 0.72
+      token_coverage: 0.85
+      accessibility: 0.50
+      figma_fidelity: 0.82
+      pui_integration: 1.00
+      usage_guidelines: 0.00
+    files:
+      props:        { path: "component-lib/Toast/props.md",         wiki: "[[Toast/props]]" }
+      examples:     { path: "component-lib/Toast/examples.md",      wiki: "[[Toast/examples]]" }
+      tokens:       { path: "component-lib/Toast/tokens.md",        wiki: "[[Toast/tokens]]" }
+      accessibility: { path: "component-lib/Toast/accessibility.md", wiki: "[[Toast/accessibility]]" }
+      figma:        { path: "component-lib/Toast/Toast-figma.md",   wiki: "[[Toast/Toast-figma]]" }
+      pui:          { path: "component-lib/Toast/Toast-pui.md",     wiki: "[[Toast/Toast-pui]]" }
+      audit:        { path: "component-lib/Toast/Toast-audit.md",   wiki: "[[Toast/Toast-audit]]" }
+    files_missing:
+      - Toast-usage.md  # SOURCE_GAP
+    cross_links:
+      audit_depends_on: ["[[Toast/props]]", "[[Toast/examples]]", "[[Toast/tokens]]", "[[Toast/accessibility]]", "[[Toast/Toast-figma]]", "[[Toast/Toast-pui]]"]
+      spec_depends_on:  ["[[Toast/Toast-audit]]"]
+
+  - name: Toaster
+    package: "@8x8/oxygen-toaster"
+    category: feedback_status
+    folder: "component-lib/Toaster"
+    pipeline_stage: extracted
+    audit_verdict: null
+    notes: "Imperative API only — no props/examples/tokens extraction. Shares Toast's design. See note file."
+    files:
+      note: { path: "component-lib/Toaster/toaster-note.md", wiki: "[[Toaster/toaster-note]]" }
+    cross_links:
+      see_also: ["[[Toast/Toast-figma]]", "[[Toast/props]]"]
+
+  - name: Spinner
+    package: "@8x8/oxygen-loaders"
+    category: feedback_status
+    folder: "component-lib/Spinner"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "2 CONFLICTs — Figma isInverted axis has no React prop (design-only vs API prop decision needed); React spinnerSize includes large2x but Figma only has default/small."
+    audit_date: "2026-05-05"
+    audit_overall_score: 0.61
+    audit_scores:
+      props: 0.78
+      examples: 0.75
+      tokens: 0.25
+      accessibility: 0.83
+      figma: 0.67
+      usage: 0.00
+      pui: 1.00
+    gap_counts: { doc_gaps: 4, source_gaps: 5, conflicts: 2, warnings: 2 }
+    files:
+      props:        { path: "component-lib/Spinner/props.md",           wiki: "[[Spinner/props]]" }
+      examples:     { path: "component-lib/Spinner/examples.md",        wiki: "[[Spinner/examples]]" }
+      tokens:       { path: "component-lib/Spinner/tokens.md",          wiki: "[[Spinner/tokens]]" }
+      accessibility: { path: "component-lib/Spinner/accessibility.md",   wiki: "[[Spinner/accessibility]]" }
+      figma:        { path: "component-lib/Spinner/Spinner-figma.md",   wiki: "[[Spinner/Spinner-figma]]" }
+      audit:        { path: "component-lib/Spinner/Spinner-audit.md",   wiki: "[[Spinner/Spinner-audit]]" }
+    files_missing:
+      - Spinner-usage.md
+      - Spinner-pui.md  # N/A — confirmed no Platform UI concerns
+    cross_links:
+      audit_depends_on: ["[[Spinner/props]]", "[[Spinner/examples]]", "[[Spinner/tokens]]", "[[Spinner/accessibility]]", "[[Spinner/Spinner-figma]]"]
+      spec_depends_on:  ["[[Spinner/Spinner-audit]]"]
+
+  - name: ProgressBar
+    package: "@8x8/oxygen-loaders"
+    category: feedback_status
+    folder: "component-lib/ProgressBar"
+    pipeline_stage: spec_ready
+    audit_verdict: YES
+    audit_verdict_reason: "Zero CONFLICTs. Pre-labelled conflicts in figma.md reclassified as DOC_GAPs with clear resolution paths."
+    audit_date: "2026-05-05"
+    audit_overall_score: 0.66
+    audit_scores:
+      props: 0.80
+      examples: 0.78
+      tokens: 0.40
+      accessibility: 0.78
+      figma: 0.83
+      usage: 0.00
+      pui: 1.00
+    gap_counts: { doc_gaps: 8, source_gaps: 5, conflicts: 0, warnings: 2 }
+    files:
+      props:        { path: "component-lib/ProgressBar/props.md",              wiki: "[[ProgressBar/props]]" }
+      examples:     { path: "component-lib/ProgressBar/examples.md",           wiki: "[[ProgressBar/examples]]" }
+      tokens:       { path: "component-lib/ProgressBar/tokens.md",             wiki: "[[ProgressBar/tokens]]" }
+      accessibility: { path: "component-lib/ProgressBar/accessibility.md",      wiki: "[[ProgressBar/accessibility]]" }
+      figma:        { path: "component-lib/ProgressBar/ProgressBar-figma.md",  wiki: "[[ProgressBar/ProgressBar-figma]]" }
+      audit:        { path: "component-lib/ProgressBar/ProgressBar-audit.md",  wiki: "[[ProgressBar/ProgressBar-audit]]" }
+    files_missing:
+      - ProgressBar-usage.md  # SOURCE_GAP major
+      - ProgressBar-pui.md    # N/A — confirmed no Platform UI relevance
+    cross_links:
+      audit_depends_on: ["[[ProgressBar/props]]", "[[ProgressBar/examples]]", "[[ProgressBar/tokens]]", "[[ProgressBar/accessibility]]", "[[ProgressBar/ProgressBar-figma]]"]
+      spec_depends_on:  ["[[ProgressBar/ProgressBar-audit]]"]
+
+  - name: SkeletonBlock
+    package: "@8x8/oxygen-skeletons"
+    category: feedback_status
+    folder: "component-lib/SkeletonBlock"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "1 CONFLICT — SkeletonCircle size values documented in two incompatible formats across SkeletonBlock and SkeletonCircle folders."
+    audit_date: "2026-05-05"
+    audit_overall_score: 0.56
+    audit_scores:
+      props: 0.45
+      examples: 0.60
+      tokens: 0.50
+      accessibility: 0.70
+      figma: 0.65
+      usage: 0.00
+      pui: 0.90
+    gap_counts: { doc_gaps: 1, source_gaps: 8, conflicts: 1, warnings: 2 }
+    files:
+      props:        { path: "component-lib/SkeletonBlock/props.md",               wiki: "[[SkeletonBlock/props]]" }
+      examples:     { path: "component-lib/SkeletonBlock/examples.md",            wiki: "[[SkeletonBlock/examples]]" }
+      tokens:       { path: "component-lib/SkeletonBlock/tokens.md",              wiki: "[[SkeletonBlock/tokens]]" }
+      accessibility: { path: "component-lib/SkeletonBlock/accessibility.md",       wiki: "[[SkeletonBlock/accessibility]]" }
+      figma:        { path: "component-lib/SkeletonBlock/SkeletonBlock-figma.md", wiki: "[[SkeletonBlock/SkeletonBlock-figma]]" }
+      audit:        { path: "component-lib/SkeletonBlock/SkeletonBlock-audit.md", wiki: "[[SkeletonBlock/SkeletonBlock-audit]]" }
+    files_missing:
+      - SkeletonBlock-usage.md
+      - SkeletonBlock-pui.md
+    cross_links:
+      audit_depends_on: ["[[SkeletonBlock/props]]", "[[SkeletonBlock/examples]]", "[[SkeletonBlock/tokens]]", "[[SkeletonBlock/accessibility]]", "[[SkeletonBlock/SkeletonBlock-figma]]"]
+      spec_depends_on:  ["[[SkeletonBlock/SkeletonBlock-audit]]"]
+      related: ["[[SkeletonCircle/SkeletonCircle-audit]]"]  # shared CONFLICT
+
+  - name: SkeletonCircle
+    package: "@8x8/oxygen-skeletons"
+    category: feedback_status
+    folder: "component-lib/SkeletonCircle"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "1 CONFLICT — size values documented in incompatible formats vs SkeletonBlock docs. Must align before rewrite."
+    audit_date: "2026-05-05"
+    audit_overall_score: 0.56
+    audit_scores:
+      props: 0.45
+      examples: 0.65
+      tokens: 0.50
+      accessibility: 0.70
+      figma: 0.70
+      usage: 0.00
+      pui: 0.90
+    gap_counts: { doc_gaps: 1, source_gaps: 9, conflicts: 1, warnings: 2 }
+    files:
+      props:        { path: "component-lib/SkeletonCircle/props.md",                 wiki: "[[SkeletonCircle/props]]" }
+      examples:     { path: "component-lib/SkeletonCircle/examples.md",              wiki: "[[SkeletonCircle/examples]]" }
+      tokens:       { path: "component-lib/SkeletonCircle/tokens.md",                wiki: "[[SkeletonCircle/tokens]]" }
+      accessibility: { path: "component-lib/SkeletonCircle/accessibility.md",         wiki: "[[SkeletonCircle/accessibility]]" }
+      figma:        { path: "component-lib/SkeletonCircle/SkeletonCircle-figma.md",  wiki: "[[SkeletonCircle/SkeletonCircle-figma]]" }
+      audit:        { path: "component-lib/SkeletonCircle/SkeletonCircle-audit.md",  wiki: "[[SkeletonCircle/SkeletonCircle-audit]]" }
+    files_missing:
+      - SkeletonCircle-usage.md
+      - SkeletonCircle-pui.md
+    cross_links:
+      audit_depends_on: ["[[SkeletonCircle/props]]", "[[SkeletonCircle/examples]]", "[[SkeletonCircle/tokens]]", "[[SkeletonCircle/accessibility]]", "[[SkeletonCircle/SkeletonCircle-figma]]"]
+      spec_depends_on:  ["[[SkeletonCircle/SkeletonCircle-audit]]"]
+      related: ["[[SkeletonBlock/SkeletonBlock-audit]]"]  # shared CONFLICT
+
+# ============================================================
+# OVERLAYS & CONTEXTUAL
+# ============================================================
+
+  - name: Tooltip
+    package: "@8x8/oxygen-tooltip"
+    category: overlays_contextual
+    folder: "component-lib/Tooltip"
+    pipeline_stage: blocked
+    audit_verdict: NO
+    audit_verdict_reason: "2 CONFLICTs — character limit 140 (MCP) vs 136 (Figma); orientation default 'top' (MCP) vs 'Bottom' (Figma)."
+    audit_date: "2026-05-05"
+    audit_scores:
+      props: 0.71
+      examples: 0.71
+      tokens: 0.50
+      accessibility: 0.80
+      figma: 0.69
+      usage: 0.78
+      pui: 1.00
+    gap_counts: { conflicts: 2, doc_gaps: 7, source_gaps: 10, warnings: 2 }
+    files:
+      props:        { path: "component-lib/Tooltip/props.md",           wiki: "[[Tooltip/props]]" }
+      examples:     { path: "component-lib/Tooltip/examples.md",        wiki: "[[Tooltip/examples]]" }
+      tokens:       { path: "component-lib/Tooltip/tokens.md",          wiki: "[[Tooltip/tokens]]" }
+      accessibility: { path: "component-lib/Tooltip/accessibility.md",   wiki: "[[Tooltip/accessibility]]" }
+      figma:        { path: "component-lib/Tooltip/Tooltip-figma.md",   wiki: "[[Tooltip/Tooltip-figma]]" }
+      usage:        { path: "component-lib/Tooltip/Tooltip-usage.md",   wiki: "[[Tooltip/Tooltip-usage]]" }
+      pui:          { path: "component-lib/Tooltip/Tooltip-pui.md",     wiki: "[[Tooltip/Tooltip-pui]]" }
+      audit:        { path: "component-lib/Tooltip/Tooltip-audit.md",   wiki: "[[Tooltip/Tooltip-audit]]" }
+    files_missing: []
+    cross_links:
+      audit_depends_on: ["[[Tooltip/props]]", "[[Tooltip/examples]]", "[[Tooltip/tokens]]", "[[Tooltip/accessibility]]", "[[Tooltip/Tooltip-figma]]", "[[Tooltip/Tooltip-usage]]", "[[Tooltip/Tooltip-pui]]"]
+      spec_depends_on:  ["[[Tooltip/Tooltip-audit]]"]
+
+  - name: popover
+    package: "@8x8/oxygen-popover"
+    category: overlays_contextual
+    folder: null
+    pipeline_stage: not_started
+    notes: "Not yet extracted. Key components: Popover, PopoverMenu (11 props)."
+
+# ============================================================
+# DATE & TIME
+# ============================================================
+
+  - name: calendar
+    package: "@8x8/oxygen-calendar"
+    category: date_time
+    folder: null
+    pipeline_stage: not_started
+    notes: "Not yet extracted. Key component: Calendar (27 props)."
+
+  - name: dateTimeSelector
+    package: "@8x8/oxygen-dateTimeSelector"
+    category: date_time
+    folder: null
+    pipeline_stage: not_started
+    notes: "Not yet extracted. Key component: DateTimeSelector (10 props)."
+
+  - name: dateTimeRangeSelector
+    package: "@8x8/oxygen-dateTimeRangeSelector"
+    category: date_time
+    folder: null
+    pipeline_stage: not_started
+    notes: "Not yet extracted. Key components: DateTimeRangeSelector, DateTimeRangePicker (22 props)."
+
+  - name: timeSelector
+    package: "@8x8/oxygen-timeSelector"
+    category: date_time
+    folder: null
+    pipeline_stage: not_started
+    notes: "Not yet extracted. Key component: TimeSelector (11 props)."
+
+# ============================================================
+# PIPELINE SUMMARY (auto-derived from above)
+# ============================================================
+
+pipeline_summary:
+  spec_complete:  ["Tabs"]
+  spec_ready:     ["Accordion", "Breadcrumbs", "Card", "Checkbox", "Modal", "Pagination", "ProgressBar", "Slider", "SlideOut", "Tag", "TextField", "Toast"]
+  blocked_no:     ["AlertBanner", "Avatar", "Button", "DataTable", "Input", "Label", "Link", "Select", "SkeletonBlock", "SkeletonCircle", "Spinner", "TextArea", "ToggleButton", "Tooltip"]
+  extracted_only: ["Badge", "Radio", "Toaster"]
+  not_started:    ["calendar", "dateTimeRangeSelector", "dateTimeSelector", "list", "popover", "sidebarMenu", "timeSelector"]

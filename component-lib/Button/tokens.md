@@ -1,3 +1,25 @@
+---
+component: Button
+package: "@8x8/oxygen-button"
+category: interaction
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Button/props]]"
+  - "[[Button/examples]]"
+  - "[[Button/accessibility]]"
+  - "[[Button/Button-figma]]"
+  - "[[Button/Button-audit]]"
+tags:
+  - oxygen
+  - component/Button
+  - role/tokens
+  - stage/blocked
+  - category/interaction
+---
 # Button — Tokens
 
 > **See also:** [Props](props.md) · [Examples](examples.md) · [Accessibility](accessibility.md)

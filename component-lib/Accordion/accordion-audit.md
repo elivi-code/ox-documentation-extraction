@@ -430,6 +430,21 @@ warnings:
     recommendation: >
       Cross-reference token names against the Oxygen token registry or the
       published @8x8/oxygen-tokens package before using in implementation.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[Accordion/props]]"
+  - "[[Accordion/examples]]"
+  - "[[Accordion/tokens]]"
+  - "[[Accordion/accessibility]]"
+  - "[[Accordion/accordion-figma]]"
+tags:
+  - oxygen
+  - component/Accordion
+  - role/audit
+  - stage/spec_ready
 ---
 
 # Accordion — Audit Report

@@ -248,6 +248,22 @@ warnings:
       no Figma annotations or MCP accessibility data confirmed it. Content is likely correct
       but carries heuristic confidence only.
     advisory: "Validate accessibility.md content against the actual rendered component before publishing."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[Checkbox/props]]"
+  - "[[Checkbox/examples]]"
+  - "[[Checkbox/tokens]]"
+  - "[[Checkbox/accessibility]]"
+  - "[[Checkbox/checkbox-figma]]"
+  - "[[Checkbox/checkbox-pui]]"
+tags:
+  - oxygen
+  - component/Checkbox
+  - role/audit
+  - stage/spec_ready
 ---
 
 # Checkbox — Audit Report

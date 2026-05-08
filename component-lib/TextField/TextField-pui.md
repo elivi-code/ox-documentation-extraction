@@ -1,3 +1,26 @@
+---
+component: TextField
+package: "@8x8/oxygen-textField"
+category: form_inputs
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[TextField/props]]"
+  - "[[TextField/examples]]"
+  - "[[TextField/tokens]]"
+  - "[[TextField/accessibility]]"
+  - "[[TextField/figma]]"
+  - "[[TextField/TextField-audit]]"
+tags:
+  - oxygen
+  - component/TextField
+  - role/pui
+  - stage/spec_ready
+  - category/form_inputs
+---
 <!-- SOURCE: platform-ui-mcp snapshotId: build-2026-02-24 -->
 <!-- EXTRACTED: 2026-04-29 -->
 <!-- COMPONENT: TextField -->

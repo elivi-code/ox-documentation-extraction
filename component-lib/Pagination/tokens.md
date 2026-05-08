@@ -1,3 +1,26 @@
+---
+component: Pagination
+package: "@8x8/oxygen-pagination"
+category: navigation
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Pagination/props]]"
+  - "[[Pagination/examples]]"
+  - "[[Pagination/accessibility]]"
+  - "[[Pagination/Pagination-figma]]"
+  - "[[Pagination/Pagination-usage]]"
+  - "[[Pagination/Pagination-audit]]"
+tags:
+  - oxygen
+  - component/Pagination
+  - role/tokens
+  - stage/spec_ready
+  - category/navigation
+---
 # Pagination — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

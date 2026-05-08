@@ -1,3 +1,26 @@
+---
+component: Pagination
+package: "@8x8/oxygen-pagination"
+category: navigation
+role: usage
+role_description: "Usage guidelines — Do/Don't editorial guidance extracted from Figma examples page"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Pagination/props]]"
+  - "[[Pagination/examples]]"
+  - "[[Pagination/tokens]]"
+  - "[[Pagination/accessibility]]"
+  - "[[Pagination/Pagination-figma]]"
+  - "[[Pagination/Pagination-audit]]"
+tags:
+  - oxygen
+  - component/Pagination
+  - role/usage
+  - stage/spec_ready
+  - category/navigation
+---
 <!-- SOURCE: Figma — ↳ Pagination examples -->
 <!-- PAGE: ↳ Pagination examples (node 56020:139286) -->
 <!-- SECTION: Pagination behaviour (node 56020:140872) -->

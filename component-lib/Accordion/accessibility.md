@@ -1,3 +1,25 @@
+---
+component: Accordion
+package: "@8x8/oxygen-accordion"
+category: layout_overlay
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Accordion/props]]"
+  - "[[Accordion/examples]]"
+  - "[[Accordion/tokens]]"
+  - "[[Accordion/accordion-figma]]"
+  - "[[Accordion/accordion-audit]]"
+tags:
+  - oxygen
+  - component/Accordion
+  - role/accessibility
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # Accordion — Accessibility
 
 > **See also:** [props.md](./props.md) · [examples.md](./examples.md) · [tokens.md](./tokens.md) · [accordion-figma.md](./accordion-figma.md)

@@ -1,3 +1,25 @@
+---
+component: Tag
+package: "@8x8/oxygen-tag"
+category: data_display
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Tag/props]]"
+  - "[[Tag/examples]]"
+  - "[[Tag/tokens]]"
+  - "[[Tag/accessibility]]"
+  - "[[Tag/Tag-audit]]"
+tags:
+  - oxygen
+  - component/Tag
+  - role/figma
+  - stage/spec_ready
+  - category/data_display
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 8083:8359 (Tag canvas) · 16334:16412 (Standard Tag set) · 16390:16896 (Avatar Tag set) · 52829:11107 (↳ Tag examples page) -->

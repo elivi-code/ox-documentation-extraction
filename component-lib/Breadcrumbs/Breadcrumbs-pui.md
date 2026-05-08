@@ -1,3 +1,26 @@
+---
+component: Breadcrumbs
+package: "@8x8/oxygen-breadcrumbs"
+category: navigation
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Breadcrumbs/props]]"
+  - "[[Breadcrumbs/examples]]"
+  - "[[Breadcrumbs/tokens]]"
+  - "[[Breadcrumbs/accessibility]]"
+  - "[[Breadcrumbs/Breadcrumbs-figma]]"
+  - "[[Breadcrumbs/Breadcrumbs-audit]]"
+tags:
+  - oxygen
+  - component/Breadcrumbs
+  - role/pui
+  - stage/spec_ready
+  - category/navigation
+---
 <!-- SOURCE: platform-ui-mcp -->
 <!-- EXTRACTED: 2026-04-30 -->
 <!-- COMPONENT: Breadcrumbs -->

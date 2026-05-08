@@ -1,3 +1,27 @@
+---
+component: Tooltip
+package: "@8x8/oxygen-tooltip"
+category: overlays_contextual
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Tooltip/props]]"
+  - "[[Tooltip/examples]]"
+  - "[[Tooltip/tokens]]"
+  - "[[Tooltip/accessibility]]"
+  - "[[Tooltip/Tooltip-usage]]"
+  - "[[Tooltip/Tooltip-pui]]"
+  - "[[Tooltip/Tooltip-audit]]"
+tags:
+  - oxygen
+  - component/Tooltip
+  - role/figma
+  - stage/blocked
+  - category/overlays_contextual
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 1797:0 -->

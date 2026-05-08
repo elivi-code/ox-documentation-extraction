@@ -1,3 +1,25 @@
+---
+component: DataTable
+package: "@8x8/oxygen-dataTable"
+category: data_display
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[DataTable/examples]]"
+  - "[[DataTable/tokens]]"
+  - "[[DataTable/accessibility]]"
+  - "[[DataTable/DataTable-figma]]"
+  - "[[DataTable/DataTable-audit]]"
+tags:
+  - oxygen
+  - component/DataTable
+  - role/props
+  - stage/blocked
+  - category/data_display
+---
 # DataTable — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

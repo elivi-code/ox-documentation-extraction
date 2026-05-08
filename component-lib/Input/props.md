@@ -1,3 +1,26 @@
+---
+component: Input
+package: "@8x8/oxygen-input"
+category: form_inputs
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Input/examples]]"
+  - "[[Input/tokens]]"
+  - "[[Input/accessibility]]"
+  - "[[Input/Input-figma]]"
+  - "[[Input/Input-pui]]"
+  - "[[Input/Input-audit]]"
+tags:
+  - oxygen
+  - component/Input
+  - role/props
+  - stage/blocked
+  - category/form_inputs
+---
 # Input — Props
 
 > **See also:** [Input-figma.md](./Input-figma.md) · [tokens.md](./tokens.md) ·

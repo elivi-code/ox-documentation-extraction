@@ -1,3 +1,26 @@
+---
+component: Breadcrumbs
+package: "@8x8/oxygen-breadcrumbs"
+category: navigation
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Breadcrumbs/props]]"
+  - "[[Breadcrumbs/examples]]"
+  - "[[Breadcrumbs/accessibility]]"
+  - "[[Breadcrumbs/Breadcrumbs-figma]]"
+  - "[[Breadcrumbs/Breadcrumbs-pui]]"
+  - "[[Breadcrumbs/Breadcrumbs-audit]]"
+tags:
+  - oxygen
+  - component/Breadcrumbs
+  - role/tokens
+  - stage/spec_ready
+  - category/navigation
+---
 # Breadcrumbs — Tokens
 
 > **See also:** [props.md](props.md) | [examples.md](examples.md) | [accessibility.md](accessibility.md)

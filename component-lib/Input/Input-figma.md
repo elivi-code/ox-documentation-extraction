@@ -1,3 +1,26 @@
+---
+component: Input
+package: "@8x8/oxygen-input"
+category: form_inputs
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Input/props]]"
+  - "[[Input/examples]]"
+  - "[[Input/tokens]]"
+  - "[[Input/accessibility]]"
+  - "[[Input/Input-pui]]"
+  - "[[Input/Input-audit]]"
+tags:
+  - oxygen
+  - component/Input
+  - role/figma
+  - stage/blocked
+  - category/form_inputs
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID (main): 2072:14 — canvas "Input" -->

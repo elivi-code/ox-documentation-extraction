@@ -1,3 +1,26 @@
+---
+component: Toast
+package: "@8x8/oxygen-toast"
+category: feedback_status
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Toast/props]]"
+  - "[[Toast/tokens]]"
+  - "[[Toast/accessibility]]"
+  - "[[Toast/Toast-figma]]"
+  - "[[Toast/Toast-pui]]"
+  - "[[Toast/Toast-audit]]"
+tags:
+  - oxygen
+  - component/Toast
+  - role/examples
+  - stage/spec_ready
+  - category/feedback_status
+---
 # Toast — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

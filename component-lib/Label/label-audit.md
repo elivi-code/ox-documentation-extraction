@@ -317,6 +317,22 @@ warnings:
     dimension: examples
     note: "examples.md imports `Input` from `@8x8/oxygen-input` in examples. This import is not declared in props.md. Verify the package name is correct before publishing to Docusaurus."
     confidence: heuristic
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[Label/props]]"
+  - "[[Label/examples]]"
+  - "[[Label/tokens]]"
+  - "[[Label/accessibility]]"
+  - "[[Label/Label-figma]]"
+  - "[[Label/label-pui]]"
+tags:
+  - oxygen
+  - component/Label
+  - role/audit
+  - stage/blocked
 ---
 
 # Label — Documentation Audit

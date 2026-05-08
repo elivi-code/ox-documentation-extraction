@@ -1,3 +1,25 @@
+---
+component: Accordion
+package: "@8x8/oxygen-accordion"
+category: layout_overlay
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Accordion/examples]]"
+  - "[[Accordion/tokens]]"
+  - "[[Accordion/accessibility]]"
+  - "[[Accordion/accordion-figma]]"
+  - "[[Accordion/accordion-audit]]"
+tags:
+  - oxygen
+  - component/Accordion
+  - role/props
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # Accordion — Props
 
 > **See also:** [examples.md](./examples.md) · [tokens.md](./tokens.md) · [accessibility.md](./accessibility.md) · [accordion-figma.md](./accordion-figma.md)

@@ -1,3 +1,25 @@
+---
+component: ProgressBar
+package: "@8x8/oxygen-loaders"
+category: feedback_status
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[ProgressBar/props]]"
+  - "[[ProgressBar/examples]]"
+  - "[[ProgressBar/accessibility]]"
+  - "[[ProgressBar/ProgressBar-figma]]"
+  - "[[ProgressBar/ProgressBar-audit]]"
+tags:
+  - oxygen
+  - component/ProgressBar
+  - role/tokens
+  - stage/spec_ready
+  - category/feedback_status
+---
 # ProgressBar — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

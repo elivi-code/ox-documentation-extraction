@@ -1,3 +1,26 @@
+---
+component: Pagination
+package: "@8x8/oxygen-pagination"
+category: navigation
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Pagination/props]]"
+  - "[[Pagination/examples]]"
+  - "[[Pagination/tokens]]"
+  - "[[Pagination/accessibility]]"
+  - "[[Pagination/Pagination-usage]]"
+  - "[[Pagination/Pagination-audit]]"
+tags:
+  - oxygen
+  - component/Pagination
+  - role/figma
+  - stage/spec_ready
+  - category/navigation
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 55766:411 -->

@@ -1,3 +1,26 @@
+---
+component: Link
+package: "@8x8/oxygen-link"
+category: navigation
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Link/examples]]"
+  - "[[Link/tokens]]"
+  - "[[Link/accessibility]]"
+  - "[[Link/Link-figma]]"
+  - "[[Link/Link-usage]]"
+  - "[[Link/Link-audit]]"
+tags:
+  - oxygen
+  - component/Link
+  - role/props
+  - stage/blocked
+  - category/navigation
+---
 # Link — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

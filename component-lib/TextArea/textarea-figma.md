@@ -1,3 +1,26 @@
+---
+component: TextArea
+package: "@8x8/oxygen-textarea"
+category: form_inputs
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[TextArea/props]]"
+  - "[[TextArea/examples]]"
+  - "[[TextArea/tokens]]"
+  - "[[TextArea/accessibility]]"
+  - "[[TextArea/textarea-pui]]"
+  - "[[TextArea/textarea-audit]]"
+tags:
+  - oxygen
+  - component/TextArea
+  - role/figma
+  - stage/blocked
+  - category/form_inputs
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 21562:34985 -->

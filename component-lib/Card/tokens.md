@@ -1,3 +1,25 @@
+---
+component: Card
+package: "@8x8/oxygen-card"
+category: layout_overlay
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Card/props]]"
+  - "[[Card/examples]]"
+  - "[[Card/accessibility]]"
+  - "[[Card/Card-figma]]"
+  - "[[Card/Card-audit]]"
+tags:
+  - oxygen
+  - component/Card
+  - role/tokens
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # Card — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

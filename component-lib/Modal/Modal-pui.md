@@ -1,3 +1,26 @@
+---
+component: Modal
+package: "@8x8/oxygen-modal"
+category: layout_overlay
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Modal/props]]"
+  - "[[Modal/examples]]"
+  - "[[Modal/tokens]]"
+  - "[[Modal/accessibility]]"
+  - "[[Modal/Modal-figma]]"
+  - "[[Modal/Modal-audit]]"
+tags:
+  - oxygen
+  - component/Modal
+  - role/pui
+  - stage/spec_ready
+  - category/layout_overlay
+---
 <!-- SOURCE: platform-ui-mcp snapshotId: 2026-02-24 -->
 <!-- EXTRACTED: 2026-05-01 -->
 <!-- COMPONENT: Modal -->

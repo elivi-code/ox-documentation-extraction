@@ -1,3 +1,25 @@
+---
+component: SkeletonBlock
+package: "@8x8/oxygen-skeletons"
+category: feedback_status
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[SkeletonBlock/examples]]"
+  - "[[SkeletonBlock/tokens]]"
+  - "[[SkeletonBlock/accessibility]]"
+  - "[[SkeletonBlock/SkeletonBlock-figma]]"
+  - "[[SkeletonBlock/SkeletonBlock-audit]]"
+tags:
+  - oxygen
+  - component/SkeletonBlock
+  - role/props
+  - stage/blocked
+  - category/feedback_status
+---
 # SkeletonBlock — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [SkeletonBlock-figma.md](SkeletonBlock-figma.md)

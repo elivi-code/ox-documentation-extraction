@@ -1,3 +1,26 @@
+---
+component: TextArea
+package: "@8x8/oxygen-textarea"
+category: form_inputs
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[TextArea/props]]"
+  - "[[TextArea/examples]]"
+  - "[[TextArea/tokens]]"
+  - "[[TextArea/accessibility]]"
+  - "[[TextArea/textarea-figma]]"
+  - "[[TextArea/textarea-audit]]"
+tags:
+  - oxygen
+  - component/TextArea
+  - role/pui
+  - stage/blocked
+  - category/form_inputs
+---
 <!-- SOURCE: platform-ui-mcp snapshotId: N/A -->
 <!-- EXTRACTED: 2026-04-29 -->
 <!-- COMPONENT: TextArea -->

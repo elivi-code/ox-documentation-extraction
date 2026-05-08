@@ -414,6 +414,21 @@ warnings:
       README and CHANGELOG markdown files. These may contain additional usage
       guidance not surfaced via MCP. Consider inspecting the Storybook source for
       exampleAlertBanner content.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[AlertBanner/props]]"
+  - "[[AlertBanner/examples]]"
+  - "[[AlertBanner/tokens]]"
+  - "[[AlertBanner/accessibility]]"
+  - "[[AlertBanner/alert-banner-figma]]"
+tags:
+  - oxygen
+  - component/AlertBanner
+  - role/audit
+  - stage/blocked
 ---
 
 # AlertBanner — Documentation Audit

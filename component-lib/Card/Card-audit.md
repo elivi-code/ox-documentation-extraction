@@ -304,6 +304,21 @@ warnings:
       with a deprecation banner but no migration guidance. Consumers encountering
       the deprecation warning have no direction on what to use instead.
     advisory: "Before running doc-rewrite, determine if there is a recommended replacement (e.g. a newer card pattern, or guidance to build layout compositions directly). Add the replacement to the spec's deprecation section."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[Card/props]]"
+  - "[[Card/examples]]"
+  - "[[Card/tokens]]"
+  - "[[Card/accessibility]]"
+  - "[[Card/Card-figma]]"
+tags:
+  - oxygen
+  - component/Card
+  - role/audit
+  - stage/spec_ready
 ---
 
 # Card — Audit Report

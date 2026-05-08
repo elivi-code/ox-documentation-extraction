@@ -1,3 +1,25 @@
+---
+component: AlertBanner
+package: "@8x8/oxygen-alertBanner"
+category: feedback_status
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[AlertBanner/props]]"
+  - "[[AlertBanner/examples]]"
+  - "[[AlertBanner/tokens]]"
+  - "[[AlertBanner/alert-banner-figma]]"
+  - "[[AlertBanner/alert-banner-audit]]"
+tags:
+  - oxygen
+  - component/AlertBanner
+  - role/accessibility
+  - stage/blocked
+  - category/feedback_status
+---
 # AlertBanner — Accessibility
 
 > **See also:** [alert-banner-figma.md](./alert-banner-figma.md) · [props.md](./props.md) ·

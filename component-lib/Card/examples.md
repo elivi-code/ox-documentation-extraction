@@ -1,3 +1,25 @@
+---
+component: Card
+package: "@8x8/oxygen-card"
+category: layout_overlay
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Card/props]]"
+  - "[[Card/tokens]]"
+  - "[[Card/accessibility]]"
+  - "[[Card/Card-figma]]"
+  - "[[Card/Card-audit]]"
+tags:
+  - oxygen
+  - component/Card
+  - role/examples
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # Card — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

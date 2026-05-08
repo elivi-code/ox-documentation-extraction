@@ -1,3 +1,27 @@
+---
+component: Tabs
+package: "@8x8/oxygen-tabs"
+category: layout_overlay
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_complete
+pipeline_note: "Canonical spec written — pipeline complete"
+audit_verdict: YES
+siblings:
+  - "[[Tabs/examples]]"
+  - "[[Tabs/tokens]]"
+  - "[[Tabs/accessibility]]"
+  - "[[Tabs/Tabs-figma]]"
+  - "[[Tabs/Tabs-pui]]"
+  - "[[Tabs/Tabs-audit]]"
+  - "[[Tabs/Tabs-spec]]"
+tags:
+  - oxygen
+  - component/Tabs
+  - role/props
+  - stage/spec_complete
+  - category/layout_overlay
+---
 # Tabs — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [Tabs-figma.md](Tabs-figma.md)

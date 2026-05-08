@@ -1,3 +1,26 @@
+---
+component: Input
+package: "@8x8/oxygen-input"
+category: form_inputs
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Input/props]]"
+  - "[[Input/examples]]"
+  - "[[Input/tokens]]"
+  - "[[Input/Input-figma]]"
+  - "[[Input/Input-pui]]"
+  - "[[Input/Input-audit]]"
+tags:
+  - oxygen
+  - component/Input
+  - role/accessibility
+  - stage/blocked
+  - category/form_inputs
+---
 # Input — Accessibility
 
 > **See also:** [Input-figma.md](./Input-figma.md) · [props.md](./props.md) ·

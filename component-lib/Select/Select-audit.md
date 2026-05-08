@@ -459,6 +459,21 @@ warnings:
       select-pui.md with a single top-level
       `<!-- NO RELEVANT PUI CONTEXT -->` line immediately after the frontmatter
       comment block.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[Select/props]]"
+  - "[[Select/examples]]"
+  - "[[Select/tokens]]"
+  - "[[Select/accessibility]]"
+  - "[[Select/select-pui]]"
+tags:
+  - oxygen
+  - component/Select
+  - role/audit
+  - stage/blocked
 ---
 
 # Select — Audit Report

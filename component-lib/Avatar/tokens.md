@@ -1,3 +1,25 @@
+---
+component: Avatar
+package: "@8x8/oxygen-avatar"
+category: data_display
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Avatar/props]]"
+  - "[[Avatar/examples]]"
+  - "[[Avatar/accessibility]]"
+  - "[[Avatar/Avatar-figma]]"
+  - "[[Avatar/Avatar-audit]]"
+tags:
+  - oxygen
+  - component/Avatar
+  - role/tokens
+  - stage/blocked
+  - category/data_display
+---
 # Avatar — Tokens
 
 > **See also:** [props.md](./props.md) · [examples.md](./examples.md) · [accessibility.md](./accessibility.md)

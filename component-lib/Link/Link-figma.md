@@ -1,3 +1,26 @@
+---
+component: Link
+package: "@8x8/oxygen-link"
+category: navigation
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Link/props]]"
+  - "[[Link/examples]]"
+  - "[[Link/tokens]]"
+  - "[[Link/accessibility]]"
+  - "[[Link/Link-usage]]"
+  - "[[Link/Link-audit]]"
+tags:
+  - oxygen
+  - component/Link
+  - role/figma
+  - stage/blocked
+  - category/navigation
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 58315:113 (Standalone Link component set) · canvas: 58314:19 -->

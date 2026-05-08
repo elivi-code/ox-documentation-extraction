@@ -1,3 +1,23 @@
+---
+component: Badge
+package: "@8x8/oxygen-badge"
+category: data_display
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: extracted
+pipeline_note: "Core files present; audit not yet run"
+siblings:
+  - "[[Badge/props]]"
+  - "[[Badge/tokens]]"
+  - "[[Badge/accessibility]]"
+  - "[[Badge/badge-pui]]"
+tags:
+  - oxygen
+  - component/Badge
+  - role/examples
+  - stage/extracted
+  - category/data_display
+---
 # Badge — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

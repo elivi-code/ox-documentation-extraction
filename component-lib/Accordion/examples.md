@@ -1,3 +1,25 @@
+---
+component: Accordion
+package: "@8x8/oxygen-accordion"
+category: layout_overlay
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Accordion/props]]"
+  - "[[Accordion/tokens]]"
+  - "[[Accordion/accessibility]]"
+  - "[[Accordion/accordion-figma]]"
+  - "[[Accordion/accordion-audit]]"
+tags:
+  - oxygen
+  - component/Accordion
+  - role/examples
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # Accordion — Examples
 
 > **See also:** [props.md](./props.md) · [tokens.md](./tokens.md) · [accessibility.md](./accessibility.md) · [accordion-figma.md](./accordion-figma.md)

@@ -1,3 +1,25 @@
+---
+component: AlertBanner
+package: "@8x8/oxygen-alertBanner"
+category: feedback_status
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[AlertBanner/examples]]"
+  - "[[AlertBanner/tokens]]"
+  - "[[AlertBanner/accessibility]]"
+  - "[[AlertBanner/alert-banner-figma]]"
+  - "[[AlertBanner/alert-banner-audit]]"
+tags:
+  - oxygen
+  - component/AlertBanner
+  - role/props
+  - stage/blocked
+  - category/feedback_status
+---
 # AlertBanner — Props
 
 > **See also:** [alert-banner-figma.md](./alert-banner-figma.md) · [tokens.md](./tokens.md) ·

@@ -1,3 +1,27 @@
+---
+component: Tabs
+package: "@8x8/oxygen-tabs"
+category: layout_overlay
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: spec_complete
+pipeline_note: "Canonical spec written — pipeline complete"
+audit_verdict: YES
+siblings:
+  - "[[Tabs/props]]"
+  - "[[Tabs/examples]]"
+  - "[[Tabs/tokens]]"
+  - "[[Tabs/Tabs-figma]]"
+  - "[[Tabs/Tabs-pui]]"
+  - "[[Tabs/Tabs-audit]]"
+  - "[[Tabs/Tabs-spec]]"
+tags:
+  - oxygen
+  - component/Tabs
+  - role/accessibility
+  - stage/spec_complete
+  - category/layout_overlay
+---
 # Tabs — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [Tabs-figma.md](Tabs-figma.md)

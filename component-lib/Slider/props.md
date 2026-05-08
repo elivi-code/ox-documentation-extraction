@@ -1,3 +1,25 @@
+---
+component: Slider
+package: "@8x8/oxygen-slider"
+category: form_inputs
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: PARTIAL
+siblings:
+  - "[[Slider/examples]]"
+  - "[[Slider/tokens]]"
+  - "[[Slider/accessibility]]"
+  - "[[Slider/slider-pui]]"
+  - "[[Slider/slider-audit]]"
+tags:
+  - oxygen
+  - component/Slider
+  - role/props
+  - stage/spec_ready
+  - category/form_inputs
+---
 # Slider — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [slider-pui.md](slider-pui.md)

@@ -1,3 +1,26 @@
+---
+component: Label
+package: "@8x8/oxygen-label"
+category: data_display
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Label/props]]"
+  - "[[Label/examples]]"
+  - "[[Label/tokens]]"
+  - "[[Label/accessibility]]"
+  - "[[Label/Label-figma]]"
+  - "[[Label/label-audit]]"
+tags:
+  - oxygen
+  - component/Label
+  - role/pui
+  - stage/blocked
+  - category/data_display
+---
 <!-- SOURCE: platform-ui-mcp snapshotId: mcpVersion 0.6.1 / buildDate 2026-02-24 -->
 <!-- EXTRACTED: 2026-05-01 -->
 <!-- COMPONENT: Label -->

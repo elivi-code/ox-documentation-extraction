@@ -1,3 +1,27 @@
+---
+component: Tabs
+package: "@8x8/oxygen-tabs"
+category: layout_overlay
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_complete
+pipeline_note: "Canonical spec written — pipeline complete"
+audit_verdict: YES
+siblings:
+  - "[[Tabs/props]]"
+  - "[[Tabs/tokens]]"
+  - "[[Tabs/accessibility]]"
+  - "[[Tabs/Tabs-figma]]"
+  - "[[Tabs/Tabs-pui]]"
+  - "[[Tabs/Tabs-audit]]"
+  - "[[Tabs/Tabs-spec]]"
+tags:
+  - oxygen
+  - component/Tabs
+  - role/examples
+  - stage/spec_complete
+  - category/layout_overlay
+---
 # Tabs — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [Tabs-figma.md](Tabs-figma.md)

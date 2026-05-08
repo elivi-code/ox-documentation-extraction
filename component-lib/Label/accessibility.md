@@ -1,3 +1,26 @@
+---
+component: Label
+package: "@8x8/oxygen-label"
+category: data_display
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Label/props]]"
+  - "[[Label/examples]]"
+  - "[[Label/tokens]]"
+  - "[[Label/Label-figma]]"
+  - "[[Label/label-pui]]"
+  - "[[Label/label-audit]]"
+tags:
+  - oxygen
+  - component/Label
+  - role/accessibility
+  - stage/blocked
+  - category/data_display
+---
 # Label — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

@@ -1,3 +1,25 @@
+---
+component: DataTable
+package: "@8x8/oxygen-dataTable"
+category: data_display
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[DataTable/props]]"
+  - "[[DataTable/examples]]"
+  - "[[DataTable/tokens]]"
+  - "[[DataTable/accessibility]]"
+  - "[[DataTable/DataTable-audit]]"
+tags:
+  - oxygen
+  - component/DataTable
+  - role/figma
+  - stage/blocked
+  - category/data_display
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 2433:0 (Table canvas) · 53919:26449 (Table examples canvas) -->

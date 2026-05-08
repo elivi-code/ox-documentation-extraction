@@ -286,6 +286,21 @@ warnings:
       the default for numeric/string usage only, or is the resolved pixel value of 'default'.
       Verify whether size='default' and size='240px' are equivalent; update props.md if
       the default should be 'default' (the named value) rather than '240px' (a raw dimension).
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[ProgressBar/props]]"
+  - "[[ProgressBar/examples]]"
+  - "[[ProgressBar/tokens]]"
+  - "[[ProgressBar/accessibility]]"
+  - "[[ProgressBar/ProgressBar-figma]]"
+tags:
+  - oxygen
+  - component/ProgressBar
+  - role/audit
+  - stage/spec_ready
 ---
 
 # ProgressBar — Documentation Audit

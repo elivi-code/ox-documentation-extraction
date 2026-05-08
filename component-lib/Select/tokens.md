@@ -1,3 +1,25 @@
+---
+component: Select
+package: "@8x8/oxygen-select"
+category: form_inputs
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Select/props]]"
+  - "[[Select/examples]]"
+  - "[[Select/accessibility]]"
+  - "[[Select/select-pui]]"
+  - "[[Select/Select-audit]]"
+tags:
+  - oxygen
+  - component/Select
+  - role/tokens
+  - stage/blocked
+  - category/form_inputs
+---
 # Select — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

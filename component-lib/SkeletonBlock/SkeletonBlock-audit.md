@@ -243,6 +243,21 @@ warnings:
       sourced from OX usage documentation. This is not confirmed as a CSS token reference
       within the @8x8/oxygen-skeletons package — it may be a spacing guideline rather than
       a hardcoded token value the component enforces.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[SkeletonBlock/props]]"
+  - "[[SkeletonBlock/examples]]"
+  - "[[SkeletonBlock/tokens]]"
+  - "[[SkeletonBlock/accessibility]]"
+  - "[[SkeletonBlock/SkeletonBlock-figma]]"
+tags:
+  - oxygen
+  - component/SkeletonBlock
+  - role/audit
+  - stage/blocked
 ---
 
 # SkeletonBlock — Documentation Audit

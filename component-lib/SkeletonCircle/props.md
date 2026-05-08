@@ -1,3 +1,25 @@
+---
+component: SkeletonCircle
+package: "@8x8/oxygen-skeletons"
+category: feedback_status
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[SkeletonCircle/examples]]"
+  - "[[SkeletonCircle/tokens]]"
+  - "[[SkeletonCircle/accessibility]]"
+  - "[[SkeletonCircle/SkeletonCircle-figma]]"
+  - "[[SkeletonCircle/SkeletonCircle-audit]]"
+tags:
+  - oxygen
+  - component/SkeletonCircle
+  - role/props
+  - stage/blocked
+  - category/feedback_status
+---
 # SkeletonCircle — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [SkeletonCircle-figma.md](SkeletonCircle-figma.md)

@@ -1,3 +1,23 @@
+---
+component: Badge
+package: "@8x8/oxygen-badge"
+category: data_display
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: extracted
+pipeline_note: "Core files present; audit not yet run"
+siblings:
+  - "[[Badge/examples]]"
+  - "[[Badge/tokens]]"
+  - "[[Badge/accessibility]]"
+  - "[[Badge/badge-pui]]"
+tags:
+  - oxygen
+  - component/Badge
+  - role/props
+  - stage/extracted
+  - category/data_display
+---
 # Badge — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

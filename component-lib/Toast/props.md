@@ -1,3 +1,26 @@
+---
+component: Toast
+package: "@8x8/oxygen-toast"
+category: feedback_status
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Toast/examples]]"
+  - "[[Toast/tokens]]"
+  - "[[Toast/accessibility]]"
+  - "[[Toast/Toast-figma]]"
+  - "[[Toast/Toast-pui]]"
+  - "[[Toast/Toast-audit]]"
+tags:
+  - oxygen
+  - component/Toast
+  - role/props
+  - stage/spec_ready
+  - category/feedback_status
+---
 # Toast — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

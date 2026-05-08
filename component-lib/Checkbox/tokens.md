@@ -1,3 +1,26 @@
+---
+component: Checkbox
+package: "@8x8/oxygen-checkbox"
+category: form_inputs
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Checkbox/props]]"
+  - "[[Checkbox/examples]]"
+  - "[[Checkbox/accessibility]]"
+  - "[[Checkbox/checkbox-figma]]"
+  - "[[Checkbox/checkbox-pui]]"
+  - "[[Checkbox/checkbox-audit]]"
+tags:
+  - oxygen
+  - component/Checkbox
+  - role/tokens
+  - stage/spec_ready
+  - category/form_inputs
+---
 # Checkbox — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

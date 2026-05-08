@@ -1,3 +1,25 @@
+---
+component: Select
+package: "@8x8/oxygen-select"
+category: form_inputs
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Select/props]]"
+  - "[[Select/tokens]]"
+  - "[[Select/accessibility]]"
+  - "[[Select/select-pui]]"
+  - "[[Select/Select-audit]]"
+tags:
+  - oxygen
+  - component/Select
+  - role/examples
+  - stage/blocked
+  - category/form_inputs
+---
 # Select — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

@@ -1,3 +1,26 @@
+---
+component: TextField
+package: "@8x8/oxygen-textField"
+category: form_inputs
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[TextField/props]]"
+  - "[[TextField/examples]]"
+  - "[[TextField/tokens]]"
+  - "[[TextField/accessibility]]"
+  - "[[TextField/TextField-pui]]"
+  - "[[TextField/TextField-audit]]"
+tags:
+  - oxygen
+  - component/TextField
+  - role/figma
+  - stage/spec_ready
+  - category/form_inputs
+---
 # TextField — Figma Design Specs
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

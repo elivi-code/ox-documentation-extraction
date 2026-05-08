@@ -1,3 +1,26 @@
+---
+component: Toast
+package: "@8x8/oxygen-toast"
+category: feedback_status
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Toast/props]]"
+  - "[[Toast/examples]]"
+  - "[[Toast/tokens]]"
+  - "[[Toast/accessibility]]"
+  - "[[Toast/Toast-figma]]"
+  - "[[Toast/Toast-audit]]"
+tags:
+  - oxygen
+  - component/Toast
+  - role/pui
+  - stage/spec_ready
+  - category/feedback_status
+---
 <!-- SOURCE: platform-ui-mcp snapshotId: 2026-02-24 -->
 <!-- EXTRACTED: 2026-05-05 -->
 <!-- COMPONENT: Toast -->

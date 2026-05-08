@@ -1,3 +1,26 @@
+---
+component: TextArea
+package: "@8x8/oxygen-textarea"
+category: form_inputs
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[TextArea/props]]"
+  - "[[TextArea/examples]]"
+  - "[[TextArea/tokens]]"
+  - "[[TextArea/textarea-figma]]"
+  - "[[TextArea/textarea-pui]]"
+  - "[[TextArea/textarea-audit]]"
+tags:
+  - oxygen
+  - component/TextArea
+  - role/accessibility
+  - stage/blocked
+  - category/form_inputs
+---
 # Textarea — Accessibility
 
 > **See also:** [props.md](./props.md) · [examples.md](./examples.md) · [tokens.md](./tokens.md) · [textarea-figma.md](./textarea-figma.md) · [textarea-pui.md](./textarea-pui.md)

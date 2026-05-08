@@ -1,3 +1,24 @@
+---
+component: SlideOut
+package: "@8x8/oxygen-slide-out"
+category: layout_overlay
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: PARTIAL
+siblings:
+  - "[[SlideOut/props]]"
+  - "[[SlideOut/examples]]"
+  - "[[SlideOut/tokens]]"
+  - "[[SlideOut/SlideOut-audit]]"
+tags:
+  - oxygen
+  - component/SlideOut
+  - role/accessibility
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # SlideOut — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

@@ -1,3 +1,23 @@
+---
+component: Badge
+package: "@8x8/oxygen-badge"
+category: data_display
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: extracted
+pipeline_note: "Core files present; audit not yet run"
+siblings:
+  - "[[Badge/props]]"
+  - "[[Badge/examples]]"
+  - "[[Badge/accessibility]]"
+  - "[[Badge/badge-pui]]"
+tags:
+  - oxygen
+  - component/Badge
+  - role/tokens
+  - stage/extracted
+  - category/data_display
+---
 # Badge — Design Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

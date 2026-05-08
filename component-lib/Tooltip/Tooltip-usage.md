@@ -1,3 +1,27 @@
+---
+component: Tooltip
+package: "@8x8/oxygen-tooltip"
+category: overlays_contextual
+role: usage
+role_description: "Usage guidelines — Do/Don't editorial guidance extracted from Figma examples page"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Tooltip/props]]"
+  - "[[Tooltip/examples]]"
+  - "[[Tooltip/tokens]]"
+  - "[[Tooltip/accessibility]]"
+  - "[[Tooltip/Tooltip-figma]]"
+  - "[[Tooltip/Tooltip-pui]]"
+  - "[[Tooltip/Tooltip-audit]]"
+tags:
+  - oxygen
+  - component/Tooltip
+  - role/usage
+  - stage/blocked
+  - category/overlays_contextual
+---
 <!-- SOURCE: Figma — ↳ Tooltip examples -->
 <!-- PAGE: ↳ Tooltip examples -->
 <!-- SECTION: Tooltip, Tooltip and Popover working together, Tooltip vs. Popover vs. Modal -->

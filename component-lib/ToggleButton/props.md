@@ -1,3 +1,26 @@
+---
+component: ToggleButton
+package: "@8x8/oxygen-toggleButton"
+category: form_inputs
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[ToggleButton/examples]]"
+  - "[[ToggleButton/tokens]]"
+  - "[[ToggleButton/accessibility]]"
+  - "[[ToggleButton/ToggleButton-figma]]"
+  - "[[ToggleButton/ToggleButton-pui]]"
+  - "[[ToggleButton/ToggleButton-audit]]"
+tags:
+  - oxygen
+  - component/ToggleButton
+  - role/props
+  - stage/blocked
+  - category/form_inputs
+---
 # ToggleButton — Props
 
 > **See also:** [examples.md](./examples.md) · [tokens.md](./tokens.md) · [accessibility.md](./accessibility.md) · [ToggleButton-figma.md](./ToggleButton-figma.md)

@@ -1,3 +1,25 @@
+---
+component: Slider
+package: "@8x8/oxygen-slider"
+category: form_inputs
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: PARTIAL
+siblings:
+  - "[[Slider/props]]"
+  - "[[Slider/examples]]"
+  - "[[Slider/tokens]]"
+  - "[[Slider/accessibility]]"
+  - "[[Slider/slider-audit]]"
+tags:
+  - oxygen
+  - component/Slider
+  - role/pui
+  - stage/spec_ready
+  - category/form_inputs
+---
 <!-- SOURCE: platform-ui-mcp snapshotId: 0.6.1 -->
 <!-- EXTRACTED: 2026-04-29 -->
 <!-- COMPONENT: Slider -->

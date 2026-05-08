@@ -1,3 +1,26 @@
+---
+component: Checkbox
+package: "@8x8/oxygen-checkbox"
+category: form_inputs
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Checkbox/props]]"
+  - "[[Checkbox/examples]]"
+  - "[[Checkbox/tokens]]"
+  - "[[Checkbox/accessibility]]"
+  - "[[Checkbox/checkbox-figma]]"
+  - "[[Checkbox/checkbox-audit]]"
+tags:
+  - oxygen
+  - component/Checkbox
+  - role/pui
+  - stage/spec_ready
+  - category/form_inputs
+---
 <!-- SOURCE: platform-ui-mcp snapshotId: 0.6.1 -->
 <!-- EXTRACTED: 2026-04-29 -->
 <!-- COMPONENT: Checkbox -->

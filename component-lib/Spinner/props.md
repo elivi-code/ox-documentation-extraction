@@ -1,3 +1,25 @@
+---
+component: Spinner
+package: "@8x8/oxygen-loaders"
+category: feedback_status
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Spinner/examples]]"
+  - "[[Spinner/tokens]]"
+  - "[[Spinner/accessibility]]"
+  - "[[Spinner/Spinner-figma]]"
+  - "[[Spinner/Spinner-audit]]"
+tags:
+  - oxygen
+  - component/Spinner
+  - role/props
+  - stage/blocked
+  - category/feedback_status
+---
 # Spinner — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

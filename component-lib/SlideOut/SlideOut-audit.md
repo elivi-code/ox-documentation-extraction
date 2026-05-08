@@ -226,6 +226,20 @@ warnings:
       If it accepts CSS values or percentages, the type annotation `number` would
       be incorrect.
     advisory: "Clarify the unit expected by minWidth, maxWidth, and defaultWidth (pixels vs. other). Update prop descriptions and types accordingly."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[SlideOut/props]]"
+  - "[[SlideOut/examples]]"
+  - "[[SlideOut/tokens]]"
+  - "[[SlideOut/accessibility]]"
+tags:
+  - oxygen
+  - component/SlideOut
+  - role/audit
+  - stage/spec_ready
 ---
 
 # SlideOut — Audit Report

@@ -309,6 +309,23 @@ warnings:
     dimension: tokens
     confidence: heuristic
     finding: "tokens.md documents max-width as 320px (from usage docs) but Tooltip-figma.md shows 326px for Left/Right orientations. Minor inconsistency — the usage docs value may refer only to Top/Bottom orientations."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[Tooltip/props]]"
+  - "[[Tooltip/examples]]"
+  - "[[Tooltip/tokens]]"
+  - "[[Tooltip/accessibility]]"
+  - "[[Tooltip/Tooltip-figma]]"
+  - "[[Tooltip/Tooltip-usage]]"
+  - "[[Tooltip/Tooltip-pui]]"
+tags:
+  - oxygen
+  - component/Tooltip
+  - role/audit
+  - stage/blocked
 ---
 
 # Tooltip — Documentation Audit

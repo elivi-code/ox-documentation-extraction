@@ -1,3 +1,25 @@
+---
+component: Avatar
+package: "@8x8/oxygen-avatar"
+category: data_display
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Avatar/props]]"
+  - "[[Avatar/tokens]]"
+  - "[[Avatar/accessibility]]"
+  - "[[Avatar/Avatar-figma]]"
+  - "[[Avatar/Avatar-audit]]"
+tags:
+  - oxygen
+  - component/Avatar
+  - role/examples
+  - stage/blocked
+  - category/data_display
+---
 # Avatar — Examples
 
 > **See also:** [props.md](./props.md) · [tokens.md](./tokens.md) · [accessibility.md](./accessibility.md)

@@ -253,6 +253,21 @@ warnings:
       but does not confirm that the component actually reads the OS preference automatically.
       If `hasAnimation` defaults to `true` and requires manual intervention, consuming teams
       must wire it themselves — this should be documented explicitly.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[Spinner/props]]"
+  - "[[Spinner/examples]]"
+  - "[[Spinner/tokens]]"
+  - "[[Spinner/accessibility]]"
+  - "[[Spinner/Spinner-figma]]"
+tags:
+  - oxygen
+  - component/Spinner
+  - role/audit
+  - stage/blocked
 ---
 
 # Spinner — Documentation Audit

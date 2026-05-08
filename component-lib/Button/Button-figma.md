@@ -1,3 +1,25 @@
+---
+component: Button
+package: "@8x8/oxygen-button"
+category: interaction
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Button/props]]"
+  - "[[Button/examples]]"
+  - "[[Button/tokens]]"
+  - "[[Button/accessibility]]"
+  - "[[Button/Button-audit]]"
+tags:
+  - oxygen
+  - component/Button
+  - role/figma
+  - stage/blocked
+  - category/interaction
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 78258:1843 (examples page) · 15653:16329 (Label Button component set) -->

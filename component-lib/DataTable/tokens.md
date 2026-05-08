@@ -1,3 +1,25 @@
+---
+component: DataTable
+package: "@8x8/oxygen-dataTable"
+category: data_display
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[DataTable/props]]"
+  - "[[DataTable/examples]]"
+  - "[[DataTable/accessibility]]"
+  - "[[DataTable/DataTable-figma]]"
+  - "[[DataTable/DataTable-audit]]"
+tags:
+  - oxygen
+  - component/DataTable
+  - role/tokens
+  - stage/blocked
+  - category/data_display
+---
 # DataTable — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

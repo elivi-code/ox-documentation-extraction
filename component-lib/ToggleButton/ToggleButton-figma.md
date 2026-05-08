@@ -1,3 +1,26 @@
+---
+component: ToggleButton
+package: "@8x8/oxygen-toggleButton"
+category: form_inputs
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[ToggleButton/props]]"
+  - "[[ToggleButton/examples]]"
+  - "[[ToggleButton/tokens]]"
+  - "[[ToggleButton/accessibility]]"
+  - "[[ToggleButton/ToggleButton-pui]]"
+  - "[[ToggleButton/ToggleButton-audit]]"
+tags:
+  - oxygen
+  - component/ToggleButton
+  - role/figma
+  - stage/blocked
+  - category/form_inputs
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE IDs: 51776:7455 (component canvas) · 50606:95349 (examples page) -->

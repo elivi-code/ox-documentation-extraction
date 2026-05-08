@@ -230,6 +230,22 @@ warnings:
     confidence: heuristic
     finding: "accessibility.md WCAG guidance is inferred from component type (native <textarea>) since Figma had no accessibility annotations. The guidance is standard-compliant, but has not been validated against the actual Oxygen Textarea implementation (e.g., whether aria-label/aria-labelledby are correctly passed through)."
     recommendation: "Test accessibility guidance against the live component with VoiceOver or NVDA before publishing"
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[TextArea/props]]"
+  - "[[TextArea/examples]]"
+  - "[[TextArea/tokens]]"
+  - "[[TextArea/accessibility]]"
+  - "[[TextArea/textarea-figma]]"
+  - "[[TextArea/textarea-pui]]"
+tags:
+  - oxygen
+  - component/TextArea
+  - role/audit
+  - stage/blocked
 ---
 
 # TextArea — Documentation Audit

@@ -1,3 +1,26 @@
+---
+component: Breadcrumbs
+package: "@8x8/oxygen-breadcrumbs"
+category: navigation
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Breadcrumbs/props]]"
+  - "[[Breadcrumbs/tokens]]"
+  - "[[Breadcrumbs/accessibility]]"
+  - "[[Breadcrumbs/Breadcrumbs-figma]]"
+  - "[[Breadcrumbs/Breadcrumbs-pui]]"
+  - "[[Breadcrumbs/Breadcrumbs-audit]]"
+tags:
+  - oxygen
+  - component/Breadcrumbs
+  - role/examples
+  - stage/spec_ready
+  - category/navigation
+---
 # Breadcrumbs — Examples
 
 > **See also:** [props.md](props.md) | [tokens.md](tokens.md) | [accessibility.md](accessibility.md)

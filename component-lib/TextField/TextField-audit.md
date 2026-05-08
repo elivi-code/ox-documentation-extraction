@@ -273,6 +273,22 @@ warnings:
       location: "## Screen reader guidance"
       finding: "The info icon button beside the label (rendered from _base_form_label atom, TypeIcon component) must have an accessible name. The current guidance says to set aria-label via inputProps, but this may not target the icon button — inputProps passes to the input element, not the label atom."
     advisory: "Verify the correct prop to pass an accessible name to the info icon button and update the guidance in accessibility.md."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[TextField/props]]"
+  - "[[TextField/examples]]"
+  - "[[TextField/tokens]]"
+  - "[[TextField/accessibility]]"
+  - "[[TextField/figma]]"
+  - "[[TextField/TextField-pui]]"
+tags:
+  - oxygen
+  - component/TextField
+  - role/audit
+  - stage/spec_ready
 ---
 
 # TextField — Audit Report

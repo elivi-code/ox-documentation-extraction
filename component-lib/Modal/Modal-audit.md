@@ -395,6 +395,22 @@ warnings:
       Add a note to the ModalFooter and ModalContent sections confirming
       they accept standard React HTML attributes (className, style, etc.)
       as a pass-through.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[Modal/props]]"
+  - "[[Modal/examples]]"
+  - "[[Modal/tokens]]"
+  - "[[Modal/accessibility]]"
+  - "[[Modal/Modal-figma]]"
+  - "[[Modal/Modal-pui]]"
+tags:
+  - oxygen
+  - component/Modal
+  - role/audit
+  - stage/spec_ready
 ---
 
 # Modal — Audit Report

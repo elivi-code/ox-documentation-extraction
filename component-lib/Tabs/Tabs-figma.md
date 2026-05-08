@@ -1,3 +1,27 @@
+---
+component: Tabs
+package: "@8x8/oxygen-tabs"
+category: layout_overlay
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_complete
+pipeline_note: "Canonical spec written — pipeline complete"
+audit_verdict: YES
+siblings:
+  - "[[Tabs/props]]"
+  - "[[Tabs/examples]]"
+  - "[[Tabs/tokens]]"
+  - "[[Tabs/accessibility]]"
+  - "[[Tabs/Tabs-pui]]"
+  - "[[Tabs/Tabs-audit]]"
+  - "[[Tabs/Tabs-spec]]"
+tags:
+  - oxygen
+  - component/Tabs
+  - role/figma
+  - stage/spec_complete
+  - category/layout_overlay
+---
 # Tabs — Figma Reference
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

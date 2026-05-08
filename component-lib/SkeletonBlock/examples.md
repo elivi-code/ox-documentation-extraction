@@ -1,3 +1,25 @@
+---
+component: SkeletonBlock
+package: "@8x8/oxygen-skeletons"
+category: feedback_status
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[SkeletonBlock/props]]"
+  - "[[SkeletonBlock/tokens]]"
+  - "[[SkeletonBlock/accessibility]]"
+  - "[[SkeletonBlock/SkeletonBlock-figma]]"
+  - "[[SkeletonBlock/SkeletonBlock-audit]]"
+tags:
+  - oxygen
+  - component/SkeletonBlock
+  - role/examples
+  - stage/blocked
+  - category/feedback_status
+---
 # SkeletonBlock — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [SkeletonBlock-figma.md](SkeletonBlock-figma.md)

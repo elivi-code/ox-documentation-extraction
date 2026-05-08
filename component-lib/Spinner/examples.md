@@ -1,3 +1,25 @@
+---
+component: Spinner
+package: "@8x8/oxygen-loaders"
+category: feedback_status
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Spinner/props]]"
+  - "[[Spinner/tokens]]"
+  - "[[Spinner/accessibility]]"
+  - "[[Spinner/Spinner-figma]]"
+  - "[[Spinner/Spinner-audit]]"
+tags:
+  - oxygen
+  - component/Spinner
+  - role/examples
+  - stage/blocked
+  - category/feedback_status
+---
 # Spinner — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

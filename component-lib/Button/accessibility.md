@@ -1,3 +1,25 @@
+---
+component: Button
+package: "@8x8/oxygen-button"
+category: interaction
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Button/props]]"
+  - "[[Button/examples]]"
+  - "[[Button/tokens]]"
+  - "[[Button/Button-figma]]"
+  - "[[Button/Button-audit]]"
+tags:
+  - oxygen
+  - component/Button
+  - role/accessibility
+  - stage/blocked
+  - category/interaction
+---
 # Button — Accessibility
 
 > **See also:** [Props](props.md) · [Examples](examples.md) · [Tokens](tokens.md)

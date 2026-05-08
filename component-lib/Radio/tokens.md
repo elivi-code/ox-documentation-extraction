@@ -1,3 +1,22 @@
+---
+component: Radio
+package: "@8x8/oxygen-radio"
+category: form_inputs
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: extracted
+pipeline_note: "Core files present; audit not yet run"
+siblings:
+  - "[[Radio/props]]"
+  - "[[Radio/examples]]"
+  - "[[Radio/accessibility]]"
+tags:
+  - oxygen
+  - component/Radio
+  - role/tokens
+  - stage/extracted
+  - category/form_inputs
+---
 # Radio — Tokens
 
 > **See also:** [Props](props.md) · [Examples](examples.md) · [Accessibility](accessibility.md)

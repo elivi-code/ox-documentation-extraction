@@ -1,3 +1,26 @@
+---
+component: Checkbox
+package: "@8x8/oxygen-checkbox"
+category: form_inputs
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Checkbox/examples]]"
+  - "[[Checkbox/tokens]]"
+  - "[[Checkbox/accessibility]]"
+  - "[[Checkbox/checkbox-figma]]"
+  - "[[Checkbox/checkbox-pui]]"
+  - "[[Checkbox/checkbox-audit]]"
+tags:
+  - oxygen
+  - component/Checkbox
+  - role/props
+  - stage/spec_ready
+  - category/form_inputs
+---
 # Checkbox — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

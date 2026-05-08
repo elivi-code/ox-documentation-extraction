@@ -156,6 +156,21 @@ warnings:
     finding: "No example shows the testId prop in use. If the project uses automated testing conventions, a testing example with data-testid may be expected by consumers."
     source_file: examples.md
     location: "No testId example present"
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[Slider/props]]"
+  - "[[Slider/examples]]"
+  - "[[Slider/tokens]]"
+  - "[[Slider/accessibility]]"
+  - "[[Slider/slider-pui]]"
+tags:
+  - oxygen
+  - component/Slider
+  - role/audit
+  - stage/spec_ready
 ---
 
 # Slider — Audit Report

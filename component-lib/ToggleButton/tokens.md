@@ -1,3 +1,26 @@
+---
+component: ToggleButton
+package: "@8x8/oxygen-toggleButton"
+category: form_inputs
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[ToggleButton/props]]"
+  - "[[ToggleButton/examples]]"
+  - "[[ToggleButton/accessibility]]"
+  - "[[ToggleButton/ToggleButton-figma]]"
+  - "[[ToggleButton/ToggleButton-pui]]"
+  - "[[ToggleButton/ToggleButton-audit]]"
+tags:
+  - oxygen
+  - component/ToggleButton
+  - role/tokens
+  - stage/blocked
+  - category/form_inputs
+---
 # ToggleButton — Tokens
 
 > **See also:** [props.md](./props.md) · [examples.md](./examples.md) · [accessibility.md](./accessibility.md) · [ToggleButton-figma.md](./ToggleButton-figma.md)

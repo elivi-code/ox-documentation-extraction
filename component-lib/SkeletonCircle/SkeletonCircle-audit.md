@@ -254,6 +254,21 @@ warnings:
       spacing03 (8px) gap guidance is from OX usage documentation only — unconfirmed as an
       enforced CSS token value within the @8x8/oxygen-skeletons package. May be a spacing
       guideline rather than a hardcoded constraint.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[SkeletonCircle/props]]"
+  - "[[SkeletonCircle/examples]]"
+  - "[[SkeletonCircle/tokens]]"
+  - "[[SkeletonCircle/accessibility]]"
+  - "[[SkeletonCircle/SkeletonCircle-figma]]"
+tags:
+  - oxygen
+  - component/SkeletonCircle
+  - role/audit
+  - stage/blocked
 ---
 
 # SkeletonCircle — Documentation Audit

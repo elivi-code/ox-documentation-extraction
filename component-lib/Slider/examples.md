@@ -1,3 +1,25 @@
+---
+component: Slider
+package: "@8x8/oxygen-slider"
+category: form_inputs
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: PARTIAL
+siblings:
+  - "[[Slider/props]]"
+  - "[[Slider/tokens]]"
+  - "[[Slider/accessibility]]"
+  - "[[Slider/slider-pui]]"
+  - "[[Slider/slider-audit]]"
+tags:
+  - oxygen
+  - component/Slider
+  - role/examples
+  - stage/spec_ready
+  - category/form_inputs
+---
 # Slider — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [slider-pui.md](slider-pui.md)

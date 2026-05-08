@@ -1,3 +1,26 @@
+---
+component: Link
+package: "@8x8/oxygen-link"
+category: navigation
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Link/props]]"
+  - "[[Link/tokens]]"
+  - "[[Link/accessibility]]"
+  - "[[Link/Link-figma]]"
+  - "[[Link/Link-usage]]"
+  - "[[Link/Link-audit]]"
+tags:
+  - oxygen
+  - component/Link
+  - role/examples
+  - stage/blocked
+  - category/navigation
+---
 # Link — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

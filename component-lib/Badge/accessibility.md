@@ -1,3 +1,23 @@
+---
+component: Badge
+package: "@8x8/oxygen-badge"
+category: data_display
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: extracted
+pipeline_note: "Core files present; audit not yet run"
+siblings:
+  - "[[Badge/props]]"
+  - "[[Badge/examples]]"
+  - "[[Badge/tokens]]"
+  - "[[Badge/badge-pui]]"
+tags:
+  - oxygen
+  - component/Badge
+  - role/accessibility
+  - stage/extracted
+  - category/data_display
+---
 # Badge — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

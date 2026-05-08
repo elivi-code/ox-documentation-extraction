@@ -1,3 +1,25 @@
+---
+component: AlertBanner
+package: "@8x8/oxygen-alertBanner"
+category: feedback_status
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[AlertBanner/props]]"
+  - "[[AlertBanner/tokens]]"
+  - "[[AlertBanner/accessibility]]"
+  - "[[AlertBanner/alert-banner-figma]]"
+  - "[[AlertBanner/alert-banner-audit]]"
+tags:
+  - oxygen
+  - component/AlertBanner
+  - role/examples
+  - stage/blocked
+  - category/feedback_status
+---
 # AlertBanner — Examples
 
 > **See also:** [alert-banner-figma.md](./alert-banner-figma.md) · [props.md](./props.md) ·

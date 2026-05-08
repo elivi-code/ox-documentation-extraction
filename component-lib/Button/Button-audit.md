@@ -342,6 +342,21 @@ warnings:
       enum also includes tertiary, tertiaryReversed, success, and destructive.
       These likely exist in a separate Figma component set (circular/control buttons).
       figma-extract should be run against those nodes to complete Figma coverage.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[Button/props]]"
+  - "[[Button/examples]]"
+  - "[[Button/tokens]]"
+  - "[[Button/accessibility]]"
+  - "[[Button/Button-figma]]"
+tags:
+  - oxygen
+  - component/Button
+  - role/audit
+  - stage/blocked
 ---
 
 # Button — Documentation Audit

@@ -1,3 +1,25 @@
+---
+component: AlertBanner
+package: "@8x8/oxygen-alertBanner"
+category: feedback_status
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[AlertBanner/props]]"
+  - "[[AlertBanner/examples]]"
+  - "[[AlertBanner/accessibility]]"
+  - "[[AlertBanner/alert-banner-figma]]"
+  - "[[AlertBanner/alert-banner-audit]]"
+tags:
+  - oxygen
+  - component/AlertBanner
+  - role/tokens
+  - stage/blocked
+  - category/feedback_status
+---
 # AlertBanner — Tokens
 
 > **See also:** [alert-banner-figma.md](./alert-banner-figma.md) · [props.md](./props.md) ·

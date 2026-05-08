@@ -1,3 +1,26 @@
+---
+component: Checkbox
+package: "@8x8/oxygen-checkbox"
+category: form_inputs
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Checkbox/props]]"
+  - "[[Checkbox/tokens]]"
+  - "[[Checkbox/accessibility]]"
+  - "[[Checkbox/checkbox-figma]]"
+  - "[[Checkbox/checkbox-pui]]"
+  - "[[Checkbox/checkbox-audit]]"
+tags:
+  - oxygen
+  - component/Checkbox
+  - role/examples
+  - stage/spec_ready
+  - category/form_inputs
+---
 # Checkbox — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

@@ -241,6 +241,22 @@ warnings:
       Calculated ratio: #6c6862 on #ffffff ≈ 4.6:1 which PASSES 3:1. The ⚠️ in
       accessibility.md should be updated to ✅ pending confirmation of the actual
       background context.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[ToggleButton/props]]"
+  - "[[ToggleButton/examples]]"
+  - "[[ToggleButton/tokens]]"
+  - "[[ToggleButton/accessibility]]"
+  - "[[ToggleButton/ToggleButton-figma]]"
+  - "[[ToggleButton/ToggleButton-pui]]"
+tags:
+  - oxygen
+  - component/ToggleButton
+  - role/audit
+  - stage/blocked
 ---
 
 # ToggleButton — Documentation Audit

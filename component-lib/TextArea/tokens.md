@@ -1,3 +1,26 @@
+---
+component: TextArea
+package: "@8x8/oxygen-textarea"
+category: form_inputs
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[TextArea/props]]"
+  - "[[TextArea/examples]]"
+  - "[[TextArea/accessibility]]"
+  - "[[TextArea/textarea-figma]]"
+  - "[[TextArea/textarea-pui]]"
+  - "[[TextArea/textarea-audit]]"
+tags:
+  - oxygen
+  - component/TextArea
+  - role/tokens
+  - stage/blocked
+  - category/form_inputs
+---
 # Textarea — Tokens
 
 > **See also:** [props.md](./props.md) · [examples.md](./examples.md) · [accessibility.md](./accessibility.md) · [textarea-figma.md](./textarea-figma.md) · [textarea-pui.md](./textarea-pui.md)

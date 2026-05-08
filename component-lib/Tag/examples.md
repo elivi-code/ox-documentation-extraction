@@ -1,3 +1,25 @@
+---
+component: Tag
+package: "@8x8/oxygen-tag"
+category: data_display
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Tag/props]]"
+  - "[[Tag/tokens]]"
+  - "[[Tag/accessibility]]"
+  - "[[Tag/Tag-figma]]"
+  - "[[Tag/Tag-audit]]"
+tags:
+  - oxygen
+  - component/Tag
+  - role/examples
+  - stage/spec_ready
+  - category/data_display
+---
 # Tag — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [Tag-figma.md](Tag-figma.md)

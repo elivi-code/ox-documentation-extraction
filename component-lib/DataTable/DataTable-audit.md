@@ -450,6 +450,21 @@ warnings:
       After GAP-007 is resolved (merging cell tokens into tokens.md),
       verify that all tokens are referenced by the correct component
       element in the merged spec.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[DataTable/props]]"
+  - "[[DataTable/examples]]"
+  - "[[DataTable/tokens]]"
+  - "[[DataTable/accessibility]]"
+  - "[[DataTable/DataTable-figma]]"
+tags:
+  - oxygen
+  - component/DataTable
+  - role/audit
+  - stage/blocked
 ---
 
 # DataTable — Audit Report

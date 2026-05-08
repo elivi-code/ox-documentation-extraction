@@ -1,3 +1,26 @@
+---
+component: Breadcrumbs
+package: "@8x8/oxygen-breadcrumbs"
+category: navigation
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Breadcrumbs/examples]]"
+  - "[[Breadcrumbs/tokens]]"
+  - "[[Breadcrumbs/accessibility]]"
+  - "[[Breadcrumbs/Breadcrumbs-figma]]"
+  - "[[Breadcrumbs/Breadcrumbs-pui]]"
+  - "[[Breadcrumbs/Breadcrumbs-audit]]"
+tags:
+  - oxygen
+  - component/Breadcrumbs
+  - role/props
+  - stage/spec_ready
+  - category/navigation
+---
 # Breadcrumbs — Props
 
 > **See also:** [examples.md](examples.md) | [tokens.md](tokens.md) | [accessibility.md](accessibility.md)

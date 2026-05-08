@@ -1,3 +1,26 @@
+---
+component: Label
+package: "@8x8/oxygen-label"
+category: data_display
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Label/props]]"
+  - "[[Label/examples]]"
+  - "[[Label/accessibility]]"
+  - "[[Label/Label-figma]]"
+  - "[[Label/label-pui]]"
+  - "[[Label/label-audit]]"
+tags:
+  - oxygen
+  - component/Label
+  - role/tokens
+  - stage/blocked
+  - category/data_display
+---
 # Label — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

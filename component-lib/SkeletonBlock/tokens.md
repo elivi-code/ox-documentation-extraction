@@ -1,3 +1,25 @@
+---
+component: SkeletonBlock
+package: "@8x8/oxygen-skeletons"
+category: feedback_status
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[SkeletonBlock/props]]"
+  - "[[SkeletonBlock/examples]]"
+  - "[[SkeletonBlock/accessibility]]"
+  - "[[SkeletonBlock/SkeletonBlock-figma]]"
+  - "[[SkeletonBlock/SkeletonBlock-audit]]"
+tags:
+  - oxygen
+  - component/SkeletonBlock
+  - role/tokens
+  - stage/blocked
+  - category/feedback_status
+---
 # SkeletonBlock — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [SkeletonBlock-figma.md](SkeletonBlock-figma.md)

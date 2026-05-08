@@ -1,3 +1,26 @@
+---
+component: Toast
+package: "@8x8/oxygen-toast"
+category: feedback_status
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Toast/props]]"
+  - "[[Toast/examples]]"
+  - "[[Toast/accessibility]]"
+  - "[[Toast/Toast-figma]]"
+  - "[[Toast/Toast-pui]]"
+  - "[[Toast/Toast-audit]]"
+tags:
+  - oxygen
+  - component/Toast
+  - role/tokens
+  - stage/spec_ready
+  - category/feedback_status
+---
 # Toast — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

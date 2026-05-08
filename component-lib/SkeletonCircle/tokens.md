@@ -1,3 +1,25 @@
+---
+component: SkeletonCircle
+package: "@8x8/oxygen-skeletons"
+category: feedback_status
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[SkeletonCircle/props]]"
+  - "[[SkeletonCircle/examples]]"
+  - "[[SkeletonCircle/accessibility]]"
+  - "[[SkeletonCircle/SkeletonCircle-figma]]"
+  - "[[SkeletonCircle/SkeletonCircle-audit]]"
+tags:
+  - oxygen
+  - component/SkeletonCircle
+  - role/tokens
+  - stage/blocked
+  - category/feedback_status
+---
 # SkeletonCircle — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [SkeletonCircle-figma.md](SkeletonCircle-figma.md)

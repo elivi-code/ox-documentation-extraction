@@ -1,3 +1,25 @@
+---
+component: Accordion
+package: "@8x8/oxygen-accordion"
+category: layout_overlay
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Accordion/props]]"
+  - "[[Accordion/examples]]"
+  - "[[Accordion/tokens]]"
+  - "[[Accordion/accessibility]]"
+  - "[[Accordion/accordion-audit]]"
+tags:
+  - oxygen
+  - component/Accordion
+  - role/figma
+  - stage/spec_ready
+  - category/layout_overlay
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 8135:8877 (doc page) · 44417:100356 (Accordion component set) · 8298:8979 (_header atom) -->

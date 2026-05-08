@@ -1,3 +1,25 @@
+---
+component: Select
+package: "@8x8/oxygen-select"
+category: form_inputs
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Select/examples]]"
+  - "[[Select/tokens]]"
+  - "[[Select/accessibility]]"
+  - "[[Select/select-pui]]"
+  - "[[Select/Select-audit]]"
+tags:
+  - oxygen
+  - component/Select
+  - role/props
+  - stage/blocked
+  - category/form_inputs
+---
 # Select — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

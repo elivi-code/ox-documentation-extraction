@@ -1,3 +1,26 @@
+---
+component: Link
+package: "@8x8/oxygen-link"
+category: navigation
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Link/props]]"
+  - "[[Link/examples]]"
+  - "[[Link/accessibility]]"
+  - "[[Link/Link-figma]]"
+  - "[[Link/Link-usage]]"
+  - "[[Link/Link-audit]]"
+tags:
+  - oxygen
+  - component/Link
+  - role/tokens
+  - stage/blocked
+  - category/navigation
+---
 # Link — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

@@ -1,3 +1,26 @@
+---
+component: Label
+package: "@8x8/oxygen-label"
+category: data_display
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Label/examples]]"
+  - "[[Label/tokens]]"
+  - "[[Label/accessibility]]"
+  - "[[Label/Label-figma]]"
+  - "[[Label/label-pui]]"
+  - "[[Label/label-audit]]"
+tags:
+  - oxygen
+  - component/Label
+  - role/props
+  - stage/blocked
+  - category/data_display
+---
 # Label — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

@@ -1,3 +1,26 @@
+---
+component: Modal
+package: "@8x8/oxygen-modal"
+category: layout_overlay
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Modal/props]]"
+  - "[[Modal/tokens]]"
+  - "[[Modal/accessibility]]"
+  - "[[Modal/Modal-figma]]"
+  - "[[Modal/Modal-pui]]"
+  - "[[Modal/Modal-audit]]"
+tags:
+  - oxygen
+  - component/Modal
+  - role/examples
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # Modal — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [Modal-figma.md](Modal-figma.md)

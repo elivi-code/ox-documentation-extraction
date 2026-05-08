@@ -1,3 +1,26 @@
+---
+component: ToggleButton
+package: "@8x8/oxygen-toggleButton"
+category: form_inputs
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[ToggleButton/props]]"
+  - "[[ToggleButton/tokens]]"
+  - "[[ToggleButton/accessibility]]"
+  - "[[ToggleButton/ToggleButton-figma]]"
+  - "[[ToggleButton/ToggleButton-pui]]"
+  - "[[ToggleButton/ToggleButton-audit]]"
+tags:
+  - oxygen
+  - component/ToggleButton
+  - role/examples
+  - stage/blocked
+  - category/form_inputs
+---
 # ToggleButton — Examples
 
 > **See also:** [props.md](./props.md) · [tokens.md](./tokens.md) · [accessibility.md](./accessibility.md) · [ToggleButton-figma.md](./ToggleButton-figma.md)

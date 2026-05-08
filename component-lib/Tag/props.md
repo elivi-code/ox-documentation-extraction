@@ -1,3 +1,25 @@
+---
+component: Tag
+package: "@8x8/oxygen-tag"
+category: data_display
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Tag/examples]]"
+  - "[[Tag/tokens]]"
+  - "[[Tag/accessibility]]"
+  - "[[Tag/Tag-figma]]"
+  - "[[Tag/Tag-audit]]"
+tags:
+  - oxygen
+  - component/Tag
+  - role/props
+  - stage/spec_ready
+  - category/data_display
+---
 # Tag — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [Tag-figma.md](Tag-figma.md)

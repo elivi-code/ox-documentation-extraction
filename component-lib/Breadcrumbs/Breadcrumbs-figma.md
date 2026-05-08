@@ -1,3 +1,26 @@
+---
+component: Breadcrumbs
+package: "@8x8/oxygen-breadcrumbs"
+category: navigation
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Breadcrumbs/props]]"
+  - "[[Breadcrumbs/examples]]"
+  - "[[Breadcrumbs/tokens]]"
+  - "[[Breadcrumbs/accessibility]]"
+  - "[[Breadcrumbs/Breadcrumbs-pui]]"
+  - "[[Breadcrumbs/Breadcrumbs-audit]]"
+tags:
+  - oxygen
+  - component/Breadcrumbs
+  - role/figma
+  - stage/spec_ready
+  - category/navigation
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 21927:40413 -->

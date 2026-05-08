@@ -1,3 +1,25 @@
+---
+component: SkeletonCircle
+package: "@8x8/oxygen-skeletons"
+category: feedback_status
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[SkeletonCircle/props]]"
+  - "[[SkeletonCircle/examples]]"
+  - "[[SkeletonCircle/tokens]]"
+  - "[[SkeletonCircle/SkeletonCircle-figma]]"
+  - "[[SkeletonCircle/SkeletonCircle-audit]]"
+tags:
+  - oxygen
+  - component/SkeletonCircle
+  - role/accessibility
+  - stage/blocked
+  - category/feedback_status
+---
 # SkeletonCircle — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [SkeletonCircle-figma.md](SkeletonCircle-figma.md)

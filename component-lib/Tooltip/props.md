@@ -1,3 +1,27 @@
+---
+component: Tooltip
+package: "@8x8/oxygen-tooltip"
+category: overlays_contextual
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Tooltip/examples]]"
+  - "[[Tooltip/tokens]]"
+  - "[[Tooltip/accessibility]]"
+  - "[[Tooltip/Tooltip-figma]]"
+  - "[[Tooltip/Tooltip-usage]]"
+  - "[[Tooltip/Tooltip-pui]]"
+  - "[[Tooltip/Tooltip-audit]]"
+tags:
+  - oxygen
+  - component/Tooltip
+  - role/props
+  - stage/blocked
+  - category/overlays_contextual
+---
 # Tooltip — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

@@ -1,3 +1,27 @@
+---
+component: Tabs
+package: "@8x8/oxygen-tabs"
+category: layout_overlay
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_complete
+pipeline_note: "Canonical spec written — pipeline complete"
+audit_verdict: YES
+siblings:
+  - "[[Tabs/props]]"
+  - "[[Tabs/examples]]"
+  - "[[Tabs/accessibility]]"
+  - "[[Tabs/Tabs-figma]]"
+  - "[[Tabs/Tabs-pui]]"
+  - "[[Tabs/Tabs-audit]]"
+  - "[[Tabs/Tabs-spec]]"
+tags:
+  - oxygen
+  - component/Tabs
+  - role/tokens
+  - stage/spec_complete
+  - category/layout_overlay
+---
 # Tabs — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [Tabs-figma.md](Tabs-figma.md)

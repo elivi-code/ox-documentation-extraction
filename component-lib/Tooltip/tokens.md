@@ -1,3 +1,27 @@
+---
+component: Tooltip
+package: "@8x8/oxygen-tooltip"
+category: overlays_contextual
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Tooltip/props]]"
+  - "[[Tooltip/examples]]"
+  - "[[Tooltip/accessibility]]"
+  - "[[Tooltip/Tooltip-figma]]"
+  - "[[Tooltip/Tooltip-usage]]"
+  - "[[Tooltip/Tooltip-pui]]"
+  - "[[Tooltip/Tooltip-audit]]"
+tags:
+  - oxygen
+  - component/Tooltip
+  - role/tokens
+  - stage/blocked
+  - category/overlays_contextual
+---
 # Tooltip — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

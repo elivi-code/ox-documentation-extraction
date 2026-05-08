@@ -1,3 +1,27 @@
+---
+component: Tabs
+package: "@8x8/oxygen-tabs"
+category: layout_overlay
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: spec_complete
+pipeline_note: "Canonical spec written — pipeline complete"
+audit_verdict: YES
+siblings:
+  - "[[Tabs/props]]"
+  - "[[Tabs/examples]]"
+  - "[[Tabs/tokens]]"
+  - "[[Tabs/accessibility]]"
+  - "[[Tabs/Tabs-figma]]"
+  - "[[Tabs/Tabs-audit]]"
+  - "[[Tabs/Tabs-spec]]"
+tags:
+  - oxygen
+  - component/Tabs
+  - role/pui
+  - stage/spec_complete
+  - category/layout_overlay
+---
 <!-- SOURCE: platform-ui-mcp -->
 <!-- EXTRACTED: 2026-04-30 -->
 <!-- COMPONENT: Tabs -->

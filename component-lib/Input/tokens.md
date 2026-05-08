@@ -1,3 +1,26 @@
+---
+component: Input
+package: "@8x8/oxygen-input"
+category: form_inputs
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Input/props]]"
+  - "[[Input/examples]]"
+  - "[[Input/accessibility]]"
+  - "[[Input/Input-figma]]"
+  - "[[Input/Input-pui]]"
+  - "[[Input/Input-audit]]"
+tags:
+  - oxygen
+  - component/Input
+  - role/tokens
+  - stage/blocked
+  - category/form_inputs
+---
 # Input — Tokens
 
 > **See also:** [Input-figma.md](./Input-figma.md) · [props.md](./props.md) ·

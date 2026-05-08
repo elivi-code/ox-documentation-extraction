@@ -1,3 +1,24 @@
+---
+component: SlideOut
+package: "@8x8/oxygen-slide-out"
+category: layout_overlay
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: PARTIAL
+siblings:
+  - "[[SlideOut/props]]"
+  - "[[SlideOut/examples]]"
+  - "[[SlideOut/accessibility]]"
+  - "[[SlideOut/SlideOut-audit]]"
+tags:
+  - oxygen
+  - component/SlideOut
+  - role/tokens
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # SlideOut — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

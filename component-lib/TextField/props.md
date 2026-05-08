@@ -1,3 +1,26 @@
+---
+component: TextField
+package: "@8x8/oxygen-textField"
+category: form_inputs
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[TextField/examples]]"
+  - "[[TextField/tokens]]"
+  - "[[TextField/accessibility]]"
+  - "[[TextField/figma]]"
+  - "[[TextField/TextField-pui]]"
+  - "[[TextField/TextField-audit]]"
+tags:
+  - oxygen
+  - component/TextField
+  - role/props
+  - stage/spec_ready
+  - category/form_inputs
+---
 # TextField — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [figma.md](figma.md)

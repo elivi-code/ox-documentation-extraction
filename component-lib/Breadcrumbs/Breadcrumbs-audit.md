@@ -310,6 +310,22 @@ warnings:
       predefined combinations — no explicit "items in overflow" slot API is documented
       in props.md. This design intent should be confirmed with the Oxygen team before
       the overflow menu slot is described in the spec.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[Breadcrumbs/props]]"
+  - "[[Breadcrumbs/examples]]"
+  - "[[Breadcrumbs/tokens]]"
+  - "[[Breadcrumbs/accessibility]]"
+  - "[[Breadcrumbs/Breadcrumbs-figma]]"
+  - "[[Breadcrumbs/Breadcrumbs-pui]]"
+tags:
+  - oxygen
+  - component/Breadcrumbs
+  - role/audit
+  - stage/spec_ready
 ---
 
 # Breadcrumbs — Audit Report

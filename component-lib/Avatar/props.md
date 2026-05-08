@@ -1,3 +1,25 @@
+---
+component: Avatar
+package: "@8x8/oxygen-avatar"
+category: data_display
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Avatar/examples]]"
+  - "[[Avatar/tokens]]"
+  - "[[Avatar/accessibility]]"
+  - "[[Avatar/Avatar-figma]]"
+  - "[[Avatar/Avatar-audit]]"
+tags:
+  - oxygen
+  - component/Avatar
+  - role/props
+  - stage/blocked
+  - category/data_display
+---
 # Avatar — Props
 
 > **See also:** [examples.md](./examples.md) · [tokens.md](./tokens.md) · [accessibility.md](./accessibility.md)

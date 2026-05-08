@@ -1,3 +1,26 @@
+---
+component: Toast
+package: "@8x8/oxygen-toast"
+category: feedback_status
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Toast/props]]"
+  - "[[Toast/examples]]"
+  - "[[Toast/tokens]]"
+  - "[[Toast/accessibility]]"
+  - "[[Toast/Toast-pui]]"
+  - "[[Toast/Toast-audit]]"
+tags:
+  - oxygen
+  - component/Toast
+  - role/figma
+  - stage/spec_ready
+  - category/feedback_status
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 1823:0 (Notification canvas) · 26764:41883 (Notification component set) · 5549:4130 (Inline Notification component set) · 9141:14534 (Interaction component set) -->

@@ -1,3 +1,26 @@
+---
+component: Modal
+package: "@8x8/oxygen-modal"
+category: layout_overlay
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Modal/props]]"
+  - "[[Modal/examples]]"
+  - "[[Modal/tokens]]"
+  - "[[Modal/accessibility]]"
+  - "[[Modal/Modal-pui]]"
+  - "[[Modal/Modal-audit]]"
+tags:
+  - oxygen
+  - component/Modal
+  - role/figma
+  - stage/spec_ready
+  - category/layout_overlay
+---
 <!-- SOURCE: Figma MCP (claude.ai) + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 2625:167 (Modal canvas) · 29083:47583 (Custom Modal) · 30172:50869 (Dialog Modal) -->

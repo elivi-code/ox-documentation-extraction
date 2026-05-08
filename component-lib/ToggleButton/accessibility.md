@@ -1,3 +1,26 @@
+---
+component: ToggleButton
+package: "@8x8/oxygen-toggleButton"
+category: form_inputs
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[ToggleButton/props]]"
+  - "[[ToggleButton/examples]]"
+  - "[[ToggleButton/tokens]]"
+  - "[[ToggleButton/ToggleButton-figma]]"
+  - "[[ToggleButton/ToggleButton-pui]]"
+  - "[[ToggleButton/ToggleButton-audit]]"
+tags:
+  - oxygen
+  - component/ToggleButton
+  - role/accessibility
+  - stage/blocked
+  - category/form_inputs
+---
 # ToggleButton — Accessibility
 
 > **See also:** [props.md](./props.md) · [examples.md](./examples.md) · [tokens.md](./tokens.md) · [ToggleButton-figma.md](./ToggleButton-figma.md)

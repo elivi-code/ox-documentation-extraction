@@ -1,3 +1,19 @@
+---
+component: Toaster
+package: "@8x8/oxygen-toaster"
+category: feedback_status
+role: note
+role_description: "Component notes — special handling or deprecation context"
+pipeline_stage: extracted
+pipeline_note: "Core files present; audit not yet run"
+siblings: []
+tags:
+  - oxygen
+  - component/Toaster
+  - role/note
+  - stage/extracted
+  - category/feedback_status
+---
 # Toaster — Extraction Note
 
 > **No separate Figma extraction required.** Toaster shares Toast's visual design.

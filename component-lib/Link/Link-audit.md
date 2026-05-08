@@ -336,6 +336,22 @@ warnings:
     dimension: accessibility
     finding: "accessibility.md documents WCAG 1.4.1 (Use of Color) requiring a non-color link indicator, but only the hover/focus/active states show underlines. The rest state has no underline. This may conflict with 1.4.1 for inline links."
     action: "Confirm whether rest-state underline is required for inline links. If not, document the design decision and contrast-based justification."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[Link/props]]"
+  - "[[Link/examples]]"
+  - "[[Link/tokens]]"
+  - "[[Link/accessibility]]"
+  - "[[Link/Link-figma]]"
+  - "[[Link/Link-usage]]"
+tags:
+  - oxygen
+  - component/Link
+  - role/audit
+  - stage/blocked
 ---
 
 # Link — Documentation Audit

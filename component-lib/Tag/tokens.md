@@ -1,3 +1,25 @@
+---
+component: Tag
+package: "@8x8/oxygen-tag"
+category: data_display
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Tag/props]]"
+  - "[[Tag/examples]]"
+  - "[[Tag/accessibility]]"
+  - "[[Tag/Tag-figma]]"
+  - "[[Tag/Tag-audit]]"
+tags:
+  - oxygen
+  - component/Tag
+  - role/tokens
+  - stage/spec_ready
+  - category/data_display
+---
 # Tag — Design Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [Tag-figma.md](Tag-figma.md)

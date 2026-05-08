@@ -230,6 +230,23 @@ warnings:
       tabsDisclosure inherits an 'active' press state from Icon Button, but the tabs
       COMPONENT_SET exposes only 'rest' and 'hover' variant axes. Press-state visual (if any)
       is undocumented.
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_complete
+pipeline_note: "Canonical spec written — pipeline complete"
+siblings:
+  - "[[Tabs/props]]"
+  - "[[Tabs/examples]]"
+  - "[[Tabs/tokens]]"
+  - "[[Tabs/accessibility]]"
+  - "[[Tabs/Tabs-figma]]"
+  - "[[Tabs/Tabs-pui]]"
+  - "[[Tabs/Tabs-spec]]"
+tags:
+  - oxygen
+  - component/Tabs
+  - role/audit
+  - stage/spec_complete
 ---
 
 # Tabs — Documentation Audit

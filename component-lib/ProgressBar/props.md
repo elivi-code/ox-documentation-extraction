@@ -1,3 +1,25 @@
+---
+component: ProgressBar
+package: "@8x8/oxygen-loaders"
+category: feedback_status
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[ProgressBar/examples]]"
+  - "[[ProgressBar/tokens]]"
+  - "[[ProgressBar/accessibility]]"
+  - "[[ProgressBar/ProgressBar-figma]]"
+  - "[[ProgressBar/ProgressBar-audit]]"
+tags:
+  - oxygen
+  - component/ProgressBar
+  - role/props
+  - stage/spec_ready
+  - category/feedback_status
+---
 # ProgressBar — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

@@ -1,3 +1,25 @@
+---
+component: DataTable
+package: "@8x8/oxygen-dataTable"
+category: data_display
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[DataTable/props]]"
+  - "[[DataTable/tokens]]"
+  - "[[DataTable/accessibility]]"
+  - "[[DataTable/DataTable-figma]]"
+  - "[[DataTable/DataTable-audit]]"
+tags:
+  - oxygen
+  - component/DataTable
+  - role/examples
+  - stage/blocked
+  - category/data_display
+---
 # DataTable — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

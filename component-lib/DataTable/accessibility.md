@@ -1,3 +1,25 @@
+---
+component: DataTable
+package: "@8x8/oxygen-dataTable"
+category: data_display
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[DataTable/props]]"
+  - "[[DataTable/examples]]"
+  - "[[DataTable/tokens]]"
+  - "[[DataTable/DataTable-figma]]"
+  - "[[DataTable/DataTable-audit]]"
+tags:
+  - oxygen
+  - component/DataTable
+  - role/accessibility
+  - stage/blocked
+  - category/data_display
+---
 # DataTable — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

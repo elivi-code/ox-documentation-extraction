@@ -1,3 +1,25 @@
+---
+component: SkeletonCircle
+package: "@8x8/oxygen-skeletons"
+category: feedback_status
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[SkeletonCircle/props]]"
+  - "[[SkeletonCircle/examples]]"
+  - "[[SkeletonCircle/tokens]]"
+  - "[[SkeletonCircle/accessibility]]"
+  - "[[SkeletonCircle/SkeletonCircle-audit]]"
+tags:
+  - oxygen
+  - component/SkeletonCircle
+  - role/figma
+  - stage/blocked
+  - category/feedback_status
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 31984:56124 -->

@@ -1,3 +1,26 @@
+---
+component: Pagination
+package: "@8x8/oxygen-pagination"
+category: navigation
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Pagination/examples]]"
+  - "[[Pagination/tokens]]"
+  - "[[Pagination/accessibility]]"
+  - "[[Pagination/Pagination-figma]]"
+  - "[[Pagination/Pagination-usage]]"
+  - "[[Pagination/Pagination-audit]]"
+tags:
+  - oxygen
+  - component/Pagination
+  - role/props
+  - stage/spec_ready
+  - category/navigation
+---
 # Pagination — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

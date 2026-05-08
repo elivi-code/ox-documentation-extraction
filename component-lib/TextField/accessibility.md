@@ -1,3 +1,26 @@
+---
+component: TextField
+package: "@8x8/oxygen-textField"
+category: form_inputs
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[TextField/props]]"
+  - "[[TextField/examples]]"
+  - "[[TextField/tokens]]"
+  - "[[TextField/figma]]"
+  - "[[TextField/TextField-pui]]"
+  - "[[TextField/TextField-audit]]"
+tags:
+  - oxygen
+  - component/TextField
+  - role/accessibility
+  - stage/spec_ready
+  - category/form_inputs
+---
 # TextField — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [figma.md](figma.md)

@@ -262,6 +262,21 @@ warnings:
     dimension: props
     confidence: heuristic
     finding: "The 'children' prop is listed as default: null in get-component-info but default: null with required: true — this is a contradiction in the MCP data. Required props should not have null defaults."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[Avatar/props]]"
+  - "[[Avatar/examples]]"
+  - "[[Avatar/tokens]]"
+  - "[[Avatar/accessibility]]"
+  - "[[Avatar/Avatar-figma]]"
+tags:
+  - oxygen
+  - component/Avatar
+  - role/audit
+  - stage/blocked
 ---
 
 # Avatar — Documentation Audit

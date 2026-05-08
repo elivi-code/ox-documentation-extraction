@@ -1,3 +1,22 @@
+---
+component: Radio
+package: "@8x8/oxygen-radio"
+category: form_inputs
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: extracted
+pipeline_note: "Core files present; audit not yet run"
+siblings:
+  - "[[Radio/props]]"
+  - "[[Radio/examples]]"
+  - "[[Radio/tokens]]"
+tags:
+  - oxygen
+  - component/Radio
+  - role/accessibility
+  - stage/extracted
+  - category/form_inputs
+---
 # Radio — Accessibility
 
 > **See also:** [Props](props.md) · [Examples](examples.md) · [Tokens](tokens.md)

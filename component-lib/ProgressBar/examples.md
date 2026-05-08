@@ -1,3 +1,25 @@
+---
+component: ProgressBar
+package: "@8x8/oxygen-loaders"
+category: feedback_status
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[ProgressBar/props]]"
+  - "[[ProgressBar/tokens]]"
+  - "[[ProgressBar/accessibility]]"
+  - "[[ProgressBar/ProgressBar-figma]]"
+  - "[[ProgressBar/ProgressBar-audit]]"
+tags:
+  - oxygen
+  - component/ProgressBar
+  - role/examples
+  - stage/spec_ready
+  - category/feedback_status
+---
 # ProgressBar — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

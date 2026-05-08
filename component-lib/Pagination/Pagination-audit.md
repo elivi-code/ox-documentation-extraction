@@ -277,6 +277,22 @@ warnings:
     dimension: accessibility
     confidence: heuristic
     finding: "accessibility.md is comprehensive but entirely inferred. The ARIA labels suggested (e.g. aria-label='Pagination') may not match actual component implementation. Spot-check against rendered DOM before publishing."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[Pagination/props]]"
+  - "[[Pagination/examples]]"
+  - "[[Pagination/tokens]]"
+  - "[[Pagination/accessibility]]"
+  - "[[Pagination/Pagination-figma]]"
+  - "[[Pagination/Pagination-usage]]"
+tags:
+  - oxygen
+  - component/Pagination
+  - role/audit
+  - stage/spec_ready
 ---
 
 # Pagination — Audit Report (Updated 2026-05-05)

@@ -1,3 +1,26 @@
+---
+component: Link
+package: "@8x8/oxygen-link"
+category: navigation
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Link/props]]"
+  - "[[Link/examples]]"
+  - "[[Link/tokens]]"
+  - "[[Link/Link-figma]]"
+  - "[[Link/Link-usage]]"
+  - "[[Link/Link-audit]]"
+tags:
+  - oxygen
+  - component/Link
+  - role/accessibility
+  - stage/blocked
+  - category/navigation
+---
 # Link — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

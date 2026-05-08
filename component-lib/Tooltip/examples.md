@@ -1,3 +1,27 @@
+---
+component: Tooltip
+package: "@8x8/oxygen-tooltip"
+category: overlays_contextual
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Tooltip/props]]"
+  - "[[Tooltip/tokens]]"
+  - "[[Tooltip/accessibility]]"
+  - "[[Tooltip/Tooltip-figma]]"
+  - "[[Tooltip/Tooltip-usage]]"
+  - "[[Tooltip/Tooltip-pui]]"
+  - "[[Tooltip/Tooltip-audit]]"
+tags:
+  - oxygen
+  - component/Tooltip
+  - role/examples
+  - stage/blocked
+  - category/overlays_contextual
+---
 # Tooltip — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

@@ -1,3 +1,27 @@
+---
+component: Tabs
+package: "@8x8/oxygen-tabs"
+category: layout_overlay
+role: spec
+role_description: "Canonical component spec — merged output of doc-rewrite; source of truth for docusaurus + storybook"
+pipeline_stage: spec_complete
+pipeline_note: "Canonical spec written — pipeline complete"
+audit_verdict: YES
+siblings:
+  - "[[Tabs/props]]"
+  - "[[Tabs/examples]]"
+  - "[[Tabs/tokens]]"
+  - "[[Tabs/accessibility]]"
+  - "[[Tabs/Tabs-figma]]"
+  - "[[Tabs/Tabs-pui]]"
+  - "[[Tabs/Tabs-audit]]"
+tags:
+  - oxygen
+  - component/Tabs
+  - role/spec
+  - stage/spec_complete
+  - category/layout_overlay
+---
 # Tabs — Component Spec
 
 > **Status:** Under review

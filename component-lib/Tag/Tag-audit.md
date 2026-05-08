@@ -220,6 +220,21 @@ warnings:
     dimension: figma
     finding: "The Figma examples page uses 'Amber' as the display name for the yellow variant in the RAG pattern (Red/Amber/Green). In the React API the prop value is variant='yellow'. If the spec or usage guidance ever refers to 'Amber', it should cross-reference variant='yellow' to prevent confusion."
     action: "When writing Tag-spec.md, ensure that RAG guidance maps 'Amber' to variant='yellow' explicitly."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[Tag/props]]"
+  - "[[Tag/examples]]"
+  - "[[Tag/tokens]]"
+  - "[[Tag/accessibility]]"
+  - "[[Tag/Tag-figma]]"
+tags:
+  - oxygen
+  - component/Tag
+  - role/audit
+  - stage/spec_ready
 ---
 
 # Tag — Documentation Audit

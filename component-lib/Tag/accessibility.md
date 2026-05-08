@@ -1,3 +1,25 @@
+---
+component: Tag
+package: "@8x8/oxygen-tag"
+category: data_display
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Tag/props]]"
+  - "[[Tag/examples]]"
+  - "[[Tag/tokens]]"
+  - "[[Tag/Tag-figma]]"
+  - "[[Tag/Tag-audit]]"
+tags:
+  - oxygen
+  - component/Tag
+  - role/accessibility
+  - stage/spec_ready
+  - category/data_display
+---
 # Tag — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [Tag-figma.md](Tag-figma.md)

@@ -284,6 +284,22 @@ warnings:
   - id: WARN-004
     confidence: heuristic
     finding: "Placeholder text contrast (#6C6862 on #F4F3EE) is a likely WCAG 1.4.3 failure risk. At estimated contrast ~3.8:1 this falls below the 4.5:1 AA threshold for normal text."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+siblings:
+  - "[[Input/props]]"
+  - "[[Input/examples]]"
+  - "[[Input/tokens]]"
+  - "[[Input/accessibility]]"
+  - "[[Input/Input-figma]]"
+  - "[[Input/Input-pui]]"
+tags:
+  - oxygen
+  - component/Input
+  - role/audit
+  - stage/blocked
 ---
 
 # Input — Audit Report

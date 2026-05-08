@@ -1,3 +1,26 @@
+---
+component: TextField
+package: "@8x8/oxygen-textField"
+category: form_inputs
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[TextField/props]]"
+  - "[[TextField/tokens]]"
+  - "[[TextField/accessibility]]"
+  - "[[TextField/figma]]"
+  - "[[TextField/TextField-pui]]"
+  - "[[TextField/TextField-audit]]"
+tags:
+  - oxygen
+  - component/TextField
+  - role/examples
+  - stage/spec_ready
+  - category/form_inputs
+---
 # TextField — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [figma.md](figma.md)

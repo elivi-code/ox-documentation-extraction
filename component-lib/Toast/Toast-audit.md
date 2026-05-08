@@ -244,6 +244,22 @@ warnings:
       Interaction variants are implemented via `@8x8/oxygen-toast` internally, the
       component surface is wider than currently documented.
     advisory: "Confirm with engineering that the Interaction component set has no relationship to @8x8/oxygen-toast or @8x8/oxygen-toaster."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+siblings:
+  - "[[Toast/props]]"
+  - "[[Toast/examples]]"
+  - "[[Toast/tokens]]"
+  - "[[Toast/accessibility]]"
+  - "[[Toast/Toast-figma]]"
+  - "[[Toast/Toast-pui]]"
+tags:
+  - oxygen
+  - component/Toast
+  - role/audit
+  - stage/spec_ready
 ---
 
 # Toast — Audit Report

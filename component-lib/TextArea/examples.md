@@ -1,3 +1,26 @@
+---
+component: TextArea
+package: "@8x8/oxygen-textarea"
+category: form_inputs
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[TextArea/props]]"
+  - "[[TextArea/tokens]]"
+  - "[[TextArea/accessibility]]"
+  - "[[TextArea/textarea-figma]]"
+  - "[[TextArea/textarea-pui]]"
+  - "[[TextArea/textarea-audit]]"
+tags:
+  - oxygen
+  - component/TextArea
+  - role/examples
+  - stage/blocked
+  - category/form_inputs
+---
 # Textarea — Examples
 
 > **See also:** [props.md](./props.md) · [tokens.md](./tokens.md) · [accessibility.md](./accessibility.md) · [textarea-figma.md](./textarea-figma.md) · [textarea-pui.md](./textarea-pui.md)

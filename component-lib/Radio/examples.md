@@ -1,3 +1,22 @@
+---
+component: Radio
+package: "@8x8/oxygen-radio"
+category: form_inputs
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: extracted
+pipeline_note: "Core files present; audit not yet run"
+siblings:
+  - "[[Radio/props]]"
+  - "[[Radio/tokens]]"
+  - "[[Radio/accessibility]]"
+tags:
+  - oxygen
+  - component/Radio
+  - role/examples
+  - stage/extracted
+  - category/form_inputs
+---
 # Radio — Examples
 
 > **See also:** [Props](props.md) · [Tokens](tokens.md) · [Accessibility](accessibility.md)

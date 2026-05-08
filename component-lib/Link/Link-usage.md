@@ -1,3 +1,26 @@
+---
+component: Link
+package: "@8x8/oxygen-link"
+category: navigation
+role: usage
+role_description: "Usage guidelines — Do/Don't editorial guidance extracted from Figma examples page"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Link/props]]"
+  - "[[Link/examples]]"
+  - "[[Link/tokens]]"
+  - "[[Link/accessibility]]"
+  - "[[Link/Link-figma]]"
+  - "[[Link/Link-audit]]"
+tags:
+  - oxygen
+  - component/Link
+  - role/usage
+  - stage/blocked
+  - category/navigation
+---
 <!-- SOURCE: Figma — node 58394:123 (UI-components file) -->
 <!-- PAGE: "How to use text links in prototypes" + "Examples of use in UI" -->
 <!-- SECTION: Narrative documentation page — NOT the ✅ Do / ❌ Don't card format -->

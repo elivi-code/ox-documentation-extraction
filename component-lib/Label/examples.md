@@ -1,3 +1,26 @@
+---
+component: Label
+package: "@8x8/oxygen-label"
+category: data_display
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Label/props]]"
+  - "[[Label/tokens]]"
+  - "[[Label/accessibility]]"
+  - "[[Label/Label-figma]]"
+  - "[[Label/label-pui]]"
+  - "[[Label/label-audit]]"
+tags:
+  - oxygen
+  - component/Label
+  - role/examples
+  - stage/blocked
+  - category/data_display
+---
 # Label — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

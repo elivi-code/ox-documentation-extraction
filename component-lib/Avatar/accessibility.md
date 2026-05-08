@@ -1,3 +1,25 @@
+---
+component: Avatar
+package: "@8x8/oxygen-avatar"
+category: data_display
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Avatar/props]]"
+  - "[[Avatar/examples]]"
+  - "[[Avatar/tokens]]"
+  - "[[Avatar/Avatar-figma]]"
+  - "[[Avatar/Avatar-audit]]"
+tags:
+  - oxygen
+  - component/Avatar
+  - role/accessibility
+  - stage/blocked
+  - category/data_display
+---
 # Avatar — Accessibility
 
 > **See also:** [props.md](./props.md) · [tokens.md](./tokens.md) · [examples.md](./examples.md)

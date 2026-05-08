@@ -1,3 +1,25 @@
+---
+component: Avatar
+package: "@8x8/oxygen-avatar"
+category: data_display
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Avatar/props]]"
+  - "[[Avatar/examples]]"
+  - "[[Avatar/tokens]]"
+  - "[[Avatar/accessibility]]"
+  - "[[Avatar/Avatar-audit]]"
+tags:
+  - oxygen
+  - component/Avatar
+  - role/figma
+  - stage/blocked
+  - category/data_display
+---
 <!-- SOURCE: Figma MCP + Oxygen MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 2073:11085 -->

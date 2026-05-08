@@ -1,3 +1,26 @@
+---
+component: TextField
+package: "@8x8/oxygen-textField"
+category: form_inputs
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[TextField/props]]"
+  - "[[TextField/examples]]"
+  - "[[TextField/accessibility]]"
+  - "[[TextField/figma]]"
+  - "[[TextField/TextField-pui]]"
+  - "[[TextField/TextField-audit]]"
+tags:
+  - oxygen
+  - component/TextField
+  - role/tokens
+  - stage/spec_ready
+  - category/form_inputs
+---
 # TextField — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [figma.md](figma.md)

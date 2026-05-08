@@ -1,3 +1,26 @@
+---
+component: Pagination
+package: "@8x8/oxygen-pagination"
+category: navigation
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Pagination/props]]"
+  - "[[Pagination/tokens]]"
+  - "[[Pagination/accessibility]]"
+  - "[[Pagination/Pagination-figma]]"
+  - "[[Pagination/Pagination-usage]]"
+  - "[[Pagination/Pagination-audit]]"
+tags:
+  - oxygen
+  - component/Pagination
+  - role/examples
+  - stage/spec_ready
+  - category/navigation
+---
 # Pagination — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

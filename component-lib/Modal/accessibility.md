@@ -1,3 +1,26 @@
+---
+component: Modal
+package: "@8x8/oxygen-modal"
+category: layout_overlay
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Modal/props]]"
+  - "[[Modal/examples]]"
+  - "[[Modal/tokens]]"
+  - "[[Modal/Modal-figma]]"
+  - "[[Modal/Modal-pui]]"
+  - "[[Modal/Modal-audit]]"
+tags:
+  - oxygen
+  - component/Modal
+  - role/accessibility
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # Modal — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [Modal-figma.md](Modal-figma.md)

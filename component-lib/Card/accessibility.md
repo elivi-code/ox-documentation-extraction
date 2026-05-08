@@ -1,3 +1,25 @@
+---
+component: Card
+package: "@8x8/oxygen-card"
+category: layout_overlay
+role: accessibility
+role_description: "Accessibility — ARIA roles, keyboard interactions, and WCAG 2.1 AA guidance"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Card/props]]"
+  - "[[Card/examples]]"
+  - "[[Card/tokens]]"
+  - "[[Card/Card-figma]]"
+  - "[[Card/Card-audit]]"
+tags:
+  - oxygen
+  - component/Card
+  - role/accessibility
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # Card — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

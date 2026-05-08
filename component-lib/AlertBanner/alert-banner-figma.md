@@ -1,3 +1,25 @@
+---
+component: AlertBanner
+package: "@8x8/oxygen-alertBanner"
+category: feedback_status
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[AlertBanner/props]]"
+  - "[[AlertBanner/examples]]"
+  - "[[AlertBanner/tokens]]"
+  - "[[AlertBanner/accessibility]]"
+  - "[[AlertBanner/alert-banner-audit]]"
+tags:
+  - oxygen
+  - component/AlertBanner
+  - role/figma
+  - stage/blocked
+  - category/feedback_status
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 31568:56098 (canvas) / COMPONENT_SET: 13899:15489 -->

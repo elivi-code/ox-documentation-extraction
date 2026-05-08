@@ -1,3 +1,25 @@
+---
+component: Slider
+package: "@8x8/oxygen-slider"
+category: form_inputs
+role: tokens
+role_description: "Design tokens — color, spacing, and typography token bindings"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: PARTIAL
+siblings:
+  - "[[Slider/props]]"
+  - "[[Slider/examples]]"
+  - "[[Slider/accessibility]]"
+  - "[[Slider/slider-pui]]"
+  - "[[Slider/slider-audit]]"
+tags:
+  - oxygen
+  - component/Slider
+  - role/tokens
+  - stage/spec_ready
+  - category/form_inputs
+---
 # Slider — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [slider-pui.md](slider-pui.md)

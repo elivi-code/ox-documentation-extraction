@@ -1,3 +1,25 @@
+---
+component: Card
+package: "@8x8/oxygen-card"
+category: layout_overlay
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: YES
+siblings:
+  - "[[Card/props]]"
+  - "[[Card/examples]]"
+  - "[[Card/tokens]]"
+  - "[[Card/accessibility]]"
+  - "[[Card/Card-audit]]"
+tags:
+  - oxygen
+  - component/Card
+  - role/figma
+  - stage/spec_ready
+  - category/layout_overlay
+---
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 11263:11501 (component set canvas) · 49372:112 (examples canvas) -->

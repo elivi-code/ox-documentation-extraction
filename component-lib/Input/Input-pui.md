@@ -1,3 +1,26 @@
+---
+component: Input
+package: "@8x8/oxygen-input"
+category: form_inputs
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Input/props]]"
+  - "[[Input/examples]]"
+  - "[[Input/tokens]]"
+  - "[[Input/accessibility]]"
+  - "[[Input/Input-figma]]"
+  - "[[Input/Input-audit]]"
+tags:
+  - oxygen
+  - component/Input
+  - role/pui
+  - stage/blocked
+  - category/form_inputs
+---
 <!-- SOURCE: platform-ui-mcp -->
 <!-- EXTRACTED: 2026-04-29 -->
 <!-- COMPONENT: Input -->

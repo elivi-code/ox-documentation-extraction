@@ -1,3 +1,26 @@
+---
+component: ToggleButton
+package: "@8x8/oxygen-toggleButton"
+category: form_inputs
+role: pui
+role_description: "Platform UI context — infrastructure hooks (navigation, notifications, session, event bus)"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[ToggleButton/props]]"
+  - "[[ToggleButton/examples]]"
+  - "[[ToggleButton/tokens]]"
+  - "[[ToggleButton/accessibility]]"
+  - "[[ToggleButton/ToggleButton-figma]]"
+  - "[[ToggleButton/ToggleButton-audit]]"
+tags:
+  - oxygen
+  - component/ToggleButton
+  - role/pui
+  - stage/blocked
+  - category/form_inputs
+---
 <!-- SOURCE: platform-ui-mcp -->
 <!-- EXTRACTED: 2026-04-29 -->
 <!-- COMPONENT: ToggleButton -->

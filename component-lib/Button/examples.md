@@ -1,3 +1,25 @@
+---
+component: Button
+package: "@8x8/oxygen-button"
+category: interaction
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Button/props]]"
+  - "[[Button/tokens]]"
+  - "[[Button/accessibility]]"
+  - "[[Button/Button-figma]]"
+  - "[[Button/Button-audit]]"
+tags:
+  - oxygen
+  - component/Button
+  - role/examples
+  - stage/blocked
+  - category/interaction
+---
 # Button — Examples
 
 > **See also:** [Props](props.md) · [Tokens](tokens.md) · [Accessibility](accessibility.md)

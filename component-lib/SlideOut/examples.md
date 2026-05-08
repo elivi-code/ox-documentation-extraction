@@ -1,3 +1,24 @@
+---
+component: SlideOut
+package: "@8x8/oxygen-slide-out"
+category: layout_overlay
+role: examples
+role_description: "Code examples — usage patterns from basic to advanced"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: PARTIAL
+siblings:
+  - "[[SlideOut/props]]"
+  - "[[SlideOut/tokens]]"
+  - "[[SlideOut/accessibility]]"
+  - "[[SlideOut/SlideOut-audit]]"
+tags:
+  - oxygen
+  - component/SlideOut
+  - role/examples
+  - stage/spec_ready
+  - category/layout_overlay
+---
 # SlideOut — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

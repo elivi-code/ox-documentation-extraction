@@ -1,3 +1,26 @@
+---
+component: Label
+package: "@8x8/oxygen-label"
+category: data_display
+role: figma
+role_description: "Figma design spec — anatomy, variant axes, token bindings, and spacing extracted from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+audit_verdict: NO
+siblings:
+  - "[[Label/props]]"
+  - "[[Label/examples]]"
+  - "[[Label/tokens]]"
+  - "[[Label/accessibility]]"
+  - "[[Label/label-pui]]"
+  - "[[Label/label-audit]]"
+tags:
+  - oxygen
+  - component/Label
+  - role/figma
+  - stage/blocked
+  - category/data_display
+---
 <!-- SOURCE: Figma MCP + figma-console MCP (Desktop Bridge confirmed 2026-05-01) -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 33680:62952 (showcase frame) / 22230:37448 (component set) -->
