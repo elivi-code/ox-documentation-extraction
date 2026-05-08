@@ -3,7 +3,7 @@
 Components selected for documentation extraction from the Oxygen Design System (`@8x8/oxygen-*` v2.107.0).
 Deprecated packages are excluded unless noted.
 
-> **Progress: 28 / 34 complete** — update as components are extracted.
+> **Progress: 29 / 34 complete** — update as components are extracted.
 
 ---
 
@@ -94,7 +94,7 @@ Deprecated packages are excluded unless noted.
 | `calendar` | `Calendar` | 27 | ⬜ |
 | `dateTimeSelector` | `DateTimeSelector` | 10 | ⬜ |
 | `dateTimeRangeSelector` | `DateTimeRangeSelector`, `DateTimeRangePicker` | 22 | ⬜ |
-| `timeSelector` | `TimeSelector` | 11 | ⬜ |
+| ~~`timeSelector`~~ | ~~`TimeSelector`~~ | ~~11~~ | ✅ |
 
 ---
 
