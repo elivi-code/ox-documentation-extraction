@@ -94,7 +94,7 @@ Deprecated packages are excluded unless noted.
 | `calendar` | `Calendar` | 27 | ⬜ |
 | `dateTimeSelector` | `DateTimeSelector` | 10 | ⬜ |
 | `dateTimeRangeSelector` | `DateTimeRangeSelector`, `DateTimeRangePicker` | 22 | ⬜ |
-| `timeSelector` | `TimeSelector` | 11 | ⬜ |
+| ~~`timeSelector`~~ | ~~`TimeSelector`~~ | ~~11~~ | ✅ |
 
 ---
 
