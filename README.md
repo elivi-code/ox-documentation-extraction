@@ -9,19 +9,35 @@ This is **not** a source code repository. There is no build, test suite, or pack
 ## Project Structure
 
 ```text
-component-lib/
-├── {ComponentName}/
-│   ├── props.md                    # Component API and prop definitions
-│   ├── examples.md                 # Usage examples and code snippets
-│   ├── tokens.md                   # Design tokens (colors, spacing, typography)
-│   ├── accessibility.md            # A11y specs and ARIA guidance
-│   ├── {component}-figma.md        # Design system specs from Figma
-│   ├── figma-screenshot-{component}.png  # Visual reference
-│   ├── {component}-usage.md        # Do/Don't editorial guidance (optional)
-│   ├── {component}-pui.md          # Platform UI integration notes (optional)
-│   ├── {component}-audit.md        # Documentation gap report
-│   └── {component}-spec.md         # Final merged specification
+OX Documentation Extraction/
+├── index.md                        # ← START HERE — all 37 components with file links
+├── pipeline-status.md              # Quick status table for AI orientation (8K)
+├── component-map.yaml              # Full detail map: scores, verdicts, cross-links
+├── components-to-extract.md        # Progress tracker (28 / 34 complete)
+├── CLAUDE.md                       # AI instructions and workflow conventions
+└── component-lib/
+    └── {ComponentName}/
+        ├── props.md                # Component API and prop definitions
+        ├── examples.md             # Usage examples and code snippets
+        ├── tokens.md               # Design tokens (colors, spacing, typography)
+        ├── accessibility.md        # A11y specs and ARIA guidance
+        ├── {component}-figma.md    # Design system specs from Figma
+        ├── {component}-usage.md    # Do/Don't editorial guidance (optional)
+        ├── {component}-pui.md      # Platform UI integration notes (optional)
+        ├── {component}-audit.md    # Documentation gap report
+        └── {component}-spec.md     # Final merged specification
 ```
+
+### Navigation files
+
+| File | Purpose | When to use |
+|------|---------|-------------|
+| [`index.md`](index.md) | All components grouped by category, every file linked | Browsing in Obsidian |
+| [`pipeline-status.md`](pipeline-status.md) | Compact status table — stage, verdict, blocker per component | AI orientation; quick status check |
+| [`component-map.yaml`](component-map.yaml) | Full detail — audit scores, gap counts, cross-file links, wiki-links | Deep lookups on a specific component |
+| [`components-to-extract.md`](components-to-extract.md) | Strike-through progress tracker | Updating after each completed component |
+
+Every `.md` file in `component-lib/` has YAML frontmatter with `component`, `role`, `pipeline_stage`, `audit_verdict`, `siblings` (wiki-links to related files), and `tags` — making them filterable in Obsidian Dataview and self-describing when opened standalone.
 
 ## The Workflow
 
@@ -50,7 +66,7 @@ Run **`doc-rewrite`** to produce `{component}-spec.md`, the final canonical docu
 
 ## Progress Tracking
 
-See [`components-to-extract.md`](components-to-extract.md) for the master list of 34 components across 8 categories, with a `Progress: N / 34 complete` counter. After each component finishes extraction + audit, mark it done and bump the counter.
+See [`pipeline-status.md`](pipeline-status.md) for a quick visual summary of all 37 components by stage. See [`components-to-extract.md`](components-to-extract.md) for the master list with a `Progress: N / 34 complete` counter. After each component finishes extraction + audit, mark it done and bump the counter.
 
 ## Setup
 
