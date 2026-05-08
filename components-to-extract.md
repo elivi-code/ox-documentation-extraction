@@ -83,7 +83,7 @@ Deprecated packages are excluded unless noted.
 | Package | Key Components | Props | Status |
 |---------|---------------|-------|:------:|
 | ~~`tooltip`~~ | ~~`Tooltip`~~ ✅ | ~~15~~ | ✅ |
-| `popover` | `Popover`, `PopoverMenu` | 11 | ⬜ |
+| ~~`popover`~~ | ~~`Popover`, `PopoverMenu`~~ | ~~11~~ | ✅ |
 
 ---
 
