@@ -1,0 +1,42 @@
+# DateTimeSelector — Props
+
+> **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)
+
+## Installation
+
+```bash
+npm install @8x8/oxygen-date-time-selector
+```
+
+```tsx
+import { DateTimeSelector } from '@8x8/oxygen-date-time-selector';
+```
+
+---
+
+## Props
+
+| Prop | Type | Default | Required | Description |
+|------|------|---------|:--------:|-------------|
+| `closeOnDateChange` | `boolean` | — | No | Close the picker overlay when a date is selected |
+| `finishButtonLabel` | `string` | — | No | Label text for the finish/confirm button |
+| `isClearable` | `boolean` | — | No | Whether the component is clearable |
+| `isLoading` | `boolean` | — | No | Whether the component is loading |
+| `loadingMessage` | `string` | — | No | Message to display while loading |
+| `onBlur` | `() => void` | — | No | Handler for blur event |
+| `onDateChange` | `(date: Date) => void` | — | No | Handler for date change event |
+| `onFocus` | `() => void` | — | No | Handler for focus event |
+| `titleFormatPattern` | `string` | — | No | Format pattern for the title display (date-fns pattern) |
+| `value` | `Date` | — | No | The currently selected date value |
+
+---
+
+## Notes
+
+- `titleFormatPattern` follows [date-fns format tokens](https://date-fns.org/docs/format) (e.g. `"EEE, d MMM yyyy"`)
+- `onDateChange` fires with a `Date` object representing the selected date/time
+- `isLoading` + `loadingMessage` pair together — supply `loadingMessage` whenever `isLoading` is `true`
+
+---
+
+_Source: Oxygen MCP · Extracted 2026-05-08_
