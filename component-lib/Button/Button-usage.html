@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .page-header { margin-bottom: 2rem; }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f1a;
+      line-height: 1.2;
+    }
+
+    .see-also {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .see-also a {
+      color: #5046e4;
+      text-decoration: none;
+    }
+
+    .see-also a:hover { text-decoration: underline; }
+
+    /* Callouts */
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+
+    .callout-editorial strong { color: #3d2c00; }
+
+    .callout-conflict {
+      background: #fff1f2;
+      border-left: 4px solid #f43f5e;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #881337;
+    }
+
+    .callout-conflict strong { color: #600f26; }
+
+    .callout-editorial code, .callout-conflict code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Intro */
+    .intro {
+      font-size: 15.5px;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f0f1a;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p { color: #374151; margin-bottom: 0.75rem; }
+
+    a { color: #5046e4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+    }
+
+    /* Anatomy numbered list */
+    .anatomy-list {
+      list-style: none;
+      counter-reset: anatomy;
+      padding: 0;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .anatomy-list li {
+      counter-increment: anatomy;
+      position: relative;
+      padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+      margin-bottom: 0.375rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .anatomy-list li::before {
+      content: counter(anatomy);
+      position: absolute;
+      left: 0.625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #5046e4;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .anatomy-list strong { color: #0f0f1a; }
+
+    /* Source line */
+    .source-line {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+
+    .source-line code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .warn-cell { color: #b45309; }
+
+    /* Bullet list */
+    .bullet-list {
+      margin: 0.5rem 0 1rem 1.25rem;
+      color: #374151;
+    }
+
+    .bullet-list li { margin-bottom: 0.375rem; }
+
+    /* Do / Don't pairs */
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair { margin-bottom: 1.75rem; }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .pair-source {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-bottom: 0.625rem;
+    }
+
+    .pair-source code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+    }
+
+    .do-card, .dont-card {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      gap: 0.5rem;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .dont-card {
+      background: #fff5f5;
+      border: 1px solid #fecaca;
+    }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.375rem;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body {
+      color: #374151;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .card-body code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    .card-code {
+      background: rgba(0,0,0,0.04);
+      border-radius: 5px;
+      padding: 0.625rem 0.75rem;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+      font-size: 12px;
+      color: #1a1a2e;
+      margin: 0;
+      white-space: pre;
+      overflow-x: auto;
+      align-self: end;
+    }
+
+    /* Gaps */
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-source-gap { background: #fef3c7; color: #92400e; }
+    .badge-doc-gap    { background: #dbeafe; color: #1e40af; }
+    .badge-conflict   { background: #fee2e2; color: #991b1b; }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · interaction · Button</div>
+    <h1>Button — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Button-figma.md">Button-figma.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — mirrors the published Oxygen docs page.</strong> No <code>↳ Button examples</code> Figma page with Do/Don't card frames exists, so <code>figma-extract-usage</code> cannot run. The guidance below is transcribed from the published Oxygen docs page for Button (<a href="https://oxygen.8x8.com/docs/components/button/usage">oxygen.8x8.com/docs/components/button/usage</a>, screenshot 2026-05-11) and cross-validated against <code>props.md</code>, <code>examples.md</code>, <code>tokens.md</code>, <code>accessibility.md</code>, and <code>Button-figma.md</code>. Replace with <code>figma-extract-usage</code> output if a Figma examples page is ever created.
+  </div>
+
+  <p class="intro">
+    Buttons let users initiate an action, submit a form, or trigger a state change. They are the most visible affordance for "this is something you can do" — visual weight, color, and placement work together to signal <strong>how important</strong> an action is relative to everything else on the surface.
+  </p>
+
+  <hr>
+
+  <h2>Anatomy</h2>
+  <ol class="anatomy-list">
+    <li><strong>Container</strong> — the auto-laid-out frame holding label and icons. Carries the variant's background, border, and 6px radius.</li>
+    <li><strong>Leading icon</strong> <em>(optional)</em> — rendered via <code>iconLeft</code>. Hidden by default; shown when an icon helps disambiguate the action (e.g. <code>&lt;PlusIcon /&gt;</code> for "Add").</li>
+    <li><strong>Label</strong> — the action text. Uses the <code>$bodyBold02</code> text style (16px, semi-bold, Inter). Treated as the accessible name of the button.</li>
+    <li><strong>Trailing icon</strong> <em>(optional)</em> — rendered via <code>iconRight</code>. Use for directional or disclosure affordances (e.g. arrow on a <code>DropdownButton</code>).</li>
+    <li><strong>Focus ring</strong> — visible focus indicator applied by Oxygen on keyboard focus. Required by WCAG 2.4.7; <strong>never suppress with <code>outline: none</code></strong>.</li>
+  </ol>
+  <p class="source-line">Source: <code>Button-figma.md</code> — anatomy section · <code>props.md</code> prop names.</p>
+
+  <hr>
+
+  <h2>Overview</h2>
+  <p>
+    The button system spans seven visual variants and four sizes, plus boolean modifiers (<code>isDestructive</code>, <code>isCircular</code>, <code>isActive</code>, <code>isDisabled</code>) and the related components <code>ButtonGroup</code>, <code>DropdownButton</code>, and <code>IconButton</code>.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Oxygen API</th>
+          <th>Use for</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Primary</strong></td>
+          <td><code>variant="primary"</code> (default)</td>
+          <td>The single most important action on a surface</td>
+          <td>One per surface — see Pair 1.</td>
+        </tr>
+        <tr>
+          <td><strong>Secondary</strong></td>
+          <td><code>variant="secondary"</code></td>
+          <td>Supporting actions next to a primary</td>
+          <td>Can repeat per surface.</td>
+        </tr>
+        <tr>
+          <td><strong>Text</strong></td>
+          <td><code>variant="text"</code></td>
+          <td>Low-emphasis inline actions</td>
+          <td>No visible container at rest — see Pair 2.</td>
+        </tr>
+        <tr>
+          <td><strong>Destructive</strong></td>
+          <td><code>isDestructive</code> + any variant</td>
+          <td>Irreversible or data-loss actions</td>
+          <td>Pair with a confirmation step — see Pair 3.</td>
+        </tr>
+        <tr>
+          <td><strong>Split</strong></td>
+          <td><code>ButtonGroup</code> of two buttons</td>
+          <td>A default action plus a related menu</td>
+          <td>Default action is most-used — see Pair 6.</td>
+        </tr>
+        <tr>
+          <td><strong>Dropdown</strong></td>
+          <td><code>DropdownButton</code></td>
+          <td>Action that opens a menu, no single default</td>
+          <td>Pair with <code>Popover</code> / <code>PopoverMenu</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>Icon</strong></td>
+          <td><code>IconButton</code> or <code>Button isCircular</code></td>
+          <td>Compact, icon-only triggers</td>
+          <td>Always carry an accessible name — see Pair 4.</td>
+        </tr>
+        <tr>
+          <td><strong>Control</strong></td>
+          <td><code>variant="tertiary"</code> / <code>tertiaryReversed"</code> / <code>"success"</code> / <code>"destructive"</code> + <code>isCircular</code></td>
+          <td>Call-control and toolbar affordances (mute, hang up, answer)</td>
+          <td>Live on dark/inverted surfaces.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source-line">Source: Published docs — Overview section · <code>props.md</code> · <code>Button-figma.md</code>. Note: "Soft", "Disclosure", "Optional", "Indeterminate" treatments visible on the docs page are not represented as separate variants in the current API — tracked as GAP-018.</p>
+
+  <hr>
+
+  <h2>Behaviour</h2>
+  <h3>States</h3>
+  <p>Buttons expose five interaction states, all visible in the Figma Label Button variant axis:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>State</th>
+          <th>Trigger</th>
+          <th>Visual change</th>
+          <th>Token (Primary)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Rest</td>
+          <td>Default</td>
+          <td>Base variant background and text</td>
+          <td><code>action01</code> / <code>textColor09</code></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Hover</td>
+          <td>Pointer over</td>
+          <td>Background shifts to variant's hover token</td>
+          <td><code>hover15</code> / <code>textColor09</code></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Active</td>
+          <td>Pointer pressed / Space / Enter</td>
+          <td>Background shifts to variant's active token</td>
+          <td><code>active14</code> / <code>textColor09</code></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Focus</td>
+          <td>Keyboard Tab</td>
+          <td>Focus ring visible; no background-token change</td>
+          <td>(focus ring layer)</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Disabled</td>
+          <td><code>isDisabled={true}</code></td>
+          <td>Background → <code>disabled01</code>, text/icon → <code>disabled04</code>. Still focusable.</td>
+          <td><code>disabled01</code> / <code>disabled04</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout-conflict">
+    <strong>⚠️ Two token conflicts apply to this section</strong> — flagged in <code>Button-audit.md</code>:
+    <ul style="margin-top: 0.5rem; margin-left: 1.25rem;">
+      <li><strong>GAP-001 (CONFLICT, blocker):</strong> Secondary rest background — Figma annotates <code>$action01</code> (blue), <code>tokens.md</code> specifies <code>action02</code> (near-black). Designer confirmation required.</li>
+      <li style="margin-top: 0.375rem;"><strong>GAP-002 (CONFLICT, blocker):</strong> Text Primary / Text Danger active background — Figma annotates <code>$active17</code>, which <code>tokens.md</code> defines as an inverted-only token. Reconciliation required.</li>
+    </ul>
+    Until resolved, treat the table above as authoritative for <strong>Primary only</strong>.
+  </div>
+  <p class="source-line">Source: Published docs — Behaviour section · <code>tokens.md</code> · <code>Button-figma.md</code>.</p>
+
+  <hr>
+
+  <h2>Sizes</h2>
+  <p>Four sizes are documented: <code>small</code>, <code>medium</code> (default), <code>large</code>, <code>big</code>.</p>
+  <ul class="bullet-list">
+    <li><code>large</code> is the <strong>recommended size for touch targets</strong> — meets WCAG 2.5.5 minimums for fingertip activation.</li>
+    <li><code>medium</code> is the default for desktop, mouse-driven UI.</li>
+    <li><code>small</code> is for compact layouts where vertical density matters (toolbars, dense forms).</li>
+    <li>Only the <code>large</code> (48px) container dimensions are confirmed from Figma. Medium and Small dimensions are a SOURCE_GAP — do not hand-assert specific pixel values.</li>
+  </ul>
+  <p>Do not mix sizes within a single action row — see Pair 5.</p>
+  <p class="source-line">Source: Published docs — Sizes section · <code>props.md</code> · <code>Button-figma.md</code>.</p>
+
+  <hr>
+
+  <h2>Placement &amp; Alignment</h2>
+  <ul class="bullet-list">
+    <li><strong>Primary action sits on the right</strong> in horizontal action rows.</li>
+    <li><strong>Secondary and tertiary actions sit to the left of the primary</strong>, separated by <code>ButtonGroup</code> spacing.</li>
+    <li><strong>Destructive actions</strong> are placed <strong>left-most</strong>, away from the resting primary affordance, to reduce accidental activation.</li>
+    <li>Use <code>&lt;ButtonGroup align="right" /&gt;</code> for dialogs and <code>&lt;ButtonGroup align="left" /&gt;</code> for inline forms.</li>
+  </ul>
+  <p class="source-line">Source: Published docs — Placement / Alignment sections · <code>props.md</code> · <code>examples.md</code>. Note: exact wording from the Alignment section not captured at readable resolution — tracked as GAP-019.</p>
+
+  <hr>
+
+  <h2>Best Practices</h2>
+
+  <h3>When to use</h3>
+  <ul class="bullet-list">
+    <li>Use <code>Button</code> for <strong>actions</strong> the user takes — submitting a form, opening a dialog, applying a setting, triggering a process.</li>
+    <li>Use <strong>Primary</strong> for the most important action on a surface, and only one.</li>
+    <li>Use <strong>Secondary</strong> for supporting actions.</li>
+    <li>Use <strong>Text</strong> for low-emphasis or inline actions.</li>
+    <li>Use <strong><code>isDestructive</code></strong> for irreversible or data-loss actions, paired with a confirmation step.</li>
+    <li>Use <strong><code>IconButton</code></strong> (with a <code>Tooltip</code>) for compact, icon-only triggers in dense toolbars.</li>
+  </ul>
+
+  <h3>When not to use</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Situation</th>
+          <th>Why</th>
+          <th>Use instead</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Navigating to another page or external URL</td>
+          <td>A button implies an action; navigation should be discoverable as a link. Screen readers announce them differently.</td>
+          <td><code>TextLink</code> (or your routing equivalent).</td>
+        </tr>
+        <tr>
+          <td>Inline within a paragraph of body text</td>
+          <td>Buttons break reading flow; their container weight overwhelms surrounding type.</td>
+          <td><code>TextLink</code>.</td>
+        </tr>
+        <tr>
+          <td>To represent a non-interactive label or status</td>
+          <td>Buttons promise interaction; using them as decoration confuses AT users.</td>
+          <td><code>Badge</code>, <code>Chip</code>, or plain text.</td>
+        </tr>
+        <tr>
+          <td>As the only validation feedback (disabling until valid)</td>
+          <td>Hides <em>why</em> submission is unavailable from sighted and screen-reader users alike.</td>
+          <td>Keep the button enabled and show inline field errors — see Pair 7.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source-line">Source: Published docs — Best Practices section · <code>accessibility.md</code>.</p>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <!-- Pair 1 -->
+    <div class="pair">
+      <div class="pair-label">Pair 1 — One primary per surface</div>
+      <p class="pair-source">Grounded in: Published docs — Primary button section · <code>accessibility.md</code> (one primary per section).</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use a single Primary button for the most important action</div>
+          <p class="card-body">Establish a clear focal point. Secondary and Text buttons handle everything else on the surface.</p>
+          <div class="card-code">&lt;ButtonGroup align="right"&gt;
+  &lt;Button variant="text"&gt;Cancel&lt;/Button&gt;
+  &lt;Button variant="secondary"&gt;Save as draft&lt;/Button&gt;
+  &lt;Button variant="primary"&gt;Publish&lt;/Button&gt;
+&lt;/ButtonGroup&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Stack multiple Primary buttons next to each other</div>
+          <p class="card-body">Two primary buttons compete for attention and erode the visual hierarchy. Keyboard and screen-reader users lose the cue about which action is "the" action.</p>
+          <div class="card-code">{/* Wrong — every action shouts */}
+&lt;ButtonGroup align="right"&gt;
+  &lt;Button variant="primary"&gt;Save as draft&lt;/Button&gt;
+  &lt;Button variant="primary"&gt;Publish&lt;/Button&gt;
+&lt;/ButtonGroup&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Use Text buttons for low-emphasis actions</div>
+      <p class="pair-source">Grounded in: Published docs — Text button section · <code>props.md</code> · <code>tokens.md</code> (no rest background for <code>text</code>).</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use <code>variant="text"</code> for inline, low-priority actions</div>
+          <p class="card-body">Text buttons have no visible container at rest, so they sit unobtrusively next to body content or denser controls. Good for "Cancel", "Learn more", or inline-form actions.</p>
+          <div class="card-code">&lt;ButtonGroup&gt;
+  &lt;Button variant="text"&gt;Cancel&lt;/Button&gt;
+  &lt;Button variant="primary"&gt;Confirm&lt;/Button&gt;
+&lt;/ButtonGroup&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use Text buttons as the primary call-to-action</div>
+          <p class="card-body">Stripping the container also strips the visual weight users rely on to find the main action. The lack of background means the affordance reads as a link, not a button.</p>
+          <div class="card-code">{/* Wrong — the publish action disappears */}
+&lt;ButtonGroup align="right"&gt;
+  &lt;Button variant="text"&gt;Publish&lt;/Button&gt;
+&lt;/ButtonGroup&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Reserve destructive styling for irreversible actions</div>
+      <p class="pair-source">Grounded in: Published docs — Destructive button section · <code>accessibility.md</code> (WCAG 3.2.2 — preface destructive with confirmation) · <code>examples.md</code>.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Combine <code>isDestructive</code> with a confirmation step</div>
+          <p class="card-body">Red is a strong signal. Use <code>isDestructive</code> only when the action is irreversible (deleting data, ending a call, leaving a workspace) and gate it with a confirmation dialog.</p>
+          <div class="card-code">&lt;Button
+  variant="primary"
+  isDestructive
+  onClick={openConfirmDialog}
+&gt;
+  Delete account
+&lt;/Button&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use <code>isDestructive</code> for routine actions</div>
+          <p class="card-body">Reserving red for "real" destruction keeps the signal trustworthy. Don't reach for it because "this button felt important".</p>
+          <div class="card-code">{/* Wrong — sign out is not destructive */}
+&lt;Button variant="primary" isDestructive&gt;
+  Sign out
+&lt;/Button&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Icon-only buttons must carry an accessible name</div>
+      <p class="pair-source">Grounded in: Published docs — Icon button section · <code>accessibility.md</code> (IconButton + Tooltip pattern) · WCAG 4.1.2 Name, Role, Value.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Pair <code>IconButton</code> with a <code>Tooltip</code></div>
+          <p class="card-body">The tooltip's <code>title</code> becomes the accessible name. Screen-reader and switch-control users get the same affordance sighted users do from the glyph.</p>
+          <div class="card-code">import Tooltip from '@8x8/oxygen-tooltip';
+import { IconButton } from '@8x8/oxygen-button';
+import { AddReactionIcon } from '@8x8/oxygen-icon';
+
+&lt;Tooltip title="Add reaction"&gt;
+  &lt;IconButton&gt;
+    &lt;AddReactionIcon /&gt;
+  &lt;/IconButton&gt;
+&lt;/Tooltip&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Ship a bare icon button with no label</div>
+          <p class="card-body">Without <code>aria-label</code> or a <code>Tooltip</code>, the button announces as "button" — there is no way for non-sighted users to know what it does. Fails WCAG 4.1.2.</p>
+          <div class="card-code">{/* Wrong — no accessible name */}
+&lt;IconButton&gt;
+  &lt;AddReactionIcon /&gt;
+&lt;/IconButton&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Keep one size per action row</div>
+      <p class="pair-source">Grounded in: Published docs — Sizes section · <code>props.md</code> · <code>examples.md</code>.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Match button sizes within a <code>ButtonGroup</code></div>
+          <p class="card-body">A row reads as a single decision. Matching sizes preserves baseline alignment and the visual rhythm of the row.</p>
+          <div class="card-code">&lt;ButtonGroup spacing="small"&gt;
+  &lt;Button size="small" variant="text"&gt;Cancel&lt;/Button&gt;
+  &lt;Button size="small" variant="secondary"&gt;
+    Save as draft
+  &lt;/Button&gt;
+  &lt;Button size="small" variant="primary"&gt;Publish&lt;/Button&gt;
+&lt;/ButtonGroup&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Mix sizes within a single action row</div>
+          <p class="card-body">Mixing sizes implies the actions are from different layers of the UI. It breaks the row's alignment and reads as inconsistency, not hierarchy.</p>
+          <div class="card-code">{/* Wrong — mixed sizes in one row */}
+&lt;ButtonGroup&gt;
+  &lt;Button size="small" variant="text"&gt;Cancel&lt;/Button&gt;
+  &lt;Button size="large" variant="primary"&gt;Publish&lt;/Button&gt;
+&lt;/ButtonGroup&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 6 -->
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Choose Split vs Dropdown by user intent</div>
+      <p class="pair-source">Grounded in: Published docs — Split button / Dropdown button sections · <code>props.md</code> · <code>examples.md</code>.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use a Split when one action is clearly the default; use a lone Dropdown when choices are equal-weight</div>
+          <p class="card-body">A split control surfaces the most-used action as a one-click affordance. If the choices are equal-weight, surface them all behind a single menu — don't fake a default.</p>
+          <div class="card-code">{/* Split — one clear default */}
+&lt;ButtonGroup&gt;
+  &lt;Button variant="primary"&gt;Reply&lt;/Button&gt;
+  &lt;DropdownButton
+    variant="primary"
+    aria-label="More reply options"
+  /&gt;
+&lt;/ButtonGroup&gt;
+
+{/* Dropdown — no single default */}
+&lt;DropdownButton&gt;Reply&lt;/DropdownButton&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Surface a Split when choices are equally popular</div>
+          <p class="card-body">A split button promises that the default is right <em>most of the time</em>. If that's not true, you've just hidden the preferred action for half your users behind an extra click and an extra tab stop.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 7 -->
+    <div class="pair">
+      <div class="pair-label">Pair 7 — Don't disable a button to hide a validation error</div>
+      <p class="pair-source">Grounded in: Published docs — Best Practices section · <code>accessibility.md</code> (Disabled state).</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Keep the button enabled and surface the error inline</div>
+          <p class="card-body">A disabled button removes the affordance without explaining why. Keep the button enabled, let the user submit, and show inline field errors when validation fails — both sighted and AT users get the same feedback.</p>
+          <div class="card-code">&lt;form onSubmit={handleSubmit}&gt;
+  &lt;Input
+    label="Email"
+    error={emailError}
+    aria-describedby="email-error"
+  /&gt;
+  &lt;Button type="submit"&gt;Save&lt;/Button&gt;
+&lt;/form&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Disable the submit until every field is valid with no explanation</div>
+          <p class="card-body">The button greys out, the user can't tell why, and screen-reader users hear nothing about the missing field. <code>isDisabled</code> keeps the button focusable but mute — it doesn't announce the reason.</p>
+          <div class="card-code">{/* Wrong — disabled with no inline error */}
+&lt;Button
+  type="submit"
+  isDisabled={!isFormValid}
+&gt;
+  Save
+&lt;/Button&gt;</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Related components</h2>
+  <ul class="bullet-list">
+    <li><strong><code>ButtonGroup</code></strong> — horizontal arrangement of multiple buttons with shared spacing and alignment.</li>
+    <li><strong><code>DropdownButton</code></strong> — button that opens a menu (typically <code>Popover</code> or <code>PopoverMenu</code>).</li>
+    <li><strong><code>IconButton</code></strong> — compact icon-only trigger; always pair with <code>Tooltip</code>.</li>
+    <li><strong><code>TextLink</code></strong> — for navigation rather than actions. Use instead of Button when pointing to another page or URL.</li>
+  </ul>
+  <p class="source-line">Note: related component list is derived from extracted artifacts, not confirmed against the live docs page — tracked as GAP-020.</p>
+
+  <hr>
+
+  <h2>Accessibility quick reference</h2>
+  <ul class="bullet-list">
+    <li>Renders a native <code>&lt;button&gt;</code> — implicit ARIA role <code>button</code>, no <code>role</code> override needed.</li>
+    <li><code>Tab</code> / <code>Shift+Tab</code> move focus; <code>Enter</code> and <code>Space</code> activate.</li>
+    <li><code>isDisabled</code> keeps the button <strong>focusable</strong> (does not leave the tab order) but suppresses form submission.</li>
+    <li>Icon-only buttons need an <code>aria-label</code> or a <code>Tooltip</code> — see Pair 4.</li>
+    <li>Never suppress the focus ring (<code>outline: none</code>) — required by WCAG 2.4.7.</li>
+    <li>Destructive actions should be preceded by a confirmation pattern (WCAG 3.2.2).</li>
+  </ul>
+  <p>See <a href="./accessibility.md">accessibility.md</a> for the full WCAG 2.1 AA checklist.</p>
+
+  <hr>
+
+  <h2>Gaps</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Figma Do/Don't examples</td>
+            <td><span class="badge-tag badge-source-gap">Source Gap</span></td>
+            <td>No <code>↳ Button examples</code> Figma page with Do/Don't card frames found. Guidelines above are editorially transcribed from the published Oxygen docs page (screenshot, 2026-05-11) and cross-validated against extracted artifacts. Re-run <code>figma-extract-usage</code> if such a page is created.</td>
+          </tr>
+          <tr>
+            <td>Secondary rest background token (GAP-001)</td>
+            <td><span class="badge-tag badge-conflict">Conflict</span></td>
+            <td>Figma annotates <code>$action01</code> (blue); <code>tokens.md</code> specifies <code>action02</code> (near-black). Designer confirmation required. Behaviour table above is authoritative for Primary only.</td>
+          </tr>
+          <tr>
+            <td>Text button active background token (GAP-002)</td>
+            <td><span class="badge-tag badge-conflict">Conflict</span></td>
+            <td>Figma annotates <code>$active17</code>, which <code>tokens.md</code> defines as an inverted-only token. Reconciliation required before asserting Text active styling.</td>
+          </tr>
+          <tr>
+            <td>CSS variable / semantic token name (GAP-003)</td>
+            <td><span class="badge-tag badge-conflict">Conflict</span></td>
+            <td><code>--actions/action09</code> (Figma CSS export) vs <code>action01</code> (Oxygen semantic token) name the same color. Downstream tooling must pick a canonical name.</td>
+          </tr>
+          <tr>
+            <td>Soft / Disclosure / Optional / Indeterminate treatments (GAP-018)</td>
+            <td><span class="badge-tag badge-doc-gap">Doc Gap</span></td>
+            <td>Referenced on the published docs page screenshot but absent from <code>props.md</code>. Likely composition patterns rather than first-class variants — confirm with the Oxygen team.</td>
+          </tr>
+          <tr>
+            <td>Alignment section verbatim copy (GAP-019)</td>
+            <td><span class="badge-tag badge-doc-gap">Doc Gap</span></td>
+            <td>Exact wording from the published docs Alignment section not captured at readable screenshot resolution. Placement guidance above is behaviorally consistent but not verbatim.</td>
+          </tr>
+          <tr>
+            <td>Related components completeness (GAP-020)</td>
+            <td><span class="badge-tag badge-doc-gap">Doc Gap</span></td>
+            <td>Related list derived from extracted artifacts, not confirmed against the live docs page. Additional entries (e.g. Tooltip, Popover, ConfirmDialog) may be present.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Source: Published Oxygen docs page (<a href="https://oxygen.8x8.com/docs/components/button/usage">oxygen.8x8.com/docs/components/button/usage</a>, screenshot 2026-05-11) · Cross-referenced with Oxygen MCP and Figma extraction · Editorial draft
+  </footer>
+
+</div>
+</body>
+</html>

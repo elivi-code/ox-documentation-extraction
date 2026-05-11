@@ -3,9 +3,9 @@ component: Badge
 package: "@8x8/oxygen-badge"
 category: data_display
 role: usage
-role_description: "Do/Don't editorial guidelines from Figma examples page"
+role_description: "Usage guidelines derived from extracted MCP docs — no Figma Do/Don't examples available"
 pipeline_stage: extracted
-pipeline_note: "Usage extracted; audit not yet run"
+pipeline_note: "Revised 2026-05-11 — fabricated Figma pairs removed; guidelines derived from examples.md, props.md, accessibility.md"
 audit_verdict: null
 siblings:
   - "[[Badge/props]]"
@@ -21,75 +21,140 @@ tags:
   - category/data_display
 ---
 
-<!-- SOURCE: Figma — ↳ Badge examples -->
-<!-- PAGE: ↳ Badge examples (node 90220:23) -->
-<!-- SECTION: Usage Guidelines (frame 90220:66) -->
-<!-- EXTRACTED: 2026-05-08 -->
+<!-- SOURCE: Derived from Oxygen MCP (examples.md, props.md) and accessibility.md -->
+<!-- NOTE: No Figma "↳ Badge examples" Do/Don't card frames were found. -->
+<!-- This file does NOT contain Figma-extracted pairs. See Gaps section. -->
+<!-- REVISED: 2026-05-11 -->
 <!-- COMPONENT: Badge -->
-<!-- PAIRS: 2 — Do/Don't card frames (naming convention: "Do -" / "Dont -" without ✅/❌ emoji) -->
-<!-- SCREENSHOTS: Captured via Figma REST export — no local PNG stored; reference Figma node links below -->
 
 # Badge — Usage Guidelines
 
 > **See also:** [props.md](./props.md) · [tokens.md](./tokens.md) ·
 > [examples.md](./examples.md) · [accessibility.md](./accessibility.md)
 
-Usage guidelines extracted from the `↳ Badge examples` Figma page.
-2 Do/Don't pairs covering counter and dot badge types.
+Usage guidelines derived from the Oxygen MCP documentation and component API.
+No Figma Do/Don't examples page was found for Badge — see [Gaps](#gaps).
 
 ---
 
-## Pair 1 — Counter badge
+## Counter badge
 
-### ✅ Do — Use counter badge on notification icons to show unread count
+### Do — Pass only numeric values as children
 
-> Use the counter type when a numeric total is meaningful to the user.
+The `children` prop accepts **numerical values only**. Use whole numbers for counts up to two digits; use `"99+"` for overflow beyond that.
 
-<!-- SCREENSHOT: Figma node 90220:72 — https://www.figma.com/design/5YihJ5WuDvnvrlrRMC4sBp/branch/daQccyh6OqlqyXWywIEqR4/UI-components?node-id=90220-72 -->
+```tsx
+<Badge>4</Badge>
+<Badge>12</Badge>
+<Badge>99+</Badge>
+```
 
-**Component:** `Badge` · `type: counter`
-
----
-
-### ❌ Don't — Use counter badge with non-numeric content
-
-> The counter slot is for numeric values only. Avoid placing icons or arbitrary text inside it.
-
-<!-- SCREENSHOT: Figma node 90220:77 — https://www.figma.com/design/5YihJ5WuDvnvrlrRMC4sBp/branch/daQccyh6OqlqyXWywIEqR4/UI-components?node-id=90220-77 -->
-
-**Component:** `Badge` · `type: counter`
+**Source:** `props.md` — `children` description: "Rendered element inside the badge (numerical value only)"
 
 ---
 
-## Pair 2 — Dot badge
+### Don't — Put non-numeric content in a counter badge
 
-### ✅ Do — Use dot badge to signal presence without a count
+Avoid icons, strings, or arbitrary text as `children`. The counter badge is sized and styled for numeric values; non-numeric content will overflow or render incorrectly.
 
-> A dot badge is sufficient when the user only needs to know something is new or active.
-
-<!-- SCREENSHOT: Figma node 90220:83 — https://www.figma.com/design/5YihJ5WuDvnvrlrRMC4sBp/branch/daQccyh6OqlqyXWywIEqR4/UI-components?node-id=90220-83 -->
-
-**Component:** `Badge` · `type: dot`
+```tsx
+{/* Wrong */}
+<Badge>New</Badge>
+<Badge>★</Badge>
+```
 
 ---
 
-### ❌ Don't — Use multiple badge types on the same element
+## Dot badge
 
-> Stacking badge types creates visual ambiguity. Use one badge per element.
+### Do — Omit children to render a dot indicator
 
-<!-- SCREENSHOT: Figma node 90220:88 — https://www.figma.com/design/5YihJ5WuDvnvrlrRMC4sBp/branch/daQccyh6OqlqyXWywIEqR4/UI-components?node-id=90220-88 -->
+A dot badge signals presence or activity without a count. Render it by passing no children and setting `size="small"`.
 
-**Component:** `Badge` · `type: counter`
+```tsx
+<Badge size="small" />
+```
+
+---
+
+### Don't — Add children to a dot badge
+
+Adding text or numbers to a `size="small"` badge turns it into a counter and breaks the dot affordance.
+
+```tsx
+{/* Wrong — makes it a counter, not a dot */}
+<Badge size="small">1</Badge>
+```
+
+---
+
+## Badge vs. AIBadge
+
+### Do — Use AIBadge for AI-related features
+
+`AIBadge` renders a star icon alongside text and is purpose-built for AI feature labelling. It inherits all standard HTML `div` attributes.
+
+```tsx
+import { AIBadge } from '@8x8/oxygen-badge';
+
+<AIBadge />         {/* renders "AI" with star */}
+<AIBadge>Beta</AIBadge>
+```
+
+---
+
+### Don't — Use Badge to label AI features
+
+`Badge` is for notification counts and presence indicators. Using it for AI labels loses the semantic star icon and misrepresents the component's purpose.
+
+```tsx
+{/* Wrong */}
+<Badge>AI</Badge>
+```
+
+---
+
+## Conditional visibility
+
+### Do — Render badge conditionally based on app state
+
+Badges should appear only when relevant. Permanently rendering an empty badge wastes DOM space and can confuse screen readers.
+
+```tsx
+{hasUnread && <Badge size="small" aria-hidden="true" />}
+{unreadCount > 0 && <Badge>{unreadCount}</Badge>}
+```
+
+---
+
+## Accessibility
+
+### Do — Place the accessible count on the parent, hide the badge itself
+
+Badge is a passive display element. Use `aria-hidden="true"` on the badge and carry the count in the parent's `aria-label`.
+
+```tsx
+<IconButton
+  icon={<BellIcon />}
+  aria-label={`Notifications, ${count} unread`}
+>
+  <Badge isInner aria-hidden="true">{count}</Badge>
+</IconButton>
+```
+
+For dynamically-updated counts, add `aria-live="polite"` to the parent region, not the badge itself.
+
+**Source:** `accessibility.md`
 
 ---
 
 ## Gaps
 
-| Item | Description |
-|------|-------------|
-| Screenshot images | Figma REST export returns inline images only — no downloadable URL. Screenshots not stored as local PNGs. Reference Figma node links in each section above. |
-| Frame naming | Cards use `Do -` / `Dont -` prefix (without `✅`/`❌` emoji) rather than the standard skill convention. Content is equivalent. |
+| Item | Type | Description |
+|------|------|-------------|
+| Figma Do/Don't examples | SOURCE_GAP | No "↳ Badge examples" page with Do/Don't card frames found in Figma. Guidelines above are derived from MCP docs and props API. If Figma examples are added in the future, re-run `figma-extract-usage` and merge. |
+| Screenshots | SOURCE_GAP | No local PNG screenshots. No Figma nodes to reference. |
 
 ---
 
-_Source: Figma examples page · Extracted 2026-05-08_
+_Source: Oxygen MCP (`@8x8/oxygen-badge`) · Derived from examples.md, props.md, accessibility.md · Revised 2026-05-11_

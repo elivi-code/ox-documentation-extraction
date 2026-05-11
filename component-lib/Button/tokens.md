@@ -12,6 +12,7 @@ siblings:
   - "[[Button/examples]]"
   - "[[Button/accessibility]]"
   - "[[Button/Button-figma]]"
+  - "[[Button/Button-usage]]"
   - "[[Button/Button-audit]]"
 tags:
   - oxygen
@@ -22,7 +23,7 @@ tags:
 ---
 # Button — Tokens
 
-> **See also:** [Props](props.md) · [Examples](examples.md) · [Accessibility](accessibility.md)
+> **See also:** [Props](props.md) · [Examples](examples.md) · [Accessibility](accessibility.md) · [Usage](Button-usage.md)
 
 All tokens listed below are semantic tokens from the Oxygen theme. Values are shown for both `light` and `dark` themes. The `reference` column shows the underlying palette token.
 

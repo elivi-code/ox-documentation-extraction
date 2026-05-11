@@ -4,8 +4,9 @@ package: "@8x8/oxygen-alert-banner"
 category: feedback_status
 role: usage
 role_description: "Usage guidelines — editorially authored from extracted artifacts; no Figma examples page exists"
-pipeline_stage: extracted
-pipeline_note: "Usage extracted (editorial); audit not yet re-run"
+pipeline_stage: editorial
+pipeline_note: "Usage authored editorially from extracted artifacts — NOT from Figma Do/Don't frames. Re-run doc-audit after creation; replace pairs with figma-extract-usage output when a Figma examples page exists."
+source_type: editorial
 audit_verdict: null
 siblings:
   - "[[AlertBanner/props]]"
@@ -33,6 +34,8 @@ tags:
 
 > **See also:** [props.md](./props.md) · [examples.md](./examples.md) · [tokens.md](./tokens.md) ·
 > [accessibility.md](./accessibility.md) · [alert-banner-figma.md](./alert-banner-figma.md)
+
+> **Editorial guidance — not Figma-sourced.** No `↳ AlertBanner examples` Figma page exists, so `figma-extract-usage` cannot run. The Do/Don't pairs below are inferred from `props.md`, `examples.md`, `accessibility.md`, and `alert-banner-figma.md`. Treat as provisional until a designer reviews them. Replace with `figma-extract-usage` output when a Figma examples page is created.
 
 AlertBanner is a persistent, page-scoped warning strip. It uses a single fixed amber style to signal that a system-level condition requires the user's attention. The banner stays visible until the underlying condition is resolved — it is not dismissable.
 

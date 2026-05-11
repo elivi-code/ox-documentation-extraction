@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breadcrumbs — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .page-header { margin-bottom: 2rem; }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f1a;
+      line-height: 1.2;
+    }
+
+    .see-also {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .see-also a {
+      color: #5046e4;
+      text-decoration: none;
+    }
+
+    .see-also a:hover { text-decoration: underline; }
+
+    /* Editorial callout */
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Intro */
+    .intro {
+      font-size: 15.5px;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f0f1a;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p { color: #374151; margin-bottom: 0.75rem; }
+
+    /* Anatomy numbered list */
+    .anatomy-list {
+      list-style: none;
+      counter-reset: anatomy;
+      padding: 0;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .anatomy-list li {
+      counter-increment: anatomy;
+      position: relative;
+      padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+      margin-bottom: 0.375rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .anatomy-list li::before {
+      content: counter(anatomy);
+      position: absolute;
+      left: 0.625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ec4899;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .anatomy-list strong { color: #0f0f1a; }
+
+    /* Source line */
+    .source-line {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+
+    .source-line code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Bullet list */
+    .bullet-list {
+      margin: 0.5rem 0 1rem 1.25rem;
+      color: #374151;
+    }
+
+    .bullet-list li { margin-bottom: 0.375rem; }
+
+    /* Do / Don't pairs */
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair { margin-bottom: 1.75rem; }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .pair-source {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-bottom: 0.625rem;
+    }
+
+    .pair-source code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    /* Outer grid: two columns, three shared rows (header / body / code).
+       Cards use grid-template-rows: subgrid so headers, bodies, and code
+       blocks line up perfectly across the Do/Don't pair. */
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+    }
+
+    .do-card, .dont-card {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      gap: 0.5rem;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .dont-card {
+      background: #fff5f5;
+      border: 1px solid #fecaca;
+    }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.375rem;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body {
+      color: #374151;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Code block, when present, sits in row 3 and bottom-aligns */
+    .card-code {
+      background: rgba(0,0,0,0.04);
+      border-radius: 5px;
+      padding: 0.625rem 0.75rem;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+      font-size: 12px;
+      color: #1a1a2e;
+      margin: 0;
+      white-space: pre;
+      overflow-x: auto;
+      align-self: end;
+    }
+
+    /* Gaps */
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-source-gap { background: #fef3c7; color: #92400e; }
+    .badge-design-gap { background: #ede9fe; color: #5b21b6; }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · navigation · Breadcrumbs</div>
+    <h1>Breadcrumbs — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Breadcrumbs-figma.md">Breadcrumbs-figma.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — mirrors the published Oxygen docs page.</strong> No <code>↳ Breadcrumbs examples</code> Figma page exists, so <code>figma-extract-usage</code> cannot run. The guidance below is transcribed from the published Oxygen docs page for Breadcrumbs (screenshot, 2026-05-11) and cross-validated against <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, and <code>Breadcrumbs-figma.md</code>. Replace with <code>figma-extract-usage</code> output if a Figma examples page is ever created.
+  </div>
+
+  <p class="intro">
+    A breadcrumb is a navigation pattern that lets users navigate a nested path of pages within a hierarchical structure of a site.
+  </p>
+
+  <hr>
+
+  <h2>Anatomy</h2>
+  <ol class="anatomy-list">
+    <li><strong>Home link</strong> — the first item in the trail. Points to the root of the site (or the highest-level parent).</li>
+    <li><strong>Page link</strong> — intermediate, clickable trail items. One per hierarchy level between Home and the current page.</li>
+    <li><strong>Separator</strong> — decorative glyph between items. Defaults to <code>/</code>; the <code>separator</code> prop accepts any <code>React.ReactNode</code>.</li>
+    <li><strong>Current page</strong> — the last item in the trail. Rendered as plain text, not a link, and carries <code>aria-current="page"</code>.</li>
+  </ol>
+
+  <hr>
+
+  <h2>Overview</h2>
+  <p>
+    Breadcrumbs are a <strong>secondary</strong> navigational system: they show users their current location relative to the information architecture. Each page link should be short and clearly reflect the location or entity it links to so users understand where they are and can move between levels. The trail starts at the Home (or highest-level parent) page and ends at the parent section of the current page; the current page itself is <strong>never a link</strong>.
+  </p>
+  <p class="source-line">Source: Published docs — Overview section · <code>Breadcrumbs-figma.md:229</code> (Figma component description).</p>
+
+  <hr>
+
+  <h2>Behaviour</h2>
+  <h3>States</h3>
+  <p>Breadcrumb link items expose four interaction states:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>State</th>
+          <th>Trigger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Rest</td><td>Default.</td></tr>
+        <tr><td>2</td><td>Hover</td><td>Pointer over the link.</td></tr>
+        <tr><td>3</td><td>Active</td><td>Pointer pressed on the link.</td></tr>
+        <tr><td>4</td><td>Focus</td><td>Link receives keyboard focus (Tab order, see <a href="./accessibility.md">accessibility.md</a>).</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Visual styling for each state is defined in the Figma <code>_Text link breadcrumb</code> and <code>_Text link elipsis</code> atoms — see <a href="./Breadcrumbs-figma.md">Breadcrumbs-figma.md</a>. Only rest-state token bindings are currently resolved; hover/active/focus tokens remain a <code>SOURCE_GAP</code> per <a href="./Breadcrumbs-audit.md">Breadcrumbs-audit.md</a> GAP-003.
+  </p>
+  <p class="source-line">Source: Published docs — Behaviour → States · <code>Breadcrumbs-figma.md</code> · <code>accessibility.md</code>.</p>
+
+  <hr>
+
+  <h2>Placement</h2>
+  <p>
+    Breadcrumbs are placed in the <strong>top-left</strong> portion of the page, <strong>above the page title</strong>, and should <strong>never wrap onto a second line</strong>. If the trail is too long for the available width, collapse it with the overflow menu — do not allow the line to wrap.
+  </p>
+  <p class="source-line">Source: Published docs — Placement section · Figma auto-layout <code>overflow: no wrap</code> (<code>Breadcrumbs-figma.md:205</code>).</p>
+
+  <hr>
+
+  <h2>Overflow menu</h2>
+  <p>
+    When a breadcrumb contains <strong>more than eight items</strong>, or the space becomes limited, the breadcrumb auto-collapses and uses an ellipsis (<code>…</code>) to indicate more information. The <strong>first and last items are shown by default</strong>. Clicking the ellipsis opens an overflow menu showing the truncated breadcrumbs.
+  </p>
+  <p>The collapse behaviour is controlled by these props (see <a href="./props.md">props.md</a>):</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Prop</th>
+          <th>Default</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>maxItems</code></td>
+          <td><code>4</code></td>
+          <td>Threshold above which the trail collapses. The published docs reference an eight-item threshold; override <code>maxItems</code> to align with that limit.</td>
+        </tr>
+        <tr>
+          <td><code>itemsBeforeCollapse</code></td>
+          <td><code>1</code></td>
+          <td>How many items remain visible before the ellipsis.</td>
+        </tr>
+        <tr>
+          <td><code>itemsAfterCollapse</code></td>
+          <td><code>1</code></td>
+          <td>How many items remain visible after the ellipsis.</td>
+        </tr>
+        <tr>
+          <td><code>collapsedTitle</code></td>
+          <td><code>'Show all links'</code></td>
+          <td>Accessible title on the ellipsis <code>&lt;button&gt;</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source-line">Source: Published docs — Overflow menu section · <code>props.md:50</code> · <code>examples.md</code>.</p>
+
+  <hr>
+
+  <h2>Best Practices</h2>
+
+  <h3>When to use</h3>
+  <ul class="bullet-list">
+    <li>Use the breadcrumbs component to help users understand and move between the multiple levels of a website.</li>
+  </ul>
+
+  <h3>When not to use</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Situation</th>
+          <th>Why</th>
+          <th>Use instead</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Product has a flat structure (no nested hierarchy)</td>
+          <td>Nothing for a trail to represent — adds noise.</td>
+          <td>Primary nav alone.</td>
+        </tr>
+        <tr>
+          <td>Showing progress through a linear journey (e.g. a wizard or multi-step form)</td>
+          <td>Breadcrumbs reflect location in a hierarchy, not stages in a flow.</td>
+          <td>Progress indicator / stepper.</td>
+        </tr>
+        <tr>
+          <td>The page already exposes the same hierarchy elsewhere (e.g. a persistent sidebar)</td>
+          <td>Breadcrumbs duplicate navigation the user already has.</td>
+          <td>Rely on the existing pattern; only add breadcrumbs if they genuinely add wayfinding value.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source-line">Source: Published docs — Best Practices → When to use / When not to use.</p>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Label clarity</div>
+      <p class="pair-source">Grounded in: Published docs — Overview · <code>accessibility.md:61</code> (WCAG 2.4.4 Link Purpose).</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Keep link labels short and reflective of the destination</div>
+          <p class="card-body">Each page link should clearly identify the page or section it points to. Prefer the page's own title; avoid generic placeholders.</p>
+          <div class="card-code">&lt;Breadcrumb href="/billing"&gt;Billing&lt;/Breadcrumb&gt;
+&lt;Breadcrumb href="/billing/invoices"&gt;Invoices&lt;/Breadcrumb&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use vague, duplicated, or truncated labels</div>
+          <p class="card-body">Generic labels ("Page", "Section") or mid-string ellipses defeat the wayfinding purpose. Let the component handle overflow instead of hand-truncating labels.</p>
+          <div class="card-code">{/* Wrong */}
+&lt;Breadcrumb href="/billing"&gt;Page&lt;/Breadcrumb&gt;
+&lt;Breadcrumb href="/billing/invoices"&gt;Pa…&lt;/Breadcrumb&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Current page</div>
+      <p class="pair-source">Grounded in: Published docs — Overview · <code>props.md:67</code> · <code>accessibility.md:35</code>.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Make the current page the last, non-link item</div>
+          <p class="card-body">Use <code>isActive</code> on the final <code>Breadcrumb</code>. It renders as plain text and carries <code>aria-current="page"</code>, telling assistive tech where the user is.</p>
+          <div class="card-code">&lt;Breadcrumbs&gt;
+  &lt;Breadcrumb href="/"&gt;Home&lt;/Breadcrumb&gt;
+  &lt;Breadcrumb href="/billing"&gt;Billing&lt;/Breadcrumb&gt;
+  &lt;Breadcrumb isActive&gt;Invoices&lt;/Breadcrumb&gt;
+&lt;/Breadcrumbs&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Render the current page as a link</div>
+          <p class="card-body">A self-referencing link is misleading, fails <code>aria-current</code> expectations, and contradicts the published guidance ("this page is never a link").</p>
+          <div class="card-code">{/* Wrong — current page is a clickable link */}
+&lt;Breadcrumb href="/billing/invoices"&gt;Invoices&lt;/Breadcrumb&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Placement</div>
+      <p class="pair-source">Grounded in: Published docs — Placement section · Figma auto-layout <code>overflow: no wrap</code>.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Keep the trail on a single line, top-left, above the page title</div>
+          <p class="card-body">Breadcrumbs sit above the page title, anchored to the left, on a single row.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Let the trail wrap to a second line</div>
+          <p class="card-body">If the trail is too long for the row, collapse it with the overflow menu. Wrapping breaks visual hierarchy and the component's auto-layout.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Overflow</div>
+      <p class="pair-source">Grounded in: Published docs — Overflow menu · <code>examples.md</code> · <code>props.md:50</code>.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Let the component auto-collapse beyond the threshold</div>
+          <p class="card-body">Set <code>maxItems</code> to reflect your hierarchy depth and let the component render the ellipsis and overflow menu automatically.</p>
+          <div class="card-code">&lt;Breadcrumbs maxItems={8} itemsBeforeCollapse={1} itemsAfterCollapse={1}&gt;
+  {/* …deep trail… */}
+&lt;/Breadcrumbs&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Hand-truncate or hand-omit middle items</div>
+          <p class="card-body">Manually dropping items or shortening labels bypasses the accessible overflow <code>&lt;button&gt;</code> and hides destinations the user might need.</p>
+          <div class="card-code">{/* Wrong — middle items silently dropped */}
+&lt;Breadcrumbs&gt;
+  &lt;Breadcrumb href="/"&gt;Home&lt;/Breadcrumb&gt;
+  &lt;Breadcrumb isActive&gt;Invoice 1042&lt;/Breadcrumb&gt;
+&lt;/Breadcrumbs&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Localisation</div>
+      <p class="pair-source">Grounded in: <code>props.md:57</code> · <code>accessibility.md:50</code>.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Localise <code>collapsedTitle</code> and <code>ariaLabel</code></div>
+          <p class="card-body">Both props default to English strings. Translate them to match the rest of the UI; the ellipsis <code>&lt;button&gt;</code> <code>title</code> and the <code>&lt;nav&gt;</code> <code>aria-label</code> are read aloud by screen readers.</p>
+          <div class="card-code">&lt;Breadcrumbs
+  ariaLabel={t('breadcrumbs.nav')}
+  collapsedTitle={t('breadcrumbs.showAllLinks')}
+&gt;
+  {/* … */}
+&lt;/Breadcrumbs&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Ship the default English strings to a translated UI</div>
+          <p class="card-body">Mixed-language ARIA text confuses screen-reader users and fails localisation review.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 6 — When to use vs. not use</div>
+      <p class="pair-source">Grounded in: Published docs — Best Practices → When to use / When not to use.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use breadcrumbs for deep hierarchies that complement primary nav</div>
+          <p class="card-body">Breadcrumbs are most valuable when users land deep in a hierarchy from search or external links and need to orient themselves and step back up.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use breadcrumbs on flat sites or as a progress tracker</div>
+          <p class="card-body">If there is no hierarchy, there is no trail to show. For step-by-step flows, use a progress indicator or stepper instead.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Accessibility quick reference</h2>
+  <ul class="bullet-list">
+    <li>The root renders as <code>&lt;nav&gt;</code> with <code>aria-label</code> (defaults to <code>'Breadcrumbs'</code>; override via <code>ariaLabel</code>).</li>
+    <li>Items render inside an <code>&lt;ol&gt;</code> — the sequence is conveyed to screen readers.</li>
+    <li>The active item carries <code>aria-current="page"</code>; do not add it manually elsewhere.</li>
+    <li>The ellipsis renders as a <code>&lt;button&gt;</code> with a <code>title</code> (<code>collapsedTitle</code>); it is keyboard-activatable.</li>
+    <li>The separator is decorative and is expected to be excluded from the accessibility tree by the component.</li>
+  </ul>
+  <p>See <a href="./accessibility.md">accessibility.md</a> for the full WCAG 2.1 AA checklist.</p>
+
+  <hr>
+
+  <h2>Gaps</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Figma Do/Don't examples</td>
+            <td><span class="badge-tag badge-source-gap">Source Gap</span></td>
+            <td>No <code>↳ Breadcrumbs examples</code> Figma page with Do/Don't card frames found. Guidelines above are editorially transcribed from the published Oxygen docs page (screenshot, 2026-05-11) and cross-validated against MCP/Figma extraction. Re-run <code>figma-extract-usage</code> if such a page is ever created.</td>
+          </tr>
+          <tr>
+            <td>State token bindings (hover/active/focus)</td>
+            <td><span class="badge-tag badge-source-gap">Source Gap</span></td>
+            <td>Tracked as GAP-003 in <a href="./Breadcrumbs-audit.md">Breadcrumbs-audit.md</a>. Atoms exist in Figma but token bindings come from a shared library not resolved by the current extraction. Described behaviourally only — no token names asserted here.</td>
+          </tr>
+          <tr>
+            <td>Overflow Menu hardcoded values</td>
+            <td><span class="badge-tag badge-source-gap">Source Gap</span></td>
+            <td>Background, border, shadow, radius, width, and padding-y on the Overflow Menu container are hardcoded values, not bound tokens — see <code>Breadcrumbs-figma.md:127</code>.</td>
+          </tr>
+          <tr>
+            <td>"How to use slots" related guide URL</td>
+            <td><span class="badge-tag badge-source-gap">Source Gap</span></td>
+            <td>The published docs page links to a "How to use slots" guide under Related → Guides. The destination URL is not present in any extracted artifact and is not asserted here.</td>
+          </tr>
+          <tr>
+            <td>"Current page" typo</td>
+            <td><span class="badge-tag badge-design-gap">Design Gap</span></td>
+            <td>Figma text property is <code>curent page#20679:3</code> (one <code>r</code>). Tracked in <code>Breadcrumbs-figma.md:236</code>. Do not replicate the typo in code or copy.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Source: Published Oxygen docs page (screenshot, 2026-05-11) · Cross-referenced with Oxygen MCP and Figma extraction · Editorial draft
+  </footer>
+
+</div>
+</body>
+</html>

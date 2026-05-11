@@ -12,6 +12,7 @@ siblings:
   - "[[Button/tokens]]"
   - "[[Button/accessibility]]"
   - "[[Button/Button-figma]]"
+  - "[[Button/Button-usage]]"
   - "[[Button/Button-audit]]"
 tags:
   - oxygen
@@ -22,7 +23,7 @@ tags:
 ---
 # Button — Examples
 
-> **See also:** [Props](props.md) · [Tokens](tokens.md) · [Accessibility](accessibility.md)
+> **See also:** [Props](props.md) · [Tokens](tokens.md) · [Accessibility](accessibility.md) · [Usage](Button-usage.md)
 
 ## Basic Usage
 

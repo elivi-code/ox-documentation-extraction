@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alert Banner — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f1a;
+      line-height: 1.2;
+    }
+
+    .see-also {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .see-also a {
+      color: #5046e4;
+      text-decoration: none;
+    }
+
+    .see-also a:hover { text-decoration: underline; }
+
+    /* Editorial callout */
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Info callout */
+    .callout-info {
+      background: #f0f0ff;
+      border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 13.5px;
+      color: #1e1a6e;
+    }
+
+    /* Intro */
+    .intro {
+      font-size: 15.5px;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f0f1a;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.5rem;
+    }
+
+    /* When to use */
+    .when-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .when-section { grid-template-columns: 1fr; }
+    }
+
+    .when-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .when-card h3 { margin-bottom: 0.625rem; }
+
+    .when-card ul {
+      padding-left: 1.25rem;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    /* Alternatives table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Do / Don't pairs */
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair {
+      margin-bottom: 1.75rem;
+    }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards { grid-template-columns: 1fr; }
+    }
+
+    .do-card, .dont-card {
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .dont-card {
+      background: #fff5f5;
+      border: 1px solid #fecaca;
+    }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 0.625rem;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body {
+      color: #374151;
+      line-height: 1.55;
+      margin-bottom: 0.625rem;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .card-note code {
+      background: rgba(0,0,0,0.06);
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    /* Gaps table */
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-conflict { background: #fef3c7; color: #92400e; }
+    .badge-gap      { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial{ background: #f0f0ff; color: #3730a3; }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · feedback_status · AlertBanner</div>
+    <h1>Alert Banner — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./alert-banner-figma.md">alert-banner-figma.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — not Figma-sourced.</strong> No <code>↳ AlertBanner examples</code> Figma page exists, so <code>figma-extract-usage</code> cannot run. The Do/Don't pairs below are inferred from <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, and <code>alert-banner-figma.md</code>. Treat as provisional until a designer reviews them. Replace with <code>figma-extract-usage</code> output when a Figma examples page is created.
+  </div>
+
+  <p class="intro">
+    AlertBanner is a persistent, page-scoped warning strip. It uses a single fixed amber style to signal that a system-level condition requires the user's attention. The banner stays visible until the underlying condition is resolved — it is not dismissable.
+  </p>
+
+  <hr>
+
+  <!-- When to use / When not to use -->
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li>A system-level warning affects the user's ability to proceed (session expiry, connectivity loss, scheduled maintenance).</li>
+        <li>The condition is persistent — not a one-time confirmation or transient status update.</li>
+        <li>The warning applies to the whole page or region, not to a specific field or isolated element.</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li>Transient confirmation ("File saved") → use <strong>Toast</strong></li>
+        <li>The user should be able to dismiss → use <strong>Toast (dismissable)</strong></li>
+        <li>Field-level validation → use <strong>Inline error</strong></li>
+        <li>Blocking action required → use <strong>Modal / Dialog</strong></li>
+        <li>Low-urgency informational update → use <strong>Status region / Toast</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    AlertBanner has no built-in dismiss control. If the use case requires dismissal, use Toast.
+  </div>
+
+  <hr>
+
+  <!-- Do / Don't pairs -->
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Urgency match</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Reserve for time-sensitive, page-level warnings</div>
+          <p class="card-body">AlertBanner maps to an immediate screen reader announcement (<code>role="alert"</code> behaviour). Use it when the condition affects what the user can do right now — a session about to expire or a service outage blocking a core workflow.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — explicit <code>role="alert"</code> vs <code>role="status"</code> decision table.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use for low-urgency informational updates</div>
+          <p class="card-body">Announcing "Autosaved 2 minutes ago" or "New features available" as an alert will interrupt screen reader users at the wrong moment. Use a polite status region or Toast for information that does not require immediate action.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Single severity</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use only for warning-level conditions</div>
+          <p class="card-body">The amber background is intentional and fixed. It signals "warning" system-wide. Using it only for that purpose preserves its meaning across the product.</p>
+          <p class="card-note">Grounded in: <code>props.md</code> — no <code>type</code>, <code>variant</code>, or <code>severity</code> prop; single fixed amber style.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Override its colour for success, info, or error states</div>
+          <p class="card-body">There is no <code>severity</code> or <code>variant</code> prop. Applying custom CSS to change the background breaks the design system contract and produces an untokenised one-off. Raise a request with the design system team instead.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Action button labelling</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Label with a specific, self-contained verb phrase</div>
+          <p class="card-body">"Retry", "Reconnect", "Sign in again", "Contact support" — each label tells the user exactly what will happen when they activate it, even when read in isolation by a screen reader.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — "meaningful out of context"; <code>examples.md</code> models "Retry" and "Contact support".</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use generic labels like "Click here", "OK", or "More"</div>
+          <p class="card-body">Generic labels fail screen reader users who navigate by button, and waste the action button's value for sighted users — the button is the clearest signal of what to do next, and a vague label squanders that.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Message copy</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Write short, user-actionable copy</div>
+          <p class="card-body">"Your session has expired. Sign in again to continue." One sentence, two things: what happened and what to do. Keep <code>children</code> to plain text or simple inline elements.</p>
+          <p class="card-note">Grounded in: <code>props.md</code> — "typically a plain text string… avoid complex interactive content"; <code>examples.md</code> models this pattern throughout.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Paste raw error messages, status codes, or stack traces</div>
+          <p class="card-body">Technical error strings are rarely actionable for end users and create noise for screen readers. If diagnostic information needs to be surfaced, link to a details view via the action button rather than embedding it in the banner message.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <!-- Gaps -->
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CONFLICT-001</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td><code>mode</code> (light/dark) and <code>breakpoint</code> (&gt; 576 / &lt; 576) are Figma variant axes with no corresponding props in the Oxygen API. Confirm whether the component reads from a theme context, a container query, or viewport width automatically.</td>
+          </tr>
+          <tr>
+            <td>CONFLICT-002</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td>Banner background token identity is unresolved. Figma extraction confirms <code>warning/warning01</code> → <code>color/yellow/yellow06</code> → <code>#f8ae1a</code> (mode-invariant); <code>tokens.md</code> notes <code>alertYellow</code> is documented as data-viz scope. Design team must confirm the correct semantic token name before <code>doc-rewrite</code> runs.</td>
+          </tr>
+          <tr>
+            <td>GAP-013</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>ARIA role implementation is unconfirmed. <code>accessibility.md</code> recommends <code>role="alert"</code>, but the component source has not been verified. Usage Pair 1 above is grounded in that recommendation — confirm before using this guidance in shipped documentation.</td>
+          </tr>
+          <tr>
+            <td>—</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>These Do/Don't pairs are authored from extracted artifacts, not from Figma examples frames. They should be reviewed by a designer and replaced with Figma-sourced pairs once a <code>↳ AlertBanner examples</code> page is created.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance authored from extracted artifacts (props.md, examples.md, alert-banner-figma.md, accessibility.md, alert-banner-audit.md) · No Figma examples page available · 2026-05-11
+  </footer>
+
+</div>
+</body>
+</html>

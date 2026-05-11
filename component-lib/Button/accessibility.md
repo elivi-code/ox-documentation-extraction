@@ -12,6 +12,7 @@ siblings:
   - "[[Button/examples]]"
   - "[[Button/tokens]]"
   - "[[Button/Button-figma]]"
+  - "[[Button/Button-usage]]"
   - "[[Button/Button-audit]]"
 tags:
   - oxygen
@@ -22,7 +23,7 @@ tags:
 ---
 # Button — Accessibility
 
-> **See also:** [Props](props.md) · [Examples](examples.md) · [Tokens](tokens.md)
+> **See also:** [Props](props.md) · [Examples](examples.md) · [Tokens](tokens.md) · [Usage](Button-usage.md)
 
 ## ARIA Role
 

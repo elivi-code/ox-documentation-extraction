@@ -1,9 +1,10 @@
 ---
 rubric_version: 1.0
 component: Avatar
-audited: 2026-04-28
+audited: 2026-05-11
 verdict: NO
 verdict_reason: "Two unresolved CONFLICTs require human verification before doc-rewrite can proceed"
+audit_note: "Partial re-audit 2026-05-11 — Avatar-usage.md added editorially (GAP-001 resolved). All other findings unchanged."
 
 files_found:
   - Avatar/props.md
@@ -11,23 +12,24 @@ files_found:
   - Avatar/tokens.md
   - Avatar/accessibility.md
   - Avatar/Avatar-figma.md
+  - Avatar/Avatar-usage.md   # editorial — authored from extracted artifacts, no Figma examples page
 
 files_missing:
-  - Avatar/Avatar-usage.md   # figma-extract-usage not run
   - Avatar/Avatar-pui.md     # pui-mcp-extract not run
 
 dimension_scores:
-  source_completeness: { score: 0.71, coverage: "5/7" }
+  source_completeness: { score: 0.86, coverage: "6/7" }
   props:               { score: 0.79, coverage: "11/14" }
   tokens:              { score: 0.77, coverage: "10/13" }
   figma_spec:          { score: 0.88, coverage: "14/16" }
   examples:            { score: 0.80, coverage: "8/10", confidence: heuristic }
   accessibility:       { score: 0.89, coverage: "8/9" }
+  usage:               { score: 0.75, coverage: "7 pairs (editorial)", confidence: heuristic }
   cross_file:          { score: 0.90, coverage: "9/10" }
 
 totals:
   doc_gaps: 8
-  source_gaps: 9
+  source_gaps: 8
   conflicts: 2
   warnings: 4
 
@@ -38,6 +40,8 @@ gaps:
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    status: RESOLVED
+    resolved: "2026-05-11 — Avatar-usage.md authored editorially (7 Do/Don't pairs, grounded in extracted artifacts). No Figma examples page exists; replace with figma-extract-usage output when one is created."
     evidence:
       source_file: ~
       location: "Avatar/ directory"
@@ -281,7 +285,7 @@ tags:
 
 # Avatar — Documentation Audit
 
-> **Rubric version:** 1.0 · **Audited:** 2026-04-28 · **Verdict:** NO
+> **Rubric version:** 1.0 · **Audited:** 2026-05-11 (partial re-audit) · **Verdict:** NO
 
 ---
 
@@ -306,7 +310,7 @@ Once those are resolved, the remaining blockers are source gaps solvable by runn
 | `Avatar/tokens.md` | ✅ Present | oxygen-mcp-extract |
 | `Avatar/accessibility.md` | ✅ Present | oxygen-mcp-extract |
 | `Avatar/Avatar-figma.md` | ✅ Present | figma-extract |
-| `Avatar/Avatar-usage.md` | ❌ Missing | figma-extract-usage |
+| `Avatar/Avatar-usage.md` | ✅ Present (editorial) | usage-advisor → promoted 2026-05-11; replace with figma-extract-usage when Figma examples page exists |
 | `Avatar/Avatar-pui.md` | ❌ Missing | pui-mcp-extract |
 
 ---
@@ -315,12 +319,13 @@ Once those are resolved, the remaining blockers are source gaps solvable by runn
 
 | Dimension | Score | Coverage | Confidence |
 |-----------|-------|----------|------------|
-| Source completeness | 0.71 | 5/7 | deterministic |
+| Source completeness | 0.86 | 6/7 | deterministic |
 | Props | 0.79 | 11/14 | deterministic |
 | Tokens | 0.77 | 10/13 | deterministic |
 | Figma spec | 0.88 | 14/16 | deterministic |
 | Examples | 0.80 | 8/10 | **heuristic** |
 | Accessibility | 0.89 | 8/9 | mixed |
+| Usage | 0.75 | 7 pairs (editorial) | **heuristic** |
 | Cross-file consistency | 0.90 | 9/10 | mixed |
 
 ---
@@ -330,10 +335,11 @@ Once those are resolved, the remaining blockers are source gaps solvable by runn
 | Count | Category |
 |-------|----------|
 | 2 | CONFLICTs (blocking) |
-| 2 | SOURCE_GAPSs — major (missing extract runs) |
+| 1 | SOURCE_GAPSs — major (missing extract run: Avatar-pui.md) |
 | 7 | SOURCE_GAPSs — minor |
 | 4 | DOC_GAPSs (auto-fixable or minor) |
 | 4 | WARNINGs (heuristic) |
+| 1 | RESOLVED — GAP-001 (Avatar-usage.md authored editorially 2026-05-11) |
 
 ---
 
@@ -361,11 +367,11 @@ Figma `Status` axis includes `Gray, Green, Purple, Red, Yellow` alongside semant
 
 ## Major gaps
 
-### GAP-001 · Avatar-usage.md missing · SOURCE_GAP
+### ~~GAP-001 · Avatar-usage.md missing · SOURCE_GAP~~ — RESOLVED 2026-05-11
 
-`figma-extract-usage` was not run. Do/Don't usage guidelines from Figma are absent.
-
-**Fix:** Run `figma-extract-usage` for Avatar.
+`Avatar-usage.md` authored editorially using `usage-advisor` — 7 Do/Don't pairs grounded in
+`props.md`, `examples.md`, `accessibility.md`, and `Avatar-figma.md`. Source type: editorial.
+Replace with `figma-extract-usage` output when a Figma `↳ Avatar examples` page is created.
 
 ---
 
@@ -424,7 +430,7 @@ MCP returned 0 clean code snippets. Every example in `examples.md` was hand-writ
 
 1. **Resolve GAP-003** — check `AvatarSize` enum in `@8x8/oxygen-avatar` TypeScript source
 2. **Resolve GAP-004** — check `AvatarUserStatus` enum in `@8x8/oxygen-avatar` TypeScript source
-3. **Run `figma-extract-usage`** — produces `Avatar-usage.md` (GAP-001)
+3. ~~**Run `figma-extract-usage`**~~ — GAP-001 resolved; `Avatar-usage.md` authored editorially (7 pairs). Replace with `figma-extract-usage` when a Figma examples page is created.
 4. **Run `pui-mcp-extract`** — produces `Avatar-pui.md` (GAP-002)
 5. **Verify examples** against Storybook (GAP-011)
 6. After conflicts resolved and source gaps closed → run `doc-rewrite`

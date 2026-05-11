@@ -19,6 +19,7 @@ siblings:
   - "[[Button/tokens]]"
   - "[[Button/accessibility]]"
   - "[[Button/Button-figma]]"
+  - "[[Button/Button-usage]]"
   - "[[Button/Button-audit]]"
 tags:
   - oxygen
@@ -29,7 +30,7 @@ tags:
 ---
 # Button — Props
 
-> **See also:** [Examples](examples.md) · [Tokens](tokens.md) · [Accessibility](accessibility.md)
+> **See also:** [Examples](examples.md) · [Tokens](tokens.md) · [Accessibility](accessibility.md) · [Usage](Button-usage.md)
 
 ## Installation
 

@@ -1,7 +1,7 @@
 ---
 rubric_version: "1.0"
 component: Button
-audit_date: "2026-04-28"
+audit_date: "2026-05-11"
 auditor: doc-audit skill
 
 files_found:
@@ -10,9 +10,9 @@ files_found:
   - tokens.md
   - accessibility.md
   - Button-figma.md
+  - Button-usage.md
 
 files_missing:
-  - Button-usage.md
   - Button-pui.md
 
 dimension_scores:
@@ -21,15 +21,15 @@ dimension_scores:
   tokens:       { score: 0.78, coverage: "7/9"  }
   accessibility:{ score: 0.80, coverage: "6/8"  }
   figma:        { score: 0.70, coverage: "7/10" }
-  usage:        { score: 0.00, coverage: "0/0 — SOURCE_GAP" }
+  usage:        { score: 0.72, coverage: "8/11 — editorial (no Figma examples page)" }
   pui:          { score: 0.00, coverage: "0/0 — SOURCE_GAP" }
 
 available_dimensions_avg: 0.75
-overall_avg: 0.54
+overall_avg: 0.64
 
 counts:
-  doc_gaps: 12
-  source_gaps: 2
+  doc_gaps: 15
+  source_gaps: 1
   conflicts: 3
   warnings: 3
 
@@ -43,6 +43,8 @@ verdict_reason: >
   CONFLICT-003: Figma CSS export uses --actions/action09 for Primary bg; tokens.md
   names the same color action01 — naming scheme divergence.
   All three must be resolved before doc-rewrite proceeds.
+  NOTE: GAP-004 (Button-usage.md missing) is RESOLVED — Button-usage.md was authored
+  editorially from the published Oxygen docs page (2026-05-11). Usage now scores 0.72.
 
 suggested_next_action: >
   1. Resolve GAP-001 (Secondary rest token): designer or token owner confirms
@@ -51,10 +53,11 @@ suggested_next_action: >
      non-inverted text buttons or a different token should be used.
   3. Resolve GAP-003 (CSS naming): decide canonical token name format across
      Figma CSS export and Oxygen token system.
-  4. Run figma-extract-usage → produces Button-usage.md
-  5. Run pui-mcp-extract → produces Button-pui.md
-  6. Re-run doc-audit → clears conflicts and source gaps
-  7. Run doc-rewrite → produces Button-spec.md
+  4. Run pui-mcp-extract → produces Button-pui.md (or confirm Button has no PUI context)
+  5. Re-run doc-audit → verdict should reach PARTIAL or YES once CONFLICTs are resolved
+  6. Run doc-rewrite → produces Button-spec.md
+  Optional: Replace Button-usage.md editorial draft with figma-extract-usage output
+  when a Figma "↳ Button examples" page with Do/Don't card frames is created.
 
 gaps:
   - id: GAP-001
@@ -118,12 +121,20 @@ gaps:
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    status: RESOLVED
     evidence:
-      source_file: ~
+      source_file: Button-usage.md
       location: "Button/ directory"
-      finding: "Button-usage.md is absent — figma-extract-usage skill has not been run"
-    fix_action: "Run figma-extract-usage for the Button component to produce Button-usage.md"
-    blocks: [doc-rewrite/usage-dimension]
+      finding: >
+        RESOLVED 2026-05-11 — Button-usage.md created editorially from the published
+        Oxygen docs page (https://oxygen.8x8.com/docs/components/button/usage, screenshot
+        2026-05-11), cross-validated against all extracted MCP/Figma artifacts.
+        7 Do/Don't pairs. Usage dimension now scores 0.72.
+        Note: file is an editorial draft, NOT figma-extract-usage output. No Figma
+        Do/Don't card frames exist. Replace with figma-extract-usage output if a
+        Figma "↳ Button examples" page is created.
+    fix_action: "No further action required for usage file existence. See GAP-018/019/020 for remaining usage DOC_GAPs."
+    blocks: []
     dependency: []
 
   - id: GAP-005
@@ -135,8 +146,8 @@ gaps:
     evidence:
       source_file: ~
       location: "Button/ directory"
-      finding: "Button-pui.md is absent — pui-mcp-extract skill has not been run"
-    fix_action: "Run pui-mcp-extract for the Button component to produce Button-pui.md"
+      finding: "Button-pui.md is absent — pui-mcp-extract skill has not been run. Button is a pure UI component and may have no relevant PUI context (notifications, navigation, session, event bus) — confirm before running."
+    fix_action: "Run pui-mcp-extract for the Button component, or add <!-- NO RELEVANT PUI CONTEXT --> marker to a Button-pui.md stub to close this gap"
     blocks: [doc-rewrite/pui-dimension]
     dependency: []
 
@@ -317,6 +328,62 @@ gaps:
     blocks: []
     dependency: []
 
+  - id: GAP-018
+    dimension: usage
+    severity: minor
+    type: DOC_GAP
+    confidence: deterministic
+    auto_fixable: false
+    evidence:
+      source_file: Button-usage.md
+      location: "## Overview — Type matrix — Note block"
+      finding: >
+        Button-usage.md documents 'Soft', 'Disclosure', 'Optional', and 'Indeterminate'
+        treatments as visible on the published docs page screenshot but absent from
+        props.md (props.md:86 lists only primary/secondary/tertiary/tertiaryReversed/
+        text/success/destructive). These may be composition patterns rather than
+        first-class API variants. The relationship between docs-page types and the
+        Oxygen API is currently unresolved.
+    fix_action: "Confirm with Oxygen team whether Soft/Disclosure/Optional/Indeterminate are new API variants, composed treatments, or rebranded existing variants; update Button-usage.md type matrix and props.md accordingly"
+    blocks: []
+    dependency: []
+
+  - id: GAP-019
+    dimension: usage
+    severity: minor
+    type: DOC_GAP
+    confidence: heuristic
+    auto_fixable: false
+    evidence:
+      source_file: Button-usage.md
+      location: "## Placement & alignment — inline comment"
+      finding: >
+        The Alignment section in Button-usage.md contains a <!-- TODO --> note indicating
+        the exact wording from the published docs Alignment section was not captured at
+        readable resolution in the screenshot. The 'primary right-aligned in dialogs'
+        convention is described behaviourally but not as a verbatim transcription.
+    fix_action: "Confirm exact wording from the published Oxygen docs Alignment section (https://oxygen.8x8.com/docs/components/button/usage) and update Button-usage.md Placement & alignment section"
+    blocks: []
+    dependency: []
+
+  - id: GAP-020
+    dimension: usage
+    severity: minor
+    type: DOC_GAP
+    confidence: heuristic
+    auto_fixable: false
+    evidence:
+      source_file: Button-usage.md
+      location: "## Related components — inline comment"
+      finding: >
+        Related components list (ButtonGroup, DropdownButton, IconButton, TextLink) was
+        derived from props.md and accessibility.md rather than confirmed against the
+        published docs page Related section. Additional related components (e.g. Tooltip,
+        Popover, ConfirmDialog) may be listed on the live page but are not verified.
+    fix_action: "Confirm the full Related section from the published docs page and update Button-usage.md ## Related components"
+    blocks: []
+    dependency: []
+
 warnings:
   - id: WARN-001
     dimension: props
@@ -342,16 +409,17 @@ warnings:
       enum also includes tertiary, tertiaryReversed, success, and destructive.
       These likely exist in a separate Figma component set (circular/control buttons).
       figma-extract should be run against those nodes to complete Figma coverage.
-# --- navigation (added by component-map) ---
+# --- navigation ---
 role: audit
 pipeline_stage: blocked
-pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+pipeline_note: "Audit verdict NO — resolve 3 CONFLICTs before rewrite. Usage dimension now scored (0.72) — GAP-004 resolved 2026-05-11."
 siblings:
   - "[[Button/props]]"
   - "[[Button/examples]]"
   - "[[Button/tokens]]"
   - "[[Button/accessibility]]"
   - "[[Button/Button-figma]]"
+  - "[[Button/Button-usage]]"
 tags:
   - oxygen
   - component/Button
@@ -361,7 +429,7 @@ tags:
 
 # Button — Documentation Audit
 
-> **Rubric version:** 1.0 · **Audit date:** 2026-04-28 · **Verdict:** NO
+> **Rubric version:** 1.0 · **Audit date:** 2026-05-11 · **Verdict:** NO
 
 ---
 
@@ -374,7 +442,7 @@ tags:
 | `tokens.md` | ✅ Present | oxygen-mcp-extract |
 | `accessibility.md` | ✅ Present | oxygen-mcp-extract |
 | `Button-figma.md` | ✅ Present | figma-extract |
-| `Button-usage.md` | ❌ **MISSING** | figma-extract-usage |
+| `Button-usage.md` | ✅ Present *(editorial, 2026-05-11)* | figma-extract-usage *(editorial substitute)* |
 | `Button-pui.md` | ❌ **MISSING** | pui-mcp-extract |
 
 ---
@@ -388,10 +456,10 @@ tags:
 | Tokens | 0.78 | 7/9 | ✅ Available |
 | Accessibility | 0.80 | 6/8 | ✅ Available |
 | Figma | 0.70 | 7/10 | ✅ Available — ⛔ 3 CONFLICTs |
-| Usage | 0.00 | — | ❌ SOURCE_GAP (major) |
+| Usage | 0.72 | 8/11 — editorial | ✅ Available *(editorial draft; no Figma card frames)* |
 | PUI | 0.00 | — | ❌ SOURCE_GAP (major) |
 | **Available avg** | **0.75** | | |
-| **Overall avg** | **0.54** | | |
+| **Overall avg** | **0.64** | | |
 
 ---
 
@@ -400,8 +468,8 @@ tags:
 | Count | Category |
 |-------|----------|
 | 3 | CONFLICTs (1 blocker, 2 major) — **blocks doc-rewrite** |
-| 2 | SOURCE_GAPs (both major) |
-| 12 | DOC_GAPs (all minor) |
+| 1 | SOURCE_GAP (major) — PUI file missing |
+| 15 | DOC_GAPs (all minor) |
 | 3 | Warnings (heuristic, advisory) |
 
 ---
@@ -429,13 +497,13 @@ tags:
 
 ### SOURCE_GAPs
 
-#### GAP-004 · Usage · MAJOR
-**Finding:** `Button-usage.md` absent — `figma-extract-usage` not run.
-**Fix:** Run `figma-extract-usage`.
+#### GAP-004 · Usage · ~~MAJOR~~ **RESOLVED 2026-05-11**
+
+`Button-usage.md` created editorially from the published Oxygen docs page. Usage now scores 0.72. See GAP-018/019/020 for remaining minor usage DOC_GAPs.
 
 #### GAP-005 · PUI · MAJOR
-**Finding:** `Button-pui.md` absent — `pui-mcp-extract` not run.
-**Fix:** Run `pui-mcp-extract`.
+**Finding:** `Button-pui.md` absent — `pui-mcp-extract` not run. Button is a pure UI component; confirm whether PUI context is applicable before running.
+**Fix:** Run `pui-mcp-extract`, or add `<!-- NO RELEVANT PUI CONTEXT -->` stub to close gap.
 
 ---
 
@@ -449,8 +517,7 @@ tags:
 Default values absent for `ButtonGroup`, `DropdownButton`, `IconButton` sub-component props.
 → **Fix:** Add defaults or mark as `—`.
 
-#### GAP-008 · Props · requires human input (NEW)
-
+#### GAP-008 · Props · requires human input
 `Fluid 100%` variant axis present in Figma Label Button but no `fullWidth` prop in props.md for Button.
 → **Fix:** Confirm whether Button supports `fullWidth`; add to props.md if so.
 
@@ -474,9 +541,8 @@ Default values absent for `ButtonGroup`, `DropdownButton`, `IconButton` sub-comp
 `tertiary` variant absent from Token-to-Variant quick reference table.
 → **Fix:** Add row with correct tokens.
 
-#### GAP-014 · Tokens · requires human input (updated)
-
-Disabled-state tokens not documented in tokens.md. Token names now known from figma.md (`disabled01` bg, `disabled04` text/icon) but hex values still absent. Blocked on GAP-001 resolution.
+#### GAP-014 · Tokens · requires human input (depends GAP-001)
+Disabled-state tokens (`disabled01` bg, `disabled04` text/icon) identified in figma.md but hex values absent from tokens.md.
 → **Fix:** Add `disabled01` and `disabled04` rows with hex values from Oxygen theme.
 
 #### GAP-015 · Accessibility · auto-fixable
@@ -490,6 +556,18 @@ Medium and Small button dimensions not measured — only Large (48px H / 16px pa
 #### GAP-017 · Figma · requires human input
 Figma Variables API returned empty — token bindings inferred from text annotations only.
 → **Fix:** Re-run `figma_get_variables` with `includePublished=true` or investigate shared library setup.
+
+#### GAP-018 · Usage · requires human input *(NEW)*
+`Soft`, `Disclosure`, `Optional`, `Indeterminate` treatments on docs page not verified against the Oxygen API.
+→ **Fix:** Confirm with Oxygen team whether these are new variants, compositions, or renames; update `Button-usage.md` type matrix and `props.md`.
+
+#### GAP-019 · Usage · requires human input *(NEW)*
+Alignment section verbatim body copy from the published docs page not captured (TODO marker in file — screenshot resolution insufficient).
+→ **Fix:** Read live docs page ([oxygen.8x8.com/docs/components/button/usage](https://oxygen.8x8.com/docs/components/button/usage)) and transcribe Alignment section.
+
+#### GAP-020 · Usage · requires human input *(NEW)*
+Related components list unconfirmed against the live docs page — additional entries (e.g. Tooltip, Popover, ConfirmDialog) may be present.
+→ **Fix:** Confirm full Related section from the live docs page and update `Button-usage.md`.
 
 ---
 
@@ -507,16 +585,21 @@ Figma Variables API returned empty — token bindings inferred from text annotat
 
 **doc-rewrite is blocked until the 3 CONFLICTs are resolved.**
 
+Progress since last audit (2026-04-28):
+- ✅ `Button-usage.md` created — usage dimension raised from 0.00 → 0.72
+- ✅ SOURCE_GAPs reduced from 2 → 1
+- ✅ Overall avg raised from 0.54 → 0.64
+- ⛔ 3 figma CONFLICTs unchanged — still blocking doc-rewrite
+
 Resolve in this order:
 
 ```
 1. Resolve GAP-001  → confirm Secondary rest bg token (designer/token owner)
 2. Resolve GAP-002  → confirm Text button active bg token
 3. Resolve GAP-003  → document CSS variable ↔ semantic token name mapping
-4. Run figma-extract-usage  → produces Button-usage.md
-5. Run pui-mcp-extract      → produces Button-pui.md
-6. Re-run doc-audit         → verdict should reach PARTIAL or YES
-7. Run doc-rewrite          → produces Button-spec.md
+4. Confirm GAP-005  → run pui-mcp-extract or add NO_PUI stub
+5. Re-run doc-audit → verdict should reach PARTIAL or YES
+6. Run doc-rewrite  → produces Button-spec.md
 ```
 
-Source: doc-audit skill · Rubric v1.0 · Updated 2026-04-28
+_Source: doc-audit skill · Rubric v1.0 · Updated 2026-05-11_

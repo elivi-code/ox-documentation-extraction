@@ -12,6 +12,7 @@ siblings:
   - "[[Button/examples]]"
   - "[[Button/tokens]]"
   - "[[Button/accessibility]]"
+  - "[[Button/Button-usage]]"
   - "[[Button/Button-audit]]"
 tags:
   - oxygen
@@ -30,7 +31,7 @@ tags:
 # Button — Figma Design Spec
 
 > **See also:** [props.md](./props.md) · [tokens.md](./tokens.md) ·
-> [examples.md](./examples.md) · [accessibility.md](./accessibility.md)
+> [examples.md](./examples.md) · [accessibility.md](./accessibility.md) · [Button-usage.md](./Button-usage.md)
 
 ---
 

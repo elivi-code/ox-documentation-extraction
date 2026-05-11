@@ -2,9 +2,9 @@
 rubric_version: "1.0"
 component: Breadcrumbs
 package: "@8x8/oxygen-breadcrumbs"
-audit_date: "2026-05-05"
+audit_date: "2026-05-11"
 auditor: doc-audit skill
-prior_audit: "2026-04-30"
+prior_audit: "2026-05-05"
 
 file_inventory:
   present:
@@ -14,8 +14,8 @@ file_inventory:
     - accessibility.md
     - Breadcrumbs-figma.md
     - Breadcrumbs-pui.md
-  missing:
     - Breadcrumbs-usage.md
+  missing:
     - figma-screenshot-Breadcrumbs.png
 
 dimension_scores:
@@ -24,10 +24,10 @@ dimension_scores:
   tokens:       { score: 0.55, coverage: "5/9" }
   accessibility:{ score: 0.78, coverage: "7/9" }
   figma:        { score: 0.73, coverage: "8/11" }
-  usage:        { score: 0.00, coverage: "0/0 — SOURCE_GAP (file missing)" }
+  usage:        { score: 0.80, coverage: "8/10 — editorial (published docs + MCP/Figma cross-validated)" }
   pui:          { score: 1.00, coverage: "PASS — no relevant PUI context (engineer-confirmed)" }
 
-overall_score: 0.62
+overall_score: 0.73
 
 counts:
   doc_gaps: 4
@@ -38,15 +38,17 @@ counts:
 verdict: YES
 verdict_reason: >
   Zero CONFLICTs and zero blocker-severity gaps — doc-rewrite can proceed.
-  Token dimension re-scored from 0.25 → 0.55: rest-state token names for all
-  three interactive element types (link, ellipsis, separator/current page) and
-  typography style are fully documented in Breadcrumbs-figma.md and are available
-  for doc-rewrite to synthesise. tokens.md itself remains a stub that only
-  documents the gap (DOC_GAP, auto-fixable). Hover / active / focus state token
-  bindings remain unresolved (SOURCE_GAP, major) — these atoms exist in a shared
-  Figma library not accessible via this file's Variables API.
-  Breadcrumbs-usage.md is absent (SOURCE_GAP, major) — usage dimension will
-  be sparse or skipped in the spec. No CONFLICTs block rewrite.
+  Usage dimension lifts from 0.00 → 0.80: Breadcrumbs-usage.md was authored
+  editorially on 2026-05-11 from the published Oxygen docs page (screenshot)
+  cross-referenced with props.md, examples.md, accessibility.md, and
+  Breadcrumbs-figma.md. It covers anatomy, overview, states, placement,
+  overflow behaviour, when-to-use / when-not-to-use, and six sourced Do/Don't
+  pairs. Residual usage SOURCE_GAP (GAP-012) reflects that no Figma
+  "↳ Breadcrumbs examples" page exists — the editorial file should be
+  replaced with figma-extract-usage output if one is created.
+  Tokens dimension unchanged (0.55) — rest-state tokens fully documented in
+  Breadcrumbs-figma.md; hover/active/focus bindings remain unresolved
+  SOURCE_GAP (GAP-003). No CONFLICTs block rewrite.
 
 gaps:
   - id: GAP-001
@@ -130,18 +132,23 @@ gaps:
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    status: RESOLVED
+    resolved_date: "2026-05-11"
     evidence:
-      source_file: ~
-      location: "component-lib/Breadcrumbs/ directory"
+      source_file: Breadcrumbs-usage.md
+      location: "component-lib/Breadcrumbs/Breadcrumbs-usage.md"
       finding: >
-        Breadcrumbs-usage.md is absent — figma-extract-usage skill has not been run.
-        No Do/Don't editorial guidance is available.
+        Breadcrumbs-usage.md is now present (273 lines). Authored editorially on
+        2026-05-11 from the published Oxygen docs page screenshot, cross-validated
+        against props.md, examples.md, accessibility.md, and Breadcrumbs-figma.md.
+        Contains Anatomy, Overview, Behaviour/States, Placement, Overflow menu,
+        When-to-use / When-not-to-use, 6 sourced Do/Don't pairs, Accessibility
+        quick reference, and explicit Gaps section.
+        Residual concern (no Figma Examples page) tracked as GAP-012.
     fix_action: >
-      Run figma-extract-usage for Breadcrumbs to produce Do/Don't editorial guidelines
-      from the Figma Examples page. If no Examples page exists for this component,
-      mark the gap as permanently missing SOURCE_GAP.
-    blocks:
-      - doc-rewrite/usage-dimension
+      Resolved. If a Figma "↳ Breadcrumbs examples" page is created in future,
+      run figma-extract-usage and replace the editorial file with its output.
+    blocks: []
 
   - id: GAP-005
     dimension: figma
@@ -192,12 +199,16 @@ gaps:
       location: "> See also: line 3"
       finding: >
         The "See also" navigation line in props.md, examples.md, tokens.md, and
-        accessibility.md does not include a link to Breadcrumbs-figma.md. All four
-        files cross-link only among themselves, leaving the Figma spec unreachable
+        accessibility.md does not include a link to Breadcrumbs-figma.md, nor to
+        the newly added Breadcrumbs-usage.md. All four files cross-link only among
+        themselves, leaving the Figma spec and the usage guidelines unreachable
         via internal navigation.
     fix_action: >
-      Add [Breadcrumbs-figma.md](Breadcrumbs-figma.md) to the See also line in
-      props.md, examples.md, tokens.md, and accessibility.md.
+      Add [Breadcrumbs-figma.md](Breadcrumbs-figma.md) and
+      [Breadcrumbs-usage.md](Breadcrumbs-usage.md) to the See also line in
+      props.md, examples.md, tokens.md, and accessibility.md. Also update the
+      siblings: frontmatter list in each of those four files to include the
+      new usage file.
     blocks: []
 
   - id: GAP-008
@@ -276,6 +287,30 @@ gaps:
       to 'current page' in component node 21927:40413; re-extract after correction.
     blocks: []
 
+  - id: GAP-012
+    dimension: usage
+    severity: minor
+    type: SOURCE_GAP
+    confidence: deterministic
+    auto_fixable: false
+    evidence:
+      source_file: Breadcrumbs-usage.md
+      location: "## Gaps — Figma Do/Don't examples row"
+      finding: >
+        No Figma "↳ Breadcrumbs examples" page exists with Do/Don't card frames,
+        so figma-extract-usage could not run. Breadcrumbs-usage.md is editorial —
+        compiled from the published Oxygen docs page (screenshot, 2026-05-11) and
+        cross-validated against props.md, examples.md, accessibility.md, and
+        Breadcrumbs-figma.md. Every Do/Don't pair carries a Source: line citing
+        the published docs section and/or sibling files. Quality is high but
+        provenance is editorial, not designer-authored Figma frames.
+    fix_action: >
+      If a Figma "↳ Breadcrumbs examples" page is ever created with Do/Don't card
+      frames, run figma-extract-usage for Breadcrumbs and replace
+      Breadcrumbs-usage.md with its output. Until then, treat the editorial file
+      as the canonical usage source.
+    blocks: []
+
 warnings:
   - id: WARN-001
     dimension: accessibility
@@ -313,7 +348,7 @@ warnings:
 # --- navigation (added by component-map) ---
 role: audit
 pipeline_stage: spec_ready
-pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+pipeline_note: "Audit verdict YES — doc-rewrite can run; usage dimension lifted 0.00 → 0.80 with editorial Breadcrumbs-usage.md"
 siblings:
   - "[[Breadcrumbs/props]]"
   - "[[Breadcrumbs/examples]]"
@@ -321,6 +356,7 @@ siblings:
   - "[[Breadcrumbs/accessibility]]"
   - "[[Breadcrumbs/Breadcrumbs-figma]]"
   - "[[Breadcrumbs/Breadcrumbs-pui]]"
+  - "[[Breadcrumbs/Breadcrumbs-usage]]"
 tags:
   - oxygen
   - component/Breadcrumbs
@@ -330,20 +366,23 @@ tags:
 
 # Breadcrumbs — Audit Report
 
-> **Rubric version:** 1.0 · **Audit date:** 2026-05-05 · **Prior audit:** 2026-04-30 · **Verdict:** YES
+> **Rubric version:** 1.0 · **Audit date:** 2026-05-11 · **Prior audit:** 2026-05-05 · **Verdict:** YES
 
 ---
 
 ## Re-audit context
 
-This audit supersedes the 2026-04-30 audit. The primary change is a re-evaluation of the **tokens** dimension, which was scored 0.25 in the prior audit because `tokens.md` is a near-empty stub. That score was overly pessimistic: `Breadcrumbs-figma.md` contains well-structured token data for all rest-state elements that `doc-rewrite` can synthesise. The re-scored token dimension is **0.55**, reflecting:
+This audit supersedes the 2026-05-05 audit. The primary change is the addition of `Breadcrumbs-usage.md`, authored editorially on 2026-05-11 from the published Oxygen docs page (screenshot) cross-validated against the extracted MCP/Figma artifacts. The usage dimension lifts from **0.00 → 0.80** and the overall score from **0.62 → 0.73**.
 
-- Rest-state token names for all interactive element types are documented in `Breadcrumbs-figma.md` (5 of ~9 distinct token slots have resolved names)
-- `tokens.md` itself needs updating (DOC_GAP, auto-fixable — GAP-002, unchanged from prior)
-- Hover / active / focus state token bindings remain unresolved SOURCE_GAPs (GAP-003, unchanged)
-- Hardcoded overflow menu values remain unresolved SOURCE_GAPs (noted in figma.md)
+The remaining gap surface is unchanged from the prior audit:
 
-No other dimension scores have changed. All gaps from the prior audit carry forward with the same IDs.
+- Token bindings for hover/active/focus states remain unresolved (GAP-003) — shared Figma library inaccessible via this file's Variables API
+- `tokens.md` stub still needs the Figma-extracted token table migrated in (GAP-002, auto-fixable)
+- Screenshot still not saved to disk (GAP-005)
+- No Figma a11y annotations (GAP-006), typo `curent page` (GAP-011)
+- New minor SOURCE_GAP added: GAP-012 (no Figma "↳ Breadcrumbs examples" page — editorial usage file in place)
+
+GAP-004 (usage file missing) is marked **RESOLVED**.
 
 ---
 
@@ -356,7 +395,7 @@ No other dimension scores have changed. All gaps from the prior audit carry forw
 | `tokens.md` | Present (stub — no resolved token names) | oxygen-mcp-extract |
 | `accessibility.md` | Present | oxygen-mcp-extract |
 | `Breadcrumbs-figma.md` | Present | figma-extract |
-| `Breadcrumbs-usage.md` | **MISSING** | figma-extract-usage |
+| `Breadcrumbs-usage.md` | **Present (NEW, editorial — 2026-05-11)** | editorial (no Figma examples page; figma-extract-usage cannot run) |
 | `Breadcrumbs-pui.md` | Present — `NO RELEVANT PUI CONTEXT` (engineer-confirmed) | pui-mcp-extract |
 | `figma-screenshot-Breadcrumbs.png` | **MISSING** (GAP-005) | figma-extract |
 
@@ -368,27 +407,29 @@ No other dimension scores have changed. All gaps from the prior audit carry forw
 | --------- | ----- | -------- | -------------- | ------ |
 | Props | 0.70 | 7/10 | — | Available |
 | Examples | 0.57 | 4/7 | — | Available — all examples are constructed, not MCP-authoritative |
-| Tokens | **0.55** | **5/9** | **+0.30** | Available — rest-state tokens in figma.md; tokens.md needs migration |
+| Tokens | 0.55 | 5/9 | — | Available — rest-state tokens in figma.md; tokens.md needs migration |
 | Accessibility | 0.78 | 7/9 | — | Available |
 | Figma | 0.73 | 8/11 | — | Available |
-| Usage | 0.00 | 0/0 | — | SOURCE_GAP — file missing |
+| Usage | **0.80** | **8/10** | **+0.80** | Available — editorial, published docs + MCP/Figma cross-validated |
 | PUI | 1.00 | PASS | — | Resolved — no relevant context |
-| **Overall score** | **0.62** | | **+0.04** | |
+| **Overall score** | **0.73** | | **+0.11** | |
 
-> **Token dimension re-score rationale:**
-> The prior score of 0.25 treated the token dimension as nearly empty because `tokens.md` contained no resolved names. However, `Breadcrumbs-figma.md` documents the following token bindings extracted from Figma design context:
+> **Usage dimension score rationale (8/10):**
 >
-> | Element | Token | Light | Dark |
-> | ------- | ----- | ----- | ---- |
-> | Link text (rest) | `--actions/action08` | `#0056e0` | `#99bbf3` |
-> | Ellipsis (rest) | `--actions/action08` | `#0056e0` | `#99bbf3` |
-> | Ellipsis (menu open / active) | `--interactive/active07` | `#0045b3` | `#0056e0` |
-> | Separator text | `--text/textcolor01` | `#26252a` | `white` |
-> | Current page label | `--text/textcolor01` | `#26252a` | `white` |
-> | Overflow menu border (light) | `--ui/ui01` | `#ebeae1` | — (hardcoded) |
-> | All text | `--typography/body01/*` | 14px / 400 / 20px / -0.06px | same |
+> | # | Check | Pass? |
+> |---|-------|-------|
+> | 1 | Anatomy section with numbered roles | ✓ |
+> | 2 | Overview / purpose statement | ✓ |
+> | 3 | States documented | ✓ |
+> | 4 | Placement guidance | ✓ |
+> | 5 | Overflow / edge behaviour | ✓ |
+> | 6 | When-to-use bullet(s) | ✓ |
+> | 7 | When-not-to-use bullets / table | ✓ |
+> | 8 | ≥3 sourced Do/Don't pairs | ✓ (6 pairs, each with Source: line) |
+> | 9 | Accessibility cross-reference | ✓ |
+> | 10 | Provenance: Figma "↳ examples" page extracted via figma-extract-usage | ✗ — editorial substitute in place (GAP-012) |
 >
-> This data was extracted from Figma CSS variable references and is available for `doc-rewrite` to synthesise. The coverage is 5/9 because hover/active/focus state tokens and overflow menu dark-mode values remain unresolved.
+> The single missing check is structural provenance — the file is editorial rather than figma-extract-usage output. Replace if/when a Figma examples page is authored.
 
 ---
 
@@ -397,8 +438,9 @@ No other dimension scores have changed. All gaps from the prior audit carry forw
 | Count | Category |
 |-------|----------|
 | 0 | CONFLICTs — **no blocks on doc-rewrite** |
-| 7 | SOURCE_GAPs (3 major: GAP-001 tokens/MCP, GAP-003 hover/focus tokens, GAP-004 usage; 4 minor: GAP-005 screenshot, GAP-006 Figma a11y annotations, GAP-009 theme prop shape, GAP-011 Figma typo) |
+| 7 | SOURCE_GAPs (2 major: GAP-001 tokens/MCP, GAP-003 hover/focus tokens; 5 minor: GAP-005 screenshot, GAP-006 Figma a11y annotations, GAP-009 theme prop shape, GAP-011 Figma typo, GAP-012 Figma examples page) |
 | 4 | DOC_GAPs (1 major: GAP-002 tokens.md migration; 3 minor: GAP-007 cross-links, GAP-008 isActive, GAP-010 examples) |
+| 1 | RESOLVED (GAP-004 — usage file authored 2026-05-11) |
 | 3 | Warnings (WARN-001, WARN-002, WARN-003 — unchanged from prior) |
 
 ---
@@ -415,10 +457,6 @@ No other dimension scores have changed. All gaps from the prior audit carry forw
 **Finding:** Hover, active, and focus state token bindings for `_Text link breadcrumb` and `_Text link elipsis` are unresolved. The Figma file has 0 local variables — all tokens are in a shared library not accessible via this file's Variables API. Only rest-state values were returned.
 **Fix:** Access the shared Oxygen token library (`iVY5nI8JAxM05Apnnvozzs` per memory reference) using `figma_execute + getVariableByIdAsync`; retrieve hover/active/focus token names for the link atom; update `tokens.md` and `Breadcrumbs-figma.md`.
 
-#### GAP-004 · Usage · MAJOR
-**Finding:** `Breadcrumbs-usage.md` absent — `figma-extract-usage` has not been run.
-**Fix:** Run `figma-extract-usage` for Breadcrumbs to produce Do/Don't editorial guidelines from the Figma Examples page.
-
 #### GAP-005 · Figma · MINOR
 **Finding:** Screenshot returned as embedded MCP image but not saved as `figma-screenshot-Breadcrumbs.png`. File absent from directory.
 **Fix:** Export from Figma node `21927:40413` (file `5YihJ5WuDvnvrlrRMC4sBp`) and save as `figma-screenshot-Breadcrumbs.png`.
@@ -431,11 +469,13 @@ No other dimension scores have changed. All gaps from the prior audit carry forw
 **Finding:** `theme` prop documented only as `object` — internal shape not returned by MCP and not documented anywhere.
 **Fix:** Inspect `@8x8/oxygen-breadcrumbs` TypeScript types for `BreadcrumbsTheme` interface; document in `props.md`.
 
----
-
 #### GAP-011 · Figma · MINOR (design gap / typo)
 **Finding:** Figma text property is named `curent page` (typo — missing one 'r'). Documented in `Breadcrumbs-figma.md` with a note, but the error exists upstream.
 **Fix:** Ask Figma component owner to rename the property to `current page` in node `21927:40413`; re-extract after correction.
+
+#### GAP-012 · Usage · MINOR (new)
+**Finding:** No Figma "↳ Breadcrumbs examples" page exists. `Breadcrumbs-usage.md` is editorial — compiled from the published Oxygen docs page screenshot cross-validated against sibling extraction files. Every Do/Don't pair has a `Source:` line. Quality is high but provenance is editorial.
+**Fix:** If a Figma "↳ Breadcrumbs examples" page is ever created, run `figma-extract-usage` and replace `Breadcrumbs-usage.md` with its output. Until then, the editorial file is canonical.
 
 ---
 
@@ -446,8 +486,8 @@ Token data present in `Breadcrumbs-figma.md` (`--actions/action08`, `--text/text
 **Fix:** Migrate token table from `Breadcrumbs-figma.md ## Color & token bindings` and `## Text styles` into `tokens.md`. Mark confidence as "Figma design context (not MCP-registered)".
 
 #### GAP-007 · All OX files · MINOR · auto-fixable
-"See also" navigation in `props.md`, `examples.md`, `tokens.md`, and `accessibility.md` does not include a link to `Breadcrumbs-figma.md`.
-**Fix:** Add `[Breadcrumbs-figma.md](Breadcrumbs-figma.md)` to the "See also" line in all four files.
+"See also" navigation in `props.md`, `examples.md`, `tokens.md`, and `accessibility.md` does not include a link to `Breadcrumbs-figma.md` nor to the new `Breadcrumbs-usage.md`. The `siblings:` frontmatter in those four files also does not list the new usage file.
+**Fix:** Add `[Breadcrumbs-figma.md](Breadcrumbs-figma.md)` and `[Breadcrumbs-usage.md](Breadcrumbs-usage.md)` to the "See also" line in all four files; add `[[Breadcrumbs/Breadcrumbs-usage]]` to each `siblings:` list.
 
 #### GAP-008 · Props · MINOR · requires verification
 `isActive` prop on `Breadcrumb` documented as "observed in storybook" — not returned by `get-component-props`. Type, default, and behaviour are inferred.
@@ -456,6 +496,14 @@ Token data present in `Breadcrumbs-figma.md` (`--actions/action08`, `--text/text
 #### GAP-010 · Examples · MINOR · not auto-fixable
 `get-component-examples` returned 0 clean snippets. All four code examples constructed from storybook story. No examples for: dark mode, `ariaLabel` override, `theme` prop, or React-node separator.
 **Fix:** Source authoritative examples from `@8x8/oxygen-breadcrumbs` Storybook or source repo.
+
+---
+
+### Resolved gaps
+
+#### GAP-004 · Usage · MAJOR · RESOLVED 2026-05-11
+**Prior finding:** `Breadcrumbs-usage.md` absent — no Do/Don't editorial guidance available.
+**Resolution:** File authored editorially on 2026-05-11 (273 lines) from the published Oxygen docs page screenshot, cross-validated against `props.md`, `examples.md`, `accessibility.md`, and `Breadcrumbs-figma.md`. Contains anatomy, overview, states, placement, overflow menu, when-to-use / when-not-to-use, 6 sourced Do/Don't pairs, accessibility quick reference, and explicit Gaps section. Residual concern tracked as GAP-012.
 
 ---
 
@@ -471,23 +519,23 @@ Token data present in `Breadcrumbs-figma.md` (`--actions/action08`, `--text/text
 
 ## Verdict: YES — ready for doc-rewrite
 
-No CONFLICTs, no blocker-severity gaps. `doc-rewrite` can proceed.
+No CONFLICTs, no blocker-severity gaps. `doc-rewrite` can proceed with all seven dimensions populated. Usage dimension is editorial (8/10) — flag the provenance in the spec frontmatter when rewriting.
 
 Recommended order:
 
 ```
 1. Fix GAP-002 (migrate token table from figma.md into tokens.md — 10-min auto-fix)
-2. Fix GAP-007 (add Breadcrumbs-figma.md to See also in 4 files — 5-min auto-fix)
+2. Fix GAP-007 (add figma + usage links to See also and siblings in 4 files — 5-min auto-fix)
 3. Run doc-rewrite           → produces Breadcrumbs-spec.md
-                                (tokens synthesised from figma.md at "Figma context" confidence;
-                                 usage dimension sparse/skipped)
+                                (tokens at "Figma context" confidence;
+                                 usage at "editorial" confidence — flag in spec)
 4. Export screenshot         → GAP-005 → save figma-screenshot-Breadcrumbs.png
-5. Run figma-extract-usage   → GAP-004 → re-run doc-audit if needed
-6. Resolve hover/focus tokens → GAP-003 (use iVY5nI8JAxM05Apnnvozzs shared library)
-7. Verify isActive prop      → GAP-008 (source code or Storybook)
-8. Verify ARIA DOM output    → WARN-001 (rendered DOM inspection)
-9. Confirm overflow slot intent → WARN-003 (Oxygen team)
-10. Fix Figma typo "curent page" → GAP-011 (Figma-side work)
+5. Resolve hover/focus tokens → GAP-003 (use iVY5nI8JAxM05Apnnvozzs shared library)
+6. Verify isActive prop      → GAP-008 (source code or Storybook)
+7. Verify ARIA DOM output    → WARN-001 (rendered DOM inspection)
+8. Confirm overflow slot intent → WARN-003 (Oxygen team)
+9. Fix Figma typo "curent page" → GAP-011 (Figma-side work)
+10. Replace editorial usage  → GAP-012 (if/when Figma examples page is created)
 ```
 
-Source: doc-audit skill · Rubric v1.0 · Re-audit 2026-05-05 (supersedes 2026-04-30)
+Source: doc-audit skill · Rubric v1.0 · Re-audit 2026-05-11 (supersedes 2026-05-05)

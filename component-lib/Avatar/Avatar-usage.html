@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avatar — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f1a;
+      line-height: 1.2;
+    }
+
+    .see-also {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .see-also a {
+      color: #5046e4;
+      text-decoration: none;
+    }
+
+    .see-also a:hover { text-decoration: underline; }
+
+    /* Editorial callout */
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Info callout */
+    .callout-info {
+      background: #f0f0ff;
+      border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 13.5px;
+      color: #1e1a6e;
+    }
+
+    .callout-info code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Intro */
+    .intro {
+      font-size: 15.5px;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f0f1a;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.5rem;
+    }
+
+    /* When to use */
+    .when-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .when-section { grid-template-columns: 1fr; }
+    }
+
+    .when-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .when-card h3 { margin-bottom: 0.625rem; }
+
+    .when-card ul {
+      padding-left: 1.25rem;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    /* Alternatives table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Do / Don't pairs */
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair {
+      margin-bottom: 1.75rem;
+    }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards { grid-template-columns: 1fr; }
+    }
+
+    .do-card, .dont-card {
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .dont-card {
+      background: #fff5f5;
+      border: 1px solid #fecaca;
+    }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 0.625rem;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body {
+      color: #374151;
+      line-height: 1.55;
+      margin-bottom: 0.625rem;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .card-note code {
+      background: rgba(0,0,0,0.06);
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    /* Gaps table */
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-conflict { background: #fef3c7; color: #92400e; }
+    .badge-gap      { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial{ background: #f0f0ff; color: #3730a3; }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · data_display · Avatar</div>
+    <h1>Avatar — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Avatar-figma.md">Avatar-figma.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — not Figma-sourced.</strong> No <code>↳ Avatar examples</code> Figma page exists, so <code>figma-extract-usage</code> cannot run. The Do/Don't pairs below are inferred from <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, and <code>Avatar-figma.md</code>. Treat as provisional until a designer reviews them. Replace with <code>figma-extract-usage</code> output when a Figma examples page is created.
+  </div>
+
+  <p class="intro">
+    Avatar is a circular visual representation of a user, room, or other entity. It renders a photo, computed initials, or a fallback icon — in that priority order — and can carry a status badge, presence ring, and edit overlay depending on context and size.
+  </p>
+
+  <hr>
+
+  <!-- When to use / When not to use -->
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li>Identify a person, room, or entity at a glance in calls, contacts, conversation lists, or participant panels.</li>
+        <li>Pair with a <code>userStatus</code> badge to show presence (Available, Busy, Offline) for User-type entities.</li>
+        <li>Use <code>AvatarStack</code> when representing a group of related users with overlap and "+N" overflow.</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li>Decorative illustration or product icon → use <strong>&lt;img&gt;</strong> or an Oxygen Icon</li>
+        <li>Group membership count with no specific members → use a <strong>numeric badge / pill</strong></li>
+        <li>Brand or team logo in a non-contact context → use <strong>&lt;img&gt;</strong> with appropriate alt text</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Do / Don't pairs -->
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Interactive avatars need an accessible name</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Wrap clickable avatars in a &lt;button&gt; with an aria-label</div>
+          <p class="card-body">When an Avatar carries an <code>onClick</code> or <code>onEdit</code> handler it becomes an interactive control. The Avatar component provides no built-in ARIA role or label, so consumers must supply one. Use a native <code>&lt;button&gt;</code> (or <code>role="button"</code> + <code>aria-label</code>) so keyboard and screen reader users can discover and activate the control.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> lines 62–69 (interactive ARIA guidance) · WCAG 4.1.2</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Pass onClick without any accessible label or wrapper role</div>
+          <p class="card-body">An avatar with an <code>onClick</code> handler but no accessible name is invisible to screen readers and unreachable for keyboard-only users. Visual cues (cursor: pointer, hover highlight) are insufficient — the role and name must be in the DOM.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Status information must reach screen readers</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Include status in aria-label or add visually-hidden text</div>
+          <p class="card-body">The status badge conveys its meaning through colour and an icon. Both are invisible to assistive technology by default. Include the status value in the avatar's accessible name, or use visually-hidden text alongside the component.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> lines 100–113 (status/presence accessibility) · WCAG 1.3.1</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Show a status badge without communicating it to AT</div>
+          <p class="card-body">Colour-only or icon-only status information fails WCAG 1.3.1. A screen reader user navigating a contact list will hear "Jane Smith" with no indication that she is busy or unavailable.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Always pass name, even when a photo URL is provided</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Provide name whenever you have it, regardless of src</div>
+          <p class="card-body"><code>name</code> serves two purposes beyond showing initials: it supplies the text used in the initials fallback if the image fails to load, and it is the natural source for any accessible label on the avatar. Omitting it means a broken image silently degrades to a generic icon with no identification.</p>
+          <p class="card-note">Grounded in: <code>props.md</code> line 70 (<code>name</code> computes initials) · <code>props.md</code> lines 114–121 (fallback chain: photo → initials → icon) · WCAG 1.1.1</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Omit name when a photo URL is available</div>
+          <p class="card-body">If <code>src</code> is set but <code>name</code> is not, a broken or slow-loading image falls back directly to a generic icon — with no initials and no accessible text to identify the person.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Reserve userStatus for User-type avatars</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Apply userStatus only to avatars that represent a real user</div>
+          <p class="card-body">Presence (Available, Busy, On Call, etc.) is meaningful for individual users. The Avatar component supports multiple entity types — User, Room, Auto Attendant, Call Queue, Ring Group, Channel, SMS Group — and only the User type has a Status variant in the Figma component set.</p>
+          <p class="card-note">Grounded in: <code>Avatar-figma.md</code> lines 107–108 (Type variant axis) · lines 92–97 (non-User types have no Status axis)</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Add userStatus to Room, Call Queue, or other non-User avatars</div>
+          <p class="card-body">Rooms and call queues don't have presence — showing a "Busy" badge on a conference room or an "Available" badge on an Auto Attendant is semantically misleading and has no counterpart in the Figma design system.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 5 — hasStatusBorder requires a string userStatus</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Pass a valid AvatarUserStatus string with hasStatusBorder</div>
+          <p class="card-body"><code>hasStatusBorder</code> renders the status colour as a ring around the avatar. It is only activated when <code>userStatus</code> holds a valid <code>AvatarUserStatus</code> string (e.g. <code>"Available"</code>, <code>"Busy"</code>). Passing a custom React element as <code>userStatus</code> disables the ring silently.</p>
+          <p class="card-note">Grounded in: <code>props.md</code> line 75 (<code>hasStatusBorder</code> description) · line 130 (constraint)</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Combine hasStatusBorder with a custom React element userStatus</div>
+          <p class="card-body">If you pass a ReactElement as <code>userStatus</code>, <code>hasStatusBorder</code> has no effect — no ring appears, and there is no error or warning. The constraint is completely silent.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 6 — showEditOverlay is only available for sizes l–3xl</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use showEditOverlay on large (48 px) or bigger avatars</div>
+          <p class="card-body">The edit overlay is designed for the profile-picture update pattern, where the avatar is large enough to accommodate a hover affordance. Sizes <code>large</code> through <code>3xl</code> are supported. The <code>xlarge</code> (80 px) size is the most common context for edit overlays.</p>
+          <p class="card-note">Grounded in: <code>props.md</code> line 79 · line 129 (constraint) · <code>examples.md</code> lines 103–117</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Enable showEditOverlay on xsmall, small, or medium avatars</div>
+          <p class="card-body">The overlay is silently suppressed for sizes below <code>large</code>. Setting <code>showEditOverlay={true}</code> on a <code>medium</code> avatar produces no visible change and no console warning — making this a hard-to-spot misconfiguration.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 7 — Use AvatarStack for groups; don't roll your own layout</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Wrap related user avatars in AvatarStack</div>
+          <p class="card-body"><code>AvatarStack</code> handles the overlap, z-index ordering, and "+N" overflow count that group representations require. It ensures visual consistency and saves you from reimplementing the same layout in CSS every time.</p>
+          <p class="card-note">Grounded in: <code>props.md</code> line 60 (AvatarStack listed in package) · <code>examples.md</code> lines 167–178 (AvatarStack example)</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Manually lay out multiple avatars with negative margins</div>
+          <p class="card-body">Hand-rolled overlap layouts diverge from the design system's intent for group representation and don't inherit future updates (overflow count, ring treatment, dark mode) that <code>AvatarStack</code> may introduce.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <!-- Gaps -->
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GAP-003</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td><code>AvatarSize</code> enum boundaries are unresolved. Figma defines sizes <code>xsmall</code>–<code>xlarge</code> only, but the Oxygen API constraint docs reference <code>2xsmall</code> and <code>2xlarge</code> (e.g. <code>userStatus</code> is "available for sizes 2xsmall–2xlarge"). Verify against <code>@8x8/oxygen-avatar</code> TypeScript source.</td>
+          </tr>
+          <tr>
+            <td>GAP-004</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td><code>AvatarUserStatus</code> raw colour values (<code>Gray</code>, <code>Green</code>, <code>Purple</code>, <code>Red</code>, <code>Yellow</code>) appear in the Figma Status axis alongside semantic names but are absent from the documented API. It is unclear whether they are public API values or internal Figma design tokens. Verify against source before including in docs.</td>
+          </tr>
+          <tr>
+            <td>—</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>These Do/Don't pairs are authored from extracted artifacts, not from Figma examples frames. They should be reviewed by a designer and replaced with Figma-sourced pairs once a <code>↳ Avatar examples</code> page is created.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance authored from extracted artifacts (props.md, examples.md, Avatar-figma.md, accessibility.md, Avatar-audit.md) · No Figma examples page available · 2026-05-11
+  </footer>
+
+</div>
+</body>
+</html>
