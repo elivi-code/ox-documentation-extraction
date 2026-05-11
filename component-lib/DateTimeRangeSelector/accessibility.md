@@ -1,3 +1,27 @@
+---
+component: DateTimeRangeSelector
+package: "@8x8/oxygen-date-time-range-selector"
+category: date_time
+role: accessibility
+role_description: "Accessibility specifications — ARIA roles, keyboard navigation, WCAG 2.1 AA"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: "YES"
+siblings:
+  - "[[DateTimeRangeSelector/props]]"
+  - "[[DateTimeRangeSelector/examples]]"
+  - "[[DateTimeRangeSelector/tokens]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-figma]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-usage]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-audit]]"
+tags:
+  - oxygen
+  - component/DateTimeRangeSelector
+  - role/accessibility
+  - stage/spec_ready
+  - category/date_time
+---
+
 # DateTimeRangeSelector — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

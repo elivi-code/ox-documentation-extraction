@@ -37,7 +37,7 @@ components:
     category: form_inputs
     folder: "component-lib/Input"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "1 CONFLICT — Search input isReadOnly discrepancy between Figma and MCP"
     audit_date: "2026-04-29"
     audit_overall_score: 0.70
@@ -69,7 +69,7 @@ components:
     category: form_inputs
     folder: "component-lib/TextField"
     pipeline_stage: spec_ready
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "No CONFLICTs. No blockers. figma.md uses non-standard name (naming violation only)."
     audit_date: "2026-04-29"
     audit_overall_score: 0.68
@@ -101,7 +101,7 @@ components:
     category: form_inputs
     folder: "component-lib/TextArea"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "3 CONFLICTs — Size/Mode/Filled Figma axes have no direct prop counterparts"
     audit_date: "2026-04-29"
     audit_overall_score: null
@@ -133,7 +133,7 @@ components:
     category: form_inputs
     folder: "component-lib/Checkbox"
     pipeline_stage: spec_ready
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "Zero CONFLICTs. Token SOURCE_GAPs from prior audit resolved. doc-rewrite can proceed."
     audit_date: "2026-05-05"
     prior_audit_date: "2026-04-29"
@@ -187,7 +187,7 @@ components:
     category: form_inputs
     folder: "component-lib/Select"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "2 CONFLICTs — isAsync type mismatch between MCP endpoints; forwardedRef vs ref pattern unclear. Also: select-figma.md missing (blocker SOURCE_GAP)."
     audit_date: "2026-04-29"
     audit_overall_score: 0.53
@@ -250,7 +250,7 @@ components:
     category: form_inputs
     folder: "component-lib/ToggleButton"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "2 CONFLICTs — Figma isOn? vs OX isChecked prop name; Figma ToggleGroup isError variant has no OX API counterpart."
     audit_date: "2026-04-29"
     audit_overall_score: 0.73
@@ -286,7 +286,7 @@ components:
     category: interaction
     folder: "component-lib/Button"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "3 CONFLICTs — Secondary rest bg token ($action01 vs action02); Text button active bg ($active17 scope); Primary bg token naming (action09 vs action01) between Figma and tokens.md."
     audit_date: "2026-04-28"
     audit_overall_score: null
@@ -322,7 +322,7 @@ components:
     category: layout_overlay
     folder: "component-lib/Accordion"
     pipeline_stage: spec_ready
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "All core files present. No CONFLICTs. Usage and PUI SOURCE_GAPs are non-blocking."
     audit_date: "2026-04-28"
     audit_overall_score: 0.73
@@ -354,7 +354,7 @@ components:
     category: layout_overlay
     folder: "component-lib/Tabs"
     pipeline_stage: spec_complete
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "Zero CONFLICTs. Token dimension substantially improved on re-audit 2026-05-05. Spec written."
     audit_date: "2026-05-05"
     prior_audit_date: "2026-04-30"
@@ -389,7 +389,7 @@ components:
     category: layout_overlay
     folder: "component-lib/Modal"
     pipeline_stage: spec_ready
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "All core files present, including PUI (confirmed no relevant context). Zero CONFLICTs. Usage SOURCE_GAP is non-blocking."
     audit_date: "2026-05-01"
     audit_overall_score: 0.72
@@ -452,7 +452,7 @@ components:
     folder: "component-lib/Card"
     deprecated: true
     pipeline_stage: spec_ready
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "Deprecated package. Zero CONFLICTs. Deprecation banner documented. Rewrite can proceed."
     audit_date: "2026-05-05"
     audit_scores:
@@ -483,7 +483,7 @@ components:
     category: navigation
     folder: "component-lib/Breadcrumbs"
     pipeline_stage: spec_ready
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "Zero CONFLICTs. Token dimension re-scored 0.25→0.55 after re-audit. Zero blockers."
     audit_date: "2026-05-05"
     prior_audit_date: "2026-04-30"
@@ -516,7 +516,7 @@ components:
     category: navigation
     folder: "component-lib/Pagination"
     pipeline_stage: spec_ready
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "Zero CONFLICTs. Token hex values confirmed 2026-05-05. doc-rewrite can proceed."
     audit_date: "2026-05-05"
     prior_audit_date: "2026-05-01"
@@ -549,7 +549,7 @@ components:
     category: navigation
     folder: "component-lib/Link"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "2 CONFLICTs — standalone/size type mismatch (MCP vs Figma); hover token identity conflict (MCP search vs Figma design context)."
     audit_date: "2026-05-01"
     audit_overall_score: 0.67
@@ -576,12 +576,28 @@ components:
       audit_depends_on: ["[[Link/props]]", "[[Link/examples]]", "[[Link/tokens]]", "[[Link/accessibility]]", "[[Link/Link-figma]]", "[[Link/Link-usage]]"]
       spec_depends_on:  ["[[Link/Link-audit]]"]
 
-  - name: sidebarMenu
+  - name: SidebarMenu
     package: "@8x8/oxygen-sidebarMenu"
     category: navigation
-    folder: null
-    pipeline_stage: not_started
-    notes: "Not yet extracted. Key components: Sidebar, MenuItem, SubMenuItem (9 props)."
+    folder: "component-lib/SidebarMenu"
+    pipeline_stage: blocked
+    audit_verdict: "NO"
+    audit_verdict_reason: "One CONFLICT (GAP-009) must be resolved before doc-rewrite can proceed."
+    audit_date: "2026-05-08"
+    gap_counts: { doc_gaps: 4, source_gaps: 5, conflicts: 1 }
+    files:
+      props:         { path: "component-lib/SidebarMenu/props.md",             wiki: "[[SidebarMenu/props]]" }
+      examples:      { path: "component-lib/SidebarMenu/examples.md",          wiki: "[[SidebarMenu/examples]]" }
+      tokens:        { path: "component-lib/SidebarMenu/tokens.md",            wiki: "[[SidebarMenu/tokens]]" }
+      accessibility: { path: "component-lib/SidebarMenu/accessibility.md",     wiki: "[[SidebarMenu/accessibility]]" }
+      figma:         { path: "component-lib/SidebarMenu/SidebarMenu-figma.md", wiki: "[[SidebarMenu/SidebarMenu-figma]]" }
+      audit:         { path: "component-lib/SidebarMenu/SidebarMenu-audit.md", wiki: "[[SidebarMenu/SidebarMenu-audit]]" }
+    files_missing:
+      - SidebarMenu-usage.md
+      - SidebarMenu-pui.md
+    cross_links:
+      audit_depends_on: ["[[SidebarMenu/props]]", "[[SidebarMenu/examples]]", "[[SidebarMenu/tokens]]", "[[SidebarMenu/accessibility]]", "[[SidebarMenu/SidebarMenu-figma]]"]
+      spec_depends_on:  ["[[SidebarMenu/SidebarMenu-audit]]"]
 
 # ============================================================
 # DATA DISPLAY
@@ -592,7 +608,7 @@ components:
     category: data_display
     folder: "component-lib/DataTable"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "2 CONFLICTs — Pagination props interface: (limit/offset/totalResults) vs (pageNumber/rowsPerPage/canGoBack/canGoNext); must confirm which is canonical."
     audit_date: "2026-05-06"
     audit_scores:
@@ -623,7 +639,7 @@ components:
     category: data_display
     folder: "component-lib/Avatar"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "2 CONFLICTs — require human verification before doc-rewrite can proceed."
     audit_date: "2026-04-28"
     audit_scores:
@@ -663,19 +679,19 @@ components:
       tokens:       { path: "component-lib/Badge/tokens.md",        wiki: "[[Badge/tokens]]" }
       accessibility: { path: "component-lib/Badge/accessibility.md", wiki: "[[Badge/accessibility]]" }
       pui:          { path: "component-lib/Badge/badge-pui.md",     wiki: "[[Badge/badge-pui]]" }
+      usage:        { path: "component-lib/Badge/badge-usage.md",   wiki: "[[Badge/badge-usage]]" }
     files_missing:
       - badge-figma.md
-      - badge-usage.md
       - badge-audit.md
     cross_links:
-      audit_depends_on: ["[[Badge/props]]", "[[Badge/examples]]", "[[Badge/tokens]]", "[[Badge/accessibility]]", "[[Badge/badge-pui]]"]
+      audit_depends_on: ["[[Badge/props]]", "[[Badge/examples]]", "[[Badge/tokens]]", "[[Badge/accessibility]]", "[[Badge/badge-pui]]", "[[Badge/badge-usage]]"]
 
   - name: Tag
     package: "@8x8/oxygen-tag"
     category: data_display
     folder: "component-lib/Tag"
     pipeline_stage: spec_ready
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "Zero CONFLICTs. All required files present. doc-rewrite can proceed."
     audit_date: "2026-05-01"
     audit_overall_score: 0.70
@@ -707,7 +723,7 @@ components:
     category: data_display
     folder: "component-lib/Label"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "2 CONFLICTs — token names/sizes diverge (MCP label01 12px vs Figma body01 14px); Figma information boolean mapping to infoBox props unverified."
     audit_date: "2026-05-01"
     audit_scores:
@@ -732,12 +748,28 @@ components:
       audit_depends_on: ["[[Label/props]]", "[[Label/examples]]", "[[Label/tokens]]", "[[Label/accessibility]]", "[[Label/Label-figma]]", "[[Label/label-pui]]"]
       spec_depends_on:  ["[[Label/label-audit]]"]
 
-  - name: list
+  - name: List
     package: "@8x8/oxygen-list"
     category: data_display
-    folder: null
-    pipeline_stage: not_started
-    notes: "Not yet extracted. Key components: List, ListItem (4 props)."
+    folder: "component-lib/List"
+    pipeline_stage: blocked
+    audit_verdict: "NO"
+    audit_verdict_reason: "1 CONFLICT — token ui01 described as selected state in tokens.md but Figma confirms it is the active/pressed state; requires human resolution."
+    audit_date: "2026-05-08"
+    gap_counts: { doc_gaps: 7, source_gaps: 6, conflicts: 1 }
+    files:
+      props:         { path: "component-lib/List/props.md",         wiki: "[[List/props]]" }
+      examples:      { path: "component-lib/List/examples.md",      wiki: "[[List/examples]]" }
+      tokens:        { path: "component-lib/List/tokens.md",        wiki: "[[List/tokens]]" }
+      accessibility: { path: "component-lib/List/accessibility.md", wiki: "[[List/accessibility]]" }
+      figma:         { path: "component-lib/List/List-figma.md",    wiki: "[[List/List-figma]]" }
+      pui:           { path: "component-lib/List/List-pui.md",      wiki: "[[List/List-pui]]" }
+      audit:         { path: "component-lib/List/List-audit.md",    wiki: "[[List/List-audit]]" }
+    files_missing:
+      - List-usage.md
+    cross_links:
+      audit_depends_on: ["[[List/props]]", "[[List/examples]]", "[[List/tokens]]", "[[List/accessibility]]", "[[List/List-figma]]", "[[List/List-pui]]"]
+      spec_depends_on:  ["[[List/List-audit]]"]
 
 # ============================================================
 # FEEDBACK & STATUS
@@ -748,7 +780,7 @@ components:
     category: feedback_status
     folder: "component-lib/AlertBanner"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "2 CONFLICTs — Figma exposes mode and breakpoint variant axes not present in OX API."
     audit_date: "2026-04-28"
     audit_overall_score: 0.51
@@ -780,7 +812,7 @@ components:
     category: feedback_status
     folder: "component-lib/Toast"
     pipeline_stage: spec_ready
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "All core files present. Token coverage strong. PUI confirmed no relevant context. doc-rewrite can proceed."
     audit_date: "2026-05-05"
     audit_scores:
@@ -822,7 +854,7 @@ components:
     category: feedback_status
     folder: "component-lib/Spinner"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "2 CONFLICTs — Figma isInverted axis has no React prop (design-only vs API prop decision needed); React spinnerSize includes large2x but Figma only has default/small."
     audit_date: "2026-05-05"
     audit_overall_score: 0.61
@@ -854,7 +886,7 @@ components:
     category: feedback_status
     folder: "component-lib/ProgressBar"
     pipeline_stage: spec_ready
-    audit_verdict: YES
+    audit_verdict: "YES"
     audit_verdict_reason: "Zero CONFLICTs. Pre-labelled conflicts in figma.md reclassified as DOC_GAPs with clear resolution paths."
     audit_date: "2026-05-05"
     audit_overall_score: 0.66
@@ -886,7 +918,7 @@ components:
     category: feedback_status
     folder: "component-lib/SkeletonBlock"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "1 CONFLICT — SkeletonCircle size values documented in two incompatible formats across SkeletonBlock and SkeletonCircle folders."
     audit_date: "2026-05-05"
     audit_overall_score: 0.56
@@ -919,7 +951,7 @@ components:
     category: feedback_status
     folder: "component-lib/SkeletonCircle"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "1 CONFLICT — size values documented in incompatible formats vs SkeletonBlock docs. Must align before rewrite."
     audit_date: "2026-05-05"
     audit_overall_score: 0.56
@@ -956,7 +988,7 @@ components:
     category: overlays_contextual
     folder: "component-lib/Tooltip"
     pipeline_stage: blocked
-    audit_verdict: NO
+    audit_verdict: "NO"
     audit_verdict_reason: "2 CONFLICTs — character limit 140 (MCP) vs 136 (Figma); orientation default 'top' (MCP) vs 'Bottom' (Figma)."
     audit_date: "2026-05-05"
     audit_scores:
@@ -982,44 +1014,148 @@ components:
       audit_depends_on: ["[[Tooltip/props]]", "[[Tooltip/examples]]", "[[Tooltip/tokens]]", "[[Tooltip/accessibility]]", "[[Tooltip/Tooltip-figma]]", "[[Tooltip/Tooltip-usage]]", "[[Tooltip/Tooltip-pui]]"]
       spec_depends_on:  ["[[Tooltip/Tooltip-audit]]"]
 
-  - name: popover
+  - name: PopoverMenu
     package: "@8x8/oxygen-popover"
     category: overlays_contextual
-    folder: null
-    pipeline_stage: not_started
-    notes: "Not yet extracted. Key components: Popover, PopoverMenu (11 props)."
+    folder: "component-lib/PopoverMenu"
+    pipeline_stage: blocked
+    audit_verdict: "NO"
+    audit_verdict_reason: "3 CONFLICTs require human resolution before doc-rewrite can proceed."
+    audit_date: "2026-05-08"
+    gap_counts: { doc_gaps: 8, source_gaps: 9, conflicts: 3 }
+    files:
+      props:         { path: "component-lib/PopoverMenu/props.md",              wiki: "[[PopoverMenu/props]]" }
+      examples:      { path: "component-lib/PopoverMenu/examples.md",           wiki: "[[PopoverMenu/examples]]" }
+      tokens:        { path: "component-lib/PopoverMenu/tokens.md",             wiki: "[[PopoverMenu/tokens]]" }
+      accessibility: { path: "component-lib/PopoverMenu/accessibility.md",      wiki: "[[PopoverMenu/accessibility]]" }
+      figma:         { path: "component-lib/PopoverMenu/PopoverMenu-figma.md",  wiki: "[[PopoverMenu/PopoverMenu-figma]]" }
+      usage:         { path: "component-lib/PopoverMenu/PopoverMenu-usage.md",  wiki: "[[PopoverMenu/PopoverMenu-usage]]" }
+      audit:         { path: "component-lib/PopoverMenu/PopoverMenu-audit.md",  wiki: "[[PopoverMenu/PopoverMenu-audit]]" }
+    files_missing:
+      - PopoverMenu-pui.md
+    cross_links:
+      audit_depends_on: ["[[PopoverMenu/props]]", "[[PopoverMenu/examples]]", "[[PopoverMenu/tokens]]", "[[PopoverMenu/accessibility]]", "[[PopoverMenu/PopoverMenu-figma]]", "[[PopoverMenu/PopoverMenu-usage]]"]
+      spec_depends_on:  ["[[PopoverMenu/PopoverMenu-audit]]"]
 
 # ============================================================
 # DATE & TIME
 # ============================================================
 
-  - name: calendar
+  - name: Calendar
     package: "@8x8/oxygen-calendar"
     category: date_time
-    folder: null
-    pipeline_stage: not_started
-    notes: "Not yet extracted. Key component: Calendar (27 props)."
+    folder: "component-lib/Calendar"
+    pipeline_stage: blocked
+    audit_verdict: "NO"
+    audit_verdict_reason: "One CONFLICT (GAP-011) requires human decision before doc-rewrite can proceed."
+    audit_date: "2026-05-08"
+    audit_overall_score: 0.63
+    audit_scores:
+      examples:      0.65
+      tokens:        0.35
+      accessibility: 0.80
+      figma:         0.80
+      usage:         0.20
+      pui:           1.00
+    gap_counts: { doc_gaps: 4, source_gaps: 6, conflicts: 1 }
+    files:
+      props:         { path: "component-lib/Calendar/props.md",          wiki: "[[Calendar/props]]" }
+      examples:      { path: "component-lib/Calendar/examples.md",       wiki: "[[Calendar/examples]]" }
+      tokens:        { path: "component-lib/Calendar/tokens.md",         wiki: "[[Calendar/tokens]]" }
+      accessibility: { path: "component-lib/Calendar/accessibility.md",  wiki: "[[Calendar/accessibility]]" }
+      figma:         { path: "component-lib/Calendar/Calendar-figma.md", wiki: "[[Calendar/Calendar-figma]]" }
+      usage:         { path: "component-lib/Calendar/Calendar-usage.md", wiki: "[[Calendar/Calendar-usage]]" }
+      audit:         { path: "component-lib/Calendar/Calendar-audit.md", wiki: "[[Calendar/Calendar-audit]]" }
+    files_missing:
+      - Calendar-pui.md
+    cross_links:
+      audit_depends_on: ["[[Calendar/props]]", "[[Calendar/examples]]", "[[Calendar/tokens]]", "[[Calendar/accessibility]]", "[[Calendar/Calendar-figma]]", "[[Calendar/Calendar-usage]]"]
+      spec_depends_on:  ["[[Calendar/Calendar-audit]]"]
 
-  - name: dateTimeSelector
-    package: "@8x8/oxygen-dateTimeSelector"
+  - name: DateTimeSelector
+    package: "@8x8/oxygen-date-time-selector"
     category: date_time
-    folder: null
-    pipeline_stage: not_started
-    notes: "Not yet extracted. Key component: DateTimeSelector (10 props)."
+    folder: "component-lib/DateTimeSelector"
+    pipeline_stage: spec_ready
+    audit_verdict: "YES"
+    audit_verdict_reason: "GAP-004 CONFLICT resolved (2026-05-08) — Option B confirmed: shared trigger with DateTimeRangeSelector. No remaining CONFLICTs. Remaining gaps are SOURCE_GAPs and DOC_GAPs that doc-rewrite can handle."
+    audit_date: "2026-05-08"
+    audit_overall_score: 0.55
+    audit_scores:
+      examples:      0.50
+      tokens:        0.30
+      accessibility: 0.70
+      figma:         0.70
+      usage:         0.10
+      pui:           1.00
+    gap_counts: { doc_gaps: 4, source_gaps: 6, conflicts: 0 }
+    files:
+      props:         { path: "component-lib/DateTimeSelector/props.md",                    wiki: "[[DateTimeSelector/props]]" }
+      examples:      { path: "component-lib/DateTimeSelector/examples.md",                 wiki: "[[DateTimeSelector/examples]]" }
+      tokens:        { path: "component-lib/DateTimeSelector/tokens.md",                   wiki: "[[DateTimeSelector/tokens]]" }
+      accessibility: { path: "component-lib/DateTimeSelector/accessibility.md",            wiki: "[[DateTimeSelector/accessibility]]" }
+      figma:         { path: "component-lib/DateTimeSelector/DateTimeSelector-figma.md",   wiki: "[[DateTimeSelector/DateTimeSelector-figma]]" }
+      usage:         { path: "component-lib/DateTimeSelector/DateTimeSelector-usage.md",   wiki: "[[DateTimeSelector/DateTimeSelector-usage]]" }
+      audit:         { path: "component-lib/DateTimeSelector/DateTimeSelector-audit.md",   wiki: "[[DateTimeSelector/DateTimeSelector-audit]]" }
+    files_missing:
+      - DateTimeSelector-pui.md
+    cross_links:
+      audit_depends_on: ["[[DateTimeSelector/props]]", "[[DateTimeSelector/examples]]", "[[DateTimeSelector/tokens]]", "[[DateTimeSelector/accessibility]]", "[[DateTimeSelector/DateTimeSelector-figma]]", "[[DateTimeSelector/DateTimeSelector-usage]]"]
+      spec_depends_on:  ["[[DateTimeSelector/DateTimeSelector-audit]]"]
 
-  - name: dateTimeRangeSelector
-    package: "@8x8/oxygen-dateTimeRangeSelector"
+  - name: DateTimeRangeSelector
+    package: "@8x8/oxygen-date-time-range-selector"
     category: date_time
-    folder: null
-    pipeline_stage: not_started
-    notes: "Not yet extracted. Key components: DateTimeRangeSelector, DateTimeRangePicker (22 props)."
+    folder: "component-lib/DateTimeRangeSelector"
+    pipeline_stage: spec_ready
+    audit_verdict: "YES"
+    audit_verdict_reason: "Zero CONFLICTs and zero blocker-severity gaps. All 6 expected files present. Remaining gaps are SOURCE_GAPs and DOC_GAPs that doc-rewrite can handle."
+    audit_date: "2026-05-08"
+    audit_overall_score: 0.59
+    audit_scores:
+      examples:      0.55
+      tokens:        0.35
+      accessibility: 0.70
+      figma:         0.85
+      usage:         0.10
+      pui:           1.00
+    gap_counts: { doc_gaps: 3, source_gaps: 6, conflicts: 0 }
+    files:
+      props:         { path: "component-lib/DateTimeRangeSelector/props.md",                          wiki: "[[DateTimeRangeSelector/props]]" }
+      examples:      { path: "component-lib/DateTimeRangeSelector/examples.md",                       wiki: "[[DateTimeRangeSelector/examples]]" }
+      tokens:        { path: "component-lib/DateTimeRangeSelector/tokens.md",                         wiki: "[[DateTimeRangeSelector/tokens]]" }
+      accessibility: { path: "component-lib/DateTimeRangeSelector/accessibility.md",                  wiki: "[[DateTimeRangeSelector/accessibility]]" }
+      figma:         { path: "component-lib/DateTimeRangeSelector/DateTimeRangeSelector-figma.md",    wiki: "[[DateTimeRangeSelector/DateTimeRangeSelector-figma]]" }
+      usage:         { path: "component-lib/DateTimeRangeSelector/DateTimeRangeSelector-usage.md",    wiki: "[[DateTimeRangeSelector/DateTimeRangeSelector-usage]]" }
+      audit:         { path: "component-lib/DateTimeRangeSelector/DateTimeRangeSelector-audit.md",    wiki: "[[DateTimeRangeSelector/DateTimeRangeSelector-audit]]" }
+    files_missing:
+      - DateTimeRangeSelector-pui.md
+    cross_links:
+      audit_depends_on: ["[[DateTimeRangeSelector/props]]", "[[DateTimeRangeSelector/examples]]", "[[DateTimeRangeSelector/tokens]]", "[[DateTimeRangeSelector/accessibility]]", "[[DateTimeRangeSelector/DateTimeRangeSelector-figma]]", "[[DateTimeRangeSelector/DateTimeRangeSelector-usage]]"]
+      spec_depends_on:  ["[[DateTimeRangeSelector/DateTimeRangeSelector-audit]]"]
 
-  - name: timeSelector
-    package: "@8x8/oxygen-timeSelector"
+  - name: TimeSelector
+    package: "@8x8/oxygen-time-selector"
     category: date_time
-    folder: null
-    pipeline_stage: not_started
-    notes: "Not yet extracted. Key component: TimeSelector (11 props)."
+    folder: "component-lib/TimeSelector"
+    pipeline_stage: blocked
+    audit_verdict: "NO"
+    audit_verdict_reason: "2 unresolved CONFLICTs — Size=Large variant existence and default size mismatch between Figma and code API; require human resolution."
+    audit_date: "2026-05-07"
+    gap_counts: { doc_gaps: 2, source_gaps: 7, conflicts: 2 }
+    files:
+      props:         { path: "component-lib/TimeSelector/props.md",               wiki: "[[TimeSelector/props]]" }
+      examples:      { path: "component-lib/TimeSelector/examples.md",            wiki: "[[TimeSelector/examples]]" }
+      tokens:        { path: "component-lib/TimeSelector/tokens.md",              wiki: "[[TimeSelector/tokens]]" }
+      accessibility: { path: "component-lib/TimeSelector/accessibility.md",       wiki: "[[TimeSelector/accessibility]]" }
+      figma:         { path: "component-lib/TimeSelector/timeselector-figma.md",  wiki: "[[TimeSelector/timeselector-figma]]" }
+      audit:         { path: "component-lib/TimeSelector/timeselector-audit.md",  wiki: "[[TimeSelector/timeselector-audit]]" }
+    files_missing:
+      - timeselector-usage.md
+      - timeselector-pui.md
+    cross_links:
+      audit_depends_on: ["[[TimeSelector/props]]", "[[TimeSelector/examples]]", "[[TimeSelector/tokens]]", "[[TimeSelector/accessibility]]", "[[TimeSelector/timeselector-figma]]"]
+      spec_depends_on:  ["[[TimeSelector/timeselector-audit]]"]
 
 # ============================================================
 # PIPELINE SUMMARY (auto-derived from above)
@@ -1027,7 +1163,7 @@ components:
 
 pipeline_summary:
   spec_complete:  ["Tabs"]
-  spec_ready:     ["Accordion", "Breadcrumbs", "Card", "Checkbox", "Modal", "Pagination", "ProgressBar", "Slider", "SlideOut", "Tag", "TextField", "Toast"]
-  blocked_no:     ["AlertBanner", "Avatar", "Button", "DataTable", "Input", "Label", "Link", "Select", "SkeletonBlock", "SkeletonCircle", "Spinner", "TextArea", "ToggleButton", "Tooltip"]
+  spec_ready:     ["Accordion", "Breadcrumbs", "Card", "Checkbox", "DateTimeRangeSelector", "DateTimeSelector", "Modal", "Pagination", "ProgressBar", "Slider", "SlideOut", "Tag", "TextField", "Toast"]
+  blocked_no:     ["AlertBanner", "Avatar", "Button", "Calendar", "DataTable", "Input", "Label", "Link", "List", "PopoverMenu", "Select", "SidebarMenu", "SkeletonBlock", "SkeletonCircle", "Spinner", "TextArea", "TimeSelector", "ToggleButton", "Tooltip"]
   extracted_only: ["Badge", "Radio", "Toaster"]
-  not_started:    ["calendar", "dateTimeRangeSelector", "dateTimeSelector", "list", "popover", "sidebarMenu", "timeSelector"]
+  not_started:    []

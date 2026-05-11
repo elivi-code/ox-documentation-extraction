@@ -1,3 +1,27 @@
+---
+component: List
+package: "@8x8/oxygen-list"
+category: data_display
+role: accessibility
+role_description: "Accessibility specifications — ARIA roles, keyboard navigation, WCAG 2.1 AA"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[List/props]]"
+  - "[[List/examples]]"
+  - "[[List/tokens]]"
+  - "[[List/List-figma]]"
+  - "[[List/List-pui]]"
+  - "[[List/List-audit]]"
+tags:
+  - oxygen
+  - component/List
+  - role/accessibility
+  - stage/blocked
+  - category/data_display
+---
+
 # List — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

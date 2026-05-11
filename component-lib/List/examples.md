@@ -1,3 +1,27 @@
+---
+component: List
+package: "@8x8/oxygen-list"
+category: data_display
+role: examples
+role_description: "Code usage examples from basic to advanced patterns"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[List/props]]"
+  - "[[List/tokens]]"
+  - "[[List/accessibility]]"
+  - "[[List/List-figma]]"
+  - "[[List/List-pui]]"
+  - "[[List/List-audit]]"
+tags:
+  - oxygen
+  - component/List
+  - role/examples
+  - stage/blocked
+  - category/data_display
+---
+
 # List — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

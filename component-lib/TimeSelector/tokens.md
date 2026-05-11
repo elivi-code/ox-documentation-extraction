@@ -1,3 +1,26 @@
+---
+component: TimeSelector
+package: "@8x8/oxygen-time-selector"
+category: date_time
+role: tokens
+role_description: "Design token bindings — colors, spacing, typography per component state"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[TimeSelector/props]]"
+  - "[[TimeSelector/examples]]"
+  - "[[TimeSelector/accessibility]]"
+  - "[[TimeSelector/timeselector-figma]]"
+  - "[[TimeSelector/timeselector-audit]]"
+tags:
+  - oxygen
+  - component/TimeSelector
+  - role/tokens
+  - stage/blocked
+  - category/date_time
+---
+
 # TimeSelector — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

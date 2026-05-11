@@ -1,3 +1,35 @@
+---
+component: DateTimeRangeSelector
+package: "@8x8/oxygen-date-time-range-selector"
+category: date_time
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: "YES"
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - figma
+  - usage
+  - audit
+siblings:
+  - "[[DateTimeRangeSelector/examples]]"
+  - "[[DateTimeRangeSelector/tokens]]"
+  - "[[DateTimeRangeSelector/accessibility]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-figma]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-usage]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-audit]]"
+tags:
+  - oxygen
+  - component/DateTimeRangeSelector
+  - role/props
+  - stage/spec_ready
+  - category/date_time
+---
+
 # DateTimeRangeSelector — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

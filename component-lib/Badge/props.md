@@ -6,11 +6,19 @@ role: props
 role_description: "API props reference — all component properties with types, defaults, and descriptions"
 pipeline_stage: extracted
 pipeline_note: "Core files present; audit not yet run"
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - usage
+  - pui
 siblings:
   - "[[Badge/examples]]"
   - "[[Badge/tokens]]"
   - "[[Badge/accessibility]]"
   - "[[Badge/badge-pui]]"
+  - "[[Badge/badge-usage]]"
 tags:
   - oxygen
   - component/Badge

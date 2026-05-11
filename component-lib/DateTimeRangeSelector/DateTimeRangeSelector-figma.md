@@ -1,3 +1,27 @@
+---
+component: DateTimeRangeSelector
+package: "@8x8/oxygen-date-time-range-selector"
+category: date_time
+role: figma
+role_description: "Design system specs — anatomy, variants, spacing from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: "YES"
+siblings:
+  - "[[DateTimeRangeSelector/props]]"
+  - "[[DateTimeRangeSelector/examples]]"
+  - "[[DateTimeRangeSelector/tokens]]"
+  - "[[DateTimeRangeSelector/accessibility]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-usage]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-audit]]"
+tags:
+  - oxygen
+  - component/DateTimeRangeSelector
+  - role/figma
+  - stage/spec_ready
+  - category/date_time
+---
+
 <!-- SOURCE: Figma Desktop Bridge plugin (figma-console MCP) + Figma REST MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 80239:8235 -->

@@ -1,3 +1,35 @@
+---
+component: DateTimeSelector
+package: "@8x8/oxygen-date-time-selector"
+category: date_time
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: "YES"
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - figma
+  - usage
+  - audit
+siblings:
+  - "[[DateTimeSelector/examples]]"
+  - "[[DateTimeSelector/tokens]]"
+  - "[[DateTimeSelector/accessibility]]"
+  - "[[DateTimeSelector/DateTimeSelector-figma]]"
+  - "[[DateTimeSelector/DateTimeSelector-usage]]"
+  - "[[DateTimeSelector/DateTimeSelector-audit]]"
+tags:
+  - oxygen
+  - component/DateTimeSelector
+  - role/props
+  - stage/spec_ready
+  - category/date_time
+---
+
 # DateTimeSelector — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

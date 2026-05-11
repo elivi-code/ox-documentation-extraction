@@ -1,3 +1,26 @@
+---
+component: TimeSelector
+package: "@8x8/oxygen-time-selector"
+category: date_time
+role: figma
+role_description: "Design system specs — anatomy, variants, spacing from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[TimeSelector/props]]"
+  - "[[TimeSelector/examples]]"
+  - "[[TimeSelector/tokens]]"
+  - "[[TimeSelector/accessibility]]"
+  - "[[TimeSelector/timeselector-audit]]"
+tags:
+  - oxygen
+  - component/TimeSelector
+  - role/figma
+  - stage/blocked
+  - category/date_time
+---
+
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 32598:56953 -->

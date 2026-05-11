@@ -1,3 +1,27 @@
+---
+component: DateTimeRangeSelector
+package: "@8x8/oxygen-date-time-range-selector"
+category: date_time
+role: usage
+role_description: "Do/Don't editorial guidelines from Figma examples page"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: "YES"
+siblings:
+  - "[[DateTimeRangeSelector/props]]"
+  - "[[DateTimeRangeSelector/examples]]"
+  - "[[DateTimeRangeSelector/tokens]]"
+  - "[[DateTimeRangeSelector/accessibility]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-figma]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-audit]]"
+tags:
+  - oxygen
+  - component/DateTimeRangeSelector
+  - role/usage
+  - stage/spec_ready
+  - category/date_time
+---
+
 # DateTimeRangeSelector — Usage Guidelines
 
 > **See also:** [props.md](./props.md) · [examples.md](./examples.md) ·

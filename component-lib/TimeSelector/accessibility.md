@@ -1,3 +1,26 @@
+---
+component: TimeSelector
+package: "@8x8/oxygen-time-selector"
+category: date_time
+role: accessibility
+role_description: "Accessibility specifications — ARIA roles, keyboard navigation, WCAG 2.1 AA"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[TimeSelector/props]]"
+  - "[[TimeSelector/examples]]"
+  - "[[TimeSelector/tokens]]"
+  - "[[TimeSelector/timeselector-figma]]"
+  - "[[TimeSelector/timeselector-audit]]"
+tags:
+  - oxygen
+  - component/TimeSelector
+  - role/accessibility
+  - stage/blocked
+  - category/date_time
+---
+
 # TimeSelector — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

@@ -195,6 +195,25 @@ warnings:
     confidence: heuristic
     finding: "Dark mode is not present in the Figma component set (only 'light' variant exists). Calendar-figma.md notes that dark mode is 'likely handled via CSS tokens at runtime.' This is unconfirmed."
     advisory: "Confirm with the design team whether a dark mode Figma variant is planned or intentionally omitted."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[Calendar/props]]"
+  - "[[Calendar/examples]]"
+  - "[[Calendar/tokens]]"
+  - "[[Calendar/accessibility]]"
+  - "[[Calendar/Calendar-figma]]"
+  - "[[Calendar/Calendar-usage]]"
+tags:
+  - oxygen
+  - component/Calendar
+  - role/audit
+  - stage/blocked
+  - category/date_time
+
 ---
 
 # Calendar — Documentation Audit

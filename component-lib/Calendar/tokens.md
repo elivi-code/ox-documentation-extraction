@@ -1,3 +1,27 @@
+---
+component: Calendar
+package: "@8x8/oxygen-calendar"
+category: date_time
+role: tokens
+role_description: "Design token bindings — colors, spacing, typography per component state"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[Calendar/props]]"
+  - "[[Calendar/examples]]"
+  - "[[Calendar/accessibility]]"
+  - "[[Calendar/Calendar-figma]]"
+  - "[[Calendar/Calendar-usage]]"
+  - "[[Calendar/Calendar-audit]]"
+tags:
+  - oxygen
+  - component/Calendar
+  - role/tokens
+  - stage/blocked
+  - category/date_time
+---
+
 # Calendar — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

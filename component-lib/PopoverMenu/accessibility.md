@@ -1,3 +1,27 @@
+---
+component: PopoverMenu
+package: "@8x8/oxygen-popover"
+category: overlays_contextual
+role: accessibility
+role_description: "Accessibility specifications — ARIA roles, keyboard navigation, WCAG 2.1 AA"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[PopoverMenu/props]]"
+  - "[[PopoverMenu/examples]]"
+  - "[[PopoverMenu/tokens]]"
+  - "[[PopoverMenu/PopoverMenu-figma]]"
+  - "[[PopoverMenu/PopoverMenu-usage]]"
+  - "[[PopoverMenu/PopoverMenu-audit]]"
+tags:
+  - oxygen
+  - component/PopoverMenu
+  - role/accessibility
+  - stage/blocked
+  - category/overlays_contextual
+---
+
 # PopoverMenu — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

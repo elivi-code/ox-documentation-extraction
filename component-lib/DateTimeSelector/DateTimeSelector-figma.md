@@ -1,3 +1,27 @@
+---
+component: DateTimeSelector
+package: "@8x8/oxygen-date-time-selector"
+category: date_time
+role: figma
+role_description: "Design system specs — anatomy, variants, spacing from Figma"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: "YES"
+siblings:
+  - "[[DateTimeSelector/props]]"
+  - "[[DateTimeSelector/examples]]"
+  - "[[DateTimeSelector/tokens]]"
+  - "[[DateTimeSelector/accessibility]]"
+  - "[[DateTimeSelector/DateTimeSelector-usage]]"
+  - "[[DateTimeSelector/DateTimeSelector-audit]]"
+tags:
+  - oxygen
+  - component/DateTimeSelector
+  - role/figma
+  - stage/spec_ready
+  - category/date_time
+---
+
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 80239:8235 -->

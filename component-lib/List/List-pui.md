@@ -1,3 +1,27 @@
+---
+component: List
+package: "@8x8/oxygen-list"
+category: data_display
+role: pui
+role_description: "Platform UI integration notes — notifications, navigation, session, event bus"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[List/props]]"
+  - "[[List/examples]]"
+  - "[[List/tokens]]"
+  - "[[List/accessibility]]"
+  - "[[List/List-figma]]"
+  - "[[List/List-audit]]"
+tags:
+  - oxygen
+  - component/List
+  - role/pui
+  - stage/blocked
+  - category/data_display
+---
+
 <!-- SOURCE: platform-ui-mcp snapshotId: mcpVersion 0.6.1 / buildDate 2026-02-24 -->
 <!-- EXTRACTED: 2026-05-08 -->
 <!-- COMPONENT: List -->

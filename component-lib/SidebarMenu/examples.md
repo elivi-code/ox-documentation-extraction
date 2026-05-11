@@ -1,3 +1,26 @@
+---
+component: SidebarMenu
+package: "@8x8/oxygen-sidebarMenu"
+category: navigation
+role: examples
+role_description: "Code usage examples from basic to advanced patterns"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[SidebarMenu/props]]"
+  - "[[SidebarMenu/tokens]]"
+  - "[[SidebarMenu/accessibility]]"
+  - "[[SidebarMenu/SidebarMenu-figma]]"
+  - "[[SidebarMenu/SidebarMenu-audit]]"
+tags:
+  - oxygen
+  - component/SidebarMenu
+  - role/examples
+  - stage/blocked
+  - category/navigation
+---
+
 # SidebarMenu — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

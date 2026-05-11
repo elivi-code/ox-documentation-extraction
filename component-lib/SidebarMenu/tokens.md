@@ -1,3 +1,26 @@
+---
+component: SidebarMenu
+package: "@8x8/oxygen-sidebarMenu"
+category: navigation
+role: tokens
+role_description: "Design token bindings — colors, spacing, typography per component state"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[SidebarMenu/props]]"
+  - "[[SidebarMenu/examples]]"
+  - "[[SidebarMenu/accessibility]]"
+  - "[[SidebarMenu/SidebarMenu-figma]]"
+  - "[[SidebarMenu/SidebarMenu-audit]]"
+tags:
+  - oxygen
+  - component/SidebarMenu
+  - role/tokens
+  - stage/blocked
+  - category/navigation
+---
+
 # SidebarMenu — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

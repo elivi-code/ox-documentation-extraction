@@ -1,3 +1,27 @@
+---
+component: Calendar
+package: "@8x8/oxygen-calendar"
+category: date_time
+role: usage
+role_description: "Do/Don't editorial guidelines from Figma examples page"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[Calendar/props]]"
+  - "[[Calendar/examples]]"
+  - "[[Calendar/tokens]]"
+  - "[[Calendar/accessibility]]"
+  - "[[Calendar/Calendar-figma]]"
+  - "[[Calendar/Calendar-audit]]"
+tags:
+  - oxygen
+  - component/Calendar
+  - role/usage
+  - stage/blocked
+  - category/date_time
+---
+
 # Calendar — Usage Guidelines
 
 > **See also:** [props.md](./props.md) · [examples.md](./examples.md) ·

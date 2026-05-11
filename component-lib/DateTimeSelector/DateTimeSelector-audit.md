@@ -197,6 +197,25 @@ warnings:
     confidence: heuristic
     finding: "Dark mode variants (Mode=Dark) exist across all 68 component variants. Dark mode token values were not extracted — CSS design context was only captured for Light mode variants. Dark mode coverage in figma.md is limited to noting the variants exist."
     advisory: "Run get_design_context on a Dark mode variant (e.g. 80239:8257 — Dark/Large/Rest) to capture dark mode token bindings before publishing the figma spec."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: "YES"
+siblings:
+  - "[[DateTimeSelector/props]]"
+  - "[[DateTimeSelector/examples]]"
+  - "[[DateTimeSelector/tokens]]"
+  - "[[DateTimeSelector/accessibility]]"
+  - "[[DateTimeSelector/DateTimeSelector-figma]]"
+  - "[[DateTimeSelector/DateTimeSelector-usage]]"
+tags:
+  - oxygen
+  - component/DateTimeSelector
+  - role/audit
+  - stage/spec_ready
+  - category/date_time
+
 ---
 
 # DateTimeSelector — Documentation Audit

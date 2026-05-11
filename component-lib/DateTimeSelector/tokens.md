@@ -1,3 +1,27 @@
+---
+component: DateTimeSelector
+package: "@8x8/oxygen-date-time-selector"
+category: date_time
+role: tokens
+role_description: "Design token bindings — colors, spacing, typography per component state"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: "YES"
+siblings:
+  - "[[DateTimeSelector/props]]"
+  - "[[DateTimeSelector/examples]]"
+  - "[[DateTimeSelector/accessibility]]"
+  - "[[DateTimeSelector/DateTimeSelector-figma]]"
+  - "[[DateTimeSelector/DateTimeSelector-usage]]"
+  - "[[DateTimeSelector/DateTimeSelector-audit]]"
+tags:
+  - oxygen
+  - component/DateTimeSelector
+  - role/tokens
+  - stage/spec_ready
+  - category/date_time
+---
+
 # DateTimeSelector — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

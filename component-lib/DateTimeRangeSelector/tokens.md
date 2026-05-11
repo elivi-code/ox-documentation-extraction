@@ -1,3 +1,27 @@
+---
+component: DateTimeRangeSelector
+package: "@8x8/oxygen-date-time-range-selector"
+category: date_time
+role: tokens
+role_description: "Design token bindings — colors, spacing, typography per component state"
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: "YES"
+siblings:
+  - "[[DateTimeRangeSelector/props]]"
+  - "[[DateTimeRangeSelector/examples]]"
+  - "[[DateTimeRangeSelector/accessibility]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-figma]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-usage]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-audit]]"
+tags:
+  - oxygen
+  - component/DateTimeRangeSelector
+  - role/tokens
+  - stage/spec_ready
+  - category/date_time
+---
+
 # DateTimeRangeSelector — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

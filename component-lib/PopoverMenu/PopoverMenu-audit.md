@@ -418,6 +418,25 @@ warnings:
       This content was not extracted into any documentation file — it may be
       valuable for the usage.md or examples.md.
     advisory: "Consider extracting the 'Tooltip and Popover working together' section from the Figma examples page into examples.md or usage.md"
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[PopoverMenu/props]]"
+  - "[[PopoverMenu/examples]]"
+  - "[[PopoverMenu/tokens]]"
+  - "[[PopoverMenu/accessibility]]"
+  - "[[PopoverMenu/PopoverMenu-figma]]"
+  - "[[PopoverMenu/PopoverMenu-usage]]"
+tags:
+  - oxygen
+  - component/PopoverMenu
+  - role/audit
+  - stage/blocked
+  - category/overlays_contextual
+
 ---
 
 # PopoverMenu — Audit Report

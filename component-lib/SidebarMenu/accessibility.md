@@ -1,3 +1,26 @@
+---
+component: SidebarMenu
+package: "@8x8/oxygen-sidebarMenu"
+category: navigation
+role: accessibility
+role_description: "Accessibility specifications — ARIA roles, keyboard navigation, WCAG 2.1 AA"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[SidebarMenu/props]]"
+  - "[[SidebarMenu/examples]]"
+  - "[[SidebarMenu/tokens]]"
+  - "[[SidebarMenu/SidebarMenu-figma]]"
+  - "[[SidebarMenu/SidebarMenu-audit]]"
+tags:
+  - oxygen
+  - component/SidebarMenu
+  - role/accessibility
+  - stage/blocked
+  - category/navigation
+---
+
 # SidebarMenu — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

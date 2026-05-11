@@ -7,6 +7,14 @@ role_description: "API props reference — all component properties with types, 
 pipeline_stage: blocked
 pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
 audit_verdict: NO
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - figma
+  - pui
+  - audit
 siblings:
   - "[[ToggleButton/examples]]"
   - "[[ToggleButton/tokens]]"

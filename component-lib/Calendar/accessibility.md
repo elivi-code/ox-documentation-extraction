@@ -1,3 +1,27 @@
+---
+component: Calendar
+package: "@8x8/oxygen-calendar"
+category: date_time
+role: accessibility
+role_description: "Accessibility specifications — ARIA roles, keyboard navigation, WCAG 2.1 AA"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[Calendar/props]]"
+  - "[[Calendar/examples]]"
+  - "[[Calendar/tokens]]"
+  - "[[Calendar/Calendar-figma]]"
+  - "[[Calendar/Calendar-usage]]"
+  - "[[Calendar/Calendar-audit]]"
+tags:
+  - oxygen
+  - component/Calendar
+  - role/accessibility
+  - stage/blocked
+  - category/date_time
+---
+
 # Calendar — Accessibility
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)

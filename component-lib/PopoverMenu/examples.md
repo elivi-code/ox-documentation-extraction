@@ -1,3 +1,27 @@
+---
+component: PopoverMenu
+package: "@8x8/oxygen-popover"
+category: overlays_contextual
+role: examples
+role_description: "Code usage examples from basic to advanced patterns"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[PopoverMenu/props]]"
+  - "[[PopoverMenu/tokens]]"
+  - "[[PopoverMenu/accessibility]]"
+  - "[[PopoverMenu/PopoverMenu-figma]]"
+  - "[[PopoverMenu/PopoverMenu-usage]]"
+  - "[[PopoverMenu/PopoverMenu-audit]]"
+tags:
+  - oxygen
+  - component/PopoverMenu
+  - role/examples
+  - stage/blocked
+  - category/overlays_contextual
+---
+
 # PopoverMenu — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

@@ -276,6 +276,24 @@ warnings:
       "@8x8/oxygen-icons" — this package name has not been verified against
       the actual Oxygen icon package identifier.
     advisory: "Confirm icon package name before publishing the example."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[TimeSelector/props]]"
+  - "[[TimeSelector/examples]]"
+  - "[[TimeSelector/tokens]]"
+  - "[[TimeSelector/accessibility]]"
+  - "[[TimeSelector/timeselector-figma]]"
+tags:
+  - oxygen
+  - component/TimeSelector
+  - role/audit
+  - stage/blocked
+  - category/date_time
+
 ---
 
 # TimeSelector — Audit Report

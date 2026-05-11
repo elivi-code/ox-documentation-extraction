@@ -1,3 +1,26 @@
+---
+component: SidebarMenu
+package: "@8x8/oxygen-sidebarMenu"
+category: navigation
+role: figma
+role_description: "Design system specs — anatomy, variants, spacing from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[SidebarMenu/props]]"
+  - "[[SidebarMenu/examples]]"
+  - "[[SidebarMenu/tokens]]"
+  - "[[SidebarMenu/accessibility]]"
+  - "[[SidebarMenu/SidebarMenu-audit]]"
+tags:
+  - oxygen
+  - component/SidebarMenu
+  - role/figma
+  - stage/blocked
+  - category/navigation
+---
+
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 62897:18973 (Sidebar menu), 62897:19352 (Sidebar menu - Sublist item) -->

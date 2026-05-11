@@ -11,6 +11,7 @@ siblings:
   - "[[Badge/tokens]]"
   - "[[Badge/accessibility]]"
   - "[[Badge/badge-pui]]"
+  - "[[Badge/badge-usage]]"
 tags:
   - oxygen
   - component/Badge

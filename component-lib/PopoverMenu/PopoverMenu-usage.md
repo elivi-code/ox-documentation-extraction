@@ -1,3 +1,27 @@
+---
+component: PopoverMenu
+package: "@8x8/oxygen-popover"
+category: overlays_contextual
+role: usage
+role_description: "Do/Don't editorial guidelines from Figma examples page"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[PopoverMenu/props]]"
+  - "[[PopoverMenu/examples]]"
+  - "[[PopoverMenu/tokens]]"
+  - "[[PopoverMenu/accessibility]]"
+  - "[[PopoverMenu/PopoverMenu-figma]]"
+  - "[[PopoverMenu/PopoverMenu-audit]]"
+tags:
+  - oxygen
+  - component/PopoverMenu
+  - role/usage
+  - stage/blocked
+  - category/overlays_contextual
+---
+
 <!-- SOURCE: Figma — ↳ Popover examples -->
 <!-- PAGE: ↳ Popover examples (node 49969:10533) -->
 <!-- SECTION: Section / Usage Guidelines (frame 88806:12708) -->

@@ -7,6 +7,15 @@ role_description: "API props reference — all component properties with types, 
 pipeline_stage: spec_complete
 pipeline_note: "Canonical spec written — pipeline complete"
 audit_verdict: YES
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - figma
+  - pui
+  - audit
+  - spec
 siblings:
   - "[[Tabs/examples]]"
   - "[[Tabs/tokens]]"

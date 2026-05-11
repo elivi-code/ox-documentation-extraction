@@ -1,3 +1,27 @@
+---
+component: List
+package: "@8x8/oxygen-list"
+category: data_display
+role: tokens
+role_description: "Design token bindings — colors, spacing, typography per component state"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[List/props]]"
+  - "[[List/examples]]"
+  - "[[List/accessibility]]"
+  - "[[List/List-figma]]"
+  - "[[List/List-pui]]"
+  - "[[List/List-audit]]"
+tags:
+  - oxygen
+  - component/List
+  - role/tokens
+  - stage/blocked
+  - category/data_display
+---
+
 # List — Tokens
 
 > **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)

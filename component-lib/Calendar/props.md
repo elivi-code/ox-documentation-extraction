@@ -1,3 +1,35 @@
+---
+component: Calendar
+package: "@8x8/oxygen-calendar"
+category: date_time
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - figma
+  - usage
+  - audit
+siblings:
+  - "[[Calendar/examples]]"
+  - "[[Calendar/tokens]]"
+  - "[[Calendar/accessibility]]"
+  - "[[Calendar/Calendar-figma]]"
+  - "[[Calendar/Calendar-usage]]"
+  - "[[Calendar/Calendar-audit]]"
+tags:
+  - oxygen
+  - component/Calendar
+  - role/props
+  - stage/blocked
+  - category/date_time
+---
+
 # Calendar — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

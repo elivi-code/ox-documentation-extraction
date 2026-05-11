@@ -1,3 +1,33 @@
+---
+component: TimeSelector
+package: "@8x8/oxygen-time-selector"
+category: date_time
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - figma
+  - audit
+siblings:
+  - "[[TimeSelector/examples]]"
+  - "[[TimeSelector/tokens]]"
+  - "[[TimeSelector/accessibility]]"
+  - "[[TimeSelector/timeselector-figma]]"
+  - "[[TimeSelector/timeselector-audit]]"
+tags:
+  - oxygen
+  - component/TimeSelector
+  - role/props
+  - stage/blocked
+  - category/date_time
+---
+
 # TimeSelector — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

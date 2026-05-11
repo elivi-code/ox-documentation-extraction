@@ -327,6 +327,25 @@ warnings:
       fill/stroke bindings. If it relies on browser default, it may not meet WCAG
       2.4.11 (Focus Appearance) in all browsers.
     advisory: "Inspect focus ring implementation; document whether it is browser default, a custom outline token, or a box-shadow effect applied in CSS"
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[List/props]]"
+  - "[[List/examples]]"
+  - "[[List/tokens]]"
+  - "[[List/accessibility]]"
+  - "[[List/List-figma]]"
+  - "[[List/List-pui]]"
+tags:
+  - oxygen
+  - component/List
+  - role/audit
+  - stage/blocked
+  - category/data_display
+
 ---
 
 # List — Audit Report

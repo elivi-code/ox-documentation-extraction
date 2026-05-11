@@ -1,3 +1,27 @@
+---
+component: List
+package: "@8x8/oxygen-list"
+category: data_display
+role: figma
+role_description: "Design system specs — anatomy, variants, spacing from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[List/props]]"
+  - "[[List/examples]]"
+  - "[[List/tokens]]"
+  - "[[List/accessibility]]"
+  - "[[List/List-pui]]"
+  - "[[List/List-audit]]"
+tags:
+  - oxygen
+  - component/List
+  - role/figma
+  - stage/blocked
+  - category/data_display
+---
+
 <!-- SOURCE: Figma MCP + figma-console MCP (Desktop Bridge) -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 47175:1414 (Popover page) · Components section: 47335:10918 -->

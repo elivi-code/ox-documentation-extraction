@@ -1,0 +1,50 @@
+filters: role == "props"
+formulas:
+  status: if(pipeline_stage == "spec_complete", "✅ Complete", if(pipeline_stage == "spec_ready", "🟢 Ready", if(pipeline_stage == "blocked", "🔴 Blocked", if(pipeline_stage == "extracted", "🟡 Extracted", "⬜ Not started"))))
+  verdict_badge: if(audit_verdict == "YES", "🟢 YES", if(audit_verdict == "NO", "🔴 NO", if(audit_verdict == "PARTIAL", "🟡 PARTIAL", "—")))
+properties:
+  component:
+    displayName: Component
+  package:
+    displayName: Package
+  category:
+    displayName: Category
+  pipeline_stage:
+    displayName: Stage
+  audit_verdict:
+    displayName: Verdict
+  pipeline_note:
+    displayName: Notes
+views:
+  - type: table
+    name: All Components
+    order:
+      - component
+      - audit_verdict
+      - formula.status
+      - package
+      - category
+      - files_present
+    sort:
+      - property: component
+        direction: ASC
+  - type: table
+    name: By Category
+    order:
+      - category
+      - component
+  - type: table
+    name: Spec Ready
+    filters: pipeline_stage == "spec_ready"
+    order:
+      - component
+  - type: table
+    name: Blocked
+    filters: pipeline_stage == "blocked"
+    order:
+      - component
+  - type: cards
+    name: Cards
+    order:
+      - component
+      - audit_verdict

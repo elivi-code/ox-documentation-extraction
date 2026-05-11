@@ -1,3 +1,14 @@
+---
+title: "OX Components — Extraction Progress Tracker"
+description: "Master list of 34 components with progress counter; strike through rows as each completes"
+role: progress_tracker
+workspace: OX Documentation Extraction
+last_updated: 2026-05-08
+tags:
+  - oxygen
+  - navigation
+  - progress
+---
 # Oxygen Components — Documentation Extraction List
 
 Components selected for documentation extraction from the Oxygen Design System (`@8x8/oxygen-*` v2.107.0).

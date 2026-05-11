@@ -195,6 +195,24 @@ warnings:
     confidence: heuristic
     finding: "SubMenuItem, CollapseItem, and SidebarContainer props are documented from examples only. Actual prop types may differ from observed usage."
     advisory: "These 3 components return errors from get-component-props — flagged upstream as SOURCE_GAP-002. Advisory only."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[SidebarMenu/props]]"
+  - "[[SidebarMenu/examples]]"
+  - "[[SidebarMenu/tokens]]"
+  - "[[SidebarMenu/accessibility]]"
+  - "[[SidebarMenu/SidebarMenu-figma]]"
+tags:
+  - oxygen
+  - component/SidebarMenu
+  - role/audit
+  - stage/blocked
+  - category/navigation
+
 ---
 
 # SidebarMenu — Documentation Audit

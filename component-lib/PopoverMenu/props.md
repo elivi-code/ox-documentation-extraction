@@ -1,3 +1,35 @@
+---
+component: PopoverMenu
+package: "@8x8/oxygen-popover"
+category: overlays_contextual
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - figma
+  - usage
+  - audit
+siblings:
+  - "[[PopoverMenu/examples]]"
+  - "[[PopoverMenu/tokens]]"
+  - "[[PopoverMenu/accessibility]]"
+  - "[[PopoverMenu/PopoverMenu-figma]]"
+  - "[[PopoverMenu/PopoverMenu-usage]]"
+  - "[[PopoverMenu/PopoverMenu-audit]]"
+tags:
+  - oxygen
+  - component/PopoverMenu
+  - role/props
+  - stage/blocked
+  - category/overlays_contextual
+---
+
 # PopoverMenu — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

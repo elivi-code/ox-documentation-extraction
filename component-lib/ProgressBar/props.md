@@ -7,6 +7,13 @@ role_description: "API props reference — all component properties with types, 
 pipeline_stage: spec_ready
 pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
 audit_verdict: YES
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - figma
+  - audit
 siblings:
   - "[[ProgressBar/examples]]"
   - "[[ProgressBar/tokens]]"

@@ -1,3 +1,27 @@
+---
+component: Calendar
+package: "@8x8/oxygen-calendar"
+category: date_time
+role: figma
+role_description: "Design system specs — anatomy, variants, spacing from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[Calendar/props]]"
+  - "[[Calendar/examples]]"
+  - "[[Calendar/tokens]]"
+  - "[[Calendar/accessibility]]"
+  - "[[Calendar/Calendar-usage]]"
+  - "[[Calendar/Calendar-audit]]"
+tags:
+  - oxygen
+  - component/Calendar
+  - role/figma
+  - stage/blocked
+  - category/date_time
+---
+
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 80239:7420 -->

@@ -1,3 +1,33 @@
+---
+component: SidebarMenu
+package: "@8x8/oxygen-sidebarMenu"
+category: navigation
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - figma
+  - audit
+siblings:
+  - "[[SidebarMenu/examples]]"
+  - "[[SidebarMenu/tokens]]"
+  - "[[SidebarMenu/accessibility]]"
+  - "[[SidebarMenu/SidebarMenu-figma]]"
+  - "[[SidebarMenu/SidebarMenu-audit]]"
+tags:
+  - oxygen
+  - component/SidebarMenu
+  - role/props
+  - stage/blocked
+  - category/navigation
+---
+
 # SidebarMenu — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

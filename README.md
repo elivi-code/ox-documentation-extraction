@@ -1,3 +1,14 @@
+---
+title: "OX Documentation Extraction — Workspace Guide"
+description: "Project overview, directory structure, workflow steps, and navigation guide"
+role: workspace_guide
+workspace: OX Documentation Extraction
+last_updated: 2026-05-08
+tags:
+  - oxygen
+  - navigation
+  - readme
+---
 # OX Documentation Extraction
 
 A documentation-only workspace for the **Oxygen (OX) design system** (`@8x8/oxygen-*`). This project produces structured markdown documentation for Oxygen UI components by composing multiple data sources (component APIs, Figma designs, Platform UI infrastructure, and accessibility specifications).

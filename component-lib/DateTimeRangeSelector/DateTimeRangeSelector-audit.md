@@ -167,6 +167,25 @@ warnings:
     confidence: heuristic
     finding: "props.md lists an iconLeft prop (line 44) not reflected in the Figma anatomy (DateTimeRangeSelector-figma.md). This may be an implementation-level prop not represented in the shared 'Date picker' Figma component set."
     advisory: "Verify whether iconLeft renders within the trigger input or is used in a different part of the component. Confirm it maps to a Figma element before including it in the spec."
+# --- navigation (added by component-map) ---
+role: audit
+pipeline_stage: spec_ready
+pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+audit_verdict: "YES"
+siblings:
+  - "[[DateTimeRangeSelector/props]]"
+  - "[[DateTimeRangeSelector/examples]]"
+  - "[[DateTimeRangeSelector/tokens]]"
+  - "[[DateTimeRangeSelector/accessibility]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-figma]]"
+  - "[[DateTimeRangeSelector/DateTimeRangeSelector-usage]]"
+tags:
+  - oxygen
+  - component/DateTimeRangeSelector
+  - role/audit
+  - stage/spec_ready
+  - category/date_time
+
 ---
 
 # DateTimeRangeSelector — Documentation Audit

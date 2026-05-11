@@ -1,3 +1,35 @@
+---
+component: List
+package: "@8x8/oxygen-list"
+category: data_display
+role: props
+role_description: "API props reference — all component properties with types, defaults, and descriptions"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+files_present:
+  - props
+  - examples
+  - tokens
+  - accessibility
+  - figma
+  - pui
+  - audit
+siblings:
+  - "[[List/examples]]"
+  - "[[List/tokens]]"
+  - "[[List/accessibility]]"
+  - "[[List/List-figma]]"
+  - "[[List/List-pui]]"
+  - "[[List/List-audit]]"
+tags:
+  - oxygen
+  - component/List
+  - role/props
+  - stage/blocked
+  - category/data_display
+---
+
 # List — Props
 
 > **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)

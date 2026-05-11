@@ -1,3 +1,27 @@
+---
+component: PopoverMenu
+package: "@8x8/oxygen-popover"
+category: overlays_contextual
+role: figma
+role_description: "Design system specs — anatomy, variants, spacing from Figma"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[PopoverMenu/props]]"
+  - "[[PopoverMenu/examples]]"
+  - "[[PopoverMenu/tokens]]"
+  - "[[PopoverMenu/accessibility]]"
+  - "[[PopoverMenu/PopoverMenu-usage]]"
+  - "[[PopoverMenu/PopoverMenu-audit]]"
+tags:
+  - oxygen
+  - component/PopoverMenu
+  - role/figma
+  - stage/blocked
+  - category/overlays_contextual
+---
+
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 47175:1414 (canvas) / 48432:43576 (Popover window) -->

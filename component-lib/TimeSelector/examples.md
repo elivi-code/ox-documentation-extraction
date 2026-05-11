@@ -1,3 +1,26 @@
+---
+component: TimeSelector
+package: "@8x8/oxygen-time-selector"
+category: date_time
+role: examples
+role_description: "Code usage examples from basic to advanced patterns"
+pipeline_stage: blocked
+pipeline_note: "Audit verdict NO — CONFLICTs must be resolved first"
+audit_verdict: "NO"
+siblings:
+  - "[[TimeSelector/props]]"
+  - "[[TimeSelector/tokens]]"
+  - "[[TimeSelector/accessibility]]"
+  - "[[TimeSelector/timeselector-figma]]"
+  - "[[TimeSelector/timeselector-audit]]"
+tags:
+  - oxygen
+  - component/TimeSelector
+  - role/examples
+  - stage/blocked
+  - category/date_time
+---
+
 # TimeSelector — Examples
 
 > **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)
