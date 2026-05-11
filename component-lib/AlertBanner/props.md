@@ -30,7 +30,8 @@ tags:
 # AlertBanner — Props
 
 > **See also:** [alert-banner-figma.md](./alert-banner-figma.md) · [tokens.md](./tokens.md) ·
-> [examples.md](./examples.md) · [accessibility.md](./accessibility.md)
+> [examples.md](./examples.md) · [accessibility.md](./accessibility.md) ·
+> [alert-banner-usage.md](./alert-banner-usage.md)
 
 ---
 

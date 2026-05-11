@@ -23,7 +23,8 @@ tags:
 # AlertBanner — Accessibility
 
 > **See also:** [alert-banner-figma.md](./alert-banner-figma.md) · [props.md](./props.md) ·
-> [tokens.md](./tokens.md) · [examples.md](./examples.md)
+> [tokens.md](./tokens.md) · [examples.md](./examples.md) ·
+> [alert-banner-usage.md](./alert-banner-usage.md)
 
 ---
 

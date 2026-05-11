@@ -30,7 +30,8 @@ tags:
 # AlertBanner — Figma Design Spec
 
 > **See also:** [props.md](./props.md) · [tokens.md](./tokens.md) ·
-> [examples.md](./examples.md) · [accessibility.md](./accessibility.md)
+> [examples.md](./examples.md) · [accessibility.md](./accessibility.md) ·
+> [alert-banner-usage.md](./alert-banner-usage.md)
 
 ---
 

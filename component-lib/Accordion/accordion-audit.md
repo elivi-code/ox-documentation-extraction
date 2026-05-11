@@ -13,8 +13,10 @@ files_found:
   - accordion-figma.md
 
 files_missing:
-  - accordion-usage.md
   - accordion-pui.md
+
+files_added_post_audit:
+  - accordion-usage.md  # authored 2026-05-11 from oxygen.8x8.com + OX MCP (see GAP-001 resolution_note)
 
 verdict: YES
 verdict_rationale: >
@@ -58,6 +60,16 @@ gaps:
     fix_action: >
       Designer must add Do/Don't frames to the '↳ Accordion examples' Figma page
       following the figma-draw template convention, then re-run figma-extract-usage.
+    resolution_note: >
+      PARTIALLY ADDRESSED (2026-05-11). accordion-usage.md was authored from the
+      oxygen.8x8.com/components/accordion/usage page (screenshot, verbatim text)
+      plus Oxygen MCP get-component-docs. Three Do/Don't pairs were DERIVED 1:1
+      from the website's Best Practices section and are flagged as editorial
+      inversions, not Figma-sourced. Original fix_action still applies: when the
+      designer adds ✅ Do / ❌ Don't frames to examples page 79430:614, re-run
+      figma-extract-usage to replace the derived pairs with Figma-sourced ones.
+      The audit verdict and scores are NOT recomputed here — re-run /doc-audit
+      Accordion to refresh usage_guidelines (currently 0.30) and overall scores.
     blocks:
       - docusaurus usage-guidelines section
       - storybook usage stories

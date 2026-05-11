@@ -6,14 +6,14 @@
 # Obsidian wiki-links use [[folder/file]] notation (no .md extension).
 # Audit verdicts: YES (rewrite can proceed), NO (conflicts block rewrite),
 #                 PARTIAL (rewrite can proceed on available dimensions only).
-# Generated: 2026-05-08   Rubric version: 1.0
+# Generated: 2026-05-11   Rubric version: 1.0
 # ============================================================
 
 meta:
   workspace: "OX Documentation Extraction"
   package_prefix: "@8x8/oxygen-"
-  total_components: 34
-  extracted_and_audited: 28
+  total_components: 37
+  extracted_and_audited: 34
   spec_complete: 1
   progress_tracker: "[[components-to-extract]]"
   workspace_guide: "[[CLAUDE]]"
