@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .page-header { margin-bottom: 2rem; }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f1a;
+      line-height: 1.2;
+    }
+
+    .see-also {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .see-also a {
+      color: #5046e4;
+      text-decoration: none;
+    }
+
+    .see-also a:hover { text-decoration: underline; }
+
+    /* Callouts */
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+
+    .callout-editorial strong { color: #3d2c00; }
+
+    .callout-info {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #1e3a5f;
+    }
+
+    .callout-info strong { color: #1e3a5f; }
+
+    .callout-warn {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #78350f;
+    }
+
+    .callout-editorial code, .callout-info code, .callout-warn code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Intro */
+    .intro {
+      font-size: 15.5px;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f0f1a;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p { color: #374151; margin-bottom: 0.75rem; }
+
+    a { color: #5046e4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+    }
+
+    /* Anatomy numbered list */
+    .anatomy-list {
+      list-style: none;
+      counter-reset: anatomy;
+      padding: 0;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .anatomy-list li {
+      counter-increment: anatomy;
+      position: relative;
+      padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+      margin-bottom: 0.375rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .anatomy-list li::before {
+      content: counter(anatomy);
+      position: absolute;
+      left: 0.625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #5046e4;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .anatomy-list strong { color: #0f0f1a; }
+
+    /* Source line */
+    .source-line {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+
+    .source-line code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .warn-cell { color: #b45309; }
+
+    /* Bullet list */
+    .bullet-list {
+      margin: 0.5rem 0 1rem 1.25rem;
+      color: #374151;
+    }
+
+    .bullet-list li { margin-bottom: 0.375rem; }
+
+    /* Do / Don't pairs */
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair { margin-bottom: 1.75rem; }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .pair-source {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-bottom: 0.625rem;
+    }
+
+    .pair-source code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+    }
+
+    .do-card, .dont-card {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      gap: 0.5rem;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .dont-card {
+      background: #fff5f5;
+      border: 1px solid #fecaca;
+    }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.375rem;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body {
+      color: #374151;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .card-body code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      padding-top: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .card-note code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .card-code {
+      background: rgba(0,0,0,0.04);
+      border-radius: 5px;
+      padding: 0.625rem 0.75rem;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+      font-size: 12px;
+      color: #1a1a2e;
+      margin: 0;
+      white-space: pre;
+      overflow-x: auto;
+      align-self: end;
+    }
+
+    /* Gaps */
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-source-gap { background: #fef3c7; color: #92400e; }
+    .badge-doc-gap    { background: #dbeafe; color: #1e40af; }
+    .badge-resolved   { background: #dcfce7; color: #166534; }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+
+    /* Figma appendix */
+    .appendix {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .appendix h3 {
+      margin-top: 0;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6b7280;
+    }
+
+    blockquote {
+      border-left: 3px solid #d1d5db;
+      margin: 0.75rem 0;
+      padding: 0.5rem 1rem;
+      color: #4b5563;
+      font-size: 13.5px;
+    }
+
+    blockquote strong { color: #374151; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · date_time · Calendar</div>
+    <h1>Calendar — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Calendar-figma.md">Calendar-figma.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — mirrors the published Oxygen docs page.</strong>
+    The Figma <code>↳ Calendar examples</code> page (node 69971:10137) contains illustration sections only — no <code>✅ Do —</code> / <code>❌ Don't —</code> card frames — so <code>figma-extract-usage</code> cannot produce editorial pairs. The guidance below is transcribed from the published Oxygen docs page for Calendar (<a href="https://oxygen.8x8.com/components/calendar/usage">oxygen.8x8.com/components/calendar/usage</a>, fetched 2026-05-12) and cross-validated against <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, and <code>Calendar-figma.md</code>. Replace with <code>figma-extract-usage</code> output if Do/Don't cards are ever added to the Figma examples page.
+  </div>
+
+  <p class="intro">
+    A Calendar lets users <strong>select a single date or a range of dates</strong> — past, present, or future — with optional time selection. It is the visual surface behind every date input in 8x8 product surfaces: scheduling, reporting windows, filters, and call-history queries. Two display modes share a single component, both driven by the <code>displayMode</code> prop.
+  </p>
+
+  <hr>
+
+  <h2>Overview</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Variant</th>
+          <th>API</th>
+          <th>Use for</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Single date</strong></td>
+          <td><code>displayMode="date"</code> (default)</td>
+          <td>Picking one specific calendar day</td>
+          <td>Selecting a date closes the menu and populates the input immediately.</td>
+        </tr>
+        <tr>
+          <td><strong>Date range</strong></td>
+          <td><code>displayMode="dateRange"</code></td>
+          <td>Picking a start + end day, optionally with time inputs and a predefined-ranges panel</td>
+          <td>First click sets <code>startDate</code>, second sets <code>endDate</code>. Change is <strong>committed by clicking Apply</strong> — not by the second click alone.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source-line">Source: Published docs — Overview section · <code>props.md</code> · <code>Calendar-figma.md</code>.</p>
+
+  <hr>
+
+  <h2>Anatomy</h2>
+
+  <h3>Single date calendar</h3>
+  <ol class="anatomy-list">
+    <li><strong>Navigation</strong> — ← previous-month, month dropdown, year dropdown, → next-month. Arrow buttons take their accessible name from <code>prevMonthLabel</code> / <code>nextMonthLabel</code> props.</li>
+    <li><strong>Days of the week</strong> — weekday header row, format controlled by <code>weekDayDisplayFormat</code> (default <code>'EE'</code>).</li>
+    <li><strong>Date grid</strong> — 40 × 40 px day cells. Today is marked with a dot; the selected day is filled with a blue circle.</li>
+    <li><strong>Title</strong> — month + year header, format controlled by <code>monthDisplayFormat</code> (default <code>'MMMM yyyy'</code>).</li>
+    <li><strong>Calendar menu</strong> — the popover container (border, 6 px radius, drop shadow). Opens from a date input on the consuming surface.</li>
+  </ol>
+
+  <h3>Date range calendar (additional elements)</h3>
+  <ol class="anatomy-list" style="counter-reset: anatomy 5;">
+    <li><strong>Predefined ranges panel</strong> <em>(optional, 148 px wide)</em> — "Today / Last hour / Yesterday / Last 7 days / This month / Last month / Last 3 months / This year / Last year / Custom".</li>
+    <li><strong>Date and time range inputs</strong> <em>(optional)</em> — From / To date inputs and Start / End time inputs, controlled by the Figma <code>time</code> boolean.</li>
+    <li><strong>Action bar</strong> — Reset · Cancel · Apply. <strong>Apply commits the range.</strong></li>
+  </ol>
+  <p class="source-line">Source: <code>Calendar-figma.md</code> — anatomy section · Published docs — anatomy lists.</p>
+
+  <hr>
+
+  <h2>Behavior</h2>
+
+  <h3>States</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>State</th>
+          <th>Trigger</th>
+          <th>Visual</th>
+          <th>Token (CSS)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Rest</td>
+          <td>Default</td>
+          <td>Day number, transparent background</td>
+          <td><code>--text/textcolor01</code></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Hover</td>
+          <td>Pointer over valid day</td>
+          <td>Cell background → <code>--ui/ui02</code></td>
+          <td><code>--ui/ui02</code></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Focus</td>
+          <td>Keyboard Tab / arrows</td>
+          <td>2 px ring in <code>--interactive/focus01</code> + white inset shadow</td>
+          <td><code>--interactive/focus01</code></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Selected</td>
+          <td>Click or Enter / Space</td>
+          <td>Filled circle <code>--actions/action01</code>; text → white</td>
+          <td><code>--actions/action01</code></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Current day</td>
+          <td>Today</td>
+          <td>Dot indicator below the day number</td>
+          <td><code>--actions/action01</code></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>In-range</td>
+          <td>Between start and end in range mode</td>
+          <td>Cell background → <code>--ui/ui01</code></td>
+          <td><code>--ui/ui01</code></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Disabled</td>
+          <td><code>disabledDates</code> or outside min/max</td>
+          <td>Greyed text, <code>aria-disabled="true"</code>, tooltip via <code>disabledDateTooltip</code></td>
+          <td><code>--text/textcolor06</code></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Passive (dimmed)</td>
+          <td>Day belongs to the adjacent month</td>
+          <td>Greyed text, still focusable</td>
+          <td><code>--text/textcolor06</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout-warn">
+    ⚠️ Token names above come from Figma's generated CSS, not the UI-Foundations variables panel — flagged as GAP-002 / GAP-007 in <code>Calendar-audit.md</code>. Treat as authoritative for structure; defer to UI-Foundations once token mapping is confirmed.
+  </div>
+  <p class="source-line">Source: Published docs — States · <code>Calendar-figma.md</code> · <code>accessibility.md</code>.</p>
+
+  <hr>
+
+  <h2>Sizes &amp; Responsive Layout</h2>
+  <p>The Calendar has no <code>size</code> prop — it adapts via <code>months</code> and breakpoint-driven layout shifts:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Breakpoint</th>
+          <th>Predefined ranges</th>
+          <th>Layout</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>≥ 769 px</td>
+          <td>Optional</td>
+          <td>Dual-month grid (default <code>months={2}</code>)</td>
+        </tr>
+        <tr>
+          <td>541–768 px</td>
+          <td>Optional</td>
+          <td>Dual-month, compact</td>
+        </tr>
+        <tr>
+          <td>320–540 px</td>
+          <td>Optional</td>
+          <td><strong>Single-month, stacked</strong> — set <code>months={1}</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source-line">Source: <code>Calendar-figma.md</code> — breakpoints section.</p>
+
+  <hr>
+
+  <h2>Placement</h2>
+  <ul class="bullet-list">
+    <li>Calendars are <strong>popovers</strong> — they open from a date input and overlay the surface.</li>
+    <li><strong>Single-date:</strong> selecting a date <strong>closes the menu and populates the input immediately</strong> — no Apply step.</li>
+    <li><strong>Date range:</strong> the popover <strong>stays open</strong> until the user clicks Apply (or Cancel / Reset). This is intentional — a range is a two-click decision and intermediate state should not commit.</li>
+    <li>Don't render a Calendar inline without a triggering input — the popover affordance signals "this is editable".</li>
+  </ul>
+  <p class="source-line">Source: Published docs — Behavior sections.</p>
+
+  <hr>
+
+  <h2>Best Practices</h2>
+
+  <h3>When to use</h3>
+  <ul class="bullet-list">
+    <li>When asking the user for an <strong>exact or approximate date</strong> (single or range).</li>
+    <li>When the user is required to <strong>schedule tasks</strong> (e.g. report generation, follow-ups).</li>
+    <li>When the user needs to <strong>pick a reporting window</strong> — the predefined-ranges panel is the fastest path for "Last 7 days", "This month", "Last quarter".</li>
+  </ul>
+
+  <h3>When not to use</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Situation</th>
+          <th>Why</th>
+          <th>Use instead</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The date is not required by the task</td>
+          <td>Adds friction without value — reduce content on the page.</td>
+          <td>Omit the field entirely.</td>
+        </tr>
+        <tr>
+          <td>A single date is required</td>
+          <td>The two-click + Apply pattern overshoots a one-decision task.</td>
+          <td><code>displayMode="date"</code> — see Pair 1.</td>
+        </tr>
+        <tr>
+          <td>A free-form text date is needed ("around Q3", "TBD")</td>
+          <td>Calendar enforces a concrete <code>Date</code>; placeholder semantics are lost.</td>
+          <td>A plain text input or fuzzy-date picker.</td>
+        </tr>
+        <tr>
+          <td>Selecting a time only (no date)</td>
+          <td>Calendar always picks a day — time inputs are an addition, not a substitute.</td>
+          <td>TimePicker (see DateTimeSelector siblings).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source-line">Source: Published docs — Best Practices sections · <code>props.md</code>.</p>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <!-- Pair 1 -->
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Pick the variant by selection type</div>
+      <p class="pair-source">Grounded in: Published docs — "When not to use" (Date Range Calendar) · <code>examples.md</code> (single and range examples).</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use <code>displayMode="date"</code> for a single date</div>
+          <p class="card-body">When the task is "pick one day", the single-date variant is faster (one click, auto-close, auto-populate) and lighter on screen real estate (312 px vs 788 px).</p>
+          <div class="card-code">&lt;Calendar
+  date={date}
+  onDateChange={setDate}
+  displayMode="date"
+/&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Reach for the range picker for a one-date task</div>
+          <p class="card-body">The range variant requires two clicks then Apply. For a single date that's three interactions where one would do, and the Apply step blocks on a control they don't need.</p>
+          <div class="card-code">{/* Wrong — range picker for a single-date task */}
+&lt;Calendar
+  range={range}
+  onRangeChange={setRange}
+  displayMode="dateRange"
+/&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Always label the month navigation buttons</div>
+      <p class="pair-source">Grounded in: Published docs — Anatomy (Navigation) · <code>props.md</code> (<code>prevMonthLabel</code> / <code>nextMonthLabel</code>) · <code>accessibility.md</code> · WCAG 4.1.2.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Pass localized <code>prevMonthLabel</code> and <code>nextMonthLabel</code></div>
+          <p class="card-body">The ← / → arrows have no visible text. The accessible name comes entirely from these props. Without them, screen readers announce the buttons as unlabelled — failing WCAG 4.1.2.</p>
+          <div class="card-code">&lt;Calendar
+  date={date}
+  onDateChange={setDate}
+  prevMonthLabel="Previous month"
+  nextMonthLabel="Next month"
+/&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Ship the calendar with bare arrow icons</div>
+          <p class="card-body">Without <code>prevMonthLabel</code> / <code>nextMonthLabel</code>, the navigation buttons have no accessible name — screen-reader users hear "button, button" with no context.</p>
+          <div class="card-code">{/* Wrong — nav arrows have no accessible name */}
+&lt;Calendar date={date} onDateChange={setDate} /&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Use <code>disabledDates</code> + <code>disabledDateTooltip</code> for selection limits</div>
+      <p class="pair-source">Grounded in: Published docs — States (Disabled) · <code>examples.md</code> (disabled dates example) · <code>accessibility.md</code> · <code>Calendar-audit.md</code> GAP-011.</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Drive limits through the API with a localized tooltip</div>
+          <p class="card-body">The canonical pattern for the 90-day report window. The API has no dedicated <code>maxRangeDays</code> prop — build the window with <code>disabledDates</code> and surface the reason via <code>disabledDateTooltip</code> so keyboard and screen-reader users hear the constraint.</p>
+          <div class="card-code">import { addDays, isBefore } from 'date-fns';
+const windowStart = addDays(new Date(), -90);
+
+&lt;Calendar
+  displayMode="dateRange"
+  range={range}
+  onRangeChange={setRange}
+  disabledDates={buildDisabledDates(windowStart)}
+  disabledDateTooltip={(day) =&gt;
+    isBefore(day, windowStart)
+      ? '90-day report limit — earlier data is not retained'
+      : undefined
+  }
+/&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Hide the limit by silently disabling cells</div>
+          <p class="card-body">A disabled cell with no tooltip tells the user nothing. They click, nothing happens, and they don't know why. Screen-reader users hear only "dimmed, button" with no reason.</p>
+          <div class="card-code">{/* Wrong — limit enforced but never explained */}
+&lt;Calendar
+  displayMode="dateRange"
+  range={range}
+  onRangeChange={setRange}
+  disabledDates={buildDisabledDates(windowStart)}
+/&gt;</div>
+        </div>
+      </div>
+      <div class="callout-info" style="margin-top: 0.75rem;">
+        🔖 <strong>GAP-011 (CONFLICT, resolved 2026-05-12 — Option A).</strong> The 90-day mode is a first-class Figma property (<code>90 days</code> boolean) without a dedicated API equivalent. Option A was chosen: document the <code>disabledDates</code> + <code>disabledDateTooltip</code> pattern as canonical. If Calendar gains a <code>maxRangeDays</code> prop in a future release, prefer that and update this pair.
+      </div>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Require an explicit Apply for a range change</div>
+      <p class="pair-source">Grounded in: Published docs — Date Range Calendar &gt; Behavior · <code>Calendar-figma.md</code> (action bar).</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Keep the Reset / Cancel / Apply action bar in range mode</div>
+          <p class="card-body">A range is a two-click decision (start + end). The Apply step gives the user a moment to confirm, cancel, or adjust before the value commits. It also gives keyboard users a stable focus target after the second click.</p>
+          <div class="card-code">&lt;Calendar
+  displayMode="dateRange"
+  range={range}
+  onRangeChange={setRange}
+  {/* The action bar (Reset · Cancel · Apply) is owned by
+      the consuming DateTimeRangeSelector — don't auto-commit
+      on the second click */}
+/&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Commit the range on the second click</div>
+          <p class="card-body">Closing the popover on the second click removes the Cancel / Reset escape hatch, denies keyboard users a confirm step, and makes accidental range selection permanent with no recovery path.</p>
+          <div class="card-code">{/* Wrong — second click commits without confirmation */}
+&lt;Calendar
+  displayMode="dateRange"
+  onRangeChange={(range) =&gt; {
+    setRange(range);
+    closePopover(); // ← removes Cancel / Reset
+  }}
+/&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Let <code>locale</code> and date-fns format the dates</div>
+      <p class="pair-source">Grounded in: Published docs — Date Format subsection · <code>props.md</code> (<code>locale</code>, <code>dateOptions</code>) · <code>examples.md</code> (French locale, Monday-first examples).</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Pass a date-fns <code>locale</code> and let the component format everything</div>
+          <p class="card-body">Date format expectations vary by locale ("the US uses M/D/Y, most other locations use D/M/Y" — published docs). Pass <code>locale</code>, set <code>weekStartsOn</code>, and let date-fns handle weekday and month names.</p>
+          <div class="card-code">import { fr } from 'date-fns/locale';
+
+&lt;Calendar
+  date={date}
+  onDateChange={setDate}
+  locale={fr}
+  dateOptions={{ weekStartsOn: 1 }} // Monday-first
+/&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Override formatting with a hand-rolled US format</div>
+          <p class="card-body">Hand-formatting dates leads to drift: "5/12/2026" reads as 12 May to a US user and 5 December to a UK one. Passing a hard-coded format string bypasses the locale system entirely.</p>
+          <div class="card-code">{/* Wrong — assumes M/D/Y for every locale */}
+&lt;Calendar
+  date={date}
+  onDateChange={setDate}
+  monthDisplayFormat="M/d/yyyy"
+/&gt;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 6 -->
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Surface predefined ranges for common reporting windows</div>
+      <p class="pair-source">Grounded in: Published docs — Date Range Anatomy (Predetermined range) · <code>Calendar-figma.md</code> (predefined ranges panel, 148 px).</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use the predefined-ranges panel for "Today / Last 7 days / This month / …"</div>
+          <p class="card-body">Most reporting flows reach for the same handful of windows. The predefined-ranges panel makes those one click instead of two-clicks + Apply. Reserve the day grid for cases that don't fit a preset.</p>
+          <div class="card-code">&lt;DateTimeRangeSelector
+  predefinedRanges={[
+    { label: 'Today',       value: () =&gt; today() },
+    { label: 'Last 7 days', value: () =&gt; last7() },
+    { label: 'This month',  value: () =&gt; thisMonth() },
+  ]}
+  range={range}
+  onRangeChange={setRange}
+/&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Force hand-picking a window the panel supports</div>
+          <p class="card-body">If the surface is a report filter and 80 % of users want "Last 7 days", surfacing only the day grid burns four clicks per query and adds extra tab stops for keyboard users.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 7 -->
+    <div class="pair">
+      <div class="pair-label">Pair 7 — Choose layout by breakpoint, don't hardcode dual-month</div>
+      <p class="pair-source">Grounded in: Published docs — Anatomy (responsive layout) · <code>Calendar-figma.md</code> (breakpoints) · <code>examples.md</code> (single month view).</p>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Collapse to a single month below 540 px</div>
+          <p class="card-body">Two 280-px month columns plus the predefined-ranges panel exceeds phone width. Below 540 px, switch to <code>months={1}</code> and stack (or hide) the predefined-ranges panel.</p>
+          <div class="card-code">const isNarrow = useMediaQuery('(max-width: 540px)');
+
+&lt;Calendar
+  displayMode="dateRange"
+  range={range}
+  onRangeChange={setRange}
+  months={isNarrow ? 1 : 2}
+/&gt;</div>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Hardcode <code>months={2}</code> on every surface</div>
+          <p class="card-body">Two months plus a ranges panel at 788 px total width overflows any viewport narrower than ~830 px. On a phone it becomes horizontally scrollable or broken.</p>
+          <div class="card-code">{/* Wrong — overflows narrow viewports */}
+&lt;Calendar
+  displayMode="dateRange"
+  range={range}
+  onRangeChange={setRange}
+  months={2}
+/&gt;</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Related components</h2>
+  <ul class="bullet-list">
+    <li><strong>Time selector</strong> — paired with Calendar in range mode to add start/end time inputs.</li>
+    <li><strong>Text input</strong> — the surface that the Calendar popover anchors to. Calendar always opens from an input.</li>
+    <li><strong><code>DateTimeSelector</code></strong> — single-date input + Calendar popover wrapper. See <a href="../DateTimeSelector/">DateTimeSelector/</a>.</li>
+    <li><strong><code>DateTimeRangeSelector</code></strong> — range input + Calendar popover + predefined ranges + action bar. See <a href="../DateTimeRangeSelector/">DateTimeRangeSelector/</a>.</li>
+    <li><strong>Forms</strong> — the pattern that hosts most Calendar usage.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Accessibility quick reference</h2>
+  <ul class="bullet-list">
+    <li>The day grid renders as <code>role="grid"</code> with <code>role="gridcell"</code> children.</li>
+    <li>Today is marked with <code>aria-current="date"</code>; the selected day with <code>aria-selected="true"</code>.</li>
+    <li>Disabled days carry <code>aria-disabled="true"</code> and <strong>remain in the tab order</strong> so the <code>disabledDateTooltip</code> is announced.</li>
+    <li><code>Tab</code>, arrow keys, <code>Enter</code> / <code>Space</code>, <code>Page Up</code> / <code>Page Down</code>, <code>Home</code> / <code>End</code> are all wired. Follows the ARIA Date Picker pattern.</li>
+    <li>Always supply <code>prevMonthLabel</code> / <code>nextMonthLabel</code> (Pair 2) and <code>locale</code> (Pair 5).</li>
+    <li>Wrap the consuming surface in an <code>aria-live="polite"</code> region so the selection is announced.</li>
+    <li>WCAG 1.4.3 (Contrast) and 2.4.7 (Focus Visible) are marked <span class="warn-cell"><strong>Verify</strong></span> — they depend on tokens that are still unresolved (GAP-002, GAP-007).</li>
+  </ul>
+  <p>See <a href="./accessibility.md">accessibility.md</a> for the full WCAG 2.1 AA checklist.</p>
+
+  <hr>
+
+  <h2>Gaps</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Figma Do/Don't cards (GAP-003)</td>
+            <td><span class="badge-tag badge-resolved">Resolved</span></td>
+            <td>Replaced with editorial Do/Don't pairs sourced from the published Oxygen docs page (fetched 2026-05-12). Re-run <code>figma-extract-usage</code> if Do/Don't cards are ever added to the <code>↳ Calendar examples</code> Figma page (node 69971:10137).</td>
+          </tr>
+          <tr>
+            <td>90-day limit API (GAP-011)</td>
+            <td><span class="badge-tag badge-resolved">Resolved</span></td>
+            <td>Option A chosen (2026-05-12) — documented as <code>disabledDates</code> + <code>disabledDateTooltip</code> pattern in Pair 3. Update Pair 3 if <code>@8x8/oxygen-calendar</code> gains a <code>maxRangeDays</code> prop.</td>
+          </tr>
+          <tr>
+            <td>Token names from CSS, not UI-Foundations (GAP-002, GAP-007)</td>
+            <td><span class="badge-tag badge-source-gap">Source Gap</span></td>
+            <td>States table cites <code>--ui/ui01</code>, <code>--actions/action01</code>, etc. as they appear in Figma's generated CSS — canonical token names from the UI-Foundations library (file key <code>iVY5nI8JAxM05Apnnvozzs</code>) have not been confirmed. WCAG 1.4.3 / 2.4.7 marked <strong>Verify</strong> until resolved.</td>
+          </tr>
+          <tr>
+            <td>No canonical Storybook examples (GAP-001)</td>
+            <td><span class="badge-tag badge-source-gap">Source Gap</span></td>
+            <td>The 8 snippets in <code>examples.md</code> are derived from prop descriptions, not canonical Storybook stories. Confirm with the component team.</td>
+          </tr>
+          <tr>
+            <td><code>DateRange</code> / <code>DateOptions</code> type shapes (GAP-004, GAP-005)</td>
+            <td><span class="badge-tag badge-doc-gap">Doc Gap</span></td>
+            <td>TypeScript interfaces for <code>DateRange</code> and <code>DateOptions</code> are not fully spelled out in <code>props.md</code>. Auto-fixable.</td>
+          </tr>
+          <tr>
+            <td><code>enableMaxWidth</code> default (GAP-006)</td>
+            <td><span class="badge-tag badge-doc-gap">Doc Gap</span></td>
+            <td>Default value not documented. Look up in <code>@8x8/oxygen-calendar</code> source.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Figma examples page reference</h2>
+  <p>The <code>↳ Calendar examples</code> Figma page (node 69971:10137) contains five illustration sections — no Do/Don't cards, but the annotations are preserved here for reference.</p>
+
+  <div class="appendix">
+    <h3>Page sections</h3>
+    <div class="table-wrap" style="margin-top: 0.75rem;">
+      <table>
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Date picker examples</td>
+            <td>Default range and single calendar in light mode</td>
+          </tr>
+          <tr>
+            <td>Date picker range responsive</td>
+            <td>Breakpoint demonstrations (992→769, 768→541, 540→320) with/without predefined ranges panel</td>
+          </tr>
+          <tr>
+            <td>Popovers inside Date picker</td>
+            <td>Predefined ranges popover, time popover, month picker popover</td>
+          </tr>
+          <tr>
+            <td>90 days limit</td>
+            <td>Disabled date states, tooltip behaviour on hover/focus</td>
+          </tr>
+          <tr>
+            <td>Intraday</td>
+            <td>Intraday toggle on/off and intraday info tooltip</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Verbatim annotations</h3>
+    <p style="margin-top: 0.5rem; font-size: 13px; color: #374151;"><strong>Popovers inside Date picker</strong></p>
+    <blockquote><strong>Predefined ranges popover sizing:</strong> For predefined ranges popover, the max-height is set to 400px, the width is set to 300px.</blockquote>
+    <blockquote><strong>Predefined ranges trigger:</strong> Predefined ranges list will appear on click on the dropdown button.</blockquote>
+    <blockquote><strong>Time / month / year popovers:</strong> For time, month and year popovers, the max-height is set to 240px.</blockquote>
+
+    <p style="margin-top: 0.75rem; font-size: 13px; color: #374151;"><strong>90 days limit</strong></p>
+    <blockquote><strong>Context:</strong> Some reports have a limit of 90 days for stored data.</blockquote>
+    <blockquote><strong>Disabled dates:</strong> If the dates are not in the 90 days segment, the state for those dates will be disabled.</blockquote>
+    <blockquote><strong>Tooltip on hover:</strong> On hover — tooltip is displayed.</blockquote>
+    <blockquote><strong>Tooltip on focus:</strong> On focus — tooltip is displayed.</blockquote>
+
+    <h3 style="margin-top: 1rem;">Breakpoint behaviour</h3>
+    <div class="table-wrap" style="margin-top: 0.5rem;">
+      <table>
+        <thead>
+          <tr>
+            <th>Breakpoint range</th>
+            <th>Predefined ranges</th>
+            <th>Layout</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>992 → 769 px</td><td>Visible</td><td>Dual month + ranges panel</td></tr>
+          <tr><td>992 → 769 px</td><td>Hidden</td><td>Dual month only</td></tr>
+          <tr><td>768 → 541 px</td><td>Visible</td><td>Dual month + ranges panel</td></tr>
+          <tr><td>768 → 541 px</td><td>Hidden</td><td>Dual month, narrower</td></tr>
+          <tr><td>540 → 320 px</td><td>Visible</td><td>Single month + stacked ranges</td></tr>
+          <tr><td>540 → 320 px</td><td>Hidden</td><td>Single month only</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Source: Published Oxygen docs page (<a href="https://oxygen.8x8.com/components/calendar/usage">oxygen.8x8.com/components/calendar/usage</a>, fetched 2026-05-12) · Cross-referenced with Oxygen MCP and Figma extraction (2026-05-08) · Editorial draft 2026-05-12
+  </footer>
+
+</div>
+</body>
+</html>
