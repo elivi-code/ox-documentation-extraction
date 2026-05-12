@@ -24,7 +24,7 @@ OX Documentation Extraction/
 ├── index.md                        # ← START HERE — all 37 components with file links
 ├── pipeline-status.md              # Quick status table for AI orientation (8K)
 ├── component-map.yaml              # Full detail map: scores, verdicts, cross-links
-├── components-to-extract.md        # Progress tracker (28 / 34 complete)
+├── components-to-extract.md        # Progress tracker (34 / 34 complete)
 ├── CLAUDE.md                       # AI instructions and workflow conventions
 └── component-lib/
     └── {ComponentName}/
@@ -34,6 +34,7 @@ OX Documentation Extraction/
         ├── accessibility.md        # A11y specs and ARIA guidance
         ├── {component}-figma.md    # Design system specs from Figma
         ├── {component}-usage.md    # Do/Don't editorial guidance (optional)
+        ├── {component}-usage.html  # HTML render of usage examples (optional)
         ├── {component}-pui.md      # Platform UI integration notes (optional)
         ├── {component}-audit.md    # Documentation gap report
         └── {component}-spec.md     # Final merged specification
@@ -104,6 +105,7 @@ See [`pipeline-status.md`](pipeline-status.md) for a quick visual summary of all
 - **Cross-link within components** using relative paths: `[props.md](props.md)`, `[{component}-figma.md]`
 - **Deprecated packages** are struck through in the component list—skip extraction unless asked.
 - **`.pen` files** are encrypted—use `pencil` MCP tools, never `Read` or `Grep`.
+- **Every `.md` under `component-lib/`** carries YAML frontmatter (`component`, `role`, `pipeline_stage`, `audit_verdict`, `siblings`, `tags`), making files filterable in Obsidian Dataview and self-describing when opened standalone.
 
 ## Documentation Output
 

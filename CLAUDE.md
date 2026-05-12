@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A documentation-only workspace for the **Oxygen (OX) design system** (`@8x8/oxygen-*`). There is no source code, build, or test suite. The work product is structured markdown under [component-lib/](component-lib/), produced by composing several MCP servers and skills.
 
-Track progress in [components-to-extract.md](components-to-extract.md) — 34 packages across 8 categories, with a `Progress: N / 34 complete` counter at the top. **After each component finishes extraction + audit, strike through the row and bump the counter** (this is a standing user instruction, also captured in memory).
+Track progress in [components-to-extract.md](components-to-extract.md) — 37 components across 8 categories (34 tracked in that file; Badge, Radio, and Toaster are the additional three), with a `Progress: N / 34 complete` counter at the top. **After each component finishes extraction + audit, strike through the row and bump the counter** (this is a standing user instruction, also captured in memory).
 
 ## Per-component output layout
 
@@ -18,8 +18,19 @@ Each component lives in `component-lib/{ComponentName}/`. Filenames are produced
 | `{component}-figma.md` + `figma-screenshot-{component}.png` | `figma-extract` | Casing of the prefix is inconsistent across existing folders (e.g. `Avatar-figma.md` vs `accordion-figma.md`) — match the casing already used in the folder rather than changing it. |
 | `{component}-pui.md` | `pui-mcp-extract` | Only present when the component has Platform UI infra concerns (notifications, navigation, session, event bus). Many components don't need one. |
 | `{component}-usage.md` | `figma-extract-usage` | Do/Don't editorial guidance from a Figma "{Component} — Examples" page. Often missing. |
+| `{component}-usage.html` | `figma-extract-usage` | HTML render of the usage examples; produced alongside `-usage.md`. |
 | `{component}-audit.md` | `doc-audit` | YAML-frontmatter gap report scoring 7 dimensions (props, examples, tokens, accessibility, figma, usage, pui). Required input for `doc-rewrite`. |
 | `{component}-spec.md` | `doc-rewrite` | Canonical merged spec — final pipeline output. |
+
+## Navigation files
+
+Before starting any pipeline work, read `pipeline-status.md` — one read gives instant orientation on every component's current state.
+
+| File | When to use |
+| --- | --- |
+| [`pipeline-status.md`](pipeline-status.md) | **First stop for AI orientation** — compact stage/verdict/blocker table for all 37 components |
+| [`index.md`](index.md) | All components grouped by category with wiki-links to every file |
+| [`component-map.yaml`](component-map.yaml) | Full detail: audit scores, gap counts, cross-file links; use for deep lookups on a specific component |
 
 ## The extract → audit → rewrite pipeline
 
@@ -98,3 +109,4 @@ The counter reflects how many components have completed the full extract + audit
 - **Cross-links inside component files** point to siblings (`[props.md](props.md)`, `[{component}-figma.md]`). When renaming, update the "See also" lines in all sibling files.
 - **Deprecated packages** are struck through in `components-to-extract.md` headers (e.g. `~~card~~`). Don't extract those unless explicitly asked.
 - **Never use `Read` or `Grep` on `.pen` files** — they're encrypted; use the `pencil` MCP tools.
+- **Every `.md` under `component-lib/`** carries YAML frontmatter with `component`, `role`, `pipeline_stage`, `audit_verdict`, `siblings` (wiki-links to related files), and `tags`. Files are filterable in Obsidian Dataview and self-describing when opened standalone.
