@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .page-header { margin-bottom: 2rem; }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f1a;
+      line-height: 1.2;
+    }
+
+    .see-also {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .see-also a {
+      color: #5046e4;
+      text-decoration: none;
+    }
+
+    .see-also a:hover { text-decoration: underline; }
+
+    /* Callouts */
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+
+    .callout-editorial strong { color: #3d2c00; }
+
+    .callout-info {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #1e3a5f;
+    }
+
+    .callout-info strong { color: #1e3a5f; }
+
+    .callout-warn {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #78350f;
+    }
+
+    .callout-editorial code, .callout-info code, .callout-warn code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Intro */
+    .intro {
+      font-size: 15.5px;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f0f1a;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p { color: #374151; margin-bottom: 0.75rem; }
+
+    a { color: #5046e4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+    }
+
+    /* Anatomy numbered list */
+    .anatomy-list {
+      list-style: none;
+      counter-reset: anatomy;
+      padding: 0;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .anatomy-list li {
+      counter-increment: anatomy;
+      position: relative;
+      padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+      margin-bottom: 0.375rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .anatomy-list li::before {
+      content: counter(anatomy);
+      position: absolute;
+      left: 0.625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #5046e4;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .anatomy-list strong { color: #0f0f1a; }
+
+    /* Source line */
+    .source-line {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+
+    .source-line code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .warn-cell { color: #b45309; }
+
+    /* Bullet list */
+    .bullet-list {
+      margin: 0.5rem 0 1rem 1.25rem;
+      color: #374151;
+    }
+
+    .bullet-list li { margin-bottom: 0.375rem; }
+
+    /* Do / Don't pairs */
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair { margin-bottom: 1.75rem; }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .pair-source {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-bottom: 0.625rem;
+    }
+
+    .pair-source code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+    }
+
+    .do-card, .dont-card {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      gap: 0.5rem;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .dont-card {
+      background: #fff5f5;
+      border: 1px solid #fecaca;
+    }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.375rem;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body {
+      color: #374151;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .card-body code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      padding-top: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .card-note code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .card-code {
+      background: rgba(0,0,0,0.04);
+      border-radius: 5px;
+      padding: 0.625rem 0.75rem;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+      font-size: 12px;
+      color: #1a1a2e;
+      margin: 0;
+      white-space: pre;
+      overflow-x: auto;
+      align-self: end;
+    }
+
+    /* Gaps */
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-source-gap { background: #fef3c7; color: #92400e; }
+    .badge-doc-gap    { background: #dbeafe; color: #1e40af; }
+    .badge-resolved   { background: #dcfce7; color: #166534; }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+
+    blockquote {
+      border-left: 3px solid #d1d5db;
+      margin: 0.75rem 0;
+      padding: 0.5rem 1rem;
+      color: #4b5563;
+      font-size: 13.5px;
+    }
+
+    blockquote strong { color: #374151; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · form_inputs · Checkbox</div>
+    <h1>Checkbox — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./checkbox-figma.md">checkbox-figma.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — mirrors the published Oxygen docs page.</strong>
+    No <code>↳ Checkbox examples</code> Figma page with <code>✅ Do —</code> / <code>❌ Don't —</code> card frames exists, so <code>figma-extract-usage</code> cannot run. The body below transcribes the published Oxygen docs page (<a href="https://oxygen.8x8.com/components/checkbox/usage">oxygen.8x8.com/components/checkbox/usage</a>, fetched 2026-05-12 via Claude_in_Chrome MCP) verbatim where the page asserts something, and derives Do/Don't pairs from the docs page's Best Practices + Nesting intent cross-validated against <code>props.md</code>, <code>examples.md</code>, <code>tokens.md</code>, <code>accessibility.md</code>, and <code>checkbox-figma.md</code>. Replace with <code>figma-extract-usage</code> output if a Figma examples page is ever created with Do/Don't cards.
+  </div>
+
+  <div class="callout-warn">
+    <strong>⚠ Beta API.</strong> The Checkbox Figma info card carries a <strong>Beta</strong> badge. Expect API churn — <code>CheckboxGroup</code> in particular only exposes <code>isHorizontal</code> in <code>props.md</code>, while the Figma component set exposes <code>header</code>, <code>footer</code>, and <code>isError</code> slots that may correspond to props not yet returned by the Oxygen MCP. Tracked as GAP-008 / GAP-009 in <code>checkbox-audit.md</code>.
+  </div>
+
+  <p class="intro">
+    Checkboxes are input controls that let a user <strong>select one or more options</strong> from a list. Each checkbox is independent — selecting one does not unselect another — unless the checkbox is nested under a parent checkbox, in which case the parent reflects the aggregate state of its children. They are the canonical multi-select affordance in 8x8 product surfaces: form filters, permission lists, terms-and-conditions acknowledgements, and "select all" patterns in tables and lists.
+  </p>
+
+  <hr>
+
+  <h2>Anatomy</h2>
+  <p>The published docs page numbers four parts on the anatomy illustration; in the API and Figma sources these compose as follows:</p>
+
+  <ol class="anatomy-list">
+    <li><strong>Group label</strong> <em>(optional)</em> — the <code>&lt;legend&gt;</code> (or equivalent) of a <code>CheckboxGroup</code>. Provides the accessible name for the set of related options. Maps to the <code>header</code> slot on Checkbox Group in Figma (default <code>true</code>).</li>
+    <li><strong>Selected checkbox</strong> — the 20 × 20 px square filled with <code>ui/ui22</code> and a white check glyph.</li>
+    <li><strong>Unselected checkbox</strong> — the 20 × 20 px square with a 2 px <code>ui/ui21</code> border on a transparent background.</li>
+    <li><strong>Label</strong> — the action text rendered with <code>text/textColor01</code>, positioned <strong>to the right of the input</strong> with vertical stacking for legibility. Maps to the <code>label</code> prop.</li>
+    <li><strong>Info icon button + tooltip</strong> <em>(optional)</em> — rendered when <code>infoBoxText</code> is set. A separate keyboard focus stop; its accessible name comes from <code>infoBoxButtonLabel</code>.</li>
+    <li><strong>Focus ring</strong> — a 2 px <code>interactive/focus01</code> outline on keyboard focus. Required by WCAG 2.4.7 — <strong>never suppress with <code>outline: none</code></strong>.</li>
+  </ol>
+
+  <blockquote>
+    <strong>Group spacing (verbatim from the docs page):</strong> "Always maintain a padding of <code>$spacing04</code> between the title and label and <code>$spacing03</code> between labels."
+  </blockquote>
+
+  <p class="source-line">Source: Published docs — Anatomy section · <code>props.md</code> · <code>checkbox-figma.md</code>. Input ↔ label horizontal gap is currently unmeasured — SOURCE_GAP GAP-004.</p>
+
+  <hr>
+
+  <h2>Overview</h2>
+  <p>A single Oxygen package, <code>@8x8/oxygen-checkbox</code>, exports two components:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Component</th><th>Use for</th><th>Key props</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>Checkbox</code></td>
+          <td>A single binary option, or a single row inside a group</td>
+          <td><code>label</code>, <code>isChecked</code>, <code>isIndeterminate</code>, <code>isDisabled</code>, <code>infoBoxText</code>, <code>onChange</code></td>
+        </tr>
+        <tr>
+          <td><code>CheckboxGroup</code></td>
+          <td>Two or more related options laid out together</td>
+          <td><code>isHorizontal</code> (the only documented prop — see GAP-008)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Variants (verbatim from the docs page)</h3>
+  <ul class="bullet-list">
+    <li><strong>Single checkbox</strong> — used for a binary option, e.g. terms and conditions at the end of a form.</li>
+    <li><strong>Multiple checkboxes</strong> — used when the user can choose between various options. The set may have a group label, and the options can be nested.</li>
+  </ul>
+
+  <h3>Nesting (verbatim from the docs page)</h3>
+  <blockquote>
+    "Checkboxes can have a parent-and-child relationship with other checkboxes.<br>
+    • When the parent checkbox is unselected all the child checkboxes are unselected.<br>
+    • When a parent checkbox is selected all the child checkboxes are selected.<br>
+    <br>
+    If some checkboxes are checked, the parent checkbox will be in an intermediate state. If an intermediate state is unselected then it will uncheck the parent and all the nested items."
+  </blockquote>
+  <p>The intermediate state is exposed via the <code>isIndeterminate</code> prop. It maps to <code>aria-checked="mixed"</code> and requires the consumer to <strong>also</strong> set the DOM <code>indeterminate</code> property.</p>
+
+  <p class="source-line">Source: Published docs — Overview / Variants / Nesting sections · <code>props.md</code> · <code>examples.md</code>.</p>
+
+  <hr>
+
+  <h2>Behaviour</h2>
+
+  <h3>States</h3>
+  <p>The Figma Checkbox Input component set defines six variant axes — <code>Mode</code> (Light/Dark), <code>State</code> (Rest/Hover), <code>isChecked</code>, <code>isIndeterminate</code>, <code>isDisabled</code>, <code>isFocused</code>. The published docs page names three: <strong>Rest</strong>, <strong>Focus</strong>, <strong>Disabled</strong>. Combined, the full visible state matrix is:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>State</th><th>Trigger</th><th>Visual</th><th>Token</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Unchecked / Rest</td><td>Default</td><td>2 px border, transparent fill</td><td><code>ui/ui21</code></td></tr>
+        <tr><td>2</td><td>Hover</td><td>Pointer over</td><td>Border / fill brightens (transient — no API prop)</td><td>(variant only)</td></tr>
+        <tr><td>3</td><td>Focus</td><td>Keyboard <code>Tab</code></td><td>2 px outline ring</td><td><code>interactive/focus01</code></td></tr>
+        <tr><td>4</td><td>Checked</td><td><code>isChecked={true}</code></td><td>Filled square, white check glyph</td><td><code>ui/ui22</code></td></tr>
+        <tr><td>5</td><td>Indeterminate</td><td><code>isIndeterminate={true}</code></td><td>Filled square, white dash glyph</td><td><code>ui/ui22</code></td></tr>
+        <tr><td>6</td><td>Disabled</td><td><code>isDisabled={true}</code></td><td>Muted fill, no hover/focus</td><td><code>interactive/disabled02</code></td></tr>
+        <tr><td>7</td><td>Error <em>(group)</em></td><td><code>CheckboxGroup</code> <code>isError</code> variant in Figma</td><td>Red border + error message</td><td><code>error/error01</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout-warn">
+    <strong>⚠ Token reconciliation pending.</strong> <code>tokens.md</code> still contains speculative <code>blue05</code> / <code>blue06</code> language. The authoritative bindings — <code>ui/ui21</code>, <code>ui/ui22</code>, <code>interactive/disabled02</code>, <code>interactive/focus01</code>, <code>text/textColor01</code>, <code>error/error01</code> — were resolved via <code>figma_execute</code> alias-chain traversal on 2026-05-05 and live in <code>checkbox-figma.md §3</code>. DOC_GAP GAP-002. Treat the table above as authoritative until <code>tokens.md</code> is updated.
+  </div>
+
+  <div class="callout-warn">
+    <strong>⚠ <code>isError</code> is in Figma but not in <code>props.md</code>.</strong> <code>checkbox-figma.md</code> shows an <code>isError</code> variant on <code>CheckboxGroup</code>; <code>props.md</code> lists only <code>isHorizontal</code>. SOURCE_GAP GAP-008. Don't hand-write <code>&lt;CheckboxGroup isError /&gt;</code> against the current API surface until the prop is confirmed in package source.
+  </div>
+
+  <h3>Keyboard</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Key</th><th>Behaviour</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>Tab</code> / <code>Shift + Tab</code></td><td>Move focus to / away from the checkbox</td></tr>
+        <tr><td><code>Space</code></td><td>Toggle checked / unchecked</td></tr>
+        <tr><td><code>Enter</code></td><td><strong>No action</strong> — per the WAI-ARIA Checkbox pattern, Enter does not activate</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The info icon button (<code>infoBoxText</code>) is a <strong>separate focus stop</strong> with its own keyboard tab order — sighted, keyboard, and screen-reader users all reach it independently of the checkbox itself.</p>
+
+  <p class="source-line">Source: Published docs — Behaviour / States section · <code>checkbox-figma.md</code> · <code>accessibility.md</code>.</p>
+
+  <hr>
+
+  <h2>Sizes &amp; dimensions</h2>
+  <p>Only one Checkbox size is documented in Oxygen:</p>
+  <ul class="bullet-list">
+    <li><strong>Input control:</strong> 20 × 20 px square.</li>
+    <li><strong>Full row (input + label):</strong> 128 × 20 px in the Figma master, but the label takes its natural intrinsic width at runtime.</li>
+    <li><strong>Group items:</strong> 320 × 168 px per Figma variant.</li>
+  </ul>
+
+  <h3>Spacing (verbatim from the docs page)</h3>
+  <ul class="bullet-list">
+    <li><code>$spacing04</code> between the group title and the first checkbox label.</li>
+    <li><code>$spacing03</code> between successive checkbox labels in a vertical stack.</li>
+  </ul>
+
+  <div class="callout-info">
+    The exact horizontal gap between the <strong>input square</strong> and <strong>its own label</strong> is not currently measured — <code>get_design_context</code> was unavailable at extraction time. SOURCE_GAP GAP-004 in <code>checkbox-audit.md</code>. Don't hand-assert a pixel value here.
+  </div>
+
+  <p class="source-line">Source: Published docs — Anatomy section · <code>checkbox-figma.md</code> · <code>examples.md</code>.</p>
+
+  <hr>
+
+  <h2>Best Practices</h2>
+
+  <h3>When to use <em>(verbatim from the docs page)</em></h3>
+  <ul class="bullet-list">
+    <li>Single or multiple checkboxes can be used in forms for selection from a list of options on a single page, modal, or panel.</li>
+    <li>A single checkbox can be used in terms and conditions to indicate whether you agree or disagree.</li>
+  </ul>
+
+  <h3>When not to use <em>(editorial — not on the docs page)</em></h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Situation</th><th>Why</th><th>Use instead</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The user can pick <strong>only one</strong> option from a set</td>
+          <td>Checkbox affords independent multi-select; a mutually-exclusive control needs a different role / different aria semantics.</td>
+          <td>Radio.</td>
+        </tr>
+        <tr>
+          <td>The control toggles a setting that takes effect <strong>immediately</strong> (e.g. "Enable notifications" with no Save button)</td>
+          <td>Checkboxes are typically committed by a form submit; instant-effect toggles read more naturally as switches.</td>
+          <td><code>ToggleButton</code>.</td>
+        </tr>
+        <tr>
+          <td>There are <strong>many</strong> options and vertical space is constrained</td>
+          <td>A long list of checkboxes overflows surfaces and slows scanning.</td>
+          <td>A multi-select <code>Select</code> / dropdown with checkbox rows.</td>
+        </tr>
+        <tr>
+          <td>You need a <strong>purely visual</strong> indicator (read-only state)</td>
+          <td>A checkbox advertises interactivity; assistive tech announces it as a control.</td>
+          <td>Plain text, <code>Tag</code>, or an icon.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="source-line">Source: Published docs — Best Practices section · <code>props.md</code> · <code>accessibility.md</code> (native <code>&lt;input type="checkbox"&gt;</code> role).</p>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <p>These pairs are derived editorially from the docs page's Variants, Nesting, and Best Practices sections combined with the extracted API and accessibility data. No Figma ✅ Do / ❌ Don't card frames exist for Checkbox at the time of writing — the <code>↳ Checkbox examples</code> page is absent (GAP-001 in <code>checkbox-audit.md</code>).</p>
+
+  <section class="pairs-section">
+
+    <!-- Pair 1 -->
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Reach for Checkbox when the user can select more than one</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use Checkbox for independent, multi-select options</p>
+          <p class="card-body">Each checkbox is independent. Use the control when picking option A does not preclude picking option B.</p>
+          <pre class="card-code">import { Checkbox, CheckboxGroup } from '@8x8/oxygen-checkbox';
+
+&lt;CheckboxGroup&gt;
+  &lt;Checkbox id="email" label="Email"
+    isChecked={email}
+    onChange={(e) =&gt; setEmail(e.target.checked)} /&gt;
+  &lt;Checkbox id="sms"   label="SMS"
+    isChecked={sms}
+    onChange={(e) =&gt; setSms(e.target.checked)} /&gt;
+  &lt;Checkbox id="push"  label="Push"
+    isChecked={push}
+    onChange={(e) =&gt; setPush(e.target.checked)} /&gt;
+&lt;/CheckboxGroup&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Use Checkbox when only one selection is allowed</p>
+          <p class="card-body">If picking option A must clear option B, a checkbox lies about the affordance: keyboard and screen-reader users hear "checkbox, not checked" rather than "radio button, not selected", and the group's <code>aria-checked</code> semantics misrepresent the constraint.</p>
+          <pre class="card-code">{/* Wrong — mutually exclusive; use Radio */}
+&lt;CheckboxGroup&gt;
+  &lt;Checkbox label="Annual billing"
+    isChecked={plan === 'annual'}
+    onChange={() =&gt; setPlan('annual')} /&gt;
+  &lt;Checkbox label="Monthly billing"
+    isChecked={plan === 'monthly'}
+    onChange={() =&gt; setPlan('monthly')} /&gt;
+&lt;/CheckboxGroup&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Overview (independence of selection) · <code>accessibility.md</code> (native <code>checkbox</code> role) · Related → Radio buttons.</p>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Use a single Checkbox for binary commitments, not for instant-effect toggles</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use a single Checkbox for terms-and-conditions or other form-committed binary choices</p>
+          <p class="card-body">Single-checkbox-as-binary works when the state is committed by a form submit (or an explicit Save action). The user can review the value before applying it.</p>
+          <pre class="card-code">&lt;Checkbox
+  id="terms"
+  label="I agree to the terms and conditions"
+  isChecked={agreed}
+  onChange={(e) =&gt; setAgreed(e.target.checked)}
+/&gt;
+&lt;Button type="submit" isDisabled={!agreed}&gt;
+  Sign up
+&lt;/Button&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Use a Checkbox for a setting that takes effect immediately</p>
+          <p class="card-body">A checkbox doesn't visually signal "I am a switch you flip and the system reacts now". Use <code>ToggleButton</code> for instant-effect settings; reserve Checkbox for form fields whose value is part of a pending submission.</p>
+          <pre class="card-code">{/* Wrong — toggles a setting instantly;
+    use ToggleButton */}
+&lt;Checkbox
+  label="Send me product updates"
+  isChecked={isSubscribed}
+  onChange={(e) =&gt; updateSubscription(e.target.checked)}
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Variants → Single checkbox · Related → Toggle.</p>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Pair <code>isIndeterminate</code> with a real "select all" parent</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use <code>isIndeterminate</code> only on a parent that has at least one selected child</p>
+          <p class="card-body">The indeterminate visual (a dash, not a tick) tells the user "some — but not all — of my children are selected". Setting it without children, or without a parent/child relationship, lies about the state. The docs page describes this under <strong>Nesting</strong>.</p>
+          <pre class="card-code">const some = ids.some(id =&gt; selected.includes(id));
+const all  = ids.every(id =&gt; selected.includes(id));
+
+&lt;Checkbox
+  id="select-all"
+  label="Select all items"
+  isChecked={all}
+  isIndeterminate={some &amp;&amp; !all}
+  onChange={handleSelectAll}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Set <code>isIndeterminate</code> to convey "loading", "partial validation", or "unknown"</p>
+          <p class="card-body">Indeterminate is for an aggregate of children, not a generic third state. Screen readers announce <code>aria-checked="mixed"</code> — anything other than a real parent/child group will confuse assistive-tech users.</p>
+          <pre class="card-code">{/* Wrong — no children;
+    "mixed" misrepresents state */}
+&lt;Checkbox label="Saving…" isIndeterminate /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Nesting · <code>accessibility.md</code> (<code>aria-checked="mixed"</code> + DOM <code>indeterminate</code>) · <code>examples.md</code>.</p>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Always ship a Checkbox with an accessible name</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Pass a <code>label</code> (or a visually-equivalent labelled node)</p>
+          <p class="card-body">The <code>label</code> prop is wired to <code>&lt;label htmlFor={id}&gt;</code>, so it is <strong>the</strong> accessible name for the input. Keep it concise and action-oriented — what does selecting this option do or commit?</p>
+          <pre class="card-code">&lt;Checkbox
+  id="receive-updates"
+  name="receiveUpdates"
+  label="Receive monthly product updates"
+  isChecked={updates}
+  onChange={(e) =&gt; setUpdates(e.target.checked)}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Ship a Checkbox with no <code>label</code> and rely on adjacent body copy</p>
+          <p class="card-body">Screen readers will announce the input as "checkbox, not checked" with no further context. Visual users get the same loss when label text reflows or is hidden by a CSS rule.</p>
+          <pre class="card-code">{/* Wrong — no accessible name */}
+&lt;p&gt;I agree to the terms and conditions&lt;/p&gt;
+&lt;Checkbox id="terms" /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Anatomy (Label is part 4) · <code>accessibility.md</code> (<code>htmlFor</code> ↔ <code>id</code>; WCAG 1.3.1).</p>
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Group related options in a <code>CheckboxGroup</code></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Wrap related Checkboxes in a <code>CheckboxGroup</code> with a group label</p>
+          <p class="card-body"><code>CheckboxGroup</code> provides the visual and structural grouping. Pair it with a heading (the <code>header</code> slot in Figma) so screen-reader users hear the group context before each option.</p>
+          <pre class="card-code">&lt;CheckboxGroup&gt;
+  {/* group label from the surface header */}
+  &lt;Checkbox id="email" label="Email"
+    isChecked={email}
+    onChange={(e) =&gt; setEmail(e.target.checked)} /&gt;
+  &lt;Checkbox id="sms"   label="SMS"
+    isChecked={sms}
+    onChange={(e) =&gt; setSms(e.target.checked)} /&gt;
+  &lt;Checkbox id="push"  label="Push"
+    isChecked={push}
+    onChange={(e) =&gt; setPush(e.target.checked)} /&gt;
+&lt;/CheckboxGroup&gt;</pre>
+          <p class="card-note">Whether <code>CheckboxGroup</code> emits a <code>&lt;fieldset&gt;</code> / <code>&lt;legend&gt;</code> automatically is unverified — DOC_GAP GAP-011. If it does not, supply the group name via <code>aria-labelledby</code>.</p>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Free-float related Checkboxes without a group container</p>
+          <p class="card-body">Without a group container, AT users get no signal that the items belong together. Visually, the <code>$spacing03</code> rhythm between labels also breaks down.</p>
+          <pre class="card-code">{/* Wrong — related options scattered,
+    no group container */}
+&lt;Checkbox label="Email" /&gt;
+&lt;p&gt;Some unrelated paragraph.&lt;/p&gt;
+&lt;Checkbox label="SMS" /&gt;
+&lt;Checkbox label="Push" /&gt;</pre>
+          <p class="card-note">&nbsp;</p>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Variants → Multiple checkboxes · <code>accessibility.md</code> (<code>&lt;fieldset&gt;</code> + <code>&lt;legend&gt;</code> pattern) · <code>checkbox-figma.md</code> (<code>header</code> slot).</p>
+    </div>
+
+    <!-- Pair 6 -->
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Don't disable a Checkbox to hide a validation error</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Keep the Checkbox enabled and surface the error inline</p>
+          <p class="card-body">A disabled checkbox removes the affordance without explaining why. Keep it enabled, let the user click, and show inline error text (and the <code>error/error01</code> border on its <code>CheckboxGroup</code> parent, once <code>isError</code> is in the API — see GAP-008) when validation fails.</p>
+          <pre class="card-code">&lt;Checkbox
+  id="terms"
+  label="I agree to the terms and conditions"
+  isChecked={agreed}
+  onChange={(e) =&gt; setAgreed(e.target.checked)}
+/&gt;
+{!agreed &amp;&amp; submitted ? (
+  &lt;p id="terms-error" role="alert"&gt;
+    You must accept the terms before continuing.
+  &lt;/p&gt;
+) : null}
+&lt;Button type="submit"
+  aria-describedby="terms-error"&gt;Sign up&lt;/Button&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Disable the submit until every box is ticked, with no explanation</p>
+          <p class="card-body">The button greys out, the user can't tell which box is missing, and screen-reader users hear nothing about the unmet requirement. <code>isDisabled</code> keeps the button focusable but mute.</p>
+          <pre class="card-code">{/* Wrong — disabled until valid,
+    no inline error */}
+&lt;Button type="submit" isDisabled={!agreed}&gt;
+  Sign up
+&lt;/Button&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Best Practices · <code>accessibility.md</code> (<code>isDisabled</code> ↔ <code>aria-disabled</code>) · matches Button-usage Pair 7.</p>
+    </div>
+
+    <!-- Pair 7 -->
+    <div class="pair">
+      <div class="pair-label">Pair 7 — Use <code>infoBoxText</code> for explanatory tooltips; keep the label tight</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Put short, action-shaped text in <code>label</code>; put context in <code>infoBoxText</code></p>
+          <p class="card-body">The label is the option name; the info button — a separate focus stop — is for the "why" or "how does this affect me?" tooltip. The accessible name of the info button comes from <code>infoBoxButtonLabel</code>.</p>
+          <pre class="card-code">&lt;Checkbox
+  id="route-to-overflow"
+  label="Route to overflow agent group"
+  isChecked={routeToOverflow}
+  infoBoxText="When all primary agents are
+    busy, calls are routed to the overflow
+    group after the configured wait time."
+  infoBoxButtonLabel="More information about
+    routing to the overflow agent group"
+  onChange={(e) =&gt; setRouteToOverflow(e.target.checked)}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Pack the explanation into the <code>label</code></p>
+          <p class="card-body">Long labels wrap, defeat scanning, and overflow the <code>showLabelTooltipOnOverflow</code> tooltip — which is meant for graceful truncation of the option name, not for hosting essay-length help copy.</p>
+          <pre class="card-code">{/* Wrong — the label is doing the job
+    of infoBoxText */}
+&lt;Checkbox
+  label="Route to overflow agent group —
+    when all primary agents are busy, calls
+    are routed to the overflow group after
+    the configured wait time."
+  isChecked={routeToOverflow}
+  onChange={(e) =&gt; setRouteToOverflow(e.target.checked)}
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md</code> (<code>infoBoxText</code> + <code>infoBoxButtonLabel</code>) · <code>accessibility.md</code> (info button is a separate focus stop) · <code>examples.md</code>.</p>
+    </div>
+
+  </section>
+
+  <hr>
+
+  <h2>Accessibility quick reference</h2>
+  <ul class="bullet-list">
+    <li>Renders a native <code>&lt;input type="checkbox"&gt;</code> — implicit ARIA role <code>checkbox</code>, no <code>role</code> override needed.</li>
+    <li>Label is associated via <code>htmlFor</code> ↔ <code>id</code>; the <code>label</code> prop is the accessible name.</li>
+    <li><code>Tab</code> / <code>Shift+Tab</code> move focus; <code>Space</code> toggles. <strong>Enter does not activate</strong> — WAI-ARIA Checkbox Pattern.</li>
+    <li><code>aria-checked</code> mapping: unchecked → <code>false</code>, checked → <code>true</code>, indeterminate → <code>mixed</code>. Setting <code>isIndeterminate</code> also requires setting the DOM <code>indeterminate</code> property.</li>
+    <li><code>isDisabled</code> sets <code>disabled</code> + <code>aria-disabled="true"</code> and removes the input from the focus order.</li>
+    <li>For groups, wrap in <code>&lt;fieldset&gt;</code> / <code>&lt;legend&gt;</code> (or supply <code>aria-labelledby</code>) — whether <code>CheckboxGroup</code> does this automatically is unverified (GAP-011).</li>
+    <li>Never suppress the focus ring (<code>outline: none</code>) — required by WCAG 2.4.7.</li>
+    <li>The info button (<code>infoBoxText</code>) is a separate focusable element with its own accessible name from <code>infoBoxButtonLabel</code>.</li>
+  </ul>
+  <p>See <a href="./accessibility.md">accessibility.md</a> for the full WCAG 2.1 AA checklist.</p>
+
+  <hr>
+
+  <h2>Related components</h2>
+  <p>The published docs page lists these neighbours under <strong>Related → Components</strong>:</p>
+  <ul class="bullet-list">
+    <li><strong>Radio buttons</strong> — for mutually-exclusive selection (one of N). See Pair 1.</li>
+    <li><strong>Toggle</strong> (<code>ToggleButton</code>) — for instant-effect on/off settings. See Pair 2.</li>
+  </ul>
+  <p>And under <strong>Related → Patterns</strong>:</p>
+  <ul class="bullet-list">
+    <li><strong>Forms</strong> — Checkbox is most often used inside the broader Forms pattern (label + control + error + help text).</li>
+  </ul>
+
+  <hr>
+
+  <h2>Gaps</h2>
+  <section class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Figma Do/Don't examples</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-001</td>
+            <td>No <code>↳ Checkbox examples</code> Figma page with Do/Don't card frames exists. Pairs above are editorially derived. Re-run <code>figma-extract-usage</code> if such a page is created.</td>
+          </tr>
+          <tr>
+            <td><code>tokens.md</code> still speculative</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span> GAP-002</td>
+            <td><code>tokens.md</code> still references <code>blue05</code>/<code>blue06</code>. Confirmed bindings live in <code>checkbox-figma.md §3</code>; should be promoted by <code>doc-rewrite</code>.</td>
+          </tr>
+          <tr>
+            <td><code>text/textColor01</code> / <code>error/error01</code> confirmation</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-003</td>
+            <td>Resolved from shared-token pattern, not directly bound on the Checkbox component set. Verify in the Oxygen theme layer.</td>
+          </tr>
+          <tr>
+            <td>Input ↔ label horizontal gap</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-004</td>
+            <td>Exact px value not measured — <code>get_design_context</code> unavailable. Re-run with Figma Desktop Bridge on node <code>51776:5081</code>.</td>
+          </tr>
+          <tr>
+            <td>Figma component description</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-005</td>
+            <td>Component descriptions absent (known Figma API bug without Desktop Bridge).</td>
+          </tr>
+          <tr>
+            <td>Clean Storybook code examples</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-006</td>
+            <td>Oxygen MCP returned 0 clean snippets. Examples above are derived from prop definitions.</td>
+          </tr>
+          <tr>
+            <td><code>CheckboxGroup</code> full prop list</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-008</td>
+            <td><code>props.md</code> lists only <code>isHorizontal</code>. Figma shows <code>header</code> / <code>footer</code> / <code>isError</code> slots. Verify against package source.</td>
+          </tr>
+          <tr>
+            <td>Beta stability notice</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span> GAP-009</td>
+            <td>Beta badge present in Figma; not in <code>props.md</code>. Surfaced in the banner above.</td>
+          </tr>
+          <tr>
+            <td><code>CheckboxGroup</code> error a11y pattern</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span> GAP-010</td>
+            <td>No documented <code>aria-describedby</code> / <code>aria-live</code> pattern. Pair 6 sketches one but the canonical Oxygen recommendation is not yet captured.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;fieldset&gt;</code> / <code>&lt;legend&gt;</code> auto-wrapping</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span> GAP-011</td>
+            <td><code>accessibility.md</code> recommends them but notes the wrapping is "should be handled" by <code>CheckboxGroup</code> — unverified.</td>
+          </tr>
+          <tr>
+            <td>"When not to use" prose</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span></td>
+            <td>Published docs page does not include this section; the table above is editorial. Confirm with the Oxygen team and either promote to docs or trim.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Source: Published Oxygen docs page (<a href="https://oxygen.8x8.com/components/checkbox/usage">oxygen.8x8.com/components/checkbox/usage</a>, fetched 2026-05-12 via Claude_in_Chrome MCP) · Cross-referenced with Oxygen MCP and Figma extraction (<code>@8x8/oxygen-checkbox</code>, Figma file <code>5YihJ5WuDvnvrlrRMC4sBp</code>, node <code>51776:5078</code>) · Editorial draft.
+  </footer>
+
+</div>
+</body>
+</html>
