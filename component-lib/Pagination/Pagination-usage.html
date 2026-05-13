@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagination — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; }
+
+    .see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+
+    .callout-info {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #1e3a5f;
+    }
+    .callout-info strong { color: #1e3a5f; }
+
+    .callout-warn {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #78350f;
+    }
+
+    .callout-editorial code, .callout-info code, .callout-warn code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .intro { font-size: 15.5px; color: #374151; margin-bottom: 2rem; }
+
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+
+    h2 { font-size: 1.2rem; font-weight: 600; color: #0f0f1a; margin-bottom: 0.75rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-top: 1rem; margin-bottom: 0.5rem; }
+
+    p { color: #374151; margin-bottom: 0.75rem; }
+
+    a { color: #5046e4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+    }
+
+    .anatomy-list {
+      list-style: none;
+      counter-reset: anatomy;
+      padding: 0;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .anatomy-list li {
+      counter-increment: anatomy;
+      position: relative;
+      padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+      margin-bottom: 0.375rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .anatomy-list li::before {
+      content: counter(anatomy);
+      position: absolute;
+      left: 0.625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #5046e4;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .anatomy-list strong { color: #0f0f1a; }
+
+    .source-line {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+    .source-line code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .figma-figure {
+      margin: 0.75rem 0 1rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.75rem;
+    }
+    .figma-figure img { max-width: 100%; border-radius: 4px; display: block; }
+    .figma-figure figcaption {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .bullet-list { margin: 0.5rem 0 1rem 1.25rem; color: #374151; }
+    .bullet-list li { margin-bottom: 0.375rem; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair { margin-bottom: 1.75rem; }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .pair-source {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-bottom: 0.625rem;
+    }
+    .pair-source code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards { grid-template-columns: 1fr; grid-template-rows: none; }
+    }
+
+    .do-card, .dont-card {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      gap: 0.5rem;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.375rem;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body { color: #374151; line-height: 1.55; margin: 0; }
+
+    .card-body code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      padding-top: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .card-code {
+      background: rgba(0,0,0,0.04);
+      border-radius: 5px;
+      padding: 0.625rem 0.75rem;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+      font-size: 12px;
+      color: #1a1a2e;
+      margin: 0;
+      white-space: pre;
+      overflow-x: auto;
+      align-self: end;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-source-gap { background: #fef3c7; color: #92400e; }
+    .badge-doc-gap    { background: #dbeafe; color: #1e40af; }
+    .badge-conflict   { background: #fee2e2; color: #991b1b; }
+    .badge-warn       { background: #ffedd5; color: #9a3412; }
+
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+
+    blockquote {
+      border-left: 3px solid #d1d5db;
+      margin: 0.75rem 0;
+      padding: 0.5rem 1rem;
+      color: #4b5563;
+      font-size: 13.5px;
+    }
+
+    blockquote strong { color: #374151; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · navigation · Pagination</div>
+    <h1>Pagination — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Pagination-figma.md">Pagination-figma.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — mirrors the published Oxygen docs page.</strong>
+    No <code>↳ Pagination examples</code> Figma page with <code>✅ Do —</code> / <code>❌ Don't —</code> card frames exists; the Figma examples page documents behavioural variants only (Type, Responsive, Size, Tooltips) — tracked as <strong>GAP-014</strong> in <code>Pagination-audit.md</code>. The body below transcribes the published Oxygen docs page (<a href="https://oxygen.8x8.com/components/pagination/usage">oxygen.8x8.com/components/pagination/usage</a>, fetched 2026-05-13) verbatim where the page asserts something, carries forward the descriptive variants from the prior <code>figma-extract-usage</code> run as the <strong>Behaviour</strong> section, and derives Do/Don't pairs from the docs page's intent + Figma behavioural variants cross-validated against <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, and <code>Pagination-figma.md</code>.
+  </div>
+
+  <p class="intro">Pagination lets users move through a large dataset that has been split across multiple pages. It is the canonical navigation control for paginated lists and data tables in 8x8 product surfaces — anywhere the result set is too big for a single screen but small enough that loading it all at once is wasteful or visually overwhelming. The component renders a horizontal control with three logical regions: a rows-per-page selector on the left, page navigation (previous · current page · count · next) on the right, and a compact mode that drops the rows-per-page region below 548 px container width.</p>
+
+  <hr>
+
+  <h2>Anatomy</h2>
+  <p>The Figma anatomy (<code>Pagination-figma.md:48</code>) and the published docs anatomy (<code>examples.md:76</code>) compose as follows:</p>
+
+  <ol class="anatomy-list">
+    <li><strong>Rows per page label</strong> — a localised string ("Rows per page:") preceding the rows dropdown. Lives inside the optional <code>Rows per page</code> slot. Value comes from <code>translations.rowsPerPage</code>.</li>
+    <li><strong>Rows per page dropdown</strong> — a <code>Select</code> sub-component bound to the array passed via <code>rowsPerPageOptions</code>. Width is hardcoded — 88 px at default size, 72 px at small size. The whole slot is hidden when <code>rowsPerPageOptions</code> is omitted and is <strong>always hidden</strong> below the 548 px breakpoint.</li>
+    <li><strong>Previous button</strong> — an icon button (<code>arrow-left-long</code>) with a tooltip showing <code>translations.prevPage</code> on hover and on keyboard focus. Disabled visually + programmatically when <code>canGoBack === false</code>. Padding varies with size and breakpoint.</li>
+    <li><strong>Page selector</strong> — a <code>Select</code> sub-component listing every available page; the user can jump directly. The preceding "Page" label is localised; value comes from <code>translations</code>.</li>
+    <li><strong>Page count</strong> — the optional "of {numberOfPages} pages" text right of the page selector. Hidden in the "Unknown page number" variant. Text comes from <code>translations.numberOfPages</code> interpolated against the <code>numberOfPages</code> prop.</li>
+    <li><strong>Next button</strong> — mirror of the Previous button, icon <code>arrow-right-long</code>, tooltip from <code>translations.nextPage</code>, disabled when <code>canGoNext === false</code>.</li>
+  </ol>
+
+  <p>A focus ring is not modelled in the Figma component variant set (GAP-010) but is required by WCAG 2.4.7 for every interactive control — keep the platform default.</p>
+
+  <p class="source-line">Source: <code>Pagination-figma.md:48-76</code> · <code>props.md:68-81</code> · <code>examples.md:76-83</code>.</p>
+
+  <hr>
+
+  <h2>Overview</h2>
+  <blockquote><strong>Verbatim from the docs page:</strong> "Pagination is a component used to navigate through a large set of data divided into multiple pages."</blockquote>
+
+  <p>A single Oxygen package, <code>@8x8/oxygen-pagination</code>, exports one component plus a state hook (<code>props.md:62</code>):</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Export</th><th>Use for</th><th>Key props / signature</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>Pagination</code></td>
+          <td>The visible control — renders the rows-per-page selector, prev / next buttons, page selector, and page count.</td>
+          <td><code>canGoBack</code>, <code>canGoNext</code>, <code>numberOfPages</code>, <code>pageNumber</code>, <code>rowsPerPage</code>, <code>onPaginationChange</code>, <code>translations</code>, optional <code>rowsPerPageOptions</code>, <code>size</code>, <code>isDisabled</code></td>
+        </tr>
+        <tr>
+          <td><code>usePagination</code></td>
+          <td>State derivation hook. Computes <code>canGoBack</code>, <code>canGoNext</code>, and <code>numberOfPages</code> from a <code>PaginationState</code> + <code>totalRecords</code>. Always used <strong>outside</strong> the <code>&lt;Pagination&gt;</code> element.</td>
+          <td><code>usePagination(pagination, totalRecords)</code> → <code>{ canGoBack, canGoNext, numberOfPages, pageNumber, rowsPerPage }</code></td>
+        </tr>
+        <tr>
+          <td><code>PaginationState</code></td>
+          <td>The state shape held by the consumer's <code>useState</code>.</td>
+          <td><code>{ pageNumber: number; rowsPerPage: number }</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote><strong>Verbatim from the docs page (Behavior):</strong> "The component enables users to interact through navigation controls featuring previous/next buttons, adjustable row display options, and page location selection."</blockquote>
+
+  <hr>
+
+  <h2>Behaviour</h2>
+  <p>The Figma <code>↳ Pagination examples</code> page (extracted 2026-05-01) documents four behavioural variants. They are not Do/Don't card pairs — they are descriptive renderings of how the component changes shape under different prop combinations and container widths.</p>
+
+  <h3>Type — known vs. unknown page number</h3>
+
+  <figure class="figma-figure">
+    <img src="./figma-usage-type.png" alt="Pagination type variants — known page number, unknown page number, and without rows per page">
+    <figcaption>Figma examples · Type variants</figcaption>
+  </figure>
+
+  <p><strong>Known page number</strong> — <em>"To be used when the page numbers are known."</em> (verbatim Figma caption). Shows the full pagination bar with rows-per-page dropdown, previous/next buttons, page selector, and the "of N pages" count.</p>
+  <p><strong>Unknown page number</strong> — <em>"To be used when the page numbers are unknown."</em> (verbatim Figma caption). The "of N pages" count is hidden; the page selector still works but no total is shown.</p>
+  <p><strong>Without rows per page</strong> — <em>"Pagination can be used without the control of the number of rows per page."</em> (verbatim Figma caption). Two sub-variants: with and without the page count. Omit <code>rowsPerPageOptions</code> to suppress the entire rows-per-page slot.</p>
+
+  <h3>Responsive — full layout vs. compact layout</h3>
+
+  <figure class="figma-figure">
+    <img src="./figma-usage-responsive.png" alt="Pagination responsive rules — full layout above 548px, compact layout below 548px">
+    <figcaption>Figma examples · Responsive rules</figcaption>
+  </figure>
+
+  <p><strong>Containers ≥ 548 px wide</strong> — full layout. Rows-per-page section on the left, page controls on the right. Container width capped at 640 px in the Figma example.</p>
+  <p><strong>Containers &lt; 548 px wide</strong> — compact layout. The rows-per-page section is hidden; only the page controls render. Width constrained to 547 px max, 288 px min in the Figma example.</p>
+
+  <div class="callout-info">
+    <strong>Note:</strong> The 548 px breakpoint is a <strong>Figma design decision</strong> — there is no <code>breakpoint</code> prop on the React component (<strong>CON-001</strong>). Responsive layout is the consuming application's responsibility (CSS media queries, container queries, or conditional rendering of the <code>rowsPerPageOptions</code> array).
+  </div>
+
+  <h3>Size — default vs. small</h3>
+
+  <figure class="figma-figure">
+    <img src="./figma-usage-size.png" alt="Pagination size variants — default 40px and small 32px, both shown at both breakpoints">
+    <figcaption>Figma examples · Size variants</figcaption>
+  </figure>
+
+  <p><strong>Default</strong> — 40 px height. Used in standard data-table contexts. <code>size</code> prop omitted or set to the default value.</p>
+  <p><strong>Small</strong> — 32 px height. For denser layouts, narrow side panels, or compact admin tables. Set <code>size="small"</code>.</p>
+  <p>Both sizes are shown at both breakpoints in the Figma examples — <code>size</code> is an independent axis from <code>breakpoint</code>. The exact <code>PaginationSize</code> enum values are not exposed by the MCP (<strong>GAP-004</strong>); <code>"small"</code> is taken from the docs page and the Figma variant axis.</p>
+
+  <h3>Tooltips &amp; keyboard focus on Previous / Next</h3>
+
+  <figure class="figma-figure">
+    <img src="./figma-usage-tooltips.png" alt="Pagination tooltips and keyboard focus on Previous and Next icon buttons">
+    <figcaption>Figma examples · Tooltips &amp; keyboard focus</figcaption>
+  </figure>
+
+  <p>The Previous and Next buttons are <strong>icon-only</strong>. Their accessible name and their visible tooltip both come from the <code>translations</code> prop — <code>translations.prevPage</code> for the left button, <code>translations.nextPage</code> for the right.</p>
+  <p>The Figma examples page renders the tooltip both on <strong>hover</strong> and on <strong>keyboard focus</strong> for both buttons. Keyboard focus must surface the same affordance as pointer hover so that keyboard-only users have access to the same label.</p>
+
+  <hr>
+
+  <h2>Best Practices</h2>
+
+  <h3>When to use</h3>
+  <p>Verbatim from the published docs page:</p>
+  <ul class="bullet-list">
+    <li>"Use pagination when there are too many results to display on one page."</li>
+    <li>"Use pagination for tables with more than ten rows."</li>
+  </ul>
+
+  <h3>When not to use</h3>
+  <p>Verbatim from the published docs page:</p>
+  <ul class="bullet-list">
+    <li>"Do not use pagination if the items or data are not part of the same set."</li>
+  </ul>
+
+  <p>Two patterns are commonly mistaken for pagination but solve a different problem:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Pattern</th><th>Use it when</th><th>Don't confuse with pagination</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Infinite scroll</td>
+          <td>The user wants to skim; the result set is open-ended; the order is feed-style.</td>
+          <td>Pagination preserves position and supports keyboard "jump to page" — infinite scroll does neither.</td>
+        </tr>
+        <tr>
+          <td>Tabs / Steppers</td>
+          <td>The content is structured into distinct labelled sections.</td>
+          <td>Pagination is for one ordered list split by count, not by category.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <p>These pairs are derived editorially from the docs page's Best Practices + the Figma examples page's behavioural variants combined with the extracted API and accessibility data. No Figma ✅ Do / ❌ Don't card frames exist for Pagination at the time of writing — the <code>↳ Pagination examples</code> page contains descriptive variant sections only (<strong>GAP-014</strong> in <code>Pagination-audit.md</code>).</p>
+
+  <section class="pairs-section">
+
+    <!-- Pair 1 -->
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Paginate one logical dataset, not a mix of disjoint items</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Paginate a single query result, list, or filterable dataset</p>
+          <p class="card-body">Pagination is a position cursor on one ordered collection. Use it when the user is moving through pages of the same kind of thing — call records, contacts, support tickets — produced by a single query or filter. The user's mental model is "page 2 of the same list", which only holds when the items are part of the same set.</p>
+          <pre class="card-code">const [pagination, setPagination] = useState&lt;PaginationState&gt;({
+  pageNumber: 1,
+  rowsPerPage: 25,
+});
+
+const { canGoBack, canGoNext, numberOfPages,
+        pageNumber, rowsPerPage } =
+  usePagination(pagination, totalContactsMatchingFilter);
+
+&lt;Pagination
+  canGoBack={canGoBack}
+  canGoNext={canGoNext}
+  numberOfPages={numberOfPages}
+  onPaginationChange={setPagination}
+  pageNumber={pageNumber}
+  rowsPerPage={rowsPerPage}
+  rowsPerPageOptions={[10, 25, 50, 100]}
+  translations={translations}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Wrap pagination around a mixed set of unrelated items</p>
+          <p class="card-body">If the "list" is actually multiple disjoint collections concatenated together (recent activity + saved filters + suggested contacts), the page number is meaningless — paging forward doesn't take the user <em>further into the same list</em>, it crosses category boundaries. Group by category and let each region have its own affordance.</p>
+          <pre class="card-code">{/* Wrong — three disjoint sets paginated as one */}
+const merged = [
+  ...recentActivity,    // 12 items
+  ...savedFilters,      // 4 items
+  ...suggestedContacts, // 30 items
+];
+
+&lt;Pagination
+  /* ...rowsPerPage = 10, numberOfPages = 5...
+     Page 2 = end of activity + all saved filters
+              + start of suggestions */
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Best Practices "When not to use" · <code>examples.md:107-109</code> · <code>Pagination-figma.md:219-225</code>.</p>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Only paginate when there's more than fits on one screen</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Add Pagination once the result count exceeds roughly ten rows or fills the viewport</p>
+          <p class="card-body">The docs page sets a floor: tables with more than ten rows. The intent is "more than the user can comfortably scan at a glance" — short lists don't benefit from a control that adds visual noise and a click cost.</p>
+          <pre class="card-code">{totalRecords &gt; rowsPerPage &amp;&amp; (
+  &lt;Pagination
+    canGoBack={canGoBack}
+    canGoNext={canGoNext}
+    numberOfPages={numberOfPages}
+    /* ...rest of required props... */
+  /&gt;
+)}</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Render Pagination over a short, fully-visible list</p>
+          <p class="card-body">A pagination control on a five-row table reads as a bug to the user and to assistive tech: there's nothing to navigate. It also occupies vertical space that could surface the actual content. Conditionally render the control once <code>totalRecords &gt; rowsPerPage</code>.</p>
+          <pre class="card-code">{/* Wrong — only 7 results but control still renders */}
+&lt;Pagination
+  canGoBack={false}
+  canGoNext={false}
+  numberOfPages={1}
+  pageNumber={1}
+  rowsPerPage={10}
+  /* The user sees a disabled control
+     with "1 of 1 pages" */
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Best Practices "When to use" · <code>examples.md:103-106</code>.</p>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Match the Type variant to what you actually know</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use the "Unknown page number" variant when the total isn't queryable</p>
+          <p class="card-body">If the backend can't return a total — common with cursor-paginated APIs, streamed search results, or expensive full-text queries — render the "Unknown page number" Figma variant: keep <code>canGoBack</code> / <code>canGoNext</code> accurate from the cursor, but hide the "of N pages" label by passing an empty string for <code>translations.numberOfPages</code>. The page selector + prev / next still work; the user just doesn't see a fabricated total.</p>
+          <pre class="card-code">&lt;Pagination
+  canGoBack={hasPrevCursor}
+  canGoNext={hasNextCursor}
+  numberOfPages={0}     /* sentinel for unknown */
+  pageNumber={pageNumber}
+  rowsPerPage={rowsPerPage}
+  onPaginationChange={setPagination}
+  translations={{
+    rowsPerPage: 'Rows per page:',
+    prevPage: 'Previous page',
+    numberOfPages: '',  /* hides "of N pages" */
+    nextPage: 'Next page',
+  }}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Invent a total just to render the "of N pages" count</p>
+          <p class="card-body">A guessed or capped total ("of 100+ pages") is worse than no total — the user trusts the number and plans accordingly, then the count contradicts itself when they reach the end. If the total isn't known, say nothing about it.</p>
+          <pre class="card-code">{/* Wrong — fabricated total; the cursor API
+    has no real total */}
+&lt;Pagination
+  numberOfPages={999}
+  translations={{
+    numberOfPages: `of ${999} pages`,
+    ...rest,
+  }}
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>Pagination-figma.md:84</code> (<code>numberOfPages</code> boolean) · Figma examples Type section · <code>props.md:72</code>.</p>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Drive the responsive layout from the container, not from a Pagination prop</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Below 548 px, suppress the rows-per-page control at the consumer level</p>
+          <p class="card-body">The 548 px breakpoint is a Figma design decision — there is no <code>breakpoint</code> prop on <code>&lt;Pagination&gt;</code> (<strong>CON-001</strong>). The consumer owns the responsive swap: at narrow widths, omit <code>rowsPerPageOptions</code> or hide the section via CSS / container queries. The component already produces the compact layout when no rows-per-page choices exist.</p>
+          <pre class="card-code">const isNarrow = containerWidth &lt; 548;
+
+&lt;Pagination
+  canGoBack={canGoBack}
+  canGoNext={canGoNext}
+  numberOfPages={numberOfPages}
+  pageNumber={pageNumber}
+  rowsPerPage={rowsPerPage}
+  rowsPerPageOptions={
+    isNarrow ? undefined : [10, 25, 50, 100]
+  }
+  onPaginationChange={setPagination}
+  translations={translations}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Cram the full layout into a narrow container and expect Pagination to adapt</p>
+          <p class="card-body">Forcing the desktop layout below ~548 px overflows the row, wraps awkwardly, or pushes the next button off-screen. There is no <code>breakpoint</code> prop to flip — passing one will throw a type error or be silently ignored. The Figma examples page treats this as a layout constraint, not a component capability.</p>
+          <pre class="card-code">{/* Wrong — there is no breakpoint prop */}
+&lt;div style={{ width: 320 }}&gt;
+  &lt;Pagination
+    /* @ts-expect-error — no such prop */
+    breakpoint="&lt; 548px"
+    rowsPerPageOptions={[10, 25, 50, 100]}
+    /* The rows-per-page section now overflows
+       the 320px container */
+  /&gt;
+&lt;/div&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>Pagination-figma.md:223</code> · <code>Pagination-audit.md CON-001</code> · Figma examples Responsive section.</p>
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Localise every visible string via <code>translations</code>; icon-only buttons need it most</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Pass a complete <code>translations</code> object so prev / next get tooltips and accessible names</p>
+          <p class="card-body">The Previous and Next buttons are icon-only. The chevrons mean nothing to a screen reader and nothing to a user who doesn't share the icon convention. <code>translations.prevPage</code> and <code>translations.nextPage</code> feed both the visible tooltip and the <code>aria-label</code>. Localise all four strings — <code>rowsPerPage</code>, <code>prevPage</code>, <code>numberOfPages</code>, <code>nextPage</code> — using the same source as the rest of the page's UI strings.</p>
+          <pre class="card-code">import { t } from '@/i18n';
+
+&lt;Pagination
+  /* ...required props... */
+  translations={{
+    rowsPerPage:   t('pagination.rowsPerPage'),
+    prevPage:      t('pagination.prevPage'),
+    numberOfPages: t('pagination.numberOfPages',
+                     { n: numberOfPages }),
+    nextPage:      t('pagination.nextPage'),
+  }}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Ship the component with hardcoded English strings or rely on the chevron alone</p>
+          <p class="card-body">Hardcoding "Prev" / "Next" breaks every non-English surface. Worse, passing empty strings strips the buttons of their accessible name, failing WCAG 4.1.2.</p>
+          <pre class="card-code">{/* Wrong — translations stripped to bare icons;
+    aria-label is empty */}
+&lt;Pagination
+  /* ...required props... */
+  translations={{
+    rowsPerPage: '',
+    prevPage: '',
+    numberOfPages: '',
+    nextPage: '',
+  }}
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>accessibility.md:36-37</code> · <code>props.md:96-101</code> · <code>Pagination-figma.md:75</code> · Figma examples Tooltips section.</p>
+    </div>
+
+    <!-- Pair 6 -->
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Keep every control keyboard-operable and the focus ring visible</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Let the platform focus ring render on rows-per-page, prev, page selector, next</p>
+          <p class="card-body">Pagination is <code>role="navigation"</code>. Every interactive control inside it (the two <code>Select</code>s and the two icon buttons) must be reachable with <code>Tab</code> / <code>Shift+Tab</code> and must show a visible focus indicator (WCAG 2.4.7). The Figma tooltips section explicitly mirrors hover and keyboard-focus states, so the tooltip + focus ring should appear together when the user tabs to prev / next.</p>
+          <pre class="card-code">{/* No custom focus styling needed —
+    the platform handles it.
+    Just don't override outline / box-shadow
+    to "none". */}
+&lt;Pagination
+  /* ...required props... */
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Suppress the focus ring or trap focus inside a disabled state</p>
+          <p class="card-body"><code>outline: none</code> (or a global <code>*:focus { outline: 0 }</code>) removes the only signal keyboard users have for "where am I?". When <code>canGoBack</code> is <code>false</code> or <code>isDisabled</code> is <code>true</code>, the prev button is <code>aria-disabled="true"</code> but still keeps focus order coherent — don't <code>tabindex="-1"</code> it out of the order.</p>
+          <pre class="card-code">/* Wrong — kills the focus indicator
+   the component relies on */
+button:focus,
+.oxygen-pagination * {
+  outline: none !important;
+}</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>accessibility.md:34, 42-50, 64-72</code> · <code>Pagination-figma.md:230-235</code> (no Figma a11y annotations — see GAP-009).</p>
+    </div>
+
+    <!-- Pair 7 -->
+    <div class="pair">
+      <div class="pair-label">Pair 7 — <code>rowsPerPageOptions</code> exists to give the user a real choice — don't pass a single value</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Pass two or more meaningful row-count options, or omit <code>rowsPerPageOptions</code> entirely</p>
+          <p class="card-body"><code>rowsPerPageOptions</code> is optional. If you pass it, the rows-per-page section renders and the user can choose. Pass at least two values that actually differ in user value (e.g. <code>[10, 25, 50, 100]</code>). If your surface doesn't offer a choice — the row count is fixed by product or contract — omit the prop and the entire section hides, which is the "Without rows per page" Figma variant above.</p>
+          <pre class="card-code">{/* Choice offered */}
+&lt;Pagination
+  /* ...required props... */
+  rowsPerPageOptions={[10, 25, 50, 100]}
+/&gt;
+
+{/* No choice — fixed at 25, omit the prop */}
+&lt;Pagination
+  /* ...required props with rowsPerPage={25}... */
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Render a <code>rowsPerPageOptions</code> dropdown that has only one option</p>
+          <p class="card-body">A single-option dropdown is a non-choice with visual cost: it implies a choice that doesn't exist, the user clicks it once, sees one item, and learns to ignore it. Either give a real choice or hide the section.</p>
+          <pre class="card-code">{/* Wrong — dropdown shows one option;
+    just hide the section */}
+&lt;Pagination
+  /* ...required props... */
+  rowsPerPageOptions={[25]}
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md:77</code> · <code>Pagination-figma.md:225</code> (<code>rowsPerPage</code> boolean) · Figma examples "Without rows per page" variant.</p>
+    </div>
+
+  </section>
+
+  <hr>
+
+  <h2>Accessibility quick reference</h2>
+  <p>Cross-references to <a href="./accessibility.md">accessibility.md</a>:</p>
+  <ul class="bullet-list">
+    <li>The component is <code>role="navigation"</code> with <code>aria-label="Pagination"</code> (or the localised equivalent) so screen readers can distinguish it from other <code>&lt;nav&gt;</code> regions.</li>
+    <li>Previous / Next are icon-only buttons — they must carry <code>aria-label</code> values from <code>translations.prevPage</code> / <code>translations.nextPage</code>. The same strings drive the visible tooltip on hover <strong>and</strong> keyboard focus.</li>
+    <li>Both <code>Select</code> controls must expose accessible names; the visible "Rows per page:" / "Page" labels do that job when associated correctly.</li>
+    <li>Disabled state propagates via <code>aria-disabled="true"</code> on the affected button(s) — <code>canGoBack === false</code> disables prev, <code>canGoNext === false</code> disables next, <code>isDisabled</code> disables everything.</li>
+    <li>Tab order: rows-per-page → prev → page selector → next. <code>Tab</code> / <code>Shift+Tab</code> move; <code>Enter</code> / <code>Space</code> activate; <code>↑</code> / <code>↓</code> move within an open dropdown; <code>Esc</code> closes a dropdown.</li>
+    <li>Focus ring must clear WCAG 1.4.11 (≥ 3:1 contrast). The Figma component set does not model focus visually (<strong>GAP-010</strong>) — keep the platform default; never <code>outline: none</code>.</li>
+    <li>A page change should not cause a context shift (WCAG 3.2.2); only the user's explicit click / Enter activates the change. Pair the paginated content region with <code>aria-live="polite"</code> if you want screen readers to announce the new page content.</li>
+    <li>All accessibility content in <code>accessibility.md</code> is <strong>inferred</strong> — neither the OX MCP nor the Figma component set provided explicit a11y data (<strong>WARN-001, GAP-008, GAP-009</strong>). Spot-check ARIA against the rendered DOM before publishing.</li>
+  </ul>
+  <p>See <a href="./accessibility.md">accessibility.md</a> for the full WCAG 2.1 AA checklist.</p>
+
+  <hr>
+
+  <h2>Related components</h2>
+  <p>The published docs page lists one neighbour under <strong>Related → Components</strong>:</p>
+  <ul class="bullet-list">
+    <li><strong>Breadcrumbs</strong> — pagination moves through the <em>same</em> dataset; breadcrumbs move <em>up</em> a navigation hierarchy. Don't substitute one for the other.</li>
+  </ul>
+  <p>Adjacent 8x8 components that compose with Pagination:</p>
+  <ul class="bullet-list">
+    <li><strong>DataTable</strong> — the most common host for Pagination; the rows-per-page choice changes the DataTable's visible row count.</li>
+    <li><strong>Select</strong> — Pagination uses two <code>Select</code> sub-components internally (rows-per-page and page number); if your dataset needs filtering above the table, use Select outside the Pagination control, not inside it.</li>
+    <li><strong>Button</strong> — page-level actions ("Add", "Export") sit outside Pagination, not in the same row.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Gaps</h2>
+  <section class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Figma Do/Don't examples</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-014</td>
+            <td>The <code>↳ Pagination examples</code> page documents behavioural variants only — no Do/Don't card frames. Pairs above are editorially derived. Re-run <code>figma-extract-usage</code> if such cards are added.</td>
+          </tr>
+          <tr>
+            <td><code>breakpoint</code> Figma axis vs. React prop</td>
+            <td><span class="badge-tag badge-conflict">CONFLICT</span> CON-001 (resolved)</td>
+            <td>Figma models <code>&gt; 548px</code> / <code>&lt; 548px</code> as a variant axis; the React component has no <code>breakpoint</code> prop. Documented as a consumer responsibility in Pair 4.</td>
+          </tr>
+          <tr>
+            <td><code>rowsPerPage</code> Figma boolean vs. React prop</td>
+            <td><span class="badge-tag badge-conflict">CONFLICT</span> CON-002 (resolved)</td>
+            <td>The Figma <code>rowsPerPage</code> boolean maps to <strong>omitting</strong> <code>rowsPerPageOptions</code> on the React side. Documented in Pair 7 and in the "Without rows per page" Behaviour subsection.</td>
+          </tr>
+          <tr>
+            <td><code>PaginationSize</code> enum values inferred</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-004</td>
+            <td>MCP returned the type name without enum members. <code>"small"</code> is taken from the docs page and the Figma variant axis; verify against package source.</td>
+          </tr>
+          <tr>
+            <td>7 props lack OX descriptions</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-005</td>
+            <td><code>canGoBack</code>, <code>canGoNext</code>, <code>numberOfPages</code>, <code>pageNumber</code>, <code>rowsPerPage</code>, <code>rowsPerPageOptions</code>, <code>size</code> have inferred descriptions in <code>props.md</code>. Semantics in the pairs are anchored in the Figma anatomy + the usage Behaviour section.</td>
+          </tr>
+          <tr>
+            <td>No disabled / dark-mode / small-with-required-props examples</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-006</td>
+            <td>Storybook / MCP returned only one functional snippet (BasicUsage). The pairs above hand-derive TSX from the prop API.</td>
+          </tr>
+          <tr>
+            <td>Hardcoded inner spacings</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-012</td>
+            <td>10 hardcoded values flagged in <code>Pagination-figma.md</code> (Select widths, container widths, button paddings, 6 px border radius). None bound to a spacing token. Not blocking.</td>
+          </tr>
+          <tr>
+            <td>Accessibility content entirely inferred</td>
+            <td><span class="badge-tag badge-warn">WARN</span> WARN-001</td>
+            <td><code>accessibility.md</code> reads ARIA roles, focus order, and keyboard interactions off standard patterns. Spot-check against rendered DOM before publishing.</td>
+          </tr>
+          <tr>
+            <td>No hover / focus / pressed Figma variants</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-010</td>
+            <td>Only Default and Disabled variants are modelled. Tooltip + focus behaviour is documented on the examples page (carried forward into Behaviour) but not as discrete component states.</td>
+          </tr>
+          <tr>
+            <td>OX MCP returned 0 theme tokens</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-001</td>
+            <td>The token names used in <code>Pagination-figma.md</code> (e.g. <code>text/textcolor01</code>, <code>ui/ui05</code>) were confirmed via alias-chain traversal (2026-05-05) but <code>tokens.md</code> is still empty pending <code>doc-rewrite</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Source: Published Oxygen docs page (<a href="https://oxygen.8x8.com/components/pagination/usage">oxygen.8x8.com/components/pagination/usage</a>, fetched 2026-05-13 via WebFetch) · figma-extract-usage descriptive variants (existing <code>Pagination-usage.md</code>, 2026-05-01) · Oxygen MCP + Figma MCP extraction (<code>@8x8/oxygen-pagination</code>, Figma file <code>5YihJ5WuDvnvrlrRMC4sBp</code>, Pagination node <code>55766:411</code>) · Editorial draft 2026-05-13.
+  </footer>
+
+</div>
+</body>
+</html>

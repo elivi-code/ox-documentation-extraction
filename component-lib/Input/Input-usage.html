@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; }
+
+    .see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+
+    .callout-info {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #1e3a5f;
+    }
+    .callout-info strong { color: #1e3a5f; }
+
+    .callout-warn {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #78350f;
+    }
+
+    .callout-editorial code, .callout-info code, .callout-warn code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .intro { font-size: 15.5px; color: #374151; margin-bottom: 2rem; }
+
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+
+    h2 { font-size: 1.2rem; font-weight: 600; color: #0f0f1a; margin-bottom: 0.75rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-top: 1rem; margin-bottom: 0.5rem; }
+
+    p { color: #374151; margin-bottom: 0.75rem; }
+
+    a { color: #5046e4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+    }
+
+    .anatomy-list {
+      list-style: none;
+      counter-reset: anatomy;
+      padding: 0;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .anatomy-list li {
+      counter-increment: anatomy;
+      position: relative;
+      padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+      margin-bottom: 0.375rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .anatomy-list li::before {
+      content: counter(anatomy);
+      position: absolute;
+      left: 0.625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #5046e4;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .anatomy-list strong { color: #0f0f1a; }
+
+    .source-line {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+    .source-line code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .bullet-list { margin: 0.5rem 0 1rem 1.25rem; color: #374151; }
+    .bullet-list li { margin-bottom: 0.375rem; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair { margin-bottom: 1.75rem; }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .pair-source {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-bottom: 0.625rem;
+    }
+    .pair-source code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards { grid-template-columns: 1fr; grid-template-rows: none; }
+    }
+
+    .do-card, .dont-card {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      gap: 0.5rem;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.375rem;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body { color: #374151; line-height: 1.55; margin: 0; }
+
+    .card-body code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      padding-top: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .card-code {
+      background: rgba(0,0,0,0.04);
+      border-radius: 5px;
+      padding: 0.625rem 0.75rem;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+      font-size: 12px;
+      color: #1a1a2e;
+      margin: 0;
+      white-space: pre;
+      overflow-x: auto;
+      align-self: end;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-source-gap { background: #fef3c7; color: #92400e; }
+    .badge-doc-gap    { background: #dbeafe; color: #1e40af; }
+    .badge-conflict   { background: #fee2e2; color: #991b1b; }
+    .badge-warn       { background: #ffedd5; color: #9a3412; }
+
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+
+    blockquote {
+      border-left: 3px solid #d1d5db;
+      margin: 0.75rem 0;
+      padding: 0.5rem 1rem;
+      color: #4b5563;
+      font-size: 13.5px;
+    }
+
+    blockquote strong { color: #374151; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · form_inputs · Input</div>
+    <h1>Input — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Input-figma.md">Input-figma.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — mirrors the published Oxygen docs page.</strong>
+    No <code>↳ Input examples</code> Figma page with <code>✅ Do —</code> / <code>❌ Don't —</code> card frames exists, so <code>figma-extract-usage</code> cannot run. The body below transcribes the published Oxygen docs page for Text input (<a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a>, fetched 2026-05-13 via Claude_in_Chrome MCP) verbatim where the page asserts something, and derives Do/Don't pairs from the page's Behavior + Best Practices intent cross-validated against <code>props.md</code>, <code>examples.md</code>, <code>tokens.md</code>, <code>accessibility.md</code>, and <code>Input-figma.md</code>. Replace with <code>figma-extract-usage</code> output if a Figma examples page is ever created with Do/Don't cards.
+  </div>
+
+  <div class="callout-warn">
+    <strong>⚠ Scope.</strong> This document covers <strong>Text input only</strong> (Figma component set <code>22155:36793</code>). The Input canvas in Figma also ships <strong>Text area</strong> (<code>21562:34985</code>) and <strong>Search input</strong> (<code>25655:40530</code>) component sets, but the published docs URL is component-specific to Text input and Text area lives in its own <a href="../TextArea/">TextArea</a> folder. Search input affordances are mentioned only where the Text input API overlaps. The Search-specific <code>isReadOnly</code> ambiguity is tracked as <strong>CONFLICT-001</strong> in <code>Input-audit.md</code> and is out of scope here.
+  </div>
+
+  <div class="callout-warn">
+    <strong>⚠ Six props lack OX descriptions.</strong> <code>props.md</code> lists <code>size</code>, <code>suffix</code>, <code>focus</code>, <code>fixed</code>, <code>autoSuffixWidth</code>, and <code>autoPrefixWidth</code> with no description returned by the Oxygen MCP (<strong>GAP-002</strong> in <code>Input-audit.md</code>). The semantics used in the pairs below are inferred from the prop names and the Figma variant axes — treat them as best-effort until OX source confirms.
+  </div>
+
+  <p class="intro">
+    The Text input component lets users enter and edit text on a single line. It is the canonical free-text affordance in 8x8 product surfaces — search bars, form fields for names and emails, numeric quantity inputs, and any context where the value can't be enumerated up-front as a finite set of options. It has a fixed height, fits neatly into form grids, and pairs naturally with a visible label and helper text for accessibility.
+  </p>
+
+  <hr>
+
+  <h2>Anatomy</h2>
+  <p>The published docs page numbers five parts on the anatomy illustration; in the API and Figma sources these compose as follows:</p>
+
+  <ol class="anatomy-list">
+    <li><strong>Label</strong> — the visible text above the field that names what the user is being asked for. Rendered with <code>typography/body01</code> in <code>text/textColor01</code>. Lives in the <code>_base_form_label</code> slot in Figma and is the value of <code>&lt;label htmlFor={id}&gt;</code> associated with the underlying <code>&lt;input&gt;</code>.</li>
+    <li><strong>Required symbol</strong> — the visible <code>*</code> that signals a required field. Rendered with <code>typography/bodyBold01</code> in <code>error/error01</code>. The visual <code>*</code> is decorative (<code>aria-hidden="true"</code>); use <code>isRequired</code> and <code>aria-required="true"</code> on the input for the semantic signal.</li>
+    <li><strong>Help icon</strong> — an optional <code>IconButton</code> in the label row that opens a tooltip with longer explanatory copy. A separate keyboard focus stop with its own accessible name.</li>
+    <li><strong>Field / Placeholder</strong> <em>(placeholder optional, and discouraged)</em> — the <code>Input Text</code> container (<code>bg=ui05</code>, <code>px=16</code>, <code>py=12</code>, <code>border-radius=6</code>). Placeholder uses <code>typography/body02</code> in <code>text/textColor02</code>. <strong>Verbatim from the docs page:</strong> "Avoid using placeholders whenever possible as they are not accessible, never use them to communicate important information."</li>
+    <li><strong>Helper text</strong> <em>(optional)</em> — the <code>_base_form_hint</code> slot below the field, used for guidance or — when <code>hasError</code> is true — the error message. Rendered with <code>typography/label01</code> in <code>text/textColor02</code> (or <code>error/error01</code> in the error state).</li>
+    <li><strong>Focus ring</strong> — a blue border (<code>interactive/focus01</code>, <code>#0056E0</code> Light / <code>#D7E3F9</code> Dark) on the field on keyboard focus, persisting through Error+Focus. Required by WCAG 2.4.7 — <strong>never suppress with <code>outline: none</code></strong>.</li>
+  </ol>
+
+  <blockquote>
+    <strong>Placement (verbatim from the docs page):</strong> "Make sure the input width is proportional to the content that the user has to insert and align to grid columns. The component should also be vertically aligned to other contents of the page."
+  </blockquote>
+
+  <p class="source-line">Source: Published docs — Anatomy section · <code>Input-figma.md §3</code> · <code>props.md</code>. Hardcoded inner-field spacings (16 px h-pad, 12 px v-pad, 6 px border-radius, 4 px label-to-field gap) are flagged as missing spacing tokens — see Gaps.</p>
+
+  <hr>
+
+  <h2>Overview</h2>
+  <blockquote>
+    <strong>Verbatim from the docs page:</strong> "Inputs are ideal for scenarios where users need to provide short to moderate amounts of text in a single line. They have a fixed height and can be used in forms, search interfaces, and any other context requiring user input."
+  </blockquote>
+
+  <p>A single Oxygen package, <code>@8x8/oxygen-input</code>, exports one component:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Component</th><th>Use for</th><th>Key props</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>Input</code></td>
+          <td>A single-line free-text field — name, email, search query, numeric quantity, etc.</td>
+          <td><code>size</code>, <code>isRequired</code>, <code>isDisabled</code>, <code>isReadOnly</code>, <code>hasError</code>, <code>iconLeft</code>, <code>iconRight</code>, <code>suffix</code>, <code>fullWidth</code>, <code>inputProps</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p><code>Input</code> renders the raw field only — wrap with <code>TextField</code> for a complete form row with label, required indicator, help icon, and error message slot.</p>
+
+  <p class="source-line">Source: Published docs — Overview section · <code>props.md</code> · <code>examples.md</code>.</p>
+
+  <hr>
+
+  <h2>Behaviour</h2>
+
+  <h3>States</h3>
+  <p>The Text input Figma component set defines six variant axes — <code>Mode</code> (Light/Dark), <code>Size</code> (Small/Medium/Large), <code>State</code> (Rest/Focus/Disabled), <code>Error</code>, <code>Read Only</code>, and <code>Filled</code>. The published docs page names five: <strong>Rest</strong>, <strong>Focus</strong>, <strong>Disabled</strong>, <strong>Read only</strong>, <strong>Error</strong>. Combined, the full visible state matrix is:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>State</th><th>Trigger</th><th>Visual</th><th>Token (Light / Dark)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Rest</td><td>Default</td><td>Solid field background, no border</td><td><code>ui/ui05</code> <code>#F4F3EE</code> / <code>#2F2E32</code></td></tr>
+        <tr><td>2</td><td>Hover</td><td>Pointer over field</td><td>Background shifts lighter</td><td><code>hover/hover06</code> <code>#EBEAE1</code> / <code>#666666</code></td></tr>
+        <tr><td>3</td><td>Focus</td><td>Keyboard <code>Tab</code> or pointer click</td><td>Blue focus ring/border</td><td><code>interactive/focus01</code> <code>#0056E0</code> / <code>#D7E3F9</code></td></tr>
+        <tr><td>4</td><td>Filled</td><td>User has typed a value</td><td>Placeholder replaced by entered text in <code>text/textColor01</code></td><td><em>(value via <code>inputProps.value</code>)</em></td></tr>
+        <tr><td>5</td><td>Disabled</td><td><code>isDisabled={true}</code></td><td>Field visually greyed, no interaction</td><td><code>interactive/disabled01</code> <code>#C8C8BD</code> / <code>#C2C2C2</code></td></tr>
+        <tr><td>6</td><td>Read only</td><td><code>isReadOnly={true}</code></td><td>Field shows value, no cursor</td><td>(bg=<code>ui/ui05</code>)</td></tr>
+        <tr><td>7</td><td>Error + Rest</td><td><code>hasError={true}</code>, unfocused</td><td>Red border + error message below</td><td><code>error/error01</code> <code>#CB2233</code> / <code>#F24D5F</code></td></tr>
+        <tr><td>8</td><td>Error + Focus</td><td><code>hasError={true}</code>, focused</td><td>Blue ring overrides red border; <strong>error message stays visible</strong></td><td><code>interactive/focus01</code> + <code>error/error01</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote>
+    <strong>Key behaviour from Figma annotations:</strong> "When an error occurs in the input text field and a user tries to change the text, the border becomes highlighted in-focus state (blue) while the error message stays visible at the bottom." The error only clears when the value becomes valid.
+  </blockquote>
+
+  <div class="callout-warn">
+    <strong>⚠ Token reconciliation pending.</strong> <code>tokens.md</code> is missing the dark-mode value for <code>textColor02</code> and shows <code>*(dark value not captured)*</code> for <code>error01</code> Dark. Authoritative bindings — <code>ui/ui05</code>, <code>hover/hover06</code>, <code>interactive/disabled01</code>, <code>interactive/focus01</code>, <code>text/textColor01</code>, <code>text/textColor02</code>, <code>error/error01</code> — were resolved via <code>figma_execute</code> alias-chain traversal on 2026-05-05 and live in <code>Input-figma.md §3</code>. SOURCE_GAP GAP-010 / GAP-011 in <code>Input-audit.md</code>; treat the table above as authoritative until <code>tokens.md</code> is updated.
+  </div>
+
+  <h3>Keyboard</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Key</th><th>Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td><code>Tab</code> / <code>Shift + Tab</code></td><td>Move focus to / away from the input</td></tr>
+        <tr><td>Any printable key</td><td>Enters text into the field</td></tr>
+        <tr><td><code>Backspace</code> / <code>Delete</code></td><td>Remove characters</td></tr>
+        <tr><td><code>Enter</code></td><td>Submits the enclosing <code>&lt;form&gt;</code> if present — <strong>no default activation on the Input itself</strong></td></tr>
+        <tr><td><code>Escape</code></td><td>No default behaviour — application-defined (e.g. clear and blur in a search bar)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The optional help icon button is a <strong>separate focus stop</strong> with its own keyboard tab order — sighted, keyboard, and screen-reader users all reach it independently of the input itself.</p>
+
+  <p class="source-line">Source: Published docs — Behavior / States section · <code>Input-figma.md</code> · <code>accessibility.md</code>.</p>
+
+  <hr>
+
+  <h2>Sizes &amp; dimensions</h2>
+  <p>Three Text input sizes are documented:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>OX value</th><th>Figma value</th><th>Total height</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><code>size="small"</code></td><td>Small</td><td>76 px</td><td>Dense lists, table-row editors, compact filter rows</td></tr>
+        <tr><td><code>size="medium"</code></td><td>Medium</td><td>84 px</td><td>Default for most form layouts</td></tr>
+        <tr><td><code>size="large"</code></td><td>Large</td><td>92 px</td><td>Hero / primary field in onboarding or empty states</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ul class="bullet-list">
+    <li><strong>Width:</strong> 320 px in Figma master; in code the field is responsive — set <code>fullWidth</code> for 100 % container width or let it adopt its intrinsic width.</li>
+    <li><strong>Field padding:</strong> 16 px horizontal, 12 px vertical <em>(hardcoded — no spacing token binding, see Gaps)</em>.</li>
+    <li><strong>Border radius:</strong> 6 px <em>(hardcoded)</em>.</li>
+    <li><strong>Label-to-field gap:</strong> 4 px <em>(hardcoded)</em>.</li>
+  </ul>
+
+  <blockquote>
+    <strong>Placement (verbatim from the docs page):</strong> "Make sure the input width is proportional to the content that the user has to insert and align to grid columns. The component should also be vertically aligned to other contents of the page."
+  </blockquote>
+
+  <p class="source-line">Source: Published docs — Size / Placement sections · <code>Input-figma.md</code> · <code>props.md</code>.</p>
+
+  <hr>
+
+  <h2>Best Practices</h2>
+
+  <h3>When to use <em>(verbatim from the docs page)</em></h3>
+  <blockquote>"The user needs to input information that cannot be predicted with predetermined options."</blockquote>
+
+  <h3>When not to use <em>(verbatim from the docs page)</em></h3>
+  <blockquote>"If the user has to enter a specific option other than a free-form input. If that's the case, consider using a dropdown, radio button or checkbox instead."</blockquote>
+
+  <p>To make the boundary concrete:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Situation</th><th>Why</th><th>Use instead</th></tr></thead>
+      <tbody>
+        <tr><td>The user picks <strong>one</strong> option from a small, known set</td><td>A Select / Radio carries the choice constraint in its semantics and prevents typos.</td><td><code>Select</code> (many options) or <code>Radio</code> (≤ 5 options).</td></tr>
+        <tr><td>The user picks <strong>multiple</strong> options from a known set</td><td>Independent multi-select needs the right ARIA role.</td><td><code>Checkbox</code> group or multi-select <code>Select</code>.</td></tr>
+        <tr><td>The user enters <strong>multi-line</strong> prose</td><td>Text input has fixed height; long content overflows horizontally and clips.</td><td><code>TextArea</code>.</td></tr>
+        <tr><td>The user picks a date, time, or date range</td><td>Free-text dates are error-prone; pickers enforce a valid format.</td><td><code>DateTimeSelector</code> / <code>DateTimeRangeSelector</code>.</td></tr>
+        <tr><td>The user picks a numeric value from a <strong>bounded</strong> range</td><td>A slider is faster than typing within a known min/max.</td><td><code>Slider</code>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="source-line">Source: Published docs — Best Practices section · <code>props.md</code> · <code>accessibility.md</code>. Extra "When not to use" rows beyond Select/Radio/Checkbox are editorial expansion.</p>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <p>These pairs are derived editorially from the docs page's Anatomy + Behavior + Best Practices sections combined with the extracted API and accessibility data. No Figma ✅ Do / ❌ Don't card frames exist for Text input at the time of writing — the <code>↳ Input examples</code> page contains accessibility-pattern annotations only, not Do/Don't cards (<strong>GAP-016</strong> in <code>Input-audit.md</code>).</p>
+
+  <section class="pairs-section">
+
+    <!-- Pair 1 -->
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Always pair the Input with a visible, persistent label</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Pair the Input with a real <code>&lt;label&gt;</code> (or <code>aria-labelledby</code>)</p>
+          <p class="card-body">A visible, persistent label survives input focus, autofill, and assistive-tech navigation. The label is the input's accessible name and the answer to "what am I being asked?"</p>
+          <pre class="card-code">import { Input } from '@8x8/oxygen-input';
+
+&lt;label htmlFor="email"&gt;Email address&lt;/label&gt;
+&lt;Input
+  inputProps={{
+    id: 'email',
+    name: 'email',
+    type: 'email',
+    'aria-describedby': 'email-hint',
+  }}
+  onChange={handleChange}
+/&gt;
+&lt;p id="email-hint"&gt;
+  We'll use this to send your receipt.
+&lt;/p&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Use the <code>placeholder</code> as the only label</p>
+          <p class="card-body">The placeholder disappears the instant the user starts typing, taking the only context with it. Screen readers do not announce it consistently. <strong>Verbatim from the docs page:</strong> "Avoid using placeholders whenever possible as they are not accessible, never use them to communicate important information."</p>
+          <pre class="card-code">{/* Wrong — placeholder is not a label */}
+&lt;Input
+  inputProps={{
+    placeholder: 'Email address',
+    type: 'email',
+  }}
+  onChange={handleChange}
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Anatomy (placeholder caveat) · <code>accessibility.md</code> (<code>hasPlaceholder=false</code> recommended) · <code>Input-figma.md</code> (placeholder accessibility rationale).</p>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Use helper text for guidance, error text for failures — never blur the two</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Put format hints in the helper slot; use the error slot only when validation fails</p>
+          <p class="card-body">Helper text answers "how do I fill this in?". The error region answers "what went wrong?". Toggling <code>hasError</code> only on failure lets screen-reader users distinguish guidance from a correction prompt.</p>
+          <pre class="card-code">&lt;label htmlFor="phone"&gt;Phone number&lt;/label&gt;
+&lt;Input
+  hasError={isInvalid}
+  inputProps={{
+    id: 'phone',
+    type: 'tel',
+    'aria-invalid': isInvalid ? 'true' : 'false',
+    'aria-describedby': isInvalid
+      ? 'phone-error' : 'phone-hint',
+  }}
+/&gt;
+{isInvalid
+  ? &lt;p id="phone-error" role="alert"&gt;
+      Enter a valid 10-digit phone number.
+    &lt;/p&gt;
+  : &lt;p id="phone-hint"&gt;
+      Format: 555-123-4567
+    &lt;/p&gt;}</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Use the helper text to hold a permanent error-style warning</p>
+          <p class="card-body">The helper region is the wrong channel for failure state — colour and role differ. Permanent warnings in the helper slot dull the user's attention to genuine errors and break the visual contract between <code>hasError</code> and the red border.</p>
+          <pre class="card-code">{/* Wrong — error-style warning
+    shoved into the helper slot */}
+&lt;label htmlFor="phone"&gt;Phone number&lt;/label&gt;
+&lt;Input inputProps={{ id: 'phone' }} /&gt;
+&lt;p id="phone-hint" style={{ color: 'red' }}&gt;
+  ⚠ Invalid number — please check.
+&lt;/p&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Anatomy (Helper text) · <code>accessibility.md</code> (<code>aria-describedby</code> for helper text) · <code>examples.md</code> (real-time validation pattern).</p>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Set <code>hasError</code> together with <code>aria-invalid</code> and an associated error region</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Bind the error message via <code>aria-errormessage</code> (or <code>aria-describedby</code>) with <code>role="alert"</code></p>
+          <p class="card-body"><code>hasError</code> paints the red border, but the assistive-tech announcement comes from the associated error region. Without the association, sighted users see red and screen-reader users hear nothing.</p>
+          <pre class="card-code">&lt;label htmlFor="email"&gt;Email address&lt;/label&gt;
+&lt;Input
+  hasError
+  inputProps={{
+    id: 'email',
+    type: 'email',
+    'aria-invalid': 'true',
+    'aria-describedby': 'email-error',
+    'aria-errormessage': 'email-error',
+  }}
+/&gt;
+&lt;p id="email-error" role="alert"&gt;
+  Please enter a valid email address.
+&lt;/p&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Communicate the failure with colour alone</p>
+          <p class="card-body">A red border without an associated message fails WCAG 1.4.1 (Use of colour) and 4.1.3 (Status messages). Users with low vision, colour-blindness, or using a screen reader get no signal that anything is wrong.</p>
+          <pre class="card-code">{/* Wrong — red border but no message,
+    no aria-invalid */}
+&lt;Input
+  hasError
+  inputProps={{ id: 'email', type: 'email' }}
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Behavior / States (Error) · <code>accessibility.md</code> (<code>role="alert"</code> pattern) · <code>Input-figma.md</code> (error persists through Error+Focus).</p>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Pick <code>size</code> to match surface density — don't mix sizes in a single form row</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use one <code>size</code> per form row, picked to match the surrounding density</p>
+          <p class="card-body">Sizes (<code>small</code> / <code>medium</code> / <code>large</code>) map to fixed Figma heights — 76 / 84 / 92 px. Picking one and sticking to it within a form row keeps baselines aligned. The docs page's <strong>Placement</strong> rule — "vertically aligned to other contents of the page" — depends on consistent input heights.</p>
+          <pre class="card-code">&lt;div className="form-row"&gt;
+  &lt;Input size="medium"
+    inputProps={{ id: 'first-name',
+      placeholder: 'First name' }} /&gt;
+  &lt;Input size="medium"
+    inputProps={{ id: 'last-name',
+      placeholder: 'Last name' }} /&gt;
+&lt;/div&gt;</pre>
+          <p class="card-note">The <code>size</code> prop is one of the six undocumented props (GAP-002). The <code>'small' | 'medium' | 'large'</code> mapping is taken from <code>props.md</code>, derived from the Figma variant axis rather than an OX description.</p>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Mix sizes in the same row to make a field "stand out"</p>
+          <p class="card-body">Mismatched heights misalign baselines, break the form grid, and read as a layout bug. Use a section heading, helper text, or layout grouping — not a different <code>size</code> — to draw attention.</p>
+          <pre class="card-code">{/* Wrong — large + small
+    in the same row */}
+&lt;div className="form-row"&gt;
+  &lt;Input size="large"
+    inputProps={{ id: 'first-name',
+      placeholder: 'First name' }} /&gt;
+  &lt;Input size="small"
+    inputProps={{ id: 'last-name',
+      placeholder: 'Last name' }} /&gt;
+&lt;/div&gt;</pre>
+          <p class="card-note">&nbsp;</p>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Size / Placement sections · <code>Input-figma.md</code> · <code>props.md</code>.</p>
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Use <code>iconLeft</code> / <code>iconRight</code> semantically — never decoratively</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use a leading icon for a semantic affordance (search, currency, lock for read-only)</p>
+          <p class="card-body">A leading or trailing icon should mean something — the <code>SearchIcon</code> says "this is a search bar"; a currency symbol says "this field expects money"; a clear <code>×</code> on the right says "tap to clear". Make the icon button focusable and labelled if it does anything on click.</p>
+          <pre class="card-code">import { SearchIcon } from '@8x8/oxygen-icons';
+
+&lt;label htmlFor="filter"&gt;Filter contacts&lt;/label&gt;
+&lt;Input
+  iconLeft={SearchIcon}
+  inputProps={{
+    id: 'filter',
+    type: 'search',
+    'aria-label': 'Filter contacts',
+  }}
+  onChange={handleFilter}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Add a decorative icon that has no functional or semantic meaning</p>
+          <p class="card-body">Decorative icons inside the field add visual noise, eat horizontal space, and confuse assistive-tech users who hear an icon name with no associated action. If you must include a brand mark, place it outside the field.</p>
+          <pre class="card-code">{/* Wrong — purely decorative icon
+    inside the field */}
+&lt;Input
+  iconLeft={SparkleIcon}
+  inputProps={{
+    id: 'name',
+    placeholder: 'Your name',
+  }}
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Behavior section · <code>props.md</code> (<code>iconLeft</code> / <code>iconRight</code>) · <code>accessibility.md</code> (WCAG 1.1.1 non-text content).</p>
+    </div>
+
+    <!-- Pair 6 -->
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Mark required fields with <code>isRequired</code> <em>and</em> a programmatic signal</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Set both <code>isRequired</code> and <code>aria-required="true"</code>; let the visual <code>*</code> stay decorative</p>
+          <p class="card-body"><code>isRequired</code> paints the <code>*</code> indicator; <code>aria-required</code> is what assistive tech actually announces. Pairing them keeps the sighted and the non-sighted experience in sync. The visual asterisk should be <code>aria-hidden="true"</code> so it isn't read literally — the component handles this internally (verify in your implementation).</p>
+          <pre class="card-code">&lt;label htmlFor="last-name"&gt;Last name&lt;/label&gt;
+&lt;Input
+  isRequired
+  inputProps={{
+    id: 'last-name',
+    name: 'lastName',
+    'aria-required': 'true',
+  }}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Use only <code>aria-required</code> (no visual <code>*</code>) or only a visual <code>*</code> (no semantic)</p>
+          <p class="card-body">A semantic-only signal leaves sighted scanners guessing which fields they must fill. A visual-only signal leaves screen-reader users with no announcement of the constraint. WCAG 1.3.1 expects both channels to agree.</p>
+          <pre class="card-code">{/* Wrong — visual * but no
+    programmatic required */}
+&lt;label htmlFor="last-name"&gt;
+  Last name &lt;span aria-hidden&gt;*&lt;/span&gt;
+&lt;/label&gt;
+&lt;Input inputProps={{ id: 'last-name' }} /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: Published docs — Anatomy (Required symbol = part 2) · <code>props.md</code> (<code>isRequired</code>) · <code>accessibility.md</code> (visual <code>*</code> decorative; use <code>aria-required</code>).</p>
+    </div>
+
+    <!-- Pair 7 -->
+    <div class="pair">
+      <div class="pair-label">Pair 7 — Don't conflate <code>isDisabled</code> and <code>isReadOnly</code></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use <code>isReadOnly</code> when the value matters but isn't editable now; use <code>isDisabled</code> when the field isn't applicable at all</p>
+          <p class="card-body">A read-only field still participates in the form: its value is submitted, it's reachable by keyboard, and screen readers announce it. A disabled field is removed from the focus order and excluded from form submission — the right control when the user has no business interacting with it.</p>
+          <pre class="card-code">&lt;label htmlFor="account-email"&gt;
+  Account email
+&lt;/label&gt;
+&lt;Input
+  isReadOnly
+  inputProps={{
+    id: 'account-email',
+    value: user.email,
+    readOnly: true,
+    'aria-readonly': 'true',
+  }}
+/&gt;
+
+&lt;label htmlFor="custom-domain"&gt;
+  Custom domain
+&lt;/label&gt;
+&lt;Input
+  isDisabled
+  inputProps={{
+    id: 'custom-domain',
+    disabled: true,
+    placeholder: 'Enterprise plans only',
+  }}
+/&gt;</pre>
+          <p class="card-note">CONFLICT-001: Search input has no Read Only variant in Figma. Whether <code>isReadOnly</code> applies to Search input is unresolved — out of scope here.</p>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Use <code>isDisabled</code> to display a non-editable value</p>
+          <p class="card-body">A disabled field removes itself from the focus order and from the form payload — users can't copy the value with keyboard navigation and the server never receives it. Use <code>isReadOnly</code> whenever the value is real and meaningful but locked.</p>
+          <pre class="card-code">{/* Wrong — disabled removes from focus order;
+    value won't submit */}
+&lt;Input
+  isDisabled
+  inputProps={{
+    value: user.email,
+    disabled: true,
+  }}
+/&gt;</pre>
+          <p class="card-note">&nbsp;</p>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md</code> (<code>isDisabled</code> vs <code>isReadOnly</code>) · <code>accessibility.md</code> (<code>aria-readonly</code> / <code>aria-disabled</code>).</p>
+    </div>
+
+    <!-- Pair 8 -->
+    <div class="pair">
+      <div class="pair-label">Pair 8 — Keep placeholder contrast within WCAG AA — or remove the placeholder altogether</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use a real label + helper text instead of a low-contrast placeholder</p>
+          <p class="card-body">The current Figma default — <code>text/textColor02</code> <code>#6C6862</code> on <code>ui/ui05</code> <code>#F4F3EE</code> — sits at an estimated ~3.8:1 contrast ratio, <strong>below</strong> the 4.5:1 WCAG 2.1 AA threshold for normal text (WARN-004 in <code>Input-audit.md</code>). The cleanest fix is to drop the placeholder entirely and rely on the visible label + helper text — which is also the docs page's stated guidance.</p>
+          <pre class="card-code">&lt;label htmlFor="city"&gt;City&lt;/label&gt;
+&lt;Input
+  inputProps={{
+    id: 'city',
+    name: 'city',
+    'aria-describedby': 'city-hint',
+  }}
+/&gt;
+&lt;p id="city-hint"&gt;
+  As shown on your government ID.
+&lt;/p&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Ship the placeholder as the sole prompt and rely on it for legibility</p>
+          <p class="card-body">Even when used as a supplemental hint (not as the label), the placeholder must clear 4.5:1 against the field background. The default token pairing currently does not — verify with a contrast checker and remediate the placeholder colour (or drop the placeholder) before shipping.</p>
+          <pre class="card-code">{/* Wrong — placeholder is the only prompt,
+    contrast likely fails AA */}
+&lt;Input
+  inputProps={{
+    id: 'city',
+    placeholder:
+      'City as shown on your government ID',
+  }}
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>accessibility.md</code> (Color contrast table) · <code>Input-audit.md</code> WARN-004 · <code>Input-figma.md</code> (<code>textColor02</code> / <code>ui05</code> token pairing).</p>
+    </div>
+
+  </section>
+
+  <hr>
+
+  <h2>Accessibility quick reference</h2>
+  <ul class="bullet-list">
+    <li>Renders a native <code>&lt;input type="text"&gt;</code> — implicit ARIA role <code>textbox</code>; no <code>role</code> override needed. Use <code>type="search"</code> for search affordances → implicit <code>searchbox</code> role.</li>
+    <li>Label is associated via <code>htmlFor</code> ↔ <code>id</code> or <code>aria-labelledby</code> — <strong>never</strong> rely on <code>placeholder</code> alone.</li>
+    <li><code>Tab</code> / <code>Shift+Tab</code> move focus; printable keys enter text; <code>Enter</code> submits the enclosing <code>&lt;form&gt;</code> if present.</li>
+    <li><code>hasError</code> paints the border red — pair with <code>aria-invalid="true"</code>, <code>aria-describedby</code> (or <code>aria-errormessage</code>), and an error region with <code>role="alert"</code>.</li>
+    <li><code>isRequired</code> paints the <code>*</code> — pair with <code>aria-required="true"</code> for the semantic signal.</li>
+    <li><code>isReadOnly</code> keeps the value reachable; <code>isDisabled</code> removes the field from the focus order and from form submission.</li>
+    <li>Focus ring must clear 3:1 contrast (WCAG 1.4.11); placeholder text must clear 4.5:1 (WCAG 1.4.3) — <strong>the default placeholder pairing is at risk</strong>, see WARN-004.</li>
+    <li>Never suppress the focus ring (<code>outline: none</code>) — required by WCAG 2.4.7.</li>
+    <li>The optional help icon button is a separate focusable element with its own accessible name.</li>
+  </ul>
+  <p>See <a href="./accessibility.md">accessibility.md</a> for the full WCAG 2.1 AA checklist.</p>
+
+  <hr>
+
+  <h2>Related components</h2>
+  <p>The published docs page lists these neighbours under <strong>Related → Components</strong>:</p>
+  <ul class="bullet-list">
+    <li><strong>Buttons</strong> — most often submit the form the Input belongs to. Disable the Submit button when an <code>Input</code> is in an error state, or let the submit attempt surface the inline error.</li>
+  </ul>
+  <p>And under <strong>Related → Patterns</strong>:</p>
+  <ul class="bullet-list">
+    <li><strong>Forms</strong> — the Input is the atom most form rows are built from (label + control + helper text + optional error region).</li>
+  </ul>
+  <p>Additional 8x8 components that absorb work from a plain Text input:</p>
+  <ul class="bullet-list">
+    <li><strong>TextArea</strong> — single-line vs. multi-line.</li>
+    <li><strong>Select</strong> / <strong>Radio</strong> / <strong>Checkbox</strong> — when the value set is finite.</li>
+    <li><strong>DateTimeSelector</strong> / <strong>DateTimeRangeSelector</strong> — for any date or time value.</li>
+    <li><strong>Slider</strong> — for bounded numeric ranges.</li>
+    <li><strong>TextField</strong> — higher-level wrapper that composes Input + label + hint + error.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Gaps</h2>
+  <section class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Figma Do/Don't examples</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-016</td>
+            <td>No <code>↳ Input examples</code> Figma page with Do/Don't card frames exists. Pairs above are editorially derived. Re-run <code>figma-extract-usage</code> if such a page is created.</td>
+          </tr>
+          <tr>
+            <td>Search input <code>isReadOnly</code> discrepancy</td>
+            <td><span class="badge-tag badge-conflict">CONFLICT</span> CONFLICT-001</td>
+            <td>OX API exposes <code>isReadOnly</code> globally but the Figma Search input set has no Read Only variant axis. Out of scope here; resolve with designer before <code>doc-rewrite</code>.</td>
+          </tr>
+          <tr>
+            <td>6 props lack OX descriptions</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-002</td>
+            <td><code>size</code>, <code>suffix</code>, <code>focus</code>, <code>fixed</code>, <code>autoSuffixWidth</code>, <code>autoPrefixWidth</code> — semantics in pairs are inferred from prop names + Figma variant axes.</td>
+          </tr>
+          <tr>
+            <td>0 clean Storybook examples</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-003</td>
+            <td>OX MCP returned 0 snippets; pairs above use hand-derived TSX from the prop API.</td>
+          </tr>
+          <tr>
+            <td>Inner-field spacings hardcoded</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span></td>
+            <td>16 px h-pad, 12 px v-pad, 6 px border-radius, 4 px label-to-field gap, 8 px search-icon gap — none bound to a spacing token.</td>
+          </tr>
+          <tr>
+            <td><code>textColor02</code> / <code>error01</code> dark values</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-010 / GAP-011</td>
+            <td>Some dark-mode tokens in <code>tokens.md</code> still show <code>*(dark value not captured)*</code>. The state matrix above uses the values resolved on 2026-05-05 living in <code>Input-figma.md</code>.</td>
+          </tr>
+          <tr>
+            <td>Placeholder contrast likely fails AA</td>
+            <td><span class="badge-tag badge-warn">WARN</span> WARN-004</td>
+            <td><code>#6C6862</code> on <code>#F4F3EE</code> ≈ 3.8:1 vs. 4.5:1 AA threshold for normal text. Pair 8 frames the remediation; needs a measured contrast value + an updated token.</td>
+          </tr>
+          <tr>
+            <td>Focus ring contrast unverified</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-013</td>
+            <td>WCAG 1.4.11 requires ≥ 3:1 for the focus ring. Verify <code>interactive/focus01</code> against the field background.</td>
+          </tr>
+          <tr>
+            <td>Text area + Search input out of scope</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> scope</td>
+            <td>This document covers Text input only. TextArea has its own folder; Search input shares the API surface but the Figma Read Only / variant axes differ. Document Search separately when its API is clarified.</td>
+          </tr>
+          <tr>
+            <td>"When not to use" expanded table</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span></td>
+            <td>The published docs page only mentions "use a dropdown, radio button or checkbox instead". The 5-row table above is editorial expansion — confirm with the Oxygen team and either promote to docs or trim.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Source: Published Oxygen docs page (<a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a>, fetched 2026-05-13 via Claude_in_Chrome MCP) · Cross-referenced with Oxygen MCP and Figma extraction (<code>@8x8/oxygen-input</code>, Figma file <code>5YihJ5WuDvnvrlrRMC4sBp</code>, Text input node <code>22155:36793</code>) · Editorial draft.
+  </footer>
+
+</div>
+</body>
+</html>

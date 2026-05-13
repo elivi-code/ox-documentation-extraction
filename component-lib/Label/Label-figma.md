@@ -13,6 +13,7 @@ siblings:
   - "[[Label/tokens]]"
   - "[[Label/accessibility]]"
   - "[[Label/label-pui]]"
+  - "[[Label/label-usage]]"
   - "[[Label/label-audit]]"
 tags:
   - oxygen
@@ -32,7 +33,7 @@ tags:
 # Label — Figma Design Spec
 
 > **See also:** [props.md](./props.md) · [tokens.md](./tokens.md) ·
-> [examples.md](./examples.md) · [accessibility.md](./accessibility.md)
+> [examples.md](./examples.md) · [accessibility.md](./accessibility.md) · [label-usage.md](./label-usage.md)
 
 ---
 

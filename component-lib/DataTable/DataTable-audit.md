@@ -2,9 +2,9 @@
 component: DataTable
 rubric_version: "1.0"
 extracted: 2026-05-06
-audited: 2026-05-06
+audited: 2026-05-12
 verdict: "NO"
-verdict_reason: "2 unresolved CONFLICTs must be resolved before doc-rewrite can proceed"
+verdict_reason: "2 unresolved CONFLICTs (GAP-001 Pagination, GAP-002 cell type mapping) must be resolved before doc-rewrite can proceed. DataTable-usage.md was authored editorially on 2026-05-12 in derivation-only mode; usage dimension now scored."
 
 files_found:
   - props.md
@@ -12,9 +12,9 @@ files_found:
   - tokens.md
   - accessibility.md
   - DataTable-figma.md
+  - DataTable-usage.md
 
 files_missing:
-  - DataTable-usage.md
   - DataTable-pui.md
 
 scores:
@@ -23,7 +23,7 @@ scores:
   tokens: 0.45
   accessibility: 0.80
   figma: 0.60
-  usage: 0.00
+  usage: 0.80
   pui: null
 
 counts:
@@ -383,24 +383,32 @@ gaps:
 
   - id: GAP-017
     dimension: usage
-    severity: major
+    severity: minor
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    status: "partially mitigated 2026-05-12 — DataTable-usage.md authored editorially in derivation-only mode"
     evidence:
-      source_file: "(file absent)"
-      location: "component-lib/DataTable/DataTable-usage.md — does not exist"
+      source_file: DataTable-usage.md
+      location: "Frontmatter pipeline_note + HTML comments at top of file"
       finding: >
         The Figma ↳ Table examples page (53919:26449) exists and contains
         Table examples, Table sorting, Table structure, and Notes for future
-        work sections, but no ✅ Do / ❌ Don't frames have been created.
-        The usage guideline template has not been filled in by the design team.
+        work sections, but no ✅ Do / ❌ Don't frames have been created. The
+        published Oxygen docs page at /components/table/usage shows an
+        "In progress" placeholder (fetched 2026-05-12, last updated
+        4/10/2026 on the docs site). DataTable-usage.md was authored on
+        2026-05-12 in derivation-only mode from props.md, examples.md,
+        tokens.md, accessibility.md, and DataTable-figma.md; it contains 7
+        Do/Don't pairs but is not grounded in authoritative design or
+        published-docs sources.
     fix_action: >
-      Request the design team populates the ↳ Table examples Figma page
-      with Do/Don't usage cards following the figma-draw skill convention.
-      Once filled, run figma-extract-usage to produce DataTable-usage.md.
-    blocks:
-      - doc-rewrite
+      Either (a) request the design team populates the ↳ Table examples
+      Figma page with Do/Don't usage cards and re-run figma-extract-usage,
+      or (b) replace the editorial draft once the published Oxygen Table
+      docs page exits its "In progress" state. Both paths supersede the
+      current derivation-only draft.
+    blocks: []
     dependency: []
 
   - id: GAP-018
@@ -484,7 +492,7 @@ tags:
 | `tokens.md` | ✅ Present | major |
 | `accessibility.md` | ✅ Present | blocker |
 | `DataTable-figma.md` | ✅ Present | blocker |
-| `DataTable-usage.md` | ❌ Missing | major |
+| `DataTable-usage.md` | ✅ Present (editorial, 2026-05-12) | major |
 | `DataTable-pui.md` | ❌ Missing | minor |
 
 ---
@@ -498,7 +506,7 @@ tags:
 | tokens | 0.45 | GAP-007 (major DOC_GAP), GAP-008 (major SOURCE_GAP), GAP-009 (minor), GAP-010 (minor) |
 | accessibility | 0.80 | GAP-015 (minor), GAP-016 (minor) |
 | figma | 0.60 | GAP-002 (CONFLICT), GAP-011 (major), GAP-012 (major), GAP-013 (minor), GAP-014 (minor) |
-| usage | 0.00 | GAP-017 (major SOURCE_GAP — file absent) |
+| usage | 0.80 | GAP-017 (minor SOURCE_GAP — editorial derivation; upstream Figma cards + published docs still absent) |
 | pui | — | GAP-018 (minor SOURCE_GAP — needs assessment) |
 
 ---
@@ -532,7 +540,6 @@ tags:
 | GAP-008 | tokens | SOURCE_GAP | Dark mode token values not resolved (Variables API unavailable) |
 | GAP-011 | figma | SOURCE_GAP | All Figma component set descriptions null |
 | GAP-012 | figma | SOURCE_GAP | No accessibility annotations in Figma |
-| GAP-017 | usage | SOURCE_GAP | DataTable-usage.md missing — design template not filled in |
 
 ---
 
@@ -549,6 +556,7 @@ tags:
 | GAP-014 | figma | SOURCE_GAP | table row hover internal anatomy incomplete |
 | GAP-015 | accessibility | DOC_GAP | Virtual scrolling screen reader behavior undocumented |
 | GAP-016 | accessibility | DOC_GAP | Live region behavior for data updates undocumented |
+| GAP-017 | usage | SOURCE_GAP | Usage doc is editorial derivation (2026-05-12); upstream Figma Do/Don't cards + published Oxygen docs page still absent |
 | GAP-018 | pui | SOURCE_GAP | PUI relevance unconfirmed |
 
 ---
@@ -569,9 +577,9 @@ tags:
 4. **Fix GAP-007** (merge figma cell tokens into tokens.md) — doc-rewrite can do this automatically once conflicts are resolved
 5. **Fix GAP-008** (dark mode tokens) — requires Figma Variables API access or manual inspection
 6. **Request GAP-011/GAP-012** (Figma descriptions + a11y annotations) — designer action
-7. **Request GAP-017** (usage Do/Don't cards) — designer action
+7. **GAP-017** — partially mitigated 2026-05-12 by editorial `DataTable-usage.md`. Replace once a Figma `↳ DataTable examples` page is populated with Do/Don't cards OR the published Oxygen Table docs page exits "In progress".
 8. Remaining minor gaps can be addressed during doc-rewrite
 
 ---
 
-_Audited: 2026-05-06 · Rubric version 1.0_
+_Initial audit: 2026-05-06 · Updated: 2026-05-12 (usage dimension scored after editorial DataTable-usage.md) · Rubric version 1.0_

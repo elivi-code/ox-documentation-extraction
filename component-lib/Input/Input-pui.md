@@ -14,6 +14,7 @@ siblings:
   - "[[Input/accessibility]]"
   - "[[Input/Input-figma]]"
   - "[[Input/Input-audit]]"
+  - "[[Input/Input-usage]]"
 tags:
   - oxygen
   - component/Input

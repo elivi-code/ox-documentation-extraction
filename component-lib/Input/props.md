@@ -22,6 +22,7 @@ siblings:
   - "[[Input/Input-figma]]"
   - "[[Input/Input-pui]]"
   - "[[Input/Input-audit]]"
+  - "[[Input/Input-usage]]"
 tags:
   - oxygen
   - component/Input

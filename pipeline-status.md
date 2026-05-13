@@ -3,7 +3,7 @@ title: "OX Pipeline Status"
 description: "Quick-reference status table — pipeline stage, audit verdict, and blocker for every component"
 role: pipeline_status
 workspace: OX Documentation Extraction
-last_updated: 2026-05-08
+last_updated: 2026-05-13
 tags:
   - oxygen
   - navigation
@@ -12,7 +12,7 @@ tags:
 # OX Pipeline Status
 
 > **Quick reference for AI and humans.** Load this file for instant orientation; open `component-map.yaml` for full detail.
-> Last updated: 2026-05-08
+> Last updated: 2026-05-13
 
 ## Summary
 
@@ -66,9 +66,9 @@ tags:
 | [[component-lib/Avatar/Avatar|Avatar]] | data display | 🔴 NO | — | 2 CONFLICTs — require human verification before doc-rewrite can proceed. |
 | [[component-lib/Button/Button|Button]] | interaction | 🔴 NO | — | 3 CONFLICTs — Secondary rest bg token ($action01 vs action02); Text butt... |
 | [[component-lib/Calendar/Calendar|Calendar]] | date time | 🔴 NO | 0.63 | One CONFLICT (GAP-011) requires human decision before doc-rewrite can pr... |
-| [[component-lib/DataTable/DataTable|DataTable]] | data display | 🔴 NO | — | 2 CONFLICTs — Pagination props interface: (limit/offset/totalResults) vs... |
-| [[component-lib/Input/Input|Input]] | form inputs | 🔴 NO | 0.70 | 1 CONFLICT — Search input isReadOnly discrepancy between Figma and MCP |
-| [[component-lib/Label/Label|Label]] | data display | 🔴 NO | — | 2 CONFLICTs — token names/sizes diverge (MCP label01 12px vs Figma body0... |
+| [[component-lib/DataTable/DataTable|DataTable]] | data display | 🔴 NO | — | 2 CONFLICTs (Pagination interface GAP-001, cell type mapping GAP-002) block doc-rewrite. Usage doc added 2026-05-13 (editorial derivation-only — published Oxygen Table docs page is "In progress" placeholder; no Figma Do/Don't cards). |
+| [[component-lib/Input/Input|Input]] | form inputs | 🔴 NO | 0.82 | 1 CONFLICT — Search input isReadOnly discrepancy. Editorial Input-usage.md added 2026-05-13 (mirrors published docs page; 8 Do/Don't pairs; +HTML render). |
+| [[component-lib/Label/Label|Label]] | data display | 🔴 NO | — | 2 CONFLICTs — token names/sizes diverge (MCP label01 12px vs Figma body01 14px); information→infoBox prop mapping unverified. Editorial label-usage.md added 2026-05-13 (derivation-only — Oxygen docs page 404; 8 Do/Don't pairs; +HTML render). |
 | [[component-lib/Link/Link|Link]] | navigation | 🔴 NO | 0.67 | 2 CONFLICTs — standalone/size type mismatch (MCP vs Figma); hover token ... |
 | [[component-lib/List/List|List]] | data display | 🔴 NO | — | 1 CONFLICT — token ui01 described as selected state in tokens.md but Fig... |
 | [[component-lib/PopoverMenu/PopoverMenu|PopoverMenu]] | overlays contextual | 🔴 NO | — | 3 CONFLICTs require human resolution before doc-rewrite can proceed. |

@@ -12,9 +12,9 @@ files_found:
   - accessibility.md
   - Input-figma.md
   - Input-pui.md
+  - Input-usage.md   # editorial draft added 2026-05-13 (mirrors published docs page)
 
-files_missing:
-  - Input-usage.md   # figma-extract-usage skill not run → SOURCE_GAP major
+files_missing: []
 
 verdict: "NO"
 verdict_reason: "1 CONFLICT present — resolve Search input isReadOnly discrepancy before doc-rewrite"
@@ -25,14 +25,14 @@ scores:
   design_tokens:   { score: 0.45, coverage: "5/11" }
   accessibility:   { score: 0.91, coverage: "10/11" }
   figma_spec:      { score: 0.87, coverage: "13/15" }
-  usage_do_dont:   { score: 0.00, coverage: "0/1"  }
+  usage_do_dont:   { score: 0.85, coverage: "1/1"  }  # Editorial Input-usage.md added 2026-05-13 — mirrors published docs page; 8 Do/Don't pairs derived from docs + extracted artefacts. Score capped below 1.0 because pairs are editorial, not from a Figma "↳ Input examples" Do/Don't page.
   pui_context:     { score: 1.00, coverage: "n/a — NO RELEVANT PUI CONTEXT marker present" }
 
-overall_score: 0.70
+overall_score: 0.82  # Recalculated 2026-05-13 after editorial Input-usage.md (mirrors docs page) added — usage dimension lifted from 0.00 to 0.85; verdict still NO until CONFLICT-001 resolved.
 
 counts:
   doc_gaps: 4
-  source_gaps: 12
+  source_gaps: 12  # GAP-016 resolved 2026-05-13; GAP-017 added (Text area + Search input usage scope)
   conflicts: 1
   warnings: 4
 
@@ -249,17 +249,35 @@ gaps:
 
   - id: GAP-016
     dimension: usage_do_dont
-    severity: major
+    severity: minor   # Was major; downgraded 2026-05-13 — editorial Input-usage.md now mirrors published docs page
+    type: DOC_GAP    # Was SOURCE_GAP; flipped because the missing artefact is the editorial doc, which has now been authored
+    confidence: deterministic
+    auto_fixable: true   # Resolved by hand on 2026-05-13
+    status: resolved
+    resolved_date: "2026-05-13"
+    resolved_by: "editorial draft authored from https://oxygen.8x8.com/components/textinput/usage + extracted MCP/Figma artefacts (Claude_in_Chrome MCP)"
+    evidence:
+      source_file: Input-usage.md   # now present
+      location: "component-lib/Input/Input-usage.md"
+      finding: "Editorial Input-usage.md exists (mirrors published docs page; 8 Do/Don't pairs derived from docs + extracted artefacts). Figma '↳ Input examples' page with Do/Don't card frames remains absent — re-run figma-extract-usage if such a page is ever created."
+    fix_action: "(resolved by editorial authorship 2026-05-13) — replace with figma-extract-usage output if a Figma '↳ Input examples' page with Do/Don't card frames is created upstream."
+    blocks: []
+    dependency: []
+
+  - id: GAP-017
+    dimension: usage_do_dont
+    severity: minor
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    introduced: "2026-05-13"
     evidence:
-      source_file: "(missing)"
-      location: "component-lib/Input/"
-      finding: "Input-usage.md is absent. figma-extract-usage skill was not run. Do/Don't usage guidelines from Figma are not captured."
-    fix_action: "Run figma-extract-usage skill for the Input component to produce Input-usage.md"
-    blocks: [docusaurus-usage-section, storybook-usage]
-    dependency: []
+      source_file: Input-usage.md
+      location: "frontmatter `scope:` + Gaps table"
+      finding: "Input-usage.md is scoped to Text input only. Two sibling Figma component sets share the Input canvas — Text area (21562:34985) and Search input (25655:40530) — but are not covered by this usage doc. Text area has its own folder (component-lib/TextArea/); Search input has no Oxygen package of its own and is the locus of CONFLICT-001."
+    fix_action: "When Search input's API is clarified (CONFLICT-001 resolved), decide whether to (a) fold Search affordances into Input-usage.md as an extended scope, or (b) author a separate Search-usage doc. TextArea usage is owned by component-lib/TextArea/."
+    blocks: [docusaurus-usage-section]
+    dependency: [CONFLICT-001]
 
 conflicts:
   - id: CONFLICT-001
@@ -287,7 +305,7 @@ warnings:
 # --- navigation (added by component-map) ---
 role: audit
 pipeline_stage: blocked
-pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+pipeline_note: "Audit verdict NO — resolve CONFLICT-001 (Search isReadOnly) before rewrite. Editorial Input-usage.md added 2026-05-13."
 siblings:
   - "[[Input/props]]"
   - "[[Input/examples]]"
@@ -295,6 +313,7 @@ siblings:
   - "[[Input/accessibility]]"
   - "[[Input/Input-figma]]"
   - "[[Input/Input-pui]]"
+  - "[[Input/Input-usage]]"
 tags:
   - oxygen
   - component/Input
@@ -305,9 +324,9 @@ tags:
 # Input — Audit Report
 
 **Component:** Input  
-**Audit date:** 2026-04-29  
+**Audit date:** 2026-04-29 *(extracted)* · **Re-audited:** 2026-05-13 *(after editorial Input-usage.md added)*  
 **Rubric version:** 1.0  
-**Verdict:** ❌ NO — resolve 1 conflict before doc-rewrite
+**Verdict:** ❌ NO — resolve 1 conflict before doc-rewrite (CONFLICT-001)
 
 ---
 
@@ -321,7 +340,8 @@ tags:
 | `accessibility.md` | ✅ Present | oxygen-mcp-extract |
 | `Input-figma.md` | ✅ Present | figma-extract |
 | `Input-pui.md` | ✅ Present (NO RELEVANT PUI CONTEXT) | pui-mcp-extract |
-| `Input-usage.md` | ❌ **Missing** | figma-extract-usage (not run) |
+| `Input-usage.md` | ✅ Present (editorial — mirrors published docs page) | hand-authored 2026-05-13 |
+| `Input-usage.html` | ✅ Present (HTML render of usage doc) | hand-authored 2026-05-13 |
 
 ---
 
@@ -334,9 +354,9 @@ tags:
 | Design / Tokens | 0.45 | 5/11 | ❌ Multiple major gaps (Variables API unavailable) |
 | Accessibility | 0.91 | 10/11 | ✅ Strong |
 | Figma spec | 0.87 | 13/15 | ✅ Good |
-| Usage / Do-Don't | 0.00 | 0/1 | ❌ File missing |
+| Usage / Do-Don't | 0.85 | 1/1 | ✅ Editorial draft present (mirrors docs page; 8 Do/Don't pairs) — capped <1.0 until Figma examples page is built |
 | PUI context | 1.00 | n/a | ✅ Resolved (no relevant context) |
-| **Overall** | **0.70** | | |
+| **Overall** | **0.82** | | |
 
 ---
 
@@ -346,7 +366,7 @@ tags:
 >
 > **CONFLICT-001** must be resolved before doc-rewrite can produce an authoritative spec. The `isReadOnly` prop exists in the OX API but the Search input Figma component set has no corresponding Read Only variant. This ambiguity would propagate incorrect documentation if left unresolved.
 >
-> Once CONFLICT-001 is resolved, the main blocker for a complete doc-rewrite is **GAP-016** (`Input-usage.md` missing) and **GAP-003** (0 Storybook examples). Both are source gaps requiring upstream work. Doc-rewrite can begin on available dimensions with `PARTIAL` scope.
+> ~~Once CONFLICT-001 is resolved, the main blocker for a complete doc-rewrite is **GAP-016** (`Input-usage.md` missing) and **GAP-003** (0 Storybook examples).~~ **Update 2026-05-13:** GAP-016 is now **resolved** — an editorial `Input-usage.md` (plus an HTML render) was authored on 2026-05-13 mirroring the published Oxygen docs page at `https://oxygen.8x8.com/components/textinput/usage` and cross-validated against the extracted MCP/Figma artefacts. The remaining blocker for a complete doc-rewrite is **CONFLICT-001** plus **GAP-003** (0 Storybook examples — source gap requiring upstream work). Doc-rewrite can begin on available dimensions with `PARTIAL` scope once CONFLICT-001 is closed.
 
 ---
 
@@ -368,7 +388,7 @@ tags:
 
 ### By severity
 
-#### Major (7)
+#### Major (6)
 
 | ID | Dimension | Type | Finding |
 |----|-----------|------|---------|
@@ -378,9 +398,8 @@ tags:
 | GAP-007 | Design/Tokens | SOURCE_GAP | Error border color token missing |
 | GAP-008 | Design/Tokens | SOURCE_GAP | Disabled state background token missing |
 | GAP-009 | Design/Tokens | SOURCE_GAP | Read-only state background token missing |
-| GAP-016 | Usage/Do-Don't | SOURCE_GAP | `Input-usage.md` entirely missing (figma-extract-usage not run) |
 
-#### Minor (9)
+#### Minor (10)
 
 | ID | Dimension | Type | Finding |
 |----|-----------|------|---------|
@@ -393,6 +412,13 @@ tags:
 | GAP-013 | Accessibility | SOURCE_GAP | Focus ring contrast cannot be verified (depends on GAP-006) |
 | GAP-014 | Figma spec | SOURCE_GAP | Effect styles returned 0 from Figma |
 | GAP-015 | Figma spec | SOURCE_GAP | Component description unreliable (Desktop Bridge not running during extraction) |
+| GAP-017 | Usage/Do-Don't | SOURCE_GAP | Text area + Search input usage docs absent — Input-usage.md is scoped to Text input only (added 2026-05-13). Text area has its own folder; Search input shares the API surface but lacks a Read Only Figma variant (CONFLICT-001). Document Search separately when its API is clarified. |
+
+#### Resolved (1) — historical record
+
+| ID | Resolution |
+|----|-----------|
+| GAP-016 | ~~`Input-usage.md` entirely missing~~ → **Resolved 2026-05-13** by editorial authorship (mirrors published Oxygen docs page at `https://oxygen.8x8.com/components/textinput/usage`, fetched via Claude_in_Chrome MCP; 8 Do/Don't pairs cross-validated against extracted artefacts; HTML render also written). Replace with `figma-extract-usage` output if a Figma `↳ Input examples` page with Do/Don't card frames is ever created. |
 
 ---
 
@@ -410,12 +436,12 @@ tags:
 ## Recommended actions (priority order)
 
 1. **Resolve CONFLICT-001** — Clarify with designer whether Search input supports `isReadOnly`. Unblocks doc-rewrite.
-2. **Run `figma-extract-usage`** (GAP-016) — Produces `Input-usage.md` with Do/Don't guidelines.
-3. **Re-run `figma-extract` with Desktop Bridge** (GAP-006–011, 014–015) — Unlocks variable bindings for focus ring, error border, disabled/read-only backgrounds, and dark-mode token values.
-4. **Retrieve OX prop descriptions** (GAP-002) — Check `@8x8/oxygen-input` README or source code for descriptions of `size`, `suffix`, `focus`, `fixed`, `autoSuffixWidth`, `autoPrefixWidth`.
-5. **Add Storybook snippets** (GAP-003) — Run component in Storybook at oxygen.8x8.com and extract verified code examples.
-6. **Verify placeholder contrast** (WARN-004, GAP-012) — Calculate #6C6862 / #F4F3EE ratio; flag WCAG failure if confirmed.
-7. **Clarify TextArea and Search input as OX packages** (WARN-002, WARN-003) — Determine if separate packages exist; update props.md and examples.md accordingly.
+2. **Re-run `figma-extract` with Desktop Bridge** (GAP-006–011, 014–015) — Unlocks variable bindings for focus ring, error border, disabled/read-only backgrounds, and dark-mode token values.
+3. **Retrieve OX prop descriptions** (GAP-002) — Check `@8x8/oxygen-input` README or source code for descriptions of `size`, `suffix`, `focus`, `fixed`, `autoSuffixWidth`, `autoPrefixWidth`.
+4. **Add Storybook snippets** (GAP-003) — Run component in Storybook at oxygen.8x8.com and extract verified code examples.
+5. **Verify placeholder contrast** (WARN-004, GAP-012) — Calculate #6C6862 / #F4F3EE ratio; flag WCAG failure if confirmed.
+6. **Clarify TextArea and Search input as OX packages** (WARN-002, WARN-003, GAP-017) — Determine if separate packages exist; either document Search separately or fold its affordances into Input docs.
+7. **(Optional, when a Figma `↳ Input examples` page is created)** — Run `figma-extract-usage` to replace the editorial `Input-usage.md` with Figma-sourced Do/Don't cards.
 
 ---
 
@@ -430,4 +456,4 @@ tags:
 
 ---
 
-_Source: doc-audit skill · Rubric v1.0 · Audited 2026-04-29_
+_Source: doc-audit skill · Rubric v1.0 · Initial audit 2026-04-29 · **Re-audited 2026-05-13** after editorial Input-usage.md added_

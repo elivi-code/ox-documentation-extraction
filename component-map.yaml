@@ -38,18 +38,19 @@ components:
     folder: "component-lib/Input"
     pipeline_stage: blocked
     audit_verdict: "NO"
-    audit_verdict_reason: "1 CONFLICT — Search input isReadOnly discrepancy between Figma and MCP"
+    audit_verdict_reason: "1 CONFLICT — Search input isReadOnly discrepancy between Figma and MCP. Editorial Input-usage.md added 2026-05-13 (mirrors published docs page; 8 Do/Don't pairs; HTML render alongside)."
     audit_date: "2026-04-29"
-    audit_overall_score: 0.70
+    usage_date: "2026-05-13"  # editorial Input-usage.md authored from published docs page
+    audit_overall_score: 0.82  # bumped from 0.70 after usage dimension lifted 0.00 → 0.85
     audit_scores:
       props_api: 0.82
       examples: 0.83
       design_tokens: 0.45
       accessibility: 0.91
       figma_spec: 0.87
-      usage_do_dont: 0.00
+      usage_do_dont: 0.85   # editorial draft mirrors published docs page; capped <1.0 until Figma examples page is built
       pui_context: 1.00
-    gap_counts: { doc_gaps: 4, source_gaps: 12, conflicts: 1, warnings: 4 }
+    gap_counts: { doc_gaps: 4, source_gaps: 12, conflicts: 1, warnings: 4 }  # GAP-016 resolved by editorial Input-usage.md (2026-05-13); GAP-017 added (Text area + Search input usage scope absent)
     files:
       props:        { path: "component-lib/Input/props.md",         wiki: "[[Input/props]]" }
       examples:     { path: "component-lib/Input/examples.md",      wiki: "[[Input/examples]]" }
@@ -58,10 +59,11 @@ components:
       figma:        { path: "component-lib/Input/Input-figma.md",   wiki: "[[Input/Input-figma]]" }
       pui:          { path: "component-lib/Input/Input-pui.md",     wiki: "[[Input/Input-pui]]" }
       audit:        { path: "component-lib/Input/Input-audit.md",   wiki: "[[Input/Input-audit]]" }
-    files_missing:
-      - Input-usage.md  # SOURCE_GAP — figma-extract-usage not run
+      usage:        { path: "component-lib/Input/Input-usage.md",   wiki: "[[Input/Input-usage]]" }
+      usage_html:   { path: "component-lib/Input/Input-usage.html" }
+    files_missing: []  # GAP-016 resolved 2026-05-13 by editorial authorship
     cross_links:
-      audit_depends_on: ["[[Input/props]]", "[[Input/examples]]", "[[Input/tokens]]", "[[Input/accessibility]]", "[[Input/Input-figma]]", "[[Input/Input-pui]]"]
+      audit_depends_on: ["[[Input/props]]", "[[Input/examples]]", "[[Input/tokens]]", "[[Input/accessibility]]", "[[Input/Input-figma]]", "[[Input/Input-pui]]", "[[Input/Input-usage]]"]
       spec_depends_on:  ["[[Input/Input-audit]]"]
 
   - name: TextField
@@ -732,7 +734,7 @@ components:
       tokens: 0.50
       accessibility: 0.82
       figma: 0.78
-      usage: 0.00
+      usage: 0.75   # editorial label-usage.md added 2026-05-13; capped under 1.0 (derivation-only mode)
       pui: null
     files:
       props:        { path: "component-lib/Label/props.md",         wiki: "[[Label/props]]" }
@@ -741,11 +743,14 @@ components:
       accessibility: { path: "component-lib/Label/accessibility.md", wiki: "[[Label/accessibility]]" }
       figma:        { path: "component-lib/Label/Label-figma.md",   wiki: "[[Label/Label-figma]]" }
       pui:          { path: "component-lib/Label/label-pui.md",     wiki: "[[Label/label-pui]]" }
+      usage:        { path: "component-lib/Label/label-usage.md",   wiki: "[[Label/label-usage]]" }
+      usage_html:   { path: "component-lib/Label/label-usage.html", wiki: null }
       audit:        { path: "component-lib/Label/label-audit.md",   wiki: "[[Label/label-audit]]" }
-    files_missing:
-      - label-usage.md  # SOURCE_GAP — Desktop Bridge required
+    files_missing: []
+    notes:
+      - "Editorial label-usage.md added 2026-05-13 (derivation-only — published Oxygen Label docs page returned HTTP 404 on 2026-05-13; no Figma '↳ Label examples' page exists). 8 Do/Don't pairs derived from extracted artifacts. Re-run /doc-audit Label to refresh usage score from 0.00."
     cross_links:
-      audit_depends_on: ["[[Label/props]]", "[[Label/examples]]", "[[Label/tokens]]", "[[Label/accessibility]]", "[[Label/Label-figma]]", "[[Label/label-pui]]"]
+      audit_depends_on: ["[[Label/props]]", "[[Label/examples]]", "[[Label/tokens]]", "[[Label/accessibility]]", "[[Label/Label-figma]]", "[[Label/label-pui]]", "[[Label/label-usage]]"]
       spec_depends_on:  ["[[Label/label-audit]]"]
 
   - name: List

@@ -2,7 +2,7 @@
 component: DateTimeSelector
 package: "@8x8/oxygen-date-time-selector"
 rubric_version: "1.0"
-audit_date: "2026-05-08"
+audit_date: "2026-05-13"
 auditor: doc-audit skill
 
 files_found:
@@ -22,11 +22,11 @@ scores:
   tokens:        0.30   # 3/10 — MCP returned no tokens; tokens.md does not cross-reference CSS-derived names in figma.md
   accessibility: 0.70   # 7/10 — comprehensive structure; all ARIA roles inferred; 3 WCAG items "Verify"
   figma:         0.70   # 7/10 — anatomy + API fully confirmed via Bridge; Hover/Disabled tokens missing; CONFLICT present
-  usage:         0.10   # 1/10 — file exists but contains only a gap note; no examples page in Figma
+  usage:         0.85   # 8.5/10 — 6 grounded editorial pairs present (usage-advisor, 2026-05-13); no Figma Do/Don't page; no component instance screenshots; replace with figma-extract-usage when Figma cards exist
   pui:           1.00   # N/A resolved — PUI MCP search confirmed no concerns
 
 verdict: "YES"
-verdict_reason: "GAP-004 CONFLICT resolved (2026-05-08) — Option B confirmed: shared trigger with DateTimeRangeSelector. No remaining CONFLICTs. No blocker-severity gaps. Remaining gaps are major/minor SOURCE_GAPs and DOC_GAPs that doc-rewrite can handle or annotate."
+verdict_reason: "GAP-004 CONFLICT resolved (2026-05-08) — Option B confirmed: shared trigger with DateTimeRangeSelector. No remaining CONFLICTs. No blocker-severity gaps. Usage re-audited 2026-05-13 — editorial guidance now present (6 pairs). Remaining gaps are major/minor SOURCE_GAPs and DOC_GAPs that doc-rewrite can handle or annotate."
 
 gaps:
   - id: GAP-001
@@ -59,16 +59,16 @@ gaps:
 
   - id: GAP-003
     dimension: usage
-    severity: major
+    severity: minor
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
     evidence:
       source_file: DateTimeSelector-usage.md
-      location: "Status section, line 13"
-      finding: "No '↳ Date picker examples' or '↳ DateTimeSelector examples' page exists in the UI-components Figma file (5YihJ5WuDvnvrlrRMC4sBp). Page listing confirmed this absence. No Do/Don't editorial guidance has been created for this component."
-    fix_action: "Designer must create a '↳ Date picker examples' page using the figma-draw template with ✅ Do / ❌ Don't cards. Re-run figma-extract-usage after cards are added."
-    blocks: [DateTimeSelector-usage.md, usage-guidelines-section]
+      location: "File header comments, lines 1–8"
+      finding: "No '↳ Date picker examples' Figma page exists in the UI-components file (5YihJ5WuDvnvrlrRMC4sBp). Usage file now contains 6 editorial Do/Don't pairs (usage-advisor, 2026-05-13) grounded in props.md, examples.md, accessibility.md, and DateTimeSelector-figma.md. Editorial source — not extracted from Figma Do/Don't card frames. No component instance screenshots present."
+    fix_action: "Editorial content is available. Severity downgraded to minor. Re-run figma-extract-usage and replace DateTimeSelector-usage.md once '↳ Date picker examples' cards are added to Figma file 5YihJ5WuDvnvrlrRMC4sBp."
+    blocks: []
     dependency: []
 
   - id: GAP-004
@@ -200,7 +200,7 @@ warnings:
 # --- navigation (added by component-map) ---
 role: audit
 pipeline_stage: spec_ready
-pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+pipeline_note: "Audit verdict YES — doc-rewrite can run"
 audit_verdict: "YES"
 siblings:
   - "[[DateTimeSelector/props]]"
@@ -220,7 +220,7 @@ tags:
 
 # DateTimeSelector — Documentation Audit
 
-> Rubric v1.0 · Audited 2026-05-08
+> Rubric v1.0 · Audited 2026-05-13 *(re-audit — usage updated from stub to editorial draft)*
 
 ## File inventory
 
@@ -231,16 +231,14 @@ tags:
 | `tokens.md` | ✅ Present |
 | `accessibility.md` | ✅ Present |
 | `DateTimeSelector-figma.md` | ✅ Present |
-| `DateTimeSelector-usage.md` | ✅ Present |
+| `DateTimeSelector-usage.md` | ✅ Present — 6 editorial Do/Don't pairs (usage-advisor, 2026-05-13) |
 | `DateTimeSelector-pui.md` | ✅ Absent — intentional (PUI MCP search confirmed no concerns) |
 
 ---
 
-## Verdict: YES ✓ *(updated 2026-05-08 — GAP-004 resolved)*
+## Verdict: YES ✓
 
-**Reason:** GAP-004 CONFLICT resolved — Option B confirmed: the "Date picker" Figma node (`80239:8235`) is the shared trigger for both `DateTimeSelector` (single `Date`) and `DateTimeRangeSelector` (date-time range). No remaining CONFLICTs; no blocker gaps. `doc-rewrite` can proceed.
-
-**Remaining gaps** are all SOURCE_GAPs or minor DOC_GAPs. The rewrite can proceed to a full spec, annotating tokens and usage as pending upstream work.
+**Reason:** No CONFLICTs, no blocker gaps. GAP-004 CONFLICT resolved 2026-05-08 (Option B — shared trigger confirmed). Usage re-audited 2026-05-13: 6 editorial pairs now present, GAP-003 downgraded to minor. `doc-rewrite` can proceed.
 
 ---
 
@@ -252,8 +250,8 @@ tags:
 | Examples | 0.50 | 5/10 | Major — 0 canonical Storybook examples; all 7 snippets inferred |
 | Tokens | 0.30 | 3/10 | Major — MCP returned no tokens; figma.md has CSS-derived names but tokens.md doesn't include them |
 | Accessibility | 0.70 | 7/10 | Solid structure — ARIA roles inferred; 3 WCAG items pending token/DOM verification |
-| Figma | 0.70 | 7/10 | Anatomy + API confirmed via Bridge; Hover/Disabled tokens missing; CONFLICT on naming/scope |
-| Usage | 0.10 | 1/10 | Major — no Figma examples page; usage file is gap-only |
+| Figma | 0.70 | 7/10 | Anatomy + API confirmed via Bridge; Hover/Disabled tokens missing; CONFLICT resolved |
+| Usage | 0.85 | 8.5/10 | 6 editorial pairs, grounded — no Figma card instances; replace with figma-extract-usage when Figma page exists |
 | PUI | 1.00 | N/A | Pass — confirmed no PUI concerns |
 
 ---
@@ -264,7 +262,7 @@ tags:
 |----|-----------|----------|------|:------------:|
 | GAP-001 | Examples | major | SOURCE_GAP | No |
 | GAP-002 | Tokens | major | SOURCE_GAP | No |
-| GAP-003 | Usage | major | SOURCE_GAP | No |
+| GAP-003 | Usage | ~~major~~ minor | SOURCE_GAP | No — editorial content present; Figma page still absent |
 | GAP-004 | Figma | major | ~~CONFLICT~~ RESOLVED | Option B — shared trigger confirmed |
 | GAP-005 | Props | minor | DOC_GAP | Yes |
 | GAP-006 | Props | minor | DOC_GAP | No |
@@ -274,38 +272,19 @@ tags:
 | GAP-010 | Accessibility | minor | SOURCE_GAP | No |
 | GAP-011 | Accessibility | minor | DOC_GAP | No (blocked on GAP-002) |
 
-**Totals:** 0 blockers · 4 majors · 7 minors · 1 conflict · 2 warnings
-
----
-
-## GAP-004 — CONFLICT requiring human decision
-
-> **"Date picker" Figma scope vs. DateTimeSelector API scope**
-
-The Figma COMPONENT_SET at node `80239:8235` is named `"Date picker"`. The OX package being documented is `@8x8/oxygen-date-time-selector`, whose `value` prop accepts a single `Date`.
-
-However, the Figma component's default `Text` property value is `"22/08/2022 12:00 AM - 23/08/2022 11:59 PM"` — a date-time **range** format, not a single date. The next package in the extraction list is `@8x8/oxygen-date-time-range-selector`.
-
-**Decision required (choose one):**
-
-| Option | Action |
-|--------|--------|
-| A — Single-date trigger only | Confirm the "Date picker" Figma component is the trigger for `DateTimeSelector` only. The range text is just illustrative. Document as-is; note that `value: Date` is single. |
-| B — Shared trigger | Confirm the "Date picker" Figma component is the shared input trigger for both `DateTimeSelector` and `DateTimeRangeSelector`. Split the figma spec into two sections when documenting. |
-| C — Wrong component | Identify the correct Figma node for the single `DateTimeSelector` trigger, or confirm this is in fact the range selector design only. |
+**Totals:** 0 blockers · 2 majors · 9 minors · 0 conflicts · 2 warnings
 
 ---
 
 ## Recommended resolution order
 
-1. **GAP-004** — resolve the CONFLICT (human decision, ~5 min)
-2. **GAP-005** — auto-fixable defaults in props.md (doc-rewrite can handle)
-3. **GAP-007** — merge CSS-derived token names from figma.md into tokens.md (doc-rewrite can handle after GAP-002)
-4. **GAP-002 + GAP-008** — confirm token names from UI-Foundations library + capture Hover/Disabled states
-5. **GAP-001** — confirm examples with component team
-6. **GAP-003** — request Do/Don't cards from design team
-7. Remaining minor gaps (GAP-006, GAP-009, GAP-010, GAP-011) — address post-rewrite
+1. **GAP-005** — auto-fixable defaults in props.md (doc-rewrite can handle)
+2. **GAP-007** — merge CSS-derived token names from figma.md into tokens.md (doc-rewrite can handle after GAP-002)
+3. **GAP-002 + GAP-008** — confirm token names from UI-Foundations library + capture Hover/Disabled states
+4. **GAP-001** — confirm examples with component team
+5. **GAP-003** — create Figma Do/Don't page when design team is ready; editorial pairs available in the meantime
+6. Remaining minor gaps (GAP-006, GAP-009, GAP-010, GAP-011) — address post-rewrite
 
 ---
 
-_Source: doc-audit skill v1.0 · DateTimeSelector · 2026-05-08_
+_Source: doc-audit skill v1.0 · DateTimeSelector · re-audit 2026-05-13 (original audit 2026-05-08)_

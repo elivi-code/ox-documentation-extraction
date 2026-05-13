@@ -3,7 +3,7 @@ title: "OX Design System — Documentation Index"
 description: "Master index of all 37 Oxygen components with file links, grouped by category"
 role: index
 workspace: OX Documentation Extraction
-last_updated: 2026-05-08
+last_updated: 2026-05-13
 tags:
   - oxygen
   - navigation
@@ -28,10 +28,10 @@ tags:
 **Missing:** `checkbox-usage.md`
 
 ### 🔴 [[component-lib/Input/Input|Input]]
-`@8x8/oxygen-input` `0.70`
-**Audit:** 🔴 NO — 1 CONFLICT — Search input isReadOnly discrepancy between Figma and MCP
-**Files:** 📐 [[Input/props|props]] · 💡 [[Input/examples|examples]] · 🎨 [[Input/tokens|tokens]] · ♿ [[Input/accessibility|accessibility]] · 🖼️ [[Input/Input-figma|figma]] · 🔌 [[Input/Input-pui|pui]] · 🔍 [[Input/Input-audit|audit]]
-**Missing:** `Input-usage.md`
+`@8x8/oxygen-input` `0.82`
+**Audit:** 🔴 NO — 1 CONFLICT — Search input isReadOnly discrepancy between Figma and MCP. Editorial Input-usage.md added 2026-05-13 (mirrors published docs page).
+**Files:** 📐 [[Input/props|props]] · 💡 [[Input/examples|examples]] · 🎨 [[Input/tokens|tokens]] · ♿ [[Input/accessibility|accessibility]] · 🖼️ [[Input/Input-figma|figma]] · 🔌 [[Input/Input-pui|pui]] · 🔍 [[Input/Input-audit|audit]] · 📖 [[Input/Input-usage|usage]]
+**Missing:** none (Input-usage.html render also present alongside Input-usage.md)
 
 ### ⬜ [[component-lib/Radio/Radio|Radio]]
 `@8x8/oxygen-radio`
@@ -158,8 +158,8 @@ tags:
 ### 🔴 [[component-lib/Label/Label|Label]]
 `@8x8/oxygen-label`
 **Audit:** 🔴 NO — 2 CONFLICTs — token names/sizes diverge (MCP label01 12px vs Figma body01 14px); Figma ...
-**Files:** 📐 [[Label/props|props]] · 💡 [[Label/examples|examples]] · 🎨 [[Label/tokens|tokens]] · ♿ [[Label/accessibility|accessibility]] · 🖼️ [[Label/Label-figma|figma]] · 🔌 [[Label/label-pui|pui]] · 🔍 [[Label/label-audit|audit]]
-**Missing:** `label-usage.md`
+**Files:** 📐 [[Label/props|props]] · 💡 [[Label/examples|examples]] · 🎨 [[Label/tokens|tokens]] · ♿ [[Label/accessibility|accessibility]] · 🖼️ [[Label/Label-figma|figma]] · 🔌 [[Label/label-pui|pui]] · 📖 [[Label/label-usage|usage]] · 🔍 [[Label/label-audit|audit]]
+**Note:** Editorial label-usage.md added 2026-05-13 (derivation-only — Oxygen Label docs page 404; no Figma examples page).
 
 ### 🔴 [[component-lib/List/List|List]]
 `@8x8/oxygen-list`

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Label — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f1a;
+      line-height: 1.2;
+    }
+
+    .see-also {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+
+    .callout-info {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #1e3a5f;
+    }
+    .callout-info strong { color: #1e3a5f; }
+
+    .callout-warn {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #78350f;
+    }
+
+    .callout-editorial code, .callout-info code, .callout-warn code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .intro {
+      font-size: 15.5px;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f0f1a;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p { color: #374151; margin-bottom: 0.75rem; }
+
+    a { color: #5046e4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+    }
+
+    .anatomy-list {
+      list-style: none;
+      counter-reset: anatomy;
+      padding: 0;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .anatomy-list li {
+      counter-increment: anatomy;
+      position: relative;
+      padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+      margin-bottom: 0.375rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .anatomy-list li::before {
+      content: counter(anatomy);
+      position: absolute;
+      left: 0.625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #5046e4;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .anatomy-list strong { color: #0f0f1a; }
+
+    .source-line {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+
+    .source-line code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .bullet-list { margin: 0.5rem 0 1rem 1.25rem; color: #374151; }
+    .bullet-list li { margin-bottom: 0.375rem; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair { margin-bottom: 1.75rem; }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .pair-source {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-bottom: 0.625rem;
+    }
+
+    .pair-source code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      column-gap: 1rem;
+      row-gap: 0.625rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards { grid-template-columns: 1fr; grid-template-rows: none; }
+    }
+
+    .do-card, .dont-card {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body { color: #374151; line-height: 1.55; margin: 0; }
+
+    .card-body code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      padding-top: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .card-code {
+      background: rgba(0,0,0,0.04);
+      border-radius: 5px;
+      padding: 0.625rem 0.75rem;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+      font-size: 12px;
+      color: #1a1a2e;
+      margin: 0;
+      white-space: pre;
+      overflow-x: auto;
+      align-self: end;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-source-gap { background: #fef3c7; color: #92400e; }
+    .badge-doc-gap    { background: #dbeafe; color: #1e40af; }
+    .badge-conflict   { background: #fee2e2; color: #991b1b; }
+
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+
+    blockquote {
+      border-left: 3px solid #d1d5db;
+      margin: 0.75rem 0;
+      padding: 0.5rem 1rem;
+      color: #4b5563;
+      font-size: 13.5px;
+    }
+
+    blockquote strong { color: #374151; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · data_display · Label</div>
+    <h1>Label — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Label-figma.md">Label-figma.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — derived from extracted artifacts.</strong>
+    Neither a Figma <code>↳ Label examples</code> page with Do/Don't card frames nor a published Oxygen docs page exists today. The published URL <a href="https://oxygen.8x8.com/components/label/usage">oxygen.8x8.com/components/label/usage</a> returned <strong>HTTP 404</strong> when fetched on 2026-05-13. Pairs below are derived from <code>props.md</code>, <code>examples.md</code>, <code>tokens.md</code>, <code>accessibility.md</code>, <code>Label-figma.md</code>, and <code>label-pui.md</code>, cross-validated against <code>label-audit.md</code>. Format follows the <a href="../DataTable/DataTable-usage.md">DataTable-usage.md</a> derivation-only precedent. Replace with <code>figma-extract-usage</code> output once a Figma examples page is created.
+  </div>
+
+  <p class="intro">
+    Label is the textual identifier that names what a form control is asking for. It is the canonical pairing partner for <code>Input</code>, <code>Checkbox</code>, <code>Select</code>, and other Oxygen form components — rendered as a native HTML <code>&lt;label&gt;</code> element so it inherits the browser's built-in "click the label, focus the control" behaviour and screen-reader announcement. A well-formed Label is short, action-shaped, programmatically associated with its control via <code>htmlFor</code>, and consistent in placement and rhythm across the form surface.
+  </p>
+
+  <hr>
+
+  <h2>⚠️ Open audit conflicts</h2>
+  <p>Two conflicts in <code>label-audit.md</code> are unresolved at the time of writing. They <strong>do not block</strong> the editorial guidance below, but they constrain what you can confidently say about token authority and the info-icon API.</p>
+
+  <div class="callout-warn">
+    <strong>CONFLICT — Token name/size for label text.</strong> The Oxygen MCP returns <code>label01</code> (Inter 12px / 16px line height, weight 400) at <code>tokens.md §1</code>. Figma resolves the same surface to <code>typography/body01</code> (Inter 14px / 20px, weight 400) at <code>Label-figma.md §3</code>. One is authoritative for the React <code>Label</code>; the other is a parallel ramp used elsewhere. Pairs below avoid prescribing a specific type-ramp token and stay at the "use the canonical component, don't restyle" level.
+  </div>
+
+  <div class="callout-warn">
+    <strong>CONFLICT — Figma <code>information</code> boolean ↔ Oxygen <code>infoBoxText</code> / <code>infoBoxButtonLabel</code> mapping.</strong> <code>Label-figma.md</code> shows a single boolean <code>information</code> that shows/hides an Icon Button slot. The React API exposes three related props — <code>infoBoxText</code>, <code>infoBoxShowOn</code>, <code>infoBoxButtonLabel</code> — and the exact mapping is unverified. Pairs about <em>whether</em> to use the info affordance are fine; pairs about <em>which</em> prop drives the visibility are deferred.
+  </div>
+
+  <hr>
+
+  <h2>Anatomy</h2>
+  <p>The Figma <code>_base_form_label</code> node composes the Label from up to four numbered parts plus an optional inline action exposed only via the React API:</p>
+
+  <ol class="anatomy-list">
+    <li><strong>Label text</strong> — the visible string that names the associated control. Driven by the <code>value</code> prop. Rendered with <code>text/textColor01</code> (<code>#26252A</code> Light / <code>#FFFFFF</code> Dark). MCP and Figma disagree on the type ramp — see Conflict above.</li>
+    <li><strong>Required asterisk <code>*</code></strong> <em>(optional)</em> — shown when <code>isRequired={true}</code>. Rendered with <code>error/error01</code> (<code>#CB2233</code> Light / <code>#F24D5F</code> Dark). The asterisk is <strong>visual only</strong> — the programmatic required signal must come from <code>aria-required="true"</code> (or the native <code>required</code> attribute) on the associated form control.</li>
+    <li><strong>Info icon button</strong> <em>(optional)</em> — an <code>Icon Button</code> slot that opens an explanatory tooltip on hover or click. A <strong>separate keyboard focus stop</strong> with its own accessible name from <code>infoBoxButtonLabel</code>; trigger behaviour is controlled by <code>infoBoxShowOn</code>.</li>
+    <li><strong>Inline action link</strong> <em>(optional, React only)</em> — exposed via <code>action</code>, <code>actionLabel</code>, <code>actionTarget</code>, <code>otherActionProps</code>. Used for adjacent affordances like "Forgot password?" next to a password field. Not represented as a Figma variant on the current <code>_base_form_label</code> node.</li>
+    <li><strong>Overflow tooltip</strong> <em>(<code>showTooltipOnOverflow</code>)</em> — surfaces the full label text when truncated in a narrow container.</li>
+    <li><strong>Wrapped text</strong> <em>(<code>shouldWrapText</code>)</em> — allows the label string to break across multiple lines instead of truncating.</li>
+  </ol>
+
+  <blockquote>
+    <strong>Layout.</strong> The Figma anatomy uses a horizontal H Stack with <code>items-center</code>, a <strong>4 px hardcoded gap</strong> between the label text and the icon button, and the icon button wrapper itself has 2 px padding and a 6 px corner radius. The hardcoded values are flagged as missing spacing tokens.
+  </blockquote>
+
+  <p class="source-line">Source: <code>Label-figma.md §1, §3, §4</code> · <code>props.md</code> · <code>accessibility.md</code>.</p>
+
+  <hr>
+
+  <h2>Overview</h2>
+  <p>A single Oxygen package, <code>@8x8/oxygen-label</code>, exports one component plus a typed export for <code>actionTarget</code>:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Component</th><th>Use for</th><th>Key props</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>Label</code></td>
+          <td>The visible name of a form control — paired with <code>Input</code>, <code>Checkbox</code>, <code>Select</code>, etc.</td>
+          <td><code>value</code>, <code>htmlFor</code>, <code>isRequired</code>, <code>isDisabled</code>, <code>shouldWrapText</code>, <code>showTooltipOnOverflow</code>, <code>action</code>+<code>actionLabel</code>+<code>actionTarget</code>, <code>infoBoxText</code>+<code>infoBoxShowOn</code>+<code>infoBoxButtonLabel</code></td>
+        </tr>
+        <tr>
+          <td><code>ActionTarget</code> <em>(secondary export)</em></td>
+          <td>Type for the <code>actionTarget</code> prop — values like <code>_blank</code>, <code>_self</code></td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>A Label renders an HTML <code>&lt;label&gt;</code> element. When <code>htmlFor</code> matches the <code>id</code> of a form control, the browser provides:</p>
+  <ul class="bullet-list">
+    <li><strong>Click affordance.</strong> Clicking the label moves keyboard focus to the associated control.</li>
+    <li><strong>Screen-reader announcement.</strong> Assistive technology announces the label text when the user reaches the associated control.</li>
+    <li><strong>Programmatic association.</strong> The connection is exposed via the accessibility tree without extra ARIA — see WCAG 1.3.1.</li>
+  </ul>
+
+  <p class="source-line">Source: <code>props.md</code> · <code>accessibility.md §1–§3</code> · every example in <code>examples.md</code> passes <code>htmlFor</code>.</p>
+
+  <hr>
+
+  <h2>Behaviour</h2>
+
+  <h3>Visible states</h3>
+  <p>The Figma <code>_base_form_label</code> node currently exposes only a <code>mode</code> axis (<code>light</code> / <code>dark</code>) plus two boolean toggles <code>information</code> and <code>isRequired</code>. React-level states like disabled, wrapped, and overflow-tooltip are not represented as Figma variants — they are surfaced only by props.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>State</th><th>Trigger</th><th>Effect</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Default</td><td>none</td><td>Label text in <code>text/textColor01</code>, horizontal layout</td></tr>
+        <tr><td>2</td><td>Required</td><td><code>isRequired={true}</code></td><td>Red asterisk <code>*</code> in <code>error/error01</code></td></tr>
+        <tr><td>3</td><td>With info</td><td><code>infoBoxText</code> set</td><td>Icon button slot appears; opens tooltip per <code>infoBoxShowOn</code></td></tr>
+        <tr><td>4</td><td>Disabled</td><td><code>isDisabled={true}</code></td><td>Label muted visually — <strong>not represented as a Figma variant</strong></td></tr>
+        <tr><td>5</td><td>Wrapped</td><td><code>shouldWrapText={true}</code></td><td>Label text breaks across multiple lines</td></tr>
+        <tr><td>6</td><td>Overflow tooltip</td><td><code>showTooltipOnOverflow={true}</code></td><td>Truncated label surfaces full text in a tooltip on hover/focus</td></tr>
+        <tr><td>7</td><td>Hover on info icon</td><td>pointer over info button</td><td>Inherits Icon Button hover styling</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout-warn">
+    <strong>⚠ Disabled visual is a SOURCE_GAP.</strong> The disabled treatment for the label text itself is not represented in Figma. The React <code>Label</code> accepts <code>isDisabled</code> and the prop is documented, but the canonical muted colour token is not asserted by either MCP or Figma. Pairs below talk about <em>pairing the prop with the control's disabled state</em>, not about the specific muted colour.
+  </div>
+
+  <h3>Keyboard</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Key</th><th>Behaviour</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>Click</code> on label</td><td>Moves focus to the form control referenced by <code>htmlFor</code></td></tr>
+        <tr><td><code>Tab</code></td><td>Moves focus into the info icon button if present (separate focus stop)</td></tr>
+        <tr><td><code>Enter</code> / <code>Space</code></td><td>Activates the info icon button or the inline action link</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="source-line">Source: <code>Label-figma.md §2</code> · <code>props.md</code> · <code>accessibility.md §7</code>.</p>
+
+  <hr>
+
+  <h2>Best Practices</h2>
+
+  <h3>When to use</h3>
+  <ul class="bullet-list">
+    <li>To name a form control whose value the user is being asked to provide — input, textarea, select, checkbox, radio group, toggle.</li>
+    <li>When the control needs an inline secondary action that semantically belongs to "this field" (e.g. "Forgot password?" next to a password input).</li>
+    <li>When a field needs a brief explanatory tooltip that's longer than a placeholder allows but shorter than helper text deserves (e.g. "Where do I find this?").</li>
+    <li>For required-field signalling — pair <code>isRequired</code> on the Label with <code>aria-required="true"</code> (or the native <code>required</code> attribute) on the control.</li>
+  </ul>
+
+  <h3>When not to use <em>(editorial — not on a published docs page)</em></h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Situation</th><th>Why</th><th>Use instead</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>You need helper or error text below the field</td>
+          <td>Helper text is the responsibility of the form control's own slot, not the Label</td>
+          <td>The host component's helper/error slot</td>
+        </tr>
+        <tr>
+          <td>You need a placeholder</td>
+          <td>Placeholders live inside the field's value affordance and disappear on focus — they are not labels</td>
+          <td><code>placeholder</code> on the control (sparingly) <strong>plus</strong> a real Label</td>
+        </tr>
+        <tr>
+          <td>You need a non-form heading</td>
+          <td><code>&lt;label&gt;</code> semantics are reserved for form controls; using it for arbitrary section titles confuses assistive technology</td>
+          <td>A heading element (<code>h2</code>–<code>h4</code>) or Heading/Title typography component</td>
+        </tr>
+        <tr>
+          <td>You need a clickable affordance with no associated control</td>
+          <td><code>&lt;label&gt;</code> exists to forward focus — without an associated control its click behaviour is undefined</td>
+          <td>A <code>Button</code> or <code>Link</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="source-line">Source: <code>accessibility.md §1–§3</code> · <code>props.md</code> · <code>Input-usage.md</code> (helper/error pattern lives on the control).</p>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <p>These pairs are derived editorially from the extracted artifacts. No Figma ✅ Do / ❌ Don't card frames exist for Label at the time of writing, and the published docs page returned 404. Replace pairs verbatim if a Figma examples page is created with Do/Don't cards.</p>
+
+  <section class="pairs-section">
+
+    <!-- Pair 1 -->
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Always associate the Label with its control via <code>htmlFor</code></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Pass <code>htmlFor</code> and match the <code>id</code> on the next control</p>
+          <p class="card-body">The browser then routes label clicks to the input, and screen readers read "Email address, edit text" instead of just "edit text".</p>
+          <pre class="card-code">&lt;Label value="Email address" htmlFor="email" /&gt;
+&lt;Input id="email" /&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Ship a Label with no <code>htmlFor</code></p>
+          <p class="card-body">The visual pairing is purely cosmetic. Sighted mouse users can aim at the field, but keyboard users get no focus hop and assistive technology has no programmatic relationship to read.</p>
+          <pre class="card-code">{/* Wrong — no association */}
+&lt;Label value="Email address" /&gt;
+&lt;Input id="email" /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>accessibility.md §3</code> (native <code>&lt;label&gt;</code> + <code>htmlFor</code>) · <code>accessibility.md §10</code> (WCAG 1.3.1) · <code>examples.md</code> (every example shows the pairing).</p>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Use <code>isRequired</code> for the required signal, not text inside <code>value</code></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Set <code>isRequired</code> and let Oxygen render the indicator</p>
+          <p class="card-body">The component renders the consistent <code>*</code> in <code>error/error01</code> and design-system audits stay reliable. Pair <code>aria-required="true"</code> on the input so assistive technology hears the constraint, not just sees it.</p>
+          <pre class="card-code">&lt;Label value="Password" htmlFor="password" isRequired /&gt;
+&lt;Input id="password" type="password"
+  aria-required="true" /&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Bake the indicator into the label text</p>
+          <p class="card-body">Inline <code>*</code> or "(required)" lose the token-driven colour, can't be localised independently of the label text, and turn into noise when an English screen reader reads "Password asterisk".</p>
+          <pre class="card-code">{/* Wrong — visual drift, no a11y signal */}
+&lt;Label value="Password *" htmlFor="password" /&gt;
+
+{/* Wrong — verbose, inconsistent across the form */}
+&lt;Label value="Password (required)"
+  htmlFor="password" /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md</code> (<code>isRequired</code>) · <code>Label-figma.md §2</code> · <code>accessibility.md §4</code>.</p>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Pair <code>isDisabled</code> on the Label with <code>isDisabled</code> on the control</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Disable the Label and the control together</p>
+          <p class="card-body">Visual muting on the Label communicates "this field is off" to sighted users; <code>isDisabled</code> on the control supplies the <code>disabled</code> / <code>aria-disabled="true"</code> attribute that assistive technology actually uses to announce the state.</p>
+          <pre class="card-code">&lt;Label value="Username" htmlFor="username"
+  isDisabled /&gt;
+&lt;Input id="username" isDisabled /&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Disable only the Label and leave the control interactive</p>
+          <p class="card-body">A muted Label paired with a live Input lies to sighted users about the field's availability and tells assistive technology nothing — the user can still tab into the input, type, and submit. The two states have to move in lockstep.</p>
+          <pre class="card-code">{/* Wrong — visual lies; control still focusable */}
+&lt;Label value="Username" htmlFor="username"
+  isDisabled /&gt;
+&lt;Input id="username" /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>accessibility.md §5</code> (Label <code>isDisabled</code> is visual only) · <code>props.md</code> · <code>examples.md</code>.</p>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Pick one truncation strategy: wrap <strong>or</strong> tooltip-on-overflow, not both</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Choose <code>shouldWrapText</code> for stacked forms, or <code>showTooltipOnOverflow</code> for tight grids</p>
+          <p class="card-body">Wrap when vertical room exists and breaking the row rhythm is acceptable. Tooltip-on-overflow when horizontal rhythm matters and vertical drift would break the grid.</p>
+          <pre class="card-code">&lt;Label value="A longer label that needs to wrap"
+  htmlFor="my-input" shouldWrapText /&gt;
+&lt;Input id="my-input" /&gt;
+
+{/* OR — for tight grids */}
+&lt;Label value="A very long label that might overflow"
+  htmlFor="my-input" showTooltipOnOverflow /&gt;
+&lt;Input id="my-input" /&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Enable both, or leave both off when overflow is likely</p>
+          <p class="card-body">Wrap defeats the tooltip-on-overflow trigger, so the tooltip never fires. Leaving both off in a tight container lets the browser hard-clip the string — sighted users lose the latter part of the label and keyboard users get nothing to fall back to.</p>
+          <pre class="card-code">{/* Wrong — wrap cancels the tooltip */}
+&lt;Label value="A very long label…"
+  shouldWrapText showTooltipOnOverflow
+  htmlFor="my-input" /&gt;
+
+{/* Wrong — silent clipping */}
+&lt;Label value="A very long label that might overflow"
+  htmlFor="my-input" /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md</code> (<code>shouldWrapText</code>, <code>showTooltipOnOverflow</code>) · <code>examples.md §6, §7</code>.</p>
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Reserve the inline <code>action</code> link for <strong>one</strong> affordance that belongs to "this field"</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use one short action link for a per-field secondary affordance</p>
+          <p class="card-body">A single inline action sits to the right of the field name and points at a destination semantically tied to that field — "Forgot password?", "Generate", "Reset", "Learn how to find this".</p>
+          <pre class="card-code">&lt;Label
+  value="Password"
+  htmlFor="password"
+  actionLabel="Forgot password?"
+  action={() =&gt; navigate('/reset-password')}
+/&gt;
+&lt;Input id="password" type="password" /&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Stack multiple actions in the Label, or use it as a primary submit affordance</p>
+          <p class="card-body">Stacking multiple inline links clutters the row and ambiguates the accessible name of the action. Primary actions belong in a <code>Button</code>, not embedded in the Label.</p>
+          <pre class="card-code">{/* Wrong — toolbar inside a Label */}
+&lt;Label value="Password"
+  actionLabel="Forgot password? · Reset · Generate"
+  action={...} /&gt;
+
+{/* Wrong — Label is not a Submit button */}
+&lt;Label value="Save changes"
+  actionLabel="Save"
+  action={submitForm} /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md</code> (<code>action</code>, <code>actionLabel</code>, <code>actionTarget</code>) · <code>examples.md §4</code> ("Forgot password?" pattern).</p>
+    </div>
+
+    <!-- Pair 6 -->
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Use the info icon for short context, not for instructions or required help</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Put short "what does this mean?" copy in the info tooltip — and always supply <code>infoBoxButtonLabel</code></p>
+          <p class="card-body">Reach for the info icon when the user needs orientation about what the field is — provenance, expected format, where to find the value. Keep it to one or two sentences. <code>infoBoxButtonLabel</code> is required for the button to have an accessible name.</p>
+          <pre class="card-code">&lt;Label
+  value="API Key"
+  htmlFor="api-key"
+  infoBoxText="Your API key can be found in
+    your account settings."
+  infoBoxButtonLabel="More information about API key"
+/&gt;
+&lt;Input id="api-key" /&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Use the info icon for instructions, format hints, or error guidance</p>
+          <p class="card-body">Instructions need to stay visible while typing — that's helper text on the form control. Error guidance must persist after focus moves on — that's the control's error slot. The info tooltip is "orientation on demand", not "guidance you need while typing".</p>
+          <pre class="card-code">{/* Wrong — format rules belong in helper text */}
+&lt;Label value="Password"
+  infoBoxText="Must be 8+ characters, include one
+    uppercase letter, one digit, one symbol…"
+  infoBoxButtonLabel="Password rules" /&gt;
+
+{/* Wrong — errors disappear with the tooltip */}
+&lt;Label value="Email"
+  infoBoxText="That email is already registered."
+  infoBoxButtonLabel="Email error" /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>accessibility.md §6</code> (info button is a separate focus stop; <code>infoBoxButtonLabel</code> required) · <code>Label-figma.md §1</code> (Icon Button slot) · <code>props.md</code>. Pair addresses <em>when</em> to use the affordance, not which prop drives it (CONFLICT pending).</p>
+    </div>
+
+    <!-- Pair 7 -->
+    <div class="pair">
+      <div class="pair-label">Pair 7 — Keep label text short, sentence-case, and free of trailing punctuation</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use 1–3 word labels in sentence case, with no terminal punctuation</p>
+          <p class="card-body">Sentence case scans faster than Title Case, matches OS-level form conventions, and avoids capitalising prepositions inconsistently. Skipping trailing colons or periods keeps the visual rhythm clean and prevents screen readers from announcing "Email address colon".</p>
+          <pre class="card-code">&lt;Label value="Email address" htmlFor="email" /&gt;
+&lt;Label value="Password"      htmlFor="password" /&gt;
+&lt;Label value="Phone number"  htmlFor="phone" /&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Write sentence-shaped or punctuated labels</p>
+          <p class="card-body">Long, sentence-shaped labels stretch form rows unpredictably, fight with <code>showTooltipOnOverflow</code>, and waste screen-reader time on filler words. Reserve verbs and full sentences for helper text on the control.</p>
+          <pre class="card-code">{/* Wrong — instruction-shaped, sounds like a question */}
+&lt;Label value="Please enter your email address below:"
+  htmlFor="email" /&gt;
+
+{/* Wrong — Title Case + colon noise */}
+&lt;Label value="Email Address:" htmlFor="email" /&gt;
+
+{/* Wrong — labels name fields, they don't narrate the action */}
+&lt;Label value="Enter password" htmlFor="password" /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>accessibility.md §11</code> (WCAG 2.4.6) · <code>examples.md</code> (every example uses 1–3 word labels with no terminal punctuation) · <code>Input-usage.md</code> Pair 7 (consistency).</p>
+    </div>
+
+    <!-- Pair 8 -->
+    <div class="pair">
+      <div class="pair-label">Pair 8 — Stack the Label above the form control with consistent vertical rhythm</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Place the Label directly above the control, with a consistent gap across the form</p>
+          <p class="card-body">A single repeating Label-then-control rhythm makes the form scannable, lets sighted users predict where the next field begins, and gives keyboard users a reliable mental model of which Label belongs to which control.</p>
+          <pre class="card-code">&lt;div className="form-field"&gt;
+  &lt;Label value="Email address" htmlFor="email" /&gt;
+  &lt;Input id="email" /&gt;
+&lt;/div&gt;
+&lt;div className="form-field"&gt;
+  &lt;Label value="Password" htmlFor="password" isRequired /&gt;
+  &lt;Input id="password" type="password" /&gt;
+&lt;/div&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Free-float Labels, mix patterns, or skip the Label entirely on "obvious" fields</p>
+          <p class="card-body">Inline-left labels are a different design pattern than Oxygen's stacked default — mixing them within one form breaks visual scanning. Replacing the Label with a placeholder erases the affordance when typing starts and fails WCAG 3.3.2.</p>
+          <pre class="card-code">{/* Wrong — inline-left clashes with stacked default */}
+&lt;div style={{ display: 'flex' }}&gt;
+  &lt;Label value="Email" htmlFor="email"
+    style={{ width: 120 }} /&gt;
+  &lt;Input id="email" /&gt;
+&lt;/div&gt;
+
+{/* Wrong — placeholder masquerading as a label */}
+&lt;Input id="email" placeholder="Email address" /&gt;
+
+{/* Wrong — one Label, two controls, ambiguous */}
+&lt;Label value="Phone" /&gt;
+&lt;Input id="phone-country" /&gt;
+&lt;Input id="phone-number" /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>Input-usage.md</code> (canonical form-row pattern) · <code>examples.md</code> (every snippet stacks Label above Input) · <code>Label-figma.md §4</code> (the Label's internal auto-layout is horizontal; vertical placement is the host form's responsibility).</p>
+    </div>
+
+  </section>
+
+  <hr>
+
+  <h2>Accessibility quick reference</h2>
+  <p>Cross-references to <code>accessibility.md</code>:</p>
+  <ul class="bullet-list">
+    <li>Renders a native HTML <code>&lt;label&gt;</code> — implicit <code>role="none"</code>, programmatic association via <code>htmlFor</code> ↔ <code>id</code>.</li>
+    <li>Clicking the Label moves focus to the associated control — native browser behaviour, not a JS handler.</li>
+    <li><code>isRequired</code> paints the visual <code>*</code> only. Programmatic required state must come from <code>aria-required="true"</code> (or the native <code>required</code> attribute) on the associated control.</li>
+    <li><code>isDisabled</code> mutes the Label visually but <strong>does not</strong> suppress assistive-tech announcement; pair with <code>isDisabled</code> on the control to convey disabled state through <code>aria-disabled</code>.</li>
+    <li>The info button (<code>infoBoxText</code> + <code>infoBoxButtonLabel</code>) is a <strong>separate focus stop</strong>. Always supply <code>infoBoxButtonLabel</code> — without it the trigger has no accessible name.</li>
+    <li>When <code>showTooltipOnOverflow</code> is on, the tooltip content must be reachable by keyboard and announced by assistive technology.</li>
+    <li>WCAG 2.1 AA criteria addressed by Label: <strong>1.3.1</strong>, <strong>1.4.3</strong>, <strong>2.1.1</strong>, <strong>2.4.6</strong>, <strong>3.3.2</strong>, <strong>4.1.2</strong>.</li>
+  </ul>
+
+  <p>See <a href="./accessibility.md">accessibility.md</a> for the full WCAG 2.1 AA checklist.</p>
+
+  <hr>
+
+  <h2>Related components</h2>
+  <ul class="bullet-list">
+    <li><strong><code>Input</code></strong> — the most common Label pairing. Form-row rhythm, helper text, and error slot live on Input, not on the Label. See <a href="../Input/Input-usage.md">Input-usage.md</a>.</li>
+    <li><strong><code>Checkbox</code></strong> — bundles its own internal label via the <code>label</code> prop; do <strong>not</strong> wrap a Checkbox with this Label component. See <a href="../Checkbox/checkbox-usage.md">checkbox-usage.md</a> Pair 4.</li>
+    <li><strong><code>Select</code></strong> — accepts a Label alongside it via <code>htmlFor</code> like Input.</li>
+    <li><strong><code>Button</code></strong> — for primary actions or any clickable affordance that does not belong to a single form field; do not use the Label's inline <code>action</code> slot as a Button substitute. See Pair 5.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Gaps</h2>
+  <section class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Figma Do/Don't examples</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span></td>
+            <td>No <code>↳ Label examples</code> Figma page with Do/Don't card frames exists. Pairs above are editorially derived. Re-run <code>figma-extract-usage</code> if such a page is created.</td>
+          </tr>
+          <tr>
+            <td>Published docs page</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span></td>
+            <td><code>oxygen.8x8.com/components/label/usage</code> returned HTTP 404 on 2026-05-13 — verify the URL or wait for publication, then transcribe verbatim.</td>
+          </tr>
+          <tr>
+            <td>Token authority for label text</td>
+            <td><span class="badge-tag badge-conflict">CONFLICT</span></td>
+            <td>MCP says <code>label01</code> (12px); Figma says <code>typography/body01</code> (14px). Pairs avoid prescribing a specific ramp until resolved. See <code>label-audit.md</code> <code>scores.tokens</code>.</td>
+          </tr>
+          <tr>
+            <td>Info-icon prop mapping</td>
+            <td><span class="badge-tag badge-conflict">CONFLICT</span></td>
+            <td>Figma <code>information</code> boolean ↔ Oxygen <code>infoBoxText</code> / <code>infoBoxButtonLabel</code> mapping unverified. Pair 6 addresses <em>when</em> to use the affordance, not which prop drives it.</td>
+          </tr>
+          <tr>
+            <td>Disabled visual treatment</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span></td>
+            <td><code>isDisabled</code> is not a Figma variant on <code>_base_form_label</code>. Pair 3 talks about prop pairing, not muted colour token.</td>
+          </tr>
+          <tr>
+            <td><code>shouldWrapText</code> / <code>showTooltipOnOverflow</code> variants</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span></td>
+            <td>Neither behaviour is represented as a Figma variant; specs live only in the React API.</td>
+          </tr>
+          <tr>
+            <td>Hardcoded spacing</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span></td>
+            <td>H Stack gap (4 px), Icon Button padding (2 px), and corner radius (6 px) have no token bindings. Pair 8 talks about form-row rhythm, not the Label's internal spacing.</td>
+          </tr>
+          <tr>
+            <td>Inline-action prop signatures</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span> GAP-002</td>
+            <td><code>action</code> is typed as <code>ActionProps['action']</code> without the underlying signature documented. Pair 5 uses a <code>() =&gt; void</code> shape pulled from <code>examples.md §4</code> — replace once <code>ActionProps</code> is documented.</td>
+          </tr>
+          <tr>
+            <td>Editorial "When not to use"</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span></td>
+            <td>The "When not to use" rows are editorial — no published-docs source exists to anchor to. Confirm with the Oxygen team and either promote to published docs or trim.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Source: Editorial — derived from <code>props.md</code>, <code>examples.md</code>, <code>tokens.md</code>, <code>accessibility.md</code>, <code>Label-figma.md</code>, <code>label-pui.md</code>, and <code>label-audit.md</code>. Published Oxygen docs page (<code>/components/label/usage</code>) returned 404 on 2026-05-13 via WebFetch. No Figma <code>↳ Label examples</code> page exists. Format follows <a href="../DataTable/DataTable-usage.md">DataTable-usage.md</a> precedent (derivation-only mode).
+  </footer>
+
+</div>
+</body>
+</html>

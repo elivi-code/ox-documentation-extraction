@@ -13,6 +13,7 @@ siblings:
   - "[[Label/accessibility]]"
   - "[[Label/Label-figma]]"
   - "[[Label/label-pui]]"
+  - "[[Label/label-usage]]"
   - "[[Label/label-audit]]"
 tags:
   - oxygen
@@ -23,7 +24,7 @@ tags:
 ---
 # Label — Tokens
 
-> **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md)
+> **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [label-usage.md](label-usage.md)
 
 ## Typography tokens
 

@@ -13,6 +13,7 @@ siblings:
   - "[[Label/tokens]]"
   - "[[Label/accessibility]]"
   - "[[Label/Label-figma]]"
+  - "[[Label/label-usage]]"
   - "[[Label/label-audit]]"
 tags:
   - oxygen

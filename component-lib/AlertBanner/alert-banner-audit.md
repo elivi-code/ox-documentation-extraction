@@ -27,7 +27,7 @@ scores:
   anatomy:          { coverage: "4/8",  score: 0.50 }
   api_props:        { coverage: "4/5",  score: 0.80 }
   color_tokens:     { coverage: "2/9",  score: 0.22 }
-  structure_spacing:{ coverage: "5/9",  score: 0.56 }
+  structure_spacing: { coverage: "5/9",  score: 0.56 }
   examples:         { coverage: "4/5",  score: 0.80 }
   accessibility:    { coverage: "4/6",  score: 0.67 }
   usage_patterns:   { coverage: "0/5",  score: 0.00 }

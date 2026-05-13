@@ -4,8 +4,9 @@ package: "@8x8/oxygen-label"
 rubric_version: "1.0"
 extracted: 2026-05-01
 audited: 2026-05-01
+re_audited: 2026-05-13
 verdict: "NO"
-verdict_reason: "2 unresolved CONFLICTs — token names/sizes diverge between MCP and Figma; Figma information boolean mapping to Oxygen infoBox props unverified"
+verdict_reason: "2 unresolved CONFLICTs — token names/sizes diverge between MCP and Figma; Figma information boolean mapping to Oxygen infoBox props unverified. Editorial label-usage.md (derivation-only) added 2026-05-13 closes the usage SOURCE_GAP but the two CONFLICTs still gate doc-rewrite."
 
 files_found:
   - props.md
@@ -14,9 +15,14 @@ files_found:
   - accessibility.md
   - Label-figma.md
   - label-pui.md
+  - label-usage.md
+  - label-usage.html
 
-files_missing:
-  - label-usage.md   # Desktop Bridge not connected — figma-extract-usage hard-stopped
+files_missing: []
+# Note: label-usage.md added 2026-05-13 as editorial draft (derivation-only mode).
+# Published Oxygen docs page (https://oxygen.8x8.com/components/label/usage) returned HTTP 404
+# on 2026-05-13. No Figma "↳ Label examples" page exists. Pairs derived from extracted
+# artifacts. Re-run /doc-audit to refresh `scores.usage` from 0.00 to editorial-capped value.
 
 scores:
   props:         { score: 0.82, coverage: "12/14 props fully sourced", note: "11 prop descriptions heuristically derived; 2 opaque types" }
@@ -24,12 +30,12 @@ scores:
   tokens:        { score: 0.50, coverage: "3 tokens documented; CONFLICT on token identity/size vs Figma", note: "label01 (12px MCP) vs typography/body01 (14px Figma)" }
   accessibility: { score: 0.82, coverage: "ARIA, keyboard, WCAG 2.1 AA checklist present", note: "All content inferred from component nature — no MCP or Figma source data" }
   figma:         { score: 0.78, coverage: "Anatomy + tokens + spacing + component properties confirmed via Desktop Bridge", note: "GAP-013/GAP-014 resolved; isDisabled variant still missing from Figma" }
-  usage:         { score: 0.00, coverage: "0/1 — file missing", note: "SOURCE_GAP: Desktop Bridge required for figma-extract-usage" }
+  usage:         { score: 0.75, coverage: "8 Do/Don't pairs + anatomy + behaviour + best practices", note: "Editorial (derivation-only) — published Oxygen Label docs page returned 404 on 2026-05-13; no Figma ↳ Label examples page exists. Capped under 1.0 until either source is available. Pairs grounded in props.md, examples.md, accessibility.md, and Label-figma.md." }
   pui:           { score: 1.00, coverage: "PASS — NO RELEVANT PUI CONTEXT confirmed", note: "" }
 
 counts:
   doc_gaps: 10
-  source_gaps: 4   # GAP-013 and GAP-014 resolved 2026-05-01 via Desktop Bridge
+  source_gaps: 3   # was 4 — usage SOURCE_GAP closed 2026-05-13 via editorial label-usage.md
   conflicts: 2
   warnings: 3
 
