@@ -11,10 +11,11 @@ files_found:
   - tokens.md
   - accessibility.md
   - Tag-figma.md
+  - Tag-usage.md  # editorial draft authored 2026-05-15 — no Figma Do/Don't frames available
+  - Tag-usage.html  # HTML render of Tag-usage.md
   - figma-screenshot-tag.png  # bonus asset, not a scored file
 
 files_missing:
-  - Tag-usage.md  # SOURCE_GAP — figma-extract-usage hard-stopped (no Do/Don't frames on examples page)
   - Tag-pui.md    # N/A — confirmed no Platform UI relevance (PUI MCP search returned only MFE false positives)
 
 scores:
@@ -23,18 +24,18 @@ scores:
   tokens: 0.83
   accessibility: 0.80
   figma: 0.75
-  usage: 0.20
+  usage: 0.65   # editorial draft authored 2026-05-15 from artifacts + public usage page (SkeletonCircle precedent — same band)
   pui: 1.00
-  overall: 0.70
+  overall: 0.76
 
 counts:
   doc_gaps: 2
-  source_gaps: 10
+  source_gaps: 10   # GAP-011 still SOURCE_GAP but severity downgraded to minor on 2026-05-15 after editorial usage doc
   conflicts: 0
   warnings: 3
 
-verdict: YES
-verdict_reason: "Zero CONFLICTs and zero blocker-severity gaps — all four required files (props.md, examples.md, Tag-figma.md, accessibility.md) are present. doc-rewrite can proceed. Major gaps (GAP-003: inferred examples; GAP-011: no usage guidance) will limit doc-rewrite output quality for those dimensions."
+verdict: "YES"
+verdict_reason: "Zero CONFLICTs and zero blocker-severity gaps — all four required files (props.md, examples.md, Tag-figma.md, accessibility.md) are present, and an editorial Tag-usage.md was authored 2026-05-15. doc-rewrite can proceed. Major gap remaining: GAP-003 (inferred examples). GAP-011 downgraded to minor on 2026-05-15 — Tag-usage.md exists as an editorial draft pending Figma Do/Don't card frames."
 
 gaps:
   - id: GAP-001
@@ -179,16 +180,16 @@ gaps:
 
   - id: GAP-011
     dimension: usage
-    severity: major
+    severity: minor   # downgraded 2026-05-15 — editorial Tag-usage.md now exists; original blocker softened
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
     evidence:
-      source_file: "(Tag-usage.md — not written)"
-      location: "figma-extract-usage run result"
-      finding: "figma-extract-usage hard-stopped on both conditions: (1) Desktop Bridge was not connected; (2) the Figma examples page (node 52829:11107) contains anatomy/type documentation sections, not ✅ Do / ❌ Don't card frames. No usage guidance pairs were found. Tag-usage.md was not written."
-    fix_action: "Request designer to create ✅ Do / ❌ Don't card frames in the Figma examples page following the standard template. Re-run figma-extract-usage once frames are in place."
-    blocks: [docusaurus]
+      source_file: Tag-usage.md
+      location: "Tag-usage.md frontmatter pipeline_stage: editorial · source_type: editorial · audit_verdict: null"
+      finding: "Editorial Tag-usage.md authored 2026-05-15 from props.md, examples.md, accessibility.md, tokens.md, Tag-figma.md, and the public usage page (oxygen.8x8.com/components/tags/usage). 6 Do/Don't pairs, every claim grounded in a file path or URL. The Figma examples page (52829:11107) still lacks ✅ Do / ❌ Don't card frames — figma-extract-usage cannot run, so the editorial draft remains provisional."
+    fix_action: "Request designer to create ✅ Do / ❌ Don't card frames in the Figma examples page following the standard template. Re-run figma-extract-usage once frames are in place and replace the editorial Tag-usage.md."
+    blocks: []
     dependency: []
 
   - id: GAP-012
@@ -230,6 +231,7 @@ siblings:
   - "[[Tag/tokens]]"
   - "[[Tag/accessibility]]"
   - "[[Tag/Tag-figma]]"
+  - "[[Tag/Tag-usage]]"
 tags:
   - oxygen
   - component/Tag
@@ -241,9 +243,9 @@ tags:
 
 > **Verdict: YES** — No conflicts; no blocker gaps. `doc-rewrite` can proceed.
 >
-> Major caveats: all examples are inferred (GAP-003) and no usage Do/Don't guidance exists (GAP-011). The spec will be solid on props, tokens, and accessibility but weak on curated examples and editorial usage guidance until those source gaps are resolved.
+> Major caveat remaining: all examples are inferred (GAP-003). GAP-011 (no usage Do/Don't from Figma) was **downgraded to minor on 2026-05-15** after an editorial `Tag-usage.md` was authored from extracted artifacts + the public oxygen.8x8.com Tag usage page. The spec will be solid on props, tokens, accessibility, and usage but weak on curated examples until the Storybook source gap closes.
 
-**Audited:** 2026-05-01 · **Rubric:** v1.0
+**Audited:** 2026-05-01 · **Re-audited:** 2026-05-15 (usage doc added) · **Rubric:** v1.0
 
 ---
 
@@ -257,7 +259,8 @@ tags:
 | `accessibility.md` | ✅ Present | Full WCAG checklist; all content inferred — no official source |
 | `Tag-figma.md` | ✅ Present | Two component sets; full token tables; hardcoded spacings noted |
 | `figma-screenshot-tag.png` | ✅ Present | Canvas screenshot (Standard + Avatar sets) |
-| `Tag-usage.md` | ❌ Missing | SOURCE_GAP — no Do/Don't frames on Figma examples page |
+| `Tag-usage.md` | ✅ Present (editorial) | Authored 2026-05-15 from artifacts + public usage page; 6 Do/Don't pairs; provisional until Figma adds Do/Don't card frames |
+| `Tag-usage.html` | ✅ Present | HTML render of Tag-usage.md (same template as SkeletonCircle-usage.html) |
 | `Tag-pui.md` | ➖ N/A | Confirmed no Platform UI relevance |
 
 ---
@@ -271,9 +274,9 @@ tags:
 | Tokens | 0.83 | 9/11 | GAP-005 (close button × token), GAP-006 (variable bindings unconfirmed) |
 | Accessibility | 0.80 | 6/7 | GAP-012 (all content inferred, not officially sourced) |
 | Figma | 0.75 | 7/9 | GAP-008 (Avatar Tag yellow/green unconfirmed), GAP-009 (no hover states) |
-| Usage | 0.20 | 0/1 | GAP-011 (no file — no Do/Don't frames in Figma) |
+| Usage | 0.65 | 1/1 | GAP-011 downgraded (minor) — editorial Tag-usage.md authored 2026-05-15; pending Figma Do/Don't frames |
 | PUI | 1.00 | N/A | Confirmed not applicable |
-| **Overall** | **0.70** | | |
+| **Overall** | **0.76** | | |
 
 ---
 
@@ -313,7 +316,7 @@ tags:
 
 | ID | Severity | Type | Summary |
 |----|----------|------|---------|
-| GAP-011 | major | SOURCE_GAP | Tag-usage.md not written — no Do/Don't frames on Figma examples page |
+| GAP-011 | minor | SOURCE_GAP | Tag-usage.md written editorially 2026-05-15 from artifacts + public usage page; replace with figma-extract-usage output once Figma adds Do/Don't card frames |
 
 ### Accessibility (GAP-012)
 
@@ -335,10 +338,10 @@ tags:
 
 ## Suggested next actions
 
-1. **Run `doc-rewrite`** — verdict is YES; proceed with Tag-spec.md
+1. **Run `doc-rewrite`** — verdict is YES; proceed with Tag-spec.md (will now have editorial usage guidance to merge)
 2. **Resolve GAP-001** — inspect `@8x8/oxygen-tag` source for leading icon prop mechanism; update props.md and examples.md
 3. **Resolve GAP-003** — source verified Storybook examples once the Oxygen team adds them (scheduled check: 2026-05-08)
-4. **Resolve GAP-011** — request designer to add Do/Don't card frames to the Figma examples page; re-run `figma-extract-usage`
+4. **Resolve GAP-011 (now minor)** — request designer to add Do/Don't card frames to the Figma examples page; re-run `figma-extract-usage` and replace the editorial Tag-usage.md
 5. **Confirm GAP-008** — ask component owner whether Avatar Tag yellow/green omission is intentional
 
-_Source: doc-audit skill v1.0 · Extracted files in component-lib/Tag/ · Audited 2026-05-01_
+_Source: doc-audit skill v1.0 · Extracted files in component-lib/Tag/ · Audited 2026-05-01 · Re-audited 2026-05-15 after editorial usage doc_

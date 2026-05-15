@@ -32,7 +32,7 @@ counts:
   conflicts: 2
   warnings: 4
 
-verdict: NO
+verdict: "NO"
 verdict_reason: "2 CONFLICTs must be resolved before doc-rewrite can run (GAP-003: standalone/size type mismatch between MCP and Figma; GAP-012: hover token identity conflict between MCP search and Figma design context)."
 
 gaps:

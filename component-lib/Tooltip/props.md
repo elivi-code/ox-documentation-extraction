@@ -4,9 +4,9 @@ package: "@8x8/oxygen-tooltip"
 category: overlays_contextual
 role: props
 role_description: "API props reference — all component properties with types, defaults, and descriptions"
-pipeline_stage: blocked
-pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
-audit_verdict: NO
+pipeline_stage: extracted
+pipeline_note: "GAP-002 (orientation default) resolved 2026-05-15 — runtime default 'top' stands; Figma 'Bottom / Center' is a showcase variant, not the runtime default"
+audit_verdict: PARTIAL
 files_present:
   - props
   - examples

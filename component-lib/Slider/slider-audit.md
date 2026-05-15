@@ -3,9 +3,10 @@ rubric_version: "1.0"
 component: Slider
 package: "@8x8/oxygen-slider"
 extracted: "2026-04-29"
-audited: "2026-04-29"
+audited: "2026-05-15"
+prior_audit: "2026-04-29"
 verdict: PARTIAL
-verdict_reason: "One blocker SOURCE_GAP (slider-figma.md not produced by figma-extract skill). No CONFLICTs. Doc-rewrite can proceed on props, examples, tokens, accessibility, and pui dimensions."
+verdict_reason: "One blocker SOURCE_GAP remains (slider-figma.md not produced by figma-extract skill). No CONFLICTs. Usage SOURCE_GAP closed editorially 2026-05-15 (6 grounded Do/Don't pairs + HTML render — see WARN-003). Doc-rewrite can proceed on props, examples, tokens, accessibility, usage, and pui dimensions; figma_design_context dimension still blocked."
 
 dimension_scores:
   props_completeness:
@@ -24,18 +25,22 @@ dimension_scores:
     score: 0.0
     coverage: "0/1 — slider-figma.md absent; Figma data embedded in tokens.md and examples.md but not in canonical form"
   usage_guidelines:
-    score: 0.0
-    coverage: "0/1 — slider-usage.md absent; when-to-use content exists in MCP data but not extracted to file"
+    score: 0.65
+    coverage: "6/6 pairs editorial — no Figma examples page; full When-to-use / When-not-to-use lifted from oxygen.8x8.com/components/slider/usage; Do/Don't pairs grounded in extracted artifacts with citations; designer-unreviewed (see WARN-003)"
   pui_context:
     score: 1.0
     coverage: "1/1 — slider-pui.md present; engineer confirmed no relevant PUI context"
 
+available_dimensions_avg: 0.79
+overall_avg: 0.70
+
 summary:
-  doc_gaps: 4
-  source_gaps: 3
+  doc_gaps: 2
+  source_gaps: 4
   conflicts: 0
-  warnings: 2
-  total_gaps: 7
+  warnings: 3
+  total_gaps_open: 6
+  total_gaps_closed: 1
 
 gaps:
   - id: GAP-001
@@ -61,14 +66,15 @@ gaps:
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: true
+    status: CLOSED
+    closed_date: "2026-05-15"
+    closed_by: "Editorial Slider-usage.md + Slider-usage.html authored from extracted artifacts + oxygen.8x8.com/components/slider/usage. 6 Do/Don't pairs with citations grounded in props.md, examples.md, accessibility.md, tokens.md and the OX usage page bullets. No Figma examples page exists — see WARN-003."
     evidence:
-      source_file: ~
-      location: "Slider/ directory — slider-usage.md absent"
-      finding: "figma-extract-usage skill was not run. Do/Don't visual patterns and annotated usage guidelines from Figma are not available. OX MCP usage prose (when to use / not use) exists in examples.md but is insufficient for doc-rewrite."
-    fix_action: "Run figma-extract-usage skill for the Slider Figma node to produce slider-usage.md with Do/Don't examples"
-    blocks:
-      - doc-rewrite (usage_guidelines dimension)
-      - docusaurus-generate
+      source_file: Slider-usage.md
+      location: "component-lib/Slider/Slider-usage.md"
+      finding: "Slider-usage.md and Slider-usage.html now present (editorial). Figma `↳ Slider examples` page remains absent — figma-extract-usage cannot run until a designer creates the page."
+    fix_action: "Create a `↳ Slider examples` Figma page with Do/Don't cards; then run figma-extract-usage to replace the editorial draft."
+    blocks: []
     dependency: []
 
   - id: GAP-003
@@ -156,16 +162,25 @@ warnings:
     finding: "No example shows the testId prop in use. If the project uses automated testing conventions, a testing example with data-testid may be expected by consumers."
     source_file: examples.md
     location: "No testId example present"
+
+  - id: WARN-003
+    dimension: usage_guidelines
+    confidence: deterministic
+    finding: "Slider-usage.md is an editorial draft sourced from extracted artifacts and oxygen.8x8.com/components/slider/usage. No Figma `↳ Slider examples` page exists, so figma-extract-usage cannot run. The 6 Do/Don't pairs are grounded and cited but are designer-unreviewed derivations. The OX page itself contains no Do/Don't cards — only 'When to use' / 'When not to use' bullets — so the pairs were synthesised from those bullets plus props.md / examples.md / accessibility.md. Replace with figma-extract-usage output when a Figma examples page is created."
+    source_file: Slider-usage.md
+    location: "component-lib/Slider/Slider-usage.md"
+
 # --- navigation (added by component-map) ---
 role: audit
 pipeline_stage: spec_ready
-pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+pipeline_note: "Audit verdict PARTIAL — doc-rewrite can proceed on extracted dimensions; figma_design_context still blocked"
 siblings:
   - "[[Slider/props]]"
   - "[[Slider/examples]]"
   - "[[Slider/tokens]]"
   - "[[Slider/accessibility]]"
   - "[[Slider/slider-pui]]"
+  - "[[Slider/Slider-usage]]"
 tags:
   - oxygen
   - component/Slider
@@ -176,8 +191,9 @@ tags:
 # Slider — Audit Report
 
 > **Verdict: PARTIAL**
-> Rewrite can proceed on props, examples, tokens, accessibility, and pui dimensions.
-> `slider-figma.md` (blocker) and `slider-usage.md` (major) must be produced before doc-rewrite can complete the figma_design_context and usage_guidelines dimensions.
+> Rubric version: 1.0 · Re-audited: 2026-05-15 (prior: 2026-04-29)
+>
+> Usage SOURCE_GAP closed editorially 2026-05-15 (6 grounded Do/Don't pairs + HTML render — see WARN-003). Rewrite can proceed on props, examples, tokens, accessibility, usage, and pui dimensions. `slider-figma.md` (blocker) must still be produced by `figma-extract` before doc-rewrite can complete the figma_design_context dimension.
 
 ## File inventory
 
@@ -187,35 +203,51 @@ tags:
 | `examples.md` | ✅ Present | 6 clean examples |
 | `tokens.md` | ✅ Present | Figma-sourced; thumb tokens unresolved |
 | `accessibility.md` | ✅ Present | WCAG checklist complete |
-| `slider-figma.md` | ❌ Missing | **SOURCE_GAP — blocker** |
-| `slider-usage.md` | ❌ Missing | SOURCE_GAP — major |
+| `slider-figma.md` | ❌ Missing | **SOURCE_GAP — blocker** (GAP-001) |
+| `Slider-usage.md` | ✅ Present (editorial — see WARN-003) | Closed GAP-002 on 2026-05-15 |
+| `Slider-usage.html` | ✅ Present | HTML render of usage doc |
 | `slider-pui.md` | ✅ Present | NONE IDENTIFIED confirmed by engineer |
 
 ## Dimension scores
 
-| Dimension | Score | Coverage |
-|-----------|-------|----------|
-| Props completeness | 0.75 | 11/14 props described; 1/14 have defaults |
-| Examples coverage | 0.85 | 6 examples; basic → advanced present |
-| Token coverage | 0.78 | State × mode matrix complete; thumb + bg-track tokens unresolved |
-| Accessibility | 0.90 | Role, keyboard, focus ring, WCAG all present |
-| Figma design context | 0.00 | slider-figma.md absent |
-| Usage guidelines | 0.00 | slider-usage.md absent |
-| PUI context | 1.00 | No relevant PUI context (resolved) |
+| Dimension | Score | Coverage | Notes |
+|-----------|-------|----------|-------|
+| Props completeness | 0.75 | 11/14 props described; 1/14 have defaults | |
+| Examples coverage | 0.85 | 6 examples; basic → advanced present | |
+| Token coverage | 0.78 | State × mode matrix complete; thumb + bg-track tokens unresolved | |
+| Accessibility | 0.90 | Role, keyboard, focus ring, WCAG all present | |
+| Figma design context | 0.00 | slider-figma.md absent | **Blocker** |
+| Usage guidelines | 0.65 | 6/6 pairs editorial — no Figma examples page | ↑ from 0.00 (was missing) |
+| PUI context | 1.00 | No relevant PUI context (resolved) | |
+| **Available-dim avg** | **0.79** | (excludes figma_design_context — blocked) | |
+| **Overall avg** | **0.70** | | ↑ from 0.61 (usage dimension now scored) |
 
 ## Gap summary
 
-| ID | Dimension | Severity | Type | Auto-fixable |
-|----|-----------|----------|------|:------------:|
-| GAP-001 | figma_design_context | **blocker** | SOURCE_GAP | ✅ |
-| GAP-002 | usage_guidelines | **major** | SOURCE_GAP | ✅ |
-| GAP-003 | props_completeness | minor | DOC_GAP | ❌ |
-| GAP-004 | props_completeness | minor | SOURCE_GAP | ❌ |
-| GAP-005 | token_coverage | minor | SOURCE_GAP | ❌ |
-| GAP-006 | token_coverage | minor | SOURCE_GAP | ❌ |
-| GAP-007 | accessibility | minor | DOC_GAP | ✅ |
+| ID | Dimension | Severity | Type | Status | Auto-fixable |
+|----|-----------|----------|------|--------|:------------:|
+| GAP-001 | figma_design_context | **blocker** | SOURCE_GAP | open | ✅ |
+| GAP-002 | usage_guidelines | major | SOURCE_GAP | **CLOSED 2026-05-15** | ✅ |
+| GAP-003 | props_completeness | minor | DOC_GAP | open | ❌ |
+| GAP-004 | props_completeness | minor | SOURCE_GAP | open | ❌ |
+| GAP-005 | token_coverage | minor | SOURCE_GAP | open | ❌ |
+| GAP-006 | token_coverage | minor | SOURCE_GAP | open | ❌ |
+| GAP-007 | accessibility | minor | DOC_GAP | open | ✅ |
 
-**Totals:** 0 conflicts · 1 blocker · 1 major · 5 minor · 2 warnings
+**Open totals:** 0 conflicts · 1 blocker · 0 major · 5 minor · 3 warnings
+**Closed since prior audit:** 1 major (GAP-002, usage)
+
+---
+
+## CLOSED
+
+### GAP-002 — Slider-usage.md missing _(closed 2026-05-15)_
+
+**Type:** SOURCE_GAP · **Severity (was):** major · **Auto-fixable:** yes
+
+`Slider-usage.md` and `Slider-usage.html` are now present in `component-lib/Slider/` (editorial draft). The doc was authored from extracted artifacts (`props.md`, `examples.md`, `accessibility.md`, `tokens.md`, `slider-pui.md`) and the public usage page at <https://oxygen.8x8.com/components/slider/usage>. Six Do/Don't pairs are grounded in the OX page bullets and the sibling files, each with a `**Grounded in:**` citation block.
+
+The Figma `↳ Slider examples` page does not exist, so `figma-extract-usage` cannot run — this is captured as **WARN-003** rather than re-opening GAP-002. When a designer creates the Figma examples page, run `figma-extract-usage` and replace the editorial pairs with Figma-sourced ones.
 
 ---
 
@@ -226,16 +258,6 @@ tags:
 The `figma-extract` skill was not run. Figma design data (anatomy diagram, variant list, annotation notes, icon names) is not in canonical form. Partial Figma data was embedded in `tokens.md` and `examples.md` during the combined extraction session, but this does not substitute for the dedicated file that `doc-rewrite` expects.
 
 **Fix:** Run `figma-extract` targeting file `5YihJ5WuDvnvrlrRMC4sBp`, node `22902:37514`.
-
----
-
-## GAP-002 — slider-usage.md missing ⚠️ major
-
-**Type:** SOURCE_GAP · **Auto-fixable:** yes
-
-The `figma-extract-usage` skill was not run. Do/Don't visual patterns and annotated usage guidelines from Figma are unavailable. OX MCP "when to use / not use" prose exists inline in `examples.md` but is insufficient for doc-rewrite's usage_guidelines dimension.
-
-**Fix:** Run `figma-extract-usage` for the Slider Figma node.
 
 ---
 
@@ -291,16 +313,21 @@ Handle visuals are SVG image assets across all states. No CSS variable names are
 
 ## Warnings
 
-**WARN-001** — `ariaLabel` is typed optional but is functionally required when no visible label exists. The doc-rewrite author should decide whether to add a conditional-required callout.
+**WARN-001 (props_completeness):** `ariaLabel` is typed optional but is functionally required when no visible label exists. The doc-rewrite author should decide whether to add a conditional-required callout.
 
-**WARN-002** — No example uses `testId`. If automated testing patterns are expected by consumers, add a testing example.
+**WARN-002 (examples_coverage):** No example uses `testId`. If automated testing patterns are expected by consumers, add a testing example.
+
+**WARN-003 (usage_guidelines):** `Slider-usage.md` is an editorial draft (no Figma examples page exists). The OX usage page itself contains no Do/Don't cards — only "When to use" / "When not to use" bullets — so the 6 pairs were synthesised from those bullets plus the extracted sibling files. Each pair carries a `**Grounded in:**` citation, but the pairs are designer-unreviewed. Replace with `figma-extract-usage` output when a Figma examples page is created.
 
 ---
 
 ## Suggested next actions
 
-1. **Run `figma-extract`** (Figma file `5YihJ5WuDvnvrlrRMC4sBp`, node `22902:37514`) → resolves GAP-001
-2. **Run `figma-extract-usage`** for Slider → resolves GAP-002
-3. **Inspect `@8x8/oxygen-slider` source** for prop defaults and descriptions → resolves GAP-003, GAP-004
-4. After steps 1–2, re-run this audit to confirm verdict upgrades to **YES**
+1. **Run `figma-extract`** (Figma file `5YihJ5WuDvnvrlrRMC4sBp`, node `22902:37514`) → resolves GAP-001 and upgrades verdict to **YES**
+2. **Inspect `@8x8/oxygen-slider` source** for prop defaults and descriptions → resolves GAP-003, GAP-004
+3. **Add `aria-valuetext`** row to `accessibility.md` → resolves GAP-007 (auto-fixable by doc-rewrite)
+4. After step 1, re-run this audit to confirm verdict upgrades to **YES**
 5. Run `doc-rewrite` once verdict is **YES**
+6. _(Designer task — non-blocking)_ Create a `↳ Slider examples` Figma page and re-run `figma-extract-usage` to replace the editorial usage draft
+
+_Source: doc-audit skill v1.0 · Re-audited 2026-05-15 (prior: 2026-04-29) · component-lib/Slider/_

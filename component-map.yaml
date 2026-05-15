@@ -368,7 +368,7 @@ components:
       tokens: 0.70
       accessibility: 0.78
       figma: 0.78
-      usage: 0.00
+      usage: 0.50  # editorial — Tabs-usage.md drafted 2026-05-15 via usage-advisor; Figma cards still missing
       pui: 1.00
     gap_counts: { doc_gaps: 8, source_gaps: 2, conflicts: 0, warnings: 3 }
     files:
@@ -378,10 +378,10 @@ components:
       accessibility: { path: "component-lib/Tabs/accessibility.md", wiki: "[[Tabs/accessibility]]" }
       figma:        { path: "component-lib/Tabs/Tabs-figma.md",    wiki: "[[Tabs/Tabs-figma]]" }
       pui:          { path: "component-lib/Tabs/Tabs-pui.md",      wiki: "[[Tabs/Tabs-pui]]" }
+      usage:        { path: "component-lib/Tabs/Tabs-usage.md",   wiki: "[[Tabs/Tabs-usage]]", source_type: "editorial" }
       audit:        { path: "component-lib/Tabs/Tabs-audit.md",    wiki: "[[Tabs/Tabs-audit]]" }
       spec:         { path: "component-lib/Tabs/Tabs-spec.md",     wiki: "[[Tabs/Tabs-spec]]" }
-    files_missing:
-      - Tabs-usage.md  # SOURCE_GAP (non-blocking)
+    files_missing: []  # Tabs-usage.md added 2026-05-15 as editorial draft; upstream Figma Do/Don't cards on page 85697:271849 still pending (non-blocking)
     cross_links:
       audit_depends_on: ["[[Tabs/props]]", "[[Tabs/examples]]", "[[Tabs/tokens]]", "[[Tabs/accessibility]]", "[[Tabs/Tabs-figma]]", "[[Tabs/Tabs-pui]]"]
       spec_depends_on:  ["[[Tabs/Tabs-audit]]"]
@@ -819,16 +819,17 @@ components:
     folder: "component-lib/Toast"
     pipeline_stage: spec_ready
     audit_verdict: "YES"
-    audit_verdict_reason: "All core files present. Token coverage strong. PUI confirmed no relevant context. doc-rewrite can proceed."
-    audit_date: "2026-05-05"
+    audit_verdict_reason: "Re-audited 2026-05-15. All 7 files now present. Toast-usage.md added editorially (no Figma examples page — GAP-003 resolved). InlineNotification Figma data enriched. Zero CONFLICTs. doc-rewrite can proceed."
+    audit_date: "2026-05-15"
     audit_scores:
       props_completeness: 0.65
-      examples_quality: 0.72
-      token_coverage: 0.85
+      examples_quality: 0.75
+      token_coverage: 0.87
       accessibility: 0.50
-      figma_fidelity: 0.82
+      figma_fidelity: 0.88
       pui_integration: 1.00
-      usage_guidelines: 0.00
+      usage_guidelines: 0.80
+      overall: 0.78
     files:
       props:        { path: "component-lib/Toast/props.md",         wiki: "[[Toast/props]]" }
       examples:     { path: "component-lib/Toast/examples.md",      wiki: "[[Toast/examples]]" }
@@ -836,11 +837,11 @@ components:
       accessibility: { path: "component-lib/Toast/accessibility.md", wiki: "[[Toast/accessibility]]" }
       figma:        { path: "component-lib/Toast/Toast-figma.md",   wiki: "[[Toast/Toast-figma]]" }
       pui:          { path: "component-lib/Toast/Toast-pui.md",     wiki: "[[Toast/Toast-pui]]" }
+      usage:        { path: "component-lib/Toast/Toast-usage.md",   wiki: "[[Toast/Toast-usage]]" }
       audit:        { path: "component-lib/Toast/Toast-audit.md",   wiki: "[[Toast/Toast-audit]]" }
-    files_missing:
-      - Toast-usage.md  # SOURCE_GAP
+    files_missing: []
     cross_links:
-      audit_depends_on: ["[[Toast/props]]", "[[Toast/examples]]", "[[Toast/tokens]]", "[[Toast/accessibility]]", "[[Toast/Toast-figma]]", "[[Toast/Toast-pui]]"]
+      audit_depends_on: ["[[Toast/props]]", "[[Toast/examples]]", "[[Toast/tokens]]", "[[Toast/accessibility]]", "[[Toast/Toast-figma]]", "[[Toast/Toast-pui]]", "[[Toast/Toast-usage]]"]
       spec_depends_on:  ["[[Toast/Toast-audit]]"]
 
   - name: Toaster
@@ -995,19 +996,20 @@ components:
     package: "@8x8/oxygen-tooltip"
     category: overlays_contextual
     folder: "component-lib/Tooltip"
-    pipeline_stage: blocked
-    audit_verdict: "NO"
-    audit_verdict_reason: "2 CONFLICTs — character limit 140 (MCP) vs 136 (Figma); orientation default 'top' (MCP) vs 'Bottom' (Figma)."
+    pipeline_stage: extracted
+    audit_verdict: "PARTIAL"
+    audit_verdict_reason: "Both blocker CONFLICTs reconciled 2026-05-15 against canonical published Oxygen docs (oxygen.8x8.com/components/tooltip/usage): GAP-001 → 140 chars; GAP-002 → orientation default 'top'. Five derived Do/Don't pairs added to Tooltip-usage.md (mitigates GAP-017). Remaining gaps are non-blocking; doc-rewrite can proceed."
     audit_date: "2026-05-05"
+    re_audit_date: "2026-05-15"
     audit_scores:
-      props: 0.71
+      props: 0.86
       examples: 0.71
       tokens: 0.50
       accessibility: 0.80
       figma: 0.69
-      usage: 0.78
+      usage: 1.00
       pui: 1.00
-    gap_counts: { conflicts: 2, doc_gaps: 7, source_gaps: 10, warnings: 2 }
+    gap_counts: { conflicts: 0, doc_gaps: 7, source_gaps: 10, warnings: 2 }
     files:
       props:        { path: "component-lib/Tooltip/props.md",           wiki: "[[Tooltip/props]]" }
       examples:     { path: "component-lib/Tooltip/examples.md",        wiki: "[[Tooltip/examples]]" }
@@ -1148,21 +1150,21 @@ components:
     folder: "component-lib/TimeSelector"
     pipeline_stage: blocked
     audit_verdict: "NO"
-    audit_verdict_reason: "2 unresolved CONFLICTs — Size=Large variant existence and default size mismatch between Figma and code API; require human resolution."
-    audit_date: "2026-05-07"
-    gap_counts: { doc_gaps: 2, source_gaps: 7, conflicts: 2 }
+    audit_verdict_reason: "2 unresolved CONFLICTs — Size=Large variant existence and default size mismatch between Figma and code API; require human resolution. (Editorial timeselector-usage.md added 2026-05-15.)"
+    audit_date: "2026-05-15"
+    gap_counts: { doc_gaps: 2, source_gaps: 5, conflicts: 2 }
     files:
       props:         { path: "component-lib/TimeSelector/props.md",               wiki: "[[TimeSelector/props]]" }
       examples:      { path: "component-lib/TimeSelector/examples.md",            wiki: "[[TimeSelector/examples]]" }
       tokens:        { path: "component-lib/TimeSelector/tokens.md",              wiki: "[[TimeSelector/tokens]]" }
       accessibility: { path: "component-lib/TimeSelector/accessibility.md",       wiki: "[[TimeSelector/accessibility]]" }
       figma:         { path: "component-lib/TimeSelector/timeselector-figma.md",  wiki: "[[TimeSelector/timeselector-figma]]" }
+      usage:         { path: "component-lib/TimeSelector/timeselector-usage.md",  wiki: "[[TimeSelector/timeselector-usage]]" }
       audit:         { path: "component-lib/TimeSelector/timeselector-audit.md",  wiki: "[[TimeSelector/timeselector-audit]]" }
     files_missing:
-      - timeselector-usage.md
       - timeselector-pui.md
     cross_links:
-      audit_depends_on: ["[[TimeSelector/props]]", "[[TimeSelector/examples]]", "[[TimeSelector/tokens]]", "[[TimeSelector/accessibility]]", "[[TimeSelector/timeselector-figma]]"]
+      audit_depends_on: ["[[TimeSelector/props]]", "[[TimeSelector/examples]]", "[[TimeSelector/tokens]]", "[[TimeSelector/accessibility]]", "[[TimeSelector/timeselector-figma]]", "[[TimeSelector/timeselector-usage]]"]
       spec_depends_on:  ["[[TimeSelector/timeselector-audit]]"]
 
 # ============================================================

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SlideOut — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+    .breadcrumb {
+      font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; }
+    .see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6; border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0; padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0; font-size: 13.5px; color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07); padding: 1px 4px;
+      border-radius: 3px; font-size: 12px;
+    }
+    .callout-editorial a { color: #5c4200; text-decoration: underline; }
+
+    .callout-info {
+      background: #f0f0ff; border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0; padding: 0.75rem 1rem;
+      margin: 1rem 0; font-size: 13.5px; color: #1e1a6e;
+    }
+
+    .intro { font-size: 15.5px; color: #374151; margin-bottom: 2rem; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+    h2 { font-size: 1.2rem; font-weight: 600; color: #0f0f1a; margin-bottom: 0.75rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 0.5rem; }
+
+    .when-section { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+    @media (max-width: 600px) { .when-section { grid-template-columns: 1fr; } }
+    .when-card { background: #fff; border-radius: 8px; padding: 1.125rem 1.25rem; border: 1px solid #e5e7eb; }
+    .when-card h3 { margin-bottom: 0.625rem; }
+    .when-card ul { padding-left: 1.25rem; color: #374151; font-size: 14px; }
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;
+    }
+    th {
+      background: #f3f4f6; font-weight: 600; padding: 0.625rem 0.875rem;
+      text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+    }
+    td { padding: 0.575rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+    .pair { margin-bottom: 1.75rem; }
+    .pair-label {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #6b7280; margin-bottom: 0.75rem;
+    }
+    .pair-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .pair-cards { grid-template-columns: 1fr; } }
+    .do-card, .dont-card { border-radius: 8px; padding: 1.125rem 1.25rem; font-size: 14px; }
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+    .card-header {
+      font-size: 13px; font-weight: 700; margin-bottom: 0.625rem;
+      display: flex; align-items: center; gap: 0.375rem;
+    }
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+    .card-body { color: #374151; line-height: 1.55; margin-bottom: 0.625rem; }
+    .card-note {
+      font-size: 12px; color: #6b7280; font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.5rem; margin-top: 0.5rem;
+    }
+    .card-note code { background: rgba(0,0,0,0.06); padding: 1px 3px; border-radius: 3px; font-size: 11px; }
+    .card-body pre {
+      background: #0f172a; color: #e2e8f0; border-radius: 6px;
+      padding: 0.625rem 0.75rem; font-size: 12px; overflow-x: auto;
+      margin: 0.5rem 0; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .badge-conflict { background: #fef3c7; color: #92400e; }
+    .badge-gap      { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial{ background: #f0f0ff; color: #3730a3; }
+
+    .page-footer {
+      margin-top: 2.5rem; font-size: 12px; color: #9ca3af;
+      border-top: 1px solid #e5e7eb; padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · layout_overlay · SlideOut</div>
+    <h1>SlideOut — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./SlideOut-audit.md">SlideOut-audit.md</a> ·
+      <a href="../PopoverMenu/PopoverMenu-usage.md">PopoverMenu-usage.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — no Figma design exists for SlideOut.</strong> No <code>↳ SlideOut examples</code> Figma page exists (no Figma file exists at all for this component — see <a href="./SlideOut-audit.md">SlideOut-audit.md</a> <strong>GAP-001</strong> / <strong>GAP-002</strong>), so <code>figma-extract-usage</code> cannot run. The Do/Don't pairs below are inferred from <code>props.md</code>, <code>examples.md</code>, and <code>accessibility.md</code> via <code>usage-advisor</code> Open mode. Treat as provisional until a designer reviews them. Replace with <code>figma-extract-usage</code> output once a Figma examples page is created.
+  </div>
+
+  <p class="intro">
+    <code>SlideOut</code> is a controlled side panel that animates in over the trailing edge of the page. Unlike a <strong>Modal</strong>, it does not block the rest of the UI; unlike a navigation <strong>Drawer</strong>, it is intended to be opened in response to a specific user intent and then dismissed. The component is deliberately thin — it renders a resizable container and a visibility flag, and <strong>expects the consuming application to wire up dismissal, focus management, and accessible labelling itself</strong>.
+  </p>
+
+  <hr>
+
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li><strong>Supplementary detail next to the main task</strong> — record details, conversation transcripts, configuration that complements the current view.</li>
+        <li><strong>Inspectors / property panels</strong> the user opens, scans, and dismisses without leaving the page.</li>
+        <li><strong>Side-by-side editing</strong> where the main canvas must remain visible and interactive.</li>
+        <li><strong>Long content the user dismisses on their own schedule</strong> — help articles, audit logs, debug consoles.</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li><strong>Blocking decisions</strong> ("Are you sure you want to delete?") → use a <strong>Modal</strong>.</li>
+        <li><strong>Persistent primary navigation</strong> → use a <strong>Drawer</strong> or sidebar.</li>
+        <li><strong>Single-line hints</strong> → use a <strong>Tooltip</strong>.</li>
+        <li><strong>Multi-step workflows</strong> that need their own URL or back-navigation → use a dedicated page or Modal route.</li>
+        <li><strong>Mobile-first surfaces at very narrow viewports</strong> → use a <strong>Bottom Sheet</strong> or full-screen view.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    SlideOut is fully controlled: <code>isVisible</code> is owned by the consuming application. The component does <strong>not</strong> ship a backdrop, focus trap, close button, header, footer, or <code>Escape</code> handler — see <a href="./accessibility.md">accessibility.md</a> for the consumer's a11y checklist.
+  </div>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Pick SlideOut for supplementary side content; Modal or Drawer for everything else</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use <code>SlideOut</code> when the page behind it should stay visible and interactive</div>
+          <p class="card-body">SlideOut renders no backdrop and does not trap focus, so the main view stays live. That is exactly right for <em>companion</em> content — an inspector, a help panel, a detail flyout — and exactly wrong for blocking decisions or permanent nav.</p>
+          <pre>&lt;Button onClick={() =&gt; setInspectorOpen(true)}&gt;
+  View details
+&lt;/Button&gt;
+&lt;SlideOut isVisible={inspectorOpen} isResizable&gt;
+  &lt;RecordInspector
+    recordId={selectedId}
+    onClose={() =&gt; setInspectorOpen(false)} /&gt;
+&lt;/SlideOut&gt;</pre>
+          <p class="card-note">Grounded in: <code>props.md:55-65</code> — no built-in scrim / focus-trap / close prop; <code>accessibility.md:30-35</code> — role choice (see Pair 3).</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use SlideOut for blocking confirmations or persistent navigation</div>
+          <p class="card-body">A confirmation that needs an explicit choice belongs in a Modal — SlideOut has no backdrop and no built-in dismissal, so users can ignore it indefinitely. Persistent app navigation belongs in a Drawer.</p>
+          <pre>{/* Wrong — destructive confirmation
+   in a panel users can ignore */}
+&lt;SlideOut isVisible={confirmDeleteOpen}&gt;
+  &lt;h2&gt;Delete account?&lt;/h2&gt;
+  &lt;Button onClick={deleteAccount}&gt;Delete&lt;/Button&gt;
+&lt;/SlideOut&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Control <code>isVisible</code> externally and reflect it on the trigger with <code>aria-expanded</code></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Drive open/closed from external state and mirror it on the trigger</div>
+          <p class="card-body"><code>isVisible</code> is a controlled prop — the consuming application holds the boolean. The trigger that opens the panel should advertise the current state to assistive tech via <code>aria-expanded</code>.</p>
+          <pre>const [isVisible, setIsVisible] = useState(false);
+
+&lt;Button
+  aria-expanded={isVisible}
+  aria-controls="details-panel"
+  onClick={() =&gt; setIsVisible(true)}
+&gt;
+  Show details
+&lt;/Button&gt;
+&lt;SlideOut id="details-panel"
+          isVisible={isVisible}&gt;
+  …
+&lt;/SlideOut&gt;</pre>
+          <p class="card-note">Grounded in: <code>props.md:58</code> — <code>isVisible</code> controlled; <code>examples.md:62</code> — controlled-toggle pattern; <code>accessibility.md:35</code> — <code>aria-expanded</code> on the trigger.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Hard-code <code>isVisible</code> or open without a stateful trigger</div>
+          <p class="card-body">There is no uncontrolled / <code>defaultIsVisible</code> mode. <code>isVisible={true}</code> leaves the user with no obvious dismissal path, and a trigger with no <code>aria-expanded</code> lies to screen readers.</p>
+          <pre>{/* Wrong — always open, no way to close */}
+&lt;SlideOut isVisible&gt;
+  &lt;RecordInspector recordId={selectedId} /&gt;
+&lt;/SlideOut&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Set <code>role</code> to match intent: <code>dialog</code> for interaction, <code>complementary</code> for information</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Pick the role from the content's purpose; pair <code>dialog</code> with <code>aria-labelledby</code></div>
+          <p class="card-body"><code>role="dialog"</code> (with <code>aria-labelledby</code>) is right when the panel exists to gather input or confirm an action; <code>role="complementary"</code> is right when the panel is supplementary reference content the user can leave open while continuing to work.</p>
+          <pre>{/* Interactive form-like content */}
+&lt;SlideOut isVisible={isVisible}&gt;
+  &lt;section role="dialog"
+           aria-labelledby="contact-form-title"&gt;
+    &lt;h2 id="contact-form-title"&gt;Add contact&lt;/h2&gt;
+    &lt;ContactForm onSubmit={save} onCancel={close} /&gt;
+  &lt;/section&gt;
+&lt;/SlideOut&gt;
+
+{/* Informational helper */}
+&lt;SlideOut isVisible={isVisible}&gt;
+  &lt;aside role="complementary"
+         aria-label="Field reference"&gt;
+    &lt;FieldReference fieldId={focusedFieldId} /&gt;
+  &lt;/aside&gt;
+&lt;/SlideOut&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md:30-35</code> — role choice; <code>accessibility.md:49-50</code> — trigger label clarity.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use <code>dialog</code> for passive reference, or <code>complementary</code> for a form that demands a decision</div>
+          <p class="card-body">Mis-roling the panel tells assistive tech the wrong story: <code>dialog</code> implies the user must interact before continuing, <code>complementary</code> implies the content is optional reading. Either mismatch confuses screen-reader users.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Wire <code>Escape</code>, outside click, and focus return yourself</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Implement the three dismissal paths in the consuming application</div>
+          <p class="card-body"><code>accessibility.md:43</code> is explicit: <code>Escape</code> "Should close the panel (must be implemented by the consuming application via <code>isVisible</code> state)." Same for focus return on close. Provide a keyboard handler, an outside-click handler, and a visible close affordance — and store the trigger so focus can return to it.</p>
+          <pre>const triggerRef = useRef(null);
+const panelRef = useRef(null);
+const close = useCallback(() =&gt; {
+  setIsVisible(false);
+  triggerRef.current?.focus();
+}, []);
+
+useEffect(() =&gt; {
+  if (!isVisible) return;
+  const onKey = (e) =&gt;
+    e.key === 'Escape' && close();
+  const onClick = (e) =&gt; {
+    if (!panelRef.current?.contains(e.target))
+      close();
+  };
+  document.addEventListener('keydown', onKey);
+  document.addEventListener('mousedown', onClick);
+  return () =&gt; {
+    document.removeEventListener('keydown', onKey);
+    document.removeEventListener('mousedown', onClick);
+  };
+}, [isVisible, close]);</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md:39-43</code> — keyboard contract; <code>accessibility.md:45</code> — focus management is the consumer's responsibility; <code>accessibility.md:58</code> — WCAG 2.1.2 (no keyboard trap).</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Assume the component handles dismissal, or omit a visible close affordance</div>
+          <p class="card-body">Leaving <code>Escape</code> and outside-click unhandled traps keyboard users with no way to close the panel. Skipping a visible close button leaves pointer users guessing. Failing to return focus to the trigger drops the user at the top of the document on close.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Toggle <code>aria-hidden</code> in lockstep with <code>isVisible</code></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Mirror <code>aria-hidden</code> on the panel when <code>isVisible</code> is false</div>
+          <p class="card-body">The panel renders in the DOM regardless of visibility. Without <code>aria-hidden</code>, screen readers will announce the hidden panel's contents and may navigate into it via the rotor.</p>
+          <pre>&lt;SlideOut
+  isVisible={isVisible}
+  aria-hidden={!isVisible || undefined}
+&gt;
+  &lt;section role="dialog"
+           aria-labelledby="filters-title"&gt;
+    &lt;h2 id="filters-title"&gt;Filters&lt;/h2&gt;
+    …
+  &lt;/section&gt;
+&lt;/SlideOut&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md:34</code> — <code>aria-hidden="true"</code> when <code>isVisible=false</code>; <code>accessibility.md:49</code> — panel content rendered regardless of <code>isVisible</code>.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Render the panel without an <code>aria-hidden</code> strategy</div>
+          <p class="card-body">The panel's children stay reachable to assistive tech and to <code>Tab</code> order even when the panel is collapsed off-screen — both surfaces phantom content and creates a "where did my focus go?" moment for keyboard users.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Turn on <code>isResizable</code> only when width is the user's lever</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Enable resize for tabular, code, or canvas-shaped content; set <code>minWidth</code> / <code>maxWidth</code></div>
+          <p class="card-body">Resize earns its complexity when the user genuinely needs to control the panel's width — wide tables, code diffs, side-by-side previews — and is otherwise visual noise. Always bound the drag with <code>minWidth</code> / <code>maxWidth</code> so the panel cannot drag into a state that breaks the underlying layout.</p>
+          <pre>&lt;SlideOut
+  isVisible={isVisible}
+  isResizable
+  defaultWidth={520}
+  minWidth={360}
+  maxWidth={960}
+  onResize={(w) =&gt; persistPanelWidth(w)}
+&gt;
+  &lt;DiffView leftRef={baseRef}
+            rightRef={headRef} /&gt;
+&lt;/SlideOut&gt;</pre>
+          <p class="card-note">Grounded in: <code>props.md:59</code> — <code>isResizable</code>; <code>props.md:61-63</code> — width props; <code>props.md:73</code> — <code>onResize</code> (observed only — see GAP-005); <code>examples.md:41-44</code> — canonical pattern; <code>accessibility.md:51</code> — handle must be keyboard-operable with an accessible label.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Ship resize on a short-form panel, or ship it unbounded</div>
+          <p class="card-body">A resize handle on "Add comment" adds an affordance no user will reach for and a drag target keyboard users have to step past. Omitting <code>minWidth</code> / <code>maxWidth</code> lets users drag the panel into states that obscure the main view.</p>
+          <pre>{/* Wrong — short form, unbounded resize */}
+&lt;SlideOut isVisible={isVisible} isResizable&gt;
+  &lt;CommentForm onSubmit={save}
+               onCancel={close} /&gt;
+&lt;/SlideOut&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 7 — Scope to a single concern; scroll internally; never nest</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Keep the panel focused on one task and let internal scroll handle long content</div>
+          <p class="card-body">A SlideOut works because it's narrow, dismissible, and parallel to the main task. Put one job in it (a record's details, one form, one document) and let the panel body scroll vertically when content overflows.</p>
+          <pre>&lt;SlideOut isVisible={isVisible}&gt;
+  &lt;section role="dialog"
+           aria-labelledby="record-title"&gt;
+    &lt;PanelHeader id="record-title"
+                 title="Order #4821"
+                 onClose={close} /&gt;
+    &lt;div style={{ overflowY: 'auto',
+                  flex: 1 }}&gt;
+      &lt;OrderSummary order={order} /&gt;
+      &lt;OrderTimeline events={order.events} /&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/SlideOut&gt;</pre>
+          <p class="card-note">Grounded in: "When not to use" above; <code>accessibility.md:45</code> — focus management is the consumer's responsibility (nesting compounds it).</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Nest a multi-step workflow, scroll the page behind, or stack SlideOuts</div>
+          <p class="card-body">A SlideOut hosting a four-step wizard breaks back-navigation and bookmarking — that flow wants a dedicated page or a Modal route. Opening a second SlideOut over the first compounds dismissal and focus-management work the component does not help with.</p>
+          <pre>{/* Wrong — nested SlideOuts; dismissal
+   and focus return become ambiguous */}
+&lt;SlideOut isVisible={outerOpen}&gt;
+  &lt;RecordInspector /&gt;
+  &lt;SlideOut isVisible={innerOpen}&gt;
+    &lt;EditField fieldId={focusedFieldId} /&gt;
+  &lt;/SlideOut&gt;
+&lt;/SlideOut&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>—</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>Do/Don't pairs are authored from <code>props.md</code>, <code>examples.md</code>, and <code>accessibility.md</code> via <code>usage-advisor</code> Open mode (mirrors the <a href="../PopoverMenu/PopoverMenu-usage.md">PopoverMenu-usage.md</a> precedent). Should be reviewed by a designer and replaced with Figma-sourced pairs once a Figma file and <code>↳ SlideOut examples</code> page exist. Tracked as <strong>WARN-002</strong> in the audit.</td>
+          </tr>
+          <tr>
+            <td>GAP-001</td>
+            <td><span class="badge badge-gap">Source gap (blocker)</span></td>
+            <td>No <code>SlideOut-figma.md</code> exists — user confirmed no Figma design has been created for this component. Anatomy, spacing, variant axes, and token bindings from Figma are therefore unavailable. The Anatomy section in <a href="./SlideOut-usage.md">SlideOut-usage.md</a> is inferred from props / examples; replace when a Figma source lands.</td>
+          </tr>
+          <tr>
+            <td>GAP-002</td>
+            <td><span class="badge badge-gap">Source gap (resolved editorially)</span></td>
+            <td>Originally: no usage doc existed, blocked by GAP-001. <strong>Closed editorially 2026-05-15</strong> via this file and <a href="./SlideOut-usage.md">SlideOut-usage.md</a>. Re-open and overwrite with <code>figma-extract-usage</code> output if/when a Figma examples page is authored.</td>
+          </tr>
+          <tr>
+            <td>GAP-005</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td><code>onResize</code> is used in the Storybook example (<a href="./examples.md">examples.md:41-44</a>) but absent from the MCP props registry. Pair 6's signature should be reconfirmed against the <code>@8x8/oxygen-slide-out</code> component source.</td>
+          </tr>
+          <tr>
+            <td>GAP-008</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td><a href="./tokens.md">tokens.md</a> is empty — MCP returned 0 theme tokens for SlideOut. Visual properties (panel surface, border, shadow, handle colour) are unresolvable to design tokens until the registry is searched with alternate terms or the component CSS is inspected.</td>
+          </tr>
+          <tr>
+            <td>GAP-009</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td><a href="./accessibility.md">accessibility.md</a> is entirely inferred — MCP returned no explicit a11y data. Pairs 3 / 4 / 5 lean on this inferred guidance; confirm against component source or Storybook a11y addon.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance authored from extracted artifacts (props.md, examples.md, accessibility.md, SlideOut-audit.md) via usage-advisor Open mode · No Figma design or examples page available · 2026-05-15
+  </footer>
+
+</div>
+</body>
+</html>

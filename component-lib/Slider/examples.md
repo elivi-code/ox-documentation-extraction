@@ -12,6 +12,7 @@ siblings:
   - "[[Slider/tokens]]"
   - "[[Slider/accessibility]]"
   - "[[Slider/slider-pui]]"
+  - "[[Slider/Slider-usage]]"
   - "[[Slider/slider-audit]]"
 tags:
   - oxygen
@@ -22,7 +23,7 @@ tags:
 ---
 # Slider — Examples
 
-> **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [slider-pui.md](slider-pui.md)
+> **See also:** [props.md](props.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [slider-pui.md](slider-pui.md) · [Slider-usage.md](Slider-usage.md)
 
 ## Basic — controlled single-thumb
 

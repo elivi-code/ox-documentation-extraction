@@ -34,7 +34,7 @@ counts:
   conflicts: 0
   warnings: 2
 
-verdict: YES
+verdict: "YES"
 verdict_reason: >
   Zero CONFLICTs and zero blocker-severity gaps. The major usage_guidelines
   SOURCE_GAP from the prior audit (GAP-001) is now substantially addressed: an

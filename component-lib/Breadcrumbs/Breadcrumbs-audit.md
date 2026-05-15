@@ -22,7 +22,7 @@ dimension_scores:
   props:        { score: 0.70, coverage: "7/10" }
   examples:     { score: 0.57, coverage: "4/7" }
   tokens:       { score: 0.55, coverage: "5/9" }
-  accessibility:{ score: 0.78, coverage: "7/9" }
+  accessibility: { score: 0.78, coverage: "7/9" }
   figma:        { score: 0.73, coverage: "8/11" }
   usage:        { score: 0.80, coverage: "8/10 — editorial (published docs + MCP/Figma cross-validated)" }
   pui:          { score: 1.00, coverage: "PASS — no relevant PUI context (engineer-confirmed)" }
@@ -35,7 +35,7 @@ counts:
   conflicts: 0
   warnings: 3
 
-verdict: YES
+verdict: "YES"
 verdict_reason: >
   Zero CONFLICTs and zero blocker-severity gaps — doc-rewrite can proceed.
   Usage dimension lifts from 0.00 → 0.80: Breadcrumbs-usage.md was authored

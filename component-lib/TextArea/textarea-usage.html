@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TextArea — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+    .page-header { margin-bottom: 2rem; }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; }
+
+    .see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+
+    .callout-info {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #1e3a5f;
+    }
+    .callout-info strong { color: #1e3a5f; }
+
+    .callout-warn {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      color: #78350f;
+    }
+
+    .callout-editorial code, .callout-info code, .callout-warn code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .intro { font-size: 15.5px; color: #374151; margin-bottom: 2rem; }
+
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+
+    h2 { font-size: 1.2rem; font-weight: 600; color: #0f0f1a; margin-bottom: 0.75rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-top: 1rem; margin-bottom: 0.5rem; }
+
+    p { color: #374151; margin-bottom: 0.75rem; }
+
+    a { color: #5046e4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+    }
+
+    .anatomy-list {
+      list-style: none;
+      counter-reset: anatomy;
+      padding: 0;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .anatomy-list li {
+      counter-increment: anatomy;
+      position: relative;
+      padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+      margin-bottom: 0.375rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .anatomy-list li::before {
+      content: counter(anatomy);
+      position: absolute;
+      left: 0.625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #5046e4;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .anatomy-list strong { color: #0f0f1a; }
+
+    .source-line {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+    .source-line code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .bullet-list { margin: 0.5rem 0 1rem 1.25rem; color: #374151; }
+    .bullet-list li { margin-bottom: 0.375rem; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+    .pair { margin-bottom: 1.75rem; }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .pair-source {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      margin-bottom: 0.625rem;
+    }
+    .pair-source code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards { grid-template-columns: 1fr; grid-template-rows: none; }
+    }
+
+    .do-card, .dont-card {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      gap: 0.5rem;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.375rem;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body { color: #374151; line-height: 1.55; margin: 0; }
+
+    .card-body code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      padding-top: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .card-code {
+      background: rgba(0,0,0,0.04);
+      border-radius: 5px;
+      padding: 0.625rem 0.75rem;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+      font-size: 12px;
+      color: #1a1a2e;
+      margin: 0;
+      white-space: pre;
+      overflow-x: auto;
+      align-self: end;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-source-gap { background: #fef3c7; color: #92400e; }
+    .badge-doc-gap    { background: #dbeafe; color: #1e40af; }
+    .badge-conflict   { background: #fee2e2; color: #991b1b; }
+    .badge-warn       { background: #ffedd5; color: #9a3412; }
+    .badge-craft      { background: #ede9fe; color: #5b21b6; }
+
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+
+    blockquote {
+      border-left: 3px solid #d1d5db;
+      margin: 0.75rem 0;
+      padding: 0.5rem 1rem;
+      color: #4b5563;
+      font-size: 13.5px;
+    }
+
+    blockquote strong { color: #374151; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · form_inputs · TextArea</div>
+    <h1>TextArea — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./textarea-figma.md">textarea-figma.md</a> ·
+      <a href="./textarea-pui.md">textarea-pui.md</a> ·
+      <a href="./textarea-audit.md">textarea-audit.md</a> ·
+      <a href="../TextField/TextField-usage.md">TextField-usage.md</a> (precedent)
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial draft — scaffolding for the Figma examples page.</strong>
+    No <code>↳ TextArea examples</code> Figma page with <code>✅ Do —</code> / <code>❌ Don't —</code> card frames exists, so <code>figma-extract-usage</code> cannot run. There is also no published Oxygen docs page for TextArea — unlike TextField, which mirrors <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a>. The pairs below are grounded in <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, and <code>textarea-figma.md</code>, with internal precedent drawn verbatim from <a href="../TextField/TextField-usage.md"><code>TextField-usage.md</code></a> where the editorial decision is identical. Replace with <code>figma-extract-usage</code> output once a Figma examples page is created.
+  </div>
+
+  <div class="callout-warn">
+    <strong>⚠ Audit blocked.</strong> <code>textarea-audit.md</code> verdict is <strong>NO</strong> — three CONFLICTs prevent <code>doc-rewrite</code>: the Figma component set exposes <code>Size</code> (Large/Medium/Small), <code>Mode</code> (Light/Dark), and <code>Filled</code> variant axes that have <strong>no matching OX API prop</strong>. Sizing in the API is controlled by <code>rows</code> and <code>cols</code>; mode comes from the theme provider; "filled" is derived from <code>value !== ''</code>. The pairs below sidestep this by anchoring to API props rather than Figma variants — see Pair 6.
+  </div>
+
+  <div class="callout-warn">
+    <strong>⚠ Bare component, not a form row.</strong> Unlike a wrapped <code>TextField</code> row, the Oxygen <code>Textarea</code> renders the <strong>input box only</strong> — no built-in label, hint, or error-text slot. <code>hasError</code> applies a red border; the error message is the consumer's responsibility (<code>props.md:117</code> — "error message display is handled at the form-field wrapper level, not inside this component"). Every accessibility-relevant pair below describes the wrapper pattern, not a single-prop toggle.
+  </div>
+
+  <p class="intro">
+    <code>Textarea</code> is the canonical <strong>multi-line free-form input</strong> in Oxygen — paragraphs, comments, notes, descriptions, messages, code snippets. It renders a native HTML <code>&lt;textarea&gt;</code> with implicit <code>textbox</code> role and <code>aria-multiline="true"</code>, vertically resizable by default, sized by <code>rows</code>. Use it whenever the expected response runs past a single sentence or the user may want to insert line breaks.
+  </p>
+
+  <hr>
+
+  <h2>Anatomy</h2>
+  <p>The Figma baseline variant (<code>Mode=Light, Size=Large, State=Rest, Error=False, Filled=False</code>) numbers these elements. Only the <strong>input box</strong> ships inside <code>@8x8/oxygen-textarea</code>; everything else is supplied by the consumer.</p>
+
+  <ol class="anatomy-list">
+    <li><strong>Label</strong> <em>(consumer-rendered)</em> — visible text above the field, named via <code>htmlFor</code> ↔ <code>id</code> or <code>aria-labelledby</code>. Rendered with <code>typography/body01</code> in <code>text/textColor01</code>. Figma slot: <code>_base_form_label</code>, controlled by <code>Show Label</code> boolean (default <code>true</code>).</li>
+    <li><strong>Required marker</strong> <em>(consumer-rendered)</em> — visible <code>*</code> beside the label for required fields. Rendered with <code>typography/bodyBold01</code> in <code>error/error01</code>. The asterisk is decorative (<code>aria-hidden="true"</code>); the semantic signal is <code>required</code> + <code>aria-required="true"</code> on the textarea.</li>
+    <li><strong>Help icon</strong> <em>(consumer-rendered, optional)</em> — an <code>IconButton</code> in the label row that opens a tooltip. A separate keyboard focus stop with its own accessible name.</li>
+    <li><strong>Field</strong> — the native <code>&lt;textarea&gt;</code> rendered by the component. Container: <code>bg=ui/ui05</code>, <code>px=16</code>, <code>py=12</code>, <code>border-radius=6</code> (all hardcoded). <code>rows</code> (default <code>3</code>) controls visible height.</li>
+    <li><strong>Placeholder</strong> <em>(optional, discouraged as a label)</em> — <code>typography/body02</code> in <code>text/textColor02</code>. Disappears the instant the user types — see Pair 2.</li>
+    <li><strong>Resize grip</strong> — the diagonal handle in the bottom-right corner. Visibility/direction controlled by the <code>resize</code> prop (default <code>'vertical'</code>; see Pair 7).</li>
+    <li><strong>Hint text</strong> <em>(consumer-rendered, optional)</em> — short helper rendered below the field, linked via <code>aria-describedby</code>. <code>typography/label01</code> in <code>text/textColor02</code>. Figma slot: <code>_base_form_hint</code>.</li>
+    <li><strong>Error area</strong> <em>(consumer-rendered, optional)</em> — triangle icon (16×16, <code>error/error01</code>, decorative) + error message text in <code>typography/label01</code> / <code>error/error01</code>. Replaces the hint row when <code>hasError={true}</code>. Linked via <code>aria-describedby</code> with <code>role="alert"</code> so screen readers announce the message on appearance.</li>
+    <li><strong>Focus ring</strong> — 2px solid <code>interactive/focus01</code> (<code>#0056E0</code> Light) applied as an absolute overlay (border-radius 6px) on keyboard focus. Required by WCAG 2.4.7 — <strong>never suppress with <code>outline: none</code></strong>.</li>
+  </ol>
+
+  <p class="source-line">Source: <code>textarea-figma.md §3 (Anatomy)</code> · <code>accessibility.md</code> · <code>props.md</code>. Hardcoded inner-field spacings (16px h-pad, 12px v-pad, 6px border-radius, 4px gap between rows) lack spacing-token bindings — flagged in <code>textarea-audit.md</code>.</p>
+
+  <hr>
+
+  <h2>Overview</h2>
+  <p>A single Oxygen package, <code>@8x8/oxygen-textarea</code>, exports one component:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Component</th><th>Use for</th><th>Key props</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>Textarea</code></td>
+          <td>A multi-line free-text field — comments, notes, descriptions, paragraphs, code paste-ins.</td>
+          <td><code>rows</code>, <code>cols</code>, <code>minLength</code>, <code>maxLength</code>, <code>resize</code>, <code>isDisabled</code>, <code>isReadOnly</code>, <code>hasError</code>, <code>placeholder</code>, <code>autoFocus</code>, <code>autoComplete</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="source-line">Source: <code>props.md</code> · <code>examples.md</code>.</p>
+
+  <hr>
+
+  <h2>Behaviour</h2>
+
+  <h3>States</h3>
+  <p>The Figma component set defines six variant axes — <code>Mode</code> (Light/Dark), <code>Size</code> (Small/Medium/Large), <code>State</code> (Rest/Focus/Disabled), <code>Error</code>, <code>Read Only</code>, and <code>Filled</code>. Three of these (<code>Size</code>, <code>Mode</code>, <code>Filled</code>) have no matching API prop — see CONFLICT row in Gaps. The visible state matrix:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>State</th><th>Trigger</th><th>Visual</th><th>Token</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Rest</td><td>Default</td><td>Solid field background, no border</td><td><code>ui/ui05</code> <code>#F4F3EE</code></td></tr>
+        <tr><td>2</td><td>Focus</td><td>Keyboard <code>Tab</code> or pointer click</td><td>2px blue focus ring</td><td><code>interactive/focus01</code> <code>#0056E0</code></td></tr>
+        <tr><td>3</td><td>Filled</td><td>User has typed a value</td><td>Placeholder replaced by entered text</td><td><em>(value via controlled <code>value</code>)</em></td></tr>
+        <tr><td>4</td><td>Disabled</td><td><code>isDisabled={true}</code></td><td>Field greyed; removed from tab order</td><td><code>interactive/disabled01</code> <code>#C8C8BD</code></td></tr>
+        <tr><td>5</td><td>Read only</td><td><code>isReadOnly={true}</code></td><td>Field shows value, cursor disabled, stays in tab order</td><td><code>ui/ui05</code></td></tr>
+        <tr><td>6</td><td>Error + Rest</td><td><code>hasError={true}</code>, unfocused</td><td>Red 2px border</td><td><code>error/error01</code> <code>#CB2233</code></td></tr>
+        <tr><td>7</td><td>Error + Focus</td><td><code>hasError={true}</code>, focused</td><td>Blue ring overrides red border; <strong>error message stays visible below</strong></td><td><code>interactive/focus01</code> + <code>error/error01</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Keyboard</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Key</th><th>Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td><code>Tab</code> / <code>Shift+Tab</code></td><td>Move focus to / away from the textarea</td></tr>
+        <tr><td>Any printable key</td><td>Inserts character at cursor</td></tr>
+        <tr><td><code>Enter</code></td><td><strong>Inserts a newline</strong> (multiline). Does <em>not</em> submit the enclosing form, unlike <code>&lt;input&gt;</code>.</td></tr>
+        <tr><td><code>Home</code> / <code>End</code></td><td>Move cursor to start / end of line</td></tr>
+        <tr><td><code>Ctrl+A</code> / <code>Ctrl+Z</code></td><td>Select all / Undo (browser default)</td></tr>
+        <tr><td><code>Escape</code></td><td>No built-in behaviour — consumers can wire <code>onKeyDown</code> to blur or close a containing dialog</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="source-line">Source: <code>accessibility.md §80-91</code> · <code>textarea-figma.md</code>.</p>
+
+  <hr>
+
+  <h2>Sizing</h2>
+  <p>Unlike <code>Input</code>, the OX <code>Textarea</code> API has <strong>no <code>size</code> prop</strong>. Vertical size is controlled by <code>rows</code> (default <code>3</code>); horizontal size by <code>cols</code> (or the container width). The Figma <code>Size</code> axis (Large/Medium/Small) does not map to an API prop — it appears to control internal padding/typography only, and the Oxygen team's stance on this is unresolved (CONFLICT in <code>textarea-audit.md</code>).</p>
+
+  <ul class="bullet-list">
+    <li><strong><code>rows={2–3}</code></strong> — short notes, display-name overrides, one-sentence prompts.</li>
+    <li><strong><code>rows={4–6}</code></strong> — paragraphs, addresses, short descriptions.</li>
+    <li><strong><code>rows={8+}</code></strong> — long-form content: bug reports, feedback essays, code paste-ins.</li>
+    <li><strong>Field padding:</strong> 16px horizontal, 12px vertical <em>(hardcoded)</em>.</li>
+    <li><strong>Border radius:</strong> 6px <em>(hardcoded)</em>.</li>
+  </ul>
+
+  <p class="source-line">Source: <code>props.md:83</code> (<code>rows</code> default) · <code>textarea-figma.md</code> · <code>textarea-audit.md</code> (CONFLICT around Size axis).</p>
+
+  <hr>
+
+  <h2>Best Practices</h2>
+
+  <h3>When to use</h3>
+  <ul class="bullet-list">
+    <li>The user must enter <strong>multi-line free-form content</strong> — paragraphs, comments, notes, descriptions, messages, code snippets.</li>
+    <li>The expected value is <strong>unpredictable in length</strong> and may benefit from line breaks and soft-wrapping.</li>
+    <li>The field is part of a form pattern that mixes <code>TextField</code>, <code>Select</code>, <code>Checkbox</code>, etc., and one input requires more vertical space than a single line.</li>
+  </ul>
+
+  <h3>When not to use</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Situation</th><th>Why</th><th>Use instead</th></tr></thead>
+      <tbody>
+        <tr><td>Single-line input — name, email, code, search</td><td>Textarea's <code>rows={3}</code> default signals "write a paragraph"; a one-line answer in a 3-row box wastes vertical space.</td><td><a href="../TextField/">TextField</a> — fixed-height, single-line, ships with built-in prefix/suffix/icon affordances.</td></tr>
+        <tr><td>One option from a known list</td><td>Forces the user to type a value that should be picked.</td><td><a href="../Select/">Select</a>, <a href="../Radio/">Radio</a>, or <a href="../Checkbox/">Checkbox</a> — same boundary as <a href="../TextField/TextField-usage.md">TextField Pair 1</a>.</td></tr>
+        <tr><td>Rich-text / formatted content (bold, links, mentions)</td><td>Textarea is plain-text only — no formatting affordances.</td><td>A dedicated rich-text editor — <strong>Oxygen does not ship one</strong>.</td></tr>
+        <tr><td>A date, time, or date range</td><td>Free-text dates are error-prone; pickers enforce a valid format.</td><td><a href="../DateTimeSelector/">DateTimeSelector</a> / <a href="../DateTimeRangeSelector/">DateTimeRangeSelector</a>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="source-line">Source: <code>accessibility.md</code> · <code>props.md</code> · editorial cross-reference with <a href="../TextField/TextField-usage.md"><code>TextField-usage.md</code></a>.</p>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <p>Eight pairs grounded in TextArea's extracted files. Four mirror <a href="../TextField/TextField-usage.md"><code>TextField-usage.md</code></a> verbatim where the decision is identical; three are TextArea-specific craft heuristics (no internal precedent) — flagged with the <span class="badge-tag badge-craft">CRAFT</span> badge.</p>
+
+  <section class="pairs-section">
+
+    <!-- Pair 1 -->
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Use Textarea for multi-line free-form input; reach for TextField when one line is enough</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Use Textarea when the user is writing more than a line</p>
+          <p class="card-body">Comments, descriptions, notes, multi-line addresses, support messages, code paste-ins — anything where the user may need to insert line breaks or where the expected response runs past a single sentence belongs in Textarea. The default <code>rows={3}</code> is a strong hint that a paragraph is welcome.</p>
+          <pre class="card-code">import { Textarea } from '@8x8/oxygen-textarea';
+
+&lt;label htmlFor="feedback"&gt;
+  What could we improve?
+&lt;/label&gt;
+&lt;Textarea
+  id="feedback"
+  rows={4}
+  placeholder="Tell us what didn't work…"
+  onChange={(e) =&gt;
+    setFeedback(e.target.value)}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Use Textarea for a value that fits on one line</p>
+          <p class="card-body">A 3-row box signals "write me a paragraph." Asking for an email, a ZIP code, or a referral code inside a Textarea wastes vertical space and confuses users about how much text you expect.</p>
+          <pre class="card-code">{/* Wrong — single-line value
+    in a 3-row Textarea */}
+&lt;Textarea
+  id="email"
+  placeholder="you@company.com"
+/&gt;
+
+{/* Use TextField for single-line values */}
+{/* &lt;TextField label="Email" /&gt; */}</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>accessibility.md:32</code> (implicit <code>aria-multiline="true"</code>) · <code>props.md:83</code> (<code>rows</code> default 3) · <code>TextField-usage.md</code> Pair 1 — extended to single-line vs multi-line boundary.</p>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Always pair Textarea with a real <code>&lt;label&gt;</code>; never use <code>placeholder</code> as a label</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Provide a programmatic label every time</p>
+          <p class="card-body">Textarea does not render its own label — the consumer wires one up via <code>htmlFor</code> ↔ <code>id</code>, <code>aria-label</code>, or <code>aria-labelledby</code>. A persistent visible label is a WCAG 2.1 AA requirement (1.3.1, 3.3.2) and stays visible after the user starts typing. Use <code>placeholder</code> only for <strong>example formatting</strong> — the shape of the value the user is about to type — never to communicate what the field is for.</p>
+          <pre class="card-code">&lt;label htmlFor="bio"&gt;Bio&lt;/label&gt;
+&lt;Textarea
+  id="bio"
+  placeholder="A short intro you'd put on
+   a conference badge…"
+  rows={3}
+  onChange={(e) =&gt; setBio(e.target.value)}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Rely on placeholder as the field's label</p>
+          <p class="card-body">Placeholder disappears the moment the user starts typing, fails contrast in many themes, and is announced inconsistently by screen readers. A placeholder-only Textarea is invisible to anyone who tabs back to review the form.</p>
+          <pre class="card-code">{/* Wrong — placeholder-as-label,
+    fails WCAG 1.3.1 and 3.3.2 */}
+&lt;Textarea placeholder="Bio" /&gt;
+
+{/* Right — real label + placeholder
+    as example */}
+&lt;label htmlFor="bio"&gt;Bio&lt;/label&gt;
+&lt;Textarea id="bio"
+  placeholder="A short intro…" /&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>accessibility.md:42-55, 145</code> ("labelling is the consumer's responsibility"; WCAG 3.3.2 marked consumer responsibility) · <code>TextField-usage.md</code> Pair 2 — mirrored.</p>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Put hints and constraints in a description below the field, not in placeholder</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Render hint text as a sibling node and link via <code>aria-describedby</code></p>
+          <p class="card-body">Textarea has no built-in <code>description</code> prop — the consumer renders a hint element below the input and links it via <code>aria-describedby</code>. Helper text rendered below the field stays visible as the user types, is announced when the field receives focus, and is the right place for "Max 500 characters", "Markdown supported", "Include steps to reproduce".</p>
+          <pre class="card-code">&lt;label htmlFor="repro"&gt;
+  Steps to reproduce
+&lt;/label&gt;
+&lt;Textarea
+  id="repro"
+  aria-describedby="repro-hint"
+  rows={5}
+  maxLength={2000}
+/&gt;
+&lt;span id="repro-hint"&gt;
+  List the exact steps so we can
+  recreate the issue.
+&lt;/span&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Pack constraints into the placeholder</p>
+          <p class="card-body">Once the user types one character, the placeholder is gone — along with the constraint. If the rule matters enough to state, it matters enough to stay visible.</p>
+          <pre class="card-code">{/* Wrong — rule vanishes on first
+    keystroke */}
+&lt;Textarea
+  placeholder="Max 2000 characters.
+    Markdown supported."
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>accessibility.md:60-73, 153</code> (<code>aria-describedby</code> + hint pattern) · <code>textarea-figma.md</code> "Show Hint" anatomy · <code>TextField-usage.md</code> Pair 3 — adapted to Textarea's wrapper pattern.</p>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Use <code>isReadOnly</code> for visible-but-non-editable values; use <code>isDisabled</code> only when the field is genuinely unavailable</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Reach for <code>isReadOnly</code> when the user needs to see and copy the value but not change it</p>
+          <p class="card-body">Read-only textareas stay in the tab order, are announced as "read only" by screen readers, and let users select and copy the value — ideal for generated reports, saved notes, system-supplied content. Disabled textareas are skipped by keyboard navigation entirely and silent to assistive tech.</p>
+          <pre class="card-code">&lt;label htmlFor="report"&gt;
+  Generated summary
+&lt;/label&gt;
+&lt;Textarea
+  id="report"
+  value={summary}
+  isReadOnly
+  rows={6}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Disable a Textarea just to display a value</p>
+          <p class="card-body">A disabled textarea is silent to assistive tech and skipped by keyboard navigation. If a user can read the value with their eyes but a screen reader user can't reach it, the form is broken. Reserve <code>isDisabled</code> for temporarily unavailable fields (prerequisite not met) — and explain <em>why</em> in nearby helper text.</p>
+          <pre class="card-code">{/* Wrong — value won't reach
+    screen reader users */}
+&lt;Textarea
+  value={summary}
+  isDisabled
+/&gt;
+
+{/* Right — read-only keeps it
+    in the tab order */}
+&lt;Textarea
+  value={summary}
+  isReadOnly
+/&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md:89-90</code> (<code>isDisabled</code> / <code>isReadOnly</code>) · <code>accessibility.md:101-113</code> · <code>TextField-usage.md</code> Pair 4 — mirrored.</p>
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Show errors with <code>hasError</code> + an accessible error message; never colour alone</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Combine <code>hasError</code> with a descriptive error message linked via <code>aria-describedby</code></p>
+          <p class="card-body"><code>hasError</code> only applies the red 2px border (<code>props.md:117</code> — "error message display is handled at the form-field wrapper level"). The error <strong>text</strong> must be rendered as a sibling, linked via <code>aria-describedby</code>, with <code>role="alert"</code> so screen readers announce it on appearance. WCAG 3.3.1 requires errors to be described in text — colour alone fails.</p>
+          <pre class="card-code">&lt;label htmlFor="message"&gt;Message&lt;/label&gt;
+&lt;Textarea
+  id="message"
+  hasError={hasError}
+  aria-describedby={hasError
+    ? 'message-error' : undefined}
+  rows={4}
+  value={value}
+  onChange={(e) =&gt;
+    setValue(e.target.value)}
+/&gt;
+{hasError &amp;&amp; (
+  &lt;span id="message-error" role="alert"&gt;
+    Message must be at least
+    20 characters.
+  &lt;/span&gt;
+)}</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Set <code>hasError</code> without rendering an accessible message</p>
+          <p class="card-body">A red border with no text fails WCAG 1.4.1 (use of colour) and 3.3.1 (error identification). Users with low vision, colour-blindness, or in high-glare environments may not perceive the border, and even those who see it won't know <em>what</em> is wrong or <em>how</em> to fix it.</p>
+          <pre class="card-code">{/* Wrong — red border, no text */}
+&lt;Textarea id="message" hasError /&gt;
+
+{/* Wrong — vague message */}
+&lt;Textarea hasError
+  aria-describedby="err" /&gt;
+&lt;span id="err" role="alert"&gt;
+  Invalid.
+&lt;/span&gt;
+
+{/* Right — specific + actionable */}
+&lt;Textarea hasError
+  aria-describedby="err" /&gt;
+&lt;span id="err" role="alert"&gt;
+  Add at least one sentence describing
+  the problem.
+&lt;/span&gt;</pre>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md:91, 117</code> · <code>accessibility.md:60-73, 117-121, 144</code> (WCAG 3.3.1 consumer responsibility) · <code>textarea-figma.md</code> error anatomy · <code>TextField-usage.md</code> Pair 5 — mirrored with wrapper framing.</p>
+    </div>
+
+    <!-- Pair 6 -->
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Size <code>rows</code> to the expected input length <span class="badge-tag badge-craft">CRAFT</span></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Pick <code>rows</code> based on how much text you actually expect</p>
+          <p class="card-body">A "Title" Textarea at <code>rows={3}</code> and a "Detailed description" Textarea at <code>rows={3}</code> give the user the same visual signal for two very different asks. Use <code>rows={2–3}</code> for short notes, <code>rows={4–6}</code> for paragraphs, <code>rows={8+}</code> for long-form content like bug reports or feedback essays.</p>
+          <pre class="card-code">{/* Short note */}
+&lt;Textarea
+  id="alias"
+  rows={2}
+  maxLength={80}
+/&gt;
+
+{/* Long-form feedback */}
+&lt;Textarea
+  id="incident"
+  rows={8}
+  maxLength={5000}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Leave every Textarea at the default <code>rows={3}</code> regardless of expected input</p>
+          <p class="card-body">A 3-row box for a one-sentence note wastes space; a 3-row box for a multi-paragraph bug report forces the user to scroll their own input as they write. Either way, you've signalled the wrong amount of effort.</p>
+          <pre class="card-code">{/* Wrong — same height for inputs
+    expecting very different amounts
+    of text */}
+&lt;Textarea id="title" rows={3} /&gt;
+&lt;Textarea id="description" rows={3} /&gt;
+&lt;Textarea id="reproSteps" rows={3} /&gt;</pre>
+          <p class="card-note">No internal precedent for multi-line sizing; adapted from <code>TextField-usage.md</code> Pair 6 — "Input width should be proportional to the content."</p>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md:83</code> (<code>rows</code> default 3) · <code>examples.md</code> controlled patterns · craft heuristic.</p>
+    </div>
+
+    <!-- Pair 7 -->
+    <div class="pair">
+      <div class="pair-label">Pair 7 — Lock <code>resize</code> to <code>vertical</code> or <code>none</code> inside structured forms; avoid <code>horizontal</code> and <code>both</code> <span class="badge-tag badge-craft">CRAFT</span></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Keep the default <code>resize="vertical"</code>, or set <code>resize="none"</code> in tight layouts</p>
+          <p class="card-body">Vertical resize lets the user grow the field for long inputs without breaking the form's column width — the default for good reason. In dense dashboards, fixed-width modals, or grid-aligned forms where any height change would push surrounding content unpredictably, <code>resize="none"</code> and a generous <code>rows</code> value is the right call.</p>
+          <pre class="card-code">{/* Default — vertical resize allowed */}
+&lt;Textarea
+  id="bio"
+  rows={4}
+  maxLength={500}
+/&gt;
+
+{/* Locked in a tight grid cell */}
+&lt;Textarea
+  id="note"
+  rows={3}
+  resize="none"
+  maxLength={280}
+/&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Allow horizontal or both-axis resize inside fixed-width form columns</p>
+          <p class="card-body"><code>resize="horizontal"</code> and <code>resize="both"</code> let the user widen the field beyond its column, breaking the form's grid alignment and on responsive layouts pushing other inputs offscreen. There is no Oxygen layout where horizontal resize improves the user's outcome.</p>
+          <pre class="card-code">{/* Wrong — lets the user
+    break the grid */}
+&lt;Textarea
+  id="bio"
+  resize="horizontal"
+/&gt;
+&lt;Textarea
+  id="bio"
+  resize="both"
+/&gt;
+
+{/* Right — vertical (default)
+    is safe inside columns */}
+&lt;Textarea id="bio" /&gt;</pre>
+          <p class="card-note">No internal precedent — TextField has no <code>resize</code>. Recommendation is craft judgment; flag for designer review.</p>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md:87, 100-110</code> (<code>resize</code> enum, default <code>'vertical'</code>) · <code>textarea-figma.md</code> resize-grip anatomy · craft heuristic.</p>
+    </div>
+
+    <!-- Pair 8 -->
+    <div class="pair">
+      <div class="pair-label">Pair 8 — Show a live character counter when <code>maxLength</code> represents a hard limit users care about <span class="badge-tag badge-craft">CRAFT</span></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <p class="card-header">✅ Do — Surface a visible counter when the limit is a real constraint (SMS, bios, summary fields)</p>
+          <p class="card-body">When <code>maxLength</code> is set to a value the user is likely to bump up against — and where running out of room matters (a 160-char SMS, a 280-char bio, a 500-char incident summary) — render a live <code>N / maxLength</code> counter as a sibling element. Update it on <code>onChange</code> and tie it to <code>aria-describedby</code> alongside the hint so it's announced contextually.</p>
+          <pre class="card-code">const MAX = 280;
+const [bio, setBio] = useState('');
+
+&lt;label htmlFor="bio"&gt;Bio&lt;/label&gt;
+&lt;Textarea
+  id="bio"
+  maxLength={MAX}
+  value={bio}
+  aria-describedby="bio-hint bio-count"
+  onChange={(e) =&gt;
+    setBio(e.target.value)}
+/&gt;
+&lt;span id="bio-hint"&gt;
+  A short intro for your profile.
+&lt;/span&gt;
+&lt;span id="bio-count" aria-live="polite"&gt;
+  {bio.length} / {MAX}
+&lt;/span&gt;</pre>
+        </div>
+        <div class="dont-card">
+          <p class="card-header">❌ Don't — Set a long <code>maxLength</code> and rely on the browser's silent cut-off</p>
+          <p class="card-body">The browser will simply refuse keystrokes past <code>maxLength</code> with no feedback. Users assume their input is being captured, then discover later that the last paragraph of their bug report vanished. Either show a counter, raise the limit, or split the field.</p>
+          <pre class="card-code">{/* Wrong — silent cap, no feedback */}
+&lt;Textarea
+  id="bio"
+  maxLength={280}
+/&gt;
+
+{/* Wrong — long limit, no counter,
+    users may push it */}
+&lt;Textarea
+  id="incident"
+  maxLength={5000}
+  rows={8}
+/&gt;</pre>
+          <p class="card-note">Explicitly flagged in <code>TextField-usage.md</code> as <strong>GAP-USAGE-003</strong> — no internal ruling exists yet. This pair would set the precedent.</p>
+        </div>
+      </div>
+      <p class="pair-source">Source: <code>props.md:86</code> (<code>maxLength</code>) · <code>examples.md</code> character-limit pattern · <code>TextField-usage.md</code> GAP-USAGE-003 · craft heuristic.</p>
+    </div>
+
+  </section>
+
+  <hr>
+
+  <h2>Accessibility quick reference</h2>
+  <ul class="bullet-list">
+    <li>Renders a native <code>&lt;textarea&gt;</code> — implicit ARIA role <code>textbox</code> with <code>aria-multiline="true"</code>; no <code>role</code> override needed.</li>
+    <li>Label is associated via <code>htmlFor</code> ↔ <code>id</code>, <code>aria-label</code>, or <code>aria-labelledby</code> — <strong>never</strong> rely on <code>placeholder</code> alone (Pair 2).</li>
+    <li><code>Tab</code> / <code>Shift+Tab</code> move focus; <code>Enter</code> inserts a newline (does <em>not</em> submit the form, unlike <code>&lt;input&gt;</code>); <code>Escape</code> has no default behaviour.</li>
+    <li><code>hasError</code> paints the red border only — pair with <code>aria-describedby</code> pointing to an error region with <code>role="alert"</code> (Pair 5).</li>
+    <li>Mark required textareas with <code>required</code> + <code>aria-required="true"</code>; the visual <code>*</code> in the label is decorative and should be <code>aria-hidden="true"</code>.</li>
+    <li><code>isReadOnly</code> keeps the value reachable and copyable; <code>isDisabled</code> removes the field from the focus order entirely (Pair 4).</li>
+    <li>Focus ring must clear 3:1 contrast (WCAG 1.4.11) — <strong>never suppress with <code>outline: none</code></strong> (WCAG 2.4.7).</li>
+    <li>Character counters (Pair 8) should be tied via <code>aria-describedby</code> with <code>aria-live="polite"</code> so screen readers announce the remaining count without interrupting typing.</li>
+  </ul>
+  <p>See <a href="./accessibility.md">accessibility.md</a> for the full WCAG 2.1 AA checklist.</p>
+
+  <hr>
+
+  <h2>Related components</h2>
+  <ul class="bullet-list">
+    <li><strong><a href="../TextField/">TextField</a></strong> — single-line counterpart. The primary alternative when the value fits on one line (Pair 1). Also the source of internal precedent for Pairs 2-5.</li>
+    <li><strong><a href="../Input/">Input</a></strong> — the lower-level single-line input that <code>TextField</code> wraps.</li>
+    <li><strong><a href="../Select/">Select</a> / <a href="../Radio/">Radio</a> / <a href="../Checkbox/">Checkbox</a></strong> — when the value set is finite.</li>
+    <li><strong><a href="../Button/">Button</a></strong> — most often submits the form a Textarea belongs to. Note: <code>Enter</code> inside a Textarea inserts a newline, so submit affordances must be explicit (button click, <code>Ctrl+Enter</code>, etc.).</li>
+  </ul>
+
+  <hr>
+
+  <h2>Gaps</h2>
+  <section class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Figma Do/Don't examples</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-USAGE-001</td>
+            <td>No <code>↳ TextArea examples</code> Figma page with Do/Don't card frames exists. The 8 pairs above are editorial scaffolding. Re-run <code>figma-extract-usage</code> if such a page is created.</td>
+          </tr>
+          <tr>
+            <td>No public Oxygen docs page for TextArea</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-USAGE-002</td>
+            <td>TextField mirrors <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a>; the equivalent for TextArea doesn't exist. Pairs 1, 6, 7, 8 are anchored to API props rather than a published usage stance.</td>
+          </tr>
+          <tr>
+            <td>Figma Size / Mode / Filled axes have no API prop</td>
+            <td><span class="badge-tag badge-conflict">CONFLICT</span> GAP-007 / GAP-008 / GAP-009</td>
+            <td>Figma exposes <code>Size</code> (Large/Medium/Small), <code>Mode</code> (Light/Dark), and <code>Filled</code> variant axes that don't map to OX API props. Sizing in code uses <code>rows</code>/<code>cols</code>; mode comes from the theme provider; "filled" is derived from <code>value !== ''</code>. Pair 6 sidesteps by anchoring to <code>rows</code>. Resolve before <code>doc-rewrite</code> can run.</td>
+          </tr>
+          <tr>
+            <td>ARIA pass-through props missing from props.md</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span> GAP-002</td>
+            <td><code>aria-label</code>, <code>aria-invalid</code>, <code>aria-required</code>, <code>aria-describedby</code> are not listed in <code>props.md</code> but are used throughout the pairs above (they're passed through to the underlying <code>&lt;textarea&gt;</code>). Add to the props table.</td>
+          </tr>
+          <tr>
+            <td>Dark mode tokens unresolved</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span> GAP-004</td>
+            <td><code>tokens.md</code> notes dark-mode values are not captured — Figma Enterprise plan required to resolve via the variables API. The state matrix above uses Light-mode values only.</td>
+          </tr>
+          <tr>
+            <td>Inner-field spacings hardcoded</td>
+            <td><span class="badge-tag badge-source-gap">SOURCE_GAP</span></td>
+            <td>16px h-pad, 12px v-pad, 6px border-radius, 4px gap between label/input/hint — none bound to a spacing token.</td>
+          </tr>
+          <tr>
+            <td><code>minLength</code> editorial stance missing</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span> GAP-USAGE-004</td>
+            <td>TextArea ships <code>minLength</code> (TextField doesn't). When should designers require a minimum content length? No pair drafted — surface if the team has a stance.</td>
+          </tr>
+          <tr>
+            <td>Stale cross-reference in TextField-usage.md</td>
+            <td><span class="badge-tag badge-doc-gap">DOC_GAP</span> GAP-USAGE-005</td>
+            <td><code>TextField-usage.md</code> "When not to use" row 4 states "Oxygen does not yet ship a dedicated Textarea component." This is now stale — update to point to <code>TextArea</code> when this draft is approved.</td>
+          </tr>
+          <tr>
+            <td>Pairs 6, 7, 8 are craft heuristics</td>
+            <td><span class="badge-tag badge-craft">CRAFT</span></td>
+            <td><code>rows</code> sizing, <code>resize</code> direction, character counter — no internal precedent. Recommendations are craft judgment anchored to API evidence; flag for designer review before publishing.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Source: Editorial draft authored by <code>usage-advisor</code> from extracted artifacts (<code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, <code>tokens.md</code>, <code>textarea-figma.md</code>, <code>textarea-pui.md</code>, <code>textarea-audit.md</code>) and internal precedent in <a href="../TextField/TextField-usage.md"><code>TextField-usage.md</code></a> · No Figma <code>↳ TextArea examples</code> page available · No public Oxygen docs URL for TextArea · 2026-05-15.
+  </footer>
+
+</div>
+</body>
+</html>

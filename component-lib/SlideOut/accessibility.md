@@ -11,6 +11,7 @@ siblings:
   - "[[SlideOut/props]]"
   - "[[SlideOut/examples]]"
   - "[[SlideOut/tokens]]"
+  - "[[SlideOut/SlideOut-usage]]"
   - "[[SlideOut/SlideOut-audit]]"
 tags:
   - oxygen

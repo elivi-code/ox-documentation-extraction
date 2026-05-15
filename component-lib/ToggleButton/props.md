@@ -22,6 +22,7 @@ siblings:
   - "[[ToggleButton/ToggleButton-figma]]"
   - "[[ToggleButton/ToggleButton-pui]]"
   - "[[ToggleButton/ToggleButton-audit]]"
+  - "[[ToggleButton/ToggleButton-usage]]"
 tags:
   - oxygen
   - component/ToggleButton

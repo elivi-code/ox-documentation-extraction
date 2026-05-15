@@ -16,7 +16,7 @@ files_found:
 files_missing:
   - Select-figma.md
 
-verdict: NO
+verdict: "NO"
 verdict_rationale: >
   Two deterministic CONFLICTs exist in the source data: (1) the `isAsync` prop
   has type `boolean` in get-component-info but type `IsAsync` in

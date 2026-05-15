@@ -12,6 +12,7 @@ siblings:
   - "[[Slider/examples]]"
   - "[[Slider/tokens]]"
   - "[[Slider/slider-pui]]"
+  - "[[Slider/Slider-usage]]"
   - "[[Slider/slider-audit]]"
 tags:
   - oxygen
@@ -22,7 +23,7 @@ tags:
 ---
 # Slider — Accessibility
 
-> **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [slider-pui.md](slider-pui.md)
+> **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [slider-pui.md](slider-pui.md) · [Slider-usage.md](Slider-usage.md)
 
 ## ARIA role
 

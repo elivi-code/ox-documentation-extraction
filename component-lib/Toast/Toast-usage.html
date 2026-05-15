@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toast — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f1a;
+      line-height: 1.2;
+    }
+
+    .see-also {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .see-also a {
+      color: #5046e4;
+      text-decoration: none;
+    }
+
+    .see-also a:hover { text-decoration: underline; }
+
+    /* Editorial callout */
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Info callout */
+    .callout-info {
+      background: #f0f0ff;
+      border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 13.5px;
+      color: #1e1a6e;
+    }
+
+    /* Intro */
+    .intro {
+      font-size: 15.5px;
+      color: #374151;
+      margin-bottom: 1rem;
+    }
+
+    .intro + .intro { margin-bottom: 2rem; }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f0f1a;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.5rem;
+    }
+
+    /* When to use */
+    .when-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .when-section { grid-template-columns: 1fr; }
+    }
+
+    .when-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .when-card h3 { margin-bottom: 0.625rem; }
+
+    .when-card ul {
+      padding-left: 1.25rem;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    /* Alternatives table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Do / Don't pairs */
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair {
+      margin-bottom: 1.75rem;
+    }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards { grid-template-columns: 1fr; }
+    }
+
+    .do-card, .dont-card {
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .dont-card {
+      background: #fff5f5;
+      border: 1px solid #fecaca;
+    }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 0.625rem;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body {
+      color: #374151;
+      line-height: 1.55;
+      margin-bottom: 0.625rem;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .card-note code {
+      background: rgba(0,0,0,0.06);
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    /* Gaps table */
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-conflict  { background: #fef3c7; color: #92400e; }
+    .badge-gap       { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial { background: #f0f0ff; color: #3730a3; }
+    .badge-skipped   { background: #f3f4f6; color: #374151; }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · feedback_status · Toast</div>
+    <h1>Toast — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Toast-figma.md">Toast-figma.md</a> ·
+      <a href="./Toast-pui.md">Toast-pui.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — not Figma-sourced.</strong> No <code>↳ Toast examples</code> Figma page exists, so <code>figma-extract-usage</code> cannot run. The Do/Don't pairs below are inferred from <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, and <code>Toast-figma.md</code>. Treat as provisional until a designer reviews them. Replace with <code>figma-extract-usage</code> output when a Figma examples page is created.
+  </div>
+
+  <p class="intro">
+    Toast is a transient, floating feedback surface anchored to the top corner of the UI below the top bar. It announces the outcome of an action or a system event without interrupting the user's flow. It is intentionally rendered on an <strong>inverted dark background</strong> so it pops against the main canvas, and it carries five semantic types (<code>success</code>, <code>error</code>, <code>warning</code>, <code>info</code>, <code>loading</code>) that map to a coloured left indicator bar.
+  </p>
+  <p class="intro">
+    Use Toast for short, ephemeral messages. For persistent page-level warnings, blocking decisions, or inline field-level feedback, see the comparator in <strong>When not to use</strong> below.
+  </p>
+
+  <hr>
+
+  <!-- When to use / When not to use -->
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li>A short, transient status update the user can read and move past (file saved, message sent, copy-to-clipboard succeeded).</li>
+        <li>A non-blocking error or warning the user should notice but doesn't have to acknowledge immediately.</li>
+        <li>An in-progress signal for a background task that doesn't justify a full inline loader.</li>
+        <li>An imperative event dispatched from anywhere in the app via <code>Toaster</code> + <code>notify()</code>.</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li>Persistent page-level warning until resolved → use <strong>AlertBanner</strong></li>
+        <li>User must complete an action before continuing → use <strong>Modal</strong> (Dialog Modal for confirmations)</li>
+        <li>Field-level validation next to a specific input → use <strong>inline error / form field error state</strong></li>
+        <li>Long-running operation where progress is the primary signal → use <strong>ProgressBar</strong> or <strong>Spinner</strong></li>
+        <li>Static informational status inside a card or section → use <strong>inline status badge / Tag</strong></li>
+        <li>Non-floating notification inside a layout column → use <strong>InlineNotification</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    The five <code>type</code> values are semantic, not stylistic. Don't pick <code>success</code> because you like green — pick it because the underlying event was a successful outcome.
+  </div>
+
+  <hr>
+
+  <!-- Do / Don't pairs -->
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <!-- Pair 1 -->
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Announcement urgency</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Reserve <code>role="alert"</code> for <code>type="error"</code> and let other types announce politely</div>
+          <p class="card-body">An error toast that interrupts the screen reader is appropriate when the user's last action failed. A success or info toast that does the same is noise — it interrupts whatever the user was reading or doing.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — <code>"error"</code> uses <code>role="alert"</code> (assertive); all others use <code>role="status"</code> (polite).</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Promote routine confirmations and info toasts to <code>role="alert"</code></div>
+          <p class="card-body">Announcing "Settings saved" or "3 new messages" assertively trains users to ignore your alerts. Save the assertive channel for things that actually require an immediate response.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Auto-dismiss policy</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Keep error and warning toasts visible until the user dismisses them</div>
+          <p class="card-body">A warning that vanishes after 5 seconds is invisible to anyone who isn't watching the screen at that moment. Render error and warning toasts with no <code>DURATION</code> timeout and a visible close control. Success toasts can fade — the action already completed.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — "Avoid auto-dismissing error or warning toasts — users relying on screen readers or with cognitive disabilities may need extended time."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Apply the same short auto-dismiss timer to error / warning that you use for success</div>
+          <p class="card-body">Errors and warnings carry information the user has to act on, and that information can't disappear before they've read it. Persist until the user acknowledges, or until the underlying condition resolves.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Dismissibility safety net</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Reserve <code>hideCloseControl</code> for short-lived <code>type="loading"</code> toasts that auto-resolve</div>
+          <p class="card-body">A "Saving…" loading toast doesn't need a close button because the toast updates itself the moment the save finishes. The user is never stuck with it.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — "When using <code>hideCloseControl</code>, ensure users have an alternative way to dismiss the toast (e.g. timed auto-dismiss with sufficient duration)."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Combine <code>hideCloseControl</code> with persistent or error / warning toasts</div>
+          <p class="card-body">Hiding the close button on a toast that won't auto-dismiss traps the user — there is no keyboard or pointer route to clear it. This is a hard accessibility failure.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Accessible names</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Always pass a specific <code>closeButtonLabel</code> and <code>iconTitle</code></div>
+          <p class="card-body">Screen readers announce the toast's icon and its close button by these labels. Specific labels orient users — "Dismiss save confirmation" tells them what they're closing; "Success", "Error", "Warning", "Loading" tells them what the icon means.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — "Always provide <code>closeButtonLabel</code> — without it the close button has no accessible name. Always provide <code>iconTitle</code> when the status icon conveys semantic meaning."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Ship a toast without these props or use a generic "Close" / "Icon" label</div>
+          <p class="card-body">An unlabelled close button is a button with no name — useless to screen readers. A generic "Close" gives no context when the user is hearing it out of order with other dismiss buttons on the page.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Pick the right surface</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use Toast for ephemeral, app-wide events; reach for AlertBanner / Modal / InlineNotification when the situation demands persistence, blocking, or embedded placement</div>
+          <p class="card-body">"Your changes were saved" is a Toast. A persistent "Your VPN connection dropped — reconnect to continue" is an AlertBanner. "Delete this customer? This cannot be undone." is a Modal. A status badge inline with a settings row is an InlineNotification or Tag.</p>
+          <p class="card-note">Grounded in: <code>Toast-figma.md</code> — "appears at the top corner of the UI below the top bar… Incoming interactions go to the top of the stack." Internal precedent: AlertBanner usage comparator.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use Toast for content the user must address before continuing, or that must remain visible across navigation</div>
+          <p class="card-body">If dismissal means the user loses the only copy of important information, the surface is wrong. Use AlertBanner (persistent) or Modal (blocking) instead.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 6 -->
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Loading toast scope</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use a loading toast for short, fire-and-forget operations whose outcome will replace it within a few seconds</div>
+          <p class="card-body">"Exporting…" → updates to "Export ready. Download" on completion. The user sees one toast, not two; the announcement is polite (<code>aria-live="polite"</code>) and resolves quickly.</p>
+          <p class="card-note">Grounded in: <code>props.md</code> — <code>"loading"</code> is a <code>ToastType</code> value; <code>accessibility.md</code> — "For <code>type="loading"</code>, use <code>aria-live="polite"</code> and update the content once the operation completes."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use a loading toast for operations taking 30+ seconds or for progress that lives next to a specific element</div>
+          <p class="card-body">Long-running work needs a determinate <code>ProgressBar</code> so the user can see how far along it is. Inline operations (form submit, in-card refresh) need an inline <code>Spinner</code> near the trigger, not a floating toast detached from context.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 7 -->
+    <div class="pair">
+      <div class="pair-label">Pair 7 — Message copy</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Write <code>title</code> as a short outcome statement and <code>description</code> as one helpful supporting sentence</div>
+          <p class="card-body"><em>Title:</em> "Couldn't send message." <em>Description:</em> "Check your connection and try again." Two short, plain-language strings. If technical detail matters, expose it behind an action button ("View details") rather than inside the toast text.</p>
+          <p class="card-note">Grounded in: <code>Toast-figma.md</code> default values; <code>props.md</code> — title and description sized for short text (14px / 320px container). Internal precedent: AlertBanner Pair 4.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Drop raw error codes, stack traces, or JSON payloads into the toast body</div>
+          <p class="card-body"><em>"Error: ECONNRESET at TCPConnectWrap.afterConnect…"</em> is noise for end users and a wall of text for screen readers. If diagnostic info needs to surface, link to it from an action button or a log view.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <!-- Gaps -->
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GAP-USAGE-001</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>These Do/Don't pairs are authored from extracted artifacts, not from Figma examples frames. They should be reviewed by a designer and replaced with Figma-sourced pairs once a <code>↳ Toast examples</code> page is created.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-002</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>No accessibility annotations exist on the Notification component set in Figma. The <code>role="alert"</code> / <code>role="status"</code> distinction in Pair 1 is inferred from <code>accessibility.md</code>; confirm against the component source before shipping.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-003</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>The <code>DURATION</code> constant from <code>@8x8/oxygen-toaster</code> is referenced but its values are not surfaced by MCP. Pair 2's "sufficient duration" guidance can't yet point to a specific token.</td>
+          </tr>
+          <tr>
+            <td>CONFLICT-001</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td>Figma's <code>Style</code> axis (Full / Group collapsed / Group expanded) has no corresponding prop on <code>Toast</code> directly — stacking / grouping is handled by <code>ToastStack</code> + <code>Toaster</code>. Stacking guidance was omitted from this draft pending confirmation.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-004</td>
+            <td><span class="badge badge-skipped">Skipped axis</span></td>
+            <td>Number-of-actions guidance (zero / one / two) was excluded — it overlaps with action-button labelling rules covered via AlertBanner precedent and adds little leverage on top of Pair 5.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-005</td>
+            <td><span class="badge badge-skipped">Skipped axis</span></td>
+            <td><code>notify()</code> vs rendering <code>&lt;Toast&gt;</code> directly was excluded as an implementation / architecture pattern more suited to dev docs than editorial usage guidelines.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-006</td>
+            <td><span class="badge badge-skipped">Skipped axis</span></td>
+            <td><code>size</code> (small / medium / large) was excluded as mechanical — picked by layout fit, not editorial intent.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance authored from extracted artifacts (props.md, examples.md, accessibility.md, tokens.md, Toast-figma.md, Toast-pui.md, Toast-audit.md) · No Figma examples page available · 2026-05-15
+  </footer>
+
+</div>
+</body>
+</html>

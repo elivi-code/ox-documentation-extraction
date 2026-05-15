@@ -13,17 +13,17 @@ files_found:
   - accessibility.md
   - Tabs-figma.md
   - Tabs-pui.md
+  - Tabs-usage.md  # editorial — drafted via usage-advisor 2026-05-15; Figma cards still missing
 
-files_missing:
-  - Tabs-usage.md
+files_missing: []
 
 dimension_scores:
   props:        { score: 0.80, coverage: "8/10" }
   examples:     { score: 0.67, coverage: "6/9"  }
   tokens:       { score: 0.70, coverage: "7/10" }   # improved: semantic names + typography now in Tabs-figma.md
-  accessibility:{ score: 0.78, coverage: "7/9"  }
+  accessibility: { score: 0.78, coverage: "7/9"  }
   figma:        { score: 0.78, coverage: "9/12" }   # improved: full color/token section added
-  usage:        { score: 0.00, coverage: "0/0 — SOURCE_GAP" }
+  usage:        { score: 0.50, coverage: "editorial — Tabs-usage.md drafted via usage-advisor 2026-05-15; Figma Do/Don't cards still missing on examples page 85697:271849" }
   pui:          { score: 1.00, coverage: "PASS — NO RELEVANT PUI CONTEXT confirmed by engineer" }
 
 available_dimensions_avg: 0.79
@@ -35,7 +35,7 @@ counts:
   conflicts: 0
   warnings: 3
 
-verdict: YES
+verdict: "YES"
 verdict_reason: >
   Zero CONFLICTs and zero blocker-severity gaps. Verdict unchanged from prior audit.
   Token dimension substantially improved: semantic token names (ui/ui01, actions/action01,
@@ -67,16 +67,23 @@ gaps:
 
   - id: GAP-003
     dimension: usage
-    severity: major
+    severity: minor              # downgraded 2026-05-15: editorial usage now present
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    status: partial-resolved-editorial
+    resolved_date: 2026-05-15
     evidence:
-      source_file: ~
-      location: "component-lib/Tabs/ directory"
-      finding: "Tabs-usage.md is absent — figma-extract-usage skill has not been run."
-    fix_action: "Run figma-extract-usage for Tabs to produce Tabs-usage.md with Do/Don't guidelines."
-    blocks: [doc-rewrite/usage-dimension]
+      source_file: Tabs-usage.md
+      location: "component-lib/Tabs/Tabs-usage.md"
+      finding: >
+        Tabs-usage.md is now present as an editorial draft (drafted 2026-05-15 via
+        usage-advisor Open mode from props.md + examples.md + accessibility.md + Tabs-figma.md).
+        Upstream Figma source still missing: the 'Tabs — Examples' page (node 85697:271849)
+        contains no `✅ Do — …` / `❌ Don't — …` card frames, so figma-extract-usage cannot run.
+        Replace Tabs-usage.md wholesale with figma-extract-usage output once cards are authored.
+    fix_action: "Author Do/Don't card frames on Figma examples page 85697:271849, then run figma-extract-usage Tabs to replace the editorial draft."
+    blocks: []                   # no longer blocks doc-rewrite — editorial usage covers the dimension
     dependency: []
 
   - id: GAP-004
@@ -267,7 +274,7 @@ tags:
 | `tokens.md` | ✅ Present | oxygen-mcp-extract |
 | `accessibility.md` | ✅ Present | oxygen-mcp-extract |
 | `Tabs-figma.md` | ✅ Present | figma-extract |
-| `Tabs-usage.md` | ❌ **MISSING** | figma-extract-usage |
+| `Tabs-usage.md` | 🟡 Present (editorial — drafted 2026-05-15 via usage-advisor; Figma cards still missing) | usage-advisor / pending figma-extract-usage |
 | `Tabs-pui.md` | ✅ Present — `NO RELEVANT PUI CONTEXT` | pui-mcp-extract |
 
 ---
@@ -312,11 +319,11 @@ tags:
 
 ## Gaps
 
-### SOURCE_GAP — Major
+### SOURCE_GAP — Minor (partial-resolved-editorial 2026-05-15)
 
-**GAP-003** · Usage
-> `Tabs-usage.md` absent — `figma-extract-usage` not run.
-> **Fix:** Run `figma-extract-usage` for Tabs.
+**GAP-003** · Usage — _partial-resolved-editorial_
+> `Tabs-usage.md` is now present as an editorial draft (drafted 2026-05-15 via `usage-advisor` Open mode). The upstream Figma source — `✅ Do — …` / `❌ Don't — …` card frames on examples page `85697:271849` — is still missing.
+> **Fix:** Author Do/Don't cards on the Figma examples page, then run `figma-extract-usage Tabs` and replace the editorial draft wholesale.
 
 ### SOURCE_GAP — Minor
 

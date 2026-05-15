@@ -14,6 +14,7 @@ siblings:
   - "[[ToggleButton/accessibility]]"
   - "[[ToggleButton/ToggleButton-figma]]"
   - "[[ToggleButton/ToggleButton-audit]]"
+  - "[[ToggleButton/ToggleButton-usage]]"
 tags:
   - oxygen
   - component/ToggleButton

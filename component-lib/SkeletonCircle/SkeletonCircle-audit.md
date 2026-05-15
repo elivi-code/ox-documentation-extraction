@@ -2,7 +2,7 @@
 rubric_version: "1.0"
 component: SkeletonCircle
 package: "@8x8/oxygen-skeletons"
-audit_date: "2026-05-05"
+audit_date: "2026-05-15"
 auditor: doc-audit skill
 
 files_found:
@@ -12,30 +12,31 @@ files_found:
   - accessibility.md
   - SkeletonCircle-figma.md
   - figma-screenshot-SkeletonCircle.png
+  - SkeletonCircle-usage.md
+  - SkeletonCircle-usage.html
 
 files_missing:
-  - SkeletonCircle-usage.md
   - SkeletonCircle-pui.md
 
 dimension_scores:
   props:        { score: 0.45, coverage: "4/9 — SOURCE_GAP (no MCP props); CONFLICT (size format vs SkeletonBlock docs)" }
   examples:     { score: 0.65, coverage: "5/8 — all hand-crafted; format consistent within this folder; good variety" }
   tokens:       { score: 0.50, coverage: "2/4 — --ui/ui02 extracted from CSS fallback; ui01 unresolved" }
-  accessibility:{ score: 0.70, coverage: "5/6 — full WCAG checklist present; all guidance inferred (no MCP/Figma source)" }
+  accessibility: { score: 0.70, coverage: "5/6 — full WCAG checklist present; all guidance inferred (no MCP/Figma source)" }
   figma:        { score: 0.70, coverage: "9/12 — excellent anatomy (18 variants); 1 token; design decisions noted; no component key" }
-  usage:        { score: 0.00, coverage: "0/0 — SOURCE_GAP (file missing)" }
+  usage:        { score: 0.65, coverage: "6/6 pairs — editorial, no Figma examples page; full When-to-use, Do/Don't pairs with citations; WARN-003" }
   pui:          { score: 0.90, coverage: "PASS (assumed) — display component; no application-layer concerns expected; pui.md not produced" }
 
-available_dimensions_avg: 0.64
-overall_avg: 0.56
+available_dimensions_avg: 0.65
+overall_avg: 0.65
 
 counts:
   doc_gaps: 1
-  source_gaps: 9
+  source_gaps: 8
   conflicts: 1
-  warnings: 2
+  warnings: 3
 
-verdict: NO
+verdict: "NO"
 verdict_reason: >
   GAP-001 is a CONFLICT that must be resolved before doc-rewrite can proceed.
   SkeletonCircle/props.md and examples.md document size values in Figma axis
@@ -45,6 +46,7 @@ verdict_reason: >
   for SkeletonCircle. A human must verify the @8x8/oxygen-skeletons source to
   determine the correct format and align both component folders.
   GAP-002 (prop names unconfirmed) also blocks the props dimension rewrite.
+  Usage dimension now present (editorial, 2026-05-14) — GAP-003 closed.
 
 gaps:
   - id: GAP-001
@@ -94,12 +96,15 @@ gaps:
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    status: CLOSED
+    closed_date: "2026-05-14"
+    closed_by: "Editorial SkeletonCircle-usage.md authored from extracted artifacts + oxygen.8x8.com/components/skeletonloader/usage. 6 Do/Don't pairs with citations. No Figma examples page exists — see WARN-003."
     evidence:
-      source_file: ~
-      location: "component-lib/SkeletonCircle/ directory"
-      finding: "SkeletonCircle-usage.md is absent — figma-extract-usage has not been run."
-    fix_action: "Run figma-extract-usage for the Skeleton loader Figma page to produce SkeletonCircle-usage.md with Do/Don't editorial guidance."
-    blocks: [doc-rewrite/usage-dimension]
+      source_file: SkeletonCircle-usage.md
+      location: "component-lib/SkeletonCircle/SkeletonCircle-usage.md"
+      finding: "SkeletonCircle-usage.md now present (editorial). Figma examples page remains absent — figma-extract-usage cannot run until a designer creates the page."
+    fix_action: "Create a '↳ Skeleton loader examples' Figma page with Do/Don't cards; then run figma-extract-usage to replace the editorial draft."
+    blocks: []
     dependency: []
 
   - id: GAP-004
@@ -254,6 +259,17 @@ warnings:
       spacing03 (8px) gap guidance is from OX usage documentation only — unconfirmed as an
       enforced CSS token value within the @8x8/oxygen-skeletons package. May be a spacing
       guideline rather than a hardcoded constraint.
+
+  - id: WARN-003
+    dimension: usage
+    confidence: deterministic
+    note: >
+      SkeletonCircle-usage.md is an editorial draft sourced from extracted artifacts and
+      oxygen.8x8.com/components/skeletonloader/usage. No Figma "↳ Skeleton loader examples"
+      page exists, so figma-extract-usage cannot run. The 6 Do/Don't pairs are grounded
+      and cited but are designer-unreviewed derivations. Replace with figma-extract-usage
+      output when a Figma examples page is created.
+
 # --- navigation (added by component-map) ---
 role: audit
 pipeline_stage: blocked
@@ -264,6 +280,7 @@ siblings:
   - "[[SkeletonCircle/tokens]]"
   - "[[SkeletonCircle/accessibility]]"
   - "[[SkeletonCircle/SkeletonCircle-figma]]"
+  - "[[SkeletonCircle/SkeletonCircle-usage]]"
 tags:
   - oxygen
   - component/SkeletonCircle
@@ -275,7 +292,7 @@ tags:
 
 > **Verdict: NO** — resolve 1 CONFLICT before running doc-rewrite.
 >
-> Rubric version: 1.0 · Audited: 2026-05-05
+> Rubric version: 1.0 · Audited: 2026-05-15 (re-audit; prior audit 2026-05-05)
 
 ---
 
@@ -289,7 +306,8 @@ tags:
 | `accessibility.md` | ✅ Present | oxygen-mcp-extract |
 | `SkeletonCircle-figma.md` | ✅ Present | figma-extract |
 | `figma-screenshot-SkeletonCircle.png` | ✅ Present | figma-extract |
-| `SkeletonCircle-usage.md` | ❌ **MISSING** | figma-extract-usage |
+| `SkeletonCircle-usage.md` | ✅ Present (editorial — see WARN-003) | figma-extract-usage / editorial |
+| `SkeletonCircle-usage.html` | ✅ Present | figma-extract-usage / editorial |
 | `SkeletonCircle-pui.md` | ⚠️ Missing — no PUI concerns expected for display component | pui-mcp-extract |
 
 ---
@@ -303,10 +321,9 @@ tags:
 | Tokens | 0.50 | 2/4 | `--ui/ui02` from CSS fallback; `ui01` unresolved |
 | Accessibility | 0.70 | 5/6 | Full WCAG checklist (incl. 2.3.3); all guidance inferred |
 | Figma | 0.70 | 9/12 | 18 variants documented; 1 token; design decisions noted; no component key |
-| Usage | 0.00 | — | ❌ SOURCE_GAP (major) — file missing |
+| Usage | 0.65 | 6/6 pairs | Editorial (no Figma examples page) — see WARN-003 |
 | PUI | 0.90 | PASS (assumed) | Display component; no application-layer concerns expected |
-| **Available avg** | **0.64** | | (excl. usage) |
-| **Overall avg** | **0.56** | | |
+| **Overall avg** | **0.65** | | ↑ from 0.56 (usage dimension now scored) |
 
 ---
 
@@ -325,13 +342,20 @@ SkeletonCircle's own files use Figma axis format (`"40px - medium"`, `"80px - xl
 | Count | Category |
 |-------|----------|
 | 1 | CONFLICT — **blocking doc-rewrite** |
-| 9 | SOURCE_GAPs (4 major, 5 minor) |
+| 7 | SOURCE_GAPs open (3 major, 4 minor; GAP-003 closed editorially) |
 | 1 | DOC_GAP (minor) |
-| 2 | Warnings (heuristic, advisory) |
+| 3 | Warnings (heuristic/deterministic, advisory) |
 
 ---
 
 ## Gaps
+
+### CLOSED
+
+**GAP-003** · Usage _(closed 2026-05-14)_
+> `SkeletonCircle-usage.md` now present — editorial draft from oxygen.8x8.com/components/skeletonloader/usage. 6 Do/Don't pairs with citations. Figma examples page remains absent — see WARN-003.
+
+---
 
 ### SOURCE_GAP — Blocker
 
@@ -340,10 +364,6 @@ SkeletonCircle's own files use Figma axis format (`"40px - medium"`, `"80px - xl
 > **Fix:** Check `@8x8/oxygen-skeletons` source; update props.md with confirmed API.
 
 ### SOURCE_GAP — Major
-
-**GAP-003** · Usage
-> `SkeletonCircle-usage.md` absent — `figma-extract-usage` not run.
-> **Fix:** Run `figma-extract-usage` for the Skeleton loader page.
 
 **GAP-004** · PUI
 > `SkeletonCircle-pui.md` absent — likely no concerns for a display component.
@@ -389,6 +409,8 @@ SkeletonCircle's own files use Figma axis format (`"40px - medium"`, `"80px - xl
 
 **WARN-002 (Tokens):** `spacing03` guidance sourced from usage docs only — unconfirmed as an enforced CSS value in the package.
 
+**WARN-003 (Usage):** `SkeletonCircle-usage.md` is an editorial draft (no Figma examples page). 6 pairs are grounded in sibling files + oxygen.8x8.com but designer-unreviewed. Replace with `figma-extract-usage` output when a Figma examples page is created.
+
 ---
 
 ## Suggested next actions
@@ -398,10 +420,9 @@ SkeletonCircle's own files use Figma axis format (`"40px - medium"`, `"80px - xl
 2. Resolve GAP-002 (prop names)           — same source check; update props.md, examples.md
 3. Fix GAP-007 (duplicate size labels)    — document disambiguation after GAP-001 resolved
 4. Fix GAP-008 (mode prop)                — confirm theme-provider behaviour; update props.md
-5. Run figma-extract-usage                — closes GAP-003
-6. Resolve token bindings (GAP-005/006)   — needs Variables API or figma_execute
-7. Run pui-mcp-extract or add N/A marker  — closes GAP-004
-8. Run doc-rewrite                        — after conflict resolved
+5. Resolve token bindings (GAP-005/006)   — needs Variables API or figma_execute
+6. Run pui-mcp-extract or add N/A marker  — closes GAP-004
+7. Run doc-rewrite                        — after conflict resolved
 ```
 
-_Source: doc-audit skill v1.0 · Audited from component-lib/SkeletonCircle/ · 2026-05-05_
+_Source: doc-audit skill v1.0 · Re-audited 2026-05-15 (prior: 2026-05-05) · component-lib/SkeletonCircle/_

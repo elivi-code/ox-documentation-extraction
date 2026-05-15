@@ -4,7 +4,7 @@ component: SlideOut
 package: "@8x8/oxygen-slide-out"
 audit_date: "2026-05-05"
 auditor: doc-audit skill
-updated: "2026-05-05"
+updated: "2026-05-15"
 
 file_inventory:
   present:
@@ -12,9 +12,9 @@ file_inventory:
     - examples.md
     - tokens.md
     - accessibility.md
+    - SlideOut-usage.md     # editorial — see WARN-002
   missing:
     - SlideOut-figma.md
-    - SlideOut-usage.md
     - SlideOut-pui.md
 
 dimension_scores:
@@ -24,26 +24,35 @@ dimension_scores:
   accessibility:        { score: 0.50, coverage: "ARIA roles, keyboard interactions, screen reader guidance, WCAG checklist all present; entirely inferred from component nature — MCP returned no explicit a11y data" }
   figma_fidelity:       { score: 0.0,  coverage: "SlideOut-figma.md absent — user confirmed no Figma design exists for this component" }
   pui_integration:      { score: 0.50, coverage: "SlideOut-pui.md absent; Platform UI MCP search returned 0 results; no explicit N/A marker written to confirm no PUI concern" }
-  usage_guidelines:     { score: 0.0,  coverage: "SlideOut-usage.md absent — no Figma design means no Examples page to extract from" }
+  usage_guidelines:     { score: 0.55, coverage: "SlideOut-usage.md present (editorial — see WARN-002); 7 grounded Do/Don't pairs with file:line citations, When-to-use / When-not-to-use sections, inferred Anatomy block; missing Figma-sourced verification, screenshots, and the canonical figma-extract-usage provenance" }
 
-overall_score: 0.28
+overall_score: 0.36
 
 counts:
   doc_gaps: 1
-  source_gaps: 8
+  source_gaps: 7
   conflicts: 0
-  warnings: 1
+  warnings: 2
 
 verdict: PARTIAL
 verdict_reason: >
-  GAP-001 is a blocker SOURCE_GAP: SlideOut-figma.md is absent because no Figma design
-  exists for this component. This permanently blocks the figma_fidelity and
-  usage_guidelines dimensions from being completed. Zero CONFLICTs exist.
-  doc-rewrite can proceed on the four available dimensions (props, examples, tokens,
-  accessibility), but the resulting spec will be explicitly flagged as lacking visual
-  design reference. Remaining source gaps (onResize undocumented, 4 props undescribed,
-  0 tokens, all a11y inferred) should be resolved from component source before rewrite
-  if possible.
+  GAP-001 remains a blocker SOURCE_GAP: SlideOut-figma.md is absent because no
+  Figma design exists for this component. This permanently blocks the figma_fidelity
+  dimension and prevents figma-extract-usage from producing the canonical usage
+  doc. Zero CONFLICTs exist.
+
+  Re-audited 2026-05-15: GAP-002 (usage absent) is now resolved editorially —
+  SlideOut-usage.md was authored via usage-advisor Open mode with 7 grounded
+  Do/Don't pairs (see WARN-002), mirroring the ProgressBar/PopoverMenu precedent.
+  The usage_guidelines dimension score moves from 0.0 to 0.55; overall_score
+  from 0.28 to 0.36.
+
+  doc-rewrite can now proceed on five dimensions (props, examples, tokens,
+  accessibility, usage) but the resulting spec will still be explicitly flagged
+  as lacking visual design reference (figma_fidelity = 0.0) until upstream Figma
+  work lands. Remaining source gaps (onResize undocumented, 4 props undescribed,
+  0 tokens, all a11y inferred) should be resolved from component source before
+  rewrite if possible.
 
 gaps:
   - id: GAP-001
@@ -70,15 +79,25 @@ gaps:
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    resolved_editorially: WARN-002
+    resolution_date: "2026-05-15"
     evidence:
-      source_file: "(file absent)"
-      location: "SlideOut-usage.md — not present in directory"
+      source_file: "SlideOut-usage.md"
+      location: "SlideOut-usage.md — present (editorial, drafted via usage-advisor on 2026-05-15)"
       finding: >
-        No SlideOut-usage.md exists. Since no Figma design exists (GAP-001), there
-        is no Figma Examples page to extract Do/Don't usage guidance from. Usage
-        guidelines cannot be produced until a Figma design is created.
-    fix_action: "Blocked by GAP-001. Once a Figma design with an Examples page is created, run figma-extract-usage to produce SlideOut-usage.md."
-    blocks: [doc-rewrite]
+        Originally: no SlideOut-usage.md existed, blocked by GAP-001 (no Figma).
+        Resolved editorially 2026-05-15: SlideOut-usage.md was authored via
+        usage-advisor Open mode with 7 grounded Do/Don't pairs covering
+        SlideOut-vs-Modal-vs-Drawer, controlled isVisible state, role choice
+        (dialog vs complementary), Escape/outside-click/focus-return wiring,
+        aria-hidden toggling, isResizable + min/max width, and content
+        density / scroll. Every pair carries a `**Source:**` line citing
+        props.md / examples.md / accessibility.md by line. The editorial
+        provenance is captured as WARN-002 and must be replaced with
+        figma-extract-usage output if a `↳ SlideOut examples` Figma page is
+        ever authored.
+    fix_action: "Resolved editorially via WARN-002. To convert to a canonical source-grounded usage doc, GAP-001 must first be cleared (Figma design created), then `↳ SlideOut examples` page authored with ✅ Do / ❌ Don't card frames, then run figma-extract-usage to overwrite SlideOut-usage.md."
+    blocks: []
     dependency: [GAP-001]
 
   - id: GAP-003
@@ -226,15 +245,29 @@ warnings:
       If it accepts CSS values or percentages, the type annotation `number` would
       be incorrect.
     advisory: "Clarify the unit expected by minWidth, maxWidth, and defaultWidth (pixels vs. other). Update prop descriptions and types accordingly."
+
+  - id: WARN-002
+    dimension: usage_guidelines
+    confidence: heuristic
+    added: "2026-05-15"
+    finding: >
+      SlideOut-usage.md is editorial — drafted via usage-advisor Open mode on
+      2026-05-15, not from a Figma `↳ SlideOut examples` page (which does not
+      exist; see GAP-001). The 7 Do/Don't pairs are grounded in props.md,
+      examples.md, and accessibility.md with explicit `**Source:** [file:line]`
+      citations, but the anatomy and pair framings have not been validated
+      against a Figma source-of-truth or designer review.
+    advisory: "Treat the usage doc as a stand-in. If/when a Figma design and `↳ SlideOut examples` page are authored, run figma-extract-usage to overwrite SlideOut-usage.md with canonical card-frame data, and confirm whether each editorial pair survives, is restated, or is discarded."
 # --- navigation (added by component-map) ---
 role: audit
 pipeline_stage: spec_ready
-pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+pipeline_note: "Audit verdict PARTIAL — doc-rewrite can run on 5 of 7 dimensions; usage is editorial (WARN-002); figma_fidelity still blocked by GAP-001."
 siblings:
   - "[[SlideOut/props]]"
   - "[[SlideOut/examples]]"
   - "[[SlideOut/tokens]]"
   - "[[SlideOut/accessibility]]"
+  - "[[SlideOut/SlideOut-usage]]"
 tags:
   - oxygen
   - component/SlideOut
@@ -244,27 +277,31 @@ tags:
 
 # SlideOut — Audit Report
 
-> **Verdict: PARTIAL** — GAP-001 is a permanent blocker SOURCE_GAP: no Figma design exists for SlideOut. `figma_fidelity` and `usage_guidelines` dimensions cannot be completed without upstream design work. `doc-rewrite` can proceed on props, examples, tokens, and accessibility dimensions. Resolve GAP-004/GAP-005 (missing prop descriptions + onResize) and GAP-008 (tokens) from source before rewriting for best coverage.
+> **Verdict: PARTIAL** — GAP-001 is a permanent blocker SOURCE_GAP: no Figma design exists for SlideOut. `figma_fidelity` cannot be completed without upstream design work.
+>
+> **Re-audited 2026-05-15:** GAP-002 (usage absent) closed editorially — `SlideOut-usage.md` was authored via `usage-advisor` Open mode with 7 grounded Do/Don't pairs (WARN-002). `doc-rewrite` can now proceed on 5 of 7 dimensions (props, examples, tokens, accessibility, usage). Resolve GAP-004 / GAP-005 (missing prop descriptions + `onResize`) and GAP-008 (tokens) from source before rewriting for best coverage.
+>
+> Rubric version: 1.0 · Re-audited: 2026-05-15 (prior audit: 2026-05-05)
 
 ## Summary
 
-| Dimension | Score | Status |
-|-----------|-------|--------|
-| Props completeness | 0.45 | 9 props listed; 4 undescribed; onResize unregistered; all defaults missing |
-| Examples quality | 0.40 | 1 Storybook-derived example; 0 clean MCP examples; limited coverage |
-| Token coverage | 0.10 | 0 tokens from MCP; file present but empty of data |
-| Accessibility | 0.50 | Full structure present but entirely inferred — no MCP source data |
-| Figma fidelity | 0.00 | SlideOut-figma.md absent — no Figma design exists |
-| PUI integration | 0.50 | No PUI results found; no explicit N/A marker written |
-| Usage guidelines | 0.00 | SlideOut-usage.md absent — blocked by missing Figma design |
-| **Overall** | **0.28** | |
+| Dimension | Score | Δ | Status |
+|-----------|-------|---|--------|
+| Props completeness | 0.45 | — | 9 props listed; 4 undescribed; `onResize` unregistered; all defaults missing |
+| Examples quality | 0.40 | — | 1 Storybook-derived example; 0 clean MCP examples; limited coverage |
+| Token coverage | 0.10 | — | 0 tokens from MCP; file present but empty of data |
+| Accessibility | 0.50 | — | Full structure present but entirely inferred — no MCP source data |
+| Figma fidelity | 0.00 | — | `SlideOut-figma.md` absent — no Figma design exists (GAP-001) |
+| PUI integration | 0.50 | — | No PUI results found; no explicit N/A marker written |
+| Usage guidelines | 0.55 | **+0.55** | ✅ Available — editorial; 7 grounded Do/Don't pairs, When-to-use / When-not-to-use, inferred Anatomy block; missing Figma verification (WARN-002) |
+| **Overall** | **0.36** | **+0.08** | |
 
 ## Gap register
 
 | ID | Dimension | Severity | Type | Summary |
 |----|-----------|----------|------|---------|
 | GAP-001 | figma_fidelity | blocker | SOURCE_GAP | No Figma design exists — SlideOut-figma.md cannot be produced |
-| GAP-002 | usage_guidelines | major | SOURCE_GAP | SlideOut-usage.md absent — blocked by GAP-001 (no Figma) |
+| GAP-002 | usage_guidelines | major | SOURCE_GAP | ✅ Resolved editorially 2026-05-15 (see WARN-002) — `SlideOut-usage.md` authored via `usage-advisor` with 7 grounded Do/Don't pairs |
 | GAP-003 | pui_integration | major | SOURCE_GAP | SlideOut-pui.md absent; PUI search returned 0 results but no N/A marker written |
 | GAP-004 | props_completeness | major | SOURCE_GAP | 4 props (hasAnimation, defaultWidth, minWidth, maxWidth) have no descriptions in MCP |
 | GAP-005 | props_completeness | major | SOURCE_GAP | `onResize` observed in Storybook story but absent from props registry |
@@ -278,16 +315,27 @@ tags:
 | ID | Dimension | Advisory |
 |----|-----------|---------|
 | WARN-001 | props_completeness | Clarify units for `minWidth`, `maxWidth`, `defaultWidth` — number type without unit spec is ambiguous |
+| WARN-002 | usage_guidelines | `SlideOut-usage.md` is editorial (drafted via `usage-advisor` 2026-05-15). Replace with `figma-extract-usage` output if a `↳ SlideOut examples` Figma page is ever authored |
 
 ## Resolution path
 
-To unblock `doc-rewrite` on available dimensions (props, examples, tokens, accessibility):
+To unblock `doc-rewrite` on available dimensions (props, examples, tokens, accessibility, usage):
 
 1. **GAP-004 + GAP-005 (props):** Check `@8x8/oxygen-slide-out` component source or Storybook argTypes for `hasAnimation`, `defaultWidth`, `minWidth`, `maxWidth` descriptions and confirm whether `onResize` is a public prop. Update props.md.
 2. **GAP-008 (tokens):** Search token registry with alternate terms ('slide', 'panel', 'drawer') or inspect component CSS source. Update tokens.md.
 3. **GAP-009 (accessibility):** Obtain confirmed ARIA/keyboard implementation from component source or Storybook a11y addon.
 4. **GAP-003 (pui):** Write a minimal `SlideOut-pui.md` with the `<!-- NO RELEVANT PUI CONTEXT -->` marker to formally close this dimension.
 
-GAP-001 and GAP-002 (Figma + Usage) are permanently blocked until a Figma design is created. Flag to the design owner.
+**GAP-001 (Figma)** is permanently blocked until a Figma design is created. Flag to the design owner. **GAP-002 (Usage)** is closed editorially as of 2026-05-15 (WARN-002) — re-open and overwrite with `figma-extract-usage` output once a Figma examples page exists.
 
-Minor gap (GAP-006) and warning (WARN-001) are auto-fixable or advisory and do not block rewrite.
+Minor gap (GAP-006) and warnings (WARN-001, WARN-002) are auto-fixable or advisory and do not block rewrite.
+
+## Re-audit log
+
+**2026-05-15** — Re-run after `SlideOut-usage.md` was added editorially.
+- `file_inventory`: `SlideOut-usage.md` moved from `missing` → `present` (editorial).
+- `usage_guidelines` dimension score: 0.00 → 0.55.
+- `source_gaps` count: 8 → 7 (GAP-002 closed editorially).
+- `warnings` count: 1 → 2 (added WARN-002 for editorial provenance).
+- `overall_score`: 0.28 → 0.36.
+- Verdict: PARTIAL → PARTIAL (unchanged; GAP-001 still a blocker SOURCE_GAP).

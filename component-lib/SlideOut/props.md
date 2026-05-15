@@ -17,6 +17,7 @@ siblings:
   - "[[SlideOut/examples]]"
   - "[[SlideOut/tokens]]"
   - "[[SlideOut/accessibility]]"
+  - "[[SlideOut/SlideOut-usage]]"
   - "[[SlideOut/SlideOut-audit]]"
 tags:
   - oxygen

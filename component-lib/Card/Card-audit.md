@@ -37,7 +37,7 @@ counts:
   conflicts: 0
   warnings: 2
 
-verdict: YES
+verdict: "YES"
 verdict_reason: >
   All four blocker-severity files are present (props.md, examples.md,
   accessibility.md, Card-figma.md). Zero CONFLICTs exist. No blocker-severity

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tag — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+    .breadcrumb {
+      font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; }
+    .see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6; border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0; padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0; font-size: 13.5px; color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07); padding: 1px 4px;
+      border-radius: 3px; font-size: 12px;
+    }
+    .callout-editorial a { color: #5c4200; text-decoration: underline; }
+
+    .callout-info {
+      background: #f0f0ff; border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0; padding: 0.75rem 1rem;
+      margin: 1rem 0; font-size: 13.5px; color: #1e1a6e;
+    }
+
+    .intro { font-size: 15.5px; color: #374151; margin-bottom: 2rem; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+    h2 { font-size: 1.2rem; font-weight: 600; color: #0f0f1a; margin-bottom: 0.75rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 0.5rem; }
+
+    .when-section { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+    @media (max-width: 600px) { .when-section { grid-template-columns: 1fr; } }
+    .when-card { background: #fff; border-radius: 8px; padding: 1.125rem 1.25rem; border: 1px solid #e5e7eb; }
+    .when-card h3 { margin-bottom: 0.625rem; }
+    .when-card ul { padding-left: 1.25rem; color: #374151; font-size: 14px; }
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;
+    }
+    th {
+      background: #f3f4f6; font-weight: 600; padding: 0.625rem 0.875rem;
+      text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+    }
+    td { padding: 0.575rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+    .pair { margin-bottom: 1.75rem; }
+    .pair-label {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #6b7280; margin-bottom: 0.75rem;
+    }
+    .pair-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .pair-cards { grid-template-columns: 1fr; } }
+    .do-card, .dont-card { border-radius: 8px; padding: 1.125rem 1.25rem; font-size: 14px; }
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+    .card-header {
+      font-size: 13px; font-weight: 700; margin-bottom: 0.625rem;
+      display: flex; align-items: center; gap: 0.375rem;
+    }
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+    .card-body { color: #374151; line-height: 1.55; margin-bottom: 0.625rem; }
+    .card-note {
+      font-size: 12px; color: #6b7280; font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.5rem; margin-top: 0.5rem;
+    }
+    .card-note code { background: rgba(0,0,0,0.06); padding: 1px 3px; border-radius: 3px; font-size: 11px; }
+    .card-body pre {
+      background: #0f172a; color: #e2e8f0; border-radius: 6px;
+      padding: 0.625rem 0.75rem; font-size: 12px; overflow-x: auto;
+      margin: 0.5rem 0; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .badge-conflict { background: #fef3c7; color: #92400e; }
+    .badge-gap      { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial{ background: #f0f0ff; color: #3730a3; }
+
+    .page-footer {
+      margin-top: 2.5rem; font-size: 12px; color: #9ca3af;
+      border-top: 1px solid #e5e7eb; padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · data_display · Tag</div>
+    <h1>Tag — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Tag-figma.md">Tag-figma.md</a> ·
+      <a href="./Tag-audit.md">Tag-audit.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — not Figma-sourced.</strong> The Figma examples page for Tag (<code>52829:11107</code>) contains anatomy and type documentation, <strong>not</strong> ✅ Do / ❌ Don't card frames, so <code>figma-extract-usage</code> cannot run (audit reference: <code>Tag-audit.md</code> GAP-011). The Do/Don't pairs below are inferred from <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, <code>tokens.md</code>, <code>Tag-figma.md</code>, and the public usage page at <a href="https://oxygen.8x8.com/components/tags/usage">oxygen.8x8.com/components/tags/usage</a>. Treat as provisional until a designer reviews them. Replace with <code>figma-extract-usage</code> output once Do/Don't card frames exist in Figma.
+  </div>
+
+  <p class="intro">
+    <code>Tag</code> is a pill-shaped component used to "label, categorize, or organize items using keywords that describe them." It has two visual forms — <strong>Standard Tag</strong> (with an optional leading icon) and <strong>Avatar Tag</strong> (with a fixed avatar) — selected automatically by the presence of the <code>avatar</code> prop. Either form can be display-only or carry a remove (×) button, controlled by the <code>action</code> prop.
+  </p>
+
+  <hr>
+
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li><strong>Categorize content, display metadata, filter items, or indicate status</strong> — the page's primary purpose.</li>
+        <li><strong>As selected pills inside a multi-select Select</strong> — Avatar Tags or Standard Tags representing each chosen value, each with its own × button.</li>
+        <li><strong>As a static status indicator</strong> on a card or list row — e.g. a <code>blue</code> "External" tag with no remove button (display-only).</li>
+        <li><strong>As a RAG (Red / Amber / Green) status group</strong> — only on <strong>Standard Tag</strong> using <code>variant="red" / "yellow" / "green"</code>.</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li>You need a clickable affordance → use a <strong>Button</strong>. The tag body has no role or focus.</li>
+        <li>You want to convey count or numeric magnitude → use a <strong>Badge</strong>.</li>
+        <li>The content is a long phrase or sentence → re-think the data shape; Tag uses single-line <code>label01</code>.</li>
+        <li>You want a RAG colour on Avatar Tag → Avatar Tag has no <code>yellow</code> or <code>green</code> variants. Use Standard Tag.</li>
+        <li>You want a persistent emphasised warning → use <code>variant="yellow-emphasis"</code>, not <code>hasError</code>.</li>
+        <li>You need a hover style → Tag has no hover/pressed states modelled.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    Per <a href="https://oxygen.8x8.com/components/tags/usage">oxygen.8x8.com/components/tags/usage</a>: "Use tags to label, categorize, or organize items using keywords that describe them." Placement: "Tags should be 4px apart ($spacing02)."
+  </div>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Keywords, not actions; only removable when the user can remove it</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Keep the label short and decide deliberately whether the tag should be removable</div>
+          <p class="card-body">A Tag is a single-line 12 px <code>label01</code> pill — use it for keywords, metadata, status words, or entity names. Pass <code>action</code> <strong>only</strong> when the user is meant to remove the item. For purely informational status (the public-usage-page "External" tag on a meeting card), omit <code>action</code> entirely so no × button is rendered.</p>
+          <pre>{/* Display-only status tag */}
+&lt;Tag variant="blue"&gt;
+  &lt;GroupIcon /&gt;
+  External
+&lt;/Tag&gt;
+
+{/* Removable filter chip */}
+&lt;Tag
+  action={() =&gt; removeFilter('happy')}
+  actionProps={{ 'aria-label': 'Remove Happy filter' }}
+&gt;
+  Happy
+&lt;/Tag&gt;</pre>
+          <p class="card-note">Grounded in: <code>props.md</code> 79–87 (<code>children</code>, <code>action</code>, <code>actionProps</code>); <code>Tag-figma.md</code> 60–73 (anatomy — remove button optional); <code>accessibility.md</code> 34–44 (dual-mode); public-usage-page placement-01 image ("External" tag with no ×).</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Wrap long phrases in a Tag, or attach <code>action</code> to a tag the user can't remove</div>
+          <p class="card-body">A long sentence truncates and blows out the row — the pill is shaped for one-or-two-word labels at 12 px. Attaching <code>action</code> to a display-only status tag puts an × next to information the user is not meant to delete — the affordance lies.</p>
+          <pre>{/* Sentence in a Tag */}
+&lt;Tag&gt;Customer has not responded in 48 hours&lt;/Tag&gt;
+
+{/* × on a static status — user can't remove "External" */}
+&lt;Tag variant="blue" action={() =&gt; {}}&gt;External&lt;/Tag&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Avatar Tag for people/groups; Standard Tag for keywords/metadata/status</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use Avatar Tag for entities and Standard Tag for everything else</div>
+          <p class="card-body">Avatar Tag's canonical home is a <strong>multi-select Select</strong> where each pill represents a user or group — see the public-usage-page placement-02 image (Avatar Tags as selected pills with × buttons inside a To-field). Standard Tag covers everything else: filter chips, status badges, metadata labels.</p>
+          <pre>{/* Avatar Tag — multi-select Select */}
+&lt;Tag
+  avatar={{ name: 'Josephine Lu', src: '/avatars/jlu.jpg' }}
+  action={() =&gt; removeUser('jlu')}
+  actionProps={{ 'aria-label': 'Remove Josephine Lu' }}
+&gt;
+  Josephine Lu
+&lt;/Tag&gt;
+
+{/* Standard Tag — keyword / metadata */}
+&lt;Tag variant="grey"&gt;Engineering&lt;/Tag&gt;</pre>
+          <p class="card-note">Grounded in: <code>props.md</code> 81, 107–113 (<code>avatar</code> switches form); <code>examples.md</code> 102–123, 192–219 (Avatar Tag in multi-select Select); <code>Tag-figma.md</code> 311–314 ("Tags inside Select"); public-usage-page placement-02 image.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use Avatar Tag for status, or stuff a Standard Tag with an arbitrary leading photo</div>
+          <p class="card-body">Avatar Tag's leading slot is the <code>Avatar</code> sub-component (24×24, rounded-1000px) — it expects a person/group avatar, not an icon or product thumbnail. Using it for status colour confuses readers because the photo carries entity identity, not status meaning.</p>
+          <pre>{/* Avatar Tag used for status */}
+&lt;Tag
+  avatar={{ name: 'Alert', src: '/icons/alert.png' }}
+  variant="red"
+&gt;
+  Critical
+&lt;/Tag&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 3 — RAG colours on Standard Tag only (yellow = "Amber" in design)</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Build RAG status groups with Standard Tag</div>
+          <p class="card-body">The Figma examples page names the pattern: "RAG tags — Red · Amber (yellow) · Green." The prop value is <code>"yellow"</code> but designers and Figma's <code>color</code> axis label it "Amber" (audit WARN-003). When a spec says "Amber tag", the code is <code>variant="yellow"</code>.</p>
+          <pre>&lt;div style={{ display: 'flex',
+              gap: 'var(--spacing/spacing02)' }}&gt;
+  &lt;Tag variant="red"&gt;Critical&lt;/Tag&gt;
+  &lt;Tag variant="yellow"&gt;Warning&lt;/Tag&gt;  {/* "Amber" */}
+  &lt;Tag variant="green"&gt;Healthy&lt;/Tag&gt;
+&lt;/div&gt;</pre>
+          <p class="card-note">Grounded in: <code>examples.md</code> 88–98 (RAG pattern); <code>props.md</code> 92–100 (yellow/green Standard-only); <code>Tag-figma.md</code> 131, 309 (Avatar Tag omits yellow/green; examples page names RAG); audit WARN-003 (yellow = "Amber").</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Apply RAG colours to Avatar Tag — <code>yellow</code> / <code>green</code> are not available</div>
+          <p class="card-body">Avatar Tag's <code>color</code> axis ships only five values: <code>default</code>, <code>blue</code>, <code>grey</code>, <code>red</code>, <code>yellow-emphasis</code> — <strong>no</strong> <code>yellow</code> or <code>green</code> (Tag-figma.md line 131; audit GAP-008). If status colour belongs on a person/group, render the entity in Avatar Tag and put the colour on an adjacent Standard Tag.</p>
+          <pre>{/* Avatar Tag has no `green` variant */}
+&lt;Tag
+  avatar={{ name: 'Josephine Lu', src: '/avatars/jlu.jpg' }}
+  variant="green"
+&gt;
+  Josephine Lu
+&lt;/Tag&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Label the × button, not the tag body</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Pass <code>aria-label</code> via <code>actionProps</code> on every removable tag</div>
+          <p class="card-body">The tag body has no <code>role</code>, no <code>tabIndex</code>, and no keyboard interaction — only the × button is focusable. Figma's <code>focus?</code> boolean confirms this: the 2 px border + 4 px inset shadow is rendered around the <strong>close button area only</strong>, never the pill body. The × is icon-only — screen readers announce it as just "button" unless an accessible label is provided.</p>
+          <pre>&lt;Tag
+  avatar={{ name: 'Josephine Lu', src: '/avatars/jlu.jpg' }}
+  action={() =&gt; removeUser('jlu')}
+  actionProps={{
+    'aria-label': 'Remove Josephine Lu'
+  }}
+&gt;
+  Josephine Lu
+&lt;/Tag&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> 56–66 (ARIA — <code>aria-label</code> via <code>actionProps</code>), 86–95 (keyboard — only × takes Tab), 162–166 (missing <code>aria-label</code> is the top pitfall); <code>Tag-figma.md</code> 70, 84–86, 217–222 (focus ring on × area only); public-usage-page states image.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Put <code>aria-label</code> on the tag body or leave the × button unlabelled</div>
+          <p class="card-body">Setting <code>aria-label</code> on the Tag element does nothing — it has no role or tab stop. Rendering bare <code>action={fn}</code> with no <code>actionProps</code> announces "button" with no context — the user can't tell what removing it does until they activate it.</p>
+          <pre>{/* aria-label on the tag body — ignored */}
+&lt;Tag aria-label="Remove Josephine Lu" action={remove}&gt;
+  Josephine Lu
+&lt;/Tag&gt;
+
+{/* Bare action — no accessible label */}
+&lt;Tag action={remove}&gt;Josephine Lu&lt;/Tag&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Wrap tag lists in a flex row with <code>gap: var(--spacing/spacing02)</code> (4 px)</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use a 4 px gap between adjacent tags</div>
+          <p class="card-body">The public usage page is explicit: "Tags should be 4px apart ($spacing02)." <code>spacing02</code> is the same token Tag uses internally between leading visual, label, and × — so the rhythm carries across the row. Use a flex container with <code>gap</code>; don't put margins on individual tags.</p>
+          <pre>&lt;div style={{
+  display: 'flex',
+  gap: 'var(--spacing/spacing02)',
+  flexWrap: 'wrap'
+}}&gt;
+  {items.map((item) =&gt; (
+    &lt;Tag
+      key={item.id}
+      action={() =&gt; remove(item.id)}
+      actionProps={{ 'aria-label': `Remove ${item.label}` }}
+    &gt;
+      {item.label}
+    &lt;/Tag&gt;
+  ))}
+&lt;/div&gt;</pre>
+          <p class="card-note">Grounded in: <code>examples.md</code> 172–188 ("$spacing02 (4px) apart"); <code>tokens.md</code> 114–120 (<code>spacing02 = 4px</code>, both internal gap and tag-to-tag spacing); oxygen.8x8.com — Placement: "Tags should be 4px apart ($spacing02)."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Set margins on individual tags, or mix gap values across a row</div>
+          <p class="card-body">Per-tag margins fight <code>flex-wrap</code> and collapse unpredictably across rows. Using <code>gap: 8px</code> or <code>gap: 12px</code> breaks the visual rhythm with Tag's internal spacing — the row no longer reads as part of the same component family.</p>
+          <pre>{/* Per-tag margin + mixed gap */}
+&lt;div style={{ display: 'flex', gap: '12px' }}&gt;
+  &lt;Tag style={{ marginRight: 8 }}&gt;One&lt;/Tag&gt;
+  &lt;Tag&gt;Two&lt;/Tag&gt;
+&lt;/div&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 6 — <code>hasError</code> is "retry this entity" on Avatar Tag, not a generic warning colour</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Combine <code>hasError</code> with an <code>action={retry}</code> on Avatar Tag</div>
+          <p class="card-body"><code>hasError</code> adds a red <code>error/error01</code> border (Figma <code>type=withActionError</code>) — it's the Avatar-Tag-only state for "this person/group failed to load/send/sync and the user can retry." Pair it with an <code>action</code> that retries (not removes) and announce the error in text, not colour alone.</p>
+          <pre>&lt;Tag
+  avatar={{ name: 'Failed user', src: '/avatars/failed.jpg' }}
+  action={() =&gt; retry('failed')}
+  actionProps={{
+    'aria-label': 'Retry sending to Failed user'
+  }}
+  hasError
+&gt;
+  Failed user
+&lt;/Tag&gt;</pre>
+          <p class="card-note">Grounded in: <code>examples.md</code> 128–141 (Avatar Tag error state); <code>props.md</code> 84, 121–125 (<code>hasError</code>); <code>Tag-figma.md</code> 130–132, 213–214 (Avatar Tag adds <code>withActionError</code>; <code>error/error01</code> border); <code>accessibility.md</code> 66, 103, 166 (error must be conveyed in text, not colour alone).</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use <code>hasError</code> as a generic warning colour or apply it on Standard Tag</div>
+          <p class="card-body">A persistent warning colour belongs on <code>variant="yellow-emphasis"</code> (solid yellow). <code>hasError</code> is the transient "this Avatar Tag has failed" state. Per <code>Tag-figma.md</code>, <code>withActionError</code> is only defined on Avatar Tag — Standard Tag's behaviour with <code>hasError</code> is implementation-dependent.</p>
+          <pre>{/* hasError as a generic warning */}
+&lt;Tag variant="default" hasError&gt;Heads up&lt;/Tag&gt;
+
+{/* Emphasised warning — use the dedicated variant */}
+&lt;Tag variant="yellow-emphasis"&gt;Heads up&lt;/Tag&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>—</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>Do/Don't pairs authored from extracted artifacts and the public oxygen.8x8.com Tag usage page, not from Figma Do/Don't card frames. Should be reviewed by a designer and replaced with <code>figma-extract-usage</code> output once card frames exist on the Tag examples page (node <code>52829:11107</code>).</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-001</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>The Figma examples page for Tag contains anatomy and type sections, but <strong>no</strong> ✅ Do / ❌ Don't card frames — inherited from <code>Tag-audit.md</code> GAP-011. The public usage page carries Anatomy / Overview / Variants / Behavior / Placement but no Do/Don't and no "when not to use".</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-002</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>The leading icon delivery mechanism is unverified (audit GAP-001). Pair 1's code example assumes the icon goes via <code>children</code>; replace with the confirmed prop once <code>@8x8/oxygen-tag</code> source is inspected.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-003</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>Avatar Tag's omission of <code>yellow</code> / <code>green</code> variants is unconfirmed — may be intentional (audit GAP-008). Pair 3's "Don't use RAG on Avatar Tag" rule should be re-confirmed against component-owner intent.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-004</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>No hover or pressed states are modelled in Figma (audit GAP-009). If a hover style is added in code, the rule in Pair 4 about "the body is non-interactive" may need to soften.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-005</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>The public usage page lists one placement guideline (<code>4px apart, $spacing02</code>) and no maximum-tag-count, no overflow strategy, and no truncation guidance. A long list of Avatar Tags in a narrow Select field will wrap multi-row; designers should add explicit guidance for the "too many tags" case.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance authored from extracted artifacts (props.md, examples.md, accessibility.md, tokens.md, Tag-figma.md, Tag-audit.md) and oxygen.8x8.com/components/tags/usage · Figma examples page lacks Do/Don't card frames · 2026-05-15
+  </footer>
+
+</div>
+</body>
+</html>

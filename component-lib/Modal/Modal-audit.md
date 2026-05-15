@@ -23,7 +23,7 @@ notes:
     canonical figma-extract-usage output. GAP-001 (Modal-usage.md missing) is
     downgraded to reflect draft progress — see updated fix_action.
 
-verdict: YES
+verdict: "YES"
 verdict_rationale: >
   All four core OX files are present and substantive. Modal-figma.md and
   Modal-pui.md are present (PUI confirmed no relevant context via engineer

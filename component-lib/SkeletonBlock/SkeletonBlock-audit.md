@@ -2,7 +2,7 @@
 rubric_version: "1.0"
 component: SkeletonBlock
 package: "@8x8/oxygen-skeletons"
-audit_date: "2026-05-05"
+audit_date: "2026-05-15"
 auditor: doc-audit skill
 
 files_found:
@@ -12,30 +12,31 @@ files_found:
   - accessibility.md
   - SkeletonBlock-figma.md
   - figma-screenshot-SkeletonBlock.png
+  - SkeletonBlock-usage.md
+  - SkeletonBlock-usage.html
 
 files_missing:
-  - SkeletonBlock-usage.md
   - SkeletonBlock-pui.md
 
 dimension_scores:
   props:        { score: 0.45, coverage: "4/9 — SOURCE_GAP (no MCP props); CONFLICT (SkeletonCircle size format)" }
   examples:     { score: 0.60, coverage: "5/8 — all hand-crafted; SkeletonCircle size strings conflict with figma.md" }
   tokens:       { score: 0.50, coverage: "2/4 — --ui/ui02 extracted from CSS fallback; ui01 unresolved" }
-  accessibility:{ score: 0.70, coverage: "5/6 — full WCAG checklist present; all guidance inferred (no MCP/Figma source)" }
+  accessibility: { score: 0.70, coverage: "5/6 — full WCAG checklist present; all guidance inferred (no MCP/Figma source)" }
   figma:        { score: 0.65, coverage: "8/12 — excellent anatomy; 1 token found; no enrichment; no component key" }
-  usage:        { score: 0.00, coverage: "0/0 — SOURCE_GAP (file missing)" }
+  usage:        { score: 0.65, coverage: "6/6 pairs — editorial, no Figma examples page; full When-to-use, Do/Don't pairs with citations; WARN-003" }
   pui:          { score: 0.90, coverage: "PASS (assumed) — display component; no application-layer concerns expected; pui.md not produced" }
 
-available_dimensions_avg: 0.63
-overall_avg: 0.56
+available_dimensions_avg: 0.64
+overall_avg: 0.64
 
 counts:
   doc_gaps: 1
-  source_gaps: 8
+  source_gaps: 7
   conflicts: 1
-  warnings: 2
+  warnings: 3
 
-verdict: NO
+verdict: "NO"
 verdict_reason: >
   GAP-001 is a CONFLICT that must be resolved before doc-rewrite can proceed.
   The `size` prop values for SkeletonCircle are documented in two incompatible
@@ -47,6 +48,7 @@ verdict_reason: >
   correct format, then align both component folders.
   Additionally, GAP-002 (prop names unconfirmed) means the props dimension cannot
   be fully rewritten until the React API is verified.
+  Usage dimension now present (editorial, 2026-05-15) — GAP-003 closed.
 
 gaps:
   - id: GAP-001
@@ -95,12 +97,15 @@ gaps:
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    status: CLOSED
+    closed_date: "2026-05-14"
+    closed_by: "Editorial SkeletonBlock-usage.md authored from extracted artifacts + oxygen.8x8.com/components/skeletonloader/usage. 6 Do/Don't pairs with citations. No Figma examples page exists — see WARN-003."
     evidence:
-      source_file: ~
-      location: "component-lib/SkeletonBlock/ directory"
-      finding: "SkeletonBlock-usage.md is absent — figma-extract-usage has not been run."
-    fix_action: "Run figma-extract-usage for the Skeleton loader page to produce SkeletonBlock-usage.md with Do/Don't editorial guidance."
-    blocks: [doc-rewrite/usage-dimension]
+      source_file: SkeletonBlock-usage.md
+      location: "component-lib/SkeletonBlock/SkeletonBlock-usage.md"
+      finding: "SkeletonBlock-usage.md now present (editorial). Figma examples page remains absent — figma-extract-usage cannot run until a designer creates the page."
+    fix_action: "Create a '↳ Skeleton loader examples' Figma page with Do/Don't cards; then run figma-extract-usage to replace the editorial draft."
+    blocks: []
     dependency: []
 
   - id: GAP-004
@@ -243,6 +248,17 @@ warnings:
       sourced from OX usage documentation. This is not confirmed as a CSS token reference
       within the @8x8/oxygen-skeletons package — it may be a spacing guideline rather than
       a hardcoded token value the component enforces.
+
+  - id: WARN-003
+    dimension: usage
+    confidence: deterministic
+    note: >
+      SkeletonBlock-usage.md is an editorial draft sourced from extracted artifacts and
+      oxygen.8x8.com/components/skeletonloader/usage. No Figma "↳ Skeleton loader examples"
+      page exists, so figma-extract-usage cannot run. The 6 Do/Don't pairs are grounded
+      and cited but are designer-unreviewed derivations. Replace with figma-extract-usage
+      output when a Figma examples page is created.
+
 # --- navigation (added by component-map) ---
 role: audit
 pipeline_stage: blocked
@@ -253,6 +269,7 @@ siblings:
   - "[[SkeletonBlock/tokens]]"
   - "[[SkeletonBlock/accessibility]]"
   - "[[SkeletonBlock/SkeletonBlock-figma]]"
+  - "[[SkeletonBlock/SkeletonBlock-usage]]"
 tags:
   - oxygen
   - component/SkeletonBlock
@@ -264,7 +281,7 @@ tags:
 
 > **Verdict: NO** — resolve 1 CONFLICT before running doc-rewrite.
 >
-> Rubric version: 1.0 · Audited: 2026-05-05
+> Rubric version: 1.0 · Audited: 2026-05-15 (re-audit; prior audit 2026-05-05)
 
 ---
 
@@ -278,7 +295,8 @@ tags:
 | `accessibility.md` | ✅ Present | oxygen-mcp-extract |
 | `SkeletonBlock-figma.md` | ✅ Present | figma-extract |
 | `figma-screenshot-SkeletonBlock.png` | ✅ Present | figma-extract |
-| `SkeletonBlock-usage.md` | ❌ **MISSING** | figma-extract-usage |
+| `SkeletonBlock-usage.md` | ✅ Present (editorial — see WARN-003) | figma-extract-usage / editorial |
+| `SkeletonBlock-usage.html` | ✅ Present | figma-extract-usage / editorial |
 | `SkeletonBlock-pui.md` | ⚠️ Missing — no PUI concerns expected for display component | pui-mcp-extract |
 
 ---
@@ -292,10 +310,9 @@ tags:
 | Tokens | 0.50 | 2/4 | `--ui/ui02` extracted from CSS fallback; `ui01` unresolved |
 | Accessibility | 0.70 | 5/6 | Full WCAG checklist (incl. 2.3.3); all guidance inferred |
 | Figma | 0.65 | 8/12 | Excellent anatomy; 1 token; no enrichment; no component key |
-| Usage | 0.00 | — | ❌ SOURCE_GAP (major) — file missing |
+| Usage | 0.65 | 6/6 pairs | Editorial (no Figma examples page) — see WARN-003 |
 | PUI | 0.90 | PASS (assumed) | Display component; no application-layer concerns expected |
-| **Available avg** | **0.63** | | (excl. usage) |
-| **Overall avg** | **0.56** | | |
+| **Overall avg** | **0.64** | | ↑ from 0.56 (usage dimension now scored) |
 
 ---
 
@@ -319,13 +336,20 @@ The React API is unknown — `get-component-props` returned nothing. One format 
 | Count | Category |
 |-------|----------|
 | 1 | CONFLICT — **blocking doc-rewrite** |
-| 8 | SOURCE_GAPs (4 major, 4 minor) |
+| 6 | SOURCE_GAPs open (3 major, 3 minor; GAP-003 closed editorially) |
 | 1 | DOC_GAP (minor) |
-| 2 | Warnings (heuristic, advisory) |
+| 3 | Warnings (heuristic/deterministic, advisory) |
 
 ---
 
 ## Gaps
+
+### CLOSED
+
+**GAP-003** · Usage _(closed 2026-05-14)_
+> `SkeletonBlock-usage.md` now present — editorial draft from oxygen.8x8.com/components/skeletonloader/usage. 6 Do/Don't pairs with citations. Figma examples page remains absent — see WARN-003.
+
+---
 
 ### SOURCE_GAP — Blocker
 
@@ -334,10 +358,6 @@ The React API is unknown — `get-component-props` returned nothing. One format 
 > **Fix:** Check `@8x8/oxygen-skeletons` source for actual prop names, types, and defaults.
 
 ### SOURCE_GAP — Major
-
-**GAP-003** · Usage
-> `SkeletonBlock-usage.md` absent — `figma-extract-usage` not run.
-> **Fix:** Run `figma-extract-usage` for the Skeleton loader page.
 
 **GAP-004** · PUI
 > `SkeletonBlock-pui.md` absent — likely no concerns for a display component.
@@ -379,6 +399,8 @@ The React API is unknown — `get-component-props` returned nothing. One format 
 
 **WARN-002 (Tokens):** `spacing03` (8px) gap guidance is from usage docs only — unconfirmed as an enforced CSS value within the component.
 
+**WARN-003 (Usage):** `SkeletonBlock-usage.md` is an editorial draft (no Figma examples page). 6 pairs are grounded in sibling files + oxygen.8x8.com but designer-unreviewed. Replace with `figma-extract-usage` output when a Figma examples page is created.
+
 ---
 
 ## Suggested next actions
@@ -387,10 +409,9 @@ The React API is unknown — `get-component-props` returned nothing. One format 
 1. Resolve GAP-001 (size format CONFLICT) — check @8x8/oxygen-skeletons source, align all 4 files
 2. Resolve GAP-002 (prop names)           — same source check; update props.md and examples
 3. Fix GAP-007 (mode prop)                — confirm theme-provider behaviour; update props.md
-4. Run figma-extract-usage                — closes GAP-003
-5. Resolve token bindings (GAP-005/006)   — needs Variables API or figma_execute
-6. Run pui-mcp-extract or add N/A marker  — closes GAP-004
-7. Run doc-rewrite                        — after conflict resolved
+4. Resolve token bindings (GAP-005/006)   — needs Variables API or figma_execute
+5. Run pui-mcp-extract or add N/A marker  — closes GAP-004
+6. Run doc-rewrite                        — after conflict resolved
 ```
 
-_Source: doc-audit skill v1.0 · Audited from component-lib/SkeletonBlock/ · 2026-05-05_
+_Source: doc-audit skill v1.0 · Re-audited 2026-05-15 (prior: 2026-05-05) · component-lib/SkeletonBlock/_

@@ -1,10 +1,10 @@
 ---
 component: TimeSelector
 package: "@8x8/oxygen-time-selector"
-audit_date: 2026-05-07
+audit_date: 2026-05-15
 rubric_version: "1.0"
-verdict: NO
-verdict_reason: "2 unresolved CONFLICTs about the Size=Large variant and default size mismatch between Figma and code API — requires human resolution before doc-rewrite can proceed."
+verdict: "NO"
+verdict_reason: "2 unresolved CONFLICTs about the Size=Large variant and default size mismatch between Figma and code API — requires human resolution before doc-rewrite can proceed. (Re-audit 2026-05-15: GAP-011 resolved — editorial timeselector-usage.md authored from the published Oxygen docs page via Claude_in_Chrome.)"
 
 files_found:
   - props.md
@@ -12,10 +12,10 @@ files_found:
   - tokens.md
   - accessibility.md
   - timeselector-figma.md
+  - timeselector-usage.md   # added 2026-05-15 — editorial, docs-mirrored (figma-extract-usage skipped)
   - figma-screenshot-timeselector.png
 
 files_missing:
-  - timeselector-usage.md   # figma-extract-usage not run — SOURCE_GAP
   - timeselector-pui.md     # N/A — PUI MCP search returned 0 results; no platform-layer concerns
 
 scores:
@@ -24,12 +24,12 @@ scores:
   tokens:        { coverage: "8/9",  score: 0.89 }
   accessibility: { coverage: "5/9",  score: 0.56 }
   figma:         { coverage: "8/10", score: 0.80 }
-  usage:         { coverage: "0/1",  score: 0.00 }
+  usage:         { coverage: "1/1",  score: 1.00 }
   pui:           { coverage: "N/A",  score: null  }
 
 summary:
   doc_gaps: 4
-  source_gaps: 6
+  source_gaps: 5
   conflicts: 2
   warnings: 2
 
@@ -238,24 +238,12 @@ gaps:
     blocks: []
     dependency: []
 
-  - id: GAP-011
-    dimension: usage
-    severity: major
-    type: SOURCE_GAP
-    confidence: deterministic
-    auto_fixable: false
-    evidence:
-      source_file: timeselector-usage.md
-      location: "File missing"
-      finding: >
-        figma-extract-usage was not run. It is unknown whether a
-        "Time Selector — Examples" page exists in the UI-components Figma
-        file. Do/Don't editorial guidance is absent.
-    fix_action: >
-      Run figma-extract-usage for TimeSelector. If no Examples page exists
-      in Figma, note as SOURCE_GAP resolved (N/A).
-    blocks: []
-    dependency: []
+  # GAP-011 RESOLVED 2026-05-15 — timeselector-usage.md authored editorially
+  # from the published Oxygen docs page (https://oxygen.8x8.com/components/timeselector/usage,
+  # fetched via Claude_in_Chrome MCP) cross-validated against props.md, examples.md,
+  # tokens.md, accessibility.md, and timeselector-figma.md. figma-extract-usage was
+  # skipped per direction — no Figma "↳ TimeSelector examples" page located.
+  # Replace with figma-extract-usage output if a Figma examples page is ever created.
 
 warnings:
   - id: WARN-001
@@ -287,6 +275,7 @@ siblings:
   - "[[TimeSelector/tokens]]"
   - "[[TimeSelector/accessibility]]"
   - "[[TimeSelector/timeselector-figma]]"
+  - "[[TimeSelector/timeselector-usage]]"
 tags:
   - oxygen
   - component/TimeSelector
@@ -313,7 +302,7 @@ tags:
 | `tokens.md` | ✅ Present |
 | `accessibility.md` | ✅ Present |
 | `timeselector-figma.md` | ✅ Present |
-| `timeselector-usage.md` | ❌ Missing — SOURCE_GAP (figma-extract-usage not run) |
+| `timeselector-usage.md` | ✅ Present (editorial, docs-mirrored — added 2026-05-15) |
 | `timeselector-pui.md` | — N/A (PUI MCP returned 0 results; no platform-layer concerns) |
 
 ---
@@ -327,7 +316,7 @@ tags:
 | Tokens | 8/9 | 0.89 | — |
 | Accessibility | 5/9 | 0.56 | ⚠️ Major source gaps |
 | Figma | 8/10 | 0.80 | — |
-| Usage | 0/1 | 0.00 | Major source gap |
+| Usage | 1/1 | 1.00 | — *(editorial, docs-mirrored — see pipeline note in [timeselector-usage.md](timeselector-usage.md))* |
 | PUI | N/A | — | — |
 
 ---
@@ -362,7 +351,7 @@ Confirmed via Desktop Bridge `componentPropertyDefinitions`. A consumer renderin
 | GAP-008 | Accessibility | major | All a11y content inferred from conventions — not sourced from OX MCP or Figma annotations |
 | GAP-009 | Figma | minor | No ARIA/keyboard/focus annotations in Figma source |
 | GAP-010 | Figma | minor | Token coverage % not computable (external library limitation) |
-| GAP-011 | Usage | major | timeselector-usage.md missing — figma-extract-usage not run |
+| ~~GAP-011~~ | ~~Usage~~ | ~~major~~ | **Resolved 2026-05-15** — editorial `timeselector-usage.md` authored from published Oxygen docs page (via Claude_in_Chrome). Replace with `figma-extract-usage` output if a Figma examples page is ever created. |
 
 ---
 
@@ -387,8 +376,9 @@ Confirmed via Desktop Bridge `componentPropertyDefinitions`. A consumer renderin
 ## Suggested next actions
 
 1. **Resolve GAP-001 + GAP-002** — decide whether `size="large"` is added to the code API and align Figma defaults. This unblocks the rewrite verdict.
-2. **Run `figma-extract-usage`** (GAP-011) — check for a TimeSelector Examples page in Figma.
-3. **Verify accessibility** (GAP-008) — inspect rendered DOM for actual ARIA roles and keyboard behaviour.
-4. Re-run audit after conflicts are resolved → expect verdict to upgrade to **PARTIAL** or **YES**.
+2. **Verify accessibility** (GAP-008) — inspect rendered DOM for actual ARIA roles and keyboard behaviour.
+3. **Verify `timeDisplayFormat` syntax** (GAP-004) — confirm whether it follows moment / date-fns / a custom syntax; update `props.md` + replace the placeholder caveat in `timeselector-usage.md`.
+4. **Optional — run `figma-extract-usage` later.** The current `timeselector-usage.md` is an editorial mirror of the published Oxygen docs page (resolves GAP-011). If a Figma `↳ TimeSelector examples` page is ever created with Do/Don't card frames, re-run `figma-extract-usage` and replace the editorial pairs.
+5. Re-run audit after conflicts are resolved → expect verdict to upgrade to **PARTIAL** or **YES**.
 
-_Audit produced by doc-audit skill · 2026-05-07_
+_Audit produced by doc-audit skill · Updated 2026-05-15_

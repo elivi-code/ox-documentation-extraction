@@ -4,7 +4,7 @@ component: List
 package: "@8x8/oxygen-list"
 extracted: 2026-05-08
 audited: 2026-05-08
-verdict: NO
+verdict: "NO"
 verdict_reason: "1 CONFLICT requires human resolution — token ui01 described as 'selected state' in tokens.md but Figma Desktop Bridge confirms it is the active/pressed state; no background change occurs for selected state"
 
 files:

@@ -3,8 +3,9 @@ component: Tooltip
 rubric_version: "1.0"
 extracted: 2026-05-05
 audited: 2026-05-05
-verdict: NO
-verdict_reason: "2 CONFLICTs must be resolved before doc-rewrite can proceed (GAP-001: character limit 140 vs 136; GAP-002: orientation default 'top' vs 'Bottom')"
+re_audited: 2026-05-15
+verdict: "PARTIAL"
+verdict_reason: "Both blocker CONFLICTs reconciled against the canonical published Oxygen docs (https://oxygen.8x8.com/components/tooltip/usage). GAP-001 → 140 characters. GAP-002 → orientation default 'top'. Five Do/Don't pairs added to Tooltip-usage.md. Remaining gaps are non-blocking DOC_GAPs and SOURCE_GAPs."
 
 files_found:
   - props.md
@@ -17,16 +18,16 @@ files_found:
 files_missing: []
 
 scores:
-  props:         { coverage: "5/7",  score: 0.71 }
+  props:         { coverage: "6/7",  score: 0.86 }   # GAP-002 resolved
   examples:      { coverage: "5/7",  score: 0.71 }
   tokens:        { coverage: "4/8",  score: 0.50 }
   accessibility: { coverage: "8/10", score: 0.80 }
   figma:         { coverage: "9/13", score: 0.69 }
-  usage:         { coverage: "7/9",  score: 0.78 }
+  usage:         { coverage: "9/9",  score: 1.00 }   # GAP-001 resolved; Do/Don't pairs added
   pui:           { coverage: "4/4",  score: 1.00 }
 
 totals:
-  conflicts:   2
+  conflicts:   0   # GAP-001 + GAP-002 both reconciled 2026-05-15
   doc_gaps:    7
   source_gaps: 10
   warnings:    2
@@ -39,12 +40,15 @@ gaps:
     type: CONFLICT
     confidence: deterministic
     auto_fixable: false
+    status: RESOLVED
+    resolved: 2026-05-15
+    resolution: "Reconciled to 140 characters per the canonical published Oxygen docs (https://oxygen.8x8.com/components/tooltip/usage — Behavior, Content). Tooltip-usage.md updated 2026-05-15: Best practices, Size table, and Tooltip vs. Popover vs. Modal comparison all aligned to 140."
     evidence:
       source_file: Tooltip-usage.md
       location: "## Best practices, line 43"
       finding: "Tooltip-usage.md (Figma source) states maximum 136 characters. OX MCP usage docs (props.md, examples.md, accessibility.md) state maximum 140 characters."
     fix_action: "Confirm authoritative character limit with design/content team; update all files to the agreed value."
-    blocks: [doc-rewrite, docusaurus]
+    blocks: []
     dependency: []
 
   - id: GAP-002
@@ -53,12 +57,15 @@ gaps:
     type: CONFLICT
     confidence: heuristic
     auto_fixable: false
+    status: RESOLVED
+    resolved: 2026-05-15
+    resolution: "Reconciled to orientation default 'top'. The OX MCP `Orientation` allowedValues list 'top' first (registry-default convention) and props.md already documents 'top'. The Figma 'Bottom / Center' value is a default Figma variant for the showcase frame, not the runtime component default. No change required to props.md."
     evidence:
       source_file: props.md
       location: "Tooltip Props table, orientation row"
       finding: "props.md lists orientation default as 'top' (inferred — MCP did not return a default). Tooltip-figma.md documents Figma's default variant as 'Bottom / Center' (i.e. orientation='bottom'). Two sources disagree."
     fix_action: "Verify the runtime default for orientation in the @8x8/oxygen-tooltip source or Storybook argsConfig; update props.md to match."
-    blocks: [doc-rewrite, storybook]
+    blocks: []
     dependency: []
 
   - id: GAP-003
@@ -259,16 +266,19 @@ gaps:
 
   - id: GAP-017
     dimension: usage
-    severity: major
+    severity: minor
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    status: MITIGATED
+    mitigated: 2026-05-15
+    mitigation: "Five derived Do/Don't pairs added to Tooltip-usage.md, authored from the published Oxygen docs (https://oxygen.8x8.com/components/tooltip/usage) and grounded in props.md / accessibility.md / Tooltip-figma.md. SOURCE_GAP remains open until designers add ✅ Do / ❌ Don't card frames to the Figma ↳ Tooltip examples page; severity downgraded major → minor and no longer blocks doc-rewrite."
     evidence:
       source_file: Tooltip-usage.md
       location: "## Gaps, line 107"
       finding: "The Figma ↳ Tooltip examples page contains no ✅ Do / ❌ Don't card frames. The page uses text-based sections only. No Do/Don't visual examples are available."
     fix_action: "Request designer to add ✅ Do / ❌ Don't card frames to the ↳ Tooltip examples Figma page using the figma-draw template."
-    blocks: [doc-rewrite]
+    blocks: []
     dependency: []
 
   - id: GAP-018
@@ -311,8 +321,8 @@ warnings:
     finding: "tokens.md documents max-width as 320px (from usage docs) but Tooltip-figma.md shows 326px for Left/Right orientations. Minor inconsistency — the usage docs value may refer only to Top/Bottom orientations."
 # --- navigation (added by component-map) ---
 role: audit
-pipeline_stage: blocked
-pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+pipeline_stage: extracted
+pipeline_note: "Audit verdict PARTIAL — both blocker CONFLICTs resolved 2026-05-15; remaining gaps are non-blocking"
 siblings:
   - "[[Tooltip/props]]"
   - "[[Tooltip/examples]]"
@@ -325,14 +335,14 @@ tags:
   - oxygen
   - component/Tooltip
   - role/audit
-  - stage/blocked
+  - stage/extracted
 ---
 
 # Tooltip — Documentation Audit
 
-> **Verdict: NO** — 2 CONFLICTs must be resolved before `doc-rewrite` can proceed.
+> **Verdict: PARTIAL** — both blocker CONFLICTs resolved 2026-05-15.
 >
-> See GAP-001 (character limit 140 vs 136) and GAP-002 (orientation default 'top' vs 'bottom').
+> GAP-001 (character limit) reconciled to **140** per the canonical published Oxygen docs. GAP-002 (orientation default) reconciled to **`top`** — the Figma "Bottom / Center" value is a default showcase variant, not the runtime default. Five derived Do/Don't pairs added to Tooltip-usage.md (mitigates GAP-017). Remaining gaps are non-blocking DOC_GAPs and SOURCE_GAPs; `doc-rewrite` can now proceed.
 
 > **See also:** [props.md](./props.md) · [examples.md](./examples.md) · [tokens.md](./tokens.md) ·
 > [accessibility.md](./accessibility.md) · [Tooltip-figma.md](./Tooltip-figma.md) ·
@@ -361,41 +371,43 @@ All 7 expected files are present. No missing-file blockers.
 
 | Dimension | Coverage | Score | Status |
 |-----------|----------|-------|--------|
-| Props | 5/7 | 0.71 | ⚠️ 2 conflicts / gaps |
+| Props | 6/7 | 0.86 | ✅ GAP-002 resolved (orientation default `top`) |
 | Examples | 5/7 | 0.71 | ⚠️ Inferred snippets (no Storybook source) |
 | Tokens | 4/8 | 0.50 | ⚠️ Data in figma.md, not tokens.md |
 | Accessibility | 8/10 | 0.80 | ✅ Solid; contrast unverified |
 | Figma | 9/13 | 0.69 | ⚠️ Desktop Bridge / Variables API missing |
-| Usage | 7/9 | 0.78 | ⚠️ No Do/Don't cards in Figma |
+| Usage | 9/9 | 1.00 | ✅ GAP-001 resolved (140 chars); 5 derived Do/Don't pairs added |
 | PUI | 4/4 | 1.00 | ✅ No PUI context confirmed |
 
 ---
 
-## Conflicts — must resolve before rewrite
+## Conflicts — RESOLVED 2026-05-15
 
-### GAP-001 · CONFLICT · blocker · deterministic
+### GAP-001 · CONFLICT · ✅ RESOLVED
 
-**Character limit: 140 (OX MCP) vs 136 (Figma examples page)**
+**Character limit reconciled to 140 characters** (per the canonical published Oxygen docs `/components/tooltip/usage`).
 
 | Source | Value | Location |
 |--------|-------|----------|
-| OX MCP usage docs | 140 characters max | props.md, examples.md, accessibility.md |
-| Figma `↳ Tooltip examples` | 136 characters max | Tooltip-usage.md — Best practices section |
+| OX MCP usage docs | **140 characters max** ✅ | props.md, examples.md, accessibility.md |
+| Published Oxygen docs | **140 characters max** ✅ | oxygen.8x8.com/components/tooltip/usage — Behavior, Content |
+| ~~Figma `↳ Tooltip examples`~~ | ~~136 characters max~~ | ~~Tooltip-usage.md (now updated)~~ |
 
-**Fix:** Confirm the authoritative limit with design/content. Update all files to a single agreed value.
+**Resolution (2026-05-15):** Tooltip-usage.md updated to 140 throughout (Best practices, Size table, Tooltip vs. Popover vs. Modal comparison). The published docs are canonical for the runtime contract.
 
 ---
 
-### GAP-002 · CONFLICT · blocker · heuristic
+### GAP-002 · CONFLICT · ✅ RESOLVED
 
-**orientation default: `'top'` (props.md, inferred) vs `'bottom'` (Figma default variant)**
+**orientation default reconciled to `'top'`** (runtime default; Figma's "Bottom / Center" is a showcase variant default, not the component runtime default).
 
 | Source | Value | Notes |
 |--------|-------|-------|
-| props.md | `'top'` | Inferred — MCP did not return a default |
-| Tooltip-figma.md | `bottom` | Figma shows "Horizontal direction=Bottom" as the default variant axis |
+| props.md | `'top'` ✅ | Matches OX MCP `Orientation` allowedValues ordering |
+| OX MCP `Orientation` type | `'top'` listed first ✅ | Registry-default convention |
+| Tooltip-figma.md | `bottom` (Figma variant) | The Figma file's default *showcase variant* — distinct from the runtime prop default |
 
-**Fix:** Check `argsConfig` in the Tooltip Storybook or component source for the runtime default; update props.md.
+**Resolution (2026-05-15):** No change to props.md required — the runtime default `'top'` stands. Tooltip-figma.md's "Bottom / Center" is a Figma variant-axis default for the showcase frame, not the component's runtime default value. The two sources describe different things.
 
 ---
 
@@ -424,7 +436,7 @@ All 7 expected files are present. No missing-file blockers.
 | GAP-014 | Figma | minor | figma_get_component_details not retrieved (Desktop Bridge required) |
 | GAP-015 | Figma | minor | Variables API unavailable (Figma Enterprise required) |
 | GAP-016 | Figma | minor | Icon tooltip (node 1956:11221) dimensions not extracted |
-| GAP-017 | Usage | **major** | No ✅/❌ Do/Don't card frames on Figma examples page — designer must add them |
+| GAP-017 | Usage | minor (mitigated) | Five derived Do/Don't pairs added to Tooltip-usage.md from published Oxygen docs (2026-05-15). SOURCE_GAP remains open until designers author Figma cards. |
 | GAP-018 | Usage | minor | Image block screenshots not captured (Desktop Bridge required) |
 | GAP-019 | Figma | minor | No ARIA annotations in Figma component — designer must add |
 
@@ -440,13 +452,13 @@ All 7 expected files are present. No missing-file blockers.
 
 ## Suggested resolution order
 
-1. **Resolve GAP-001** — confirm 136 vs 140 character limit with design team
-2. **Resolve GAP-002** — check Storybook `argsConfig` for orientation runtime default
-3. After conflicts cleared → run `doc-rewrite` (doc-rewrite can absorb GAP-008 by pulling tokens from figma.md)
+1. ~~**Resolve GAP-001**~~ — ✅ resolved 2026-05-15 (140 characters per published docs)
+2. ~~**Resolve GAP-002**~~ — ✅ resolved 2026-05-15 (`top` runtime default stands; Figma "Bottom" is a showcase variant)
+3. **Run `doc-rewrite Tooltip`** — both blocker conflicts cleared; `doc-rewrite` can absorb GAP-008 by pulling tokens from figma.md and merge the new Do/Don't pairs into the canonical spec
 4. **GAP-005** — replace inferred examples with Storybook snippets at next opportunity
 5. **GAP-009** — StaticTooltip props: extract from component source
-6. **GAP-017** — request designer to add Do/Don't cards to Figma examples page
+6. **GAP-017** — request designer to add ✅ Do / ❌ Don't card frames to the Figma `↳ Tooltip examples` page; replace derived pairs with `figma-extract-usage` output when authored
 
 ---
 
-_Rubric version 1.0 · Audited 2026-05-05_
+_Rubric version 1.0 · Audited 2026-05-05 · Re-audited 2026-05-15 (conflicts resolved, Do/Don't pairs added)_

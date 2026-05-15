@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tooltip — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+    .breadcrumb {
+      font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; }
+    .see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6; border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0; padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0; font-size: 13.5px; color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07); padding: 1px 4px;
+      border-radius: 3px; font-size: 12px;
+    }
+    .callout-editorial a { color: #5c4200; text-decoration: underline; }
+
+    .callout-info {
+      background: #f0f0ff; border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0; padding: 0.75rem 1rem;
+      margin: 1rem 0; font-size: 13.5px; color: #1e1a6e;
+    }
+
+    .intro { font-size: 15.5px; color: #374151; margin-bottom: 2rem; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+    h2 { font-size: 1.2rem; font-weight: 600; color: #0f0f1a; margin-bottom: 0.75rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 0.5rem; }
+
+    .when-section { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+    @media (max-width: 600px) { .when-section { grid-template-columns: 1fr; } }
+    .when-card { background: #fff; border-radius: 8px; padding: 1.125rem 1.25rem; border: 1px solid #e5e7eb; }
+    .when-card h3 { margin-bottom: 0.625rem; }
+    .when-card ul { padding-left: 1.25rem; color: #374151; font-size: 14px; }
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;
+    }
+    th {
+      background: #f3f4f6; font-weight: 600; padding: 0.625rem 0.875rem;
+      text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+    }
+    td { padding: 0.575rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+    .pair { margin-bottom: 1.75rem; }
+    .pair-label {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #6b7280; margin-bottom: 0.75rem;
+    }
+    .pair-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .pair-cards { grid-template-columns: 1fr; } }
+    .do-card, .dont-card { border-radius: 8px; padding: 1.125rem 1.25rem; font-size: 14px; }
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+    .card-header {
+      font-size: 13px; font-weight: 700; margin-bottom: 0.625rem;
+      display: flex; align-items: center; gap: 0.375rem;
+    }
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+    .card-body { color: #374151; line-height: 1.55; margin-bottom: 0.625rem; }
+    .card-note {
+      font-size: 12px; color: #6b7280; font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.5rem; margin-top: 0.5rem;
+    }
+    .card-note code { background: rgba(0,0,0,0.06); padding: 1px 3px; border-radius: 3px; font-size: 11px; }
+    .card-body pre {
+      background: #0f172a; color: #e2e8f0; border-radius: 6px;
+      padding: 0.625rem 0.75rem; font-size: 12px; overflow-x: auto;
+      margin: 0.5rem 0; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .badge-resolved { background: #d1fae5; color: #065f46; }
+    .badge-gap      { background: #ede9fe; color: #5b21b6; }
+    .badge-derived  { background: #f0f0ff; color: #3730a3; }
+
+    .page-footer {
+      margin-top: 2.5rem; font-size: 12px; color: #9ca3af;
+      border-top: 1px solid #e5e7eb; padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · overlays_contextual · Tooltip</div>
+    <h1>Tooltip — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Tooltip-figma.md">Tooltip-figma.md</a> ·
+      <a href="./Tooltip-audit.md">Tooltip-audit.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Mixed source.</strong> The text sections below were extracted from the Figma <code>↳ Tooltip examples</code> page. The Do/Don't pairs were authored from the canonical published Oxygen docs at <a href="https://oxygen.8x8.com/components/tooltip/usage">oxygen.8x8.com/components/tooltip/usage</a> because the Figma page contains no <code>✅ Do —</code> / <code>❌ Don't —</code> card frames (<a href="./Tooltip-audit.md">Tooltip-audit.md</a> <strong>GAP-017</strong>). The two prior audit blockers — character limit and orientation default — were reconciled 2026-05-15 against the published docs.
+  </div>
+
+  <p class="intro">
+    The <code>Tooltip</code> component displays contextual information when users hover over or focus on a UI element. Tooltips are supplementary — they provide short, non-essential hints that help users understand the purpose or function of an element. Keep content to a single sentence or brief phrase; for richer or interactive content, reach for <strong>Popover</strong>; for critical, always-visible information, reach for <strong>helper text</strong>.
+  </p>
+
+  <hr>
+
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li>Explaining the purpose of an <strong>icon-only button</strong>.</li>
+        <li>Providing additional context for <strong>truncated text</strong>.</li>
+        <li>Clarifying <strong>abbreviations</strong> or technical terms.</li>
+        <li>Describing <strong>disabled elements</strong>.</li>
+        <li>Adding context to elements that need more explanation (e.g. table headers).</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li><strong>Long paragraphs</strong> or detailed instructions.</li>
+        <li><strong>Complex information</strong> that requires user interaction.</li>
+        <li><strong>Critical information</strong> the user must read — use helper text.</li>
+        <li>Hosting <strong>links, buttons, or interactive elements</strong> — these are inaccessible to some users.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    <strong>Defaults are tuned:</strong> opens after a <code>delay=300</code> ms hover, dismisses on blur, <code>orientation="top"</code>, <code>showOn="hover"</code>. Override only when the viewport edge clips the default placement or a touch UI needs a click trigger. Max-width <strong>320px</strong>; max length <strong>140 characters</strong> in English.
+  </div>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Keep tooltip content to 140 characters of plain text</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — One short, descriptive sentence per tooltip</div>
+          <p class="card-body">The published docs cap tooltip length at <strong>140 characters in English</strong> and require plain text. The container's max-width is <strong>320px</strong>, which is sized for short hints — not paragraphs.</p>
+          <pre>&lt;Tooltip title="Move this file to Trash.
+  You can restore it within 30 days."&gt;
+  &lt;IconButton
+    icon={&lt;TrashIcon /&gt;}
+    aria-label="Delete file" /&gt;
+&lt;/Tooltip&gt;</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/tooltip/usage">oxygen.8x8.com/components/tooltip/usage</a> — Behavior; <code>Tooltip-figma.md</code> — max-width 320px.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Stretch a tooltip into multi-line or multi-paragraph help</div>
+          <p class="card-body">A tooltip that needs scrolling, line breaks, or punctuation-heavy phrasing belongs in a Popover or in helper text under the input. Tooltips can be missed, so anything that has to be read should not live here.</p>
+          <pre>{/* Wrong — paragraph-length tooltip */}
+&lt;Tooltip title="Deleting a file removes
+  it from this workspace and from any
+  shared links. Restoration is possible
+  within 30 days from the Trash view…"&gt;
+  &lt;IconButton icon={&lt;TrashIcon /&gt;} /&gt;
+&lt;/Tooltip&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Use Tooltip for supplementary context, never for critical information</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Reach for Tooltip when the information is <em>nice to have</em></div>
+          <p class="card-body">Tooltips earn their place when the rest of the UI already conveys the action and the tooltip just clarifies <em>why</em> or <em>what for</em> — an icon button's intent, an abbreviation, the meaning of a column header. Per the docs, use them "when more information is useful in helping a user make decisions <strong>but is not critical</strong>."</p>
+          <pre>&lt;Tooltip title="Send invite to selected
+  teammates"&gt;
+  &lt;IconButton
+    icon={&lt;MailIcon /&gt;}
+    aria-label="Send invite" /&gt;
+&lt;/Tooltip&gt;
+
+&lt;Tooltip title="Average API response
+  time in the last 24 hours"&gt;
+  &lt;span&gt;Latency (avg 24h)&lt;/span&gt;
+&lt;/Tooltip&gt;</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/tooltip/usage">oxygen.8x8.com/components/tooltip/usage</a> — When to use / When not to use; <code>accessibility.md</code> — touch / no-hover users.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Hide load-bearing information in a Tooltip</div>
+          <p class="card-body">If the user <strong>must</strong> read it to complete the task, the tooltip is the wrong home. Required-field rules, validation errors, fees, dates, and legal disclosures belong in always-visible helper text or in a Popover the user must dismiss. Tooltips can't be reached on touch devices without a tap-and-hold and may not appear at all in some configurations.</p>
+          <pre>{/* Wrong — required fee in a tooltip */}
+&lt;Tooltip title="A 2.9% processing fee
+  applies to all card payments."&gt;
+  &lt;Button&gt;Pay with card&lt;/Button&gt;
+&lt;/Tooltip&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Tooltip content is text, not interactive</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Plain text only inside <code>title</code></div>
+          <p class="card-body">The published docs are explicit: <strong>"Do not put links or other interactive elements in tooltips."</strong> Tooltips dismiss on blur and may not be reachable by all input modes; any element inside them that needs to be clicked, tabbed to, or focused will be unreachable for some users.</p>
+          <pre>&lt;Tooltip title="This dashboard
+  refreshes every 5 minutes."&gt;
+  &lt;InfoIcon /&gt;
+&lt;/Tooltip&gt;</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/tooltip/usage">oxygen.8x8.com/components/tooltip/usage</a> — Behavior, When not to use; <code>accessibility.md</code> — keyboard / SR reachability.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Embed links, buttons, or rich interactive content</div>
+          <p class="card-body">A "Learn more" link or a "Confirm" button inside <code>title</code> creates content that keyboard, screen-reader, and touch users cannot reliably reach. If the content needs interaction, use a Popover instead — Popovers are designed for interactive, persistent content.</p>
+          <pre>{/* Wrong — link inside tooltip */}
+&lt;Tooltip title={
+  &lt;&gt;Refreshes every 5 minutes.{' '}
+    &lt;a href="/docs"&gt;Learn more&lt;/a&gt;
+  &lt;/&gt;
+}&gt;
+  &lt;InfoIcon /&gt;
+&lt;/Tooltip&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Pair Tooltip with <code>aria-label</code> on icon-only buttons</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Give the trigger its own accessible name</div>
+          <p class="card-body">Tooltip exposes its content via <code>aria-describedby</code> by default (<code>disableDescribedBy=false</code>), which <strong>describes</strong> the trigger but does not <strong>name</strong> it. An icon-only button still needs its own <code>aria-label</code> (or visible text) so assistive tech can announce <em>what the control is</em>, independently of the supplementary tooltip text.</p>
+          <pre>&lt;Tooltip title="Archive this conversation.
+  You can restore it from Archived."&gt;
+  &lt;IconButton
+    icon={&lt;ArchiveIcon /&gt;}
+    aria-label="Archive conversation" /&gt;
+&lt;/Tooltip&gt;</pre>
+          <p class="card-note">Grounded in: <code>props.md</code> — <code>disableDescribedBy</code> default <code>false</code>; <code>accessibility.md</code> — icon-button labelling.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use Tooltip as a substitute for an accessible name</div>
+          <p class="card-body">A bare icon button with only a tooltip leaves screen-reader users with nothing announced when the button first receives focus, and breaks for keyboard-only users who pass quickly through the focus order. Disabling <code>describedBy</code> compounds the problem by removing the only programmatic association.</p>
+          <pre>{/* Wrong — no aria-label on the icon */}
+&lt;Tooltip title="Archive conversation"&gt;
+  &lt;IconButton icon={&lt;ArchiveIcon /&gt;} /&gt;
+&lt;/Tooltip&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Trust the defaults; pick an alternative when Tooltip is the wrong shape</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Ship with the defaults and reach for the right alternative when content doesn't fit</div>
+          <p class="card-body">The defaults are tuned: <code>orientation="top"</code>, <code>delay=300</code>, <code>showOn="hover"</code>, dismiss on blur. Override only when the viewport edge clips the default placement or a touch UI needs a click trigger. When the content is <strong>critical</strong>, <strong>interactive</strong>, or <strong>rich</strong>, pick the right alternative.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Content shape</th><th>Component</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Short, supplementary hint</td><td><strong>Tooltip</strong></td></tr>
+                <tr><td>Required-field rules, always-visible guidance</td><td><strong>Helper text</strong></td></tr>
+                <tr><td>Rich text, links, or buttons the user can interact with</td><td><strong>Popover</strong></td></tr>
+                <tr><td>Decisions or workflows that must block the page</td><td><strong>Modal</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="card-note">Grounded in: <code>props.md</code> — <code>orientation</code> default <code>'top'</code>, <code>delay</code> default <code>300</code>, <code>showOn</code> default <code>'hover'</code>; <a href="https://oxygen.8x8.com/components/tooltip/usage">oxygen.8x8.com/components/tooltip/usage</a> — Behavior, Alternatives.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Tune the defaults to mask a content-shape problem</div>
+          <p class="card-body">A 0 ms delay flickers; a multi-second delay frustrates. Forcing <code>showOn="click"</code> to keep a tooltip persistent suggests the content actually belongs in a Popover. Stretching <code>orientation</code> and <code>offset</code> to fit a paragraph means the content is too long.</p>
+          <pre>{/* Wrong — 0 ms delay flickers */}
+&lt;Tooltip title="Send" delay={0}&gt;
+  &lt;IconButton
+    icon={&lt;SendIcon /&gt;}
+    aria-label="Send" /&gt;
+&lt;/Tooltip&gt;
+
+{/* Wrong — click + interactive content;
+   this is a Popover */}
+&lt;Tooltip showOn="click" title={
+  &lt;&gt;&lt;p&gt;Filter results.&lt;/p&gt;
+     &lt;Button&gt;Reset&lt;/Button&gt;&lt;/&gt;
+}&gt;
+  &lt;Button&gt;Filter&lt;/Button&gt;
+&lt;/Tooltip&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Size</h2>
+  <p style="color: #374151; margin-bottom: 0.75rem;">Min-width <strong>40px</strong>; max-width <strong>320px</strong>. Content length examples from Figma:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Label</th><th>Approx. width</th><th>Lines</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Good — short and clear</td><td>~91px</td><td>1</td></tr>
+        <tr><td>50 characters</td><td>~313px</td><td>1</td></tr>
+        <tr><td>75 characters</td><td>320px</td><td>2</td></tr>
+        <tr><td>140 characters (maximum)</td><td>320px</td><td>3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Tooltip vs. Popover vs. Modal</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Criteria</th><th>Tooltip</th><th>Popover</th><th>Modal</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Content length</td><td>140 characters</td><td>2–4 paragraphs</td><td>Unlimited</td></tr>
+        <tr><td>Interactivity</td><td>Non-interactive (read-only)</td><td>Interactive (buttons, forms, links)</td><td>Fully interactive workflows</td></tr>
+        <tr><td>Trigger method</td><td>Hover or focus</td><td>Click or tap</td><td>Click, action, or system event</td></tr>
+        <tr><td>Dismissal</td><td>Automatic (mouse out / blur)</td><td>Manual (click trigger, outside click, Esc)</td><td>Manual (scrim, close, action, Esc)</td></tr>
+        <tr><td>User attention</td><td>Passive, subtle</td><td>Moderate, contextual</td><td>High, demands focus</td></tr>
+        <tr><td>Blocks workflow</td><td>No</td><td>Partially</td><td>Yes (blocks page)</td></tr>
+        <tr><td>Position</td><td>Anchored to trigger</td><td>Anchored to trigger</td><td>Center of screen</td></tr>
+        <tr><td>Purpose</td><td>Quick hints and labels</td><td>Contextual details and options</td><td>Critical tasks and decisions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Alternatives</h2>
+  <div class="when-section">
+    <div class="when-card">
+      <h3>Helper text</h3>
+      <p style="color: #374151; font-size: 14px;">Text placed beneath an input field that provides important or critical information needed to complete the action. Always visible. Use for required-field rules and other vital information; links are permitted.</p>
+    </div>
+    <div class="when-card">
+      <h3>Contextual information</h3>
+      <p style="color: #374151; font-size: 14px;">Copy that lives in the surrounding UI (panel intros, section descriptions) and guides the user without requiring a hover or focus.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2 class="gaps-section">Gaps</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Status</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Do/Don't pairs are derived, not Figma-sourced</td>
+          <td><span class="badge badge-derived">Derived</span></td>
+          <td>The Figma <code>↳ Tooltip examples</code> page has no <code>✅ Do —</code> / <code>❌ Don't —</code> card frames. Pairs were authored from the published Oxygen docs and grounded in <code>props.md</code> / <code>accessibility.md</code> / <code>Tooltip-figma.md</code>. Replace with <code>figma-extract-usage</code> output if designers add card frames. (<a href="./Tooltip-audit.md">Tooltip-audit.md</a> GAP-017 — mitigated)</td>
+        </tr>
+        <tr>
+          <td>Image block screenshots</td>
+          <td><span class="badge badge-gap">Source gap</span></td>
+          <td>Not captured — Desktop Bridge was not connected during the original Figma extract. (GAP-018)</td>
+        </tr>
+        <tr>
+          <td>Character limit conflict</td>
+          <td><span class="badge badge-resolved">Resolved</span></td>
+          <td>Was 136 (Figma) vs 140 (OX MCP). Reconciled to <strong>140</strong> per the canonical published Oxygen docs on 2026-05-15. (GAP-001 — resolved)</td>
+        </tr>
+        <tr>
+          <td>Orientation default conflict</td>
+          <td><span class="badge badge-resolved">Resolved</span></td>
+          <td>Runtime default <code>'top'</code> stands. The Figma "Bottom / Center" value is a default showcase variant, not the runtime default. (GAP-002 — resolved)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="page-footer">
+    Source: Figma examples page (text sections, 2026-05-05) + Oxygen published docs <code>/components/tooltip/usage</code> (Do/Don't pairs, 2026-05-15). HTML render rendered from <a href="./Tooltip-usage.md">Tooltip-usage.md</a>.
+  </footer>
+
+</div>
+</body>
+</html>

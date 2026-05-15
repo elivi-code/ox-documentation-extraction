@@ -19,7 +19,7 @@ dimension_scores:
   props:        { score: 0.75, coverage: "9/12" }
   examples:     { score: 0.72, coverage: "7/10" }
   tokens:       { score: 0.78, coverage: "7/9"  }
-  accessibility:{ score: 0.80, coverage: "6/8"  }
+  accessibility: { score: 0.80, coverage: "6/8"  }
   figma:        { score: 0.70, coverage: "7/10" }
   usage:        { score: 0.72, coverage: "8/11 — editorial (no Figma examples page)" }
   pui:          { score: 0.00, coverage: "0/0 — SOURCE_GAP" }
@@ -33,7 +33,7 @@ counts:
   conflicts: 3
   warnings: 3
 
-verdict: NO
+verdict: "NO"
 verdict_reason: >
   3 CONFLICTs found in the figma dimension — verdict is NO regardless of other gaps.
   CONFLICT-001: Secondary rest bg token is $action01 in Figma but action02 in tokens.md

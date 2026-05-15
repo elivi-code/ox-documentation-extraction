@@ -4,7 +4,7 @@ component: PopoverMenu
 package: "@8x8/oxygen-popover"
 extracted: 2026-05-08
 audited: 2026-05-08
-verdict: NO
+verdict: "NO"
 verdict_reason: "3 CONFLICTs require human resolution before doc-rewrite can proceed"
 
 files:

@@ -24,8 +24,8 @@ tags:
 <!-- SOURCE: Figma MCP + figma-console MCP -->
 <!-- FILE KEY: 5YihJ5WuDvnvrlrRMC4sBp -->
 <!-- NODE ID: 1823:0 (Notification canvas) · 26764:41883 (Notification component set) · 5549:4130 (Inline Notification component set) · 9141:14534 (Interaction component set) -->
-<!-- EXTRACTED: 2026-05-05 -->
-<!-- COMPONENT: Toast / Notification -->
+<!-- EXTRACTED: 2026-05-05 · UPDATED: 2026-05-15 (InlineNotification deep extraction — all 10 variant colors confirmed) -->
+<!-- COMPONENT: Toast / Notification / InlineNotification -->
 <!-- COLOR STRATEGY: B (states as columns, variants as rows — 5 types × 3 styles × 2 modes > 3 threshold) -->
 
 # Toast — Figma Design Spec
@@ -40,6 +40,10 @@ tags:
 ![Toast / Notification component set — all variants and modes](figma-screenshot-toast.png)
 
 *Page "Notification" — node 1823:0. Contains three component sets: Notification (full/grouped), Inline Notification, and Interaction (incoming calls, messages, meeting reminders).*
+
+![InlineNotification component set — 5 types × 2 modes](figma-screenshot-inline-notification.png)
+
+*InlineNotification — node 5549:4130. 10 variants: Success, Error, Warning, Info, Loading × Light/Dark. Extracted 2026-05-15.*
 
 ---
 
@@ -178,6 +182,33 @@ Tokens resolved via `figma_execute` + `getVariableByIdAsync` alias chain travers
 
 ---
 
+## InlineNotification — Color & token bindings (2026-05-15)
+
+> All values confirmed from `figma_get_component_for_development` layer data. Semantic token names are inferred by cross-referencing hex values against the Notification token table above; marked *(inferred)*. Full resolution requires `getVariableByIdAsync` with Desktop Bridge active.
+
+**Key design distinction:** InlineNotification uses a **standard (non-inverted) theme** — white background in Light mode, dark in Dark mode. This is the opposite of the full Notification component, which always renders with a dark background. As a result, the Light/Dark resolved hex values for the same indicator token appear swapped between the two components.
+
+### InlineNotification — Container tokens
+
+| Element | Variable ID (local) | Light hex | Dark hex | Inferred token |
+|---------|-------------------|-----------|----------|----------------|
+| Background fill | `20136:267` | `#FFFFFF` | `#171619` | Unresolved — different resolved values than Notification background |
+| Border stroke | `20136:253` | `#EBEAE1` | `#666666` | Unresolved — `20136:253` was an opaque ID in the previous extraction |
+
+> Note: Indicator bar dimensions are 4×40px (absolute positioned, inset within the 56px-height container, leaving 8px top and 8px bottom). Border-radius on indicator: `4px`.
+
+### InlineNotification — Left indicator bar by type
+
+| Type | Variable ID (local) | Light hex | Dark hex | Inferred token |
+|------|---------------------|-----------|----------|----------------|
+| Success | `20136:304` | `#127440` | `#189B55` | `success/success02` *(inferred — Light/Dark values swapped vs Notification)* |
+| Error | `20136:303` | `#CB2233` | `#F24D5F` | `error/error02` *(inferred — swapped)* |
+| Warning | `20136:305` | `#F8AE1A` | `#F8AE1A` | `warning/warning01` *(inferred — same hex in both modes)* |
+| Info | `20136:484` | `#6C6862` | `#D8D8D8` | Unresolved — variable ID `484` is out of range of other type tokens; likely a different token from Notification Info |
+| Loading | `20136:294` | `#0056E0` | `#4687ED` | `actions/action06` *(inferred — swapped)* |
+
+---
+
 ## Structure and spacing
 
 ### Notification — Full notification
@@ -235,15 +266,15 @@ Tokens resolved via `figma_execute` + `getVariableByIdAsync` alias chain travers
 
 ## Gaps & conflicts
 
-| # | Type | Severity | Description |
-|---|------|----------|-------------|
-| 1 | SOURCE_GAP | Medium | No Figma variables returned (Variables API requires Enterprise plan). Token names extracted from design context code only — resolved values are incomplete (Light mode Success only). |
-| 2 | SOURCE_GAP | Medium | Left indicator token resolved only for `Success` type. Error / Warning / Info / Loading indicator tokens require separate design context calls per variant. |
-| 3 | DOC_GAP | Low | Inline Notification has no Oxygen docs page ("Documentation not available" in Figma). Props are not surfaced via oxygen-mcp. |
-| 4 | DOC_GAP | Low | `InlineNotification` component in `@8x8/oxygen-toast` package returns no props from MCP — may be undocumented or not yet fully integrated into the MCP. |
-| 5 | DOC_GAP | Low | Dark mode token values not captured — only Light mode resolved values available from this extraction. |
-| 6 | DOC_GAP | Low | Container width (`320px`), indicator width (`4px`), and border-radius (`6px`) appear hardcoded — no spacing/radius tokens confirmed. |
-| 7 | SOURCE_GAP | Low | No accessibility annotations found on the Notification component set in Figma. |
-| 8 | CONFLICT | Low | Figma `Style` axis has "Full notification" / "Group collapsed" / "Group expanded" — no corresponding `style` prop is exposed in the `Toast` Oxygen API. The Figma `Style` variants appear to be handled by `ToastStack` + `Toaster` (grouped/stacked behaviour), not a prop on `Toast` directly. Needs confirmation. |
+| # | Type | Severity | Status | Description |
+|---|------|----------|--------|-------------|
+| 1 | SOURCE_GAP | Medium | Open | No Figma variables returned via Variables API (requires Enterprise plan). Semantic token names for Notification component extracted from design context code only. |
+| 2 | SOURCE_GAP | Medium | **RESOLVED 2026-05-15** | ~~Left indicator token resolved only for Success type.~~ All 5 InlineNotification indicator types now confirmed via `figma_get_component_for_development` layer data (hex values for both Light and Dark modes). Semantic names inferred from cross-reference — confirm with `getVariableByIdAsync` when Desktop Bridge is active. |
+| 3 | DOC_GAP | Low | Open | Inline Notification has no Oxygen docs page ("Documentation not available" in Figma). Props are not surfaced via oxygen-mcp. |
+| 4 | DOC_GAP | Low | Open | `InlineNotification` component in `@8x8/oxygen-toast` package returns no props from MCP. |
+| 5 | SOURCE_GAP | Low | **PARTIAL 2026-05-15** | Dark mode hex values for InlineNotification now confirmed for all 10 variants. Semantic token names for `20136:267` (background), `20136:253` (border), and `20136:484` (Info indicator) remain unresolved. |
+| 6 | DOC_GAP | Low | Open | Notification container width (`320px`), indicator width (`4px`), and border-radius (`6px`) appear hardcoded — no spacing/radius tokens confirmed. |
+| 7 | SOURCE_GAP | Low | Open | No accessibility annotations found on the Notification or InlineNotification component sets in Figma. |
+| 8 | CONFLICT | Low | **RESOLVED 2026-05-05** | ~~Figma Style axis (Group collapsed/expanded) has no style prop in Toast API.~~ Confirmed handled by Toaster system component. |
 
-_Source: Figma MCP (claude.ai) + figma-console MCP · Extracted 2026-05-05_
+_Source: Figma MCP (claude.ai) + figma-console MCP · Extracted 2026-05-05 · Updated 2026-05-15_

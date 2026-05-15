@@ -2,7 +2,7 @@
 rubric_version: 1.0
 component: Avatar
 audited: 2026-05-11
-verdict: NO
+verdict: "NO"
 verdict_reason: "Two unresolved CONFLICTs require human verification before doc-rewrite can proceed"
 audit_note: "Partial re-audit 2026-05-11 — Avatar-usage.md added editorially (GAP-001 resolved). All other findings unchanged."
 

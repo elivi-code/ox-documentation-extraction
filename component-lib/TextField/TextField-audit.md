@@ -1,10 +1,10 @@
 ---
 component: TextField
 rubric_version: "1.0"
-audit_date: "2026-04-29"
-auditor: doc-audit skill (claude-sonnet-4-6)
-verdict: YES
-verdict_reason: "No CONFLICTs. No blocker-severity gaps. 5 major gaps — doc-rewrite can proceed but must skip or flag dark-mode visual specs and usage guidelines until source data is available."
+audit_date: "2026-05-15"
+auditor: doc-audit skill (claude-opus-4-7)
+verdict: "YES"
+verdict_reason: "No CONFLICTs. No blocker-severity gaps. 4 major gaps remaining (was 5 — usage source gap demoted to minor after TextField-usage.md editorial draft landed). Doc-rewrite can proceed; dark-mode visual specs still pending source data."
 
 files_found:
   - props.md
@@ -13,10 +13,10 @@ files_found:
   - accessibility.md
   - figma.md
   - TextField-pui.md
+  - TextField-usage.md
 
 files_missing:
   - TextField-figma.md   # present as figma.md — naming convention violation only
-  - TextField-usage.md   # figma-extract-usage not run — SOURCE_GAP MAJOR
 
 scores:
   props:         { coverage: "7/9",   score: 0.78 }
@@ -24,33 +24,31 @@ scores:
   tokens:        { coverage: "9/12",  score: 0.75 }
   accessibility: { coverage: "12/15", score: 0.80 }
   figma:         { coverage: "11/15", score: 0.73 }
-  usage:         { coverage: "0/1",   score: 0.00 }
+  usage:         { coverage: "1/1",   score: 0.70 }
   pui:           { coverage: "1/1",   score: 1.00 }
 
-overall_score: 0.68
+overall_score: 0.78
 
 gap_counts:
   blockers:  0
-  major:     5
-  minor:     8
+  major:     4
+  minor:     9
   conflicts: 0
-  warnings:  4
+  warnings:  5
 
 gaps:
   - id: GAP-001
     dimension: usage
-    severity: major
+    severity: minor
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
     evidence:
-      source_file: "(absent)"
-      location: "component-lib/TextField/"
-      finding: "TextField-usage.md does not exist. The figma-extract-usage skill was not run. No Do/Don't usage guidelines have been captured from Figma."
-    fix_action: "Run the figma-extract-usage skill against the TextField Figma node to produce TextField-usage.md."
-    blocks:
-      - docusaurus usage guidelines section
-      - storybook usage tab
+      source_file: TextField-usage.md
+      location: "frontmatter `source_type: editorial`; `<!-- FIGMA EXAMPLES PAGE: absent -->`"
+      finding: "TextField-usage.md exists as an editorial draft authored from extracted artifacts and oxygen.8x8.com/components/textinput/usage. No Figma `↳ TextField examples` page exists, so figma-extract-usage cannot run. Do/Don't pairs are provisional and need designer review."
+    fix_action: "Create a Figma `↳ TextField examples` page with Do/Don't frames, then run figma-extract-usage to replace the editorial draft with canonical pairs."
+    blocks: []
     dependency: []
 
   - id: GAP-002
@@ -273,10 +271,20 @@ warnings:
       location: "## Screen reader guidance"
       finding: "The info icon button beside the label (rendered from _base_form_label atom, TypeIcon component) must have an accessible name. The current guidance says to set aria-label via inputProps, but this may not target the icon button — inputProps passes to the input element, not the label atom."
     advisory: "Verify the correct prop to pass an accessible name to the info icon button and update the guidance in accessibility.md."
+
+  - id: WARN-005
+    dimension: usage
+    confidence: heuristic
+    evidence:
+      source_file: TextField-usage.md
+      location: "frontmatter `source_type: editorial`; gaps section GAP-USAGE-001..005"
+      finding: "TextField-usage.md is an editorial draft sourced from oxygen.8x8.com/components/textinput/usage and the extracted artifacts — not from a Figma examples page. Do/Don't pairs cover free-form vs known-choices, label-vs-placeholder, description-vs-placeholder, readOnly-vs-disabled, error-with-text, and width-to-content. The OX usage page does not address prefix/suffix/icon/action patterns, maxLength ergonomics, labelOrientation='row', or multi-line input — those pairs are editorial inference."
+    advisory: "Have a designer review the 6 Do/Don't pairs and replace with figma-extract-usage output once a `↳ TextField examples` Figma page is created."
+
 # --- navigation (added by component-map) ---
 role: audit
 pipeline_stage: spec_ready
-pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+pipeline_note: "Audit verdict YES — doc-rewrite can run; usage now editorial (was missing)"
 siblings:
   - "[[TextField/props]]"
   - "[[TextField/examples]]"
@@ -284,6 +292,7 @@ siblings:
   - "[[TextField/accessibility]]"
   - "[[TextField/figma]]"
   - "[[TextField/TextField-pui]]"
+  - "[[TextField/TextField-usage]]"
 tags:
   - oxygen
   - component/TextField
@@ -293,11 +302,11 @@ tags:
 
 # TextField — Audit Report
 
-**Audit date:** 2026-04-29  
-**Rubric version:** 1.0  
+**Audit date:** 2026-05-15 (re-audit after editorial usage doc landed; original audit 2026-04-29)
+**Rubric version:** 1.0
 **Verdict:** ✅ YES — ready for doc-rewrite
 
-> No conflicts. No blocker-severity gaps. Doc-rewrite can proceed, but should flag dark-mode visual specs and usage guidelines as incomplete pending source data.
+> No conflicts. No blocker-severity gaps. Doc-rewrite can proceed. The usage dimension is now covered editorially (score 0.70) — replace with figma-extract-usage output when a Figma examples page is created. Dark-mode visual specs still pending source data (GAP-005).
 
 ---
 
@@ -310,7 +319,7 @@ tags:
 | `tokens.md` | ✅ Present | |
 | `accessibility.md` | ✅ Present | |
 | `TextField-figma.md` | ⚠️ Wrong name | Present as `figma.md` — content complete, filename non-conformant (GAP-006) |
-| `TextField-usage.md` | ❌ Missing | SOURCE_GAP MAJOR — figma-extract-usage not run (GAP-001) |
+| `TextField-usage.md` | ✅ Present (editorial) | Sourced from oxygen.8x8.com/components/textinput/usage + extracted artifacts; not figma-extract-usage output (GAP-001, WARN-005) |
 | `TextField-pui.md` | ✅ Present | PASS — explicit no-context marker, rejection rationale documented |
 
 ---
@@ -324,40 +333,39 @@ tags:
 | Tokens | 9/12 | 0.75 | ⚠️ |
 | Accessibility | 12/15 | 0.80 | ⚠️ |
 | Figma / Visual | 11/15 | 0.73 | ⚠️ |
-| Usage guidelines | 0/1 | 0.00 | ❌ |
+| Usage guidelines | 1/1 | 0.70 | ⚠️ (editorial discount — needs designer review) |
 | PUI context | 1/1 | 1.00 | ✅ |
-| **Overall** | | **0.68** | |
+| **Overall** | | **0.78** | |
+
+_Previous overall: 0.68 (2026-04-29). Bump driven by usage dimension going 0.00 → 0.70 after [TextField-usage.md](./TextField-usage.md) landed._
 
 ---
 
 ## Gaps
 
-### Major (5)
+### Major (4)
 
-**GAP-001** · SOURCE_GAP · `usage` dimension  
-`TextField-usage.md` is absent — figma-extract-usage was not run. No Do/Don't usage guidelines captured.  
-→ Run `figma-extract-usage` against the TextField Figma node.
-
-**GAP-002** · DOC_GAP · `props` dimension  
-`ActionTarget` type is unresolved — documented as a guess comment in props.md.  
+**GAP-002** · DOC_GAP · `props` dimension
+`ActionTarget` type is unresolved — documented as a guess comment in props.md.
 → Look up `ActionTarget` in the package source and replace with the real union.
 
-**GAP-003** · DOC_GAP · `props` dimension  
-`otherInputProps`, `otherLabelProps`, `otherActionProps` have no descriptions and unknown deprecation status.  
+**GAP-003** · DOC_GAP · `props` dimension
+`otherInputProps`, `otherLabelProps`, `otherActionProps` have no descriptions and unknown deprecation status.
 → Verify in package source; add deprecation notice or usage description.
 
-**GAP-004** · DOC_GAP · `examples` dimension · auto-fixable  
-Error state example passes error message via `description`, but Figma shows a separate Error Area with a distinct prop/pattern. This example is misleading.  
+**GAP-004** · DOC_GAP · `examples` dimension · auto-fixable
+Error state example passes error message via `description`, but Figma shows a separate Error Area with a distinct prop/pattern. This example is misleading.
 → Investigate the correct error message prop/pattern and rewrite the example.
 
-**GAP-005** · SOURCE_GAP · `figma` dimension  
-All visual state specs are Light-mode only. 68 Dark-mode symbol variants exist in Figma but were not captured.  
+**GAP-005** · SOURCE_GAP · `figma` dimension
+All visual state specs are Light-mode only. 68 Dark-mode symbol variants exist in Figma but were not captured.
 → Re-run Figma extraction on dark-mode variant nodes.
 
-### Minor (8)
+### Minor (9)
 
 | ID | Dimension | Type | Finding | Auto-fixable |
 |----|-----------|------|---------|:---:|
+| GAP-001 | usage | SOURCE_GAP | TextField-usage.md present as editorial draft; no Figma examples page exists — figma-extract-usage cannot run | ❌ |
 | GAP-006 | figma | DOC_GAP | File named `figma.md` — should be `TextField-figma.md` | ✅ |
 | GAP-007 | tokens | SOURCE_GAP | `--text/textColor02` dark mode value missing | ❌ |
 | GAP-008 | tokens | SOURCE_GAP | `--error/error01` dark mode value missing | ❌ |
@@ -371,17 +379,20 @@ All visual state specs are Light-mode only. 68 Dark-mode symbol variants exist i
 
 ## Warnings (advisory, heuristic)
 
-**WARN-001** · Accessibility  
+**WARN-001** · Accessibility
 `--text/textColor02` (#6C6862 on #F4F3EE) has a contrast ratio ≈ 3.8:1. Acceptable for placeholder text, but verify it is not also applied to typed input values.
 
-**WARN-002** · Examples  
+**WARN-002** · Examples
 `@8x8/oxygen-icons` import in the icons example was inferred — confirm the actual package name before publishing.
 
-**WARN-003** · Figma  
+**WARN-003** · Figma
 All Figma component documentation links point to the contribution guide, not a TextField component page — likely a Figma placeholder.
 
-**WARN-004** · Accessibility  
+**WARN-004** · Accessibility
 The mechanism for setting an accessible name on the info icon button is unclear — `inputProps` targets the input element, not the label atom's icon button.
+
+**WARN-005** · Usage (new — 2026-05-15)
+TextField-usage.md is an editorial draft (not Figma-sourced). 6 Do/Don't pairs grounded in props.md, accessibility.md, and oxygen.8x8.com/components/textinput/usage. The OX page does not cover prefix/suffix/icon/action patterns, `maxLength` ergonomics, `labelOrientation="row"`, or multi-line input — those areas are editorial inference. Have a designer review and replace with figma-extract-usage output when a Figma examples page is created.
 
 ---
 
@@ -389,7 +400,7 @@ The mechanism for setting an accessible name on the info icon button is unclear 
 
 1. **Rename `figma.md` → `TextField-figma.md`** (GAP-006 — 1 min, unblocks doc-rewrite file lookup)
 2. **Investigate error message prop** (GAP-004 — unblocks examples dimension; error docs are currently misleading)
-3. **Run `figma-extract-usage`** on the TextField node to produce `TextField-usage.md` (GAP-001)
+3. **Designer review of TextField-usage.md** (WARN-005) and creation of a Figma `↳ TextField examples` page so figma-extract-usage can replace the editorial draft (GAP-001)
 4. **Re-run Figma extraction on dark variants** to fill GAP-005, GAP-010
 5. **Fetch missing token dark values** for textColor02 and error01 (GAP-007, GAP-008)
-6. **Proceed to doc-rewrite** — can start immediately on props, tokens, accessibility, and figma (Light mode) dimensions.
+6. **Proceed to doc-rewrite** — can start immediately on all dimensions; usage now covered editorially.

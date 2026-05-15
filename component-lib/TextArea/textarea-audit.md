@@ -4,7 +4,7 @@ component: TextArea
 package: "@8x8/oxygen-textarea"
 extracted: "2026-04-29"
 audited: "2026-04-29"
-verdict: NO
+verdict: "NO"
 verdict_reason: "3 unresolved CONFLICTs between Figma variant axes and Oxygen API — Size/Mode/Filled have no direct prop counterparts; doc-rewrite cannot proceed until alignment is confirmed."
 files_found:
   - props.md

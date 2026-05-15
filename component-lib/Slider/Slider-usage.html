@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+    .breadcrumb {
+      font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; }
+    .see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6; border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0; padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0; font-size: 13.5px; color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07); padding: 1px 4px;
+      border-radius: 3px; font-size: 12px;
+    }
+    .callout-editorial a { color: #5c4200; text-decoration: underline; }
+
+    .callout-info {
+      background: #f0f0ff; border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0; padding: 0.75rem 1rem;
+      margin: 1rem 0; font-size: 13.5px; color: #1e1a6e;
+    }
+
+    .intro { font-size: 15.5px; color: #374151; margin-bottom: 2rem; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+    h2 { font-size: 1.2rem; font-weight: 600; color: #0f0f1a; margin-bottom: 0.75rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 0.5rem; }
+
+    .when-section { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+    @media (max-width: 600px) { .when-section { grid-template-columns: 1fr; } }
+    .when-card { background: #fff; border-radius: 8px; padding: 1.125rem 1.25rem; border: 1px solid #e5e7eb; }
+    .when-card h3 { margin-bottom: 0.625rem; }
+    .when-card ul { padding-left: 1.25rem; color: #374151; font-size: 14px; }
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;
+    }
+    th {
+      background: #f3f4f6; font-weight: 600; padding: 0.625rem 0.875rem;
+      text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+    }
+    td { padding: 0.575rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+    .pair { margin-bottom: 1.75rem; }
+    .pair-label {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #6b7280; margin-bottom: 0.75rem;
+    }
+    .pair-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .pair-cards { grid-template-columns: 1fr; } }
+    .do-card, .dont-card { border-radius: 8px; padding: 1.125rem 1.25rem; font-size: 14px; }
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+    .card-header {
+      font-size: 13px; font-weight: 700; margin-bottom: 0.625rem;
+      display: flex; align-items: center; gap: 0.375rem;
+    }
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+    .card-body { color: #374151; line-height: 1.55; margin-bottom: 0.625rem; }
+    .card-note {
+      font-size: 12px; color: #6b7280; font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.5rem; margin-top: 0.5rem;
+    }
+    .card-note code { background: rgba(0,0,0,0.06); padding: 1px 3px; border-radius: 3px; font-size: 11px; }
+    .card-body pre {
+      background: #0f172a; color: #e2e8f0; border-radius: 6px;
+      padding: 0.625rem 0.75rem; font-size: 12px; overflow-x: auto;
+      margin: 0.5rem 0; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .badge-conflict { background: #fef3c7; color: #92400e; }
+    .badge-gap      { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial{ background: #f0f0ff; color: #3730a3; }
+
+    .page-footer {
+      margin-top: 2.5rem; font-size: 12px; color: #9ca3af;
+      border-top: 1px solid #e5e7eb; padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · form_inputs · Slider</div>
+    <h1>Slider — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./slider-pui.md">slider-pui.md</a> ·
+      <a href="./slider-audit.md">slider-audit.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — not Figma-sourced.</strong> No <code>↳ Slider examples</code> Figma page exists, so <code>figma-extract-usage</code> cannot run. The Do/Don't pairs below are inferred from <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, <code>tokens.md</code>, <code>slider-pui.md</code>, and the public usage page at <a href="https://oxygen.8x8.com/components/slider/usage">oxygen.8x8.com/components/slider/usage</a>. Treat as provisional until a designer reviews them. Replace with <code>figma-extract-usage</code> output when a Figma examples page is created.
+  </div>
+
+  <p class="intro">
+    <code>Slider</code> lets users select a value on a horizontal track by dragging the thumb or clicking the track. Its canonical use is <strong>audio volume</strong> — the Figma reference pattern is literally named "Audio Volume" — and more broadly any continuous value where approximating ("loud enough", "around 60%") is acceptable. The component supports a single thumb, a two-thumb range (<code>isMultiple</code>), and a draggable filled track (<code>isTrackDraggable</code>).
+  </p>
+
+  <hr>
+
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li>The user needs to choose a value from <strong>0 to 100 percent</strong>.</li>
+        <li><strong>Volume control</strong> — audio in / audio out, ringer, microphone gain.</li>
+        <li><strong>Range selection</strong> with a meaningful min and max — price range, time window — using <code>isMultiple</code>.</li>
+        <li>The value is <strong>bounded and continuous</strong>, and the user is happy approximating to the nearest <code>step</code>.</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li>A few discrete options → use <strong>Dropdown</strong></li>
+        <li>The range is <strong>large</strong> (e.g. 0–10 000) → use a numeric input</li>
+        <li><strong>High-precision</strong> values required → use a numeric input</li>
+        <li>The control is binary (on / off) → use <strong>Switch</strong> <em>(inferred)</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    Per <a href="https://oxygen.8x8.com/components/slider/usage">oxygen.8x8.com/components/slider/usage</a>: "A slider is an element that allows users to select or change a value on the track. … Use a slider when the user needs to choose a value from 0 to 100 percent. Use the slider for volume control."
+  </div>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Continuous bounded values, not a few options</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use Slider for 0–100% selection or volume control</div>
+          <p class="card-body">The Slider is the right control when the user is choosing a value on a continuous, bounded scale where "near enough" is acceptable. Volume is the canonical example — the user wants "louder" or "quieter", not exactly <code>73</code>.</p>
+          <pre>&lt;Slider
+  value={value}
+  minValue={0}
+  maxValue={100}
+  step={1}
+  ariaLabel="Ring volume"
+  onChange={setValue}
+/&gt;</pre>
+          <p class="card-note">Grounded in: oxygen.8x8.com — "Use a slider when the user needs to choose a value from 0 to 100 percent. Use the slider for volume control."; <code>examples.md</code> Basic single-thumb pattern + Figma "Audio Volume" reference.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use Slider when the user is choosing between a handful of discrete options</div>
+          <p class="card-body">If the choices are "Low / Medium / High" or "1× / 2× / 4× / 8×", a slider forces the user to drag-and-snap to a value that maps to a label. A Dropdown lets them pick the named option directly.</p>
+          <pre>{/* ❌ Four-option playback speed — wrong control */}
+&lt;Slider value={2} minValue={1} maxValue={4}
+        step={1} ariaLabel="Speed" /&gt;</pre>
+          <p class="card-note">Grounded in: oxygen.8x8.com — "If there are a few options to choose from. Consider using a dropdown instead."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Approximate values vs. precision</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use Slider when "approximately right" is good enough</div>
+          <p class="card-body">Sliders excel when the user can land on a value by feel — gain, brightness, opacity, volume. The fast drag motion lets them sweep across the range and stop where it sounds / looks / feels right.</p>
+          <pre>&lt;Slider
+  value={value}
+  minValue={0}
+  maxValue={100}
+  step={1}
+  ariaLabel="Microphone gain"
+  onChange={setValue}
+/&gt;</pre>
+          <p class="card-note">Grounded in: oxygen.8x8.com — Behavior description; <code>examples.md</code> volume example with <code>step={1}</code>.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use Slider for huge ranges or values that must be exact</div>
+          <p class="card-body">If the user is entering a dollar amount, a date, or any value where being off by a unit matters, the slider makes them aim instead of type. Large ranges and high-precision values are explicit anti-patterns on the OX usage page.</p>
+          <pre>{/* ❌ Exact-amount entry */}
+&lt;Slider value={value} minValue={0} maxValue={10000}
+        step={0.01} ariaLabel="Amount" /&gt;
+
+{/* ❌ Wide range — coarse aiming */}
+&lt;Slider value={value} minValue={0} maxValue={10000}
+        ariaLabel="Bandwidth" /&gt;</pre>
+          <p class="card-note">Grounded in: oxygen.8x8.com — "If there is a large range to choose from." + "When high-precision values are required."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Use isMultiple for ranges</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use range mode (<code>isMultiple</code>) when the user picks a band, not a point</div>
+          <p class="card-body">When the user selects a window — a price range, a date range, a min/max volume — use the two-thumb mode with a <code>[number, number]</code> value. Both thumbs share one track, so the relationship between min and max is visually clear and a single drag can shift the band (<code>isTrackDraggable</code>).</p>
+          <pre>const [range, setRange] =
+  useState&lt;[number, number]&gt;([20, 80]);
+
+&lt;Slider
+  isMultiple
+  value={range}
+  minValue={0}
+  maxValue={100}
+  step={5}
+  onChange={setRange}
+  ariaLabel="Volume range"
+/&gt;</pre>
+          <p class="card-note">Grounded in: <code>props.md</code> <code>isMultiple</code> + <code>isTrackDraggable</code>; <code>examples.md</code> Range two-thumb + Track-draggable examples.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Render two single sliders side-by-side for a min/max pair</div>
+          <p class="card-body">Two independent sliders let the user set <code>min &gt; max</code> and force them to compare two separate tracks to understand the range. The two-thumb mode keeps the values on one axis and prevents min/max inversion automatically.</p>
+          <pre>{/* ❌ Fragile, disconnected */}
+&lt;Slider value={min} onChange={setMin}
+        ariaLabel="Minimum" /&gt;
+&lt;Slider value={max} onChange={setMax}
+        ariaLabel="Maximum" /&gt;</pre>
+          <p class="card-note">Grounded in: <code>props.md</code> <code>isMultiple</code> ("Enables range (two-thumb) mode. When set, <code>value</code> must be <code>[number, number]</code>.").</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Always label the slider</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Pair the Slider with a visible label, or supply <code>ariaLabel</code> when no label is present</div>
+          <p class="card-body">The thumb renders as <code>role="slider"</code> and screen readers will announce only <code>aria-valuenow</code> (a number) by default — "50", with no context. A visible label tells sighted users <em>what</em> they're adjusting; <code>ariaLabel</code> does the same for screen-reader users when no visible label is possible.</p>
+          <pre>&lt;div&gt;
+  &lt;label htmlFor="ring-volume"&gt;Ring volume&lt;/label&gt;
+  &lt;Slider
+    value={value}
+    onChange={setValue}
+    ariaLabel="Ring volume"
+  /&gt;
+&lt;/div&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> ARIA role section + Required ARIA attributes + WCAG 2.5.3 Label in Name; <code>props.md</code> <code>ariaLabel</code> ("Required when there is no visible label nearby").</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Ship a Slider with no visible label <strong>and</strong> no <code>ariaLabel</code></div>
+          <p class="card-body">Without either, screen readers announce a bare number when the thumb is focused — "Slider, 50, 0 to 100" with no clue what is being controlled. The slider is then unusable to assistive-tech users and fails WCAG 4.1.2 (Name, Role, Value).</p>
+          <pre>{/* ❌ No label and no ariaLabel */}
+&lt;Slider value={value} onChange={setValue} /&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> WCAG 4.1.2 Name, Role, Value.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Expand the hit area on touch</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use <code>expandKnobAreaBy</code> (and <code>expandTrackAreaBy</code>) to reach a 44×44 target on touch surfaces</div>
+          <p class="card-body">The visible thumb is <code>16×16 px</code> at rest. On touch, that's below the WCAG 2.5.5 Target Size minimum (44×44 CSS px). Both props enlarge the <em>invisible</em> hit region without changing the visual size — so the design stays compact but taps land.</p>
+          <pre>&lt;Slider
+  value={value}
+  onChange={setValue}
+  expandTrackAreaBy="8px"
+  expandKnobAreaBy="8px"
+  ariaLabel="Ring volume"
+/&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> Touch / pointer + WCAG 2.5.5; <code>props.md</code> <code>expandTrackAreaBy</code> / <code>expandKnobAreaBy</code>; <code>tokens.md</code> 16px default thumb.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Ship the 16px default thumb in a dense, touch-driven layout</div>
+          <p class="card-body">A dense list of sliders (an audio mixer, a per-channel volume column) with the default 16px thumb is unhittable on phones — users tap, miss, drag the wrong row.</p>
+          <pre>{/* ❌ Mixer column with default-size thumbs */}
+{channels.map(c =&gt; (
+  &lt;Slider key={c.id} value={c.level}
+          onChange={c.set} ariaLabel={c.name} /&gt;
+))}</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> WCAG 2.5.5; <code>tokens.md</code> — 32px expanded thumb is mouse-only Hover/Active state.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Show the value when accuracy matters</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Render the current numeric value alongside the slider</div>
+          <p class="card-body">Most real sliders sit between "rough" and "exact". Showing the value as text next to the track lets the user <strong>verify</strong> what they landed on without taking the focus away from the gesture. Subscribe to <code>onChange</code> and render the value in a sibling element.</p>
+          <pre>&lt;div style={{ display: 'flex',
+              alignItems: 'center', gap: '12px' }}&gt;
+  &lt;Slider
+    value={value}
+    minValue={0}
+    maxValue={100}
+    step={1}
+    ariaLabel="Ring volume"
+    onChange={setValue}
+  /&gt;
+  &lt;span aria-hidden="true"&gt;{value}%&lt;/span&gt;
+&lt;/div&gt;</pre>
+          <p class="card-note">Grounded in: oxygen.8x8.com high-precision anti-pattern; <code>accessibility.md</code> Screen reader guidance (<code>aria-valuenow</code> already announced — use <code>aria-hidden</code> to avoid double-reads); <code>props.md</code> <code>onChange</code> fires on every change.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Hide the value entirely when the user needs to dial a specific number</div>
+          <p class="card-body">A slider with no readout asks the user to estimate where on the track corresponds to <code>75</code>. On dense or short tracks that's a guess. Either show the value or replace the slider with a numeric input.</p>
+          <pre>{/* ❌ No readout, user can't verify 75 */}
+&lt;Slider value={value} onChange={setValue}
+        ariaLabel="Volume" /&gt;</pre>
+          <p class="card-note">Grounded in: oxygen.8x8.com — high-precision anti-pattern; <code>accessibility.md</code> — sighted users deserve the same value-announce affordance screen readers already get.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>—</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>Do/Don't pairs are authored from extracted artifacts and the public oxygen.8x8.com Slider usage page, not from a Figma examples page. Should be reviewed by a designer and replaced with Figma-sourced pairs once a <code>↳ Slider examples</code> page is created.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-001</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>No Figma examples page exists for Slider. The public usage page provides only behaviour text and a "When to use / When not to use" list — <strong>no Do/Don't cards, no accessibility examples, no range-mode guidance</strong>.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-002</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td><code>slider-figma.md</code> is <strong>not yet extracted</strong> (audit GAP-001, SOURCE_GAP). Once <code>figma-extract</code> runs against node <code>22902:37514</code>, the anatomy and variant references in pair 3 should be replaced with canonical citations.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-003</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>The OX usage page does not address <strong>disabled state</strong> ergonomics — when to disable vs. hide, whether a disabled slider should still show the current value. The "Switch instead of Slider for binary controls" rule is also editorial; not on the OX page.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-004</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>The OX usage page does not address <strong>value-readout placement</strong> (above the track, beside it, in a tooltip on drag). Pair 6's recommendation is editorial.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance authored from extracted artifacts (props.md, examples.md, accessibility.md, tokens.md, slider-pui.md, slider-audit.md) and oxygen.8x8.com/components/slider/usage · No Figma examples page available · 2026-05-15
+  </footer>
+
+</div>
+</body>
+</html>

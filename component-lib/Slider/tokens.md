@@ -12,6 +12,7 @@ siblings:
   - "[[Slider/examples]]"
   - "[[Slider/accessibility]]"
   - "[[Slider/slider-pui]]"
+  - "[[Slider/Slider-usage]]"
   - "[[Slider/slider-audit]]"
 tags:
   - oxygen
@@ -22,7 +23,7 @@ tags:
 ---
 # Slider — Tokens
 
-> **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [slider-pui.md](slider-pui.md)
+> **See also:** [props.md](props.md) · [examples.md](examples.md) · [accessibility.md](accessibility.md) · [slider-pui.md](slider-pui.md) · [Slider-usage.md](Slider-usage.md)
 
 > **Note:** The Oxygen MCP token search returned no results for "slider". All tokens below
 > were extracted directly from the Figma design (UI-components, node `22902:37514`).

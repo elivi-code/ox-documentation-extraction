@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinner — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+    .breadcrumb {
+      font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; }
+    .see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6; border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0; padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0; font-size: 13.5px; color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07); padding: 1px 4px;
+      border-radius: 3px; font-size: 12px;
+    }
+    .callout-editorial a { color: #5c4200; text-decoration: underline; }
+
+    .callout-info {
+      background: #f0f0ff; border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0; padding: 0.75rem 1rem;
+      margin: 1rem 0; font-size: 13.5px; color: #1e1a6e;
+    }
+    .callout-info a { color: #1e1a6e; }
+    .callout-info code { background: rgba(0,0,0,0.07); padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+    .callout-warn {
+      background: #fef9ec; border-left: 4px solid #d97706;
+      border-radius: 0 6px 6px 0; padding: 0.75rem 1rem;
+      margin: 0.75rem 0; font-size: 13px; color: #78350f;
+    }
+    .callout-warn code { background: rgba(0,0,0,0.07); padding: 1px 4px; border-radius: 3px; font-size: 11px; }
+
+    .intro { font-size: 15.5px; color: #374151; margin-bottom: 2rem; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+    h2 { font-size: 1.2rem; font-weight: 600; color: #0f0f1a; margin-bottom: 0.75rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 0.5rem; }
+
+    .anatomy-list { padding-left: 1.25rem; color: #374151; font-size: 14.5px; margin-bottom: 1.5rem; }
+    .anatomy-list li { margin-bottom: 0.5rem; }
+    .anatomy-list code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+    .when-section { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+    @media (max-width: 600px) { .when-section { grid-template-columns: 1fr; } }
+    .when-card { background: #fff; border-radius: 8px; padding: 1.125rem 1.25rem; border: 1px solid #e5e7eb; }
+    .when-card h3 { margin-bottom: 0.625rem; }
+    .when-card ul { padding-left: 1.25rem; color: #374151; font-size: 14px; }
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;
+    }
+    th {
+      background: #f3f4f6; font-weight: 600; padding: 0.625rem 0.875rem;
+      text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+    }
+    td { padding: 0.575rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+    .pair { margin-bottom: 1.75rem; }
+    .pair-label {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #6b7280; margin-bottom: 0.75rem;
+    }
+    .pair-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .pair-cards { grid-template-columns: 1fr; } }
+    .do-card, .dont-card { border-radius: 8px; padding: 1.125rem 1.25rem; font-size: 14px; }
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+    .card-header {
+      font-size: 13px; font-weight: 700; margin-bottom: 0.625rem;
+      display: flex; align-items: flex-start; gap: 0.375rem;
+    }
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+    .card-body { color: #374151; line-height: 1.55; margin-bottom: 0.625rem; }
+    .card-note {
+      font-size: 12px; color: #6b7280; font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.5rem; margin-top: 0.5rem;
+    }
+    .card-note code { background: rgba(0,0,0,0.06); padding: 1px 3px; border-radius: 3px; font-size: 11px; }
+    .card-body pre {
+      background: #0f172a; color: #e2e8f0; border-radius: 6px;
+      padding: 0.625rem 0.75rem; font-size: 12px; overflow-x: auto;
+      margin: 0.5rem 0; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .badge-conflict { background: #fef3c7; color: #92400e; }
+    .badge-gap      { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial{ background: #f0f0ff; color: #3730a3; }
+
+    .page-footer {
+      margin-top: 2.5rem; font-size: 12px; color: #9ca3af;
+      border-top: 1px solid #e5e7eb; padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · feedback_status · Spinner</div>
+    <h1>Spinner — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./Spinner-figma.md">Spinner-figma.md</a> ·
+      <a href="./Spinner-audit.md">Spinner-audit.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — not Figma-sourced.</strong> No <code>↳ Spinner examples</code> Figma page exists, so <code>figma-extract-usage</code> cannot run. The Do/Don't pairs below are drafted from the public Oxygen usage page at <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com/components/spinner/usage</a> together with <code>props.md</code>, <code>examples.md</code>, and <code>accessibility.md</code>. Treat as provisional until a designer reviews them. Replace with <code>figma-extract-usage</code> output when a Figma examples page is created.
+  </div>
+
+  <p class="intro">
+    <code>Spinner</code> is a continuously rotating arc that signals an indeterminate background task — "loading sections or areas such as a page or a dropdown menu." It is passive and non-interactive; its only job is to tell the user <em>wait, something is happening</em>. The animation stops once loading completes.
+  </p>
+
+  <hr>
+
+  <h2>Anatomy</h2>
+  <ol class="anatomy-list">
+    <li><strong>Spinner arc</strong> — the rotating circular indicator. Renders at a named size (<code>"small"</code>, <code>"default"</code>, <code>"large2x"</code>) or a raw pixel number via the <code>size</code> prop. Stroke width is adjustable via <code>strokeWidth</code>.</li>
+    <li><strong>Supporting text</strong> <em>(strongly recommended)</em> — a short label rendered next to the arc, passed via the <code>text</code> prop. The Oxygen usage page is explicit: "There should always be supporting text where space permits, as it is best practice to give clear expectations to the user." When <code>text</code> is provided it acts as the accessible label — no separate <code>aria-label</code> is needed.</li>
+  </ol>
+
+  <hr>
+
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li>A whole page or large section is loading and the structure is unknown.</li>
+        <li>Modal content is being fetched before the modal can populate.</li>
+        <li>A menu, dropdown, or overflow menu is hydrating from a network call — use <code>size="small"</code>.</li>
+        <li>A card or row is loading in place — inline, compact contexts.</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li><strong>Determinate progress</strong> — if you can show a percentage, use ProgressBar instead.</li>
+        <li><strong>Known content shape</strong> — prefer Skeleton loaders to prevent layout shift.</li>
+        <li><strong>Very short waits</strong> (&lt;200 ms) — a flashing spinner reads as a bug.</li>
+        <li><strong>Decoration</strong> — Spinner is for loading state only.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    Per <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com/components/spinner/usage</a>: "Spinners are loading circles that are used for loading sections or areas such as a page or a dropdown menu… When there is a determinate value. Use a progress bar instead."
+  </div>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <!-- Pair 1 -->
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Indeterminate waits vs. measurable progress</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use Spinner when you cannot report a percentage</div>
+          <p class="card-body">Spinner is for indeterminate background work — fetching a record, bootstrapping a page, loading a dropdown. The animation signals "something is happening" when you cannot tell the user how long is left.</p>
+          <pre>{/* Right — fetching a record; duration unknown */}
+{isLoading
+  ? &lt;Spinner size="default" text="Loading record" /&gt;
+  : &lt;RecordView record={record} /&gt;}</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com</a> — "Spinners are loading circles… used for loading sections or areas."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use Spinner where you have a real percentage</div>
+          <p class="card-body">A spinner over a file upload tells the user nothing. If you can compute how much work is done, show it — use a ProgressBar (or equivalent) so the user knows how long is left.</p>
+          <pre>{/* Wrong — measurable progress shown as a spinner */}
+&lt;Spinner size="default"
+  text={`Uploading… ${bytesSent}/${totalBytes}`} /&gt;
+
+{/* Right — use ProgressBar for known-percentage work */}
+&lt;ProgressBar value={bytesSent} max={totalBytes}
+  label="Uploading" /&gt;</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com</a> — "When there is a determinate value. Use a progress bar instead."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Match size to the area being loaded</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use <code>size="small"</code> for inline contexts, <code>size="default"</code> for page/section loads</div>
+          <p class="card-body">The Oxygen usage page defines two clear roles: <em>default</em> "used typically when a whole page is being loaded" and <em>small</em> "may also be used for inline loading when only a small part of the UI is being loaded (e.g. cards or overflow menus)." Pick the size from the area being loaded.</p>
+          <pre>{/* Inline — dropdown is hydrating */}
+&lt;DropdownMenu&gt;
+  {options.length === 0
+    ? &lt;Spinner size="small" text="Loading options" /&gt;
+    : options.map(renderOption)}
+&lt;/DropdownMenu&gt;
+
+{/* Page / large section */}
+{isLoading
+  ? &lt;Spinner size="default" text="Loading conversation" /&gt;
+  : &lt;Conversation thread={thread} /&gt;}</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com</a> (Variants — default / small); <code>props.md</code> spinnerSize keys; <code>examples.md</code> size examples.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use an oversized spinner inside a small container, or a tiny spinner for a full page</div>
+          <p class="card-body">A <code>size="default"</code> spinner inside a 32 px dropdown row eats the menu. A <code>size="small"</code> spinner centred on an empty full-page view looks like a bug, not a loading state.</p>
+          <pre>{/* Wrong — page-sized spinner inside a dropdown row */}
+&lt;DropdownMenu&gt;
+  &lt;Spinner size="default" /&gt;
+&lt;/DropdownMenu&gt;
+
+{/* Wrong — tiny spinner on a full-page loading state */}
+&lt;main style={{ minHeight: '80vh' }}&gt;
+  &lt;Spinner size="small" /&gt;
+&lt;/main&gt;</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com</a> (Variants); <code>examples.md</code> size guidance.
+          <br><br>⚠️ <code>"large2x"</code> is documented in <code>props.md</code> (from Storybook) but is absent from the Figma component set (audit GAP-011). Prefer <code>"default"</code> and <code>"small"</code> for new work.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Always pair with supporting text where space permits</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use the <code>text</code> prop so the user knows what is loading</div>
+          <p class="card-body">A label answers the user's real question — "is the system frozen, or is <em>this specific thing</em> loading?" The Oxygen usage page is explicit: "There should always be supporting text where space permits." When you use <code>text</code>, it also acts as the accessible label — no separate <code>aria-label</code> needed.</p>
+          <pre>{/* Right — text scopes the wait to a specific thing */}
+&lt;Spinner size="default"
+  text="Loading conversation history" /&gt;
+
+{/* Right — inline contexts: visible surrounding label is enough,
+     fall back to aria-label when text prop can't fit */}
+&lt;DropdownLabel&gt;
+  Contacts
+  &lt;Spinner size="small"
+    aria-label="Loading contacts" /&gt;
+&lt;/DropdownLabel&gt;</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com</a> (anatomy — "There should always be supporting text where space permits"); <code>props.md</code> <code>text</code>; <code>accessibility.md</code>.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Render a bare spinner with no label of any kind</div>
+          <p class="card-body">A spinner with neither <code>text</code> nor <code>aria-label</code> is completely silent to screen readers and ambiguous to sighted users. Even the fallback <code>aria-label="Loading"</code> is weaker — it doesn't scope the wait to anything meaningful.</p>
+          <pre>{/* Wrong — no label; invisible to screen readers */}
+&lt;Spinner size="default" /&gt;
+
+{/* Weaker — passes a11y but tells the user nothing specific */}
+&lt;Spinner size="default" aria-label="Loading" /&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — "Always supply either <code>text</code> or <code>aria-label</code>. A spinner without any label is invisible to screen reader users."; WCAG 1.1.1 Non-text content.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Respect prefers-reduced-motion via hasAnimation</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Disable the rotation for users who opt out of motion</div>
+          <p class="card-body">Spinner's continuous rotation is exactly the kind of animation users with <code>prefers-reduced-motion: reduce</code> are opting out of. Wiring <code>hasAnimation={false}</code> to the media query preserves the label meaning while removing the motion.</p>
+          <pre>const prefersReducedMotion =
+  useMediaQuery('(prefers-reduced-motion: reduce)');
+
+&lt;Spinner
+  size="default"
+  text="Loading record"
+  hasAnimation={!prefersReducedMotion}
+/&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — Motion sensitivity section; WCAG 2.3.3 (Animation from Interactions).</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Leave the rotation running for motion-sensitive users</div>
+          <p class="card-body">Ignoring <code>prefers-reduced-motion</code> on a continuously spinning element is a WCAG 2.3.3 failure and a poor experience for users with vestibular disorders.</p>
+          <pre>{/* Wrong — rotation runs regardless of OS preference */}
+&lt;Spinner size="default" text="Loading record" /&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> Motion sensitivity; audit WARN-002.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout-warn">
+      ⚠️ It is currently <strong>unconfirmed</strong> whether <code>@8x8/oxygen-loaders</code> reads the OS <code>prefers-reduced-motion</code> preference automatically or requires the consuming app to wire <code>hasAnimation={false}</code> manually (audit WARN-002). Until verified against the package source, do the wiring yourself.
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Prefer Skeleton when the content shape is known</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use Spinner only when the structure of incoming content is unknown</div>
+          <p class="card-body">When you know the shape of what's coming — rows, cards, a chart — Skeleton loaders reduce perceived wait, prevent layout shift, and feel more intentional. Spinner is for shapeless, unbounded waits.</p>
+          <pre>{/* Right — shape unknown (page bootstrap) */}
+{isBootstrapping
+  ? &lt;Spinner size="default"
+      text="Loading workspace" /&gt;
+  : &lt;Workspace /&gt;}
+
+{/* Right — shape known; prefer skeletons */}
+{isLoading
+  ? &lt;ConversationListSkeleton rowCount={10} /&gt;
+  : &lt;ConversationList items={items} /&gt;}</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com</a> (Related components — Skeleton loader).</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Drop a Spinner into a surface where a Skeleton would carry more meaning</div>
+          <p class="card-body">A spinner centred over a known list shape throws away the chance to anchor the user — the page jumps when content arrives, and the user has no sense of "how many?" or "how tall?" until it lands.</p>
+          <pre>{/* Wrong — known list shape, no skeleton, layout jumps */}
+{isLoading
+  ? &lt;div style={{
+        display: 'grid',
+        placeItems: 'center',
+        minHeight: 400,
+      }}&gt;
+      &lt;Spinner size="default"
+        text="Loading conversations" /&gt;
+    &lt;/div&gt;
+  : &lt;ConversationList items={items} /&gt;}</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com</a> (Related components — Skeleton loader); "When not to use" — content-shaped placeholders preferred.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 6 -->
+    <div class="pair">
+      <div class="pair-label">Pair 6 — One spinner per loading region; never decorative</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Show one spinner anchored to the active loading scope</div>
+          <p class="card-body">Show exactly one spinner per loading region and scope it to the right level. If a whole page is loading, show a page-level spinner. If only a card inside that page is independently loading, show a card-level spinner instead — not both at once.</p>
+          <pre>{/* Right — one spinner at a time, scoped to the active wait */}
+{pageLoading
+  ? &lt;Spinner size="default" text="Loading workspace" /&gt;
+  : &lt;Workspace&gt;
+      {cardLoading
+        ? &lt;Spinner size="small" text="Loading metrics" /&gt;
+        : &lt;MetricsCard metrics={metrics} /&gt;}
+    &lt;/Workspace&gt;}</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com</a> — "a seamless and continuous animation that will stop once the page is loaded."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Stack spinners or use Spinner as decoration</div>
+          <p class="card-body">Multiple competing spinners on one screen create noise without telling the user what they're waiting on. A spinner used purely for visual interest (e.g. as an illustration in an empty state) misrepresents that loading is in progress.</p>
+          <pre>{/* Wrong — three concurrent spinners; unclear which to wait for */}
+&lt;Spinner size="default" text="Loading" /&gt;
+&lt;Spinner size="small" text="Loading metrics" /&gt;
+&lt;Spinner size="small" text="Loading recents" /&gt;
+
+{/* Wrong — decorative; nothing is loading */}
+&lt;EmptyState
+  illustration={&lt;Spinner size="large2x" /&gt;}
+  title="No conversations yet"
+/&gt;</pre>
+          <p class="card-note">Grounded in: <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com</a> — Behavior; "When not to use" — Spinner is for loading state only.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>—</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>Do/Don't pairs are authored from the public <a href="https://oxygen.8x8.com/components/spinner/usage">Oxygen usage page</a> and extracted MCP artifacts — not from a Figma examples page. Replace with <code>figma-extract-usage</code> output if a <code>↳ Spinner examples</code> Figma page is ever authored.</td>
+          </tr>
+          <tr>
+            <td>GAP-010</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td>Figma exposes <code>isInverted</code> as a first-class variant (no / yes) but the React component has no such prop. Human decision required: auto-handled by theme context, missing prop, or design-only. No Do/Don't pair for inversion was authored until this is resolved.</td>
+          </tr>
+          <tr>
+            <td>GAP-011</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td><code>"large2x"</code> exists in code (Storybook) but not in the Figma component set. Pair 2 warns against new usage; Pair 6 uses it only in a "wrong" example. Resolve by locating the Figma variant or confirming it is code-only.</td>
+          </tr>
+          <tr>
+            <td>GAP-012</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>No Figma examples page exists. Pairs are editorial. If a <code>↳ Spinner examples</code> page with Do/Don't card frames is authored, run <code>figma-extract-usage</code> and replace this file wholesale.</td>
+          </tr>
+          <tr>
+            <td>WARN-002</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td><code>hasAnimation</code> and <code>prefers-reduced-motion</code> auto-handling unconfirmed. Pair 4 instructs the consuming app to wire the toggle manually until the package source is verified.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance drafted from <a href="https://oxygen.8x8.com/components/spinner/usage">oxygen.8x8.com/components/spinner/usage</a> and extracted MCP artifacts (props.md, examples.md, accessibility.md, Spinner-figma.md, Spinner-audit.md) · No Figma examples page available · 2026-05-15
+  </footer>
+
+</div>
+</body>
+</html>

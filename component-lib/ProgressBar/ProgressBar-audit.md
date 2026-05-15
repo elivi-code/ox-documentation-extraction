@@ -23,7 +23,7 @@ dimension_scores:
   props:        { score: 0.80, coverage: "8/10" }
   examples:     { score: 0.78, coverage: "7/9" }
   tokens:       { score: 0.40, coverage: "2/7 — tokens.md empty; data present in ProgressBar-figma.md" }
-  accessibility:{ score: 0.78, coverage: "7/9" }
+  accessibility: { score: 0.78, coverage: "7/9" }
   figma:        { score: 0.83, coverage: "10/12" }
   usage:        { score: 0.65, coverage: "6/9 — editorial: 5 grounded Do/Don't pairs, When to use, When not to use; missing screenshots, Figma-source verification, and a failure-state Do/Don't (see GAP-USAGE-002 in ProgressBar-usage.md)" }
   pui:          { score: 1.00, coverage: "PASS — PUI MCP search confirmed no Platform UI relevance" }
@@ -37,7 +37,7 @@ counts:
   conflicts: 0
   warnings: 3       # was 2 — added WARN-003 (editorial usage)
 
-verdict: YES
+verdict: "YES"
 verdict_reason: >
   Zero CONFLICTs and zero blocker-severity gaps. The usage SOURCE_GAP (GAP-009)
   is closed editorially — ProgressBar-usage.md now exists with grounded Do/Don't

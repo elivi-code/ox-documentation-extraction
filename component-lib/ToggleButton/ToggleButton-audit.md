@@ -12,28 +12,29 @@ files_found:
   - ToggleButton-figma.md
   - ToggleButton-pui.md
 
-files_missing:
-  - ToggleButton-usage.md
+files_missing: []
+
+# 2026-05-15: ToggleButton-usage.md added as editorial draft (see GAP-003 status: partial-resolved-editorial)
 
 dimension_scores:
   props:        { score: 0.83, coverage: "10/12" }
   examples:     { score: 0.80, coverage: "8/10" }
   tokens:       { score: 0.80, coverage: "8/10" }
-  accessibility:{ score: 0.88, coverage: "7/8"  }
+  accessibility: { score: 0.88, coverage: "7/8"  }
   figma:        { score: 0.78, coverage: "7/9 — ⛔ 2 CONFLICTs" }
-  usage:        { score: 0.00, coverage: "0/0 — SOURCE_GAP" }
+  usage:        { score: 0.70, coverage: "editorial draft present — Figma cards still missing" }
   pui:          { score: 1.00, coverage: "resolved — NO RELEVANT PUI CONTEXT" }
 
 available_dimensions_avg: 0.85
-overall_avg: 0.73
+overall_avg: 0.82
 
 counts:
   doc_gaps: 4
-  source_gaps: 5
+  source_gaps: 5             # GAP-003 downgraded to partial-resolved-editorial but still counted as a SOURCE_GAP for Figma cards
   conflicts: 2
   warnings: 2
 
-verdict: NO
+verdict: "NO"
 verdict_reason: >
   2 CONFLICTs found — verdict is NO regardless of other scores.
   CONFLICT-001 (minor): Figma names the checked state property `isOn?`; OX prop is `isChecked`.
@@ -101,16 +102,25 @@ gaps:
 
   - id: GAP-003
     dimension: usage
-    severity: major
+    severity: minor              # downgraded 2026-05-15: editorial usage now present
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    status: partial-resolved-editorial
+    resolved_date: 2026-05-15
     evidence:
-      source_file: ~
-      location: "ToggleButton/ directory"
-      finding: "ToggleButton-usage.md is absent — figma-extract-usage skill has not been run"
-    fix_action: "Run figma-extract-usage for ToggleButton to produce ToggleButton-usage.md (Do/Don't usage guidelines from Figma)"
-    blocks: [doc-rewrite/usage-dimension]
+      source_file: ToggleButton-usage.md
+      location: "component-lib/ToggleButton/ToggleButton-usage.md"
+      finding: >
+        ToggleButton-usage.md is now present as an editorial draft (drafted 2026-05-15 from
+        the Oxygen web docs at oxygen.8x8.com/components/toggle/usage combined with the
+        extracted MCP/Figma artifacts in this folder). Upstream Figma source still missing:
+        the Toggle examples page (node 50606:95349) contains no `✅ Do — …` / `❌ Don't — …`
+        card frames, so figma-extract-usage cannot run.
+        Replace ToggleButton-usage.md wholesale with figma-extract-usage output once cards
+        are authored.
+    fix_action: "Author Do/Don't card frames on Figma examples page 50606:95349, then run figma-extract-usage ToggleButton to replace the editorial draft."
+    blocks: []                   # no longer blocks doc-rewrite — editorial usage covers the dimension
     dependency: []
 
   - id: GAP-004
@@ -252,6 +262,7 @@ siblings:
   - "[[ToggleButton/accessibility]]"
   - "[[ToggleButton/ToggleButton-figma]]"
   - "[[ToggleButton/ToggleButton-pui]]"
+  - "[[ToggleButton/ToggleButton-usage]]"
 tags:
   - oxygen
   - component/ToggleButton
@@ -275,7 +286,7 @@ tags:
 | `accessibility.md` | ✅ Present | oxygen-mcp-extract |
 | `ToggleButton-figma.md` | ✅ Present | figma-extract |
 | `ToggleButton-pui.md` | ✅ Present — NO RELEVANT PUI CONTEXT | pui-mcp-extract |
-| `ToggleButton-usage.md` | ❌ **MISSING** | figma-extract-usage |
+| `ToggleButton-usage.md` | ✅ Present — _editorial draft 2026-05-15_ | editorial (replace with figma-extract-usage once Figma cards exist) |
 
 ---
 
@@ -288,10 +299,10 @@ tags:
 | Tokens | 0.80 | 8/10 | ✅ Available |
 | Accessibility | 0.88 | 7/8 | ✅ Available |
 | Figma | 0.78 | 7/9 | ✅ Available — ⛔ 2 CONFLICTs |
-| Usage | 0.00 | — | ❌ SOURCE_GAP (major) |
+| Usage | 0.70 | editorial draft present | ⚠️ partial-resolved-editorial — Figma cards still missing |
 | PUI | 1.00 | resolved | ✅ No relevant context (confirmed) |
 | **Available avg** | **0.85** | | |
-| **Overall avg** | **0.73** | | |
+| **Overall avg** | **0.82** | | _was 0.73 before GAP-003 partial resolution 2026-05-15_ |
 
 ---
 
@@ -300,7 +311,7 @@ tags:
 | Count | Category |
 |-------|----------|
 | 2 | CONFLICTs (1 minor auto-fixable, 1 major requires human) — **blocks doc-rewrite** |
-| 5 | SOURCE_GAPs (1 major, 4 minor) |
+| 5 | SOURCE_GAPs (5 minor — GAP-003 partial-resolved-editorial 2026-05-15; 4 others unchanged) |
 | 4 | DOC_GAPs (all minor) |
 | 2 | Warnings (heuristic, advisory) |
 
@@ -324,9 +335,9 @@ tags:
 
 ### SOURCE_GAPs
 
-#### GAP-003 · Usage · MAJOR
-**Finding:** `ToggleButton-usage.md` absent — `figma-extract-usage` not run.
-**Fix:** Run `figma-extract-usage` for ToggleButton.
+#### GAP-003 · Usage · MINOR · _partial-resolved-editorial 2026-05-15_
+**Finding:** `ToggleButton-usage.md` is now present as an editorial draft (drafted 2026-05-15 from the Oxygen web docs at [oxygen.8x8.com/components/toggle/usage](https://oxygen.8x8.com/components/toggle/usage) combined with the extracted MCP/Figma artifacts). The upstream Figma source — `✅ Do — …` / `❌ Don't — …` card frames on the Toggle examples page (`50606:95349`) — is still missing.
+**Fix:** Author Do/Don't cards on the Figma examples page, then run `figma-extract-usage ToggleButton` and replace the editorial draft wholesale.
 
 #### GAP-004 · Figma · MINOR
 **Finding:** `figma_get_component_details` failed (Desktop Bridge not running). Component keys for all three component sets not retrieved.
@@ -375,7 +386,9 @@ Resolve in this order:
 ```
 1. Fix GAP-001  → add isOn?↔isChecked mapping note to ToggleButton-figma.md (1 line)
 2. Resolve GAP-002  → designer/developer confirms isError API intent
-3. Run figma-extract-usage  → produces ToggleButton-usage.md
+3. (Done — editorial 2026-05-15) ToggleButton-usage.md is present as an editorial draft
+   → Figma cards on examples page 50606:95349 are still required to replace it with
+   figma-extract-usage output. GAP-003 is partial-resolved-editorial.
 4. (Optional) Fix GAP-008   → resolve $spacing02/$spacing03 token names
 5. Re-run doc-audit         → verdict should reach YES
 6. Run doc-rewrite          → produces ToggleButton-spec.md

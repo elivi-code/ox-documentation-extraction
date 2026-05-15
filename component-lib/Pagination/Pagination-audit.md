@@ -53,7 +53,7 @@ counts:
   conflicts: 0
   warnings: 1
 
-verdict: YES
+verdict: "YES"
 verdict_reason: >
   Zero conflicts. Zero blocker-severity gaps. Token hex values confirmed correct via
   batch alias-chain traversal on 2026-05-05 — WARN-002 resolved. Token data is present

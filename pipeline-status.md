@@ -3,7 +3,7 @@ title: "OX Pipeline Status"
 description: "Quick-reference status table — pipeline stage, audit verdict, and blocker for every component"
 role: pipeline_status
 workspace: OX Documentation Extraction
-last_updated: 2026-05-14
+last_updated: 2026-05-15
 tags:
   - oxygen
   - navigation
@@ -12,16 +12,17 @@ tags:
 # OX Pipeline Status
 
 > **Quick reference for AI and humans.** Load this file for instant orientation; open `component-map.yaml` for full detail.
-> Last updated: 2026-05-14
+> Last updated: 2026-05-15
 
 ## Summary
 
 | Stage | Count |
 |-------|-------|
 | ✅ SPEC COMPLETE | 1 |
-| 🟢 SPEC READY | 14 |
-| 🔴 BLOCKED | 19 |
-| 🟡 EXTRACTED | 3 |
+| 🟢 SPEC READY | 17 |
+| 🔴 BLOCKED | 18 |
+| 🟡 EXTRACTED | 0 |
+| ⬜ N/A — covered elsewhere | 1 |
 | **Total** | **37** |
 
 ---
@@ -31,7 +32,7 @@ tags:
 
 | Component | Category | Verdict | Score | Blocker / Note |
 |-----------|----------|---------|-------|----------------|
-| [[component-lib/Tabs/Tabs|Tabs]] | layout overlay | 🟢 YES | 0.68 | Zero CONFLICTs. Token dimension substantially improved on re-audit 2026-... |
+| [[component-lib/Tabs/Tabs|Tabs]] | layout overlay | 🟢 YES | 0.68 | Zero CONFLICTs. Token dimension improved on re-audit 2026-05-05. Tabs-usage.md added editorially 2026-05-15 (Figma Do/Don't cards still pending). |
 
 ---
 
@@ -41,6 +42,7 @@ tags:
 | Component | Category | Verdict | Score | Blocker / Note |
 |-----------|----------|---------|-------|----------------|
 | [[component-lib/Accordion/Accordion|Accordion]] | layout overlay | 🟢 YES | 0.73 | All core files present. No CONFLICTs. Usage and PUI SOURCE_GAPs are non-... |
+| [[component-lib/Badge/Badge|Badge]] | data display | 🟡 PARTIAL | — | One blocker SOURCE_GAP (badge-figma.md absent — figma-extract not run). Zero CONFLICTs. Rewrite can proceed on props, examples, accessibility, usage_patterns. |
 | [[component-lib/Breadcrumbs/Breadcrumbs|Breadcrumbs]] | navigation | 🟢 YES | 0.62 | Zero CONFLICTs. Token dimension re-scored 0.25→0.55 after re-audit. Zero... |
 | [[component-lib/Card/Card|Card]] | layout overlay | 🟢 YES | — | Deprecated package. Zero CONFLICTs. Deprecation banner documented. Rewri... |
 | [[component-lib/Checkbox/Checkbox|Checkbox]] | form inputs | 🟢 YES | 0.68 | Zero CONFLICTs. Token SOURCE_GAPs from prior audit resolved. doc-rewrite... |
@@ -49,11 +51,13 @@ tags:
 | [[component-lib/Modal/Modal|Modal]] | layout overlay | 🟢 YES | 0.72 | All core files present, including PUI (confirmed no relevant context). Z... |
 | [[component-lib/Pagination/Pagination|Pagination]] | navigation | 🟢 YES | 0.77 | Zero CONFLICTs. Token hex values confirmed 2026-05-05. doc-rewrite can p... |
 | [[component-lib/ProgressBar/ProgressBar|ProgressBar]] | feedback status | 🟢 YES | 0.75 | Re-audited 2026-05-14. Usage SOURCE_GAP closed editorially (5 grounded Do/Don't pairs, WARN-003); all 7 dimensions available... |
-| [[component-lib/SlideOut/SlideOut|SlideOut]] | layout overlay | 🟡 PARTIAL | — | Figma design confirmed non-existent (SOURCE_GAP blocker). No CONFLICTs. ... |
-| [[component-lib/Slider/Slider|Slider]] | form inputs | 🟡 PARTIAL | — | One blocker SOURCE_GAP (slider-figma.md absent). No CONFLICTs. Rewrite c... |
+| [[component-lib/Radio/Radio|Radio]] | form inputs | 🟡 PARTIAL | 0.61 | Audited 2026-05-15. One blocker SOURCE_GAP (Radio-figma.md absent — figma-extract not yet run; nodes 51776:2800, 50606:93474 known). Zero CONFLICTs. Editorial Radio-usage.md mirrors public docs page (WARN-001). One `/figma-extract Radio` call promotes to YES. |
+| [[component-lib/SlideOut/SlideOut|SlideOut]] | layout overlay | 🟡 PARTIAL | 0.36 | Re-audited 2026-05-15. Figma design confirmed non-existent (GAP-001 blocker). No CONFLICTs. Usage SOURCE_GAP closed editorially (7 grounded Do/Don't pairs via usage-advisor; WARN-002); mirrors PopoverMenu precedent. Verdict remains PARTIAL until upstream Figma exists. |
+| [[component-lib/Slider/Slider|Slider]] | form inputs | 🟡 PARTIAL | — | One blocker SOURCE_GAP (slider-figma.md absent). No CONFLICTs. Editorial Slider-usage.md added 2026-05-15 (derivation-only — no Figma examples page; 6 Do/Don't pairs; +HTML render). Rewrite can proceed on extracted dimensions; figma-extract still owed. |
 | [[component-lib/Tag/Tag|Tag]] | data display | 🟢 YES | 0.70 | Zero CONFLICTs. All required files present. doc-rewrite can proceed. |
-| [[component-lib/TextField/TextField|TextField]] | form inputs | 🟢 YES | 0.68 | No CONFLICTs. No blockers. figma.md uses non-standard name (naming viola... |
-| [[component-lib/Toast/Toast|Toast]] | feedback status | 🟢 YES | — | All core files present. Token coverage strong. PUI confirmed no relevant... |
+| [[component-lib/TextField/TextField|TextField]] | form inputs | 🟢 YES | 0.78 | Re-audited 2026-05-15. Editorial TextField-usage.md added (6 Do/Don't pairs grounded in oxygen.8x8.com/components/textinput/usage + extracted artifacts; WARN-005). Usage dim 0.00 → 0.70. No CONFLICTs. figma.md naming violation persists (GAP-006). |
+| [[component-lib/Toast/Toast|Toast]] | feedback status | 🟢 YES | 0.78 | Re-audited 2026-05-15. All 7 files now present (Toast-usage.md added editorially — no Figma examples page; GAP-003 resolved). InlineNotification Figma data enriched (all 10 variant colors confirmed). Zero CONFLICTs. doc-rewrite can proceed. |
+| [[component-lib/Tooltip/Tooltip|Tooltip]] | overlays contextual | 🟡 PARTIAL | — | Re-audited 2026-05-15. Both blocker CONFLICTs reconciled against canonical published Oxygen docs (GAP-001 → 140 chars; GAP-002 → orientation default `top`). Five derived Do/Don't pairs added to Tooltip-usage.md (mitigates GAP-017; +HTML render). Zero CONFLICTs remaining. doc-rewrite can proceed. |
 
 ---
 
@@ -78,20 +82,24 @@ tags:
 | [[component-lib/SkeletonCircle/SkeletonCircle|SkeletonCircle]] | feedback status | 🔴 NO | 0.56 | 1 CONFLICT — size values documented in incompatible formats vs SkeletonBlock docs. Editorial SkeletonCircle-usage.md added 2026-05-14 (derivation-only — no Figma examples page; 6 Do/Don't pairs; +HTML render). |
 | [[component-lib/Spinner/Spinner|Spinner]] | feedback status | 🔴 NO | 0.61 | 2 CONFLICTs — Figma isInverted axis has no React prop (design-only vs AP... |
 | [[component-lib/TextArea/TextArea|TextArea]] | form inputs | 🔴 NO | — | 3 CONFLICTs — Size/Mode/Filled Figma axes have no direct prop counterparts |
-| [[component-lib/TimeSelector/TimeSelector|TimeSelector]] | date time | 🔴 NO | — | 2 unresolved CONFLICTs — Size=Large variant existence and default size m... |
+| [[component-lib/TimeSelector/TimeSelector|TimeSelector]] | date time | 🔴 NO | — | 2 unresolved CONFLICTs — Size=Large variant existence and default size mismatch between Figma and code API. Editorial timeselector-usage.md added 2026-05-15 (docs-mirrored from oxygen.8x8.com — no Figma examples page; 6 Do/Don't pairs). |
 | [[component-lib/ToggleButton/ToggleButton|ToggleButton]] | form inputs | 🔴 NO | 0.73 | 2 CONFLICTs — Figma isOn? vs OX isChecked prop name; Figma ToggleGroup i... |
-| [[component-lib/Tooltip/Tooltip|Tooltip]] | overlays contextual | 🔴 NO | — | 2 CONFLICTs — character limit 140 (MCP) vs 136 (Figma); orientation defa... |
 
 ---
 
 ## 🟡 EXTRACTED
 *Core files present — audit not yet run*
 
+_(empty — all extracted components have been audited as of 2026-05-15)_
+
+---
+
+## ⬜ N/A — covered elsewhere
+*No audit applicable — see referenced component for spec*
+
 | Component | Category | Verdict | Score | Blocker / Note |
 |-----------|----------|---------|-------|----------------|
-| [[component-lib/Badge/Badge|Badge]] | data display | — — | — | No audit run yet. PUI file present. No Figma file. |
-| [[component-lib/Radio/Radio|Radio]] | form inputs | — — | — | Usage drafted editorially 2026-05-14 (mirrors oxygen.8x8.com docs page, 6 Do/Don't pairs). Radio-figma.md + Radio-pui.md still missing; doc-audit not yet run. |
-| [[component-lib/Toaster/Toaster|Toaster]] | feedback status | — — | — | Imperative API only — no props/examples/tokens extraction. Shares Toast'... |
+| [[component-lib/Toaster/Toaster|Toaster]] | feedback status | ⬜ N/A | — | Imperative API only — no props/examples/tokens to extract. Visual design lives in [[component-lib/Toast/Toast\|Toast]]; spec is covered there. See [[component-lib/Toaster/toaster-note\|toaster-note.md]]. |
 
 ---
 

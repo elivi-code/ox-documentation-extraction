@@ -19,6 +19,7 @@ siblings:
   - "[[Slider/tokens]]"
   - "[[Slider/accessibility]]"
   - "[[Slider/slider-pui]]"
+  - "[[Slider/Slider-usage]]"
   - "[[Slider/slider-audit]]"
 tags:
   - oxygen
@@ -29,7 +30,7 @@ tags:
 ---
 # Slider — Props
 
-> **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [slider-pui.md](slider-pui.md)
+> **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [slider-pui.md](slider-pui.md) · [Slider-usage.md](Slider-usage.md)
 
 ## Installation
 
