@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TextField — Usage Guidelines</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f7f7f9;
+  padding: 2rem 1rem;
+}
+
+.page { max-width: 880px; margin: 0 auto; }
+
+.page-header { margin-bottom: 2rem; }
+.breadcrumb {
+  font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; margin-bottom: 0.5rem; }
+.see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+.see-also a { color: #5046e4; text-decoration: none; }
+.see-also a:hover { text-decoration: underline; }
+
+.content { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 2rem 2.25rem; }
+@media (max-width: 600px) { .content { padding: 1.25rem 1rem; } }
+
+h2 {
+  font-size: 1.35rem; font-weight: 600; color: #0f0f1a;
+  margin: 2rem 0 0.75rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ebebef;
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-size: 1.05rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.5rem 0 0.6rem;
+}
+h4 {
+  font-size: 0.95rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.1rem 0 0.4rem;
+}
+p { margin: 0 0 0.75rem; color: #2b2f38; }
+strong { color: #0f0f1a; }
+
+ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; color: #2b2f38; }
+ul li, ol li { margin-bottom: 0.35rem; }
+li > ul, li > ol { margin-top: 0.35rem; margin-bottom: 0.35rem; }
+
+a { color: #5046e4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: #f3f4f6; padding: 1px 5px; border-radius: 4px;
+  font-size: 0.85em; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  color: #2b2f38;
+}
+
+pre {
+  background: #0f172a; color: #e2e8f0; border-radius: 6px;
+  padding: 0.875rem 1rem; font-size: 12.5px; overflow-x: auto;
+  margin: 0.75rem 0 1rem; line-height: 1.5;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+}
+pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+
+blockquote {
+  border-left: 4px solid #5046e4;
+  background: #f0f0ff;
+  margin: 1rem 0; padding: 0.75rem 1rem;
+  color: #1e1a6e; border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote a { color: #3730a3; text-decoration: underline; }
+
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.75rem 0; }
+
+.table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+th {
+  background: #f3f4f6; font-weight: 600; padding: 0.6rem 0.875rem;
+  text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+td { padding: 0.55rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+/* Do/Don't recognition — cells whose first child is ✅/❌ */
+table td:first-child:has(strong:first-child) { white-space: nowrap; }
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.75rem 0; }
+
+.page-footer {
+  margin-top: 2rem; font-size: 12px; color: #9ca3af;
+  border-top: 1px solid #e5e7eb; padding-top: 1rem;
+  text-align: center;
+}
+
+/* Highlight ✅ / ❌ cues inside list items and paragraphs */
+.do-line  { color: #166534; }
+.dont-line { color: #991b1b; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · form_inputs · TextField</div>
+    <h1>TextField — Usage Guidelines</h1>
+    <p class="see-also">See also: <a href="./props.md">props.md</a> · <a href="./examples.md">examples.md</a> · <a href="./tokens.md">tokens.md</a> · <a href="./accessibility.md">accessibility.md</a> · <a href="./figma.md">figma.md</a> · <a href="./TextField-pui.md">TextField-pui.md</a> · <a href="./TextField-audit.md">TextField-audit.md</a></p>
+  </header>
+
+  <main class="content">
+<blockquote>
+<p><strong>Editorial guidance — not Figma-sourced.</strong> No <code>↳ TextField examples</code> Figma page exists, so <code>figma-extract-usage</code> cannot run. The Do/Don't pairs below are grounded in <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, and the public usage page at <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a>. Treat as provisional until a designer reviews them. Replace with <code>figma-extract-usage</code> output when a Figma examples page is created.</p>
+</blockquote>
+<p><code>TextField</code> is the canonical single-line input for short-to-moderate free-form text that <strong>cannot be predicted with a fixed set of options</strong> — names, emails, search strings, codes, prices. It is fixed-height, label-first, and the building block of every Oxygen form pattern.</p>
+<hr>
+<h2>Anatomy</h2>
+<p>Per <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a>:</p>
+<ol>
+<li><strong>Label</strong> — always required; describes what the user is entering (<a href="./accessibility.md">accessibility.md:36</a>).</li>
+<li><strong>Required symbol</strong> — the <code>*</code> rendered beside the label when <code>isRequired</code> is set (<a href="./props.md">props.md:74</a>).</li>
+<li><strong>Help icon</strong> — the info-tooltip trigger driven by <code>infoBoxText</code> / <code>infoBoxButtonLabel</code> (<a href="./props.md">props.md:90–91</a>).</li>
+<li><strong>Field / Placeholder</strong> — the input itself; placeholder is <strong>optional and never a label substitute</strong> (see Pair 2).</li>
+<li><strong>Helper text</strong> — the <code>description</code> prop rendered below the input, associated via <code>aria-describedby</code> (<a href="./props.md">props.md:68</a>; <a href="./accessibility.md">accessibility.md:33</a>).</li>
+</ol>
+<hr>
+<h2>When to use</h2>
+<ul>
+<li>The user must enter <strong>information that cannot be predicted with predetermined options</strong> — names, emails, codes, free-form search terms (<a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — "When to use").</li>
+<li>The expected input is <strong>short to moderate</strong>, fits on one line, and the field can stay at a <strong>fixed height</strong> (<a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — Overview).</li>
+<li>The value benefits from inline affordances — currency prefix, unit suffix, leading icon, inline action — supplied via <code>prefix</code> / <code>suffix</code> / <code>iconLeft</code> / <code>iconRight</code> / <code>action</code> (<a href="./props.md">props.md:81–88</a>; <a href="./examples.md">examples.md:126–148</a>).</li>
+<li>The field is part of a <strong>form or data-collection pattern</strong> where surrounding inputs are also <code>TextField</code>s, dropdowns, or checkboxes (<a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — Overview).</li>
+</ul>
+<h2>When not to use</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use instead</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The user must pick <strong>one option from a known list</strong></td>
+<td><a href="../Dropdown/">Dropdown</a> — per <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — "If the user must select a specific option from known choices, consider using a dropdown, radio button or checkbox instead."</td>
+</tr>
+<tr>
+<td>The user must pick <strong>one from a small mutually-exclusive set</strong></td>
+<td><a href="../Radio/">Radio</a> — same source</td>
+</tr>
+<tr>
+<td>The user must pick <strong>zero or more from a small set</strong></td>
+<td><a href="../Checkbox/">Checkbox</a> — same source</td>
+</tr>
+<tr>
+<td>The user must enter <strong>multi-line / paragraph</strong> content</td>
+<td>A multi-line text area (<code>&lt;textarea&gt;</code> — Oxygen does not yet ship a dedicated Textarea component; <code>TextField</code> is single-line and fixed-height per <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> Overview)</td>
+</tr>
+<tr>
+<td>The user must enter a <strong>bounded numeric value with arrow stepping</strong></td>
+<td>A numeric input (inferred — common Oxygen UX rule; not stated on the TextInput usage page)</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>Do / Don't</h2>
+<h3>Pair 1 — Use TextField for unpredictable free-form input; reach for Dropdown / Radio / Checkbox for known choices</h3>
+<h4>✅ Do — Use TextField when the value can't be predicted ahead of time</h4>
+<blockquote>
+<p>Names, emails, search queries, referral codes, prices, free-form descriptions — anything where the user is <strong>typing</strong> rather than <strong>picking</strong> belongs in a TextField. Pair it with a clear <code>label</code> and, when constraints matter, a short <code>description</code> underneath.</p>
+</blockquote>
+<pre><code class="language-tsx">import { TextField } from '@8x8/oxygen-text-field';
+
+&lt;TextField
+  label=&quot;Email&quot;
+  placeholder=&quot;you@company.com&quot;
+  description=&quot;We'll use this for account recovery.&quot;
+  onChange={(e) =&gt; setValue(e.target.value)}
+/&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — "When to use: The user needs to input information that cannot be predicted with predetermined options."; <a href="./examples.md">examples.md:30–48</a> (Basic + hint-text patterns).</p>
+<h4>❌ Don't — Use TextField for a fixed set of known choices</h4>
+<blockquote>
+<p>When the answer is one of "Phone / Email / SMS" or "Mon / Tue / Wed / Thu / Fri", a TextField makes the user type the option exactly right and forces validation. A Dropdown, Radio, or Checkbox set lets them pick the canonical value with zero typos.</p>
+</blockquote>
+<pre><code class="language-tsx">// ❌ Forcing the user to type a known value
+&lt;TextField
+  label=&quot;Preferred contact method&quot;
+  placeholder=&quot;Phone, Email, or SMS&quot;
+/&gt;
+
+// ✅ Use the right control
+// &lt;Dropdown options={[{ value: 'phone', label: 'Phone' }, ... ]} /&gt;
+// &lt;RadioGroup options={[{ value: 'phone', label: 'Phone' }, ... ]} /&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — "When not to use: If the user must select a specific option from known choices, consider using a dropdown, radio button or checkbox instead."</p>
+<hr>
+<h3>Pair 2 — Always provide a real <code>label</code>; never use <code>placeholder</code> as a label</h3>
+<h4>✅ Do — Pair every TextField with a persistent <code>label</code></h4>
+<blockquote>
+<p>A <code>&lt;label&gt;</code> element is read by every screen reader, stays visible after the user starts typing, and is a WCAG 2.1 AA requirement (1.3.1, 3.3.2). Oxygen's <code>label</code> prop wires up the <code>for</code> / <code>id</code> association automatically (<a href="./accessibility.md">accessibility.md:36</a>). Use <code>placeholder</code> only for <strong>example formatting</strong> — the shape of the value the user is about to type — never to communicate what the field is for.</p>
+</blockquote>
+<pre><code class="language-tsx">&lt;TextField
+  label=&quot;Phone number&quot;
+  placeholder=&quot;+1 555 123 4567&quot;
+  description=&quot;Include country code.&quot;
+  onChange={(e) =&gt; setPhone(e.target.value)}
+/&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — Anatomy + "Avoid using placeholders whenever possible as they are not accessible, never use them to communicate important information."; <a href="./accessibility.md">accessibility.md:36</a> — "Always provide a <code>label</code> or a visible alternative; never rely on <code>placeholder</code> alone as a label."; WCAG 2.1 AA criteria 1.3.1 and 3.3.2 (<a href="./accessibility.md">accessibility.md:66, 75</a>).</p>
+<h4>❌ Don't — Use placeholder text as the only label</h4>
+<blockquote>
+<p>Placeholder text <strong>disappears the moment the user starts typing</strong>, fails colour-contrast in many themes, and is announced inconsistently by screen readers. A placeholder-only field is invisible to anyone who tabs back to review the form or uses a screen reader to navigate it.</p>
+</blockquote>
+<pre><code class="language-tsx">// ❌ Placeholder-as-label — fails WCAG 1.3.1 and 3.3.2
+&lt;TextField placeholder=&quot;Email&quot; /&gt;
+
+// ❌ Even worse: communicating required info only in the placeholder
+&lt;TextField placeholder=&quot;Must be 8+ characters with one number&quot; /&gt;
+
+// ✅ Use label + description for instructions
+&lt;TextField
+  label=&quot;Password&quot;
+  type=&quot;password&quot;
+  description=&quot;Must be 8+ characters with at least one number.&quot;
+/&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — "Avoid using placeholders whenever possible as they are not accessible, never use them to communicate important information."; <a href="./accessibility.md">accessibility.md:36, 59</a> — "Placeholder text is read by most screen readers but is not a substitute for a persistent label."</p>
+<hr>
+<h3>Pair 3 — Put instructional text in <code>description</code>, not in <code>placeholder</code></h3>
+<h4>✅ Do — Use <code>description</code> for hints, constraints, and format guidance</h4>
+<blockquote>
+<p>Helper text rendered below the field stays visible as the user types, is associated with the input via <code>aria-describedby</code> (<a href="./accessibility.md">accessibility.md:33</a>), and is announced when the field receives focus. This is the right place for "Must be 3–20 characters", "Include country code", "We'll never share this", etc.</p>
+</blockquote>
+<pre><code class="language-tsx">&lt;TextField
+  label=&quot;Username&quot;
+  description=&quot;3–20 characters. Letters, numbers, and underscores only.&quot;
+  placeholder=&quot;jane_doe&quot;
+  onChange={(e) =&gt; setUsername(e.target.value)}
+/&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="./props.md">props.md:68</a> — "<code>description</code> — Hint / helper text rendered below the input"; <a href="./examples.md">examples.md:42–48</a> "With hint text"; <a href="./accessibility.md">accessibility.md:33</a> — "The hint/description text should also be linked via <code>aria-describedby</code>."</p>
+<h4>❌ Don't — Pack constraints or warnings into the placeholder</h4>
+<blockquote>
+<p>Once the user types one character, the placeholder is gone — along with the constraint. If the rule matters enough to state, it matters enough to stay visible.</p>
+</blockquote>
+<pre><code class="language-tsx">// ❌ Constraint vanishes on first keystroke
+&lt;TextField
+  label=&quot;Username&quot;
+  placeholder=&quot;Must be 3–20 characters, letters and numbers only&quot;
+/&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — "never use [placeholders] to communicate important information."</p>
+<hr>
+<h3>Pair 4 — Use <code>isReadOnly</code> for visible-but-non-editable values; use <code>isDisabled</code> only when the field is genuinely unavailable</h3>
+<h4>✅ Do — Reach for <code>isReadOnly</code> when the user needs to see and copy a value but not change it</h4>
+<blockquote>
+<p>Read-only inputs stay in the tab order, are announced as read-only by screen readers, and let users select and copy the value — ideal for system-assigned IDs, confirmed emails, generated codes (<a href="./accessibility.md">accessibility.md:34, 80</a>). Disabled fields are removed from the tab order and disappear from keyboard navigation entirely.</p>
+</blockquote>
+<pre><code class="language-tsx">&lt;TextField
+  label=&quot;Account ID&quot;
+  value=&quot;ACC-00123&quot;
+  isReadOnly
+/&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="./props.md">props.md:72</a>; <a href="./examples.md">examples.md:87–92</a> Read-only pattern; <a href="./accessibility.md">accessibility.md:34, 80</a> — "If users need to see the value but not edit it, prefer <code>isReadOnly</code> instead, which keeps the field in the tab order and is announced by screen readers."</p>
+<h4>❌ Don't — Disable a field just to display a value</h4>
+<blockquote>
+<p>A disabled input is silent to assistive tech and skipped by keyboard navigation. If a user can read the value with their eyes but a screen reader user can't reach it, the form is broken.</p>
+</blockquote>
+<pre><code class="language-tsx">// ❌ User can't tab to it or copy the value with a screen reader
+&lt;TextField
+  label=&quot;Account ID&quot;
+  value=&quot;ACC-00123&quot;
+  isDisabled
+/&gt;
+
+// ✅ Read-only keeps the field in the tab order
+&lt;TextField
+  label=&quot;Account ID&quot;
+  value=&quot;ACC-00123&quot;
+  isReadOnly
+/&gt;
+</code></pre>
+<p>Reserve <code>isDisabled</code> for fields that are temporarily unavailable because a prerequisite isn't met (e.g. "Billing address" disabled until "Same as shipping" is unchecked) — and in that case, explain <em>why</em> in nearby helper text.</p>
+<p><strong>Grounded in:</strong> <a href="./accessibility.md">accessibility.md:35, 80</a> — "When <code>isDisabled</code> is set, the <code>disabled</code> attribute is present; disabled fields are removed from the tab order and not announced as interactive."</p>
+<hr>
+<h3>Pair 5 — Show errors with <code>hasError</code> + descriptive text; never colour alone</h3>
+<h4>✅ Do — Combine <code>hasError</code> with an error message in <code>description</code></h4>
+<blockquote>
+<p>The error state must include a <strong>text explanation</strong> (WCAG 3.3.1) and visible non-colour signals — Oxygen's error border, icon, and text all activate together when <code>hasError</code> is set (<a href="./accessibility.md">accessibility.md:67–68</a>). Move the error message into the <code>description</code> prop so it's linked via <code>aria-describedby</code> and read on focus.</p>
+</blockquote>
+<pre><code class="language-tsx">&lt;TextField
+  label=&quot;Email&quot;
+  type=&quot;email&quot;
+  value={email}
+  hasError={!isValid}
+  description={!isValid ? &quot;Enter a valid email address (e.g. you@company.com).&quot; : undefined}
+  onChange={(e) =&gt; setEmail(e.target.value)}
+/&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="./examples.md">examples.md:65–72</a> Error state pattern; <a href="./props.md">props.md:73</a> — "<code>hasError</code> — Activates error visual state and shows error styling"; <a href="./accessibility.md">accessibility.md:32, 58, 67, 74</a> — WCAG 3.3.1 + <code>aria-describedby</code> linkage.</p>
+<h4>❌ Don't — Rely on red colour alone to communicate the error</h4>
+<blockquote>
+<p>Users with low vision, colour-blindness, or in high-glare environments may not perceive a red border. Without a text explanation, they also won't know <strong>what</strong> is wrong or <strong>how to fix it</strong>.</p>
+</blockquote>
+<pre><code class="language-tsx">// ❌ Red border with no text — fails WCAG 1.4.1 and 3.3.1
+&lt;TextField label=&quot;Email&quot; hasError /&gt;
+
+// ❌ Even worse: vague helper that doesn't say what's wrong
+&lt;TextField label=&quot;Email&quot; hasError description=&quot;Invalid.&quot; /&gt;
+
+// ✅ Specific, actionable error text
+&lt;TextField
+  label=&quot;Email&quot;
+  hasError
+  description=&quot;This email is already registered. Try signing in instead.&quot;
+/&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="./accessibility.md">accessibility.md:67–68, 74</a> WCAG 1.4.1 + 3.3.1 — "Error state must not rely on colour alone"; "Errors must be described in text. Use <code>hasError</code> + <code>description</code> with error message."</p>
+<hr>
+<h3>Pair 6 — Size the field to the expected value; reserve <code>fullWidth</code> for stretching forms</h3>
+<h4>✅ Do — Match input width to the content the user is entering</h4>
+<blockquote>
+<p>The Oxygen guidance is explicit: "Input width should be proportional to the content that the user has to insert and align to grid columns." A two-letter state code shouldn't stretch the page; a multi-segment search query shouldn't be squeezed into 120px. Use <code>size="small" | "default" | "large"</code> to set the visual scale and let containers + grid columns set the width.</p>
+</blockquote>
+<pre><code class="language-tsx">{/* Short, predictable values stay compact */}
+&lt;TextField label=&quot;ZIP&quot; size=&quot;small&quot; placeholder=&quot;94103&quot; /&gt;
+
+{/* Long search queries get full container width inside a form column */}
+&lt;TextField label=&quot;Search&quot; iconLeft={SearchIcon} fullWidth placeholder=&quot;Search messages…&quot; /&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — "Input width should be proportional to the content that the user has to insert and align to grid columns."; <a href="./props.md">props.md:79–80</a> <code>size</code> and <code>fullWidth</code> props; <a href="./examples.md">examples.md:97–112</a> Size variants + Full width patterns.</p>
+<h4>❌ Don't — Stretch every input to the page width regardless of content</h4>
+<blockquote>
+<p>A page where every input — ZIP code, state, country, email, address line 1 — sits at full width breaks the visual rhythm of the form and signals that all fields expect the same amount of content. It also wastes scan-time: the user can no longer infer the kind of value expected from the field's size.</p>
+</blockquote>
+<pre><code class="language-tsx">// ❌ Same width for every field, no signal of expected content length
+&lt;TextField label=&quot;ZIP&quot; fullWidth /&gt;
+&lt;TextField label=&quot;State&quot; fullWidth /&gt;
+&lt;TextField label=&quot;Country&quot; fullWidth /&gt;
+&lt;TextField label=&quot;Email&quot; fullWidth /&gt;
+</code></pre>
+<p><strong>Grounded in:</strong> <a href="https://oxygen.8x8.com/components/textinput/usage">oxygen.8x8.com/components/textinput/usage</a> — "Input width should be proportional to the content that the user has to insert and align to grid columns."</p>
+<hr>
+<h2>Gaps &amp; open questions</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Editorial</td>
+<td>These Do/Don't pairs are authored from extracted artifacts and the public oxygen.8x8.com TextInput usage page, <strong>not from a Figma examples page</strong>. They should be reviewed by a designer and replaced with Figma-sourced pairs once a <code>↳ TextField examples</code> page is created.</td>
+</tr>
+<tr>
+<td>GAP-USAGE-001</td>
+<td>Source gap</td>
+<td>No Figma examples page exists for TextField. The public usage page provides anatomy, behaviour, and a short "When to use / When not to use" — <strong>no Do/Don't cards, no screenshots, no annotated examples</strong>. A Figma examples page would let <code>figma-extract-usage</code> run and replace this editorial draft.</td>
+</tr>
+<tr>
+<td>GAP-USAGE-002</td>
+<td>Source gap</td>
+<td>The OX usage page does not address <code>prefix</code> / <code>suffix</code> / <code>iconLeft</code> / <code>iconRight</code> / <code>action</code> patterns. The guidance in the "When to use" list above is editorial, derived from <a href="./props.md">props.md:81–88</a> and <a href="./examples.md">examples.md:126–148</a>.</td>
+</tr>
+<tr>
+<td>GAP-USAGE-003</td>
+<td>Source gap</td>
+<td>The OX usage page does not address <code>maxLength</code> ergonomics — when to show a live character count, when to truncate vs. block input, etc. Not covered in pairs above.</td>
+</tr>
+<tr>
+<td>GAP-USAGE-004</td>
+<td>Source gap</td>
+<td>The OX usage page does not address <code>labelOrientation="row"</code> (label-beside-input) — when to use it, density implications, RTL behaviour. The pattern is documented in <a href="./examples.md">examples.md:153–159</a> but lacks an editorial recommendation.</td>
+</tr>
+<tr>
+<td>GAP-USAGE-005</td>
+<td>Source gap</td>
+<td>The OX usage page does not address multi-line text input. Pair "When not to use" row 4 above notes Oxygen ships no dedicated Textarea component — confirm with design before adopting an alternative pattern.</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<p><em>Source: editorial guidance authored from extracted artifacts (props.md, examples.md, accessibility.md, figma.md, TextField-pui.md, TextField-audit.md) and the public usage page at oxygen.8x8.com/components/textinput/usage · No Figma examples page available · 2026-05-15</em></p>
+  </main>
+
+  <footer class="page-footer">
+    Rendered from <a href="./TextField-usage.md">TextField-usage.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

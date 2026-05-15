@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataTable — Usage Guidelines</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f7f7f9;
+  padding: 2rem 1rem;
+}
+
+.page { max-width: 880px; margin: 0 auto; }
+
+.page-header { margin-bottom: 2rem; }
+.breadcrumb {
+  font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; margin-bottom: 0.5rem; }
+.see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+.see-also a { color: #5046e4; text-decoration: none; }
+.see-also a:hover { text-decoration: underline; }
+
+.content { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 2rem 2.25rem; }
+@media (max-width: 600px) { .content { padding: 1.25rem 1rem; } }
+
+h2 {
+  font-size: 1.35rem; font-weight: 600; color: #0f0f1a;
+  margin: 2rem 0 0.75rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ebebef;
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-size: 1.05rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.5rem 0 0.6rem;
+}
+h4 {
+  font-size: 0.95rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.1rem 0 0.4rem;
+}
+p { margin: 0 0 0.75rem; color: #2b2f38; }
+strong { color: #0f0f1a; }
+
+ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; color: #2b2f38; }
+ul li, ol li { margin-bottom: 0.35rem; }
+li > ul, li > ol { margin-top: 0.35rem; margin-bottom: 0.35rem; }
+
+a { color: #5046e4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: #f3f4f6; padding: 1px 5px; border-radius: 4px;
+  font-size: 0.85em; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  color: #2b2f38;
+}
+
+pre {
+  background: #0f172a; color: #e2e8f0; border-radius: 6px;
+  padding: 0.875rem 1rem; font-size: 12.5px; overflow-x: auto;
+  margin: 0.75rem 0 1rem; line-height: 1.5;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+}
+pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+
+blockquote {
+  border-left: 4px solid #5046e4;
+  background: #f0f0ff;
+  margin: 1rem 0; padding: 0.75rem 1rem;
+  color: #1e1a6e; border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote a { color: #3730a3; text-decoration: underline; }
+
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.75rem 0; }
+
+.table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+th {
+  background: #f3f4f6; font-weight: 600; padding: 0.6rem 0.875rem;
+  text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+td { padding: 0.55rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+/* Do/Don't recognition — cells whose first child is ✅/❌ */
+table td:first-child:has(strong:first-child) { white-space: nowrap; }
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.75rem 0; }
+
+.page-footer {
+  margin-top: 2rem; font-size: 12px; color: #9ca3af;
+  border-top: 1px solid #e5e7eb; padding-top: 1rem;
+  text-align: center;
+}
+
+/* Highlight ✅ / ❌ cues inside list items and paragraphs */
+.do-line  { color: #166534; }
+.dont-line { color: #991b1b; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · data_display · DataTable</div>
+    <h1>DataTable — Usage Guidelines</h1>
+    <p class="see-also">See also: <a href="./props.md">props.md</a> · <a href="./examples.md">examples.md</a> · <a href="./tokens.md">tokens.md</a> · <a href="./accessibility.md">accessibility.md</a> · <a href="./DataTable-figma.md">DataTable-figma.md</a></p>
+  </header>
+
+  <main class="content">
+<blockquote>
+<p><strong>Editorial guidance — derived from extracted artifacts.</strong> Neither a Figma <code>↳ DataTable examples</code> page with Do/Don't cards nor a published Oxygen docs page exists today. The published page at <code>https://oxygen.8x8.com/components/table/usage</code> is an "In progress" placeholder (fetched 2026-05-12). Pairs below are derived from <a href="./props.md">props.md</a>, <a href="./examples.md">examples.md</a>, <a href="./tokens.md">tokens.md</a>, <a href="./accessibility.md">accessibility.md</a>, and <a href="./DataTable-figma.md">DataTable-figma.md</a>, cross-validated against the audit findings in <a href="./DataTable-audit.md">DataTable-audit.md</a>. Replace with <code>figma-extract-usage</code> output if a Figma examples page is ever created with Do/Don't cards.</p>
+</blockquote>
+<p>DataTable is the canonical component for <strong>dense, structured, row-oriented data</strong> in 8x8 product surfaces — admin lists, agent rosters, call/event logs, billing records, permission matrices, and any view that benefits from sortable columns, filtering, row selection, row actions, and pagination working together. It is a <strong>compound family</strong>, not a single component: a <code>&lt;TableContainer&gt;</code> wraps a <code>&lt;TableHeader&gt;</code> toolbar above a <code>&lt;Table&gt;</code> body and an optional <code>&lt;Pagination&gt;</code> footer, all driven by hook-managed state (<code>useTable</code>, <code>useDataRetrieval</code>, <code>useSorting</code>, <code>useRowSelection</code>, <code>usePagination</code>). See <a href="./props.md">props.md:36</a> and <a href="./examples.md">examples.md:27</a>.</p>
+<hr>
+<h2>⚠️ Open audit conflicts</h2>
+<p>Two conflicts in <a href="./DataTable-audit.md">DataTable-audit.md</a> are unresolved at the time of writing. They <strong>do not block</strong> the editorial guidance below, but they constrain what you can confidently say about pagination wiring and cell-type selection.</p>
+<ul>
+<li><strong>GAP-001 — Pagination interface duality.</strong> MCP-returned <code>&lt;Pagination&gt;</code> props (<code>canGoBack</code>, <code>canGoNext</code>, <code>numberOfPages</code>, <code>pageNumber</code>, <code>rowsPerPage</code>) and example-observed props (<code>limit</code>, <code>offset</code>, <code>totalResults</code>, <code>loadingData</code>) are documented side-by-side in <a href="./props.md">props.md:121</a> without resolving which is the public API. The most plausible reading is that <code>usePagination()</code> is an adapter that maps <code>useDataRetrieval</code> state (<code>limit/offset/...</code>) onto the canonical Pagination prop shape (<code>pageNumber/canGoBack/...</code>). Treat the canonical shape as authoritative for direct usage; let <code>usePagination()</code> handle the mapping when wiring to <code>useDataRetrieval</code>. Pairs below avoid recommending a specific Pagination prop set.</li>
+<li><strong>GAP-002 — Figma <code>type</code> variant ↔ Oxygen cell components.</strong> The Figma <code>table cell</code> component set carries an 18-value <code>type</code> variant (<code>default</code>, <code>checkbox</code>, <code>radio</code>, <code>avatar</code>, <code>switch</code>, <code>text input</code>, <code>select input</code>, <code>icons</code>, <code>tag</code>, <code>link</code>, <code>action</code>, <code>trend</code>, <code>trend filled</code>, <code>status</code>, <code>sentiment</code>, <code>error filled</code>, <code>empty state</code>, <code>skeleton</code>) — see <a href="./DataTable-figma.md">DataTable-figma.md:120</a>. Oxygen code does not expose a <code>type</code> prop on <code>&lt;Cell&gt;</code>; instead, examples use named cell components (<code>TextCell</code>, <code>PrimaryTextCell</code>, <code>SecondaryTextCell</code>, <code>CheckboxCell</code>) and <code>cellDefinitions.*ColumnDef()</code> factories via <code>columnHelper.accessor</code>/<code>columnHelper.display</code> callbacks (<a href="./examples.md">examples.md:51</a>, <a href="./examples.md">examples.md:336</a>). The full mapping is undefined; only <code>default</code>, <code>checkbox</code>, <code>radio</code>, and <code>skeleton</code> have unambiguous Oxygen analogues. Pairs below cover the four mapped types; for unmapped types (avatar, switch, tag, link, action, trend, sentiment, status) confirm with the design system team before shipping a custom cell renderer.</li>
+</ul>
+<p>A third inconsistency is worth noting but is editorial-only: the published Oxygen docs intro table at <code>/components/intro</code> lists the package as <code>@8x8/oxygen-table</code>, while <a href="./props.md">props.md:3</a> and the MCP report it as <code>@8x8/oxygen-dataTable</code>. Use whichever name the in-repo <code>package.json</code> resolves to in your application; this doc retains <code>@8x8/oxygen-dataTable</code> to match the MCP extraction.</p>
+<hr>
+<h2>Anatomy</h2>
+<p>The DataTable family composes <strong>10 Figma component sets</strong> that map onto a small set of React sub-components (<a href="./DataTable-figma.md">DataTable-figma.md:53</a>):</p>
+<ol>
+<li><strong><code>&lt;TableContainer&gt;</code></strong> — outermost wrapper. Provides layout context for everything inside (<a href="./props.md">props.md:73</a>).</li>
+<li><strong><code>&lt;TableHeader&gt;</code> toolbar</strong> — <code>table action header</code> in Figma (<a href="./DataTable-figma.md">DataTable-figma.md:89</a>). Top region containing optional title, primary action, alert count, icon buttons, search, filter, favourites toggle, and the result count (<code>totalResultsMessage</code>, <code>currentPage</code> of <code>totalPages</code>). Renders above <code>&lt;Table&gt;</code>. See <a href="./props.md">props.md:81</a>.</li>
+<li><strong>Column headers</strong> — <code>&lt;HeaderCell&gt;</code> rendered inside <code>columnHelper.accessor</code> header callbacks (<a href="./props.md">props.md:110</a>, <a href="./examples.md">examples.md:51</a>). Optional <code>wrapText</code> allows up to three wrapped lines; sortable headers gain <code>aria-sort</code> automatically (<a href="./accessibility.md">accessibility.md:71</a>).</li>
+<li><strong>Start controls cell</strong> — left-side selection/drag column (<a href="./DataTable-figma.md">DataTable-figma.md:163</a>). Renders via <code>cellDefinitions.getSelectColumnDef()</code> (multi-select) or <code>cellDefinitions.getSingleSelectColumnDef()</code> (single-select) (<a href="./props.md">props.md:161</a>, <a href="./examples.md">examples.md:336</a>).</li>
+<li><strong>Data cells</strong> — <code>&lt;Cell&gt;</code> populated by <code>columnHelper.accessor</code> cell callbacks. The named cell components (<code>TextCell</code>, <code>PrimaryTextCell</code>, <code>SecondaryTextCell</code>, plus the upcoming mapped components for the Figma <code>type</code> variants) live inside these callbacks. Status bar (4 px left-edge indicator), icon slot, primary text, secondary text, and pinned-column dividers are anatomy slots exposed by the Figma component but managed via <code>meta</code> and <code>getRowStatus</code> in code (<a href="./DataTable-figma.md">DataTable-figma.md:67</a>).</li>
+<li><strong>Rows</strong> — <code>&lt;BodyRow&gt;</code> inside <code>&lt;Body&gt;</code>. Hover surfaces the <code>table row hover</code> overlay with inline action buttons or icon buttons (<a href="./DataTable-figma.md">DataTable-figma.md:206</a>). Active rows highlight using the <code>active08</code>/<code>active10</code> tokens (<a href="./tokens.md">tokens.md:30</a>) and require a visible focus indicator (<a href="./accessibility.md">accessibility.md:37</a>).</li>
+<li><strong>End controls cell</strong> — right-side row-action column (<a href="./DataTable-figma.md">DataTable-figma.md:186</a>). Rendered via the <code>getRowActions</code> callback on <code>&lt;Table&gt;</code>; types include overflow (<code>…</code>), inline buttons, remove, or collapse triggers (<a href="./props.md">props.md:65</a>, <a href="./examples.md">examples.md:271</a>).</li>
+<li><strong>Pagination footer</strong> — <code>&lt;Pagination&gt;</code> rendered inside <code>&lt;TableContainer&gt;</code> below <code>&lt;Table&gt;</code> (<a href="./props.md">props.md:121</a>). Wired to <code>useDataRetrieval</code> state, typically through <code>usePagination()</code> (see GAP-001 above).</li>
+<li><strong>Loading state</strong> — opt-in via <code>loading</code> + <code>loadingText</code> on <code>&lt;Table&gt;</code>. Renders a skeleton overlay; <code>loadingText</code> is required for screen-reader announcement (<a href="./props.md">props.md:62</a>, <a href="./accessibility.md">accessibility.md:90</a>).</li>
+<li><strong>Empty / error state</strong> — surfaced via <code>onDataRetrievalError</code> from <code>useDataRetrieval</code> plus the Figma <code>empty state</code> cell type. There is no dedicated empty-state slot in the API; render an inline alert via <a href="../AlertBanner/">AlertBanner</a> or a full-width <code>&lt;Cell type="empty state"&gt;</code> placeholder.</li>
+</ol>
+<hr>
+<h2>Variants and capabilities</h2>
+<p>The component family supports the variants below; each is wired up via a hook or prop on the relevant sub-component, not a top-level <code>variant</code> prop.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>How it's enabled</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sorting (server-side)</td>
+<td><code>useSorting</code> hook + <code>enableSorting: true</code> per column</td>
+<td><a href="./examples.md">examples.md:209</a></td>
+</tr>
+<tr>
+<td>Filtering</td>
+<td><code>filter</code> prop on <code>&lt;TableHeader&gt;</code> driven by <code>useDataRetrieval.onFiltersChange</code></td>
+<td><a href="./examples.md">examples.md:386</a></td>
+</tr>
+<tr>
+<td>Pagination</td>
+<td><code>&lt;Pagination&gt;</code> inside <code>&lt;TableContainer&gt;</code> + <code>useDataRetrieval</code> (often through <code>usePagination()</code>)</td>
+<td><a href="./examples.md">examples.md:122</a></td>
+</tr>
+<tr>
+<td>Multi-row selection</td>
+<td><code>cellDefinitions.getSelectColumnDef()</code> + <code>useRowSelection</code></td>
+<td><a href="./examples.md">examples.md:336</a></td>
+</tr>
+<tr>
+<td>Single-row selection</td>
+<td><code>cellDefinitions.getSingleSelectColumnDef()</code> + <code>useRowSelection</code></td>
+<td><a href="./examples.md">examples.md:338</a></td>
+</tr>
+<tr>
+<td>Row actions</td>
+<td><code>getRowActions(row)</code> on <code>&lt;Table&gt;</code> returning <code>ActionProps[]</code></td>
+<td><a href="./examples.md">examples.md:271</a></td>
+</tr>
+<tr>
+<td>Row click activation</td>
+<td><code>onRowClick</code> + <code>activeRowId</code> on <code>&lt;Table&gt;</code></td>
+<td><a href="./examples.md">examples.md:309</a></td>
+</tr>
+<tr>
+<td>Row status indicator</td>
+<td><code>getRowStatus(row)</code> returning <code>RowStatusType</code></td>
+<td><a href="./props.md">props.md:66</a>, <a href="./accessibility.md">accessibility.md:99</a></td>
+</tr>
+<tr>
+<td>Column resizing</td>
+<td><code>columnResizeMode: 'onChange'</code> + <code>enableColumnResizing</code> on <code>useTable</code>, <code>meta.flexible: true</code> per column</td>
+<td><a href="./examples.md">examples.md:421</a></td>
+</tr>
+<tr>
+<td>Sticky / pinned columns</td>
+<td><code>meta.pinned: true</code> per column</td>
+<td><a href="./examples.md">examples.md:449</a></td>
+</tr>
+<tr>
+<td>Column width preset</td>
+<td><code>meta.type: 'small' \| 'large'</code></td>
+<td><a href="./examples.md">examples.md:478</a></td>
+</tr>
+<tr>
+<td>Header wrap</td>
+<td><code>wrapText</code> on <code>&lt;HeaderCell&gt;</code></td>
+<td><a href="./props.md">props.md:117</a></td>
+</tr>
+<tr>
+<td>Loading skeleton</td>
+<td><code>loading={true}</code> + <code>loadingText</code> on <code>&lt;Table&gt;</code></td>
+<td><a href="./examples.md">examples.md:107</a>, <a href="./accessibility.md">accessibility.md:90</a></td>
+</tr>
+<tr>
+<td>Zebra striping</td>
+<td><code>zebra</code> on <code>&lt;Table&gt;</code></td>
+<td><a href="./props.md">props.md:60</a></td>
+</tr>
+<tr>
+<td>Virtual scrolling</td>
+<td><code>enableVirtualization={true}</code> on <code>&lt;Table&gt;</code></td>
+<td><a href="./examples.md">examples.md:464</a></td>
+</tr>
+<tr>
+<td>Compact density</td>
+<td>Figma <code>isCompact?</code> axis on <code>table cell</code></td>
+<td><a href="./DataTable-figma.md">DataTable-figma.md:121</a> (code prop not yet documented — see GAP in audit)</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>When to use vs. alternatives</h2>
+<p>Use DataTable when <strong>rows describe entities with three or more comparable attributes</strong> that benefit from columnar alignment, sortability, and bulk operations (selection + row actions). Use it when users need to scan, sort, filter, or act across many rows at once.</p>
+<p>Prefer an alternative when:</p>
+<ul>
+<li>A single entity has many attributes presented for a single record — use a detail layout, not a one-row table.</li>
+<li>Rows are visually heterogeneous (different fields per row, mixed media) — use a List or Card grid.</li>
+<li>The dataset is below ~5 rows with simple key/value pairs — use a definition list or stacked Card.</li>
+<li>Users need to browse media-heavy items — use a Card grid.</li>
+<li>The data is hierarchical with deep nesting — consider a tree view (Oxygen has no first-class tree component today; consult the design system team).</li>
+</ul>
+<hr>
+<h2>Do and Don't</h2>
+<blockquote>
+<p><strong>Format note.</strong> Each pair below states the recommendation (✅ Do), the failure mode it prevents (❌ Don't), and a <strong>Why</strong> that cites the extracted source.</p>
+</blockquote>
+<h3>1. Compose the family inside <code>&lt;TableContainer&gt;</code></h3>
+<p>✅ <strong>Do</strong> render <code>&lt;TableHeader&gt;</code>, <code>&lt;Table&gt;</code>, and the optional <code>&lt;Pagination&gt;</code> inside a single <code>&lt;TableContainer&gt;</code>, in that order.</p>
+<p>❌ <strong>Don't</strong> mount a bare <code>&lt;Table&gt;</code> outside a container, or split the toolbar/pagination across separate layout regions of the page.</p>
+<p><strong>Why.</strong> Every example in <a href="./examples.md">examples.md:27</a> uses the compound pattern <code>&lt;TableContainer&gt;</code> → <code>&lt;TableHeader&gt;</code> → <code>&lt;Table&gt;</code> → <code>&lt;Pagination&gt;</code>. The container provides layout context the sub-components depend on; the basic example at <a href="./examples.md">examples.md:101–113</a> and the paginated example at <a href="./examples.md">examples.md:174–201</a> follow this structure verbatim. Splitting the toolbar away from the table breaks the visual relationship between filter state and result count, and breaks the screen-reader narrative ("Filters · 31 results · table of users").</p>
+<hr>
+<h3>2. Always set <code>ariaLabel</code> on <code>&lt;Table&gt;</code></h3>
+<p>✅ <strong>Do</strong> pass a unique, human-readable <code>ariaLabel</code> to every <code>&lt;Table&gt;</code> (e.g. <code>"Active user accounts"</code>, <code>"Billing invoices"</code>).</p>
+<p>❌ <strong>Don't</strong> ship a <code>&lt;Table&gt;</code> without <code>ariaLabel</code>, and don't reuse the same label on multiple tables in the same view.</p>
+<p><strong>Why.</strong> The HTML <code>&lt;table&gt;</code> element has no implicit accessible name. <a href="./accessibility.md">accessibility.md:44–52</a> flags <code>ariaLabel</code> as required: without it, screen-reader users cannot tell what the table contains, and a page with multiple unlabelled tables collapses into "table" / "table" / "table" in the rotor. WCAG 2.1 4.1.2 (Name, Role, Value) is listed as <strong>Partial</strong> in <a href="./accessibility.md">accessibility.md:123</a> precisely because the API does not enforce the label.</p>
+<hr>
+<h3>3. Use named cell components, not ad-hoc renderers</h3>
+<p>✅ <strong>Do</strong> use the named cell components inside <code>columnHelper.accessor</code> callbacks: <code>&lt;HeaderCell text="…"&gt;</code> for headers, <code>&lt;TextCell primaryText={…}&gt;</code> (or <code>PrimaryTextCell</code> / <code>SecondaryTextCell</code>) for text cells, and <code>cellDefinitions.getSelectColumnDef()</code> / <code>getSingleSelectColumnDef()</code> for selection columns.</p>
+<p>❌ <strong>Don't</strong> inline raw <code>&lt;div&gt;</code> / <code>&lt;span&gt;</code> / custom HTML inside <code>cell:</code> callbacks for the four mapped Figma types (<code>default</code> → <code>TextCell</code>, <code>checkbox</code> → <code>CheckboxCell</code> via <code>getSelectColumnDef</code>, <code>radio</code> → via <code>getSingleSelectColumnDef</code>, <code>skeleton</code> → handled by <code>loading={true}</code>). Don't build a custom select column when <code>cellDefinitions</code> provides a factory.</p>
+<p><strong>Why.</strong> <a href="./examples.md">examples.md:51–78</a> and <a href="./examples.md">examples.md:336–349</a> show the named components being used in every documented pattern. The named components carry the correct padding, typography (<code>body01</code> for primary, <code>label01</code> for secondary — <a href="./DataTable-figma.md">DataTable-figma.md:304</a>), focus styles, and ARIA attributes. Ad-hoc renderers lose Figma parity with the <code>table cell</code> component set's slots (<a href="./DataTable-figma.md">DataTable-figma.md:67</a>) and break the visual rhythm of the row. For Figma cell <code>type</code> values <strong>outside</strong> the four mapped ones (avatar, switch, tag, link, action, trend, sentiment, status — see GAP-002 in <a href="./DataTable-audit.md">DataTable-audit.md</a>), confirm the Oxygen analogue with the design system team before writing a custom cell.</p>
+<hr>
+<h3>4. Always pair <code>loading</code> with <code>loadingText</code></h3>
+<p>✅ <strong>Do</strong> set both <code>loading</code> and <code>loadingText</code> on <code>&lt;Table&gt;</code> whenever data is being fetched: <code>&lt;Table loading={dataRetrieval.loadingData} loadingText="Loading users…" tableApi={tableApi} ariaLabel="User list" /&gt;</code>.</p>
+<p>❌ <strong>Don't</strong> set <code>loading={true}</code> without <code>loadingText</code>, and don't replace the table with an external spinner during refetch.</p>
+<p><strong>Why.</strong> <a href="./accessibility.md">accessibility.md:90–95</a> states that without <code>loadingText</code>, the loading state is <strong>invisible to assistive technologies</strong> — the visual skeleton overlay covers the table body but no announcement is made. The basic example wires both props together (<a href="./examples.md">examples.md:105–108</a>) and the row-actions example does the same (<a href="./examples.md">examples.md:305–308</a>). Replacing the whole table with an external spinner during refetch makes the toolbar, filters, and pagination momentarily disappear, costing users their place.</p>
+<hr>
+<h3>5. Drive sorting through <code>useSorting</code>, not manual state</h3>
+<p>✅ <strong>Do</strong> manage sort state with the <code>useSorting</code> hook and pass <code>sortingOptions</code> + <code>sortingState</code> to <code>useTable</code>. Set <code>enableSorting: true</code> per sortable column.</p>
+<p>❌ <strong>Don't</strong> maintain your own <code>useState</code> for the sort column and direction, and don't call <code>data.sort(...)</code> on the client before passing it to <code>useTable</code>.</p>
+<p><strong>Why.</strong> Sorting is <strong>server-side</strong> by design (<a href="./examples.md">examples.md:208–243</a>). <code>useSorting</code> exposes <code>onSortingChange</code> that hooks into <code>useDataRetrieval.onSortingChange</code>, so the next fetch re-queries the API with the new sort. Sorting client-side after fetch only sorts the <strong>current page</strong> — users paging through expect "Name ascending" to span the entire dataset, not the visible 6 rows. The <code>aria-sort</code> attribute on the column header is also wired automatically by <code>&lt;HeaderCell&gt;</code> when sorting is hook-managed (<a href="./accessibility.md">accessibility.md:71–77</a>).</p>
+<hr>
+<h3>6. Use the <code>&lt;TableHeader&gt;</code> toolbar instead of an ad-hoc external one</h3>
+<p>✅ <strong>Do</strong> put primary actions, filters, search, and the result count inside <code>&lt;TableHeader&gt;</code> via <code>actionItems</code>, <code>filter</code>, and the <code>listTotalResults</code> / <code>totalResultsMessage</code> / <code>currentPage</code> / <code>totalPages</code> props.</p>
+<p>❌ <strong>Don't</strong> build a parallel toolbar above <code>&lt;TableContainer&gt;</code> for filter chips or result counts when <code>&lt;TableHeader&gt;</code> already exposes those slots.</p>
+<p><strong>Why.</strong> The Figma <code>table action header</code> (<a href="./DataTable-figma.md">DataTable-figma.md:89</a>) exposes nine slots — title, action, alerts, iconButtons, search, filter, favourites, results, resultsText — designed to sit on a single row above the data. The paginated example at <a href="./examples.md">examples.md:175–184</a> wires <code>filter</code>, <code>listTotalResults</code>, <code>loadingTotalResults</code>, <code>loadingData</code>, <code>totalResultsMessage</code>, <code>currentPage</code>, and <code>totalPages</code> directly into <code>&lt;TableHeader&gt;</code>. Mounting an external toolbar splits the visual relationship between filter state and the result count it produces, and forces you to re-implement loading and total-results coordination.</p>
+<hr>
+<h3>7. Pin the identity column, virtualize at 100+ rows</h3>
+<p>✅ <strong>Do</strong> set <code>meta.pinned: true</code> on the column that identifies the row (typically the first text column — name, ID, email) so it stays visible during horizontal scroll, and enable <code>enableVirtualization={true}</code> on <code>&lt;Table&gt;</code> whenever the dataset can exceed ~100 rows.</p>
+<p>❌ <strong>Don't</strong> allow long datasets to render without virtualization, and don't pin more than one or two columns (every pinned column reduces the scroll area for everything else).</p>
+<p><strong>Why.</strong> Pinning the identity column is the documented pattern in <a href="./examples.md">examples.md:449–455</a>: "Set <code>meta.pinned: true</code> on column definitions to pin them to the left." Without it, users scrolling horizontally to read distant columns lose their row context. The virtualization threshold of 100+ rows is given verbatim in <a href="./examples.md">examples.md:460–462</a>: "Enable virtual scrolling for large datasets (100+ rows) via <code>enableVirtualization</code>." Beyond that threshold, full-DOM tables cause sluggish scrolling and noticeable jank on lower-end devices.</p>
+<hr>
+<h2>Accessibility checklist (summary)</h2>
+<p>Before shipping, verify against <a href="./accessibility.md">accessibility.md:113</a>:</p>
+<ul>
+<li><code>ariaLabel</code> set on every <code>&lt;Table&gt;</code> (pair 2).</li>
+<li><code>loadingText</code> set whenever <code>loading={true}</code> (pair 4).</li>
+<li>Sortable headers wired through <code>useSorting</code> so <code>aria-sort</code> is correct (pair 5).</li>
+<li>Multi-select header has an <code>aria-label</code> (it does by default via <code>cellDefinitions.getSelectColumnDef()</code>); row checkboxes carry per-row <code>aria-label</code> values.</li>
+<li>Row status indicators from <code>getRowStatus</code> are also conveyed in text or via row-level <code>aria-label</code>, not by colour alone (<a href="./accessibility.md">accessibility.md:101</a>).</li>
+<li><code>focus01</code> / <code>focus02</code> tokens applied to all interactive elements (sortable headers, row actions, pagination controls) — light/dark token values in <a href="./tokens.md">tokens.md:53</a>.</li>
+<li>If <code>onRowClick</code> is used, verify rows are keyboard-reachable and respond to Enter/Space — the row navigation is <strong>not</strong> managed by default (<a href="./accessibility.md">accessibility.md:60</a>).</li>
+</ul>
+<hr>
+<h2>Related</h2>
+<ul>
+<li><a href="../Pagination/">Pagination</a> — used inside <code>&lt;TableContainer&gt;</code>; has its own component-scoped guidance.</li>
+<li><a href="../Checkbox/">Checkbox</a> — basis for the multi-select column (<code>cellDefinitions.getSelectColumnDef()</code>).</li>
+<li><a href="../">Radio</a> — basis for single-select columns (component not yet extracted; see <code>components-to-extract.md</code>).</li>
+<li><a href="../AlertBanner/">AlertBanner</a> — recommended for empty / error / partial-data states above or in place of the table.</li>
+<li><a href="../List/">List</a> — alternative when rows are heterogeneous or fewer than ~5 entries.</li>
+</ul>
+<hr>
+<p><em>Drafted 2026-05-12. Replace with <code>figma-extract-usage</code> output if/when a Figma "↳ DataTable examples" page is populated with Do/Don't cards, or with transcribed published-docs content when <code>https://oxygen.8x8.com/components/table/usage</code> exits its "In progress" placeholder state.</em></p>
+  </main>
+
+  <footer class="page-footer">
+    Rendered from <a href="./DataTable-usage.md">DataTable-usage.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

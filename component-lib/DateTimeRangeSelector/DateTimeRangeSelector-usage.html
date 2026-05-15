@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DateTimeRangeSelector — Usage Guidelines</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f7f7f9;
+  padding: 2rem 1rem;
+}
+
+.page { max-width: 880px; margin: 0 auto; }
+
+.page-header { margin-bottom: 2rem; }
+.breadcrumb {
+  font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; margin-bottom: 0.5rem; }
+.see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+.see-also a { color: #5046e4; text-decoration: none; }
+.see-also a:hover { text-decoration: underline; }
+
+.content { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 2rem 2.25rem; }
+@media (max-width: 600px) { .content { padding: 1.25rem 1rem; } }
+
+h2 {
+  font-size: 1.35rem; font-weight: 600; color: #0f0f1a;
+  margin: 2rem 0 0.75rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ebebef;
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-size: 1.05rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.5rem 0 0.6rem;
+}
+h4 {
+  font-size: 0.95rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.1rem 0 0.4rem;
+}
+p { margin: 0 0 0.75rem; color: #2b2f38; }
+strong { color: #0f0f1a; }
+
+ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; color: #2b2f38; }
+ul li, ol li { margin-bottom: 0.35rem; }
+li > ul, li > ol { margin-top: 0.35rem; margin-bottom: 0.35rem; }
+
+a { color: #5046e4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: #f3f4f6; padding: 1px 5px; border-radius: 4px;
+  font-size: 0.85em; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  color: #2b2f38;
+}
+
+pre {
+  background: #0f172a; color: #e2e8f0; border-radius: 6px;
+  padding: 0.875rem 1rem; font-size: 12.5px; overflow-x: auto;
+  margin: 0.75rem 0 1rem; line-height: 1.5;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+}
+pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+
+blockquote {
+  border-left: 4px solid #5046e4;
+  background: #f0f0ff;
+  margin: 1rem 0; padding: 0.75rem 1rem;
+  color: #1e1a6e; border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote a { color: #3730a3; text-decoration: underline; }
+
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.75rem 0; }
+
+.table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+th {
+  background: #f3f4f6; font-weight: 600; padding: 0.6rem 0.875rem;
+  text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+td { padding: 0.55rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+/* Do/Don't recognition — cells whose first child is ✅/❌ */
+table td:first-child:has(strong:first-child) { white-space: nowrap; }
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.75rem 0; }
+
+.page-footer {
+  margin-top: 2rem; font-size: 12px; color: #9ca3af;
+  border-top: 1px solid #e5e7eb; padding-top: 1rem;
+  text-align: center;
+}
+
+/* Highlight ✅ / ❌ cues inside list items and paragraphs */
+.do-line  { color: #166534; }
+.dont-line { color: #991b1b; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · date_time · DateTimeRangeSelector</div>
+    <h1>DateTimeRangeSelector — Usage Guidelines</h1>
+    <p class="see-also">See also: <a href="./props.md">props.md</a> · <a href="./examples.md">examples.md</a> · <a href="./tokens.md">tokens.md</a> · <a href="./accessibility.md">accessibility.md</a> · <a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md</a> · <a href="../Calendar/Calendar-usage.md">Calendar — Usage Guidelines</a></p>
+  </header>
+
+  <main class="content">
+<blockquote>
+<p><strong>Editorial guidance — no Figma Do/Don't cards.</strong> No <code>↳ Date picker examples</code> page exists in the UI-components Figma file (<code>5YihJ5WuDvnvrlrRMC4sBp</code>); the published Oxygen docs URL timed out during drafting. The pairs below are drafted from the extracted artifacts (<code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, <code>DateTimeRangeSelector-figma.md</code>) and cross-referenced with the sibling <a href="../Calendar/Calendar-usage.md">Calendar — Usage Guidelines</a>, which documents the open picker panel itself. Replace this file with <code>figma-extract-usage</code> output once Do/Don't cards exist in Figma.</p>
+</blockquote>
+<p>A <code>DateTimeRangeSelector</code> lets users <strong>select a start + end date, optionally with start and end times</strong>, from a 320 px trigger input that opens a popover with the Calendar range picker, an optional predefined-ranges panel, and an optional time-selector row. It is the standard control behind every analytics, reporting, billing, and call-history time-window filter in 8x8 product surfaces (<a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:38</a>, <a href="./props.md">props.md:53</a>).</p>
+<hr>
+<h2>Overview</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>API</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trigger input</td>
+<td><code>DateTimeRangeSelector</code> (default export)</td>
+<td>320 px fixed-width input that displays the formatted range and opens the popover.</td>
+</tr>
+<tr>
+<td>Open picker panel</td>
+<td>rendered internally; or <code>DateTimeRangePicker</code> (named export) for custom triggers</td>
+<td>Calendar grid + predefined-ranges panel + time selectors + <code>Finish</code> / <code>Clear</code> action bar.</td>
+</tr>
+<tr>
+<td>Predefined ranges list</td>
+<td><code>DateTimeRangeSelectorPredefinedList</code> (named export)</td>
+<td>Left panel; default list includes Last hour, Today, Yesterday, Last 7 days, This month, Last month, Last 3 months, This year, Last year, Custom (<a href="./props.md">props.md:154</a>).</td>
+</tr>
+</tbody>
+</table></div>
+<p>The trigger input is the <strong>shared Figma "Date picker" node <code>80239:8235</code></strong> (<a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:53</a>) — the same trigger that backs <code>DateTimeSelector</code>. The visible difference is the placeholder/value text: a single date for <code>DateTimeSelector</code>, a <code>"start – end"</code> string for <code>DateTimeRangeSelector</code>.</p>
+<p><strong>Source:</strong> <a href="./props.md">props.md:49</a> · <a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:30</a>.</p>
+<hr>
+<h2>Anatomy</h2>
+<p>The trigger is documented here. For the open picker panel (calendar grid, predefined ranges, time row), see <a href="../Calendar/Calendar-figma.md">Calendar — Figma Design Spec</a>.</p>
+<h3>Trigger (<a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:61</a>)</h3>
+<ol>
+<li><strong>Label zone</strong> — <code>_base_form_label</code>. Optional, default visible. Includes the label, an <code>*</code> required marker (red, <code>--error/error01</code>), and an <code>Icon Button</code> slot for an FAQ/help icon.</li>
+<li><strong>Dropdown (trigger field)</strong> — <code>320 × 48 px</code> (Large) / <code>40 px</code> (default API mapping) / <code>32 px</code> (Small). Renders the placeholder (<code>'Select Date Range'</code> by default, <a href="./props.md">props.md:86</a>) or the formatted range string. The calendar icon is <strong>visible in Rest state only</strong> — hidden in Hover, Focus, Error, and Disabled.</li>
+<li><strong>Hint / error zone</strong> — <code>_base_form_hint</code>. Below the dropdown. Renders hint text or, when <code>hasError={true}</code>, the error message in <code>--error/error01</code>.</li>
+</ol>
+<h3>Open picker panel (<a href="../Calendar/Calendar-figma.md">Calendar-figma.md:51</a>)</h3>
+<ol start="4">
+<li><strong>Predefined ranges panel</strong> <em>(optional, 148 px wide)</em> — gated by the <code>hidePredefinedRanges</code> prop (<a href="./props.md">props.md:74</a>). Default list documented in <a href="./props.md">props.md:154</a>.</li>
+<li><strong>Date and time range header</strong> <em>(optional)</em> — From / To date inputs and Start / End time inputs. The time row is gated by <code>hideTime</code> (<a href="./props.md">props.md:75</a>); the date inputs always show.</li>
+<li><strong>Calendar grid</strong> — dual-month range Calendar; see <a href="../Calendar/Calendar-usage.md">Calendar — Usage Guidelines</a>.</li>
+<li><strong>Action bar</strong> — <strong><code>Clear</code> · <code>Finish</code></strong> (default labels: <code>clearButtonLabel: 'Clear'</code> <a href="./props.md">props.md:63</a>, <code>finishButtonLabel: 'Finish'</code> <a href="./props.md">props.md:70</a>). <strong><code>onRangeChange</code> fires on Finish or Clear only</strong> (<a href="./props.md">props.md:84</a>) — the second day-click does <strong>not</strong> commit. Many consuming surfaces relabel these to <code>'Apply'</code> / <code>'Reset'</code> (<a href="./examples.md">examples.md:127</a>).</li>
+</ol>
+<hr>
+<h2>Behavior</h2>
+<h3>States (<a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:238</a>)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>State</th>
+<th>Trigger</th>
+<th>Visual change</th>
+<th>Tokens (Light mode)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Rest</td>
+<td>Default</td>
+<td>Placeholder or range value on <code>--ui/ui05</code> (#f4f3ee); calendar icon visible</td>
+<td><code>--ui/ui05</code>, <code>--text/textcolor02</code> (placeholder) / <code>--text/textcolor01</code> (filled)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Hover</td>
+<td>Pointer over Dropdown</td>
+<td>bg → <code>--interactive/hover06</code> (#ebeae1); calendar icon hidden</td>
+<td><code>--interactive/hover06</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Focus</td>
+<td>Keyboard <code>Tab</code></td>
+<td>2 px focus ring <code>--interactive/focus01</code> (#0056e0); calendar icon hidden</td>
+<td><code>--interactive/focus01</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Error</td>
+<td><code>hasError={true}</code></td>
+<td>2 px red border <code>--error/error01</code> (#cb2233); calendar icon hidden; error message in hint zone</td>
+<td><code>--error/error01</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Disabled</td>
+<td><code>isDisabled={true}</code></td>
+<td>bg → <code>--interactive/disabled01</code> (#c8c8bd); filled text → <code>--interactive/disabled04</code> (#8d8b7e); not interactive; calendar icon hidden</td>
+<td><code>--interactive/disabled01</code>, <code>--interactive/disabled04</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Filled</td>
+<td><code>dateTimeRange</code> set</td>
+<td>Placeholder replaced by formatted range string (<code>dateFormat</code> + <code>timeFormat</code>); text → <code>--text/textcolor01</code></td>
+<td><code>--text/textcolor01</code></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ Token names above come from Figma's generated CSS (Light mode), not the UI-Foundations variables panel — flagged as <strong>GAP-002</strong> in <a href="./DateTimeRangeSelector-audit.md">DateTimeRangeSelector-audit.md</a>. Dark mode token values are unverified — flagged as <strong>GAP-009</strong>.</p>
+</blockquote>
+<p><strong>Source:</strong> <a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:156</a> · <a href="./accessibility.md">accessibility.md:50</a>.</p>
+<hr>
+<h2>Sizes</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>API value</th>
+<th>Figma variant</th>
+<th>Trigger height</th>
+<th>Total component height (with label + hint)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>size="large"</code> (default)</td>
+<td><code>Size=Large</code></td>
+<td>48 px</td>
+<td>92 px</td>
+</tr>
+<tr>
+<td>— <em>(no API value)</em></td>
+<td><code>Size=Medium</code></td>
+<td>40 px</td>
+<td>84 px</td>
+</tr>
+<tr>
+<td><code>size="small"</code></td>
+<td><code>Size=Small</code></td>
+<td>32 px</td>
+<td>76 px</td>
+</tr>
+</tbody>
+</table></div>
+<p>The API exposes only <code>'large' \| 'small'</code> (<a href="./props.md">props.md:89</a>); the Figma <code>Medium</code> variant exists in the component set but is not selectable via props. Treat <code>large</code> as the default surface and <code>small</code> for dense filter bars / table toolbars. Width is always <strong>320 px fixed</strong> (<a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:192</a>).</p>
+<p><strong>Source:</strong> <a href="./props.md">props.md:89</a> · <a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:204</a>.</p>
+<hr>
+<h2>Placement</h2>
+<ul>
+<li><strong>Always render the trigger input</strong> — the popover opens from it. Don't render <code>DateTimeRangePicker</code> standalone except for embedded surfaces (e.g. inline filters in a SlideOut) where you provide your own trigger.</li>
+<li><strong>Width is 320 px</strong> — don't stretch the trigger to fill its container; it will misalign with neighbouring 320 px Oxygen inputs and break visual rhythm.</li>
+<li><strong>Popover anchors to the trigger</strong> and overlays the surface; the picker stays open until <code>Finish</code> or <code>Clear</code> is pressed, or <code>Escape</code> is hit, or one of the <code>customCloseHandlers</code> (<a href="./props.md">props.md:64</a>) fires.</li>
+</ul>
+<hr>
+<h2>Best practices</h2>
+<h3>When to use</h3>
+<ul>
+<li>Selecting a <strong>time window for an analytics or reporting view</strong> (last 7 days, this month, custom range).</li>
+<li>Picking a <strong>billing or scheduling window</strong> that needs start and end <strong>with intraday precision</strong> — leave <code>hideTime={false}</code> (default).</li>
+<li>Filtering <strong>historical records</strong> (calls, tickets, events) by date range; pair with <code>predefinedRanges</code> for the common queries and <code>otherCalendarProps.minDate</code> for data-retention windows.</li>
+</ul>
+<h3>When not to use</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Why</th>
+<th>Use instead</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Picking a single date (not a range)</td>
+<td>The two-click + <code>Finish</code> commit pattern is over-engineered for a one-decision task.</td>
+<td><code>DateTimeSelector</code> (sibling: same trigger, single-date semantics). See Pair 1 below.</td>
+</tr>
+<tr>
+<td>Picking a single time (no date)</td>
+<td>The component always picks dates first; time inputs are an addition.</td>
+<td><code>TimeSelector</code>.</td>
+</tr>
+<tr>
+<td>Free-form / fuzzy dates ("around Q3", "TBD")</td>
+<td>The component enforces concrete <code>Date</code> objects.</td>
+<td>A plain text input.</td>
+</tr>
+<tr>
+<td>Inline display of a fixed range (read-only summary)</td>
+<td>A disabled trigger conveys "unavailable", not "informational".</td>
+<td>A <code>Label</code> + formatted string.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Source:</strong> <a href="./props.md">props.md:53</a> · <a href="./examples.md">examples.md:38</a> · <a href="./accessibility.md">accessibility.md:72</a>.</p>
+<hr>
+<h2>Do / Don't</h2>
+<h3>Pair 1 — Pick the right picker for the selection type</h3>
+<h4>✅ Do — Use <code>DateTimeRangeSelector</code> only when the task is a span</h4>
+<p>Two dates, with or without time, are the canonical case. The Apply step, the two-click pattern, the predefined-range panel, and the dual-month grid all exist because the user is comparing two endpoints.</p>
+<pre><code class="language-tsx">&lt;DateTimeRangeSelector
+  dateTimeRange={range}                       // { startDate, endDate }
+  predefinedRange={selectedPredefinedRange}
+  onRangeChange={onRangeChange}
+/&gt;
+</code></pre>
+<h4>❌ Don't — Reach for the range picker for a single date</h4>
+<p>For one-date tasks the Finish-to-commit flow is three interactions where one would do, and the predefined-ranges panel is irrelevant. Use the sibling component.</p>
+<pre><code class="language-tsx">{/* Wrong — single date through the range picker */}
+&lt;DateTimeRangeSelector
+  dateTimeRange={{ startDate: oneDate, endDate: oneDate }}
+  onRangeChange={({ dateTime }) =&gt; setOneDate(dateTime?.startDate)}
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:53</a> · <a href="./props.md">props.md:67</a> · <a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:32</a> (shared trigger between DateTimeSelector and DateTimeRangeSelector).</p>
+<hr>
+<h3>Pair 2 — Keep predefined ranges for analytics surfaces</h3>
+<h4>✅ Do — Leave the predefined-ranges panel visible for reporting/filtering</h4>
+<p>The default list — <code>Last hour, Today, Yesterday, Last 7 days, This month, Last month, Last 3 months, This year, Last year, Custom</code> (<a href="./props.md">props.md:154</a>) — covers the queries users actually run on dashboards and call-history views. Hiding it forces them through the full calendar for a one-click decision.</p>
+<pre><code class="language-tsx">&lt;DateTimeRangeSelector
+  dateTimeRange={range}
+  onRangeChange={onRangeChange}
+  predefinedRanges={defaultRangesPlusCustom}  // or omit — default list is used
+/&gt;
+</code></pre>
+<h4>❌ Don't — Hide the panel unless the surface has no recurring windows</h4>
+<p><code>hidePredefinedRanges</code> should be reserved for surfaces where every query is bespoke (e.g. a one-off audit screen). Hiding it on a dashboard filter turns "Last 7 days" from one click into eight.</p>
+<pre><code class="language-tsx">{/* Wrong on a reporting surface */}
+&lt;DateTimeRangeSelector
+  dateTimeRange={range}
+  onRangeChange={onRangeChange}
+  hidePredefinedRanges
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:74</a> · <a href="./props.md">props.md:154</a> · <a href="./examples.md">examples.md:83</a>.</p>
+<hr>
+<h3>Pair 3 — Show the time row only when intraday matters</h3>
+<h4>✅ Do — Keep <code>hideTime={false}</code> for billing, scheduling, and call-history windows</h4>
+<p>Default behavior: the picker shows <code>Start Time</code> / <code>End Time</code> inputs and a sub-day commit. Use it when the consuming flow's accuracy depends on hours/minutes — e.g. "calls between 09:00 and 17:00 yesterday".</p>
+<pre><code class="language-tsx">&lt;DateTimeRangeSelector
+  dateTimeRange={range}
+  onRangeChange={onRangeChange}
+  startTimeLabel=&quot;Start time&quot;
+  endTimeLabel=&quot;End time&quot;
+/&gt;
+</code></pre>
+<h4>❌ Don't — Force users to set times for a day-granularity decision</h4>
+<p>When the consuming feature only cares about calendar days, exposing time inputs creates two failure modes: users either ignore them (and silently pick 12:00 AM boundaries) or set them wrong (introducing off-by-one bugs across timezone changes). Set <code>hideTime</code>.</p>
+<pre><code class="language-tsx">{/* Right for a day-only filter */}
+&lt;DateTimeRangeSelector
+  dateTimeRange={range}
+  onRangeChange={onRangeChange}
+  hideTime
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:75</a> · <a href="./examples.md">examples.md:95</a> · <a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:225</a>.</p>
+<hr>
+<h3>Pair 4 — Commit through <code>Finish</code> / <code>onRangeChange</code>, never on the second click</h3>
+<h4>✅ Do — Treat <code>Finish</code> as the commit boundary</h4>
+<p><code>onRangeChange</code> fires when the user presses <strong>Finish</strong> or <strong>Clear</strong> (<a href="./props.md">props.md:84</a>) — not when the second calendar day is clicked. That confirmation step is intentional: it gives users a reversible moment after picking start + end + (optional) times, and it gives keyboard users a stable focus target. Tie expensive side effects (data refetches, URL updates, analytics events) to <code>onRangeChange</code>.</p>
+<pre><code class="language-tsx">const onRangeChange = ({ dateTime, predefinedRange } = {}) =&gt; {
+  if (predefinedRange) setState({ selectedPredefinedRange: predefinedRange });
+  else if (dateTime)    setState({ selectedDateTime: dateTime });
+  else                  setState(defaultState);   // Clear pressed
+  refetchReport(/* ... */);                       // ← side effect at commit
+};
+</code></pre>
+<h4>❌ Don't — Wire side effects to <code>onOpen</code> / <code>onClose</code> or to intermediate state</h4>
+<p><code>onOpen</code> / <code>onClose</code> (<a href="./props.md">props.md:82</a>, <a href="./props.md">83</a>) are for analytics or focus management, not data commits. Refetching on close would fire even when the user cancelled, and refetching on every intermediate state would thrash the network during a range pick.</p>
+<pre><code class="language-tsx">{/* Wrong — refetch on close fires for cancellations too */}
+&lt;DateTimeRangeSelector
+  dateTimeRange={range}
+  onRangeChange={setRange}
+  onClose={() =&gt; refetchReport(range)}   // ← also runs when nothing was changed
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:84</a> · <a href="./examples.md">examples.md:52</a> (controlled-range pattern) · <a href="./accessibility.md">accessibility.md:56</a> (Escape closes without applying).</p>
+<hr>
+<h3>Pair 5 — Use the placeholder, don't pre-fill "today" to look populated</h3>
+<h4>✅ Do — Leave the trigger empty until the user picks a range</h4>
+<p><code>placeholder</code> defaults to <code>'Select Date Range'</code> (<a href="./props.md">props.md:86</a>). An empty trigger reads as "this is an editable filter" — Filled=False in Figma (<a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:133</a>). The consuming surface should default to <em>no filter applied</em>, not to a fabricated range.</p>
+<pre><code class="language-tsx">&lt;DateTimeRangeSelector
+  dateTimeRange={undefined}                  // unfilled
+  predefinedRange={{ id: 'CUSTOM' }}         // matches initial state in examples
+  onRangeChange={onRangeChange}
+  placeholder=&quot;Select date range&quot;            // or a localised string
+/&gt;
+</code></pre>
+<h4>❌ Don't — Seed <code>dateTimeRange</code> with <code>today</code> / <code>today</code> to "look populated"</h4>
+<p>A pre-filled range pretends the user has made a selection. Filters then run against a value the user didn't choose, the Clear button has a non-obvious effect, and the placeholder copy never gets a chance to communicate intent.</p>
+<pre><code class="language-tsx">{/* Wrong — fakes a user selection */}
+&lt;DateTimeRangeSelector
+  dateTimeRange={{ startDate: new Date(), endDate: new Date() }}
+  onRangeChange={onRangeChange}
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:86</a> · <a href="./examples.md">examples.md:47</a> (<code>defaultState</code> pattern) · <a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:120</a>.</p>
+<hr>
+<h3>Pair 6 — Surface validation in the right place</h3>
+<h4>✅ Do — Use <code>hasError</code> for trigger-level errors and <code>endTimeErrorMessage</code> for time validation</h4>
+<p>The component has <strong>two error surfaces</strong>: <code>hasError</code> (<a href="./props.md">props.md:72</a>) raises the red 2 px border on the trigger and renders an error message in the hint zone — use it when the range is missing or invalid on submit. The in-panel <code>endTimeErrorMessage</code> (<a href="./props.md">props.md:68</a>) is announced as a polite live region (<a href="./accessibility.md">accessibility.md:43</a>) when the user enters an end time before the start time. Both should be localised.</p>
+<pre><code class="language-tsx">&lt;DateTimeRangeSelector
+  dateTimeRange={range}
+  onRangeChange={onRangeChange}
+  hasError={isSubmitted &amp;&amp; !range}
+  endTimeErrorMessage={t('rangePicker.endBeforeStart', 'End time cannot be before start time')}
+/&gt;
+</code></pre>
+<h4>❌ Don't — Silently swap start and end behind the user's back</h4>
+<p>If the user enters a start later than the end, fix it visibly: show the error message via <code>endTimeErrorMessage</code> (which the live region announces) and block <code>Finish</code>. Auto-swapping mutates the user's intent without telling them and breaks the audit trail in analytics events.</p>
+<pre><code class="language-tsx">{/* Wrong — silently corrects user input */}
+const normalised = startDate &lt;= endDate
+  ? { startDate, endDate }
+  : { startDate: endDate, endDate: startDate };   // ← user wasn't told
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:68</a> · <a href="./props.md">props.md:72</a> · <a href="./accessibility.md">accessibility.md:43</a> · <a href="./accessibility.md">accessibility.md:69</a>.</p>
+<hr>
+<h3>Pair 7 — Use <code>isDisabled</code> for unavailability, not as an icon-hiding trick</h3>
+<h4>✅ Do — Use <code>isDisabled</code> only when the range genuinely cannot be edited</h4>
+<p><code>isDisabled={true}</code> (<a href="./props.md">props.md:80</a>) sets <code>--interactive/disabled01</code> bg, dims the filled text to <code>--interactive/disabled04</code>, <strong>prevents focus</strong>, and exposes <code>aria-disabled="true"</code> to assistive tech (<a href="./accessibility.md">accessibility.md:72</a>). Use it when the surrounding form locks the field — e.g. while a request is in-flight, or when permissions prevent editing.</p>
+<pre><code class="language-tsx">&lt;DateTimeRangeSelector
+  dateTimeRange={savedRange}
+  isDisabled={!canEditFilter}
+  onRangeChange={onRangeChange}
+/&gt;
+</code></pre>
+<h4>❌ Don't — Reach for <code>isDisabled</code> because the calendar icon "looks off" in Hover/Focus</h4>
+<p>The calendar icon is <strong>intentionally hidden</strong> in every non-Rest state (<a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:88</a>) — that's the design, not a bug. Disabling the field to hide the icon removes the user's ability to focus or edit. If the field is read-only (informational, not editable), pair a <code>Label</code> with a formatted string instead.</p>
+<pre><code class="language-tsx">{/* Wrong — disabling to hide a visual element breaks keyboard access */}
+&lt;DateTimeRangeSelector
+  dateTimeRange={range}
+  isDisabled                                // ← removes the field from the tab order
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:80</a> · <a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:88</a> · <a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:163</a> · <a href="./accessibility.md">accessibility.md:72</a>.</p>
+<hr>
+<h3>Pair 8 — Localise every visible string, not just the calendar</h3>
+<h4>✅ Do — Pass <code>locale</code> and localised label/button props together</h4>
+<p><code>locale</code> (<a href="./props.md">props.md:81</a>) only handles month / day names and date-fns parsing. The trigger label, placeholder, From/To, Start/End time labels, Finish/Clear button labels, end-before-start error, and the <code>Custom</code> predefined-range label are all <strong>separate props with English defaults</strong>. Pass them all in non-English surfaces.</p>
+<pre><code class="language-tsx">import { fr } from 'date-fns/locale';
+
+&lt;DateTimeRangeSelector
+  dateTimeRange={range}
+  onRangeChange={onRangeChange}
+  locale={fr}
+  dateFormat=&quot;dd/MM/yyyy&quot;
+  placeholder={t('range.selectDateRange')}
+  fromLabel={t('range.from')}
+  toLabel={t('range.to')}
+  startTimeLabel={t('range.startTime')}
+  endTimeLabel={t('range.endTime')}
+  finishButtonLabel={t('range.apply')}
+  clearButtonLabel={t('range.reset')}
+  customPredefinedRangeLabel={t('range.custom')}
+  endTimeErrorMessage={t('range.endBeforeStart')}
+/&gt;
+</code></pre>
+<h4>❌ Don't — Pass <code>locale</code> and leave the rest in English</h4>
+<p>Half-localised UIs are worse than fully-English ones: users see "lundi" but "From" / "To" / "Finish", which signals "this product wasn't built for me".</p>
+<pre><code class="language-tsx">{/* Wrong — locale set, labels not */}
+&lt;DateTimeRangeSelector
+  dateTimeRange={range}
+  onRangeChange={onRangeChange}
+  locale={fr}
+  /* fromLabel / toLabel / finishButtonLabel / … all still English defaults */
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:63</a> · <a href="./props.md">props.md:65</a> · <a href="./props.md">props.md:68</a> · <a href="./props.md">props.md:70</a> · <a href="./props.md">props.md:71</a> · <a href="./props.md">props.md:81</a> · <a href="./props.md">props.md:86</a> · <a href="./props.md">props.md:90</a> · <a href="./props.md">props.md:94</a> · <a href="./examples.md">examples.md:120</a> · <a href="./accessibility.md">accessibility.md:71</a>.</p>
+<hr>
+<h2>Edge cases &amp; variants</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Guidance</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data-retention window</strong> (e.g. last 90 days of call records)</td>
+<td>Pass <code>otherCalendarProps={{ minDate, disabledDateTooltip }}</code> so out-of-window dates are visually disabled <strong>and</strong> explained to screen-reader users.</td>
+<td><a href="./examples.md">examples.md:151</a> · <a href="../Calendar/Calendar-usage.md">Calendar-usage.md → Pair 3</a></td>
+</tr>
+<tr>
+<td><strong>Custom trigger</strong> (icon button, summary chip)</td>
+<td>Use <code>inputRenderer={({ value, onClick }) =&gt; …}</code>. The renderer must preserve keyboard semantics — clickable + focusable + announces its label. Validate against a running instance (WARN-001 in <a href="./DateTimeRangeSelector-audit.md">DateTimeRangeSelector-audit.md</a>).</td>
+<td><a href="./examples.md">examples.md:196</a> · <a href="./props.md">props.md:79</a></td>
+</tr>
+<tr>
+<td><strong>Closing rules</strong></td>
+<td>Default close triggers: <code>Escape</code>, click outside, <code>Finish</code>, <code>Clear</code>. Add <code>customCloseHandlers</code> only when an embedding popover (e.g. a SlideOut) needs to dismiss on its own events.</td>
+<td><a href="./props.md">props.md:64</a></td>
+</tr>
+<tr>
+<td><strong>Forwarding Calendar props</strong></td>
+<td><code>otherCalendarProps</code> accepts any <code>CalendarProps</code> — useful for <code>disabledDates</code>, <code>minDate</code>, <code>maxDate</code>, <code>disabledDateTooltip</code>.</td>
+<td><a href="./props.md">props.md:85</a> · <a href="./examples.md">examples.md:160</a></td>
+</tr>
+<tr>
+<td><strong>Dark mode</strong></td>
+<td>Variants exist in Figma (<a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:171</a>) but token bindings are not yet extracted (GAP-009). Treat Dark behaviour as identical to Light until tokens are confirmed.</td>
+<td><a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md:171</a></td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>Accessibility highlights</h2>
+<ul>
+<li><strong>Live region for end-before-start validation</strong> — <code>endTimeErrorMessage</code> is announced via <code>aria-live="polite"</code> (<a href="./accessibility.md">accessibility.md:43</a>). Localise it.</li>
+<li><strong>Disabled is announced, not just visual</strong> — <code>aria-disabled="true"</code> keeps the trigger discoverable to screen readers while marking it non-interactive (<a href="./accessibility.md">accessibility.md:72</a>). Don't replace with <code>display: none</code>.</li>
+<li><strong>Keyboard escape</strong> — <code>Escape</code> closes the picker <strong>without applying</strong> (<a href="./accessibility.md">accessibility.md:56</a>). Don't wire destructive side effects to <code>onClose</code>; they will fire on cancel.</li>
+<li><strong>Locale must be supplied for non-English surfaces</strong> — month/day names are pulled from the date-fns locale object (<a href="./accessibility.md">accessibility.md:71</a>).</li>
+<li><strong>WCAG verification gaps</strong> — <code>1.4.1 Use of Color</code>, <code>1.4.3 Contrast (minimum)</code>, <code>2.4.7 Focus Visible</code> are listed as <strong>Verify</strong> in <a href="./accessibility.md">accessibility.md:81</a> until token values are confirmed (GAP-002 / GAP-007).</li>
+</ul>
+<p>See <a href="./accessibility.md">accessibility.md</a> for the full ARIA / keyboard / WCAG checklist.</p>
+<hr>
+<h2>See also</h2>
+<ul>
+<li><a href="./props.md">props.md</a> — complete API reference (32 props on the selector + 21 on <code>DateTimeRangePicker</code>).</li>
+<li><a href="./examples.md">examples.md</a> — code patterns including controlled range, French locale, 90-day window, custom input renderer.</li>
+<li><a href="./tokens.md">tokens.md</a> — design tokens (visual states still partially unverified — see GAP-002).</li>
+<li><a href="./accessibility.md">accessibility.md</a> — ARIA, keyboard, WCAG 2.1 AA.</li>
+<li><a href="./DateTimeRangeSelector-figma.md">DateTimeRangeSelector-figma.md</a> — full anatomy, variant axes, colour bindings for the trigger.</li>
+<li><a href="../Calendar/Calendar-usage.md">Calendar — Usage Guidelines</a> — open picker panel (calendar grid, predefined ranges, time row).</li>
+<li><a href="./DateTimeRangeSelector-audit.md">DateTimeRangeSelector-audit.md</a> — current gaps blocking a fully-verified rewrite.</li>
+</ul>
+<hr>
+<h2>Appendix — Original <code>figma-extract-usage</code> gap note (2026-05-08)</h2>
+<p>Preserved for traceability. Once a <code>↳ Date picker examples</code> page is added to Figma file <code>5YihJ5WuDvnvrlrRMC4sBp</code> with <code>✅ Do —</code> / <code>❌ Don't —</code> card frames, re-run <code>figma-extract-usage</code> and replace this file with its canonical output.</p>
+<blockquote>
+<p>No <code>↳ Date picker examples</code> or <code>↳ DateTimeRangeSelector examples</code> page exists in the UI-components Figma file (<code>5YihJ5WuDvnvrlrRMC4sBp</code>). The <code>figma-extract-usage</code> skill found no matching examples page. No Do/Don't editorial guidance had been published for this component at the time of audit.</p>
+<p>The shared "Date picker" Figma component (node <code>80239:8235</code>) has no associated <code>↳</code> examples page. The Calendar examples page (<code>↳ Calendar examples</code>, node <code>69971:10137</code>) documents usage patterns for the open calendar panel, but not for the DateTimeRangeSelector trigger or predefined-ranges interaction patterns.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing usage page</td>
+<td>No <code>↳ Date picker examples</code> or <code>↳ DateTimeRangeSelector examples</code> page found in Figma. Designer must create one using the <code>figma-draw</code> template before usage guidelines can be extracted.</td>
+</tr>
+<tr>
+<td>Missing Do/Don't cards</td>
+<td>No <code>✅ Do —</code> or <code>❌ Don't —</code> frames available</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Source: Figma file page listing · Extracted 2026-05-08</em></p>
+</blockquote>
+<hr>
+<p><em>Source: editorial draft via <code>usage-advisor</code> skill (open mode) + Calendar-usage.md structural template · Grounded in props.md, examples.md, tokens.md, accessibility.md, DateTimeRangeSelector-figma.md (extracted 2026-05-08) and Oxygen MCP component README · Drafted 2026-05-12</em></p>
+  </main>
+
+  <footer class="page-footer">
+    Rendered from <a href="./DateTimeRangeSelector-usage.md">DateTimeRangeSelector-usage.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

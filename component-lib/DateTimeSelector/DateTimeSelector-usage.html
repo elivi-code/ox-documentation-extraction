@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DateTimeSelector — Usage Guidelines</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f7f7f9;
+  padding: 2rem 1rem;
+}
+
+.page { max-width: 880px; margin: 0 auto; }
+
+.page-header { margin-bottom: 2rem; }
+.breadcrumb {
+  font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; margin-bottom: 0.5rem; }
+.see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+.see-also a { color: #5046e4; text-decoration: none; }
+.see-also a:hover { text-decoration: underline; }
+
+.content { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 2rem 2.25rem; }
+@media (max-width: 600px) { .content { padding: 1.25rem 1rem; } }
+
+h2 {
+  font-size: 1.35rem; font-weight: 600; color: #0f0f1a;
+  margin: 2rem 0 0.75rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ebebef;
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-size: 1.05rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.5rem 0 0.6rem;
+}
+h4 {
+  font-size: 0.95rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.1rem 0 0.4rem;
+}
+p { margin: 0 0 0.75rem; color: #2b2f38; }
+strong { color: #0f0f1a; }
+
+ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; color: #2b2f38; }
+ul li, ol li { margin-bottom: 0.35rem; }
+li > ul, li > ol { margin-top: 0.35rem; margin-bottom: 0.35rem; }
+
+a { color: #5046e4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: #f3f4f6; padding: 1px 5px; border-radius: 4px;
+  font-size: 0.85em; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  color: #2b2f38;
+}
+
+pre {
+  background: #0f172a; color: #e2e8f0; border-radius: 6px;
+  padding: 0.875rem 1rem; font-size: 12.5px; overflow-x: auto;
+  margin: 0.75rem 0 1rem; line-height: 1.5;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+}
+pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+
+blockquote {
+  border-left: 4px solid #5046e4;
+  background: #f0f0ff;
+  margin: 1rem 0; padding: 0.75rem 1rem;
+  color: #1e1a6e; border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote a { color: #3730a3; text-decoration: underline; }
+
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.75rem 0; }
+
+.table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+th {
+  background: #f3f4f6; font-weight: 600; padding: 0.6rem 0.875rem;
+  text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+td { padding: 0.55rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+/* Do/Don't recognition — cells whose first child is ✅/❌ */
+table td:first-child:has(strong:first-child) { white-space: nowrap; }
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.75rem 0; }
+
+.page-footer {
+  margin-top: 2rem; font-size: 12px; color: #9ca3af;
+  border-top: 1px solid #e5e7eb; padding-top: 1rem;
+  text-align: center;
+}
+
+/* Highlight ✅ / ❌ cues inside list items and paragraphs */
+.do-line  { color: #166534; }
+.dont-line { color: #991b1b; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · date_time · DateTimeSelector</div>
+    <h1>DateTimeSelector — Usage Guidelines</h1>
+    <p class="see-also">See also: <a href="./props.md">props.md</a> · <a href="./examples.md">examples.md</a> · <a href="./tokens.md">tokens.md</a> · <a href="./accessibility.md">accessibility.md</a> · <a href="./DateTimeSelector-figma.md">DateTimeSelector-figma.md</a> · <a href="../DateTimeRangeSelector/DateTimeRangeSelector-usage.md">DateTimeRangeSelector — Usage Guidelines</a></p>
+  </header>
+
+  <main class="content">
+<blockquote>
+<p><strong>Editorial guidance — no Figma Do/Don't cards.</strong> No <code>↳ Date picker examples</code> page exists in the UI-components Figma file (<code>5YihJ5WuDvnvrlrRMC4sBp</code>). The pairs below are drafted from the extracted artifacts and cross-referenced with the sibling <a href="../DateTimeRangeSelector/DateTimeRangeSelector-usage.md">DateTimeRangeSelector — Usage Guidelines</a>, which documents the shared trigger. Replace this file with <code>figma-extract-usage</code> output once Do/Don't cards exist in Figma.</p>
+</blockquote>
+<p>A <code>DateTimeSelector</code> lets users <strong>pick a single date (and optionally a time)</strong> from a 320 px trigger input that opens a popover with an embedded Calendar grid. It is the standard single-date control for forms, scheduling flows, and any surface where a user commits to one moment in time.</p>
+<hr>
+<h2>Do / Don't</h2>
+<h3>Pair 1 — Pick the right picker for the selection type</h3>
+<h4>✅ Do — Use <code>DateTimeSelector</code> for a single date/time decision</h4>
+<p>A single <code>value: Date</code> + <code>onDateChange(date: Date)</code> is the canonical case. The component is right-sized when the user makes one decision — a meeting time, a deadline, an "active from" date.</p>
+<pre><code class="language-tsx">&lt;DateTimeSelector
+  value={date}
+  onDateChange={setDate}
+/&gt;
+</code></pre>
+<h4>❌ Don't — Use it for a range, or as a replacement for an inline calendar</h4>
+<p>For a span (start + end, with or without times), reach for <code>DateTimeRangeSelector</code> — same trigger, range semantics, predefined-ranges panel, two-click + Finish commit. For an always-visible grid (e.g. an availability planner where the popover would just be in the way), use <code>Calendar</code> directly.</p>
+<pre><code class="language-tsx">{/* Wrong — two DateTimeSelectors do not equal a range */}
+&lt;DateTimeSelector value={start} onDateChange={setStart} /&gt;
+&lt;DateTimeSelector value={end}   onDateChange={setEnd} /&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:53–62</a> · <a href="./DateTimeSelector-figma.md">DateTimeSelector-figma.md:233</a> (shared trigger) · <a href="../DateTimeRangeSelector/DateTimeRangeSelector-usage.md">DateTimeRangeSelector-usage.md → Pair 1</a>.</p>
+<hr>
+<h3>Pair 2 — Commit pattern: <code>closeOnDateChange</code> for low-stakes, explicit Finish for high-stakes</h3>
+<h4>✅ Do — Use <code>closeOnDateChange</code> for inline filters and casual one-tap picks</h4>
+<p>When the cost of an accidental pick is low (a list filter that re-runs instantly, a draft-state input the user can change again), <code>closeOnDateChange</code> removes a step and feels lighter.</p>
+<pre><code class="language-tsx">&lt;DateTimeSelector
+  value={filterDate}
+  onDateChange={setFilterDate}
+  closeOnDateChange
+/&gt;
+</code></pre>
+<h4>❌ Don't — Auto-close when the selection commits a real side effect</h4>
+<p>For scheduled meetings, billing dates, deadlines, or anything that triggers an external write at commit time, leave <code>closeOnDateChange</code> off and keep the explicit <code>finishButtonLabel</code> step. The Finish button is the user's last reversible moment before the commit; collapsing it makes accidental picks irrecoverable from the keyboard.</p>
+<pre><code class="language-tsx">{/* Wrong on a high-stakes flow — meeting is scheduled the moment the user taps a day */}
+&lt;DateTimeSelector
+  value={meetingStart}
+  onDateChange={(d) =&gt; { setMeetingStart(d); scheduleMeeting(d); }}
+  closeOnDateChange
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:53</a> · <a href="./props.md">props.md:54</a> · <a href="./examples.md">examples.md:67</a>. <em>No sibling precedent — <code>DateTimeRangeSelector</code> always commits on Finish; this axis is unique to <code>DateTimeSelector</code>.</em></p>
+<hr>
+<h3>Pair 3 — Loading state: <code>isLoading</code> is for async availability, not generic form saving</h3>
+<h4>✅ Do — Pair <code>isLoading</code> with a descriptive <code>loadingMessage</code> when the picker depends on data still being fetched</h4>
+<p>The intent of the loading state is "the available times aren't determined yet" — checking a roster, fetching bookable slots, validating against a calendar service. Always pair <code>isLoading</code> with a <code>loadingMessage</code>; the message is exposed via <code>aria-busy="true"</code> and read by screen readers.</p>
+<pre><code class="language-tsx">&lt;DateTimeSelector
+  value={slot}
+  onDateChange={setSlot}
+  isLoading={availability.status === 'loading'}
+  loadingMessage=&quot;Checking available slots…&quot;
+/&gt;
+</code></pre>
+<h4>❌ Don't — Use <code>isLoading</code> to indicate "the surrounding form is submitting"</h4>
+<p>Form-level saving belongs on the submit button or a form-level loader. Putting it on the picker freezes the field, swallows keyboard input on the trigger, and confuses screen readers about what is busy. A bare <code>isLoading</code> with no <code>loadingMessage</code> is also an accessibility regression — the picker announces "busy" with no context.</p>
+<pre><code class="language-tsx">{/* Wrong — picker isn't what's busy */}
+&lt;DateTimeSelector
+  value={date}
+  onDateChange={setDate}
+  isLoading={form.isSubmitting}
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:56</a> · <a href="./props.md">props.md:57</a> · <a href="./props.md">props.md:71</a> (always pair <code>isLoading</code> with <code>loadingMessage</code>) · <a href="./accessibility.md">accessibility.md:38</a> · <a href="./accessibility.md">accessibility.md:62</a>. <em>Unique to this component — <code>DateTimeRangeSelector</code> has no <code>isLoading</code> prop.</em></p>
+<hr>
+<h3>Pair 4 — Display format: pick a pattern that fits the surface and locale, never raw ISO</h3>
+<h4>✅ Do — Set <code>titleFormatPattern</code> to match the surrounding copy, and pass <code>locale</code> together with it</h4>
+<p>The default format renders date-fns tokens; pick a pattern that matches the form's tone — <code>"EEE, d MMM yyyy"</code> for human-readable display, <code>"dd/MM/yyyy HH:mm"</code> for dense filter bars. On non-English surfaces, the format pattern and the <code>locale</code> object travel together: month and weekday names come from <code>locale</code>, the <strong>shape</strong> comes from the pattern.</p>
+<pre><code class="language-tsx">import { fr } from 'date-fns/locale';
+
+&lt;DateTimeSelector
+  value={date}
+  onDateChange={setDate}
+  titleFormatPattern=&quot;EEE d MMM yyyy 'à' HH:mm&quot;
+  locale={fr}
+/&gt;
+</code></pre>
+<h4>❌ Don't — Render raw ISO, or set <code>locale</code> and leave the pattern in English</h4>
+<p>A raw <code>Date.toString()</code> in the trigger is what screen readers announce if <code>titleFormatPattern</code> is omitted — the trigger button must announce a human-readable string. Half-localised UIs (French weekday names inside an English-shaped format) read worse than fully-English ones.</p>
+<pre><code class="language-tsx">{/* Wrong — locale set without a localised pattern */}
+&lt;DateTimeSelector
+  value={date}
+  onDateChange={setDate}
+  locale={fr}
+  /* titleFormatPattern missing — falls back to a default English-shaped format */
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:61</a> · <a href="./props.md">props.md:68</a> · <a href="./accessibility.md">accessibility.md:61</a>. <em>Partial sibling precedent:</em> <a href="../DateTimeRangeSelector/DateTimeRangeSelector-usage.md">DateTimeRangeSelector-usage.md → Pair 8</a>.</p>
+<hr>
+<h3>Pair 5 — <code>isClearable</code>: expose Clear for optional filters, hide it for required fields</h3>
+<h4>✅ Do — Set <code>isClearable</code> when the field is an optional filter</h4>
+<p>When the consuming surface runs correctly with no date selected — a filter that defaults to "all time", an optional "available after" field — a Clear affordance lets the user reset without re-opening the picker. The clear button must carry an <code>aria-label</code> like <code>"Clear selected date"</code> so screen readers don't announce a bare icon.</p>
+<pre><code class="language-tsx">&lt;DateTimeSelector
+  value={filterDate}
+  onDateChange={setFilterDate}
+  isClearable
+/&gt;
+</code></pre>
+<h4>❌ Don't — Expose Clear on a required field</h4>
+<p>For a required field (scheduling a meeting, a billing start date), Clear produces an invalid form state with no obvious next step. Leave <code>isClearable</code> off and let the user overwrite the selection by re-opening the picker.</p>
+<pre><code class="language-tsx">{/* Wrong — Clear lets users empty a required field */}
+&lt;DateTimeSelector
+  value={meetingStart}        // required for the meeting to be created
+  onDateChange={setMeetingStart}
+  isClearable
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./props.md">props.md:55</a> · <a href="./accessibility.md">accessibility.md:63</a>.</p>
+<hr>
+<h3>Pair 6 — <code>isDisabled</code> is for genuine unavailability, not to hide the calendar icon</h3>
+<h4>✅ Do — Use Disabled only when the field genuinely cannot be edited</h4>
+<p>Disabled is the right tool when permissions, an in-flight save, or a parent-form lock prevent edits. The state is announced via <code>aria-disabled</code> so it stays discoverable to screen readers while marking the field non-interactive.</p>
+<pre><code class="language-tsx">&lt;DateTimeSelector
+  value={savedDate}
+  onDateChange={setSavedDate}
+  isDisabled={!canEdit}
+/&gt;
+</code></pre>
+<h4>❌ Don't — Reach for Disabled because the calendar icon "looks off" in Hover/Focus/Error</h4>
+<p>The calendar icon is <strong>intentionally hidden</strong> in every non-Rest state — that's the design, not a bug. Disabling the field to suppress the icon removes the trigger from the tab order and strips keyboard access. If the field is informational (read-only, not "unavailable"), pair a <code>Label</code> with a formatted string instead.</p>
+<pre><code class="language-tsx">{/* Wrong — disabling to hide a visual element kills keyboard access */}
+&lt;DateTimeSelector
+  value={date}
+  isDisabled                    // ← removes trigger from tab order
+/&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./DateTimeSelector-figma.md">DateTimeSelector-figma.md:74</a> · <a href="./DateTimeSelector-figma.md">DateTimeSelector-figma.md:141–148</a> · <a href="./accessibility.md">accessibility.md:72</a> · <a href="../DateTimeRangeSelector/DateTimeRangeSelector-usage.md">DateTimeRangeSelector-usage.md → Pair 7</a>.</p>
+<hr>
+<h2>Axes skipped (cross-linked to sibling)</h2>
+<p>Two axes apply equally to <code>DateTimeSelector</code> but are documented in depth on the sibling page — cross-link rather than repeat:</p>
+<ul>
+<li><strong>Don't pre-fill to look populated</strong> — leave <code>value={undefined}</code> until the user picks. See <a href="../DateTimeRangeSelector/DateTimeRangeSelector-usage.md">DateTimeRangeSelector-usage.md → Pair 5</a>.</li>
+<li><strong>Localise every visible string</strong> — <code>finishButtonLabel</code>, <code>loadingMessage</code>, <code>titleFormatPattern</code>, and the Clear <code>aria-label</code> are all separate from the <code>locale</code> object. See <a href="../DateTimeRangeSelector/DateTimeRangeSelector-usage.md">DateTimeRangeSelector-usage.md → Pair 8</a>.</li>
+</ul>
+<hr>
+<p><em>Source: editorial draft via <code>usage-advisor</code> skill (open mode) · Grounded in <code>props.md</code>, <code>examples.md</code>, <code>tokens.md</code>, <code>accessibility.md</code>, <code>DateTimeSelector-figma.md</code>, <code>DateTimeSelector-audit.md</code> (extracted 2026-05-08) · Sibling precedent: <code>DateTimeRangeSelector-usage.md</code> (2026-05-12) · Drafted 2026-05-13.</em></p>
+  </main>
+
+  <footer class="page-footer">
+    Rendered from <a href="./DateTimeSelector-usage.md">DateTimeSelector-usage.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

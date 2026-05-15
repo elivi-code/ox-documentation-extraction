@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PopoverMenu — Usage Guidelines</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f7f7f9;
+  padding: 2rem 1rem;
+}
+
+.page { max-width: 880px; margin: 0 auto; }
+
+.page-header { margin-bottom: 2rem; }
+.breadcrumb {
+  font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; margin-bottom: 0.5rem; }
+.see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+.see-also a { color: #5046e4; text-decoration: none; }
+.see-also a:hover { text-decoration: underline; }
+
+.content { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 2rem 2.25rem; }
+@media (max-width: 600px) { .content { padding: 1.25rem 1rem; } }
+
+h2 {
+  font-size: 1.35rem; font-weight: 600; color: #0f0f1a;
+  margin: 2rem 0 0.75rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ebebef;
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-size: 1.05rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.5rem 0 0.6rem;
+}
+h4 {
+  font-size: 0.95rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.1rem 0 0.4rem;
+}
+p { margin: 0 0 0.75rem; color: #2b2f38; }
+strong { color: #0f0f1a; }
+
+ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; color: #2b2f38; }
+ul li, ol li { margin-bottom: 0.35rem; }
+li > ul, li > ol { margin-top: 0.35rem; margin-bottom: 0.35rem; }
+
+a { color: #5046e4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: #f3f4f6; padding: 1px 5px; border-radius: 4px;
+  font-size: 0.85em; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  color: #2b2f38;
+}
+
+pre {
+  background: #0f172a; color: #e2e8f0; border-radius: 6px;
+  padding: 0.875rem 1rem; font-size: 12.5px; overflow-x: auto;
+  margin: 0.75rem 0 1rem; line-height: 1.5;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+}
+pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+
+blockquote {
+  border-left: 4px solid #5046e4;
+  background: #f0f0ff;
+  margin: 1rem 0; padding: 0.75rem 1rem;
+  color: #1e1a6e; border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote a { color: #3730a3; text-decoration: underline; }
+
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.75rem 0; }
+
+.table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+th {
+  background: #f3f4f6; font-weight: 600; padding: 0.6rem 0.875rem;
+  text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+td { padding: 0.55rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+/* Do/Don't recognition — cells whose first child is ✅/❌ */
+table td:first-child:has(strong:first-child) { white-space: nowrap; }
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.75rem 0; }
+
+.page-footer {
+  margin-top: 2rem; font-size: 12px; color: #9ca3af;
+  border-top: 1px solid #e5e7eb; padding-top: 1rem;
+  text-align: center;
+}
+
+/* Highlight ✅ / ❌ cues inside list items and paragraphs */
+.do-line  { color: #166534; }
+.dont-line { color: #991b1b; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · overlays_contextual · PopoverMenu</div>
+    <h1>PopoverMenu — Usage Guidelines</h1>
+    <p class="see-also">See also: <a href="./props.md">props.md</a> · <a href="./examples.md">examples.md</a> · <a href="./tokens.md">tokens.md</a> · <a href="./accessibility.md">accessibility.md</a> · <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md</a> · <a href="./PopoverMenu-audit.md">PopoverMenu-audit.md</a></p>
+  </header>
+
+  <main class="content">
+<blockquote>
+<p><strong>Editorial guidance — mirrors <code>Button-usage.md</code>.</strong> No <code>↳ Popover examples</code> Figma page with Do/Don't card frames exists yet (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md</a> and the prior version of this file confirm prose-only content). The guidance below is drafted from the extracted artifacts and is intended to be replaced by <code>figma-extract-usage</code> output once card frames are authored in Figma.</p>
+</blockquote>
+<p>Popovers display rich, dismissible content anchored to a trigger — somewhere between a tooltip (too small) and a modal (too disruptive). <code>PopoverMenu</code> is the menu-shaped specialisation: a list of items that lets a user pick one (or several), wrapped in the same floating panel. Use it for dropdown menus, multi-select filters, and contextual command lists.</p>
+<hr>
+<h2>Anatomy</h2>
+<p>Element structure of the Popover window from <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:46-67</a>:</p>
+<ol>
+<li><strong>Trigger</strong> — any focusable element (typically a <code>DropdownButton</code>, <a href="./examples.md">examples.md:30</a>). Owns the accessible name of the menu — see <a href="./accessibility.md">accessibility.md:74</a>.</li>
+<li><strong>Container (<code>Popover window</code>)</strong> — the floating panel shell (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:52</a>). Carries the surface tokens (<code>--ui/ui06</code> background, <code>--ui/ui01</code> border, <code>--ui/shadow01</code>) and a hardcoded <code>6px</code> radius / <code>320px</code> width — flagged in <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:291-293</a>.</li>
+<li><strong><code>_header</code> slot</strong> <em>(optional, <code>header={...}</code>)</em> — Title row + close icon + search input + bottom divider (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:60-63</a>). Shown only when <code>header</code> is provided (<a href="./props.md">props.md:105</a>).</li>
+<li><strong><code>Content</code></strong> — always present; wraps the <code>Slot</code> (the actual list of items) and an optional <code>Scrollbar_Mac OS</code> when <code>scroll=true</code> (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:62-64</a>).</li>
+<li><strong><code>_footer</code> slot</strong> <em>(optional, <code>footer={...}</code>)</em> — Top divider + <code>Buttons</code> row (Clear / Cancel / Apply) (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:65-67</a>). Shown only when <code>footer</code> is provided (<a href="./props.md">props.md:106</a>).</li>
+<li><strong>List items</strong> — eight variants populate <code>items</code> (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:75-82</a>). See the Overview matrix.</li>
+<li><strong>Focus ring</strong> — visible focus indicator on the focused list item, applied via the keyboard arrow / <code>Tab</code> flow. Required by WCAG 2.4.7 — see <a href="./accessibility.md">accessibility.md:89</a>.</li>
+</ol>
+<hr>
+<h2>Overview</h2>
+<p>The <code>@8x8/oxygen-popover</code> package ships two distinct components (<a href="./props.md">props.md:48-55</a>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>When to use</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PopoverMenu</code></td>
+<td>Standard dropdown menus — the floating panel renders a structured list driven by <code>items</code>. Open state is managed for you.</td>
+<td><strong>Default choice.</strong> See Pair 1.</td>
+</tr>
+<tr>
+<td><code>Popover</code></td>
+<td>Custom floating content that doesn't fit a list — forms, previews, controlled programmatic open.</td>
+<td>Fully controlled (<code>isOpen</code> / <code>setIsOpen</code>); requires you to pass <code>floatingContent</code>. See Pair 1.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>List-item type matrix</h3>
+<p>Eight list-item variants are defined on the canvas (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:75-82</a>). Pick by selection semantics, not by appearance:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Selection model</th>
+<th>Use for</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>List item/Single Action or Select</code></td>
+<td>None / single-select</td>
+<td>One-shot commands ("Edit", "Duplicate") or single-select picks</td>
+<td>Most common. See Pair 7.</td>
+</tr>
+<tr>
+<td><code>List item/Sub Menu</code></td>
+<td>Navigation</td>
+<td>Branching into a nested menu</td>
+<td>Trailing chevron; opens a child PopoverMenu.</td>
+</tr>
+<tr>
+<td><code>List item/Checkbox</code></td>
+<td>Multi-select</td>
+<td>Filter facets, tag pickers — committed in batch</td>
+<td>Pair with <code>footer</code> (Clear / Cancel / Apply). See Pair 6, Pair 7.</td>
+</tr>
+<tr>
+<td><code>List item/Radio</code></td>
+<td>Single-select from N</td>
+<td>Pick exactly one value from a known set</td>
+<td>Commits on click — no Apply step. See Pair 7.</td>
+</tr>
+<tr>
+<td><code>List item/Add Item</code></td>
+<td>Action</td>
+<td>Append a new entry to a list</td>
+<td>Leading <code>+</code> icon.</td>
+</tr>
+<tr>
+<td><code>List item/Remove Item</code></td>
+<td>Destructive</td>
+<td>Remove an entry from a list</td>
+<td>Trailing trash icon; treat like Destructive. See Pair 8.</td>
+</tr>
+<tr>
+<td><code>List item/Destructive</code></td>
+<td>Destructive</td>
+<td>Irreversible commands ("Delete", "Sign out")</td>
+<td>Always last, always separated. See Pair 8.</td>
+</tr>
+<tr>
+<td><code>List item/Collapsible</code></td>
+<td>Group disclosure</td>
+<td>Reveal a nested sub-group inline (108px tall when open)</td>
+<td>Section grouping alternative.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ <strong>Token / data conflicts</strong> flagged in <a href="./PopoverMenu-audit.md">PopoverMenu-audit.md</a>:
+- <strong>GAP-001 (CONFLICT):</strong> The MCP story <code>Popover.documentation.stories.tsx</code> renders the canonical example using <code>&lt;Popover items={...}&gt;</code> — but <code>items</code> belongs to <code>PopoverMenu</code>, not <code>Popover</code> (<a href="./examples.md">examples.md:48</a>). Treat the snippets in this doc as <strong><code>PopoverMenu</code>-correct</strong>; verify against source before copying from the published story.
+- <strong>GAP-002 (CONFLICT):</strong> Footer button row padding differs between light (<code>8px 8px 0 8px</code>) and dark (<code>8px 12px 0 12px</code>) — Figma source inconsistency. See Pair 6.
+- <strong>GAP-003 (CONFLICT):</strong> <code>--text/textcolor09</code> (black) on <code>--actions/action09</code> (<code>#4687ed</code>) in dark mode is approximately 3.4:1 contrast — below WCAG 4.5:1. See Pair 6.</p>
+</blockquote>
+<p><strong>Source:</strong> <a href="./props.md">props.md:48-55</a> · <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:75-82</a> · <a href="./PopoverMenu-audit.md">PopoverMenu-audit.md</a>.</p>
+<hr>
+<h2>Behaviour</h2>
+<h3>List-item states</h3>
+<p>States live on the list items, not on the container (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:255-265</a>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>State</th>
+<th>Trigger</th>
+<th>Visual change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Rest</td>
+<td>Default</td>
+<td>Item at its base surface; no tint</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Hover</td>
+<td>Pointer over item</td>
+<td>Background tint shifts (hover surface)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Active</td>
+<td>Pointer pressed / <code>Enter</code> / <code>Space</code></td>
+<td>Pressed visual feedback</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Focus</td>
+<td>Keyboard <code>Tab</code> / <code>ArrowDown</code> / <code>ArrowUp</code></td>
+<td>Visible focus ring on the focused item</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Disabled</td>
+<td><code>isDisabled=true</code> on the item</td>
+<td>Reduced opacity; non-interactive, still focusable, <code>aria-disabled="true"</code> (<a href="./accessibility.md">accessibility.md:76</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Token coverage is roughly 60% with several hardcoded values (radius, width, padding) — see <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:140-152</a>. The container itself does not expose state variants — open / closed is purely a render decision driven by <code>isOpen</code> (<code>Popover</code>) or internal state (<code>PopoverMenu</code>).</p>
+<h3>Keyboard contract</h3>
+<p>From <a href="./accessibility.md">accessibility.md:49-58</a> (inferred from the ARIA Menu Button pattern — explicit annotation is a <code>SOURCE_GAP</code>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Enter</code> / <code>Space</code> on trigger</td>
+<td>Opens menu, focus moves to first item</td>
+</tr>
+<tr>
+<td><code>ArrowDown</code> / <code>ArrowUp</code></td>
+<td>Move focus through items</td>
+</tr>
+<tr>
+<td><code>Home</code> / <code>End</code></td>
+<td>Jump to first / last item</td>
+</tr>
+<tr>
+<td><code>Escape</code></td>
+<td>Close menu, return focus to trigger</td>
+</tr>
+<tr>
+<td><code>Tab</code></td>
+<td>Close menu, advance focus to next focusable element</td>
+</tr>
+<tr>
+<td><code>Enter</code> on focused item</td>
+<td>Activate the item</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Source:</strong> <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:255-265</a> · <a href="./accessibility.md">accessibility.md:49-67</a>.</p>
+<hr>
+<h2>When to use</h2>
+<ul>
+<li>Choosing one or many options from a structured list (filter facets, sort orders, view picks)</li>
+<li>Contextual command menus anchored to a trigger ("…" overflow, row actions in a table)</li>
+<li>Rich helper content that's too long for a tooltip but doesn't justify a Modal — supplementary explanations, previews, profile cards</li>
+<li>Forms or interactive controls that should sit inline next to their trigger</li>
+</ul>
+<h2>When not to use</h2>
+<ul>
+<li><strong>Single-sentence labels or hints</strong> — use a Tooltip</li>
+<li><strong>Critical, workflow-blocking decisions</strong> — use a Modal (Popovers dismiss too easily)</li>
+<li><strong>Multi-step workflows</strong> — use a dedicated page or Modal</li>
+<li><strong>Mobile-first surfaces with very limited width</strong> — the panel is 320px wide and hardcoded (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:220-223</a>); consider a Bottom Sheet pattern instead</li>
+</ul>
+<hr>
+<h2>Do / Don't</h2>
+<h3>Pair 1 — Pick <code>PopoverMenu</code> for menus, <code>Popover</code> for custom floating content</h3>
+<h4>✅ Do — Use <code>PopoverMenu</code> with the <code>items</code> array for list-shaped menus</h4>
+<p><code>PopoverMenu</code> manages open state, keyboard navigation, and item rendering for you. It's the right answer ~90% of the time.</p>
+<pre><code class="language-tsx">import { PopoverMenu } from '@8x8/oxygen-popover';
+import { DropdownButton } from '@8x8/oxygen-button';
+
+&lt;PopoverMenu
+  items={[
+    { key: 'edit', children: 'Edit' },
+    { key: 'duplicate', children: 'Duplicate' },
+    { key: 'archive', children: 'Archive' },
+  ]}
+  onMenuItemClick={(event) =&gt; handleAction(event)}
+&gt;
+  &lt;DropdownButton&gt;Actions&lt;/DropdownButton&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<h4>❌ Don't — Reach for the low-level <code>Popover</code> just to render a list</h4>
+<p>Re-implementing menu rendering, open-state, and keyboard handling on top of <code>Popover</code> rebuilds what <code>PopoverMenu</code> already gives you — and it skips the standard list-item variants from Figma.</p>
+<pre><code class="language-tsx">{/* Wrong — manually rebuilding the menu on the primitive */}
+const [isOpen, setIsOpen] = useState(false);
+&lt;Popover
+  isOpen={isOpen}
+  setIsOpen={setIsOpen}
+  floatingContent={
+    &lt;ul&gt;
+      &lt;li onClick={...}&gt;Edit&lt;/li&gt;
+      &lt;li onClick={...}&gt;Duplicate&lt;/li&gt;
+    &lt;/ul&gt;
+  }
+&gt;
+  &lt;button onClick={() =&gt; setIsOpen(!isOpen)}&gt;Actions&lt;/button&gt;
+&lt;/Popover&gt;
+</code></pre>
+<p>Reserve <code>Popover</code> for cases where the floating content is genuinely not a list — e.g. a tiny inline form, a chart, or a preview card.</p>
+<p><strong>Source:</strong> <a href="./props.md">props.md:48-112</a> · <a href="./examples.md">examples.md:30-69</a>.</p>
+<hr>
+<h3>Pair 2 — Use Popover for rich content, Tooltip for labels, Modal for blocking decisions</h3>
+<h4>✅ Do — Match the affordance to content density and dismissibility</h4>
+<p>Popovers are <strong>interactive, persistent, and dismissible</strong>. They host rich content (lists, forms, previews) without taking over the page.</p>
+<pre><code class="language-tsx">{/* Right — filter facets in a dismissible panel; doesn't block the page */}
+&lt;PopoverMenu
+  header={&lt;&gt;Filter results&lt;/&gt;}
+  footer={&lt;ApplyCancel onApply={apply} onCancel={cancel} /&gt;}
+  items={facets}
+&gt;
+  &lt;DropdownButton&gt;Filters&lt;/DropdownButton&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<h4>❌ Don't — Use Popover for tooltips or blocking confirmations</h4>
+<p>A Popover for a one-line hint is overkill (and forces a click). A Popover for "Are you sure you want to delete this account?" is dangerous — users routinely dismiss popovers by clicking outside, and <code>Escape</code> cancels them with no commit.</p>
+<pre><code class="language-tsx">{/* Wrong — should be a Tooltip */}
+&lt;PopoverMenu items={[{ key: 'i', children: 'Open in new tab' }]}&gt;
+  &lt;IconButton icon={&lt;InfoIcon /&gt;} aria-label=&quot;Info&quot; /&gt;
+&lt;/PopoverMenu&gt;
+
+{/* Wrong — should be a Modal; outside-click dismisses without confirmation */}
+&lt;PopoverMenu items={[{ key: 'd', children: 'Delete account permanently', isDestructive: true }]}&gt;
+  &lt;Button variant=&quot;primary&quot;&gt;Settings&lt;/Button&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<p><strong>Source:</strong> "When to use" / "When not to use" sections above · <a href="./accessibility.md">accessibility.md:52</a> (Escape closes without commit).</p>
+<hr>
+<h3>Pair 3 — Trigger PopoverMenu on click, not on hover</h3>
+<h4>✅ Do — Open on click / <code>Enter</code> / <code>Space</code></h4>
+<p>A click-triggered menu is reachable by keyboard, touch, and pointer users alike. It's the default behaviour when you pair <code>PopoverMenu</code> with a focusable trigger (<a href="./accessibility.md">accessibility.md:51</a>).</p>
+<pre><code class="language-tsx">&lt;PopoverMenu items={items}&gt;
+  &lt;DropdownButton&gt;Sort by&lt;/DropdownButton&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<h4>❌ Don't — Open the menu on hover</h4>
+<p>Hover triggers are easy to activate by accident on desktop, are unavailable on touch devices, and (most importantly) are not reachable for keyboard or screen-reader users. The trigger's accessible name still has to invite a click — see <a href="./accessibility.md">accessibility.md:74</a>.</p>
+<pre><code class="language-tsx">{/* Wrong — re-implementing hover-to-open on the primitive */}
+&lt;Popover
+  isOpen={isHovered}
+  setIsOpen={setIsHovered}
+  floatingContent={&lt;Menu /&gt;}
+&gt;
+  &lt;span onMouseEnter={() =&gt; setIsHovered(true)}&gt;Sort by ▾&lt;/span&gt;
+&lt;/Popover&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./accessibility.md">accessibility.md:51</a> (Enter / Space activation) · <a href="./accessibility.md">accessibility.md:74-77</a> (screen-reader expectations).</p>
+<hr>
+<h3>Pair 4 — Make dismissal predictable: outside click, <code>Escape</code>, plus an explicit close affordance when there's a header</h3>
+<h4>✅ Do — Provide all three dismissal paths and return focus to the trigger</h4>
+<p>All Oxygen popovers should dismiss on outside click and on <code>Escape</code> (<a href="./accessibility.md">accessibility.md:52</a>, <a href="./accessibility.md">accessibility.md:66-67</a>). When <code>header</code> is shown, also include a visible close <code>×</code> so the dismissal is discoverable for pointer users.</p>
+<pre><code class="language-tsx">&lt;PopoverMenu
+  header={
+    &lt;PanelHeader title=&quot;User profile&quot; onClose={closeMenu} /* ← visible × */ /&gt;
+  }
+  items={profileItems}
+  onCancel={closeMenu} // fires on Escape / outside click
+&gt;
+  &lt;DropdownButton&gt;Profile&lt;/DropdownButton&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<h4>❌ Don't — Replace the standard dismissal model with auto-dismiss-on-mouseleave, or hide every dismissal affordance</h4>
+<p>Suppressing <code>Escape</code>, swallowing the outside click, or auto-closing the panel when the pointer leaves it all break the predictability users rely on — and the <code>Escape</code>/focus-return behaviour is a hard a11y requirement.</p>
+<pre><code class="language-tsx">{/* Wrong — Escape and outside-click silently disabled; panel only closes on mouseleave */}
+&lt;Popover
+  isOpen={isOpen}
+  setIsOpen={() =&gt; { /* ignore Escape &amp; outside click */ }}
+&gt;
+  &lt;div onMouseLeave={() =&gt; setIsOpen(false)}&gt;{menuBody}&lt;/div&gt;
+&lt;/Popover&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./accessibility.md">accessibility.md:52</a> · <a href="./accessibility.md">accessibility.md:66-67</a> · <a href="./props.md">props.md:110</a> (<code>onCancel</code>).</p>
+<hr>
+<h3>Pair 5 — Use the <code>header</code> slot only when a title or search adds real value</h3>
+<h4>✅ Do — Add <code>header</code> when the menu has enough items to need a search field, or when the menu is decoupled enough from the trigger to need a title</h4>
+<p>The <code>_header</code> frame is built specifically around a title row plus a search input (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:60-61</a>). It pays for itself when the list is long ("Assign to user") or when the trigger doesn't fully name the menu's purpose.</p>
+<pre><code class="language-tsx">&lt;PopoverMenu
+  header={&lt;MenuHeader title=&quot;Assign to&quot; onClose={close} showSearch /&gt;}
+  items={teammates}        // ~40 entries
+  maxHeight={400}
+  scroll
+&gt;
+  &lt;DropdownButton&gt;Assignee&lt;/DropdownButton&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<h4>❌ Don't — Add a header to a three-item menu</h4>
+<p>A title row on a short, well-labelled menu just adds vertical weight and a redundant restatement of the trigger label. The trigger already names the menu — let the items do the talking.</p>
+<pre><code class="language-tsx">{/* Wrong — header bigger than the menu itself */}
+&lt;PopoverMenu
+  header={&lt;MenuHeader title=&quot;Sort by&quot; /&gt;}
+  items={[
+    { key: 'name', children: 'Name' },
+    { key: 'date', children: 'Date modified' },
+    { key: 'size', children: 'Size' },
+  ]}
+&gt;
+  &lt;DropdownButton&gt;Sort by&lt;/DropdownButton&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:60-63</a> (header anatomy) · <a href="./props.md">props.md:105</a>.</p>
+<hr>
+<h3>Pair 6 — Use the <code>footer</code> (Clear / Cancel / Apply) for batch commits — and only for batch commits</h3>
+<h4>✅ Do — Pair <code>footer</code> with multi-select (Checkbox) lists where the user assembles a selection then commits</h4>
+<p>The footer's button row is shaped for batch operations: <strong>Clear</strong> (reset the selection), <strong>Cancel</strong> (discard and close), <strong>Apply</strong> (commit the selection) (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:65-67</a>). It only earns its real estate when there's something to commit.</p>
+<pre><code class="language-tsx">&lt;PopoverMenu
+  items={facets.map((f) =&gt; ({
+    key: f.id,
+    children: f.label,
+    type: 'checkbox',
+    checked: draftSelection.includes(f.id),
+  }))}
+  footer={
+    &lt;FilterFooter
+      onClear={() =&gt; setDraftSelection([])}
+      onCancel={cancel}
+      onApply={() =&gt; applyFilters(draftSelection)}
+    /&gt;
+  }
+&gt;
+  &lt;DropdownButton&gt;Filters ({applied.length})&lt;/DropdownButton&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<h4>❌ Don't — Add a footer to a single-action or single-select menu</h4>
+<p>For "Edit / Duplicate / Delete" or a Radio-list "pick one", the click is the commit — there's nothing for Apply to commit. A footer on these surfaces forces an extra click and confuses Radio's "click commits" semantics.</p>
+<pre><code class="language-tsx">{/* Wrong — footer on a Single Action menu */}
+&lt;PopoverMenu
+  items={[
+    { key: 'edit', children: 'Edit' },
+    { key: 'duplicate', children: 'Duplicate' },
+  ]}
+  footer={&lt;FilterFooter onApply={...} onCancel={...} /&gt;}
+&gt;
+  &lt;DropdownButton&gt;Actions&lt;/DropdownButton&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<blockquote>
+<p>⚠️ <strong>Audit warnings apply to this pair</strong> — flagged in <a href="./PopoverMenu-audit.md">PopoverMenu-audit.md</a>:
+- <strong>GAP-002 (CONFLICT):</strong> Footer button row padding differs between light (<code>8px 8px 0 8px</code>) and dark (<code>8px 12px 0 12px</code>) modes — Figma source inconsistency. Treat the light-mode value as authoritative until a designer confirms.
+- <strong>GAP-003 (CONFLICT):</strong> The Apply button's text token (<code>--text/textcolor09</code> → black) on its background token (<code>--actions/action09</code> → <code>#4687ed</code>) in dark mode is roughly 3.4:1 — below WCAG 4.5:1. Don't hand-restyle around it; wait for the token decision.</p>
+</blockquote>
+<p><strong>Source:</strong> <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:65-67</a> · <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:194-202</a> · <a href="./PopoverMenu-audit.md">PopoverMenu-audit.md</a> GAP-002, GAP-003.</p>
+<hr>
+<h3>Pair 7 — Match the list-item variant to the selection model</h3>
+<h4>✅ Do — Pick Single Action, Radio, or Checkbox by what the data needs</h4>
+<p>Three different list-item variants exist for three different selection models (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:75-82</a>). Mapping the variant to the underlying data model is the single biggest signal users have about what clicking will do.</p>
+<pre><code class="language-tsx">{/* One-shot commands → Single Action */}
+&lt;PopoverMenu items={[
+  { key: 'edit',      children: 'Edit' },
+  { key: 'duplicate', children: 'Duplicate' },
+]}&gt;...&lt;/PopoverMenu&gt;
+
+{/* Pick exactly one → Radio; commits on click */}
+&lt;PopoverMenu items={[
+  { key: 'name', children: 'Name',          type: 'radio', checked: sort === 'name' },
+  { key: 'date', children: 'Date modified', type: 'radio', checked: sort === 'date' },
+  { key: 'size', children: 'Size',          type: 'radio', checked: sort === 'size' },
+]}&gt;...&lt;/PopoverMenu&gt;
+
+{/* Pick many → Checkbox; commit in batch via footer (see Pair 6) */}
+&lt;PopoverMenu items={facets.map((f) =&gt; ({
+  key: f.id, children: f.label, type: 'checkbox', checked: draft.includes(f.id),
+}))} footer={&lt;FilterFooter ... /&gt;}&gt;...&lt;/PopoverMenu&gt;
+</code></pre>
+<h4>❌ Don't — Use Checkbox for a single-select choice, or Radio for a multi-select filter</h4>
+<p>Checkbox tells users "you can pick more than one." Radio tells users "exactly one." Swapping them lies about the data model and leads to immediate confusion — users tick a second Checkbox expecting both to apply, or click a second Radio expecting it to add (and watch the first one quietly clear).</p>
+<pre><code class="language-tsx">{/* Wrong — Checkbox for a single-select sort */}
+&lt;PopoverMenu items={[
+  { key: 'name', children: 'Name', type: 'checkbox' },
+  { key: 'date', children: 'Date', type: 'checkbox' },
+]}&gt;...&lt;/PopoverMenu&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:75-78</a> (Single Action, Checkbox, Radio variants with <code>selection: true / false / indeterminate</code>).</p>
+<hr>
+<h3>Pair 8 — Place destructive items last, separate them with a Divider, and confirm the irreversible ones</h3>
+<h4>✅ Do — Group destructive items at the end of the menu, preceded by a <code>Section header and divider/Divider</code>, and pair irreversible ones with a confirmation step</h4>
+<p>The Figma library ships dedicated <code>List item/Destructive</code> and <code>List item/Remove Item</code> variants (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:76,82</a>) with the destructive red treatment, and a separate <code>Divider</code> atom (<a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:89</a>). Use them — and follow the Button precedent of confirming any irreversible action in a Modal (<a href="../Button/Button-usage.md">Button-usage.md:221</a>, Pair 3).</p>
+<pre><code class="language-tsx">&lt;PopoverMenu
+  items={[
+    { key: 'edit',      children: 'Edit' },
+    { key: 'duplicate', children: 'Duplicate' },
+    { key: 'archive',   children: 'Archive' },
+    '---', // divider
+    { key: 'delete',    children: 'Delete', isDestructive: true,
+      onClick: () =&gt; openConfirmModal('delete') },
+  ]}
+&gt;
+  &lt;DropdownButton&gt;Actions&lt;/DropdownButton&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<h4>❌ Don't — Sprinkle destructive items among neutral actions, or treat outside-click as undo</h4>
+<p>Without separation, a destructive item is one accidental click away from the user's pointer. And because Popovers dismiss on <code>Escape</code> and outside click with no confirmation (<a href="./accessibility.md">accessibility.md:52</a>), the popover itself can never be the undo path for a destructive command.</p>
+<pre><code class="language-tsx">{/* Wrong — destructive Delete sits between neutral commands, no divider, no confirmation */}
+&lt;PopoverMenu items={[
+  { key: 'edit',      children: 'Edit' },
+  { key: 'delete',    children: 'Delete', isDestructive: true,
+    onClick: () =&gt; deleteImmediately() }, // no confirmation modal
+  { key: 'duplicate', children: 'Duplicate' },
+]}&gt;
+  &lt;DropdownButton&gt;Actions&lt;/DropdownButton&gt;
+&lt;/PopoverMenu&gt;
+</code></pre>
+<p><strong>Source:</strong> <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:76</a> (List item/Destructive) · <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:82</a> (List item/Remove Item) · <a href="./PopoverMenu-figma.md">PopoverMenu-figma.md:89</a> (Divider atom) · <a href="./accessibility.md">accessibility.md:52</a> · Button-usage.md Pair 3 precedent.</p>
+<hr>
+<h2>Gaps</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pairs are editorial</td>
+<td>The Figma <code>↳ Popover examples</code> page contains prose guidelines only — no <code>✅ Do —</code> / <code>❌ Don't —</code> card frames exist. Pairs above were authored via <code>usage-advisor</code>. Replace this file with <code>figma-extract-usage</code> output once card frames are authored in Figma.</td>
+</tr>
+<tr>
+<td>Audit verdict still <code>NO</code></td>
+<td><a href="./PopoverMenu-audit.md">PopoverMenu-audit.md</a> holds 3 unresolved CONFLICTs (GAP-001 example naming, GAP-002 footer padding light/dark, GAP-003 Apply-button contrast). These are surfaced inline above where they affect specific pairs, but resolving them is the audit team's job, not this doc's.</td>
+</tr>
+<tr>
+<td><code>Divider</code> / <code>SectionHeader</code> / <code>ListItem</code> sub-component props</td>
+<td>Not registered in the Oxygen MCP (<a href="./props.md">props.md:117</a>) — the <code>items</code> shapes in the code snippets above (<code>isDestructive</code>, <code>type: 'radio' | 'checkbox'</code>, <code>checked</code>, <code>'---'</code> divider sentinel) are illustrative and should be replaced with the real API once the MCP surfaces it.</td>
+</tr>
+<tr>
+<td>Desktop Bridge not connected during extraction</td>
+<td><code>figma_get_selection</code> returned a WebSocket error during the original prose extraction — see prior pipeline notes. Any future <code>figma-extract-usage</code> run will need the bridge connected to capture actual card frames.</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<p><em>Source: Editorial draft via usage-advisor · Drafted 2026-05-13</em></p>
+  </main>
+
+  <footer class="page-footer">
+    Rendered from <a href="./PopoverMenu-usage.md">PopoverMenu-usage.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

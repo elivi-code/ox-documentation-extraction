@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link — Usage Guidelines</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f7f7f9;
+  padding: 2rem 1rem;
+}
+
+.page { max-width: 880px; margin: 0 auto; }
+
+.page-header { margin-bottom: 2rem; }
+.breadcrumb {
+  font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; margin-bottom: 0.5rem; }
+.see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+.see-also a { color: #5046e4; text-decoration: none; }
+.see-also a:hover { text-decoration: underline; }
+
+.content { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 2rem 2.25rem; }
+@media (max-width: 600px) { .content { padding: 1.25rem 1rem; } }
+
+h2 {
+  font-size: 1.35rem; font-weight: 600; color: #0f0f1a;
+  margin: 2rem 0 0.75rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ebebef;
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-size: 1.05rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.5rem 0 0.6rem;
+}
+h4 {
+  font-size: 0.95rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.1rem 0 0.4rem;
+}
+p { margin: 0 0 0.75rem; color: #2b2f38; }
+strong { color: #0f0f1a; }
+
+ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; color: #2b2f38; }
+ul li, ol li { margin-bottom: 0.35rem; }
+li > ul, li > ol { margin-top: 0.35rem; margin-bottom: 0.35rem; }
+
+a { color: #5046e4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: #f3f4f6; padding: 1px 5px; border-radius: 4px;
+  font-size: 0.85em; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  color: #2b2f38;
+}
+
+pre {
+  background: #0f172a; color: #e2e8f0; border-radius: 6px;
+  padding: 0.875rem 1rem; font-size: 12.5px; overflow-x: auto;
+  margin: 0.75rem 0 1rem; line-height: 1.5;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+}
+pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+
+blockquote {
+  border-left: 4px solid #5046e4;
+  background: #f0f0ff;
+  margin: 1rem 0; padding: 0.75rem 1rem;
+  color: #1e1a6e; border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote a { color: #3730a3; text-decoration: underline; }
+
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.75rem 0; }
+
+.table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+th {
+  background: #f3f4f6; font-weight: 600; padding: 0.6rem 0.875rem;
+  text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+td { padding: 0.55rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+/* Do/Don't recognition — cells whose first child is ✅/❌ */
+table td:first-child:has(strong:first-child) { white-space: nowrap; }
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.75rem 0; }
+
+.page-footer {
+  margin-top: 2rem; font-size: 12px; color: #9ca3af;
+  border-top: 1px solid #e5e7eb; padding-top: 1rem;
+  text-align: center;
+}
+
+/* Highlight ✅ / ❌ cues inside list items and paragraphs */
+.do-line  { color: #166534; }
+.dont-line { color: #991b1b; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · navigation · Link</div>
+    <h1>Link — Usage Guidelines</h1>
+    <p class="see-also">See also: <a href="./props.md">props.md</a> · <a href="./tokens.md">tokens.md</a> · <a href="./examples.md">examples.md</a> · <a href="./Link-figma.md">Link-figma.md</a></p>
+  </header>
+
+  <main class="content">
+<blockquote>
+<p><strong>Editorial note:</strong> Narrative sections extracted from Figma node 58394:123 (2026-05-01). Do/Don't pairs
+drafted by <code>usage-advisor</code> (Open mode, 2026-05-13) and pushed to the <code>↳ Link examples</code> page as card
+frames. Replace this file with <code>figma-extract-usage</code> output once component instances are in the frames.</p>
+</blockquote>
+<hr>
+<h2>When to use</h2>
+<ul>
+<li>When the user needs to navigate to a different page within the application.</li>
+<li>When the user needs to navigate to a different application.</li>
+<li>When the user needs to navigate to an entirely different site.</li>
+</ul>
+<h2>When not to use</h2>
+<ul>
+<li>When an action changes the state of the page or application — use a <strong>Button</strong> instead.</li>
+</ul>
+<hr>
+<h2>Types of text links</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Standalone</strong></td>
+<td>Separated from body content; uses <code>$body02</code> typography; has explicit size (Small / Large)</td>
+</tr>
+<tr>
+<td><strong>Inline</strong></td>
+<td>Embedded within a sentence or paragraph; inherits the surrounding typography size</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>Sizing</h2>
+<ul>
+<li><strong>Inline</strong> — matches the surrounding text size; no explicit size control.</li>
+<li><strong>Standalone</strong> — uses the <code>$body02</code> token; available in Small (14px / 20px lh) and Large (16px / 24px lh). Match the size to neighbouring body type — Small for 14px contexts, Large for 16px.</li>
+</ul>
+<hr>
+<h2>Do / Don't</h2>
+<h3>Pair 1 — Link vs Button</h3>
+<h4>✅ Do — Use Link to navigate; use Button to act</h4>
+<p>If activating the affordance changes the URL or opens a new page/tab, use Link. If it submits, opens a modal, toggles a setting, or otherwise changes app state without navigating, use Button. The native HTML — <code>&lt;a href&gt;</code> vs <code>&lt;button&gt;</code> — is what screen readers and keyboard users rely on.</p>
+<h4>❌ Don't — Use a Button (styled or otherwise) to navigate</h4>
+<p>A "button that goes to a page" announces as "button", suggests an in-place action, and breaks Cmd-click / right-click "open in new tab". A Link styled like a button is fine; a Button used for navigation is not.</p>
+<p><strong>Grounded in:</strong> <a href="./Link-usage.md">Link-usage.md — When not to use</a> · <a href="./accessibility.md">accessibility.md:30–33</a> · <a href="../Button/Button-usage.md">Button-usage.md:152</a></p>
+<hr>
+<h3>Pair 2 — Make external links self-describing</h3>
+<h4>✅ Do — Name the destination, and say when it opens externally</h4>
+<p>Screen readers can list every link on a page out of context. "Read the 8x8 security whitepaper (opens in new tab)" tells the user where they are going and what to expect; "click here" tells them nothing. Add the "(opens in new tab)" affordance — either as visible text or visually-hidden text — whenever <code>target="_blank"</code>.</p>
+<h4>❌ Don't — Use "click here", "read more", or open a new tab silently</h4>
+<p>Three failure modes in one card: vague label, no destination, no new-tab announcement. The user hears "link, click here" and has no way to decide whether to follow it.</p>
+<p><strong>Grounded in:</strong> <a href="./accessibility.md">accessibility.md:53–54</a> · <a href="./Link-usage.md">Link-usage.md — Content guidelines</a></p>
+<hr>
+<h3>Pair 3 — Chat surface</h3>
+<h4>✅ Do — Set <code>isChat</code> on every Link rendered inside a chat bubble</h4>
+<p>Let the component pick the right token for the bubble surface. Sent bubbles resolve to <code>$action07</code>; received bubbles resolve to <code>$action05</code>. Set <code>isChat</code>, render inside the right bubble, and the surface token does the rest.</p>
+<h4>❌ Don't — Leave a default Link inside a chat bubble</h4>
+<p>Default Link uses <code>$action08</code> — the same blue that works on <code>$ui01</code>. On a filled sent bubble (<code>$ui13</code> / <code>$ui14</code>) it fails 4.5:1 contrast and the link becomes harder to spot against the bubble background.</p>
+<p><strong>Grounded in:</strong> <a href="./tokens.md">tokens.md:48–56</a> · <a href="./props.md">props.md:69</a></p>
+<hr>
+<h3>Pair 4 — Inline vs Standalone</h3>
+<h4>✅ Do — Use Inline inside a sentence, Standalone when the link sits alone</h4>
+<p>Inline links flow with the type around them and inherit size and weight from context. Standalone lives in lists, table cells, card actions, free-standing CTAs; pick the size that matches the body type next to it — Small for 14px contexts, Large for 16px.</p>
+<h4>❌ Don't — Put Standalone in a paragraph, or use Inline as a free-floating CTA</h4>
+<p>Standalone inside a paragraph breaks the reading rhythm — its forced size jumps out of the surrounding type. Inline as a standalone CTA inherits whatever size is in scope and ends up too small or oddly weighted next to a Button or card.</p>
+<p><strong>Grounded in:</strong> <a href="./props.md">props.md:56–61</a> · <a href="./Link-figma.md">Link-figma.md:210</a> ·
+⚠️ Prop signature is unresolved — see CONFLICT GAP-003 in <a href="./Link-audit.md">Link-audit.md</a>. This card describes the visual decision only.</p>
+<hr>
+<h3>Pair 5 — Icon usage</h3>
+<h4>✅ Do — Add the pop-out icon when the link leaves the current app or site</h4>
+<p>The icon is the visual partner to the "(opens in new tab)" affordance — together they tell sighted and assistive-tech users the same thing. Use it on links to external sites, external docs, or another 8x8 product that opens in a new tab.</p>
+<h4>❌ Don't — Add icons to inline links inside body text, or to internal navigation</h4>
+<p>Inline links inherit the surrounding type and an icon mid-sentence fragments the reading rhythm. Internal route changes do not need the "you are leaving" signal — the icon adds visual noise without adding information.</p>
+<p><strong>Grounded in:</strong> <a href="./Link-figma.md">Link-figma.md:50–55</a> · <a href="./props.md">props.md:68</a></p>
+<hr>
+<h2>States</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Visual behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rest</td>
+<td><code>$action08</code> color, no decoration</td>
+</tr>
+<tr>
+<td>Hover</td>
+<td><code>$hover15</code> color + underline</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td><code>$action08</code> color + underline + focus ring</td>
+</tr>
+<tr>
+<td>Active</td>
+<td><code>$active14</code> color + underline + focus ring</td>
+</tr>
+<tr>
+<td>Visited</td>
+<td><code>$textColor08</code> color (violet / white in dark)</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ Hover token identity conflict — see CONFLICT GAP-012 in <a href="./Link-audit.md">Link-audit.md</a>. <code>$hover07</code> (tokens.md) and <code>$hover15</code> (Figma) may refer to the same token. Resolve before doc-rewrite.</p>
+</blockquote>
+<p>See <a href="./tokens.md">tokens.md</a> for full token values per mode/inverted surface.</p>
+<hr>
+<h2>On surfaces</h2>
+<p>Links adapt their color tokens based on the surface they sit on:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Link token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default (<code>$ui01</code>)</td>
+<td><code>$action08</code></td>
+</tr>
+<tr>
+<td>Inverted surface</td>
+<td><code>$action10</code></td>
+</tr>
+<tr>
+<td>Sent chat bubble (<code>$ui13</code> / <code>$ui14</code>)</td>
+<td><code>$action07</code></td>
+</tr>
+<tr>
+<td>Received chat bubble (<code>$ui02</code>)</td>
+<td><code>$action05</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>Content guidelines</h2>
+<ul>
+<li>Avoid vague labels like "click here" — use accurate, descriptive words that describe the destination.</li>
+<li>Keep labels concise. Avoid labels that wrap over multiple lines.</li>
+<li>For external links that open in a new tab, add "(opens in new tab)" as visible text or <code>aria-label</code> — see Pair 2.</li>
+</ul>
+<hr>
+<h2>Related components</h2>
+<ul>
+<li><strong>Button</strong> — use when the action changes application state rather than navigating.</li>
+<li><strong>Forms</strong> pattern — links are often used within form layouts.</li>
+<li><strong>Typography</strong> foundation — inline links inherit from surrounding type styles.</li>
+</ul>
+<hr>
+<h2>Gaps</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Type</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No ✅ Do / ❌ Don't cards</td>
+<td>SOURCE_GAP</td>
+<td><strong>Closed</strong> — 5 pairs drafted (2026-05-13) and pushed to Figma node 91658:1132. Add component instances to preview frames, then re-run <code>figma-extract-usage</code>.</td>
+</tr>
+<tr>
+<td>"Accessible external link" section text</td>
+<td>SOURCE_GAP</td>
+<td>Text too small in original screenshot; covered editorially in Pair 2 above. Verify against live Figma page once Desktop Bridge is running.</td>
+</tr>
+<tr>
+<td>Inline link visual example</td>
+<td>SOURCE_GAP</td>
+<td>No captured screenshot of inline link in running text. Add to Pair 4 preview frame.</td>
+</tr>
+<tr>
+<td><code>$action05</code> token value</td>
+<td>DOC_GAP</td>
+<td>Token value not returned in oxygen-mcp token search; need separate lookup.</td>
+</tr>
+<tr>
+<td>Standalone/size prop signature</td>
+<td>CONFLICT (GAP-003)</td>
+<td>Discriminated-union type unresolved. Pair 4 describes visual decision only. Resolve before doc-rewrite.</td>
+</tr>
+<tr>
+<td>Hover token identity</td>
+<td>CONFLICT (GAP-012)</td>
+<td><code>$hover07</code> (tokens.md) vs <code>$hover15</code> (Figma). Resolve before doc-rewrite.</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<p><em>Source: Figma screenshot (node 58394:123) · Oxygen MCP · usage-advisor Open mode · Merged 2026-05-13</em></p>
+  </main>
+
+  <footer class="page-footer">
+    Rendered from <a href="./Link-usage.md">Link-usage.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

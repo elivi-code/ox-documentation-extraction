@@ -3,823 +3,299 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accordion — Usage Guidelines · Oxygen Design System</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Accordion — Usage Guidelines</title>
   <style>
-    /* ── Design tokens (from accordion-figma.md) ── */
-    :root {
-      --text01:        #26252a;
-      --text02:        #6c6862;
-      --ui01:          #ebeae1;
-      --ui05:          #f4f3ee;
-      --ui06:          #ffffff;
-      --focus01:       #0056e0;
-      --disabled04:    #8d8b7e;
-      --ai-bg:         #e7e3ff;
-      --ai-text:       #4a3da4;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      --do-bg:         #e6f4ea;
-      --do-border:     #34a853;
-      --dont-bg:       #fce8e6;
-      --dont-border:   #ea4335;
-      --info-bg:       #e8f0fe;
-      --info-border:   #4285f4;
-      --warn-bg:       #fef9e7;
-      --warn-border:   #f9ab00;
-    }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f7f7f9;
+  padding: 2rem 1rem;
+}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.page { max-width: 880px; margin: 0 auto; }
 
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text01);
-      background: #fff;
-    }
+.page-header { margin-bottom: 2rem; }
+.breadcrumb {
+  font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; margin-bottom: 0.5rem; }
+.see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+.see-also a { color: #5046e4; text-decoration: none; }
+.see-also a:hover { text-decoration: underline; }
 
-    /* ── Layout ── */
-    .page-wrap {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
+.content { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 2rem 2.25rem; }
+@media (max-width: 600px) { .content { padding: 1.25rem 1rem; } }
 
-    /* ── Breadcrumb ── */
-    .breadcrumb {
-      font-size: 12px;
-      color: var(--text02);
-      margin-bottom: 24px;
-      display: flex;
-      gap: 6px;
-      align-items: center;
-    }
-    .breadcrumb a { color: var(--focus01); text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb span { color: var(--disabled04); }
+h2 {
+  font-size: 1.35rem; font-weight: 600; color: #0f0f1a;
+  margin: 2rem 0 0.75rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ebebef;
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-size: 1.05rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.5rem 0 0.6rem;
+}
+h4 {
+  font-size: 0.95rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.1rem 0 0.4rem;
+}
+p { margin: 0 0 0.75rem; color: #2b2f38; }
+strong { color: #0f0f1a; }
 
-    /* ── Typography ── */
-    h1 {
-      font-size: 28px;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      margin-bottom: 8px;
-    }
-    .lead {
-      font-size: 16px;
-      color: var(--text02);
-      margin-bottom: 32px;
-    }
+ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; color: #2b2f38; }
+ul li, ol li { margin-bottom: 0.35rem; }
+li > ul, li > ol { margin-top: 0.35rem; margin-bottom: 0.35rem; }
 
-    h2 {
-      font-size: 20px;
-      font-weight: 600;
-      margin: 40px 0 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--ui01);
-    }
-    h3 {
-      font-size: 15px;
-      font-weight: 600;
-      margin: 24px 0 8px;
-    }
-    p { margin-bottom: 12px; color: var(--text01); }
-    p:last-child { margin-bottom: 0; }
+a { color: #5046e4; text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-    code {
-      font-family: 'SF Mono', 'Fira Mono', 'Consolas', monospace;
-      font-size: 12px;
-      background: var(--ui05);
-      border: 1px solid var(--ui01);
-      border-radius: 3px;
-      padding: 1px 5px;
-    }
+code {
+  background: #f3f4f6; padding: 1px 5px; border-radius: 4px;
+  font-size: 0.85em; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  color: #2b2f38;
+}
 
-    a { color: var(--focus01); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+pre {
+  background: #0f172a; color: #e2e8f0; border-radius: 6px;
+  padding: 0.875rem 1rem; font-size: 12.5px; overflow-x: auto;
+  margin: 0.75rem 0 1rem; line-height: 1.5;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+}
+pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
 
-    hr { border: none; border-top: 1px solid var(--ui01); margin: 32px 0; }
+blockquote {
+  border-left: 4px solid #5046e4;
+  background: #f0f0ff;
+  margin: 1rem 0; padding: 0.75rem 1rem;
+  color: #1e1a6e; border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote a { color: #3730a3; text-decoration: underline; }
 
-    /* ── See also ── */
-    .see-also {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 32px;
-    }
-    .see-also a {
-      font-size: 12px;
-      background: var(--ui05);
-      border: 1px solid var(--ui01);
-      border-radius: 4px;
-      padding: 3px 10px;
-      color: var(--text01);
-    }
-    .see-also a:hover { background: var(--ui01); text-decoration: none; }
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.75rem 0; }
 
-    /* ── Source badge ── */
-    .source-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: var(--text02);
-      background: var(--ui05);
-      border: 1px solid var(--ui01);
-      border-radius: 20px;
-      padding: 3px 10px;
-      margin-bottom: 32px;
-    }
-    .source-badge svg { width: 12px; height: 12px; flex-shrink: 0; }
+.table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+th {
+  background: #f3f4f6; font-weight: 600; padding: 0.6rem 0.875rem;
+  text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+td { padding: 0.55rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
 
-    /* ── Live demo ── */
-    .demo-section {
-      background: var(--ui05);
-      border: 1px solid var(--ui01);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 40px;
-    }
-    .demo-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--text02);
-      margin-bottom: 12px;
-    }
+/* Do/Don't recognition — cells whose first child is ✅/❌ */
+table td:first-child:has(strong:first-child) { white-space: nowrap; }
 
-    /* Oxygen accordion replica */
-    .ox-accordion-group { border-top: 1px solid var(--ui01); }
-    .ox-accordion { border-bottom: 1px solid var(--ui01); }
-    .ox-accordion-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      height: 48px;
-      padding: 0 16px;
-      cursor: pointer;
-      background: var(--ui06);
-      border: none;
-      width: 100%;
-      text-align: left;
-      outline: none;
-      transition: background 0.1s;
-      border-radius: 0;
-    }
-    .ox-accordion-header:hover  { background: var(--ui05); }
-    .ox-accordion-header:focus-visible {
-      box-shadow: inset 0 0 0 2px var(--focus01);
-    }
-    .ox-header-icon { width: 20px; height: 20px; color: var(--text02); flex-shrink: 0; }
-    .ox-header-title {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: -0.06px;
-      color: var(--text01);
-      flex: 1;
-    }
-    .ox-header-text { font-size: 12px; color: var(--text02); }
-    .ox-chevron {
-      width: 20px; height: 20px;
-      color: var(--text02);
-      transition: transform 0.2s ease;
-      flex-shrink: 0;
-    }
-    .ox-accordion.open .ox-chevron { transform: rotate(180deg); }
-    .ox-accordion-content {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.25s ease, opacity 0.2s ease;
-      opacity: 0;
-    }
-    .ox-accordion.open .ox-accordion-content {
-      max-height: 400px;
-      opacity: 1;
-    }
-    .ox-accordion-inner {
-      padding: 8px 16px 16px 16px;
-      font-size: 14px;
-      color: var(--text02);
-      line-height: 1.6;
-    }
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.75rem 0; }
 
-    /* ── Anatomy ── */
-    .anatomy-img-wrap {
-      margin: 16px 0;
-      border: 1px solid var(--ui01);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .anatomy-img-wrap img { display: block; width: 100%; height: auto; }
-    .img-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 180px;
-      background: var(--ui05);
-      color: var(--text02);
-      font-size: 13px;
-      gap: 8px;
-      padding: 24px;
-      text-align: center;
-    }
-    .img-placeholder svg { width: 32px; height: 32px; opacity: 0.4; }
-    .img-placeholder code { background: var(--ui01); font-size: 11px; }
+.page-footer {
+  margin-top: 2rem; font-size: 12px; color: #9ca3af;
+  border-top: 1px solid #e5e7eb; padding-top: 1rem;
+  text-align: center;
+}
 
-    .anatomy-list {
-      list-style: none;
-      counter-reset: anatomy;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px 24px;
-      margin-top: 16px;
-    }
-    .anatomy-list li {
-      counter-increment: anatomy;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      font-size: 13px;
-      padding: 4px 0;
-    }
-    .anatomy-list li::before {
-      content: counter(anatomy);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--text01);
-      color: #fff;
-      font-size: 10px;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-    .anatomy-list .optional { color: var(--text02); font-style: italic; font-size: 12px; }
-
-    /* ── States table ── */
-    .states-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin: 12px 0;
-    }
-    .state-chip {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--ui05);
-      border: 1px solid var(--ui01);
-      border-radius: 6px;
-      padding: 8px 12px;
-      font-size: 13px;
-    }
-    .state-dot {
-      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-    }
-    .dot-rest     { background: #34a853; }
-    .dot-hover    { background: #4285f4; }
-
-    /* ── Sub-variant list ── */
-    .variant-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin: 8px 0 12px 0;
-    }
-    .variant-list li {
-      font-size: 13px;
-      color: var(--text01);
-      padding: 6px 12px;
-      background: var(--ui05);
-      border-left: 3px solid var(--ui01);
-      border-radius: 0 4px 4px 0;
-    }
-
-    /* ── Best practices ── */
-    .best-practice-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .best-practice-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 14px;
-      padding: 10px 14px;
-      background: var(--ui05);
-      border-radius: 6px;
-      border: 1px solid var(--ui01);
-    }
-    .best-practice-list li::before {
-      content: '✓';
-      color: var(--do-border);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    /* ── Aside boxes ── */
-    .info-box {
-      background: var(--info-bg);
-      border-left: 4px solid var(--info-border);
-      border-radius: 0 6px 6px 0;
-      padding: 12px 16px;
-      font-size: 13px;
-      margin: 12px 0;
-      color: var(--text01);
-    }
-    .info-box strong { font-weight: 600; }
-
-    /* ── When to use / When not to use ── */
-    .when-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 12px;
-    }
-    .when-card {
-      border-radius: 8px;
-      padding: 16px;
-    }
-    .when-use    { background: var(--do-bg);   border: 1px solid var(--do-border); }
-    .when-no-use { background: var(--dont-bg); border: 1px solid var(--dont-border); }
-    .when-card-title {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .when-card ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .when-card ul li {
-      font-size: 13px;
-      color: var(--text01);
-      padding-left: 12px;
-      border-left: 2px solid currentColor;
-      line-height: 1.5;
-    }
-    .when-use ul li    { color: #1e6b3e; border-color: var(--do-border); }
-    .when-no-use ul li { color: #9c2a1d; border-color: var(--dont-border); }
-
-    /* ── Do / Don't cards ── */
-    .do-dont-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 16px 0;
-    }
-    .do-card, .dont-card {
-      border-radius: 8px;
-      padding: 16px;
-    }
-    .do-card   { background: var(--do-bg);   border-left: 4px solid var(--do-border); }
-    .dont-card { background: var(--dont-bg); border-left: 4px solid var(--dont-border); }
-    .card-badge {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .do-card   .card-badge { color: #1e6b3e; }
-    .dont-card .card-badge { color: #9c2a1d; }
-    .card-body { font-size: 13px; color: var(--text01); line-height: 1.6; }
-
-    /* ── Related ── */
-    .related-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--focus01);
-      background: var(--ui05);
-      border: 1px solid var(--ui01);
-      border-radius: 6px;
-      padding: 6px 14px;
-      margin-top: 8px;
-    }
-    .related-link:hover { background: var(--ui01); text-decoration: none; }
-
-    /* ── Gaps (collapsible) ── */
-    .gaps-details {
-      margin-top: 40px;
-      border: 1px solid var(--warn-border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .gaps-details summary {
-      cursor: pointer;
-      padding: 12px 16px;
-      background: var(--warn-bg);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text01);
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .gaps-details summary::-webkit-details-marker { display: none; }
-    .gaps-details[open] summary { border-bottom: 1px solid var(--warn-border); }
-    .gaps-inner { padding: 16px; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      margin: 8px 0;
-    }
-    th {
-      text-align: left;
-      font-weight: 600;
-      padding: 8px 12px;
-      background: var(--ui05);
-      border-bottom: 2px solid var(--ui01);
-      color: var(--text01);
-    }
-    td {
-      padding: 8px 12px;
-      border-bottom: 1px solid var(--ui01);
-      vertical-align: top;
-      color: var(--text01);
-    }
-    tr:last-child td { border-bottom: none; }
-
-    /* ── Derived note ── */
-    .derived-note {
-      font-size: 11px;
-      color: var(--text02);
-      background: var(--warn-bg);
-      border: 1px solid var(--warn-border);
-      border-radius: 4px;
-      padding: 6px 10px;
-      margin-bottom: 16px;
-    }
-
-    /* ── Footer ── */
-    .page-footer {
-      margin-top: 64px;
-      padding-top: 20px;
-      border-top: 1px solid var(--ui01);
-      font-size: 12px;
-      color: var(--text02);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 640px) {
-      .do-dont-pair, .when-grid, .states-grid, .anatomy-list {
-        grid-template-columns: 1fr;
-      }
-      .page-wrap { padding: 24px 16px 48px; }
-      h1 { font-size: 22px; }
-      h2 { font-size: 18px; }
-    }
-  </style>
+/* Highlight ✅ / ❌ cues inside list items and paragraphs */
+.do-line  { color: #166534; }
+.dont-line { color: #991b1b; }
+</style>
 </head>
 <body>
-<div class="page-wrap">
+<div class="page">
 
-  <!-- Breadcrumb -->
-  <nav class="breadcrumb">
-    <a href="#">Components</a>
-    <span>›</span>
-    <a href="#">Accordion</a>
-    <span>›</span>
-    <span>Usage</span>
-  </nav>
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · layout_overlay · Accordion</div>
+    <h1>Accordion — Usage Guidelines</h1>
+    <p class="see-also">See also: <a href="./props.md">props.md</a> · <a href="./tokens.md">tokens.md</a> · <a href="./examples.md">examples.md</a> · <a href="./accordion-figma.md">accordion-figma.md</a> · <a href="./accessibility.md">accessibility.md</a></p>
+  </header>
 
-  <!-- Title -->
-  <h1>Accordion</h1>
-  <p class="lead">An accordion is a panel that is used to show and hide content.</p>
+  <main class="content">
+<p>An accordion is a panel that is used to show and hide content.</p>
+<hr>
+<h2>Anatomy</h2>
+<p><img alt="Accordion anatomy — collapsed and expanded states with labelled parts" src="./accordion-usage-website.png">
+1. <strong>Collapsed accordion</strong> — header row only; content panel is hidden.
+2. <strong>Expanded accordion</strong> — header row plus content panel below.
+3. <strong>Icon</strong> <em>(optional)</em> — leading icon slot. Controlled by <code>iconLeft</code> prop.
+4. <strong>Title</strong> — primary label. Maps to the <code>title</code> prop.
+5. <strong>Secondary information</strong> <em>(optional)</em> — right-aligned text. Maps to the <code>text</code> prop.
+6. <strong>Arrow icon</strong> — chevron indicating expansion state. Rotates 180° when expanded.
+7. <strong>Divider</strong> — bottom separator line between accordion rows.
+8. <strong>Content</strong> — the rendered children inside the expanded panel.</p>
+<blockquote>
+<p>For token-level anatomy and the <code>_header</code> atom variant axes see
+<a href="./accordion-figma.md#anatomy">accordion-figma.md#anatomy</a>.</p>
+</blockquote>
+<hr>
+<h2>Overview</h2>
+<p>Accordions are a set of panels stacked vertically; each panel can be expanded or collapsed to show or hide additional information.</p>
+<hr>
+<h2>Behavior</h2>
+<h3>States</h3>
+<p>Header interaction states demonstrated on the Figma examples page:</p>
+<ol>
+<li><strong>Rest — Collapsed</strong></li>
+<li><strong>Rest — Expanded</strong></li>
+<li><strong>Hover — Collapsed</strong></li>
+<li><strong>Hover — Expanded</strong></li>
+</ol>
+<blockquote>
+<p>For token bindings per state (background, text, focus ring) see
+<a href="./accordion-figma.md#interaction-states">accordion-figma.md#interaction-states</a>
+and <a href="./accordion-figma.md#color--token-bindings">accordion-figma.md#color--token-bindings</a>.</p>
+</blockquote>
+<h3>Fixed height accordion</h3>
+<p>Accordions can be set to have a fixed height. In this case, only one accordion can be opened at a time.</p>
+<p>Two sub-variants exist:</p>
+<ol>
+<li>Accordion with scrollbar</li>
+<li>Accordion without scrollbar</li>
+</ol>
+<p>Enable fixed-height mode via <code>AccordionGroup hasFixedHeight</code>. See
+<a href="./examples.md#fixed-height-group-one-open-at-a-time">examples.md — Fixed-height group</a>.</p>
+<h3>Scroll content</h3>
+<p>If the accordion height is fixed, the information in the content area is scrollable. When the accordion doesn't have a fixed height set, the height is determined by the length of the content when expanded.</p>
+<p>Scrolling behaviour can be overridden explicitly with the <code>isContentScrollable</code> prop.</p>
+<h3>Nested accordion</h3>
+<p>Accordion can contain other accordions inside the content. The maximum allowed is two nested accordions.</p>
+<p>See <a href="./examples.md#nested-accordion-max-2-levels">examples.md — Nested accordion (max 2 levels)</a>.</p>
+<hr>
+<h2>Best practices</h2>
+<ul>
+<li>The title of the accordion must reflect the content inside the collapsed accordion.</li>
+<li>Avoid putting important information in the content of collapsed accordions.</li>
+<li>Offer the option to "expand all" and "collapse all". It is not applicable when the accordions have a fixed height.</li>
+</ul>
+<hr>
+<h2>Expand all / Collapse all</h2>
+<p>For variable-height accordion groups, provide <code>Collapse all</code> and <code>Expand all</code> controls above the group so users can preview or hide all content at once.</p>
+<p>This control is <strong>not applicable when the accordions have a fixed height</strong> (only one accordion can be open at a time in that mode).</p>
+<hr>
+<h2>When to use</h2>
+<ul>
+<li>When you want to reduce clutter and want to display information one section at a time and hide information that is not relevant.</li>
+<li>When the content is long and the window real estate is limited.</li>
+</ul>
+<h2>When not to use</h2>
+<ul>
+<li>When the page permits all the data from the accordion to be visible and doesn't conflict with the user's workflow.</li>
+<li>When the information must be structured in a deep hierarchy with multiple sublevels — in such cases, consider using tabs.</li>
+</ul>
+<hr>
+<h2>Do / Don't</h2>
+<h3>Pair 1 — Title accuracy</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ <strong>Do</strong></td>
+<td>Make the title reflect the content inside the collapsed accordion. A scannable title lets users decide whether to expand.</td>
+</tr>
+<tr>
+<td>❌ <strong>Don't</strong></td>
+<td>Use vague or unrelated titles ("More info", "Details") that don't preview what's inside. Users must expand every accordion to know what it contains.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Pair 2 — Content importance</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ <strong>Do</strong></td>
+<td>Use the accordion for secondary or supplementary information that users may skip without consequence.</td>
+</tr>
+<tr>
+<td>❌ <strong>Don't</strong></td>
+<td>Hide critical, time-sensitive, or required-to-act information inside a collapsed accordion. Users may miss it entirely.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Pair 3 — Group controls</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ <strong>Do</strong></td>
+<td>Offer "Expand all" and "Collapse all" controls for variable-height accordion groups so users can scan everything at once.</td>
+</tr>
+<tr>
+<td>❌ <strong>Don't</strong></td>
+<td>Add "Expand all" / "Collapse all" to fixed-height accordion groups — only one accordion can be open at a time, so the controls have no meaningful effect.</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2>Related</h2>
+<p><strong>Patterns:</strong> Forms</p>
+<hr>
+<h2>Gaps</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Figma <code>↳ Accordion examples</code> (<code>79430:614</code>)</td>
+<td>No Do/Don't frames</td>
+<td>Audit GAP-001. Designer must add <code>✅ Do</code> / <code>❌ Don't</code> frames to enable <code>figma-extract-usage</code>.</td>
+</tr>
+<tr>
+<td>Oxygen MCP <code>get-component-docs</code></td>
+<td>Props only</td>
+<td>The README content surfaced by the MCP does not include the editorial usage-page copy that renders at oxygen.8x8.com.</td>
+</tr>
+<tr>
+<td><code>accordion-usage-website.png</code></td>
+<td>Pending save</td>
+<td>Add the website screenshot to <code>component-lib/Accordion/accordion-usage-website.png</code> so the Anatomy section renders.</td>
+</tr>
+<tr>
+<td>Do/Don't pairs</td>
+<td>Derived</td>
+<td>Three pairs above are editorial inversions of the Best Practices section, not extracted from Figma. They should be replaced by Figma-sourced pairs when the designer fills the examples page.</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<p><em>Source: oxygen.8x8.com/components/accordion/usage (website) + Oxygen MCP · Extracted 2026-05-11</em></p>
+  </main>
 
-  <!-- Source badge -->
-  <div class="source-badge">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-      <circle cx="8" cy="8" r="6.5"/>
-      <path d="M8 5v3.5l2 2"/>
-    </svg>
-    Sourced from oxygen.8x8.com · Extracted 2026-05-11 · Do/Don'ts derived from Best Practices
-  </div>
-
-  <!-- See also -->
-  <div class="see-also">
-    <a href="./props.md">props.md</a>
-    <a href="./tokens.md">tokens.md</a>
-    <a href="./examples.md">examples.md</a>
-    <a href="./accordion-figma.md">accordion-figma.md</a>
-    <a href="./accessibility.md">accessibility.md</a>
-    <a href="./accordion-audit.md">accordion-audit.md</a>
-  </div>
-
-  <!-- Live demo -->
-  <div class="demo-section">
-    <div class="demo-label">Live component demo</div>
-    <div class="ox-accordion-group" id="demo-group">
-
-      <div class="ox-accordion" data-id="demo-1">
-        <button class="ox-accordion-header" aria-expanded="false" aria-controls="demo-1-content">
-          <svg class="ox-header-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="3" y="3" width="14" height="14" rx="2"/>
-            <path d="M7 10h6M10 7v6"/>
-          </svg>
-          <span class="ox-header-title">Can I change my plan later on?</span>
-          <span class="ox-header-text">Today, 11:48</span>
-          <svg class="ox-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M5 7.5l5 5 5-5"/>
-          </svg>
-        </button>
-        <div class="ox-accordion-content" id="demo-1-content" role="region">
-          <div class="ox-accordion-inner">
-            Yes, you can change your plan later. Your changes will take effect at the start of the next billing cycle.
-          </div>
-        </div>
-      </div>
-
-      <div class="ox-accordion" data-id="demo-2">
-        <button class="ox-accordion-header" aria-expanded="false" aria-controls="demo-2-content">
-          <svg class="ox-header-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="10" cy="10" r="7"/>
-            <path d="M10 7v3.5l2.5 2.5"/>
-          </svg>
-          <span class="ox-header-title">Can I cancel my subscription at anytime?</span>
-          <span class="ox-header-text">Today, 11:48</span>
-          <svg class="ox-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M5 7.5l5 5 5-5"/>
-          </svg>
-        </button>
-        <div class="ox-accordion-content" id="demo-2-content" role="region">
-          <div class="ox-accordion-inner">
-            Sure. Your paid subscription can be cancelled anytime. <a href="#">Find more about subscriptions</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="ox-accordion" data-id="demo-3">
-        <button class="ox-accordion-header" aria-expanded="false" aria-controls="demo-3-content">
-          <svg class="ox-header-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M3 4h14M3 8h10M3 12h12M3 16h8"/>
-          </svg>
-          <span class="ox-header-title">How does billing work?</span>
-          <span class="ox-header-text">Today, 11:48</span>
-          <svg class="ox-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M5 7.5l5 5 5-5"/>
-          </svg>
-        </button>
-        <div class="ox-accordion-content" id="demo-3-content" role="region">
-          <div class="ox-accordion-inner">
-            Billing occurs monthly on the date you first subscribed. You can view and download invoices from your account settings.
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Anatomy -->
-  <h2>Anatomy</h2>
-  <div class="anatomy-img-wrap">
-    <img
-      src="./accordion-usage-website.png"
-      alt="Accordion anatomy — collapsed and expanded states with labelled parts"
-      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-    >
-    <div class="img-placeholder" style="display:none;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="3" y="3" width="18" height="18" rx="2"/>
-        <path d="M3 9h18M9 21V9"/>
-      </svg>
-      <p>Screenshot not found</p>
-      <p>Save the oxygen.8x8.com usage page screenshot as <code>accordion-usage-website.png</code> in this folder.</p>
-    </div>
-  </div>
-  <ol class="anatomy-list">
-    <li><span><strong>Collapsed accordion</strong> — header row only; content panel is hidden.</span></li>
-    <li><span><strong>Expanded accordion</strong> — header row plus content panel below.</span></li>
-    <li><span><strong>Icon</strong> <span class="optional">(optional)</span> — leading icon slot. Prop: <code>iconLeft</code>.</span></li>
-    <li><span><strong>Title</strong> — primary label. Prop: <code>title</code>.</span></li>
-    <li><span><strong>Secondary information</strong> <span class="optional">(optional)</span> — right-aligned text. Prop: <code>text</code>.</span></li>
-    <li><span><strong>Arrow icon</strong> — chevron indicating expansion. Rotates 180° when expanded.</span></li>
-    <li><span><strong>Divider</strong> — bottom separator between accordion rows.</span></li>
-    <li><span><strong>Content</strong> — rendered children inside the expanded panel.</span></li>
-  </ol>
-
-  <!-- Overview -->
-  <h2>Overview</h2>
-  <p>Accordions are a set of panels stacked vertically; each panel can be expanded or collapsed to show or hide additional information.</p>
-
-  <!-- Behavior -->
-  <h2>Behavior</h2>
-
-  <h3>States</h3>
-  <p>Header interaction states demonstrated on the examples page:</p>
-  <div class="states-grid">
-    <div class="state-chip"><span class="state-dot dot-rest"></span> Rest — Collapsed</div>
-    <div class="state-chip"><span class="state-dot dot-rest"></span> Rest — Expanded</div>
-    <div class="state-chip"><span class="state-dot dot-hover"></span> Hover — Collapsed</div>
-    <div class="state-chip"><span class="state-dot dot-hover"></span> Hover — Expanded</div>
-  </div>
-  <p style="color: var(--text02); font-size: 12px;">For token bindings per state see <a href="./accordion-figma.md">accordion-figma.md § Interaction states</a>.</p>
-
-  <h3>Fixed height accordion</h3>
-  <p>Accordions can be set to have a fixed height. In this case, only one accordion can be opened at a time.</p>
-  <ul class="variant-list">
-    <li>Accordion with scrollbar</li>
-    <li>Accordion without scrollbar</li>
-  </ul>
-  <p>Enable via <code>AccordionGroup hasFixedHeight</code>. See <a href="./examples.md">examples.md — Fixed-height group</a>.</p>
-
-  <h3>Scroll content</h3>
-  <p>If the accordion height is fixed, the information in the content area is scrollable. When the accordion doesn't have a fixed height set, the height is determined by the length of the content when expanded.</p>
-  <p>Override explicitly with the <code>isContentScrollable</code> prop.</p>
-
-  <h3>Nested accordion</h3>
-  <p>Accordion can contain other accordions inside the content. The maximum allowed is two nested accordions.</p>
-  <p>See <a href="./examples.md">examples.md — Nested accordion (max 2 levels)</a>.</p>
-
-  <!-- Best practices -->
-  <h2>Best practices</h2>
-  <ul class="best-practice-list">
-    <li>The title of the accordion must reflect the content inside the collapsed accordion.</li>
-    <li>Avoid putting important information in the content of collapsed accordions.</li>
-    <li>Offer the option to "expand all" and "collapse all". It is not applicable when the accordions have a fixed height.</li>
-  </ul>
-
-  <!-- Expand / Collapse all -->
-  <h2>Expand all / Collapse all</h2>
-  <p>For variable-height accordion groups, provide <strong>Collapse all</strong> and <strong>Expand all</strong> controls above the group so users can preview or hide all content at once.</p>
-  <div class="info-box">
-    <strong>Note:</strong> This control is not applicable when the accordions have a fixed height — only one accordion can be open at a time in that mode.
-  </div>
-
-  <!-- When to use / When not to use -->
-  <h2>When to use</h2>
-  <div class="when-grid">
-    <div class="when-card when-use">
-      <div class="when-card-title">✅ When to use</div>
-      <ul>
-        <li>When you want to reduce clutter and want to display information one section at a time and hide information that is not relevant.</li>
-        <li>When the content is long and the window real estate is limited.</li>
-      </ul>
-    </div>
-    <div class="when-card when-no-use">
-      <div class="when-card-title">❌ When not to use</div>
-      <ul>
-        <li>When the page permits all the data from the accordion to be visible and doesn't conflict with the user's workflow.</li>
-        <li>When the information must be structured in a deep hierarchy with multiple sublevels — in such cases, consider using tabs.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Do / Don't -->
-  <h2>Do / Don't</h2>
-
-  <div class="derived-note">
-    ⚠️ These three pairs are derived from the Best Practices section above — not extracted from Figma Do/Don't frames (none exist yet on the examples page). They should be replaced when the designer adds frames to the Figma examples page.
-  </div>
-
-  <h3>Pair 1 — Title accuracy</h3>
-  <div class="do-dont-pair">
-    <div class="do-card">
-      <div class="card-badge">✅ Do</div>
-      <div class="card-body">Make the title reflect the content inside the collapsed accordion. A scannable title lets users decide whether to expand.</div>
-    </div>
-    <div class="dont-card">
-      <div class="card-badge">❌ Don't</div>
-      <div class="card-body">Use vague or unrelated titles ("More info", "Details") that don't preview what's inside. Users must expand every accordion to know what it contains.</div>
-    </div>
-  </div>
-
-  <h3>Pair 2 — Content importance</h3>
-  <div class="do-dont-pair">
-    <div class="do-card">
-      <div class="card-badge">✅ Do</div>
-      <div class="card-body">Use the accordion for secondary or supplementary information that users may skip without consequence.</div>
-    </div>
-    <div class="dont-card">
-      <div class="card-badge">❌ Don't</div>
-      <div class="card-body">Hide critical, time-sensitive, or required-to-act information inside a collapsed accordion. Users may miss it entirely.</div>
-    </div>
-  </div>
-
-  <h3>Pair 3 — Group controls</h3>
-  <div class="do-dont-pair">
-    <div class="do-card">
-      <div class="card-badge">✅ Do</div>
-      <div class="card-body">Offer "Expand all" and "Collapse all" controls for variable-height accordion groups so users can scan everything at once.</div>
-    </div>
-    <div class="dont-card">
-      <div class="card-badge">❌ Don't</div>
-      <div class="card-body">Add "Expand all" / "Collapse all" to fixed-height accordion groups — only one accordion can be open at a time, so the controls have no meaningful effect.</div>
-    </div>
-  </div>
-
-  <!-- Related -->
-  <h2>Related</h2>
-  <p>Patterns:</p>
-  <a class="related-link" href="#">
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-      <rect x="2" y="2" width="12" height="12" rx="1.5"/>
-      <path d="M5 5h6M5 8h6M5 11h4"/>
-    </svg>
-    Forms
-  </a>
-
-  <!-- Gaps -->
-  <details class="gaps-details">
-    <summary>
-      <span>⚠️</span> Known gaps (4)
-    </summary>
-    <div class="gaps-inner">
-      <table>
-        <thead>
-          <tr>
-            <th>Source</th>
-            <th>Status</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Figma <code>↳ Accordion examples</code> (<code>79430:614</code>)</td>
-            <td>No Do/Don't frames</td>
-            <td>Audit GAP-001. Designer must add <code>✅ Do</code> / <code>❌ Don't</code> frames to enable <code>figma-extract-usage</code>.</td>
-          </tr>
-          <tr>
-            <td>Oxygen MCP <code>get-component-docs</code></td>
-            <td>Props only</td>
-            <td>The README surfaced by the MCP does not include editorial usage-page copy from oxygen.8x8.com.</td>
-          </tr>
-          <tr>
-            <td><code>accordion-usage-website.png</code></td>
-            <td>Pending save</td>
-            <td>Add the website screenshot to <code>component-lib/Accordion/accordion-usage-website.png</code> to render the Anatomy image.</td>
-          </tr>
-          <tr>
-            <td>Do/Don't pairs</td>
-            <td>Derived</td>
-            <td>Three pairs are editorial inversions of Best Practices. Replace with Figma-sourced pairs when the designer fills the examples page.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </details>
-
-  <!-- Footer -->
   <footer class="page-footer">
-    <span>Source: oxygen.8x8.com + Oxygen MCP · Extracted 2026-05-11</span>
-    <span>@8x8/oxygen-accordion v2.107.0</span>
+    Rendered from <a href="./accordion-usage.md">accordion-usage.md</a>
   </footer>
 
 </div>
-
-<script>
-  /* Live accordion demo — keyboard + click */
-  const group = document.getElementById('demo-group');
-
-  group.querySelectorAll('.ox-accordion-header').forEach(btn => {
-    btn.addEventListener('click', () => toggle(btn));
-    btn.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(btn); }
-    });
-  });
-
-  function toggle(btn) {
-    const accordion = btn.closest('.ox-accordion');
-    const isOpen = accordion.classList.contains('open');
-
-    /* Close all */
-    group.querySelectorAll('.ox-accordion').forEach(a => {
-      a.classList.remove('open');
-      a.querySelector('.ox-accordion-header').setAttribute('aria-expanded', 'false');
-    });
-
-    /* Open clicked (if it was closed) */
-    if (!isOpen) {
-      accordion.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  }
-</script>
 </body>
 </html>

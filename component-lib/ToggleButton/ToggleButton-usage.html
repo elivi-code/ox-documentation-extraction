@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToggleButton — Usage Guidelines</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f7f7f9;
+  padding: 2rem 1rem;
+}
+
+.page { max-width: 880px; margin: 0 auto; }
+
+.page-header { margin-bottom: 2rem; }
+.breadcrumb {
+  font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; margin-bottom: 0.5rem; }
+.see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+.see-also a { color: #5046e4; text-decoration: none; }
+.see-also a:hover { text-decoration: underline; }
+
+.content { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 2rem 2.25rem; }
+@media (max-width: 600px) { .content { padding: 1.25rem 1rem; } }
+
+h2 {
+  font-size: 1.35rem; font-weight: 600; color: #0f0f1a;
+  margin: 2rem 0 0.75rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ebebef;
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-size: 1.05rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.5rem 0 0.6rem;
+}
+h4 {
+  font-size: 0.95rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.1rem 0 0.4rem;
+}
+p { margin: 0 0 0.75rem; color: #2b2f38; }
+strong { color: #0f0f1a; }
+
+ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; color: #2b2f38; }
+ul li, ol li { margin-bottom: 0.35rem; }
+li > ul, li > ol { margin-top: 0.35rem; margin-bottom: 0.35rem; }
+
+a { color: #5046e4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: #f3f4f6; padding: 1px 5px; border-radius: 4px;
+  font-size: 0.85em; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  color: #2b2f38;
+}
+
+pre {
+  background: #0f172a; color: #e2e8f0; border-radius: 6px;
+  padding: 0.875rem 1rem; font-size: 12.5px; overflow-x: auto;
+  margin: 0.75rem 0 1rem; line-height: 1.5;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+}
+pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+
+blockquote {
+  border-left: 4px solid #5046e4;
+  background: #f0f0ff;
+  margin: 1rem 0; padding: 0.75rem 1rem;
+  color: #1e1a6e; border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote a { color: #3730a3; text-decoration: underline; }
+
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.75rem 0; }
+
+.table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+th {
+  background: #f3f4f6; font-weight: 600; padding: 0.6rem 0.875rem;
+  text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+td { padding: 0.55rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+/* Do/Don't recognition — cells whose first child is ✅/❌ */
+table td:first-child:has(strong:first-child) { white-space: nowrap; }
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.75rem 0; }
+
+.page-footer {
+  margin-top: 2rem; font-size: 12px; color: #9ca3af;
+  border-top: 1px solid #e5e7eb; padding-top: 1rem;
+  text-align: center;
+}
+
+/* Highlight ✅ / ❌ cues inside list items and paragraphs */
+.do-line  { color: #166534; }
+.dont-line { color: #991b1b; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · form_inputs · ToggleButton</div>
+    <h1>ToggleButton — Usage Guidelines</h1>
+    <p class="see-also">See also: <a href="./props.md">props.md</a> · <a href="./examples.md">examples.md</a> · <a href="./tokens.md">tokens.md</a> · <a href="./accessibility.md">accessibility.md</a> · <a href="./ToggleButton-figma.md">ToggleButton-figma.md</a> · <a href="./ToggleButton-pui.md">ToggleButton-pui.md</a> · <a href="./ToggleButton-audit.md">ToggleButton-audit.md</a></p>
+  </header>
+
+  <main class="content">
+<blockquote>
+<p><strong>Editorial guidance — Figma Do/Don't cards have not been authored yet.</strong> This file mirrors the canonical Oxygen web documentation at <a href="https://oxygen.8x8.com/components/toggle/usage">oxygen.8x8.com/components/toggle/usage</a> and grounds the additional pairs in the extracted MCP and Figma artifacts in this folder. It <strong>partially</strong> resolves <a href="./ToggleButton-audit.md">ToggleButton-audit.md</a> <strong>GAP-003</strong>: the <code>ToggleButton-usage.md</code> file is now present, but the upstream <code>✅ Do — …</code> / <code>❌ Don't — …</code> card frames on the Figma examples page (<code>50606:95349</code>) are still missing. When designers author those cards, run <code>figma-extract-usage ToggleButton</code> and replace this file wholesale. The structural precedent is <a href="../Tabs/Tabs-usage.md">Tabs-usage.md</a>.</p>
+</blockquote>
+<p><code>ToggleButton</code> is a controlled binary switch with an associated label. The consuming application owns <code>isChecked</code> and is responsible for updating it from <code>onChange</code> (<a href="./props.md">props.md:98</a>). The package also exports <code>ToggleButtonGroup</code>, a vertical or horizontal wrapper for multiple toggles (<a href="./props.md">props.md:87-92</a>).</p>
+<hr>
+<h2>Anatomy</h2>
+<blockquote>
+<p>Anatomy below is grounded in <a href="./ToggleButton-figma.md">ToggleButton-figma.md</a> (component sets <code>51776:7539</code> Toggle Input, <code>51776:7580</code> Toggle, <code>52689:99119</code> Toggle Group) and <a href="./props.md">props.md</a>. Replace with <code>figma-extract</code> output if the design is restructured.</p>
+</blockquote>
+<ol>
+<li><strong>Toggle Input (switch-only, 40×24px)</strong> — the pill-shaped switch on its own, with a circular knot that sits left when off and right when on (<a href="./ToggleButton-figma.md">ToggleButton-figma.md:52-59</a>).</li>
+<li><strong>Toggle (switch + label, 148×24px default)</strong> — Toggle Input fixed at the left, then a 12px gap, then the form-control label. The label is top-aligned (<code>items-start</code>) so multiline labels keep the switch pinned to the first line (<a href="./ToggleButton-figma.md">ToggleButton-figma.md:61-68</a>, <a href="./ToggleButton-figma.md">ToggleButton-figma.md:279</a>).</li>
+<li><strong>Optional info icon button</strong> — rendered only when <code>infoBoxText</code> is set; opens a Tooltip on click and is treated as a separate focus stop from the Toggle itself (<a href="./props.md">props.md:75-76</a>, <a href="./accessibility.md">accessibility.md:66-68</a>).</li>
+<li><strong>ToggleButtonGroup wrapper</strong> — vertical by default, horizontal when <code>isHorizontal</code>. Optional header (label + info icon button) and footer (helper or error message) slots (<a href="./props.md">props.md:87-92</a>, <a href="./ToggleButton-figma.md">ToggleButton-figma.md:70-76</a>).</li>
+<li><strong>Focus ring scope differs by variant</strong> — on Toggle Input the ring surrounds only the switch; on Toggle (with label) the ring covers the <strong>entire switch + label area</strong>, because the whole row is the interactive target (<a href="./ToggleButton-figma.md">ToggleButton-figma.md:58</a>, <a href="./ToggleButton-figma.md">ToggleButton-figma.md:66-67</a>, <a href="./accessibility.md">accessibility.md:51-56</a>).</li>
+</ol>
+<hr>
+<h2>Behaviour</h2>
+<h3>Controlled component — parent owns <code>isChecked</code></h3>
+<p><code>isChecked</code> is a presentational flag. The Oxygen component does not track its own state — the consuming application stores a boolean and updates it from <code>onChange</code> (<a href="./props.md">props.md:98</a>, <a href="./examples.md">examples.md:33-50</a>).</p>
+<h3>The whole row is the click + focus target</h3>
+<p>Per Figma annotation, "the focus includes the entire Toggle item, from the Toggle Switch to the label. The whole area of the item is interactive, clickable, and responsive to hover actions" (<a href="./ToggleButton-figma.md">ToggleButton-figma.md:285</a>, <a href="./accessibility.md">accessibility.md:51-56</a>). Don't render a separate hit target for the label.</p>
+<h3>Multiline labels keep the switch top-aligned</h3>
+<p>When the label wraps to a second line, the switch stays aligned to the top of the row, not centred vertically (<a href="./ToggleButton-figma.md">ToggleButton-figma.md:279</a>, <a href="./accessibility.md">accessibility.md:77</a>). This is what <code>items-start</code> in the auto-layout produces; don't override it to <code>center</code> for "balance."</p>
+<h3><code>isIndeterminate</code> has an unresolved aria-checked caveat</h3>
+<p>The OX docs state that the indeterminate state is communicated via <code>aria-checked="mixed"</code> or the <code>indeterminate</code> property (<a href="./accessibility.md">accessibility.md:36</a>), but native HTML checkboxes only expose <code>.indeterminate</code> and do <strong>not</strong> update <code>aria-checked</code> automatically — <a href="./ToggleButton-audit.md">ToggleButton-audit.md WARN-001</a> flags this as needing source-level confirmation. Until that's confirmed, reserve indeterminate for genuine partial-selection cases (a "Select all" parent whose children are partly checked) and verify the announced state in a screen reader before shipping.</p>
+<hr>
+<h2>When to use</h2>
+<ul>
+<li>Use a toggle for users to <strong>switch between two binary states</strong>.</li>
+<li>Use toggles when the corresponding action <strong>takes effect immediately</strong> — no Save button, no confirmation step.</li>
+</ul>
+<blockquote>
+<p>Both lines are quoted verbatim from <a href="https://oxygen.8x8.com/components/toggle/usage">oxygen.8x8.com/components/toggle/usage</a>.</p>
+</blockquote>
+<h2>When not to use</h2>
+<ul>
+<li><strong>Do not use toggles when the users will choose from a list of items.</strong> Use Radio (single-select) or Checkbox (multi-select) instead.</li>
+<li><strong>Do not use toggles when a Save button is needed to apply or save a selection.</strong> Use Checkbox inside the form; the form's Save commits the value.</li>
+<li><strong>Do not use a single toggle for a mutually-exclusive pair of options.</strong> Two options that need a label each (e.g. "Monthly / Yearly") read as a SegmentedControl or Radio group — the toggle itself only announces on/off, not the names of the two states.</li>
+</ul>
+<blockquote>
+<p>The first two lines are quoted verbatim from the Oxygen web page. The third is derived from the API shape (<code>isChecked: bool</code>, <a href="./props.md">props.md:77</a>) and the absence of a paired-label slot.</p>
+</blockquote>
+<hr>
+<h2>Do / Don't</h2>
+<h3>Pair 1 — Use Toggle for binary states with immediate effect; don't use it for list selection or save-button flows</h3>
+<h4>✅ Do — Flip a single setting that takes effect the moment the user toggles it</h4>
+<pre><code class="language-tsx">{/* Right — one binary preference; the change persists immediately on toggle */}
+function NotificationsRow({ userId }: { userId: string }) {
+  const [isChecked, setIsChecked] = React.useState(false);
+
+  const handleChange = () =&gt; {
+    setIsChecked(prev =&gt; {
+      const next = !prev;
+      void api.updateNotificationPref(userId, next); // applies immediately
+      return next;
+    });
+  };
+
+  return (
+    &lt;ToggleButton
+      label=&quot;Email me about new replies&quot;
+      name=&quot;email-notifications&quot;
+      value=&quot;email-notifications&quot;
+      isChecked={isChecked}
+      onChange={handleChange}
+    /&gt;
+  );
+}
+</code></pre>
+<h4>❌ Don't — Use a toggle as a list selector or to defer a value behind a Save button</h4>
+<pre><code class="language-tsx">{/* Wrong — three toggles modelling a mutually-exclusive choice from a list.
+    This is a Radio group; toggles can't communicate &quot;which one is selected&quot;
+    because each one only announces its own on/off state. */}
+&lt;ToggleButton label=&quot;Monthly&quot;    name=&quot;billing&quot; value=&quot;monthly&quot;    isChecked={plan === 'monthly'}    onChange={() =&gt; setPlan('monthly')} /&gt;
+&lt;ToggleButton label=&quot;Quarterly&quot;  name=&quot;billing&quot; value=&quot;quarterly&quot;  isChecked={plan === 'quarterly'}  onChange={() =&gt; setPlan('quarterly')} /&gt;
+&lt;ToggleButton label=&quot;Yearly&quot;     name=&quot;billing&quot; value=&quot;yearly&quot;     isChecked={plan === 'yearly'}     onChange={() =&gt; setPlan('yearly')} /&gt;
+
+{/* Wrong — the user must press Save for the toggle to do anything. Toggles
+    advertise immediate effect; pairing them with a Save button breaks that
+    contract and confuses users who expect their click to have already taken. */}
+&lt;form onSubmit={save}&gt;
+  &lt;ToggleButton label=&quot;Enable two-factor auth&quot; name=&quot;2fa&quot; value=&quot;2fa&quot; isChecked={twoFa} onChange={() =&gt; setTwoFa(p =&gt; !p)} /&gt;
+  &lt;Button type=&quot;submit&quot;&gt;Save&lt;/Button&gt;
+&lt;/form&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> the Oxygen web doc is explicit — toggles are for two binary states with immediate effect, and not for list selection or save-button flows. Mis-using a toggle for either case forces users to relearn what a toggle means in your product.</p>
+<p><strong>Source:</strong> <a href="https://oxygen.8x8.com/components/toggle/usage">oxygen.8x8.com/components/toggle/usage</a> · <a href="./props.md">props.md:77</a>.</p>
+<hr>
+<h3>Pair 2 — Drive <code>isChecked</code> from a single source of truth in the parent; don't leave it uncontrolled or run parallel booleans</h3>
+<h4>✅ Do — Hold one boolean, update it from <code>onChange</code>, and pass it back via <code>isChecked</code></h4>
+<p><code>ToggleButton</code> is a <strong>controlled component</strong> (<a href="./props.md">props.md:98</a>). The parent owns the state; the component renders whatever <code>isChecked</code> says.</p>
+<pre><code class="language-tsx">const [isChecked, setIsChecked] = React.useState(false);
+
+&lt;ToggleButton
+  label=&quot;Enable notifications&quot;
+  name=&quot;notifications&quot;
+  value=&quot;notifications&quot;
+  isChecked={isChecked}
+  onChange={() =&gt; setIsChecked(prev =&gt; !prev)}
+/&gt;;
+</code></pre>
+<h4>❌ Don't — Render without <code>isChecked</code>/<code>onChange</code>, or duplicate the state across two booleans</h4>
+<pre><code class="language-tsx">{/* Wrong — no isChecked + no onChange means the toggle is fixed at its
+    default (false). Users will click it and nothing will visually change;
+    AT will announce a control that does not respond. */}
+&lt;ToggleButton label=&quot;Enable notifications&quot; name=&quot;notifications&quot; value=&quot;notifications&quot; /&gt;
+
+{/* Wrong — two booleans modelling one piece of state. The moment they drift,
+    the component shows one thing and your business logic believes another. */}
+const [uiChecked, setUiChecked]       = React.useState(false);
+const [serverChecked, setServerChecked] = React.useState(false);
+
+&lt;ToggleButton
+  label=&quot;Enable notifications&quot;
+  name=&quot;notifications&quot;
+  value=&quot;notifications&quot;
+  isChecked={uiChecked}
+  onChange={() =&gt; { setUiChecked(p =&gt; !p); /* serverChecked never updates here */ }}
+/&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> the API has no internal fallback — without a controlled <code>isChecked</code> paired with an <code>onChange</code> that updates it, the toggle is effectively read-only. Avoid the "isChecked with no onChange" anti-pattern called out in <a href="./accessibility.md">accessibility.md:87</a>: "controlled toggles with no handler will appear non-interactive to AT."</p>
+<p><strong>Source:</strong> <a href="./props.md">props.md:98</a> · <a href="./examples.md">examples.md:33-50</a> · <a href="./accessibility.md">accessibility.md:87</a>.</p>
+<hr>
+<h3>Pair 3 — Use the label-less Toggle Input only when surrounding context makes its function obvious</h3>
+<h4>✅ Do — Drop the label inside table cells, list rows, or any container whose header already explains the column</h4>
+<p>The Toggle Input variant (switch only, 40×24px) is designed for "scenarios where the function of the Toggle is clear from the context or design of the interface… a cell within a table or an item in a list" (<a href="./ToggleButton-figma.md">ToggleButton-figma.md:265</a>).</p>
+<pre><code class="language-tsx">{/* Right — the column header &quot;Active&quot; labels the toggle for every row,
+    so a per-row label would be noise */}
+&lt;DataTable&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Active&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    {users.map(u =&gt; (
+      &lt;tr key={u.id}&gt;
+        &lt;td&gt;{u.name}&lt;/td&gt;
+        &lt;td&gt;
+          &lt;ToggleButton
+            label={null}
+            name={`active-${u.id}`}
+            value={u.id}
+            isChecked={u.active}
+            onChange={() =&gt; setActive(u.id, !u.active)}
+          /&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    ))}
+  &lt;/tbody&gt;
+&lt;/DataTable&gt;
+</code></pre>
+<p>When the surrounding context isn't enough on its own, give the <strong>parent container</strong> an accessible name via <code>aria-label</code> or <code>aria-labelledby</code> (<a href="./accessibility.md">accessibility.md:85</a>) so screen-reader users still hear what the switch controls.</p>
+<h4>❌ Don't — Render a free-floating label-less switch in open UI</h4>
+<pre><code class="language-tsx">{/* Wrong — there is nothing around this switch that explains what it does.
+    Sighted users see a meaningless control; AT users hear &quot;switch, off&quot; with
+    no accessible name. Use the labelled Toggle variant instead. */}
+&lt;section style={{ padding: 24 }}&gt;
+  &lt;ToggleButton
+    label={null}
+    name=&quot;setting&quot;
+    value=&quot;setting&quot;
+    isChecked={enabled}
+    onChange={() =&gt; setEnabled(p =&gt; !p)}
+  /&gt;
+&lt;/section&gt;
+
+{/* Wrong — dropping the label and &quot;fixing&quot; it with a sibling &lt;span&gt; doesn't
+    associate the text with the control: there's no htmlFor, no aria-labelledby,
+    and the click target loses the label half of the row */}
+&lt;div&gt;
+  &lt;span&gt;Enable notifications&lt;/span&gt;
+  &lt;ToggleButton label={null} name=&quot;setting&quot; value=&quot;setting&quot; isChecked={x} onChange={fn} /&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> the Toggle Input variant exists specifically to remove visual redundancy when context already labels the switch — using it without that context strips the accessible name and breaks the "whole row is the click target" guarantee (<a href="./ToggleButton-figma.md">ToggleButton-figma.md:285</a>).</p>
+<p><strong>Source:</strong> <a href="./examples.md">examples.md:97-114</a> · <a href="./ToggleButton-figma.md">ToggleButton-figma.md:265</a> · <a href="./accessibility.md">accessibility.md:85</a>.</p>
+<hr>
+<h3>Pair 4 — Always pair <code>infoBoxText</code> with <code>infoBoxButtonLabel</code>; never render the info icon without an accessible name</h3>
+<h4>✅ Do — Supply both props together so the info icon button has a clear <code>aria-label</code></h4>
+<p><code>infoBoxText</code> renders an info icon that opens a Tooltip on click. <code>infoBoxButtonLabel</code> is the icon button's accessible name and is <strong>required</strong> for accessibility — both props must be supplied together (<a href="./props.md">props.md:75-76</a>, <a href="./props.md">props.md:100</a>, <a href="./accessibility.md">accessibility.md:43-46</a>).</p>
+<pre><code class="language-tsx">&lt;ToggleButton
+  label=&quot;Advanced mode&quot;
+  name=&quot;advanced&quot;
+  value=&quot;advanced&quot;
+  isChecked={isChecked}
+  onChange={handleChange}
+  infoBoxText=&quot;Enabling this will expose additional configuration options.&quot;
+  infoBoxButtonLabel=&quot;More information about advanced mode&quot;
+/&gt;
+</code></pre>
+<h4>❌ Don't — Set <code>infoBoxText</code> without <code>infoBoxButtonLabel</code>, or reuse the toggle's label as the button name</h4>
+<pre><code class="language-tsx">{/* Wrong — info icon button has no accessible name. Screen-reader users hear
+    an unnamed button and have no way to know what activating it will do. */}
+&lt;ToggleButton
+  label=&quot;Advanced mode&quot;
+  name=&quot;advanced&quot;
+  value=&quot;advanced&quot;
+  isChecked={isChecked}
+  onChange={handleChange}
+  infoBoxText=&quot;Enabling this will expose additional configuration options.&quot;
+/&gt;
+
+{/* Wrong — reusing the toggle label is misleading; AT users will hear
+    &quot;Advanced mode, button&quot; twice and not know the second one opens help text */}
+&lt;ToggleButton
+  label=&quot;Advanced mode&quot;
+  name=&quot;advanced&quot;
+  value=&quot;advanced&quot;
+  infoBoxText=&quot;…&quot;
+  infoBoxButtonLabel=&quot;Advanced mode&quot;
+/&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> the info icon is a separate focus stop from the toggle (<a href="./accessibility.md">accessibility.md:66-68</a>), so it must announce its own purpose. The docs make the pairing a hard requirement, not a recommendation.</p>
+<p><strong>Source:</strong> <a href="./props.md">props.md:75-76</a> · <a href="./props.md">props.md:100</a> · <a href="./accessibility.md">accessibility.md:43-46</a>.</p>
+<hr>
+<h3>Pair 5 — Compose error messaging below <code>ToggleButtonGroup</code> manually until the API exposes <code>isError</code></h3>
+<h4>✅ Do — Render the validation message as a sibling element below the group</h4>
+<p>The Figma Toggle Group component set has an <code>isError</code> variant that swaps the footer to an <code>InlineValidationMessage</code> with red error text using <code>--error/error01</code> (<a href="./ToggleButton-figma.md">ToggleButton-figma.md:105-107</a>, <a href="./tokens.md">tokens.md:80</a>). The OX implementation does <strong>not</strong> expose an <code>isError</code> prop — only <code>isHorizontal</code> and <code>children</code> (<a href="./props.md">props.md:87-92</a>, <a href="./ToggleButton-audit.md">ToggleButton-audit.md GAP-002</a>). Until that prop ships, render the error message yourself.</p>
+<pre><code class="language-tsx">{/* Right — group renders the toggles; the validation message is a sibling
+    element using the same error token the Figma design specifies. */}
+&lt;&gt;
+  &lt;ToggleButtonGroup&gt;
+    &lt;ToggleButton label=&quot;Marketing&quot; name=&quot;prefs&quot; value=&quot;marketing&quot; isChecked={a} onChange={fa} /&gt;
+    &lt;ToggleButton label=&quot;Product&quot;   name=&quot;prefs&quot; value=&quot;product&quot;   isChecked={b} onChange={fb} /&gt;
+    &lt;ToggleButton label=&quot;Account&quot;   name=&quot;prefs&quot; value=&quot;account&quot;   isChecked={c} onChange={fc} /&gt;
+  &lt;/ToggleButtonGroup&gt;
+
+  {error &amp;&amp; (
+    &lt;p role=&quot;alert&quot; style={{ color: 'var(--error-error01)', marginTop: 8 /* $spacing03 */ }}&gt;
+      {error}
+    &lt;/p&gt;
+  )}
+&lt;/&gt;
+</code></pre>
+<h4>❌ Don't — Pass <code>isError</code> to <code>ToggleButtonGroup</code> or rely on a Figma-only variant in code</h4>
+<pre><code class="language-tsx">{/* Wrong — isError is not part of the OX ToggleButtonGroup API. This prop is
+    silently dropped; no red text appears; users see no validation feedback. */}
+&lt;ToggleButtonGroup isError={hasError}&gt;
+  &lt;ToggleButton label=&quot;Marketing&quot; name=&quot;prefs&quot; value=&quot;marketing&quot; isChecked={a} onChange={fa} /&gt;
+  &lt;ToggleButton label=&quot;Product&quot;   name=&quot;prefs&quot; value=&quot;product&quot;   isChecked={b} onChange={fb} /&gt;
+&lt;/ToggleButtonGroup&gt;
+
+{/* Wrong — adding a `data-error` styling hook that flips the group red without
+    rendering a visible message: screen-reader users hear nothing about the error,
+    and sighted users see colour-only feedback which fails WCAG 1.4.1. */}
+&lt;ToggleButtonGroup data-error={hasError}&gt;…&lt;/ToggleButtonGroup&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> the design spec and the API have diverged — see <a href="./ToggleButton-audit.md">ToggleButton-audit.md GAP-002</a>. The composition pattern above is the workaround documented for consumers; using the Figma variant name in code creates a silent failure.</p>
+<p><strong>Source:</strong> <a href="./props.md">props.md:87-92</a> · <a href="./ToggleButton-figma.md">ToggleButton-figma.md:105-107</a> · <a href="./tokens.md">tokens.md:80</a> · <a href="./ToggleButton-audit.md">ToggleButton-audit.md GAP-002</a>.</p>
+<hr>
+<h2>Gaps &amp; open questions</h2>
+<ul>
+<li><strong>GAP-003 partial resolution</strong> — this file now satisfies the "ToggleButton-usage.md present" half of <a href="./ToggleButton-audit.md">ToggleButton-audit.md GAP-003</a>. The other half — Figma <code>✅ Do —</code> / <code>❌ Don't —</code> card frames on the examples page (<code>50606:95349</code>) — remains a SOURCE_GAP. When designers author the cards, run <code>figma-extract-usage ToggleButton</code> and replace this file wholesale.</li>
+<li><strong>GAP-002 (ToggleButtonGroup <code>isError</code>)</strong> — Pair 5 documents the consumer-composition workaround. If a future release adds <code>isError</code> to the OX API, replace Pair 5's "Do" with a direct prop usage and move the composition pattern into the "Don't" column for older versions.</li>
+<li><strong>WARN-001 (indeterminate <code>aria-checked="mixed"</code>)</strong> — the Behaviour section calls this out as needing source-level confirmation against <code>SwitchBase</code>. Once verified, soften or remove the "verify in a screen reader before shipping" guidance.</li>
+</ul>
+<p><em>Drafted as an editorial-source usage guide · 2026-05-15</em></p>
+  </main>
+
+  <footer class="page-footer">
+    Rendered from <a href="./ToggleButton-usage.md">ToggleButton-usage.md</a>
+  </footer>
+
+</div>
+</body>
+</html>

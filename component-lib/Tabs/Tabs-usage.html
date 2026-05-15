@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs — Usage Guidelines</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: #f7f7f9;
+  padding: 2rem 1rem;
+}
+
+.page { max-width: 880px; margin: 0 auto; }
+
+.page-header { margin-bottom: 2rem; }
+.breadcrumb {
+  font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; margin-bottom: 0.5rem; }
+.see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+.see-also a { color: #5046e4; text-decoration: none; }
+.see-also a:hover { text-decoration: underline; }
+
+.content { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 2rem 2.25rem; }
+@media (max-width: 600px) { .content { padding: 1.25rem 1rem; } }
+
+h2 {
+  font-size: 1.35rem; font-weight: 600; color: #0f0f1a;
+  margin: 2rem 0 0.75rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ebebef;
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-size: 1.05rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.5rem 0 0.6rem;
+}
+h4 {
+  font-size: 0.95rem; font-weight: 600; color: #1a1a2e;
+  margin: 1.1rem 0 0.4rem;
+}
+p { margin: 0 0 0.75rem; color: #2b2f38; }
+strong { color: #0f0f1a; }
+
+ul, ol { padding-left: 1.5rem; margin: 0 0 1rem; color: #2b2f38; }
+ul li, ol li { margin-bottom: 0.35rem; }
+li > ul, li > ol { margin-top: 0.35rem; margin-bottom: 0.35rem; }
+
+a { color: #5046e4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: #f3f4f6; padding: 1px 5px; border-radius: 4px;
+  font-size: 0.85em; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  color: #2b2f38;
+}
+
+pre {
+  background: #0f172a; color: #e2e8f0; border-radius: 6px;
+  padding: 0.875rem 1rem; font-size: 12.5px; overflow-x: auto;
+  margin: 0.75rem 0 1rem; line-height: 1.5;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+}
+pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+
+blockquote {
+  border-left: 4px solid #5046e4;
+  background: #f0f0ff;
+  margin: 1rem 0; padding: 0.75rem 1rem;
+  color: #1e1a6e; border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote a { color: #3730a3; text-decoration: underline; }
+
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.75rem 0; }
+
+.table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+th {
+  background: #f3f4f6; font-weight: 600; padding: 0.6rem 0.875rem;
+  text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+td { padding: 0.55rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+/* Do/Don't recognition — cells whose first child is ✅/❌ */
+table td:first-child:has(strong:first-child) { white-space: nowrap; }
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.75rem 0; }
+
+.page-footer {
+  margin-top: 2rem; font-size: 12px; color: #9ca3af;
+  border-top: 1px solid #e5e7eb; padding-top: 1rem;
+  text-align: center;
+}
+
+/* Highlight ✅ / ❌ cues inside list items and paragraphs */
+.do-line  { color: #166534; }
+.dont-line { color: #991b1b; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · layout_overlay · Tabs</div>
+    <h1>Tabs — Usage Guidelines</h1>
+    <p class="see-also">See also: <a href="./props.md">props.md</a> · <a href="./examples.md">examples.md</a> · <a href="./tokens.md">tokens.md</a> · <a href="./accessibility.md">accessibility.md</a> · <a href="./Tabs-figma.md">Tabs-figma.md</a> · <a href="./Tabs-audit.md">Tabs-audit.md</a> · <a href="./Tabs-spec.md">Tabs-spec.md</a></p>
+  </header>
+
+  <main class="content">
+<blockquote>
+<p><strong>Editorial guidance — Figma Do/Don't cards have not been authored yet.</strong> This file was drafted via <code>usage-advisor</code> Open mode from the extracted MCP artifacts (see header comments). It does <strong>not</strong> fully resolve <a href="./Tabs-audit.md">Tabs-audit.md</a> <strong>GAP-003</strong> — that gap remains a SOURCE_GAP for the upstream Figma cards on page <a href="https://www.figma.com/design/5YihJ5WuDvnvrlrRMC4sBp/UI-components?node-id=85697-271849"><code>85697:271849</code></a>. When designers add <code>✅ Do — …</code> / <code>❌ Don't — …</code> card frames there, run <code>figma-extract-usage Tabs</code> and replace this file wholesale. The structural precedent is <a href="../SlideOut/SlideOut-usage.md">SlideOut-usage.md</a>.</p>
+</blockquote>
+<p><code>Tabs</code> switches the user between <strong>sibling content sections that live within the same page</strong> (<a href="./examples.md">examples.md:33</a>, <a href="./Tabs-spec.md">Tabs-spec.md:38</a>). The active tab is always preserved when the container narrows: trailing tabs collapse into a disclosure popover from right to left, and once only one tab fits, it transforms into a popover trigger (<a href="./examples.md">examples.md:119-146</a>, <a href="./Tabs-spec.md">Tabs-spec.md:291-311</a>). The component is <strong>controlled</strong> — the consuming application owns <code>isActive</code> and the click handler (<a href="./props.md">props.md:87</a>, <a href="./examples.md">examples.md:42-71</a>).</p>
+<hr>
+<h2>Anatomy</h2>
+<blockquote>
+<p>Anatomy below is grounded in <a href="./Tabs-figma.md">Tabs-figma.md</a> (component set <code>85651:78740</code>, disclosure <code>85651:78793</code>, popover atom <code>86115:3520</code>) and <a href="./props.md">props.md</a>. Replace with <code>figma-extract</code> output if the design is restructured.</p>
+</blockquote>
+<ol>
+<li><strong><code>&lt;Tabs&gt;</code> container</strong> — auto-layout row that holds one or more <code>&lt;Tab&gt;</code> children and (when needed) renders the disclosure button at the trailing edge (<a href="./props.md">props.md:66-74</a>, <a href="./Tabs-figma.md">Tabs-figma.md:60-67</a>).</li>
+<li><strong><code>&lt;Tab&gt;</code> item</strong> — interactive cell, ~68×52px at default density with 16px padding, with a 1px bottom border in rest/hover/disabled states and a <strong>2px</strong> <code>actions/action01</code> underline + <code>bodyBold01</code> label when selected (<a href="./Tabs-figma.md">Tabs-figma.md:50-67</a>, <a href="./Tabs-figma.md">Tabs-figma.md:157-180</a>).</li>
+<li><strong>Optional icon slot</strong> — decorative cue paired with the label (<a href="./Tabs-figma.md">Tabs-figma.md:77-80</a>, <a href="./examples.md">examples.md:108-110</a>).</li>
+<li><strong>Optional badge</strong> — small turquoise indicator for unread/notification counts (<a href="./Tabs-figma.md">Tabs-figma.md:79</a>, <a href="./examples.md">examples.md:111-112</a>).</li>
+<li><strong><code>tabsDisclosure</code> overflow button</strong> — 52×52 chevron trigger that appears when not all tabs fit; opens the <code>.Tabs Popover</code> to expose hidden tabs (<a href="./Tabs-figma.md">Tabs-figma.md:85-108</a>, <a href="./examples.md">examples.md:119-146</a>).</li>
+<li><strong>Last-visible-tab popover (<code>hasDropdown</code>)</strong> — when the container collapses to a single tab, that tab itself becomes the popover trigger and the separate disclosure button is removed (<a href="./examples.md">examples.md:114-116</a>, <a href="./examples.md">examples.md:131-133</a>).</li>
+</ol>
+<hr>
+<h2>Behaviour</h2>
+<h3>Active state is controlled externally</h3>
+<p><code>&lt;Tab isActive={…}&gt;</code> is a presentational flag — the component does not track its own selection. The consuming application stores the active value and sets <code>isActive</code> on whichever child matches (<a href="./props.md">props.md:87</a>, <a href="./examples.md">examples.md:42-71</a>).</p>
+<h3>Progressive overflow protects the active tab, not popular tabs</h3>
+<p>As the container narrows, tabs collapse right-to-left into the disclosure popover. The <strong>currently active tab is always swapped into the visible row</strong>; the system has no notion of which other tabs are used most often (<a href="./examples.md">examples.md:134-136</a>, <a href="./Tabs-spec.md">Tabs-spec.md:302</a>).</p>
+<h3>Keyboard contract today is <code>Tab</code> / <code>Shift+Tab</code> / <code>Enter</code> / <code>Space</code> / <code>Escape</code></h3>
+<p>The current accessibility documentation does <strong>not</strong> confirm Left/Right arrow navigation inside the tablist (<a href="./accessibility.md">accessibility.md:60-72</a>, <a href="./Tabs-audit.md">Tabs-audit.md GAP-009</a>). Until that is confirmed in the rendered DOM, treat arrow-key roving focus as something you must add yourself if you assert <code>role="tablist"</code> on the container.</p>
+<h3>Selected state has two indicators, not one</h3>
+<p>The selected tab is differentiated by both a 2px blue underline (<code>actions/action01</code>) <strong>and</strong> a bold label (<code>typography/bodyBold01</code>) — two non-color signals, which satisfies WCAG 1.4.1 (<a href="./Tabs-figma.md">Tabs-figma.md:157-180</a>, <a href="./Tabs-audit.md">Tabs-audit.md GAP-010</a>). Don't override the bold weight in custom styling.</p>
+<hr>
+<h2>When to use</h2>
+<ul>
+<li>Switching between <strong>2–7 peer sections of the same record or screen</strong> — settings panes, profile/activity/files for a user, summary/details/history for a ticket.</li>
+<li>The sections are <strong>siblings of equal weight</strong> and the user expects to flip between them without leaving the page.</li>
+<li>All sections share enough surrounding chrome (header, primary action, breadcrumbs) that a route change would feel heavy.</li>
+</ul>
+<h2>When not to use</h2>
+<ul>
+<li><strong>Primary site or app navigation.</strong> Tabs explicitly target "content within a page" (<a href="./examples.md">examples.md:33</a>, <a href="./Tabs-spec.md">Tabs-spec.md:38</a>). For moving between distinct destinations or routes, use the application shell's nav (see rejected PUI candidate <code>@8x8/pui-use-navigation</code> in <a href="./Tabs-pui.md">Tabs-pui.md</a>).</li>
+<li><strong>A linear workflow</strong> (step 1 → step 2 → step 3). Use a Stepper or wizard; Tabs lets the user skip steps in any order, which is the wrong affordance for required progression.</li>
+<li><strong>A mutually-exclusive choice that commits a value</strong> (think "Monthly / Yearly" pricing toggle, or a filter). Use a SegmentedControl or Radio group — <code>&lt;Tab&gt;</code>'s <code>onClick</code> is fire-and-forget on a content switch, not a value selector for a form.</li>
+<li><strong>More than ~7 sections.</strong> The progressive overflow keeps you running, but routinely pushing tabs into the disclosure popover signals that the structure should be flatter (split the page) or deeper (Accordion / nested nav).</li>
+<li><strong>Containers that are reliably narrow.</strong> If you're routinely in the "single-tab <code>hasDropdown</code>" stage (<a href="./examples.md">examples.md:131-133</a>), you've reduced Tabs to a Select with extra steps — use a Select.</li>
+</ul>
+<hr>
+<h2>Do / Don't</h2>
+<h3>Pair 1 — Use Tabs for sibling content within one page; don't use Tabs as primary navigation or as a wizard</h3>
+<h4>✅ Do — Switch between peer views of the same record on the same page</h4>
+<pre><code class="language-tsx">{/* Right — three peer views of one user record, no route change */}
+function UserRecord({ userId }: { userId: string }) {
+  const [active, setActive] = React.useState&lt;'profile' | 'activity' | 'files'&gt;('profile');
+
+  return (
+    &lt;&gt;
+      &lt;Tabs&gt;
+        &lt;Tab value=&quot;profile&quot;  isActive={active === 'profile'}  onClick={(_, v) =&gt; setActive(v)}&gt;Profile&lt;/Tab&gt;
+        &lt;Tab value=&quot;activity&quot; isActive={active === 'activity'} onClick={(_, v) =&gt; setActive(v)}&gt;Activity&lt;/Tab&gt;
+        &lt;Tab value=&quot;files&quot;    isActive={active === 'files'}    onClick={(_, v) =&gt; setActive(v)}&gt;Files&lt;/Tab&gt;
+      &lt;/Tabs&gt;
+
+      {active === 'profile'  &amp;&amp; &lt;ProfilePane userId={userId} /&gt;}
+      {active === 'activity' &amp;&amp; &lt;ActivityPane userId={userId} /&gt;}
+      {active === 'files'    &amp;&amp; &lt;FilesPane userId={userId} /&gt;}
+    &lt;/&gt;
+  );
+}
+</code></pre>
+<h4>❌ Don't — Use Tabs to navigate between app destinations or to gate a step-by-step flow</h4>
+<pre><code class="language-tsx">{/* Wrong — these are app-level destinations, each with their own URL and chrome.
+    This belongs in the application shell nav, not in Tabs. */}
+&lt;Tabs&gt;
+  &lt;Tab value=&quot;dashboard&quot; isActive={pathname === '/dashboard'} onClick={() =&gt; router.push('/dashboard')}&gt;Dashboard&lt;/Tab&gt;
+  &lt;Tab value=&quot;contacts&quot;  isActive={pathname === '/contacts'}  onClick={() =&gt; router.push('/contacts')}&gt;Contacts&lt;/Tab&gt;
+  &lt;Tab value=&quot;reports&quot;   isActive={pathname === '/reports'}   onClick={() =&gt; router.push('/reports')}&gt;Reports&lt;/Tab&gt;
+  &lt;Tab value=&quot;settings&quot;  isActive={pathname === '/settings'}  onClick={() =&gt; router.push('/settings')}&gt;Settings&lt;/Tab&gt;
+&lt;/Tabs&gt;
+
+{/* Wrong — a linear wizard belongs in a Stepper. Tabs lets the user skip
+    to step 3 before completing step 1, which breaks the flow's contract. */}
+&lt;Tabs&gt;
+  &lt;Tab value=&quot;details&quot;  isActive={step === 'details'}&gt;1. Details&lt;/Tab&gt;
+  &lt;Tab value=&quot;billing&quot;  isActive={step === 'billing'}&gt;2. Billing&lt;/Tab&gt;
+  &lt;Tab value=&quot;review&quot;   isActive={step === 'review'}&gt;3. Review&lt;/Tab&gt;
+&lt;/Tabs&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> the Oxygen Tabs surface, the documented intent (<a href="./examples.md">examples.md:33</a>, <a href="./Tabs-spec.md">Tabs-spec.md:38</a>), and the rejection of <code>@8x8/pui-use-navigation</code> in <a href="./Tabs-pui.md">Tabs-pui.md</a> all converge on the same point — Tabs is in-page section switching, not app navigation.</p>
+<p><strong>Source:</strong> <a href="./examples.md">examples.md:33</a> · <a href="./Tabs-spec.md">Tabs-spec.md:38</a> · <a href="./Tabs-pui.md">Tabs-pui.md</a>.</p>
+<hr>
+<h3>Pair 2 — Hold active state in a single source of truth and give every Tab a unique <code>value</code></h3>
+<h4>✅ Do — Drive <code>isActive</code> from one state variable and mirror it back via <code>onClick(ev, value)</code></h4>
+<p><code>isActive</code> is presentational (<a href="./props.md">props.md:87</a>); <code>value</code> is what gets passed to your handler (<a href="./props.md">props.md:86</a>, <a href="./props.md">props.md:90</a>). One state value, one <code>setActive</code>, one comparison per Tab.</p>
+<pre><code class="language-tsx">const [active, setActive] = React.useState('overview');
+
+&lt;Tabs&gt;
+  &lt;Tab value=&quot;overview&quot;  isActive={active === 'overview'}  onClick={(_, v) =&gt; setActive(v)}&gt;Overview&lt;/Tab&gt;
+  &lt;Tab value=&quot;metrics&quot;   isActive={active === 'metrics'}   onClick={(_, v) =&gt; setActive(v)}&gt;Metrics&lt;/Tab&gt;
+  &lt;Tab value=&quot;audit-log&quot; isActive={active === 'audit-log'} onClick={(_, v) =&gt; setActive(v)}&gt;Audit log&lt;/Tab&gt;
+&lt;/Tabs&gt;
+</code></pre>
+<h4>❌ Don't — Run independent booleans, omit <code>value</code>, or reuse the same <code>value</code> on more than one Tab</h4>
+<pre><code class="language-tsx">{/* Wrong — three independent booleans drift out of sync the moment two are true at once */}
+const [overview, setOverview] = React.useState(true);
+const [metrics, setMetrics]   = React.useState(false);
+const [audit, setAudit]       = React.useState(false);
+
+&lt;Tabs&gt;
+  &lt;Tab isActive={overview} onClick={() =&gt; { setOverview(true);  setMetrics(false); setAudit(false); }}&gt;Overview&lt;/Tab&gt;
+  &lt;Tab isActive={metrics}  onClick={() =&gt; { setOverview(false); setMetrics(true);  setAudit(false); }}&gt;Metrics&lt;/Tab&gt;
+  &lt;Tab isActive={audit}    onClick={() =&gt; { setOverview(false); setMetrics(false); setAudit(true);  }}&gt;Audit&lt;/Tab&gt;
+&lt;/Tabs&gt;
+
+{/* Wrong — no `value`, so onClick can't tell which tab fired */}
+&lt;Tab isActive={active === 'overview'} onClick={() =&gt; setActive('overview')}&gt;Overview&lt;/Tab&gt;
+
+{/* Wrong — duplicate `value` makes the active state non-deterministic */}
+&lt;Tab value=&quot;view&quot; isActive={active === 'view'} onClick={(_, v) =&gt; setActive(v)}&gt;Overview&lt;/Tab&gt;
+&lt;Tab value=&quot;view&quot; isActive={active === 'view'} onClick={(_, v) =&gt; setActive(v)}&gt;Metrics&lt;/Tab&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> the component is controlled but does not validate uniqueness — drift, duplication, and "no current selection" states are all silent bugs the API permits.</p>
+<p><strong>Source:</strong> <a href="./props.md">props.md:86-90</a> · <a href="./examples.md">examples.md:42-71</a>.</p>
+<hr>
+<h3>Pair 3 — Keep the tab count manageable; let progressive overflow be the safety net, not the default state</h3>
+<h4>✅ Do — Aim for 2–7 visible tabs and pre-empt overflow with structure changes when you exceed it</h4>
+<p>The progressive-overflow behaviour (<a href="./examples.md">examples.md:119-146</a>) is designed to <em>gracefully degrade</em> at narrow widths, not to absorb a long inventory of sections. If you can't fit your tabs at typical container widths, that's a structural signal — split the page, nest content, or use Accordion.</p>
+<pre><code class="language-tsx">{/* Right — five peer sections, all visible at typical widths.
+    Overflow only triggers if the panel itself is resized very small. */}
+&lt;Tabs&gt;
+  &lt;Tab value=&quot;overview&quot;      isActive={active === 'overview'}&gt;Overview&lt;/Tab&gt;
+  &lt;Tab value=&quot;participants&quot;  isActive={active === 'participants'}&gt;Participants&lt;/Tab&gt;
+  &lt;Tab value=&quot;recordings&quot;    isActive={active === 'recordings'}&gt;Recordings&lt;/Tab&gt;
+  &lt;Tab value=&quot;transcripts&quot;   isActive={active === 'transcripts'}&gt;Transcripts&lt;/Tab&gt;
+  &lt;Tab value=&quot;permissions&quot;   isActive={active === 'permissions'}&gt;Permissions&lt;/Tab&gt;
+&lt;/Tabs&gt;
+</code></pre>
+<h4>❌ Don't — Ship twelve tabs and rely on the disclosure to "handle it"</h4>
+<pre><code class="language-tsx">{/* Wrong — most users will see half of this row land in the overflow popover.
+    The progressive overflow only guarantees the *active* tab stays visible,
+    not the most-used ones. Split the page or use a side nav instead. */}
+&lt;Tabs&gt;
+  &lt;Tab value=&quot;overview&quot;&gt;Overview&lt;/Tab&gt;
+  &lt;Tab value=&quot;participants&quot;&gt;Participants&lt;/Tab&gt;
+  &lt;Tab value=&quot;recordings&quot;&gt;Recordings&lt;/Tab&gt;
+  &lt;Tab value=&quot;transcripts&quot;&gt;Transcripts&lt;/Tab&gt;
+  &lt;Tab value=&quot;permissions&quot;&gt;Permissions&lt;/Tab&gt;
+  &lt;Tab value=&quot;integrations&quot;&gt;Integrations&lt;/Tab&gt;
+  &lt;Tab value=&quot;webhooks&quot;&gt;Webhooks&lt;/Tab&gt;
+  &lt;Tab value=&quot;audit&quot;&gt;Audit log&lt;/Tab&gt;
+  &lt;Tab value=&quot;billing&quot;&gt;Billing&lt;/Tab&gt;
+  &lt;Tab value=&quot;security&quot;&gt;Security&lt;/Tab&gt;
+  &lt;Tab value=&quot;api-keys&quot;&gt;API keys&lt;/Tab&gt;
+  &lt;Tab value=&quot;danger&quot;&gt;Danger zone&lt;/Tab&gt;
+&lt;/Tabs&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> the overflow algorithm prioritises the <em>current</em> selection, not the <em>important</em> ones (<a href="./Tabs-spec.md">Tabs-spec.md:302</a>). A frequently-used "Permissions" tab will routinely sit in the popover behind a chevron whenever it isn't the user's current view.</p>
+<p><strong>Source:</strong> <a href="./examples.md">examples.md:119-146</a> · <a href="./Tabs-spec.md">Tabs-spec.md:291-311</a>.</p>
+<hr>
+<h3>Pair 4 — Use <code>icon</code> to reinforce meaning and <code>badge</code> for notification counts; never use color or icon alone as the only signal</h3>
+<h4>✅ Do — Pair icon/badge with a clear text label and rely on Oxygen's two-indicator selected state</h4>
+<p>Per Figma guidance, <code>icon</code> is a "decorative element… to reinforce the meaning of the tab" and <code>badge</code> is "when the content of a tab includes a list of notifications" (<a href="./examples.md">examples.md:108-112</a>). The selected state itself already carries two indicators (2px underline + bold weight, see <a href="./Tabs-figma.md">Tabs-figma.md:157-180</a>) — keep both.</p>
+<pre><code class="language-tsx">{/* Right — icon reinforces the section's identity; badge counts unread items;
+    the text label stays the primary signal */}
+&lt;Tabs&gt;
+  &lt;Tab value=&quot;inbox&quot; isActive={active === 'inbox'} onClick={(_, v) =&gt; setActive(v)}&gt;
+    &lt;MailIcon /&gt; Inbox &lt;Badge count={3} /&gt;
+  &lt;/Tab&gt;
+  &lt;Tab value=&quot;sent&quot;     isActive={active === 'sent'}     onClick={(_, v) =&gt; setActive(v)}&gt;Sent&lt;/Tab&gt;
+  &lt;Tab value=&quot;archived&quot; isActive={active === 'archived'} onClick={(_, v) =&gt; setActive(v)}&gt;Archived&lt;/Tab&gt;
+&lt;/Tabs&gt;
+</code></pre>
+<h4>❌ Don't — Drop the label, decorate every tab with an icon for "balance," or override the bold-weight selected state</h4>
+<pre><code class="language-tsx">{/* Wrong — icon-only tabs strip the accessible name and force users to memorise glyphs.
+    Compact view is the place where labels collapse, not a default for desktop widths
+    (see examples.md:108-110 — icon-only is for &quot;compact view when the label is hidden
+    due to space constraints&quot;, not a default). */}
+&lt;Tabs&gt;
+  &lt;Tab value=&quot;inbox&quot;&gt;&lt;MailIcon /&gt;&lt;/Tab&gt;
+  &lt;Tab value=&quot;sent&quot;&gt;&lt;SendIcon /&gt;&lt;/Tab&gt;
+  &lt;Tab value=&quot;archived&quot;&gt;&lt;ArchiveIcon /&gt;&lt;/Tab&gt;
+&lt;/Tabs&gt;
+
+{/* Wrong — a &quot;New&quot; badge that never counts anything is decoration, not notification.
+    Use a different affordance (Tag, label suffix) for marketing tags. */}
+&lt;Tab value=&quot;ai-summary&quot; isActive={active === 'ai-summary'}&gt;AI summary &lt;Badge label=&quot;New&quot; /&gt;&lt;/Tab&gt;
+
+{/* Wrong — overriding the bold selected-state weight back to regular weight
+    leaves the underline as the *only* differentiator and risks failing WCAG 1.4.1
+    (Tabs-audit.md GAP-010, Tabs-figma.md Color &amp; token bindings). */}
+&lt;Tabs className=&quot;my-tabs--no-bold-selected&quot;&gt;…&lt;/Tabs&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> the component already passes WCAG 1.4.1 because it ships two non-color indicators (<a href="./Tabs-audit.md">Tabs-audit.md GAP-010</a>, <a href="./Tabs-figma.md">Tabs-figma.md:157-180</a>). Decorative-only icons and label-stripping break both the documented intent and the a11y guarantee.</p>
+<p><strong>Source:</strong> <a href="./examples.md">examples.md:108-112</a> · <a href="./Tabs-figma.md">Tabs-figma.md:157-180</a> · <a href="./Tabs-audit.md">Tabs-audit.md GAP-010</a>.</p>
+<hr>
+<h3>Pair 5 — Decide <code>isStretched</code> at the row level: apply it to every tab or to none</h3>
+<h4>✅ Do — Stretch every tab in a small, fixed-count row that should claim the full container width</h4>
+<p><code>isStretched</code> makes a <code>&lt;Tab&gt;</code> fill available space inside <code>&lt;Tabs&gt;</code> (<a href="./props.md">props.md:89</a>, <a href="./examples.md">examples.md:91-100</a>). It's a per-tab boolean, but the <em>layout intent</em> is row-wide — equal-width columns.</p>
+<pre><code class="language-tsx">{/* Right — two peer modes, equal width, full container */}
+&lt;Tabs&gt;
+  &lt;Tab value=&quot;grid&quot;  isActive={view === 'grid'}  isStretched onClick={(_, v) =&gt; setView(v)}&gt;Grid view&lt;/Tab&gt;
+  &lt;Tab value=&quot;table&quot; isActive={view === 'table'} isStretched onClick={(_, v) =&gt; setView(v)}&gt;Table view&lt;/Tab&gt;
+&lt;/Tabs&gt;
+</code></pre>
+<h4>❌ Don't — Mix stretched and natural-width tabs in the same row</h4>
+<pre><code class="language-tsx">{/* Wrong — the stretched tab claims all leftover space while the others hug content,
+    producing a lopsided row whose proportions shift with the container width */}
+&lt;Tabs&gt;
+  &lt;Tab value=&quot;overview&quot;   isActive={active === 'overview'}                  &gt;Overview&lt;/Tab&gt;
+  &lt;Tab value=&quot;details&quot;    isActive={active === 'details'}    isStretched    &gt;Details&lt;/Tab&gt;
+  &lt;Tab value=&quot;references&quot; isActive={active === 'references'}                &gt;References&lt;/Tab&gt;
+&lt;/Tabs&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> <code>isStretched</code> is implemented as flex-grow on a single child — mixing it with hug-content siblings produces inconsistent visual hierarchy and re-flows unpredictably between breakpoints.</p>
+<p><strong>Source:</strong> <a href="./props.md">props.md:89</a> · <a href="./examples.md">examples.md:91-100</a>.</p>
+<hr>
+<h3>Pair 6 — Use <code>onClick</code> to switch the displayed section; don't commit values, fire side effects, or navigate away</h3>
+<h4>✅ Do — Treat <code>onClick</code> as a pure setState of the active section</h4>
+<pre><code class="language-tsx">{/* Right — selecting a tab only changes what's rendered; nothing is saved, sent, or routed */}
+&lt;Tabs&gt;
+  &lt;Tab value=&quot;metrics&quot; isActive={active === 'metrics'} onClick={(_, v) =&gt; setActive(v)}&gt;Metrics&lt;/Tab&gt;
+  &lt;Tab value=&quot;logs&quot;    isActive={active === 'logs'}    onClick={(_, v) =&gt; setActive(v)}&gt;Logs&lt;/Tab&gt;
+  &lt;Tab value=&quot;traces&quot;  isActive={active === 'traces'}  onClick={(_, v) =&gt; setActive(v)}&gt;Traces&lt;/Tab&gt;
+&lt;/Tabs&gt;
+</code></pre>
+<h4>❌ Don't — Fire mutations, open dialogs, or change the route inside the tab handler</h4>
+<pre><code class="language-tsx">{/* Wrong — committing a destructive action on tab click; the user has no
+    confirmation step and no way to undo the change by switching tabs back */}
+&lt;Tab value=&quot;delete&quot; isActive={active === 'delete'} onClick={() =&gt; deleteAccount()}&gt;Delete account&lt;/Tab&gt;
+
+{/* Wrong — opening a Modal on a content-switch component conflates two
+    affordances; users expect tabs to *show* a section, not to launch a flow */}
+&lt;Tab value=&quot;invite&quot; onClick={() =&gt; setInviteModalOpen(true)}&gt;Invite teammate&lt;/Tab&gt;
+
+{/* Wrong — `router.push` on tab click makes the tab a navigation control;
+    see Pair 1 — that belongs in the application shell nav */}
+&lt;Tab value=&quot;billing&quot; onClick={() =&gt; router.push('/billing')}&gt;Billing&lt;/Tab&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> Tabs has no built-in cancellation, confirmation, or focus-restore for side-effects. Anything irreversible needs a dedicated trigger (Button → Modal, link → router) that carries its own semantics.</p>
+<p><strong>Source:</strong> <a href="./props.md">props.md:90</a> · <a href="./examples.md">examples.md:33</a> · Pair 1 above.</p>
+<hr>
+<h3>Pair 7 — Layer the ARIA contract on the rendered output and add Left/Right arrow handling for the tablist</h3>
+<h4>✅ Do — Apply the recommended ARIA roles and wire roving focus with arrow keys</h4>
+<p>The accessibility doc lists these roles as <strong>recommended</strong> rather than <strong>shipped</strong> (<a href="./accessibility.md">accessibility.md:97-110</a>, <a href="./Tabs-audit.md">WARN-002 in Tabs-audit.md</a>). The current keyboard contract documents <code>Tab</code> / <code>Shift+Tab</code> / <code>Enter</code> / <code>Space</code> / <code>Escape</code> but <strong>does not confirm Left/Right arrow nav</strong> (<a href="./accessibility.md">accessibility.md:60-72</a>, <a href="./Tabs-audit.md">Tabs-audit.md GAP-009</a>) — so if you assert <code>role="tablist"</code>, you must implement the arrow-key roving focus the WAI-ARIA tablist pattern requires.</p>
+<pre><code class="language-tsx">{/* Right — explicit ARIA contract, paired with arrow-key roving focus and aria-controls */}
+&lt;div role=&quot;tablist&quot; aria-label=&quot;User record sections&quot; onKeyDown={handleTablistArrows}&gt;
+  &lt;Tabs&gt;
+    &lt;Tab
+      value=&quot;profile&quot;
+      isActive={active === 'profile'}
+      onClick={(_, v) =&gt; setActive(v)}
+      role=&quot;tab&quot;
+      aria-selected={active === 'profile'}
+      aria-controls=&quot;panel-profile&quot;
+      id=&quot;tab-profile&quot;
+      tabIndex={active === 'profile' ? 0 : -1}
+    &gt;
+      Profile
+    &lt;/Tab&gt;
+    {/* …other tabs follow the same shape… */}
+  &lt;/Tabs&gt;
+&lt;/div&gt;
+
+&lt;section role=&quot;tabpanel&quot; id=&quot;panel-profile&quot; aria-labelledby=&quot;tab-profile&quot; hidden={active !== 'profile'}&gt;
+  &lt;ProfilePane /&gt;
+&lt;/section&gt;
+</code></pre>
+<h4>❌ Don't — Assert <code>role="tablist"</code> without implementing the keyboard contract that role requires</h4>
+<pre><code class="language-tsx">{/* Wrong — declaring role=&quot;tablist&quot; but leaving only Tab/Shift+Tab navigation
+    silently breaks the WAI-ARIA tablist contract; screen-reader users will
+    expect Left/Right arrow keys to roam between tabs and they won't work */}
+&lt;div role=&quot;tablist&quot;&gt;
+  &lt;Tabs&gt;
+    &lt;Tab role=&quot;tab&quot; aria-selected={active === 'profile'} value=&quot;profile&quot;&gt;Profile&lt;/Tab&gt;
+    &lt;Tab role=&quot;tab&quot; aria-selected={active === 'activity'} value=&quot;activity&quot;&gt;Activity&lt;/Tab&gt;
+  &lt;/Tabs&gt;
+&lt;/div&gt;
+
+{/* Wrong — omitting aria-selected entirely leaves screen readers without a way
+    to communicate which section is current */}
+&lt;Tab value=&quot;profile&quot; isActive={active === 'profile'}&gt;Profile&lt;/Tab&gt;
+
+{/* Wrong — when a tab label truncates in narrow widths, dropping the full label
+    from aria-label / tooltip text strips the accessible name */}
+&lt;Tab value=&quot;long-section-name&quot; isActive={true}&gt;{label.slice(0, 8) + '…'}&lt;/Tab&gt;
+</code></pre>
+<p><strong>Why it matters:</strong> <a href="./accessibility.md">accessibility.md</a> makes the ARIA roles "recommended enhancements (not yet in OX baseline)" — they're your responsibility to wire on, and the partial implementation (role without keys) is worse than no role at all because it lies to assistive tech. Truncated labels must keep their full accessible name (<a href="./accessibility.md">accessibility.md:117</a>).</p>
+<p><strong>Source:</strong> <a href="./accessibility.md">accessibility.md:60-72</a> · <a href="./accessibility.md">accessibility.md:88-110</a> · <a href="./accessibility.md">accessibility.md:117</a> · <a href="./Tabs-audit.md">Tabs-audit.md GAP-009</a> · <a href="./Tabs-audit.md">Tabs-audit.md WARN-002</a>.</p>
+<hr>
+<h2>Gaps &amp; open questions</h2>
+<ul>
+<li><strong>GAP-003 partial resolution</strong> — this file now satisfies the "Tabs-usage.md present" half of <a href="./Tabs-audit.md">Tabs-audit.md GAP-003</a>. The other half — Figma <code>✅ Do —</code> / <code>❌ Don't —</code> card frames on page <code>85697:271849</code> — remains a SOURCE_GAP. When those cards are authored, run <code>figma-extract-usage Tabs</code> and replace this file wholesale.</li>
+<li><strong>GAP-009 (arrow-key nav)</strong> — Pair 7 is written defensively because the OX implementation has not been confirmed to ship Left/Right arrow navigation inside the tablist. If a future verification confirms arrow-key support, soften the "you must implement it" language to "the component handles it."</li>
+<li><strong>WARN-002 (inferred ARIA roles)</strong> — Pair 7's <code>role="tab"</code> / <code>aria-selected</code> / <code>aria-controls</code> assumes the Oxygen <code>&lt;Tab&gt;</code> either renders these natively or accepts them as forwarded props. Verify against the rendered DOM before relying on the snippet as-is.</li>
+</ul>
+<p><em>Drafted via <code>usage-advisor</code> Open mode · 2026-05-15</em></p>
+  </main>
+
+  <footer class="page-footer">
+    Rendered from <a href="./Tabs-usage.md">Tabs-usage.md</a>
+  </footer>
+
+</div>
+</body>
+</html>
