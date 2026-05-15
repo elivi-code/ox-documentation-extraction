@@ -170,19 +170,20 @@ components:
     pipeline_stage: extracted
     audit_verdict: null
     audit_date: null
-    notes: "No audit run yet. No Figma or PUI files extracted."
+    notes: "Usage drafted editorially 2026-05-14 from oxygen.8x8.com/components/radiobutton/usage + extracted artifacts (no Figma examples page exists). Radio-figma.md and Radio-pui.md still missing; doc-audit not yet run."
     files:
-      props:        { path: "component-lib/Radio/props.md",         wiki: "[[Radio/props]]" }
-      examples:     { path: "component-lib/Radio/examples.md",      wiki: "[[Radio/examples]]" }
-      tokens:       { path: "component-lib/Radio/tokens.md",        wiki: "[[Radio/tokens]]" }
-      accessibility: { path: "component-lib/Radio/accessibility.md", wiki: "[[Radio/accessibility]]" }
+      props:        { path: "component-lib/Radio/props.md",            wiki: "[[Radio/props]]" }
+      examples:     { path: "component-lib/Radio/examples.md",         wiki: "[[Radio/examples]]" }
+      tokens:       { path: "component-lib/Radio/tokens.md",           wiki: "[[Radio/tokens]]" }
+      accessibility: { path: "component-lib/Radio/accessibility.md",   wiki: "[[Radio/accessibility]]" }
+      usage:        { path: "component-lib/Radio/Radio-usage.md",      wiki: "[[Radio/Radio-usage]]", source_type: "editorial" }
+      usage_html:   { path: "component-lib/Radio/Radio-usage.html" }
     files_missing:
-      - radio-figma.md
-      - radio-usage.md
-      - radio-pui.md
-      - radio-audit.md
+      - Radio-figma.md
+      - Radio-pui.md
+      - Radio-audit.md
     cross_links:
-      audit_depends_on: ["[[Radio/props]]", "[[Radio/examples]]", "[[Radio/tokens]]", "[[Radio/accessibility]]"]
+      audit_depends_on: ["[[Radio/props]]", "[[Radio/examples]]", "[[Radio/tokens]]", "[[Radio/accessibility]]", "[[Radio/Radio-usage]]"]
 
   - name: Select
     package: "@8x8/oxygen-select"
@@ -892,30 +893,30 @@ components:
     folder: "component-lib/ProgressBar"
     pipeline_stage: spec_ready
     audit_verdict: "YES"
-    audit_verdict_reason: "Zero CONFLICTs. Pre-labelled conflicts in figma.md reclassified as DOC_GAPs with clear resolution paths."
-    audit_date: "2026-05-05"
-    audit_overall_score: 0.66
+    audit_verdict_reason: "Zero CONFLICTs. Usage SOURCE_GAP resolved editorially (WARN-003). All 7 dimensions available for doc-rewrite."
+    audit_date: "2026-05-14"
+    audit_overall_score: 0.75
     audit_scores:
       props: 0.80
       examples: 0.78
       tokens: 0.40
       accessibility: 0.78
       figma: 0.83
-      usage: 0.00
+      usage: 0.65
       pui: 1.00
-    gap_counts: { doc_gaps: 8, source_gaps: 5, conflicts: 0, warnings: 2 }
+    gap_counts: { doc_gaps: 8, source_gaps: 4, conflicts: 0, warnings: 3 }
     files:
       props:        { path: "component-lib/ProgressBar/props.md",              wiki: "[[ProgressBar/props]]" }
       examples:     { path: "component-lib/ProgressBar/examples.md",           wiki: "[[ProgressBar/examples]]" }
       tokens:       { path: "component-lib/ProgressBar/tokens.md",             wiki: "[[ProgressBar/tokens]]" }
       accessibility: { path: "component-lib/ProgressBar/accessibility.md",      wiki: "[[ProgressBar/accessibility]]" }
       figma:        { path: "component-lib/ProgressBar/ProgressBar-figma.md",  wiki: "[[ProgressBar/ProgressBar-figma]]" }
+      usage:        { path: "component-lib/ProgressBar/ProgressBar-usage.md",  wiki: "[[ProgressBar/ProgressBar-usage]]", source_type: "editorial" }
       audit:        { path: "component-lib/ProgressBar/ProgressBar-audit.md",  wiki: "[[ProgressBar/ProgressBar-audit]]" }
     files_missing:
-      - ProgressBar-usage.md  # SOURCE_GAP major
       - ProgressBar-pui.md    # N/A — confirmed no Platform UI relevance
     cross_links:
-      audit_depends_on: ["[[ProgressBar/props]]", "[[ProgressBar/examples]]", "[[ProgressBar/tokens]]", "[[ProgressBar/accessibility]]", "[[ProgressBar/ProgressBar-figma]]"]
+      audit_depends_on: ["[[ProgressBar/props]]", "[[ProgressBar/examples]]", "[[ProgressBar/tokens]]", "[[ProgressBar/accessibility]]", "[[ProgressBar/ProgressBar-figma]]", "[[ProgressBar/ProgressBar-usage]]"]
       spec_depends_on:  ["[[ProgressBar/ProgressBar-audit]]"]
 
   - name: SkeletonBlock
@@ -924,7 +925,7 @@ components:
     folder: "component-lib/SkeletonBlock"
     pipeline_stage: blocked
     audit_verdict: "NO"
-    audit_verdict_reason: "1 CONFLICT — SkeletonCircle size values documented in two incompatible formats across SkeletonBlock and SkeletonCircle folders."
+    audit_verdict_reason: "1 CONFLICT — SkeletonCircle size values documented in two incompatible formats across SkeletonBlock and SkeletonCircle folders. Editorial SkeletonBlock-usage.md added 2026-05-14 (no Figma examples page; derivation-only)."
     audit_date: "2026-05-05"
     audit_overall_score: 0.56
     audit_scores:
@@ -942,14 +943,15 @@ components:
       tokens:       { path: "component-lib/SkeletonBlock/tokens.md",              wiki: "[[SkeletonBlock/tokens]]" }
       accessibility: { path: "component-lib/SkeletonBlock/accessibility.md",       wiki: "[[SkeletonBlock/accessibility]]" }
       figma:        { path: "component-lib/SkeletonBlock/SkeletonBlock-figma.md", wiki: "[[SkeletonBlock/SkeletonBlock-figma]]" }
+      usage:        { path: "component-lib/SkeletonBlock/SkeletonBlock-usage.md", wiki: "[[SkeletonBlock/SkeletonBlock-usage]]" }
+      usage_html:   { path: "component-lib/SkeletonBlock/SkeletonBlock-usage.html" }
       audit:        { path: "component-lib/SkeletonBlock/SkeletonBlock-audit.md", wiki: "[[SkeletonBlock/SkeletonBlock-audit]]" }
     files_missing:
-      - SkeletonBlock-usage.md
       - SkeletonBlock-pui.md
     cross_links:
-      audit_depends_on: ["[[SkeletonBlock/props]]", "[[SkeletonBlock/examples]]", "[[SkeletonBlock/tokens]]", "[[SkeletonBlock/accessibility]]", "[[SkeletonBlock/SkeletonBlock-figma]]"]
+      audit_depends_on: ["[[SkeletonBlock/props]]", "[[SkeletonBlock/examples]]", "[[SkeletonBlock/tokens]]", "[[SkeletonBlock/accessibility]]", "[[SkeletonBlock/SkeletonBlock-figma]]", "[[SkeletonBlock/SkeletonBlock-usage]]"]
       spec_depends_on:  ["[[SkeletonBlock/SkeletonBlock-audit]]"]
-      related: ["[[SkeletonCircle/SkeletonCircle-audit]]"]  # shared CONFLICT
+      related: ["[[SkeletonCircle/SkeletonCircle-audit]]", "[[SkeletonCircle/SkeletonCircle-usage]]"]  # shared CONFLICT + shared usage family
 
   - name: SkeletonCircle
     package: "@8x8/oxygen-skeletons"
@@ -957,7 +959,7 @@ components:
     folder: "component-lib/SkeletonCircle"
     pipeline_stage: blocked
     audit_verdict: "NO"
-    audit_verdict_reason: "1 CONFLICT — size values documented in incompatible formats vs SkeletonBlock docs. Must align before rewrite."
+    audit_verdict_reason: "1 CONFLICT — size values documented in incompatible formats vs SkeletonBlock docs. Must align before rewrite. Editorial SkeletonCircle-usage.md added 2026-05-14 (no Figma examples page; derivation-only)."
     audit_date: "2026-05-05"
     audit_overall_score: 0.56
     audit_scores:
@@ -975,14 +977,15 @@ components:
       tokens:       { path: "component-lib/SkeletonCircle/tokens.md",                wiki: "[[SkeletonCircle/tokens]]" }
       accessibility: { path: "component-lib/SkeletonCircle/accessibility.md",         wiki: "[[SkeletonCircle/accessibility]]" }
       figma:        { path: "component-lib/SkeletonCircle/SkeletonCircle-figma.md",  wiki: "[[SkeletonCircle/SkeletonCircle-figma]]" }
+      usage:        { path: "component-lib/SkeletonCircle/SkeletonCircle-usage.md",  wiki: "[[SkeletonCircle/SkeletonCircle-usage]]" }
+      usage_html:   { path: "component-lib/SkeletonCircle/SkeletonCircle-usage.html" }
       audit:        { path: "component-lib/SkeletonCircle/SkeletonCircle-audit.md",  wiki: "[[SkeletonCircle/SkeletonCircle-audit]]" }
     files_missing:
-      - SkeletonCircle-usage.md
       - SkeletonCircle-pui.md
     cross_links:
-      audit_depends_on: ["[[SkeletonCircle/props]]", "[[SkeletonCircle/examples]]", "[[SkeletonCircle/tokens]]", "[[SkeletonCircle/accessibility]]", "[[SkeletonCircle/SkeletonCircle-figma]]"]
+      audit_depends_on: ["[[SkeletonCircle/props]]", "[[SkeletonCircle/examples]]", "[[SkeletonCircle/tokens]]", "[[SkeletonCircle/accessibility]]", "[[SkeletonCircle/SkeletonCircle-figma]]", "[[SkeletonCircle/SkeletonCircle-usage]]"]
       spec_depends_on:  ["[[SkeletonCircle/SkeletonCircle-audit]]"]
-      related: ["[[SkeletonBlock/SkeletonBlock-audit]]"]  # shared CONFLICT
+      related: ["[[SkeletonBlock/SkeletonBlock-audit]]", "[[SkeletonBlock/SkeletonBlock-usage]]"]  # shared CONFLICT + shared usage family
 
 # ============================================================
 # OVERLAYS & CONTEXTUAL

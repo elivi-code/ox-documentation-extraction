@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f1a;
+      line-height: 1.2;
+    }
+
+    .see-also {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .see-also a {
+      color: #5046e4;
+      text-decoration: none;
+    }
+
+    .see-also a:hover { text-decoration: underline; }
+
+    /* Editorial callout */
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .callout-editorial a {
+      color: #5c4200;
+      text-decoration: underline;
+    }
+
+    /* Info callout */
+    .callout-info {
+      background: #f0f0ff;
+      border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 13.5px;
+      color: #1e1a6e;
+    }
+
+    .callout-info code {
+      background: rgba(80, 70, 228, 0.1);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Warning callout */
+    .callout-warn {
+      background: #fff5f5;
+      border-left: 4px solid #f87171;
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 13.5px;
+      color: #7f1d1d;
+    }
+
+    .callout-warn code {
+      background: rgba(248, 113, 113, 0.12);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Intro */
+    .intro {
+      font-size: 15.5px;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f0f1a;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.5rem;
+    }
+
+    /* When to use */
+    .when-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .when-section { grid-template-columns: 1fr; }
+    }
+
+    .when-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .when-card h3 { margin-bottom: 0.625rem; }
+
+    .when-card ul {
+      padding-left: 1.25rem;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    /* Alternatives table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Do / Don't pairs */
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair {
+      margin-bottom: 1.75rem;
+    }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards { grid-template-columns: 1fr; }
+    }
+
+    .do-card, .dont-card {
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .dont-card {
+      background: #fff5f5;
+      border: 1px solid #fecaca;
+    }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 0.625rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.375rem;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body {
+      color: #374151;
+      line-height: 1.55;
+      margin-bottom: 0.625rem;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .card-note code {
+      background: rgba(0,0,0,0.06);
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    /* Gaps table */
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-conflict  { background: #fef3c7; color: #92400e; }
+    .badge-gap       { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial { background: #f0f0ff; color: #3730a3; }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · form_inputs · Select</div>
+    <h1>Select — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./select-pui.md">select-pui.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — mirrors the published Oxygen docs page.</strong>
+    No <code>↳ Select examples</code> Figma page with Do/Don't card frames exists, so <code>figma-extract-usage</code> cannot run.
+    The Do/Don't pairs below are derived from <a href="https://oxygen.8x8.com/components/dropdown/usage">oxygen.8x8.com/components/dropdown/usage</a>
+    cross-validated against <code>props.md</code>, <code>examples.md</code>, <code>tokens.md</code>, and <code>accessibility.md</code>.
+    <code>Select-figma.md</code> has not been extracted and two CONFLICTs remain open (<code>isAsync</code> type; <code>ref</code> vs <code>forwardedRef</code>).
+    Treat as provisional until a designer reviews and Figma cards are created.
+  </div>
+
+  <div class="callout-warn">
+    ⚠️ <strong>Open CONFLICTs:</strong> <code>isAsync</code> prop type is <code>boolean</code> in one MCP endpoint and <code>IsAsync</code> in another.
+    <code>ref=</code> is used in Storybook examples while <code>forwardedRef</code> is documented in props. Pairs below avoid both issues intentionally.
+    <code>SelectOption</code> type shape is also undefined — options are shown inline <code>{ value, label }</code>.
+  </div>
+
+  <p class="intro">
+    Select is the canonical single- or multi-select control for picking from a list of options too long to display inline.
+    In 8x8 product surfaces it's the default for <strong>&gt;5 options</strong>, for searchable or async lists, and any time
+    the user needs a chip-style multi-select inside a form. Built on <a href="https://react-select.com/" style="color:#5046e4;">react-select</a>
+    — most react-select props pass through.
+  </p>
+
+  <hr>
+
+  <!-- When to use / When not to use -->
+  <h2>Best Practices</h2>
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li>There are <strong>more than five</strong> options to choose from (verbatim from docs).</li>
+        <li>You want to create a list of options for the user to choose (verbatim from docs).</li>
+        <li>The full list won't fit inline as Radio / Checkbox buttons.</li>
+        <li>Options need to be <strong>searched, filtered, or fetched</strong> from a server.</li>
+        <li>The user might pick <strong>many</strong> items at once — chip-style multi-select (<code>isMulti</code>).</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li>Fewer than five options, single-select → use <strong>Radio</strong> (verbatim from docs)</li>
+        <li>Fewer than five options, multi-select → use <strong>Checkbox</strong> (verbatim from docs)</li>
+        <li>Binary toggle that takes effect <strong>immediately</strong> → use <strong>ToggleButton</strong></li>
+        <li>Free-form input with suggestions → use an <strong>Autocomplete</strong> pattern (or <code>isCreatable</code> only if the closed list is the source of truth)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    <strong>Placement (verbatim from the docs page):</strong> "Usually a select is used in a form element. By default, the width of the select is set to fixed. Alternatively, the width of the select is fluid as its parent container size."
+  </div>
+
+  <hr>
+
+  <!-- Do / Don't pairs -->
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <!-- Pair 1 -->
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Reach for Select when the list is too long for Radio / Checkbox</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use Select for &gt;5 options or a searchable list</div>
+          <p class="card-body">The docs page draws an explicit line: more than five options → Select. Below that line, Radio (single) or Checkbox (multi) wins because users compare alternatives side-by-side without an extra click.</p>
+          <p class="card-note">Source: oxygen.8x8.com — Best Practices / When to use (verbatim) · <code>examples.md</code> line 167.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use Select for a 2 or 3 option choice</div>
+          <p class="card-body">A Select hides options behind an extra click and replaces a one-glance comparison with an open / scan / close cycle. The docs page is explicit: <em>"Otherwise, use a radio button for a single selection or a checkbox for multiple selections."</em></p>
+          <p class="card-note">See <code>Radio-usage.md</code> Pair 4 for the inverse rule.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 2 -->
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Use <code>isMulti</code> (with <code>hasCheckbox</code> when helpful) for genuine multi-select</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Render a single multi-select Select for one decision with several values</div>
+          <p class="card-body"><code>isMulti</code> produces a chip-style display and emits an array on change. <code>hasCheckbox</code> adds tick boxes in the menu so users see what's already selected. <code>multipleSelectMaxRows</code> caps the chip stack before scrolling begins.</p>
+          <p class="card-note">Source: <code>props.md</code> — <code>isMulti</code>, <code>hasCheckbox</code>, <code>multipleSelectMaxRows</code>; <code>examples.md</code> line 42.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Stack several single Selects to fake multi-select</div>
+          <p class="card-body">Stacked single Selects break the mental model, force redundant clicks, leave no "remove" affordance per choice, and produce no canonical array shape for the form. If the user picks several items for one slot, use <code>isMulti</code>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 3 -->
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Use <code>isAsync</code> + <code>loadOptions</code> for remote or very large data</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Stream options from the server when the full list is huge or external</div>
+          <p class="card-body">When the option set lives in a backend (user directory, knowledge-base index, country lookup), <code>isAsync</code> swaps the static array for a <code>loadOptions(inputValue, callback)</code> function. The Select shows <code>loadingMessage</code> and sets <code>aria-busy="true"</code> while results are in flight.</p>
+          <p class="card-note">Source: <code>props.md</code> — <code>isAsync</code>, <code>loadOptions</code>, <code>loadingMessage</code>; <code>accessibility.md</code> line 42. ⚠️ <code>isAsync</code> type conflict open — use boolean shorthand only until GAP-002 resolves.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Pre-load 10 000 rows into <code>options</code></div>
+          <p class="card-body">Pre-loading a huge static list ships unnecessary bytes, makes the menu jank on open, and makes filtering feel slow. If the full dataset must ship client-side (offline mode), use <code>VirtualMenuList</code> via <code>components&#123;&#125;</code> instead — only visible rows render.</p>
+          <p class="card-note">Source: <code>examples.md</code> lines 112–134 (VirtualMenuList).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 4 -->
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Always pair Select-in-Modal with <code>menuPortalTarget</code> + <code>menuPlacement="auto"</code></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Portal the menu out of the modal stacking context</div>
+          <p class="card-body">Without a portal the popover is clipped by the modal's <code>overflow</code> rules or pushed behind its z-index. Capture the modal root via a callback ref and feed it to <code>menuPortalTarget</code>. Use <code>menuPlacement="auto"</code> so the menu opens upward when the trigger is near the viewport bottom.</p>
+          <p class="card-note">Source: <code>examples.md</code> lines 74–110 (SelectModal); audit GAP-005 / GAP-006 (both props pending in <code>props.md</code>). Validate <code>Modal portalRef</code> against current <code>@8x8/oxygen-modal</code> (WARN-001).</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Drop a vanilla Select into a Modal</div>
+          <p class="card-body">The menu will clip, overflow, or hide behind the modal mask. Users see a Select that "doesn't open." This is the single most reported regression on Select-in-Modal surfaces.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 5 -->
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Give every Select a meaningful <code>labelValue</code></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Visible label via <code>labelValue</code>; use <code>infoBoxText</code> for extra context</div>
+          <p class="card-body"><code>labelValue</code> renders the visible label that <code>htmlFor</code> / <code>aria-labelledby</code> ties to the control. Use <code>infoBoxText</code> for the "why" — a tooltip the user opts into. The info button is a <strong>separate focus stop</strong> and must carry an accessible name via <code>infoBoxButtonLabel</code>, otherwise it's announced as unlabelled.</p>
+          <p class="card-note">Source: <code>props.md</code> lines 83–84, 92; <code>accessibility.md</code> lines 40, 64.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Rely on <code>placeholder</code> to label the field</div>
+          <p class="card-body"><code>placeholder</code> disappears the moment a value is chosen — there is then no visible label at all, and assistive tech announces the control without a name. Dropping <code>labelValue</code> and showing the label as plain prose elsewhere breaks the <code>htmlFor</code> association.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 6 -->
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Pair <code>hasError</code> with a visible message — not a red border alone</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Render <code>hasError=&#123;true&#125;</code> <em>and</em> a sibling error element</div>
+          <p class="card-body"><code>hasError</code> flips the visual error state and sets <code>aria-invalid="true"</code>, but the error <strong>message</strong> is not part of the Select — consuming surfaces render it themselves below the field. Wire it in with <code>aria-describedby</code> where possible to satisfy WCAG 3.3.1.</p>
+          <p class="card-note">Source: <code>props.md</code> line 77; <code>accessibility.md</code> lines 39, 63, 79. Audit GAP-007 — no error example yet in <code>examples.md</code>.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Set <code>hasError</code> and call it done</div>
+          <p class="card-body">A red border alone fails colour-only communication checks and leaves screen-reader users with no idea <em>what</em> is wrong. Users who don't perceive the colour will repeatedly retry the same submission.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 7 -->
+    <div class="pair">
+      <div class="pair-label">Pair 7 — Be deliberate about <code>isClearable</code> on required fields</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Set <code>isClearable=&#123;false&#125;</code> when the field is required</div>
+          <p class="card-body"><code>isClearable</code> defaults to <code>true</code>, so by default the field renders a clear <code>×</code> that drops the value back to nothing. On a required field that's a footgun — users can clear, blur, and submit an empty value. Either set <code>isClearable=&#123;false&#125;</code> or pair clearing with explicit validation.</p>
+          <p class="card-note">Source: <code>props.md</code> lines 86, 91 — <code>isClearable</code> default is <code>true</code>; <code>isRequired</code> sets <code>aria-required</code>.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Leave <code>isClearable</code> at default on a required Select with no clear-handler</div>
+          <p class="card-body">The default-true clear button silently invalidates the value with no user-visible feedback unless the form surrounds it with validation. The <code>*</code> required indicator advertises that a value is mandatory, but the affordance contradicts it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pair 8 -->
+    <div class="pair">
+      <div class="pair-label">Pair 8 — Keep <code>placeholder</code> short and distinct from the label</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use <code>placeholder</code> as a one-line hint about <em>what</em> to pick</div>
+          <p class="card-body">The placeholder disappears the moment the user selects a value, so any information it carries is lost. Keep it to a short verb-phrase — "Select a region", "Choose a billing cadence" — and rely on <code>labelValue</code> for the persistent label and <code>infoBoxText</code> for context.</p>
+          <p class="card-note">Source: <code>props.md</code> lines 92, 100; docs-page Anatomy (Label and Select field are separate parts).</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Stuff explanation into <code>placeholder</code> or duplicate the label</div>
+          <p class="card-body">A long <code>placeholder</code> overflows the field, wraps awkwardly, and vanishes on select. Repeating the label inside the placeholder doubles the visual weight and adds nothing for screen-reader users — the <code>labelValue</code> label is already announced.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <!-- Gaps -->
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>—</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>These Do/Don't pairs are authored from extracted artifacts and the public <a href="https://oxygen.8x8.com/components/dropdown/usage" style="color:#5046e4;">oxygen.8x8.com/components/dropdown/usage</a> page, not from a Figma examples page. Replace with Figma-sourced pairs once a <code>↳ Select examples</code> page is created with Do/Don't card frames.</td>
+          </tr>
+          <tr>
+            <td>GAP-001</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td><code>Select-figma.md</code> has not been extracted (Desktop Bridge was offline). Per-state colour tokens, variant axes, and the leading-visuals frame (icon/status/avatar) are undocumented. Run <code>figma-extract Select</code> targeting node <code>2105:2</code> in file <code>5YihJ5WuDvnvrlrRMC4sBp</code>.</td>
+          </tr>
+          <tr>
+            <td>GAP-002</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td><code>isAsync</code> prop is typed <code>boolean</code> in one OX MCP endpoint and <code>IsAsync</code> in another. Inspect <code>@8x8/oxygen-select</code> TS exports to resolve. Pair 3 avoids type annotations on this prop until resolved.</td>
+          </tr>
+          <tr>
+            <td>GAP-003</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td>Storybook examples use <code>&lt;Select ref=&#123;...&#125; /&gt;</code> while <code>props.md</code> documents <code>forwardedRef</code>. Confirm whether <code>React.forwardRef</code> is used, which determines whether both patterns work. No <code>ref</code> example appears in any pair above until resolved.</td>
+          </tr>
+          <tr>
+            <td>GAP-011</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>Only <code>ui01</code> (selected-row background) was returned by the MCP token search. Rest / hover / focus-ring / error / disabled / popover-shadow tokens are defined internally and not exposed as standalone theme tokens. The state table in <code>Select-usage.md</code> flags these as <code>UNKNOWN — pending Select-figma.md</code>.</td>
+          </tr>
+          <tr>
+            <td>GAP-012</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>All accessibility guidance in <code>accessibility.md</code> is inferred from react-select and the WAI-ARIA combobox pattern — not confirmed from the rendered DOM. Spot-check ARIA attributes before publishing externally.</td>
+          </tr>
+          <tr>
+            <td>GAP-014</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>No <code>↳ Select examples</code> Figma page with Do/Don't card frames exists. The 8 pairs in this file are editorial. Request the designer to create one following the <code>figma-draw</code> template convention so <code>figma-extract-usage</code> can run.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance authored from extracted artifacts (props.md, examples.md, tokens.md, accessibility.md) and <a href="https://oxygen.8x8.com/components/dropdown/usage" style="color:#9ca3af;">oxygen.8x8.com/components/dropdown/usage</a> · No Figma examples page available · No Select-figma.md yet · 2026-05-14
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton Circle — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+    .breadcrumb {
+      font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; }
+    .see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6; border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0; padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0; font-size: 13.5px; color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07); padding: 1px 4px;
+      border-radius: 3px; font-size: 12px;
+    }
+    .callout-editorial a { color: #5c4200; text-decoration: underline; }
+
+    .callout-info {
+      background: #f0f0ff; border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0; padding: 0.75rem 1rem;
+      margin: 1rem 0; font-size: 13.5px; color: #1e1a6e;
+    }
+
+    .intro { font-size: 15.5px; color: #374151; margin-bottom: 2rem; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+    h2 { font-size: 1.2rem; font-weight: 600; color: #0f0f1a; margin-bottom: 0.75rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 0.5rem; }
+
+    .when-section { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+    @media (max-width: 600px) { .when-section { grid-template-columns: 1fr; } }
+    .when-card { background: #fff; border-radius: 8px; padding: 1.125rem 1.25rem; border: 1px solid #e5e7eb; }
+    .when-card h3 { margin-bottom: 0.625rem; }
+    .when-card ul { padding-left: 1.25rem; color: #374151; font-size: 14px; }
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;
+    }
+    th {
+      background: #f3f4f6; font-weight: 600; padding: 0.625rem 0.875rem;
+      text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+    }
+    td { padding: 0.575rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+    .pair { margin-bottom: 1.75rem; }
+    .pair-label {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #6b7280; margin-bottom: 0.75rem;
+    }
+    .pair-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .pair-cards { grid-template-columns: 1fr; } }
+    .do-card, .dont-card { border-radius: 8px; padding: 1.125rem 1.25rem; font-size: 14px; }
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+    .card-header {
+      font-size: 13px; font-weight: 700; margin-bottom: 0.625rem;
+      display: flex; align-items: center; gap: 0.375rem;
+    }
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+    .card-body { color: #374151; line-height: 1.55; margin-bottom: 0.625rem; }
+    .card-note {
+      font-size: 12px; color: #6b7280; font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.5rem; margin-top: 0.5rem;
+    }
+    .card-note code { background: rgba(0,0,0,0.06); padding: 1px 3px; border-radius: 3px; font-size: 11px; }
+    .card-body pre {
+      background: #0f172a; color: #e2e8f0; border-radius: 6px;
+      padding: 0.625rem 0.75rem; font-size: 12px; overflow-x: auto;
+      margin: 0.5rem 0; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .badge-conflict { background: #fef3c7; color: #92400e; }
+    .badge-gap      { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial{ background: #f0f0ff; color: #3730a3; }
+
+    .page-footer {
+      margin-top: 2.5rem; font-size: 12px; color: #9ca3af;
+      border-top: 1px solid #e5e7eb; padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · feedback_status · SkeletonCircle</div>
+    <h1>Skeleton Circle — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./SkeletonCircle-figma.md">SkeletonCircle-figma.md</a> ·
+      <a href="../SkeletonBlock/SkeletonBlock-usage.md">SkeletonBlock-usage.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — not Figma-sourced.</strong> No <code>↳ Skeleton loader examples</code> Figma page exists, so <code>figma-extract-usage</code> cannot run. The Do/Don't pairs below are inferred from <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, <code>tokens.md</code>, <code>SkeletonCircle-figma.md</code>, and the public usage page at <a href="https://oxygen.8x8.com/components/skeletonloader/usage">oxygen.8x8.com/components/skeletonloader/usage</a>. Treat as provisional until a designer reviews them. Replace with <code>figma-extract-usage</code> output when a Figma examples page is created.
+  </div>
+
+  <p class="intro">
+    <code>SkeletonCircle</code> is a fully-rounded content placeholder that appears while an <strong>avatar</strong> or <strong>individual icon</strong> is loading. It is one half of the Oxygen skeleton family — pair it with <code>SkeletonBlock</code> for text-line and image placeholders in the same layout. Both components fade between the <code>ui01</code> and <code>ui02</code> tokens to convey activity until the real content paints.
+  </p>
+
+  <hr>
+
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li>Replacing an <strong>avatar</strong> (xlarge / large / medium / small — 80px → 28px) while a user, contact, or profile loads.</li>
+        <li>Replacing an <strong>individual icon</strong> in a small slot (24px → 16px) — toolbar, list-item leading icon, status indicator.</li>
+        <li>The loaded element is <strong>round</strong> in the design — circle skeletons must visually match circular avatars, not square thumbnails.</li>
+        <li>The page or list is <strong>incrementally loading</strong> and a circular placeholder keeps the row layout stable.</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li>Element is an <strong>image, thumbnail, or hero</strong> → use <strong>SkeletonBlock</strong> <code>size="custom - image"</code></li>
+        <li>Element is a <strong>text line</strong> → use <strong>SkeletonBlock</strong> with the text-style size value</li>
+        <li>Container content cannot be determined → use <strong>Spinner</strong></li>
+        <li>Loading inside a <strong>menu, dropdown, or modal</strong> → use <strong>Spinner</strong></li>
+        <li>You have a real percentage (0–100%) → use <strong>Progress Bar</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    Per <a href="https://oxygen.8x8.com/components/skeletonloader/usage">oxygen.8x8.com/components/skeletonloader/usage</a>: "Circle skeleton loaders are used for avatars and individual icons."
+  </div>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Match the diameter to the slot</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Pick the <code>size</code> value whose diameter matches the loaded avatar / icon</div>
+          <p class="card-body"><code>SkeletonCircle</code> ships nine diameter values: <code>80px - xlarge</code>, <code>48px - large</code>, <code>40px - medium</code>, <code>32px - small</code>, <code>28px - small</code>, and four <code>xsmall</code> variants at 24/22/20/16px. Use the one matching the avatar tier being replaced, so the row keeps its height when the real avatar paints.</p>
+          <pre>&lt;SkeletonCircle size="80px - xlarge" /&gt;  {/* header */}
+&lt;SkeletonCircle size="48px - large" /&gt;   {/* list */}
+&lt;SkeletonCircle size="40px - medium" /&gt;  {/* compact */}</pre>
+          <p class="card-note">Grounded in: <code>props.md</code> size table; <code>SkeletonCircle-figma.md</code> — "Each size value encodes both the pixel dimension and the semantic size label"; oxygen.8x8.com — 9 Circle sizes from 80px to 16px.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Default every avatar to the same diameter regardless of slot</div>
+          <p class="card-body">Rendering a 40px <code>medium</code> circle in a slot that will load an 80px header avatar means the page reflows when the real avatar paints — the header row visibly grows.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Circle is for avatars and icons</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Reserve <code>SkeletonCircle</code> for <strong>avatars</strong> and <strong>individual icons</strong></div>
+          <p class="card-body">The Oxygen Skeleton family has two shape primitives because real UI has two shape primitives: round avatars/icons (Circle) and rectangular text/images (Block). Use them the same way — never as interchangeable.</p>
+          <pre>{/* Avatar */}
+&lt;SkeletonCircle size="48px - large" /&gt;
+
+{/* Square thumbnail — use Block instead */}
+&lt;SkeletonBlock size="custom - image" /&gt;</pre>
+          <p class="card-note">Grounded in: oxygen.8x8.com — Circle: "used for avatars and individual icons"; Block: "typically used for images"; <code>SkeletonCircle-figma.md</code> — shared <code>ui02</code> token but distinct shape primitives.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use a large <code>SkeletonCircle</code> to stand in for a square image or thumbnail</div>
+          <p class="card-body">Showing a circle where a square will paint misrepresents the shape of the loaded UI. The layout transforms from round to square when the real content arrives — visually jarring.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 3 — One diameter per collection</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use a single, consistent diameter across every row of a list or grid</div>
+          <p class="card-body">A contact list or chat history renders all avatars at the same size. The skeleton should mirror that — every row uses the <strong>same</strong> <code>SkeletonCircle</code> size so the loading state reads as a single rhythmic column.</p>
+          <pre>{rows.map(r =&gt; (
+  &lt;div key={r.id} style={{ display: 'flex',
+        alignItems: 'center', gap: '12px' }}&gt;
+    &lt;SkeletonCircle size="40px - medium" /&gt;
+    &lt;SkeletonBlock size="20px - body01" /&gt;
+  &lt;/div&gt;
+))}</pre>
+          <p class="card-note">Grounded in: <code>examples.md</code> contact-row example; <code>SkeletonCircle-figma.md</code> — "pixel values are the disambiguating factor"; oxygen.8x8.com — "On large container-based components like tables or cards."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Mix sizes within one collection</div>
+          <p class="card-body">Rendering some rows with <code>48px - large</code> and others with <code>28px - small</code> produces a loading state that doesn't predict the loaded state. When the real avatars paint at one consistent size, every row reflows independently.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Pair Circle with Block lines</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Combine <code>SkeletonCircle</code> with <code>SkeletonBlock</code> lines for contact rows and list items</div>
+          <p class="card-body"><code>SkeletonCircle</code> rarely stands alone — it represents the avatar slot in a row that also has a name and a secondary line. Wrap one circle and two blocks in a flex row to skeleton the entire pattern.</p>
+          <pre>&lt;div style={{ display: 'flex',
+              alignItems: 'center', gap: '12px' }}&gt;
+  &lt;SkeletonCircle size="40px - medium" /&gt;
+  &lt;div style={{ flex: 1, display: 'flex',
+                flexDirection: 'column', gap: '8px' }}&gt;
+    &lt;SkeletonBlock size="20px - body01" /&gt;
+    &lt;SkeletonBlock size="16px - label01" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          <p class="card-note">Grounded in: <code>examples.md</code> "Combined with SkeletonBlock (contact row)"; <code>SkeletonBlock/examples.md</code> mirror Card-skeleton example; oxygen.8x8.com — "The spacing tokens used in the 'loaded' state will be used as default to separate different variants."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use a lone <code>SkeletonCircle</code> where the loaded UI has a circle <strong>and</strong> text</div>
+          <p class="card-body">A row that loads as "avatar + name + status" but is skeletoned as a single circle leaves a large blank space to the right. The skeleton fails to preserve the row's layout, so the page jumps on load.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Announce loading on the parent</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Set <code>aria-busy="true"</code> on the <strong>parent container</strong>, once per loading region</div>
+          <p class="card-body"><code>SkeletonCircle</code> is purely presentational — a styled <code>div</code> with no role, no text, no tab stop. Communicate loading on the parent that wraps the row (or the whole list) — once, not per skeleton.</p>
+          <pre>&lt;ul aria-busy="true" aria-label="Loading contacts"&gt;
+  &lt;li&gt;
+    &lt;SkeletonCircle size="40px - medium" /&gt;
+    &lt;SkeletonBlock size="20px - body01" /&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — ARIA role section, Screen reader guidance, WCAG 4.1.3 Status Messages.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Add <code>aria-label="Loading"</code> or <code>role="status"</code> to every individual circle</div>
+          <p class="card-body">Putting a label on every skeleton makes screen readers read "Loading. Loading. Loading. Loading…" across a 20-row list — drowning out the surrounding content. One label on the parent is correct; per-skeleton labels are noise.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Honour <code>prefers-reduced-motion</code></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Verify the shimmer pauses when the user has requested reduced motion</div>
+          <p class="card-body">The skeleton animation fades the circle's fill between <code>ui01</code> and <code>ui02</code>. Looping animations can trigger vestibular discomfort, so <code>prefers-reduced-motion: reduce</code> exists. Confirm the circle renders as a static <code>ui02</code> disc when the preference is set.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — Animation considerations; WCAG 2.3.3; oxygen.8x8.com — "alternating the colors from <code>ui01</code> to <code>ui02</code>."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Re-apply a custom shimmer in a parent stylesheet without gating on motion preferences</div>
+          <p class="card-body">Wrapping the skeleton in a parent that re-applies its own <code>@keyframes</code> overrides the Oxygen reduced-motion behaviour. Any custom shimmer must itself be wrapped in <code>@media (prefers-reduced-motion: no-preference)</code>.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>—</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>Do/Don't pairs are authored from extracted artifacts and the public oxygen.8x8.com Skeleton loader usage page, not from a Figma examples page. Should be reviewed by a designer and replaced with Figma-sourced pairs once a <code>↳ Skeleton loader examples</code> page is created.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-001</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>No Figma examples page exists for the Skeleton loader family. The public usage page contains <strong>no Do/Don't cards, no accessibility guidance, and no failure / timeout guidance</strong>.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-002</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>The Circle variant ships <strong>nine</strong> sizes, but the <code>size</code> label vocabulary (<code>xlarge / large / medium / small / xsmall</code>) collapses them — two diameters share <code>small</code> (32px, 28px) and four share <code>xsmall</code> (24/22/20/16px). The React API may have fewer enum values than the Figma axis exposes.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-003</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>No guidance on <strong>maximum / minimum display time</strong>. If real content paints in &lt;100ms the skeleton flashes; if loading exceeds a few seconds the user may interpret the shimmer as frozen.</td>
+          </tr>
+          <tr>
+            <td>CONFLICT-001</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td>Inherited from <code>SkeletonCircle-audit.md</code> GAP-001 — the <code>size</code> prop values are documented in two incompatible formats across the SkeletonBlock and SkeletonCircle folders. This file uses the Figma axis format (<code>"40px - medium"</code>, <code>"80px - xlarge"</code>) consistently. CONFLICT remains open until verified against <code>@8x8/oxygen-skeletons</code> source.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance authored from extracted artifacts (props.md, examples.md, accessibility.md, tokens.md, SkeletonCircle-figma.md, SkeletonCircle-audit.md) and oxygen.8x8.com/components/skeletonloader/usage · No Figma examples page available · 2026-05-14
+  </footer>
+
+</div>
+</body>
+</html>

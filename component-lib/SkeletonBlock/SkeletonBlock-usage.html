@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton Block — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+    .breadcrumb {
+      font-size: 12px; color: #6b7280; margin-bottom: 0.5rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    h1 { font-size: 2rem; font-weight: 700; color: #0f0f1a; line-height: 1.2; }
+    .see-also { margin-top: 0.75rem; font-size: 13px; color: #6b7280; }
+    .see-also a { color: #5046e4; text-decoration: none; }
+    .see-also a:hover { text-decoration: underline; }
+
+    .callout-editorial {
+      background: #fff8e6; border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0; padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0; font-size: 13.5px; color: #5c4200;
+    }
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07); padding: 1px 4px;
+      border-radius: 3px; font-size: 12px;
+    }
+    .callout-editorial a { color: #5c4200; text-decoration: underline; }
+
+    .callout-info {
+      background: #f0f0ff; border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0; padding: 0.75rem 1rem;
+      margin: 1rem 0; font-size: 13.5px; color: #1e1a6e;
+    }
+
+    .intro { font-size: 15.5px; color: #374151; margin-bottom: 2rem; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+    h2 { font-size: 1.2rem; font-weight: 600; color: #0f0f1a; margin-bottom: 0.75rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 0.5rem; }
+
+    .when-section { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+    @media (max-width: 600px) { .when-section { grid-template-columns: 1fr; } }
+    .when-card { background: #fff; border-radius: 8px; padding: 1.125rem 1.25rem; border: 1px solid #e5e7eb; }
+    .when-card h3 { margin-bottom: 0.625rem; }
+    .when-card ul { padding-left: 1.25rem; color: #374151; font-size: 14px; }
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;
+    }
+    th {
+      background: #f3f4f6; font-weight: 600; padding: 0.625rem 0.875rem;
+      text-align: left; color: #374151; border-bottom: 1px solid #e5e7eb;
+    }
+    td { padding: 0.575rem 0.875rem; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td code, th code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+
+    .pairs-section { margin-bottom: 0.5rem; }
+    .pair { margin-bottom: 1.75rem; }
+    .pair-label {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #6b7280; margin-bottom: 0.75rem;
+    }
+    .pair-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .pair-cards { grid-template-columns: 1fr; } }
+    .do-card, .dont-card { border-radius: 8px; padding: 1.125rem 1.25rem; font-size: 14px; }
+    .do-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .dont-card { background: #fff5f5; border: 1px solid #fecaca; }
+    .card-header {
+      font-size: 13px; font-weight: 700; margin-bottom: 0.625rem;
+      display: flex; align-items: center; gap: 0.375rem;
+    }
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+    .card-body { color: #374151; line-height: 1.55; margin-bottom: 0.625rem; }
+    .card-note {
+      font-size: 12px; color: #6b7280; font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.5rem; margin-top: 0.5rem;
+    }
+    .card-note code { background: rgba(0,0,0,0.06); padding: 1px 3px; border-radius: 3px; font-size: 11px; }
+    .card-body pre {
+      background: #0f172a; color: #e2e8f0; border-radius: 6px;
+      padding: 0.625rem 0.75rem; font-size: 12px; overflow-x: auto;
+      margin: 0.5rem 0; font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+    }
+
+    .gaps-section { margin-top: 0.5rem; }
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .badge-conflict { background: #fef3c7; color: #92400e; }
+    .badge-gap      { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial{ background: #f0f0ff; color: #3730a3; }
+
+    .page-footer {
+      margin-top: 2.5rem; font-size: 12px; color: #9ca3af;
+      border-top: 1px solid #e5e7eb; padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · feedback_status · SkeletonBlock</div>
+    <h1>Skeleton Block — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a> ·
+      <a href="./SkeletonBlock-figma.md">SkeletonBlock-figma.md</a> ·
+      <a href="../SkeletonCircle/SkeletonCircle-usage.md">SkeletonCircle-usage.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — not Figma-sourced.</strong> No <code>↳ Skeleton loader examples</code> Figma page exists, so <code>figma-extract-usage</code> cannot run. The Do/Don't pairs below are inferred from <code>props.md</code>, <code>examples.md</code>, <code>accessibility.md</code>, <code>tokens.md</code>, <code>SkeletonBlock-figma.md</code>, and the public usage page at <a href="https://oxygen.8x8.com/components/skeletonloader/usage">oxygen.8x8.com/components/skeletonloader/usage</a>. Treat as provisional until a designer reviews them. Replace with <code>figma-extract-usage</code> output when a Figma examples page is created.
+  </div>
+
+  <p class="intro">
+    <code>SkeletonBlock</code> is a rectangular content placeholder that appears while text, images, or block-level elements are loading. It is one half of the Oxygen skeleton family — pair it with <code>SkeletonCircle</code> to skeleton avatars and icons in the same layout. Both components fade between the <code>ui01</code> and <code>ui02</code> tokens to convey activity until the real content paints.
+  </p>
+
+  <hr>
+
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li>The general shape of the loaded content is <strong>already known</strong> to the application — you can predict where text lines and images will appear.</li>
+        <li>You are filling <strong>large container-based components</strong> such as cards, list rows, or tables.</li>
+        <li>The content is loading <strong>incrementally</strong> — different parts of the page paint at different times.</li>
+        <li>Replacing <strong>text lines</strong> (use the size value that mirrors the text style) or <strong>images / block elements</strong> (use <code>custom - image</code>).</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li>Container content cannot be determined → use <strong>Spinner</strong></li>
+        <li>You have a real percentage (0–100%) → use <strong>Progress Bar</strong></li>
+        <li>Loading inside a <strong>menu, dropdown, or modal</strong> → use <strong>Spinner</strong></li>
+        <li>The element is an avatar or individual icon → use <strong>SkeletonCircle</strong></li>
+        <li>Transient state ("Saved", "Sent") → use <strong>Toast</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    Per <a href="https://oxygen.8x8.com/components/skeletonloader/usage">oxygen.8x8.com/components/skeletonloader/usage</a>: "Skeleton loaders should appear whilst the content is loading and disappear once components and content are ready to be loaded onto the page."
+  </div>
+
+  <hr>
+
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Match size to text style</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Pick the <code>size</code> value whose pixel height matches the text style being replaced</div>
+          <p class="card-body"><code>SkeletonBlock</code> ships seven size values whose names encode both the height in pixels <strong>and</strong> the Oxygen text style they replace (e.g. <code>28px - heading01</code>, <code>20px - body01</code>, <code>16px - label01</code>). The naming is deliberate — it keeps the loaded and unloaded states the same height, so the layout doesn't jump when content arrives.</p>
+          <pre>&lt;SkeletonBlock size="28px - heading01" /&gt;
+&lt;SkeletonBlock size="20px - body01" /&gt;
+&lt;SkeletonBlock size="20px - body01" /&gt;</pre>
+          <p class="card-note">Grounded in: <code>props.md</code> size values table; <code>SkeletonBlock-figma.md</code> — "Size values mirror text style names … removing ambiguity for engineers"; oxygen.8x8.com — Text variant maps to heading02 / heading01 / bulletList01 / body02 / body01 / label01.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Pick an arbitrary height or reuse a single size for everything</div>
+          <p class="card-body">Using <code>20px - body01</code> for a heading or <code>40px - heading02</code> for body copy makes the skeleton taller or shorter than the text it stands in for. When the real content paints, the page reflows visibly — the worst-feeling moment of a loading state.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 2 — <code>custom - image</code> is for images</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use <code>custom - image</code> (240px) only for images and block-level placeholders</div>
+          <p class="card-body">The seventh size value renders at 240px and is intended for thumbnails, hero images, and other block-level placeholders. Text has its own dedicated size values.</p>
+          <pre>&lt;SkeletonBlock size="custom - image" /&gt;</pre>
+          <p class="card-note">Grounded in: <code>props.md</code> — <code>custom - image</code> row "Replaces an image or block-level element"; <code>SkeletonBlock-figma.md</code> — "In practice, the height should match the image or block being replaced"; oxygen.8x8.com — "Block skeleton loaders are typically used for images."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use <code>custom - image</code> as a stand-in for body text</div>
+          <p class="card-body">A 240px-tall block standing in for a paragraph misrepresents how much vertical space the real content will take, and exaggerates the perceived loading time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 3 — <code>spacing03</code> between lines</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Separate stacked text skeletons with <code>spacing03</code> (8px)</div>
+          <p class="card-body">When multiple text skeletons stack to fake a paragraph, use <code>spacing03</code> (8px) as the gap. This matches the spacing the loaded state uses, so the column height matches before and after content paints.</p>
+          <pre>&lt;div style={{ gap: '8px', display: 'flex',
+              flexDirection: 'column' }}&gt;
+  &lt;SkeletonBlock size="28px - heading01" /&gt;
+  &lt;SkeletonBlock size="20px - body01" /&gt;
+  &lt;SkeletonBlock size="20px - body01" /&gt;
+&lt;/div&gt;</pre>
+          <p class="card-note">Grounded in: <code>tokens.md</code> — "Gap between text skeleton lines · <code>spacing03</code> · 8px"; <code>examples.md</code>; <code>SkeletonBlock-figma.md</code>; oxygen.8x8.com — "the lines must use the spacing token <code>spacing03</code> (8px) between each line."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Tighten or stretch the gap with hardcoded values</div>
+          <p class="card-body">Pulling lines closer together (<code>gap: 2px</code>) or spreading them apart (<code>gap: 24px</code>) gives the loading state a different rhythm from the loaded state, so the column visibly jumps when content paints.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Combine Block + Circle for cards</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Pair <code>SkeletonBlock</code> text lines with a <code>SkeletonCircle</code> avatar</div>
+          <p class="card-body">For a contact row or comment card — avatar + name + secondary line — combine one <code>SkeletonCircle</code> for the avatar with two <code>SkeletonBlock</code> lines sized to the text styles they replace. The loaded layout snaps in without reflow.</p>
+          <pre>&lt;div style={{ display: 'flex',
+              alignItems: 'center', gap: '12px' }}&gt;
+  &lt;SkeletonCircle size="40px - medium" /&gt;
+  &lt;div style={{ flex: 1, display: 'flex',
+                flexDirection: 'column', gap: '8px' }}&gt;
+    &lt;SkeletonBlock size="22px - body02" /&gt;
+    &lt;SkeletonBlock size="16px - label01" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          <p class="card-note">Grounded in: <code>examples.md</code> — Card skeleton example; <code>SkeletonCircle/examples.md</code> — mirror contact-row example; oxygen.8x8.com — "On large container-based components like tables or cards."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Replicate every detail of the loaded card (badges, icons, dividers)</div>
+          <p class="card-body">A skeleton's job is to convey "this region is loading" with enough shape that the page doesn't feel empty. Modelling every secondary icon, divider, and badge produces a noisy placeholder that takes more effort than the loaded UI itself — and goes stale every time the real card design changes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Use <code>aria-busy</code>, not the shimmer</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Wrap the skeleton region in a container with <code>aria-busy="true"</code></div>
+          <p class="card-body"><code>SkeletonBlock</code> is purely presentational — a styled <code>div</code> with no role, no text, no tab stop. Screen readers will not announce it. Communicate the loading state programmatically on the parent: <code>aria-busy="true"</code> while loading, plus an <code>aria-label</code> (or a visually-hidden live region).</p>
+          <pre>&lt;div aria-busy="true" aria-label="Loading article"&gt;
+  &lt;SkeletonBlock size="28px - heading01" /&gt;
+  &lt;SkeletonBlock size="20px - body01" /&gt;
+&lt;/div&gt;</pre>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — ARIA role section, Screen reader guidance, WCAG 4.1.3 Status Messages.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Rely on the shimmer animation as the only loading cue</div>
+          <p class="card-body">The fade between <code>ui01</code> and <code>ui02</code> is purely visual. A non-sighted user, a low-bandwidth user where the animation stutters, or a user who has disabled motion will receive no signal at all that the region is loading. Without <code>aria-busy</code> on the parent, the page reads as "empty" — not "loading".</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Honour <code>prefers-reduced-motion</code></div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Verify the skeleton animation pauses when the user has requested reduced motion</div>
+          <p class="card-body">The Oxygen skeleton animation transitions the fill between <code>ui01</code> and <code>ui02</code>. Looping animations can trigger vestibular discomfort, which is why <code>prefers-reduced-motion: reduce</code> exists. Confirm the skeleton renders as a static <code>ui02</code> rectangle when the preference is set.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — Animation considerations; WCAG 2.3.3 Animation from Interactions; oxygen.8x8.com — "alternating the colors from <code>ui01</code> to <code>ui02</code>."</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Ship custom CSS that re-enables the shimmer for everyone</div>
+          <p class="card-body">Wrapping the skeleton in a parent that re-applies its own <code>@keyframes</code> animation undoes the package's reduced-motion behaviour. Any custom shimmer must itself be gated by <code>@media (prefers-reduced-motion: no-preference)</code>.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>—</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>Do/Don't pairs are authored from extracted artifacts and the public oxygen.8x8.com Skeleton loader usage page, not from a Figma examples page. Should be reviewed by a designer and replaced with Figma-sourced pairs once a <code>↳ Skeleton loader examples</code> page is created.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-001</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>No Figma examples page exists for the Skeleton loader family. The public usage page documents variants, spacing, and "When to use / not to use" but contains <strong>no Do/Don't cards, no accessibility guidance, and no failure / timeout guidance</strong>.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-002</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>No guidance on <strong>maximum / minimum display time</strong>. If real content paints in &lt;100ms the skeleton flashes; if loading exceeds a few seconds the user may interpret the shimmer as frozen. Confirm whether a recommended threshold exists.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-003</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>The OX usage page treats Block, Circle and Text as three variants of one component, but the Oxygen React API exposes two components (<code>SkeletonBlock</code>, <code>SkeletonCircle</code>) — Text is handled by <code>SkeletonBlock</code> size values. Published page and API drift on naming.</td>
+          </tr>
+          <tr>
+            <td>CONFLICT-001</td>
+            <td><span class="badge badge-conflict">Conflict</span></td>
+            <td>Inherited from <code>SkeletonBlock-audit.md</code> GAP-001 — the <code>size</code> prop values for <code>SkeletonCircle</code> are documented in two incompatible formats across the SkeletonBlock and SkeletonCircle folders. This file uses the Figma axis format consistently. The CONFLICT remains open and must be resolved against <code>@8x8/oxygen-skeletons</code> source before doc-rewrite can proceed.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance authored from extracted artifacts (props.md, examples.md, accessibility.md, tokens.md, SkeletonBlock-figma.md, SkeletonBlock-audit.md) and oxygen.8x8.com/components/skeletonloader/usage · No Figma examples page available · 2026-05-14
+  </footer>
+
+</div>
+</body>
+</html>

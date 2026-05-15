@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Button — Usage Guidelines</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f7f7f9;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f1a;
+      line-height: 1.2;
+    }
+
+    .see-also {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .see-also a {
+      color: #5046e4;
+      text-decoration: none;
+    }
+
+    .see-also a:hover { text-decoration: underline; }
+
+    /* Editorial callout */
+    .callout-editorial {
+      background: #fff8e6;
+      border-left: 4px solid #f8ae1a;
+      border-radius: 0 6px 6px 0;
+      padding: 0.875rem 1.125rem;
+      margin: 1.5rem 0;
+      font-size: 13.5px;
+      color: #5c4200;
+    }
+
+    .callout-editorial strong { color: #3d2c00; }
+    .callout-editorial code {
+      background: rgba(0,0,0,0.07);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .callout-editorial a {
+      color: #5c4200;
+      text-decoration: underline;
+    }
+
+    /* Info callout */
+    .callout-info {
+      background: #f0f0ff;
+      border-left: 4px solid #5046e4;
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 13.5px;
+      color: #1e1a6e;
+    }
+
+    /* Intro */
+    .intro {
+      font-size: 15.5px;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f0f1a;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.5rem;
+    }
+
+    /* When to use */
+    .when-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .when-section { grid-template-columns: 1fr; }
+    }
+
+    .when-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .when-card h3 { margin-bottom: 0.625rem; }
+
+    .when-card ul {
+      padding-left: 1.25rem;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .when-card ul li { margin-bottom: 0.375rem; }
+
+    /* Alternatives table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+      padding: 0.575rem 0.875rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td code, th code {
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    /* Do / Don't pairs */
+    .pairs-section { margin-bottom: 0.5rem; }
+
+    .pair {
+      margin-bottom: 1.75rem;
+    }
+
+    .pair-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+
+    .pair-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pair-cards { grid-template-columns: 1fr; }
+    }
+
+    .do-card, .dont-card {
+      border-radius: 8px;
+      padding: 1.125rem 1.25rem;
+      font-size: 14px;
+    }
+
+    .do-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .dont-card {
+      background: #fff5f5;
+      border: 1px solid #fecaca;
+    }
+
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 0.625rem;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .do-card .card-header { color: #166534; }
+    .dont-card .card-header { color: #991b1b; }
+
+    .card-body {
+      color: #374151;
+      line-height: 1.55;
+      margin-bottom: 0.625rem;
+    }
+
+    .card-note {
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .card-note code {
+      background: rgba(0,0,0,0.06);
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    /* Gaps table */
+    .gaps-section { margin-top: 0.5rem; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-conflict { background: #fef3c7; color: #92400e; }
+    .badge-gap      { background: #ede9fe; color: #5b21b6; }
+    .badge-editorial{ background: #f0f0ff; color: #3730a3; }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="breadcrumb">Oxygen Design System · form_inputs · Radio</div>
+    <h1>Radio Button — Usage Guidelines</h1>
+    <p class="see-also">
+      See also:
+      <a href="./props.md">props.md</a> ·
+      <a href="./examples.md">examples.md</a> ·
+      <a href="./tokens.md">tokens.md</a> ·
+      <a href="./accessibility.md">accessibility.md</a>
+    </p>
+  </header>
+
+  <div class="callout-editorial">
+    <strong>Editorial guidance — mirrors the published Oxygen docs page.</strong> No <code>↳ Radio examples</code> Figma page with Do/Don't card frames exists, so <code>figma-extract-usage</code> cannot run. The Do/Don't pairs below are derived from the published <a href="https://oxygen.8x8.com/components/radiobutton/usage">oxygen.8x8.com/components/radiobutton/usage</a> page cross-validated against <code>props.md</code>, <code>examples.md</code>, <code>tokens.md</code>, and <code>accessibility.md</code>. <code>Radio-figma.md</code> has not been extracted yet — per-state colour tokens are flagged as gaps. Treat as provisional until a designer reviews them.
+  </div>
+
+  <p class="intro">
+    Radio Buttons are input controls that let a user <strong>select exactly one option</strong> from a related group. Selecting a new option automatically deselects the previously selected one. Reach for them in form choices, plan pickers, side-panel filters, modal confirmations, and any setting where the choices are mutually exclusive and the full list is short enough to display at once.
+  </p>
+
+  <hr>
+
+  <!-- When to use / When not to use -->
+  <div class="when-section">
+    <div class="when-card">
+      <h3>✅ When to use</h3>
+      <ul>
+        <li>The user must pick <strong>exactly one</strong> option from a related set.</li>
+        <li>The full list of options is short enough to show at once (typically ≤ 5 options).</li>
+        <li>Seeing every option side-by-side helps the user choose — they're comparing alternatives, not searching.</li>
+        <li>Suitable surfaces: forms, modals, side panels, full pages (verbatim from the docs page).</li>
+      </ul>
+    </div>
+    <div class="when-card">
+      <h3>❌ When not to use</h3>
+      <ul>
+        <li>User can select <strong>multiple options</strong> → use <strong>Checkbox</strong> (verbatim from the docs page)</li>
+        <li>Setting takes effect <strong>immediately</strong> on toggle → use <strong>ToggleButton</strong></li>
+        <li><strong>Many</strong> options + constrained space → use a single-select <strong>Select</strong></li>
+        <li>Purely visual <strong>read-only</strong> indicator → use plain text, <strong>Tag</strong>, or an icon</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-info">
+    Every <code>RadioGroup</code> should have a preselected default. The Oxygen docs page is explicit: "for default view for a radio button group is to have one of them preselected."
+  </div>
+
+  <hr>
+
+  <!-- Do / Don't pairs -->
+  <h2>Do / Don't</h2>
+  <div class="pairs-section">
+
+    <div class="pair">
+      <div class="pair-label">Pair 1 — Single-select only</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use Radio for mutually-exclusive single-select</div>
+          <p class="card-body">Each <code>RadioGroup</code> enforces single-select by tracking one <code>value</code>. Use it when picking option A must clear option B — billing cadence, plan tier, yes/no decisions, mutually-exclusive filters.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — <code>role="radiogroup"</code> + native <code>radio</code> inputs; <code>props.md</code> — <code>RadioGroup</code> <code>value</code> is singular.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Use Radio when more than one option can be selected</div>
+          <p class="card-body">If the user can choose several options simultaneously, the affordance lies: arrow keys silently switch the selection, and the <code>radiogroup</code> semantics misrepresent the constraint. The docs page is explicit: <em>"If the user can select multiple options, use checkboxes instead."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 2 — Preselect a default</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Ship a <code>RadioGroup</code> with one option already selected</div>
+          <p class="card-body">Pick the safest or most common option as the default and pass it as the group's initial <code>value</code>. The docs page treats this as the default view; <code>examples.md</code> reinforces it: <em>"One option should always be preselected."</em></p>
+          <p class="card-note">Grounded in: oxygen.8x8.com — "for default view … one of them preselected"; <code>examples.md</code> — basic vertical group call-out.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Ship a <code>RadioGroup</code> with nothing selected</div>
+          <p class="card-body">An unselected group makes the keyboard pattern awkward (Tab lands on the first option, but no value is committed), forces an extra step, and breaks the docs-page expectation. If no safe default exists, consider whether <code>Select</code> with a placeholder is a better fit.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 3 — Group container + label</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Wrap related Radios in a <code>RadioGroup</code> and give it an accessible name</div>
+          <p class="card-body"><code>RadioGroup</code> supplies <code>role="radiogroup"</code> so arrow-key roving-tabindex works and the options are announced as a set. Pair it with a heading via <code>aria-labelledby</code>, or set <code>aria-label</code> on the container when no visible label is possible.</p>
+          <p class="card-note">Grounded in: <code>accessibility.md</code> — ARIA roles table; <code>props.md</code> — <code>RadioGroup</code> manages selection across children.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Free-float bare <code>Radio</code> components</div>
+          <p class="card-body">Without <code>RadioGroup</code>, the <code>radiogroup</code> role is absent, arrow keys don't roving-tabindex, the shared <code>name</code> is missing, and the <code>$spacing(2)</code> rhythm between items breaks down. AT users get no signal that the items belong together.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 4 — Short lists only</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use Radio when the full option set is visible at once</div>
+          <p class="card-body">Radio shines when the user can scan all alternatives in one glance and the comparison is part of the decision — 2–5 plans, yes/no/maybe, billing cadence. The docs page's example surfaces (forms, modals, side panels) implicitly assume a short list.</p>
+          <p class="card-note">Grounded in: oxygen.8x8.com Placement section ("use … determined by the space in the UI"); cross-validated against the Checkbox usage page "many options + space pressure" rule.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Stack 10+ options as Radios</div>
+          <p class="card-body">A long vertical Radio list overflows the surface, slows scanning, and makes arrow-key navigation tedious. For long, paginated, or searchable lists (e.g. country pickers), use a single-select <strong>Select</strong> — one row of UI plus type-to-search.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 5 — Label vs infoBoxText</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Keep <code>label</code> tight; put context in <code>infoBoxText</code></div>
+          <p class="card-body">The label is the option name; the info button — a separate focus stop with its own accessible name from <code>infoBoxButtonLabel</code> — hosts the "why". This keeps Radio rows scannable and lets users opt into more detail.</p>
+          <p class="card-note">Grounded in: <code>props.md</code> — <code>infoBoxText</code> + <code>infoBoxButtonLabel</code>; <code>accessibility.md</code> — info button is a separate focus stop; <code>examples.md</code> — info-tooltip example.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Pack the explanation into <code>label</code></div>
+          <p class="card-body">Long labels wrap (the overflow rule top-aligns the radio to the first line), defeat scanning, and force every user — sighted or not — to read the full sentence before they can compare options. Use <code>infoBoxText</code> for the long version.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-label">Pair 6 — Horizontal layout discipline</div>
+      <div class="pair-cards">
+        <div class="do-card">
+          <div class="card-header">✅ Do — Use <code>isHorizontal</code> only for binary / near-binary choices with short labels</div>
+          <p class="card-body">Horizontal layout works best for two- or three-option choices whose labels fit comfortably side-by-side — Yes/No, On/Off, Annual/Monthly. The <code>$spacing(2)</code> (8 px) gap between items is tight; anything longer than ~12 characters per label will feel cramped.</p>
+          <p class="card-note">Grounded in: <code>tokens.md</code> — <code>$spacing(2)</code> = 8 px group gap; <code>examples.md</code> — "Use horizontal layout when space is limited and options are short"; <code>props.md</code> — <code>isHorizontal</code>.</p>
+        </div>
+        <div class="dont-card">
+          <div class="card-header">❌ Don't — Force a long-label list into a horizontal row</div>
+          <p class="card-body">Horizontal layout breaks down once labels wrap or the row count exceeds three. The input circle top-aligns to multi-line labels — which only looks intentional when each label is a single line. Stick to the default vertical layout in those cases.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <!-- Gaps -->
+  <h2>Gaps &amp; open questions</h2>
+  <div class="gaps-section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>—</td>
+            <td><span class="badge badge-editorial">Editorial</span></td>
+            <td>These Do/Don't pairs are authored from extracted artifacts and the public oxygen.8x8.com usage page, not from a Figma examples page. Replace with Figma-sourced pairs once a <code>↳ Radio examples</code> page is created.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-001</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>No <code>Radio-figma.md</code> has been extracted. Per-state colour tokens (rest border, selected fill, focus ring, disabled border / fill) and the input ↔ label horizontal gap are not yet documented. Run <code>figma-extract Radio</code> to close this.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-002</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td><code>tokens.md</code> reports "No dedicated Radio-specific theme tokens were returned by the Oxygen MCP token search." Per-state bindings must be resolved via Figma variable traversal in <code>Radio-figma.md</code>, not guessed against the broader theme.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-003</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>The published docs page covers only one "when not to use" rule (multi-select → Checkbox). The three additional rows in the editorial table above (instant-effect toggle, many options, read-only) should be reviewed by the Oxygen team and either promoted to docs or trimmed.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-004</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>Whether Oxygen's <code>RadioGroup</code> emits a native <code>&lt;fieldset&gt;</code> / <code>&lt;legend&gt;</code> wrapper is unverified — <code>accessibility.md</code> recommends <code>aria-labelledby</code> / <code>aria-label</code> but doesn't confirm the DOM emission. If <code>RadioGroup</code> does not wrap automatically, consuming surfaces should supply one.</td>
+          </tr>
+          <tr>
+            <td>GAP-USAGE-005</td>
+            <td><span class="badge badge-gap">Source gap</span></td>
+            <td>The canonical <code>aria-describedby</code> / <code>aria-live</code> wiring for <code>RadioGroup</code> errors is not yet documented. The Slot-based form-field pattern in <code>examples.md</code> shows Header / Slot / Footer / Error layout, but the screen-reader plumbing should be confirmed against <code>CheckboxGroup</code> guidance.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Editorial guidance authored from extracted artifacts (props.md, examples.md, tokens.md, accessibility.md) and oxygen.8x8.com/components/radiobutton/usage · No Figma examples page available · No Radio-figma.md yet · 2026-05-14
+  </footer>
+
+</div>
+</body>
+</html>

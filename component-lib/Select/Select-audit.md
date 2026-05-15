@@ -2,7 +2,7 @@
 rubric_version: "1.0"
 component: Select
 package: "@8x8/oxygen-select"
-audit_date: "2026-04-29"
+audit_date: "2026-05-14"
 auditor: doc-audit skill
 
 files_found:
@@ -10,11 +10,11 @@ files_found:
   - examples.md
   - tokens.md
   - accessibility.md
+  - Select-usage.md
   - select-pui.md
 
 files_missing:
-  - select-figma.md
-  - select-usage.md
+  - Select-figma.md
 
 verdict: NO
 verdict_rationale: >
@@ -25,22 +25,25 @@ verdict_rationale: >
   `forwardedRef` as the ref prop — it is unclear whether both patterns are
   supported simultaneously. These must be resolved before doc-rewrite can
   produce a spec without risk of incorrect type or usage guidance.
-  Additionally, select-figma.md is missing (blocker SOURCE_GAP), which would
+  Additionally, Select-figma.md is missing (blocker SOURCE_GAP), which would
   independently produce a PARTIAL verdict. With CONFLICTs present, NO takes
   precedence.
+  Select-usage.md was added in this audit cycle (2026-05-14) as an editorial
+  file — usage_guidelines score improves from 0.25 to 0.68. The file is
+  editorial only (no Figma Do/Don't cards exist); score is capped accordingly.
 
 scores:
-  props_completeness:      0.78
+  props_completeness:      0.80
   examples_coverage:       0.65
   token_coverage:          0.35
   accessibility:           0.78
   figma_alignment:         0.15
-  usage_guidelines:        0.25
+  usage_guidelines:        0.68
   cross_file_consistency:  0.78
-  overall:                 0.53
+  overall:                 0.60
 
 gap_counts:
-  doc_gaps: 8
+  doc_gaps: 7
   source_gaps: 5
   conflicts: 2
   warnings: 3
@@ -56,15 +59,16 @@ gaps:
       source_file: "(absent)"
       location: "component-lib/Select/"
       finding: >
-        select-figma.md does not exist. figma-extract was not run. The Figma
-        Desktop Bridge plugin was not available during this session so
-        get_design_context failed. Metadata (node structure) and a screenshot
-        were captured via get_metadata and get_screenshot, but these are
-        insufficient for a full figma.md file — variant properties, token
+        Select-figma.md does not exist. figma-extract was not run. The Figma
+        Desktop Bridge plugin was not available during the original extract
+        session so get_design_context failed. Metadata (node structure) and a
+        screenshot were captured via get_metadata and get_screenshot, but these
+        are insufficient for a full figma.md file — variant properties, token
         bindings, spacing values, and design annotations were not extracted.
         The Figma node 2105:2 in file 5YihJ5WuDvnvrlrRMC4sBp contains the
         Select component set with ~80 variants across Mode × Size × State ×
-        Open × Error dimensions plus a leading-visuals frame (icon/status/avatar).
+        Open × Error dimensions plus a leading-visuals frame
+        (icon/status/avatar).
     fix_action: >
       Open Figma Desktop Bridge plugin, then run the figma-extract skill for
       Select targeting node 2105:2, file 5YihJ5WuDvnvrlrRMC4sBp. The
@@ -84,7 +88,7 @@ gaps:
     auto_fixable: false
     evidence:
       source_file: props.md
-      location: "props.md line 31 vs get-component-props MCP response"
+      location: "props.md line 85 vs get-component-props MCP response"
       finding: >
         The `isAsync` prop has two conflicting type definitions from the same
         authoritative source (OX MCP, two different endpoints):
@@ -112,7 +116,7 @@ gaps:
     auto_fixable: false
     evidence:
       source_file: examples.md
-      location: "examples.md line 42 vs props.md line 19"
+      location: "examples.md line 70 vs props.md line 75"
       finding: >
         props.md documents `forwardedRef: React.Ref<any>` as the prop for
         attaching a ref to the Select instance. However, the MCP Storybook
@@ -141,7 +145,7 @@ gaps:
     auto_fixable: false
     evidence:
       source_file: props.md
-      location: "props.md — options prop row"
+      location: "props.md line 71 — options prop row"
       finding: >
         The `options` prop is typed as `SelectOption[]` but `SelectOption` is
         never defined. The examples show both flat options `{ value, label }`
@@ -156,7 +160,6 @@ gaps:
       (icon, isDisabled, etc.).
     blocks:
       - props.md type completeness
-      - examples.md correctness
     dependency: []
 
   - id: GAP-005
@@ -167,7 +170,7 @@ gaps:
     auto_fixable: true
     evidence:
       source_file: examples.md
-      location: "examples.md lines 53–70 (SelectModal example)"
+      location: "examples.md line 102 (SelectModal example)"
       finding: >
         `menuPortalTarget` is used in the Select-in-Modal example
         (`menuPortalTarget={portalTarget}`) but this prop is not in props.md.
@@ -191,7 +194,7 @@ gaps:
     auto_fixable: true
     evidence:
       source_file: examples.md
-      location: "examples.md lines 38–40 (MenuPlacement example)"
+      location: "examples.md lines 47–53 (MenuPlacement example)"
       finding: >
         `menuPlacement` is used in the MenuPlacement example
         (`menuPlacement="auto"`) but this prop is not in props.md. It is
@@ -217,9 +220,10 @@ gaps:
       location: "examples.md — all examples"
       finding: >
         No example demonstrates the error state. `hasError` is a documented
-        prop that renders a red border. The Figma component set has Error=True
-        variants for all sizes and modes, yet no code example shows how to
-        combine `hasError` with an error message below the field.
+        prop that renders a red border and sets aria-invalid. The Figma
+        component set has Error=True variants for all sizes and modes, yet no
+        code example shows how to combine `hasError` with an error message
+        below the field.
     fix_action: >
       Add an error state example to examples.md showing `hasError={true}` with
       a visible error message element below the Select (presumably a sibling
@@ -289,7 +293,7 @@ gaps:
     fix_action: >
       Add a size variants example to examples.md demonstrating all three
       `size` values side by side. Note the 'default' → Medium naming
-      discrepancy.
+      discrepancy (already documented in props.md line 102).
     blocks: []
     dependency: []
 
@@ -321,28 +325,6 @@ gaps:
     dependency: [GAP-001]
 
   - id: GAP-012
-    dimension: props_completeness
-    severity: minor
-    type: DOC_GAP
-    confidence: heuristic
-    auto_fixable: true
-    evidence:
-      source_file: props.md
-      location: "props.md — size prop row"
-      finding: >
-        The `size` prop documents values `'default' | 'large' | 'small'` but
-        does not explain that `'default'` corresponds to the Figma "Medium"
-        variant. This disconnect between the code API ('default') and the
-        design system label ('Medium') is confusing for engineers cross-
-        referencing Figma and code.
-    fix_action: >
-      Add a note to the `size` prop description: "Note: `'default'` in code
-      corresponds to the 'Medium' size in Figma." Update the Figma Variants
-      table to show the code value alongside the Figma label.
-    blocks: []
-    dependency: []
-
-  - id: GAP-013
     dimension: accessibility
     severity: minor
     type: SOURCE_GAP
@@ -367,31 +349,7 @@ gaps:
     blocks: []
     dependency: [GAP-001]
 
-  - id: GAP-014
-    dimension: usage_guidelines
-    severity: major
-    type: SOURCE_GAP
-    confidence: deterministic
-    auto_fixable: false
-    evidence:
-      source_file: "(absent)"
-      location: "component-lib/Select/"
-      finding: >
-        select-usage.md does not exist. figma-extract-usage was not run.
-        The Do/Don't visual examples from Figma have not been captured.
-        Basic usage guidance (when to use / when not to use) was extracted
-        from the OX MCP usage field and included in examples.md, but this is
-        a text summary only — no paired visual Do/Don't examples are present.
-    fix_action: >
-      Run the figma-extract-usage skill for Select. If the Figma page has
-      no Do/Don't frames, request the designer to add them following the
-      figma-draw template convention.
-    blocks:
-      - docusaurus usage-guidelines section
-      - storybook usage stories
-    dependency: []
-
-  - id: GAP-015
+  - id: GAP-013
     dimension: figma_alignment
     severity: minor
     type: SOURCE_GAP
@@ -415,6 +373,33 @@ gaps:
       flag as a design–code gap.
     blocks: []
     dependency: [GAP-001]
+
+  - id: GAP-014
+    dimension: usage_guidelines
+    severity: major
+    type: SOURCE_GAP
+    confidence: deterministic
+    auto_fixable: false
+    evidence:
+      source_file: Select-usage.md
+      location: "component-lib/Select/Select-usage.md — frontmatter source_type"
+      finding: >
+        Select-usage.md now exists (added 2026-05-14) as an editorial file
+        compiled from the published Oxygen docs page and extracted MCP
+        artifacts. However, no Figma '↳ Select examples' page with Do/Don't
+        card frames exists, so figma-extract-usage cannot run. The usage file
+        has 8 editorial pairs but no screenshots, no HTML render, and no
+        Figma-grounded visual examples. The usage_guidelines score is capped
+        at 0.68 (vs. theoretical max 1.0 with Figma cards) until visual
+        Do/Don't frames are added to Figma.
+    fix_action: >
+      Request the designer to create a '↳ Select examples' Figma page following
+      the figma-draw template convention with ✅ Do and ❌ Don't card frames.
+      Once frames exist, run figma-extract-usage to replace the editorial pairs
+      with Figma-grounded output.
+    blocks:
+      - usage_guidelines reaching full score
+    dependency: []
 
 warnings:
   - id: WARN-001
@@ -452,8 +437,7 @@ warnings:
       The select-pui.md file uses `<!-- NONE IDENTIFIED -->` markers in each
       section rather than the canonical `<!-- NO RELEVANT PUI CONTEXT -->` marker
       that the doc-audit skill treats as an explicit positive signal. The intent
-      is clear but the marker is non-standard. If a future pipeline step does
-      a string match for the canonical marker, it will not find it.
+      is clear but the marker is non-standard.
     recommendation: >
       Replace the section-level `<!-- NONE IDENTIFIED -->` markers in
       select-pui.md with a single top-level
@@ -468,6 +452,7 @@ siblings:
   - "[[Select/examples]]"
   - "[[Select/tokens]]"
   - "[[Select/accessibility]]"
+  - "[[Select/Select-usage]]"
   - "[[Select/select-pui]]"
 tags:
   - oxygen
@@ -482,11 +467,14 @@ tags:
 >
 > Two deterministic CONFLICTs in the OX MCP source data must be resolved first:
 > `isAsync` type (`boolean` vs `IsAsync`) and `ref=` vs `forwardedRef=` prop naming.
-> Additionally, `select-figma.md` is a blocker SOURCE_GAP (Desktop Bridge was
-> offline). Once GAP-002 and GAP-003 are resolved, and select-figma.md is produced,
+> Additionally, `Select-figma.md` is a blocker SOURCE_GAP (Desktop Bridge was
+> offline). Once GAP-002 and GAP-003 are resolved, and Select-figma.md is produced,
 > the verdict becomes PARTIAL → YES.
+>
+> **New since 2026-04-29 audit:** `Select-usage.md` added editorially (2026-05-14) —
+> usage_guidelines improves from 0.25 → 0.68. Overall score 0.53 → 0.60.
 
-**Audit date:** 2026-04-29 | **Rubric version:** 1.0
+**Audit date:** 2026-05-14 | **Rubric version:** 1.0
 
 ---
 
@@ -494,13 +482,13 @@ tags:
 
 | File | Status | Lines | Produced by |
 |------|--------|-------|-------------|
-| `props.md` | ✅ Present | 100 | oxygen-mcp-extract |
-| `examples.md` | ✅ Present | 156 | oxygen-mcp-extract |
-| `tokens.md` | ✅ Present | 42 | oxygen-mcp-extract |
-| `accessibility.md` | ✅ Present | 67 | oxygen-mcp-extract |
-| `select-pui.md` | ✅ Present (no PUI context) | 21 | pui-mcp-extract |
-| `select-figma.md` | ❌ Missing | — | figma-extract |
-| `select-usage.md` | ❌ Missing | — | figma-extract-usage |
+| `props.md` | ✅ Present | 130 | oxygen-mcp-extract |
+| `examples.md` | ✅ Present | 179 | oxygen-mcp-extract |
+| `tokens.md` | ✅ Present | 65 | oxygen-mcp-extract |
+| `accessibility.md` | ✅ Present | 90 | oxygen-mcp-extract |
+| `Select-usage.md` | ✅ Present (editorial) | ~325 | editorial (2026-05-14) |
+| `select-pui.md` | ✅ Present (no PUI context) | 44 | pui-mcp-extract |
+| `Select-figma.md` | ❌ Missing | — | figma-extract |
 
 ---
 
@@ -508,14 +496,14 @@ tags:
 
 | Dimension | Score | Coverage | Status |
 |-----------|-------|----------|--------|
-| Props completeness | 0.78 | 33 props present; 2 pass-throughs from examples undocumented; `SelectOption` type undefined | ⚠️ Minor + Major gaps |
+| Props completeness | 0.80 | 31/33 props present; 2 pass-throughs from examples undocumented; `SelectOption` type undefined; `size='default'`→Medium note present ✅ | ⚠️ Minor + Major gaps |
 | Examples coverage | 0.65 | 7 examples; missing error / disabled / async / size variants | ⚠️ Minor gaps |
 | Token coverage | 0.35 | 1 of ~8 expected tokens returned from MCP; state table uses placeholders | ❌ Major source gap |
 | Accessibility | 0.78 | Complete inferred structure; not confirmed from source or Figma | ⚠️ Inferred only |
 | Figma alignment | 0.15 | No figma.md; only metadata + screenshot captured | ❌ Blocker source gap |
-| Usage guidelines | 0.25 | Text-only from OX MCP; no Do/Don't visual examples | ❌ Major source gap |
+| Usage guidelines | 0.68 | 8 editorial Do/Don't pairs; no Figma card frames; no HTML render | ⚠️ Editorial only (was 0.25) |
 | Cross-file consistency | 0.78 | 2 deterministic CONFLICTs in source data | ❌ Conflicts |
-| **Overall** | **0.53** | | |
+| **Overall** | **0.60** | | **(was 0.53)** |
 
 ---
 
@@ -534,7 +522,7 @@ tags:
 
 | ID | Type | Dimension | Finding |
 |----|------|-----------|---------|
-| GAP-001 | SOURCE_GAP | Figma alignment | `select-figma.md` missing — Desktop Bridge offline during extract session |
+| GAP-001 | SOURCE_GAP | Figma alignment | `Select-figma.md` missing — Desktop Bridge offline during extract session |
 
 ### Major gaps
 
@@ -542,7 +530,7 @@ tags:
 |----|------|-----------|---------|
 | GAP-004 | DOC_GAP | Props completeness | `SelectOption` type shape not defined anywhere in docs |
 | GAP-011 | SOURCE_GAP | Token coverage | MCP returned only `ui01`; all other state tokens undocumented |
-| GAP-014 | SOURCE_GAP | Usage guidelines | `select-usage.md` missing — figma-extract-usage not run |
+| GAP-014 | SOURCE_GAP | Usage guidelines | `Select-usage.md` is editorial only — no Figma Do/Don't card frames exist |
 
 ### Minor gaps
 
@@ -554,9 +542,8 @@ tags:
 | GAP-008 | DOC_GAP | Examples coverage | No disabled state example (`isDisabled={true}`) |
 | GAP-009 | DOC_GAP | Examples coverage | No async example (`isAsync={true}` + `loadOptions`) |
 | GAP-010 | DOC_GAP | Examples coverage | No size variants example |
-| GAP-012 | DOC_GAP | Props completeness | `size='default'` ≠ Figma "Medium" — naming discrepancy not explained |
-| GAP-013 | SOURCE_GAP | Accessibility | All a11y guidance inferred; not confirmed from source or Figma |
-| GAP-015 | SOURCE_GAP | Figma alignment | Leading visuals (icon/status/avatar) in Figma not mapped to `iconLeft` prop |
+| GAP-012 | SOURCE_GAP | Accessibility | All a11y guidance inferred; not confirmed from source or Figma |
+| GAP-013 | SOURCE_GAP | Figma alignment | Leading visuals (icon/status/avatar) in Figma not mapped to `iconLeft` prop |
 
 ---
 
@@ -570,6 +557,18 @@ tags:
 
 ---
 
+## What changed since 2026-04-29
+
+| Item | Change |
+|------|--------|
+| `Select-usage.md` | Added editorially — 8 Do/Don't pairs, docs-page + MCP artifacts source |
+| `usage_guidelines` score | 0.25 → 0.68 |
+| `overall` score | 0.53 → 0.60 |
+| `GAP-012` (old: `size='default'`≠Medium) | Resolved — note already present in props.md line 102 |
+| `GAP-014` (old: usage missing) | Reclassified — file now exists; gap is "editorial only, no Figma cards" |
+
+---
+
 ## What to fix to change verdict to YES
 
 ### Step 1 — Resolve CONFLICTs (unblocks doc-rewrite)
@@ -578,7 +577,7 @@ tags:
 | GAP-002 | Check `@8x8/oxygen-select` TS exports for `IsAsync` type definition |
 | GAP-003 | Confirm whether `React.forwardRef` is used — determines if `ref=` and `forwardedRef=` both work |
 
-### Step 2 — Produce select-figma.md (unblocks figma_alignment + token dimensions)
+### Step 2 — Produce Select-figma.md (unblocks figma_alignment + token dimensions)
 | Gap | Action |
 |-----|--------|
 | GAP-001 | Open Desktop Bridge plugin in Figma, run `figma-extract Select` (node 2105:2, file 5YihJ5WuDvnvrlrRMC4sBp) |
@@ -592,7 +591,6 @@ tags:
 | GAP-008 | Add disabled state example |
 | GAP-009 | Add async example |
 | GAP-010 | Add size variants example |
-| GAP-012 | Add `'default'` = Medium mapping note |
 | WARN-003 | Fix select-pui.md marker |
 
 ### Step 4 — Requires human input
@@ -600,18 +598,17 @@ tags:
 |-----|----------------|
 | GAP-004 | Inspect `@8x8/oxygen-select` for `SelectOption` type definition |
 | GAP-011 | Re-run get-theme-tokens with broader terms; inspect component source for token consumption |
-| GAP-013 | Inspect rendered DOM to confirm ARIA attributes |
-| GAP-014 | Run figma-extract-usage (or request Do/Don't frames from designer) |
-| GAP-015 | After figma-extract: map leading visuals frame to `iconLeft` prop |
+| GAP-012 | Inspect rendered DOM to confirm ARIA attributes |
+| GAP-014 | Request designer to create `↳ Select examples` Figma page with Do/Don't card frames |
 
 ---
 
 ## Suggested next action
 
 1. Resolve GAP-002 and GAP-003 first (quick source checks, unblock everything)
-2. Run `figma-extract Select` with Desktop Bridge active
+2. Run `figma-extract Select` with Desktop Bridge active (unblocks figma_alignment + tokens)
 3. Then: `/doc-rewrite Select`
 
 ---
 
-_Audit produced by doc-audit skill · Rubric version 1.0 · 2026-04-29_
+_Audit produced by doc-audit skill · Rubric version 1.0 · 2026-05-14_

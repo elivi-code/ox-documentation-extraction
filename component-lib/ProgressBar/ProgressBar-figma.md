@@ -12,6 +12,7 @@ siblings:
   - "[[ProgressBar/examples]]"
   - "[[ProgressBar/tokens]]"
   - "[[ProgressBar/accessibility]]"
+  - "[[ProgressBar/ProgressBar-usage]]"
   - "[[ProgressBar/ProgressBar-audit]]"
 tags:
   - oxygen
@@ -30,7 +31,7 @@ tags:
 # ProgressBar — Figma Design Spec
 
 > **See also:** [props.md](./props.md) · [tokens.md](./tokens.md) ·
-> [examples.md](./examples.md) · [accessibility.md](./accessibility.md)
+> [examples.md](./examples.md) · [accessibility.md](./accessibility.md) · [ProgressBar-usage.md](./ProgressBar-usage.md)
 
 ---
 

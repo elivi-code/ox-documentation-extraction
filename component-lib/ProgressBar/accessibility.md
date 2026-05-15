@@ -12,6 +12,7 @@ siblings:
   - "[[ProgressBar/examples]]"
   - "[[ProgressBar/tokens]]"
   - "[[ProgressBar/ProgressBar-figma]]"
+  - "[[ProgressBar/ProgressBar-usage]]"
   - "[[ProgressBar/ProgressBar-audit]]"
 tags:
   - oxygen
@@ -22,7 +23,7 @@ tags:
 ---
 # ProgressBar — Accessibility
 
-> **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md)
+> **See also:** [props.md](props.md) · [examples.md](examples.md) · [tokens.md](tokens.md) · [ProgressBar-usage.md](ProgressBar-usage.md)
 
 ## ARIA role
 

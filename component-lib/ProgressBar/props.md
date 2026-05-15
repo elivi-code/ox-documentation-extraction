@@ -19,6 +19,7 @@ siblings:
   - "[[ProgressBar/tokens]]"
   - "[[ProgressBar/accessibility]]"
   - "[[ProgressBar/ProgressBar-figma]]"
+  - "[[ProgressBar/ProgressBar-usage]]"
   - "[[ProgressBar/ProgressBar-audit]]"
 tags:
   - oxygen
@@ -29,7 +30,7 @@ tags:
 ---
 # ProgressBar — Props
 
-> **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md)
+> **See also:** [examples.md](examples.md) · [tokens.md](tokens.md) · [accessibility.md](accessibility.md) · [ProgressBar-usage.md](ProgressBar-usage.md)
 
 ## Installation
 

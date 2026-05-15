@@ -2,8 +2,10 @@
 rubric_version: "1.0"
 component: ProgressBar
 package: "@8x8/oxygen-loaders"
-audit_date: "2026-05-05"
+audit_date: "2026-05-14"
 auditor: doc-audit skill
+re_audit_of: "2026-05-05"
+re_audit_reason: "ProgressBar-usage.md was created editorially (no Figma examples page exists). Re-score usage dimension; close GAP-009; partial-fix GAP-006."
 
 files_found:
   - props.md
@@ -11,10 +13,10 @@ files_found:
   - tokens.md
   - accessibility.md
   - ProgressBar-figma.md
+  - ProgressBar-usage.md     # editorial — see WARN-003
   - figma-screenshot-ProgressBar.png
 
 files_missing:
-  - ProgressBar-usage.md
   - ProgressBar-pui.md  # intentionally absent — PUI MCP confirmed no Platform UI relevance
 
 dimension_scores:
@@ -23,29 +25,28 @@ dimension_scores:
   tokens:       { score: 0.40, coverage: "2/7 — tokens.md empty; data present in ProgressBar-figma.md" }
   accessibility:{ score: 0.78, coverage: "7/9" }
   figma:        { score: 0.83, coverage: "10/12" }
-  usage:        { score: 0.00, coverage: "0/0 — SOURCE_GAP (major) — file missing" }
+  usage:        { score: 0.65, coverage: "6/9 — editorial: 5 grounded Do/Don't pairs, When to use, When not to use; missing screenshots, Figma-source verification, and a failure-state Do/Don't (see GAP-USAGE-002 in ProgressBar-usage.md)" }
   pui:          { score: 1.00, coverage: "PASS — PUI MCP search confirmed no Platform UI relevance" }
 
-available_dimensions_avg: 0.77
-overall_avg: 0.66
+available_dimensions_avg: 0.75
+overall_avg: 0.75
 
 counts:
   doc_gaps: 8
-  source_gaps: 5
+  source_gaps: 4    # was 5 — GAP-009 closed (resolved editorially)
   conflicts: 0
-  warnings: 2
+  warnings: 3       # was 2 — added WARN-003 (editorial usage)
 
 verdict: YES
 verdict_reason: >
-  Zero CONFLICTs and zero blocker-severity gaps.
-  The three items pre-labelled "Conflict" in ProgressBar-figma.md §Gaps & conflicts are
-  reclassified here as DOC_GAPs: mode→ThemeProvider, status→value mapping, and
-  loadingText/completeText→single text prop are all well-understood design-to-implementation
-  mappings with clear resolution paths — no human choice is required between competing options.
-  The major SOURCE_GAP (usage.md missing — Desktop Bridge required) blocks only the usage
-  dimension of doc-rewrite; all other six dimensions are available.
-  doc-rewrite can proceed. Pull token data from ProgressBar-figma.md §Color & token bindings
-  to populate tokens.md as part of the rewrite.
+  Zero CONFLICTs and zero blocker-severity gaps. The usage SOURCE_GAP (GAP-009)
+  is closed editorially — ProgressBar-usage.md now exists with grounded Do/Don't
+  pairs sourced from the extracted artifacts and the public Oxygen usage page.
+  WARN-003 flags that the usage file is not Figma-sourced and should be replaced
+  by figma-extract-usage output if a Figma examples page is created.
+  doc-rewrite can proceed across all 7 dimensions. Pull token data from
+  ProgressBar-figma.md §Color & token bindings to populate tokens.md as part
+  of the rewrite.
 
 gaps:
   - id: GAP-001
@@ -114,6 +115,8 @@ gaps:
         props.md documents 'value' as 0–100 but does not explain that value === 100
         triggers the 'complete' visual state (green fill, full-width). This mapping is
         visible in Figma as the 'status=complete' variant but not bridged in the Oxygen docs.
+        Note: ProgressBar-usage.md Pair 5 documents the consumer-side text-swap rule but does
+        not satisfy the props.md description gap.
     fix_action: "Extend the 'value' prop description: 'When value reaches 100 the complete state is rendered (green fill, full track coverage)'."
     blocks: []
     dependency: []
@@ -131,7 +134,8 @@ gaps:
         Figma defines separate 'loadingText' and 'completeText' text properties, while
         Oxygen has a single 'text' prop. No example demonstrates swapping text content
         as value transitions from loading to complete. Consumers may not know they must
-        manage this themselves.
+        manage this themselves. Note: ProgressBar-usage.md Pair 5 documents the editorial
+        rule; examples.md should add a code snippet that models it.
     fix_action: "Add an example to examples.md showing a controlled component that sets text='Loading...' when value < 100 and text='Complete' when value === 100."
     blocks: []
     dependency: []
@@ -142,13 +146,14 @@ gaps:
     type: DOC_GAP
     confidence: deterministic
     auto_fixable: true
+    status: partial
     evidence:
       source_file: "props.md / examples.md / tokens.md / accessibility.md"
       location: "'See also' nav line in each file"
       finding: >
-        All four OX MCP-extracted files reference only the three sibling .md files in their
-        'See also' nav line. None link to 'ProgressBar-figma.md', which exists in the folder.
-        All four cross-links are incomplete.
+        On 2026-05-14 each file's 'See also' nav was extended to include
+        ProgressBar-usage.md — but ProgressBar-figma.md is still missing from the
+        See also line in all four OX MCP files. The cross-link is still incomplete.
     fix_action: "Add '· [ProgressBar-figma.md](ProgressBar-figma.md)' to the See also line in props.md, examples.md, tokens.md, and accessibility.md."
     blocks: []
     dependency: []
@@ -195,12 +200,20 @@ gaps:
     type: SOURCE_GAP
     confidence: deterministic
     auto_fixable: false
+    status: resolved_editorially
+    resolution_date: "2026-05-14"
     evidence:
-      source_file: ~
-      location: "component-lib/ProgressBar/ directory"
-      finding: "ProgressBar-usage.md is absent. figma-extract-usage requires the Figma Desktop Bridge plugin (WebSocket on localhost:9228), which was not running during extraction."
-    fix_action: "Open Figma Desktop → Plugins → Development → Figma Desktop Bridge, then run figma-extract-usage for ProgressBar."
-    blocks: [doc-rewrite/usage-dimension]
+      source_file: ProgressBar-usage.md
+      location: "component-lib/ProgressBar/ProgressBar-usage.md"
+      finding: >
+        ProgressBar-usage.md was missing as of 2026-05-05. On 2026-05-14 an editorial
+        usage file was written from the extracted artifacts (props.md, examples.md,
+        accessibility.md, ProgressBar-figma.md) and the public Oxygen usage page
+        (https://oxygen.8x8.com/components/progressbar/usage). 5 grounded Do/Don't pairs;
+        When to use and When not to use sections present. Pairs are NOT Figma-sourced;
+        no `↳ ProgressBar examples` page exists in Figma.
+    fix_action: "When a Figma '↳ ProgressBar examples' page is created, run figma-extract-usage to replace the editorial pairs with Figma-sourced ones."
+    blocks: []
     dependency: []
 
   - id: GAP-010
@@ -266,6 +279,39 @@ gaps:
     blocks: []
     dependency: []
 
+  - id: GAP-USAGE-002
+    dimension: usage
+    severity: minor
+    type: SOURCE_GAP
+    confidence: deterministic
+    auto_fixable: false
+    evidence:
+      source_file: ProgressBar-usage.md
+      location: "## Gaps & open questions"
+      finding: >
+        No editorial guidance currently exists for how to surface a failure state.
+        The Figma component set models only `loading` and `complete` — failure is undefined.
+    fix_action: "Confirm with design whether failure should be communicated via the existing bar (text-only swap) or by switching to a different component (Toast / AlertBanner). Add a 6th Do/Don't pair to ProgressBar-usage.md once decided."
+    blocks: []
+    dependency: []
+
+  - id: GAP-USAGE-003
+    dimension: usage
+    severity: minor
+    type: DOC_GAP
+    confidence: heuristic
+    auto_fixable: false
+    evidence:
+      source_file: ProgressBar-usage.md
+      location: "## Gaps & open questions"
+      finding: >
+        Forward-only progress is documented prose-only on oxygen.8x8.com. The Oxygen API
+        does not enforce it (value can be decremented). A Do/Don't pair could harden this
+        rule editorially.
+    fix_action: "Optionally add a Do/Don't pair: ✅ Do — drive `value` forward only; ❌ Don't — decrement or reset the bar mid-flow. Decision: pending designer review of the editorial file."
+    blocks: []
+    dependency: []
+
 warnings:
   - id: WARN-001
     dimension: accessibility
@@ -286,16 +332,29 @@ warnings:
       the default for numeric/string usage only, or is the resolved pixel value of 'default'.
       Verify whether size='default' and size='240px' are equivalent; update props.md if
       the default should be 'default' (the named value) rather than '240px' (a raw dimension).
+
+  - id: WARN-003
+    dimension: usage
+    confidence: heuristic
+    note: >
+      ProgressBar-usage.md was authored editorially on 2026-05-14 from the extracted
+      artifacts and the public Oxygen usage page — NOT from a Figma `↳ ProgressBar examples`
+      page. The 5 Do/Don't pairs are explicitly grounded in cited file/line locations but
+      should be reviewed by a designer. Replace with `figma-extract-usage` output when a
+      Figma examples page is created. The file's frontmatter carries `source_type: editorial`
+      and a visible callout to flag this status to downstream consumers.
+
 # --- navigation (added by component-map) ---
 role: audit
 pipeline_stage: spec_ready
-pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
+pipeline_note: "Audit verdict YES — doc-rewrite can run on all 7 dimensions; usage is editorial (WARN-003)."
 siblings:
   - "[[ProgressBar/props]]"
   - "[[ProgressBar/examples]]"
   - "[[ProgressBar/tokens]]"
   - "[[ProgressBar/accessibility]]"
   - "[[ProgressBar/ProgressBar-figma]]"
+  - "[[ProgressBar/ProgressBar-usage]]"
 tags:
   - oxygen
   - component/ProgressBar
@@ -305,10 +364,11 @@ tags:
 
 # ProgressBar — Documentation Audit
 
-> **Verdict: YES** — doc-rewrite can proceed on 6 of 7 dimensions.
-> Usage dimension blocked pending Desktop Bridge for figma-extract-usage.
+> **Verdict: YES** — doc-rewrite can proceed on **all 7 dimensions**.
+> Usage dimension lifted 0.00 → 0.65 by editorial authoring of ProgressBar-usage.md.
+> WARN-003 flags the editorial source; replace with figma-extract-usage output when a Figma examples page is created.
 >
-> Rubric version: 1.0 · Audited: 2026-05-05
+> Rubric version: 1.0 · Re-audited: 2026-05-14 (prior audit: 2026-05-05)
 
 ---
 
@@ -322,31 +382,31 @@ tags:
 | `accessibility.md` | ✅ Present | oxygen-mcp-extract |
 | `ProgressBar-figma.md` | ✅ Present | figma-extract |
 | `figma-screenshot-ProgressBar.png` | ✅ Present | figma-extract |
-| `ProgressBar-usage.md` | ❌ **MISSING** | figma-extract-usage |
+| `ProgressBar-usage.md` | ✅ Present (**editorial** — WARN-003) | editorial (not figma-extract-usage) |
 | `ProgressBar-pui.md` | ✅ N/A — PUI MCP confirmed no relevance | pui-mcp-extract |
 
 ---
 
 ## Dimension Scores
 
-| Dimension | Score | Coverage | Notes |
-|-----------|-------|----------|-------|
-| Props | 0.80 | 8/10 | ✅ Available — minor gaps on size pixel dims and Figma mapping docs |
-| Examples | 0.78 | 7/9 | ✅ Available — animated example has undefined `step` |
-| Tokens | 0.40 | 2/7 | ⚠️ tokens.md empty; token data **present in ProgressBar-figma.md** — auto-fixable |
-| Accessibility | 0.78 | 7/9 | ✅ Available — WCAG 1.4.11 missing; contrast ratios need computing |
-| Figma | 0.83 | 10/12 | ✅ Available — Desktop Bridge gaps (variables, key, annotations) |
-| Usage | 0.00 | — | ❌ SOURCE_GAP (major) — Desktop Bridge required |
-| PUI | 1.00 | PASS | ✅ Confirmed — no Platform UI concerns |
-| **Available avg** | **0.77** | | 6 of 7 dimensions available |
-| **Overall avg** | **0.66** | | Dragged by usage=0 |
+| Dimension | Score | Δ | Coverage | Notes |
+|-----------|-------|---|----------|-------|
+| Props | 0.80 | — | 8/10 | ✅ Available — minor gaps on size pixel dims and Figma mapping docs |
+| Examples | 0.78 | — | 7/9 | ✅ Available — animated example has undefined `step` |
+| Tokens | 0.40 | — | 2/7 | ⚠️ tokens.md empty; token data **present in ProgressBar-figma.md** — auto-fixable |
+| Accessibility | 0.78 | — | 7/9 | ✅ Available — WCAG 1.4.11 missing; contrast ratios need computing |
+| Figma | 0.83 | — | 10/12 | ✅ Available — Desktop Bridge gaps (variables, key, annotations) |
+| Usage | 0.65 | **+0.65** | 6/9 | ✅ Available — editorial; 5 grounded Do/Don't pairs, When-to-use, When-not-to-use; missing screenshots and Figma-source verification (WARN-003) |
+| PUI | 1.00 | — | PASS | ✅ Confirmed — no Platform UI concerns |
+| **Available avg** | **0.75** | +0.02 (now all 7) | | All 7 dimensions available |
+| **Overall avg** | **0.75** | **+0.09** | | Usage no longer drags overall avg to zero |
 
 ---
 
-## Conflict reclassification
+## Conflict reclassification (unchanged from 2026-05-05)
 
 Three items in `ProgressBar-figma.md §Gaps & conflicts` were pre-labelled "Conflict".
-All three are reclassified as **auto-fixable DOC_GAPs** — they document well-understood
+All three remain reclassified as **auto-fixable DOC_GAPs** — they document well-understood
 design-to-implementation mappings; no human decision is required between competing options:
 
 | Was labelled | Reclassified as | Reason |
@@ -359,12 +419,29 @@ design-to-implementation mappings; no human decision is required between competi
 
 ## Gap Summary
 
-| Count | Category |
-|-------|----------|
-| 0 | CONFLICTs — **no blocks on doc-rewrite** |
-| 5 | SOURCE_GAPs (1 major, 4 minor) |
-| 8 | DOC_GAPs (1 major, 7 minor — 5 auto-fixable) |
-| 2 | Warnings (heuristic, advisory) |
+| Count | Category | Δ |
+|-------|----------|---|
+| 0 | CONFLICTs — **no blocks on doc-rewrite** | — |
+| 4 | SOURCE_GAPs (4 minor — usage SOURCE_GAP closed editorially) | **−1** (GAP-009 closed) |
+| 8 | DOC_GAPs (1 major, 7 minor — 5 auto-fixable; +GAP-USAGE-003 new minor heuristic) | net same |
+| 3 | Warnings (heuristic, advisory) | **+1** (WARN-003) |
+
+---
+
+## Status changes since 2026-05-05
+
+- **GAP-009 (Usage SOURCE_GAP)** → `status: resolved_editorially` on 2026-05-14. Editorial
+  ProgressBar-usage.md created with 5 grounded Do/Don't pairs. No Figma examples page
+  exists, so the underlying SOURCE_GAP (Figma extraction path) is technically still open —
+  but the file gap is closed and the audit reflects that.
+- **GAP-006 (Cross-links incomplete)** → `status: partial`. ProgressBar-usage.md is now
+  linked from props.md / examples.md / tokens.md / accessibility.md / ProgressBar-figma.md.
+  ProgressBar-figma.md is still NOT linked from props/examples/tokens/accessibility — the
+  original GAP-006 fix is still pending.
+- **New gap: GAP-USAGE-002** — failure-state guidance missing from ProgressBar-usage.md
+  (carried over from the file's own Gaps section).
+- **New gap: GAP-USAGE-003** — forward-only progress rule could be hardened as a Do/Don't pair.
+- **New warning: WARN-003** — usage file is editorial, not Figma-sourced.
 
 ---
 
@@ -378,61 +455,31 @@ design-to-implementation mappings; no human decision is required between competi
 > **Fix:** doc-rewrite should pull: `--ui/ui01`, `--actions/action04`, `--success/success01`,
 > `--text/textcolor01`, `--typography/body01`.
 
-### SOURCE_GAP — Major
-
-**GAP-009** · Usage
-> `ProgressBar-usage.md` absent — Figma Desktop Bridge was not running.
-> **Fix:** Open Figma Desktop → Plugins → Development → Figma Desktop Bridge, then run `figma-extract-usage`.
-
 ### DOC_GAP — Minor (auto-fixable)
 
-**GAP-003** · Props
-> No documentation of `mode` → ThemeProvider mapping.
-> **Fix:** Add theming note to `props.md`.
-
-**GAP-004** · Props
-> `value` description does not state that `value === 100` triggers the complete visual state.
-> **Fix:** Extend `value` description in `props.md`.
-
-**GAP-005** · Examples
-> No example showing text swap pattern (`Loading...` → `Complete`) as value progresses.
-> **Fix:** Add controlled example to `examples.md`.
-
-**GAP-006** · All OX files
-> `See also` nav missing `ProgressBar-figma.md` link in all four OX files.
-> **Fix:** Add `· [ProgressBar-figma.md](ProgressBar-figma.md)` to each file's nav line.
-
-**GAP-007** · Accessibility
-> WCAG 1.4.11 (Non-text Contrast) missing from checklist.
-> **Fix:** Add row; compute contrast for `--ui/ui01`, `--actions/action04`, `--success/success01`.
-
-**GAP-008** · Examples
-> Animated example references undefined `step` variable.
-> **Fix:** Add `const step = 5;` to make snippet self-contained.
+**GAP-003** · Props · Theme mapping note missing
+**GAP-004** · Props · `value === 100` completion rule not in description
+**GAP-005** · Examples · No text-swap example modelling Loading→Complete
+**GAP-006** · Cross-links — **partial fix 2026-05-14** (usage link added; figma link still missing)
+**GAP-007** · Accessibility · WCAG 1.4.11 row missing
+**GAP-008** · Examples · Animated example references undefined `step`
 
 ### DOC_GAP — Minor (requires external verification)
 
-**GAP-002** · Props
-> Named size values (`small`, `default`, `large`) have no pixel dimensions documented.
-> **Fix:** Check `@8x8/oxygen-loaders` source or Storybook for actual px values.
+**GAP-002** · Props · Named size pixel dimensions
+**GAP-USAGE-003** · Usage · Optional Do/Don't on forward-only progress
 
 ### SOURCE_GAP — Minor
 
-**GAP-010** · Figma
-> Token names from CSS vars only — not verified against Figma variable collection.
-> **Fix:** Run `figma_get_variables` with Desktop Bridge or enterprise token.
+**GAP-010** · Figma · Token names from CSS vars only
+**GAP-011** · Figma · Component key not retrieved
+**GAP-012** · Figma · 8px gap / 8px track-height untokenised
+**GAP-013** · Accessibility · No Figma a11y annotations
+**GAP-USAGE-002** · Usage · Failure-state guidance undefined
 
-**GAP-011** · Figma
-> Figma component key not retrieved (`figma_get_component_details` requires Desktop Bridge).
-> **Fix:** Retrieve when Desktop Bridge available.
+### SOURCE_GAP — Closed
 
-**GAP-012** · Figma
-> `8px` bar track height and `8px` bar-to-label gap have no token bindings.
-> **Fix:** Design decision needed — flag to designer.
-
-**GAP-013** · Accessibility
-> No accessibility annotations in Figma — all a11y docs are inferred from component type.
-> **Fix:** Add ARIA role annotation to Bar component in Figma.
+**GAP-009** · Usage · ✅ Resolved editorially 2026-05-14 (see WARN-003)
 
 ---
 
@@ -445,19 +492,25 @@ Verify before shipping.
 **WARN-002 (Props):** `size` default `'240px'` may be the resolved pixel value of the
 `'default'` named size rather than a standalone default. Verify and update if needed.
 
+**WARN-003 (Usage):** ProgressBar-usage.md is editorial — authored from extracted artifacts
+and the public oxygen.8x8.com page, not from a Figma examples page. 5 Do/Don't pairs are
+explicitly grounded with file/line citations. Replace with `figma-extract-usage` output if
+and when a `↳ ProgressBar examples` Figma page is created.
+
 ---
 
 ## Suggested next actions
 
 ```
-1. Fix GAP-006 (broken cross-links) → 5-min auto-fix before rewrite
-2. Fix GAP-008 (animated example step undefined) → 2-min auto-fix
-3. Run doc-rewrite             → produces ProgressBar-spec.md
+1. Finish GAP-006: add ProgressBar-figma.md to See also in props/examples/tokens/accessibility  → 2-min auto-fix
+2. Fix GAP-008 (animated example step undefined)                                                → 2-min auto-fix
+3. Run doc-rewrite                                                                              → produces ProgressBar-spec.md
    (doc-rewrite should auto-fix GAP-001, 003, 004, 005, 007 as part of the rewrite)
-2. Run figma-extract-usage     → GAP-009 (requires Desktop Bridge)
-3. Verify ARIA roles           → WARN-001
-4. Check size px dimensions    → GAP-002
-5. Verify size default value   → WARN-002
+4. Designer review of editorial Do/Don't pairs in ProgressBar-usage.md (WARN-003, GAP-USAGE-002, GAP-USAGE-003)
+5. Verify ARIA roles                                                                            → WARN-001
+6. Check size px dimensions                                                                     → GAP-002
+7. Verify size default value                                                                    → WARN-002
+8. Create Figma `↳ ProgressBar examples` page → run figma-extract-usage to replace editorial Do/Don'ts
 ```
 
-_Source: doc-audit skill v1.0 · Audited from component-lib/ProgressBar/ · 2026-05-05_
+_Source: doc-audit skill v1.0 · Re-audited from component-lib/ProgressBar/ · 2026-05-14 (prior audit: 2026-05-05)_
