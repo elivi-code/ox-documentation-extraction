@@ -66,7 +66,7 @@ tags:
 | 1.3.1 Info and Relationships | Labels must be programmatically associated | Use `label` prop; do not use placeholder-only labelling |
 | 1.3.3 Sensory Characteristics | Error state must not rely on colour alone | Error border + icon + error text all present in `hasError` state |
 | 1.4.1 Use of Colour | Disabled / error states must not rely on colour alone | Disabled state should also use reduced opacity or visual pattern |
-| 1.4.3 Contrast (Minimum) | Text contrast ≥ 4.5:1 | `textColor01` (#26252A on #F4F3EE) passes; verify dark mode |
+| 1.4.3 Contrast (Minimum) | Text contrast ≥ 4.5:1 | `textColor01` (#26252A on `#F4F3EE`) passes; verify dark mode |
 | 1.4.4 Resize Text | Input text must scale to 200% without loss of content | Use relative units; avoid overflow:hidden on input containers |
 | 2.1.1 Keyboard | All functionality accessible via keyboard | ✓ Native `<input>` |
 | 2.4.3 Focus Order | Focus order must be logical | ✓ Follow DOM order |

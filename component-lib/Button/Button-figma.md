@@ -262,7 +262,7 @@ States visible in the Figma Label Button variant structure.
 
 | Type | ID | Description |
 |------|----|-------------|
-| **CONFLICT** | C-001 | **Secondary rest background token mismatch.** Figma reference page shows `$action01` (blue, #0056E0) for Secondary rest. tokens.md specifies `action02` (#26252A, near-black). These are visually different colors. Either the Figma reference has a copy-paste error, or tokens.md is stale. Needs designer confirmation. |
+| **CONFLICT** | C-001 | **Secondary rest background token mismatch.** Figma reference page shows `$action01` (blue, `#0056E0`) for Secondary rest. tokens.md specifies `action02` (#26252A, near-black). These are visually different colors. Either the Figma reference has a copy-paste error, or tokens.md is stale. Needs designer confirmation. |
 | **CONFLICT** | C-002 | **Text button active token unexpected.** Figma shows `$active17` for Text Primary and Text Danger active bg. tokens.md defines `active17` as "Inverted primary button active" — likely wrong for non-inverted text variants. tokens.md shows no active bg for Text buttons at all. Needs resolution. |
 | **CONFLICT** | C-003 | **CSS variable naming vs semantic token naming.** Design context emits `var(--actions/action09)` for Primary bg; tokens.md names the same color `action01`. The path/index naming schemes diverge. Downstream tooling (Storybook, Docusaurus) must decide which name to surface. |
 | **New data** | N-001 | **Disabled tokens `$disabled01` and `$disabled04` identified in Figma.** These are not in tokens.md (GAP-011 in the audit). Recommend adding them to tokens.md with the correct hex values — which require a separate token lookup since they are referenced by name only in this Figma file. |

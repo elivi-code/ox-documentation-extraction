@@ -105,10 +105,10 @@ Focus ring spec: `2px solid` border, `inset 0px 0px 0px 4px` inner shadow, `bord
 | Default (Dark) | `--ui/ui04` (white) | Normal 16px | `--text/textcolor01` |
 | Hover (Light) | `--ui/ui04` | Expanded 32px + ripple | `--text/textcolor01` |
 | Hover (Dark) | `--ui/ui04` (white) | Expanded 32px + ripple | `--text/textcolor01` |
-| Active (Light) | `--actions/action01` #0056e0 | Expanded 32px + ripple | `--text/textcolor01` |
-| Active (Dark) | `--actions/action01` #4687ed | Expanded 32px + ripple | `--text/textcolor01` |
-| Focus (Light) | `--actions/action01` #0056e0 | 24px + focus ring #0056e0 | `--text/textcolor01` |
-| Focus (Dark) | `--actions/action01` #4687ed | 24px + focus ring #d7e3f9 | `--text/textcolor01` |
+| Active (Light) | `--actions/action01` `#0056e0` | Expanded 32px + ripple | `--text/textcolor01` |
+| Active (Dark) | `--actions/action01` `#4687ed` | Expanded 32px + ripple | `--text/textcolor01` |
+| Focus (Light) | `--actions/action01` `#0056e0` | 24px + focus ring `#0056e0` | `--text/textcolor01` |
+| Focus (Dark) | `--actions/action01` `#4687ed` | 24px + focus ring `#d7e3f9` | `--text/textcolor01` |
 | Disabled (Light) | `--interactive/disabled04` | Normal 16px (muted) | `--interactive/disabled01` |
 | Disabled (Dark) | `--interactive/disabled04` | Normal 16px (muted) | `--interactive/disabled01` |
 

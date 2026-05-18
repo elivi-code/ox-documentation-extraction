@@ -408,7 +408,7 @@ tags:
 | GAP-005 | Examples | DOC_GAP | No prefix/autoPrefixWidth example |
 | GAP-010 | Design/Tokens | SOURCE_GAP | `textColor02` dark mode value not captured |
 | GAP-011 | Design/Tokens | SOURCE_GAP | `error01` dark mode value not captured |
-| GAP-012 | Accessibility | DOC_GAP | Placeholder contrast ratio calculated but not verified (#6C6862 on #F4F3EE) |
+| GAP-012 | Accessibility | DOC_GAP | Placeholder contrast ratio calculated but not verified (#6C6862 on `#F4F3EE`) |
 | GAP-013 | Accessibility | SOURCE_GAP | Focus ring contrast cannot be verified (depends on GAP-006) |
 | GAP-014 | Figma spec | SOURCE_GAP | Effect styles returned 0 from Figma |
 | GAP-015 | Figma spec | SOURCE_GAP | Component description unreliable (Desktop Bridge not running during extraction) |
@@ -429,7 +429,7 @@ tags:
 | WARN-001 | Props `size`, `suffix`, `focus`, `fixed`, `autoSuffixWidth`, `autoPrefixWidth` lack descriptions — confirm semantics against OX source |
 | WARN-002 | Text area is documented in Figma but unclear if it maps to the Input package or a separate `@8x8/oxygen-textarea` package |
 | WARN-003 | Search input is documented in Figma but has no OX package/import — likely `Input + iconLeft + type='search'`; verify |
-| WARN-004 | Placeholder text contrast (#6C6862 on #F4F3EE) is a likely WCAG AA failure (~3.8:1 estimated, below 4.5:1 threshold) |
+| WARN-004 | Placeholder text contrast (#6C6862 on `#F4F3EE`) is a likely WCAG AA failure (~3.8:1 estimated, below 4.5:1 threshold) |
 
 ---
 
@@ -439,7 +439,7 @@ tags:
 2. **Re-run `figma-extract` with Desktop Bridge** (GAP-006–011, 014–015) — Unlocks variable bindings for focus ring, error border, disabled/read-only backgrounds, and dark-mode token values.
 3. **Retrieve OX prop descriptions** (GAP-002) — Check `@8x8/oxygen-input` README or source code for descriptions of `size`, `suffix`, `focus`, `fixed`, `autoSuffixWidth`, `autoPrefixWidth`.
 4. **Add Storybook snippets** (GAP-003) — Run component in Storybook at oxygen.8x8.com and extract verified code examples.
-5. **Verify placeholder contrast** (WARN-004, GAP-012) — Calculate #6C6862 / #F4F3EE ratio; flag WCAG failure if confirmed.
+5. **Verify placeholder contrast** (WARN-004, GAP-012) — Calculate `#6C6862` / `#F4F3EE` ratio; flag WCAG failure if confirmed.
 6. **Clarify TextArea and Search input as OX packages** (WARN-002, WARN-003, GAP-017) — Determine if separate packages exist; either document Search separately or fold its affordances into Input docs.
 7. **(Optional, when a Figma `↳ Input examples` page is created)** — Run `figma-extract-usage` to replace the editorial `Input-usage.md` with Figma-sourced Do/Don't cards.
 

@@ -239,7 +239,7 @@ from the Oxygen MCP and component nature.
 |------|-------------|
 | Incomplete data | Inner layer children of all 4 variants not returned by Figma REST API — anatomy rows 6–8 are inferred, not confirmed |
 | Incomplete data | `figma_get_component_details` unavailable (requires Figma Desktop Bridge running locally) |
-| ~~Incomplete data~~ | ~~`figma_get_variables` unavailable~~ — **Resolved 2026-05-05**: all tokens extracted via `figma_execute` alias chain traversal; `warning/warning01` confirmed as background token (same #f8ae1a in both modes) |
+| ~~Incomplete data~~ | ~~`figma_get_variables` unavailable~~ — **Resolved 2026-05-05**: all tokens extracted via `figma_execute` alias chain traversal; `warning/warning01` confirmed as background token (same `#f8ae1a` in both modes) |
 | Incomplete data | `get_design_context` unavailable (requires active layer selection in Figma Desktop) — spacing tokens, auto-layout alignment, and annotations not extractable |
 | ~~Missing token~~ | ~~Banner background fill `#F8AE1A` hardcoded~~ — **Resolved 2026-05-05**: confirmed as `warning/warning01` → `color/yellow/yellow06`; intentionally mode-invariant (same yellow in Light and Dark) |
 | Missing token | All padding and gap values (16 px, 12 px, 8 px) are raw px — no token bindings confirmed |

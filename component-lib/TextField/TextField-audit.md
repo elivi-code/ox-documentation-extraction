@@ -380,7 +380,7 @@ All visual state specs are Light-mode only. 68 Dark-mode symbol variants exist i
 ## Warnings (advisory, heuristic)
 
 **WARN-001** · Accessibility
-`--text/textColor02` (#6C6862 on #F4F3EE) has a contrast ratio ≈ 3.8:1. Acceptable for placeholder text, but verify it is not also applied to typed input values.
+`--text/textColor02` (#6C6862 on `#F4F3EE`) has a contrast ratio ≈ 3.8:1. Acceptable for placeholder text, but verify it is not also applied to typed input values.
 
 **WARN-002** · Examples
 `@8x8/oxygen-icons` import in the icons example was inferred — confirm the actual package name before publishing.

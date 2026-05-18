@@ -186,7 +186,7 @@ Disabled fields are not focusable. If the value must be communicated to screen r
 | 1.1.1 Non-text content | Input has accessible label | ✅ `aria-label` / `<label>` required by implementation |
 | 1.3.1 Info and relationships | Label programmatically associated | ✅ via `htmlFor` / `aria-labelledby` |
 | 1.3.5 Identify input purpose | `autocomplete` attribute where appropriate | ⚠ Use `inputProps.autoComplete` |
-| 1.4.3 Contrast (minimum) | Text contrast ≥ 4.5:1 | ⚠ Verify placeholder (#6C6862 on #F4F3EE) |
+| 1.4.3 Contrast (minimum) | Text contrast ≥ 4.5:1 | ⚠ Verify placeholder (#6C6862 on `#F4F3EE`) |
 | 1.4.4 Resize text | Input resizes to 200% zoom | ⚠ Verify no overflow |
 | 1.4.11 Non-text contrast | Focus ring ≥ 3:1 | ⚠ Verify blue ring contrast |
 | 2.1.1 Keyboard | All functions via keyboard | ✅ Native input keyboard support |

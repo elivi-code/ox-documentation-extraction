@@ -61,19 +61,19 @@ tags:
 
 | Element | Rest (Light) | Focus (Light) | Disabled (Light) | Error (Light) |
 |---------|-------------|---------------|-----------------|---------------|
-| Input bg | `--ui/ui05` #F4F3EE | `--ui/ui05` #F4F3EE | `--interactive/disabled01` #C8C8BD | `--ui/ui05` #F4F3EE |
-| Input border | none | `--interactive/focus01` #0056E0, 2px | none | `--error/error01` #CB2233, 2px |
-| Input text | `--text/textColor02` #6C6862 | `--text/textColor02` #6C6862 | `--interactive/disabled04` #8D8B7E | `--text/textColor02` #6C6862 |
-| Label | `--text/textColor01` #26252A | `--text/textColor01` #26252A | `--text/textColor01` #26252A | `--text/textColor01` #26252A |
-| Asterisk / error | `--error/error01` #CB2233 | `--error/error01` #CB2233 | `--error/error01` #CB2233 | `--error/error01` #CB2233 |
+| Input bg | `--ui/ui05` `#F4F3EE` | `--ui/ui05` `#F4F3EE` | `--interactive/disabled01` `#C8C8BD` | `--ui/ui05` `#F4F3EE` |
+| Input border | none | `--interactive/focus01` `#0056E0`, 2px | none | `--error/error01` `#CB2233`, 2px |
+| Input text | `--text/textColor02` `#6C6862` | `--text/textColor02` `#6C6862` | `--interactive/disabled04` `#8D8B7E` | `--text/textColor02` `#6C6862` |
+| Label | `--text/textColor01` `#26252A` | `--text/textColor01` `#26252A` | `--text/textColor01` `#26252A` | `--text/textColor01` `#26252A` |
+| Asterisk / error | `--error/error01` `#CB2233` | `--error/error01` `#CB2233` | `--error/error01` `#CB2233` | `--error/error01` `#CB2233` |
 
 | Element | Rest (Dark) | Focus (Dark) | Disabled (Dark) | Error (Dark) |
 |---------|------------|--------------|-----------------|--------------|
-| Input bg | `--ui/ui05` #2F2E32 | `--ui/ui05` #2F2E32 | `--interactive/disabled01` #C2C2C2 | `--ui/ui05` #2F2E32 |
-| Input border | none | `--interactive/focus01` #D7E3F9, 2px | none | `--error/error01` #F24D5F, 2px |
-| Input text | `--text/textColor02` #C2C2C2 | `--text/textColor02` #C2C2C2 | `--interactive/disabled04` #858585 | `--text/textColor02` #C2C2C2 |
-| Label | `--text/textColor01` #FFFFFF | `--text/textColor01` #FFFFFF | `--text/textColor01` #FFFFFF | `--text/textColor01` #FFFFFF |
-| Asterisk / error | `--error/error01` #F24D5F | `--error/error01` #F24D5F | `--error/error01` #F24D5F | `--error/error01` #F24D5F |
+| Input bg | `--ui/ui05` `#2F2E32` | `--ui/ui05` `#2F2E32` | `--interactive/disabled01` `#C2C2C2` | `--ui/ui05` `#2F2E32` |
+| Input border | none | `--interactive/focus01` `#D7E3F9`, 2px | none | `--error/error01` `#F24D5F`, 2px |
+| Input text | `--text/textColor02` `#C2C2C2` | `--text/textColor02` `#C2C2C2` | `--interactive/disabled04` `#858585` | `--text/textColor02` `#C2C2C2` |
+| Label | `--text/textColor01` `#FFFFFF` | `--text/textColor01` `#FFFFFF` | `--text/textColor01` `#FFFFFF` | `--text/textColor01` `#FFFFFF` |
+| Asterisk / error | `--error/error01` `#F24D5F` | `--error/error01` `#F24D5F` | `--error/error01` `#F24D5F` | `--error/error01` `#F24D5F` |
 
 ---
 

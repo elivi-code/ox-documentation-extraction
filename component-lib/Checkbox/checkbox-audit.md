@@ -368,7 +368,7 @@ tags:
 ### DOC_GAP — Minor (auto-fixable by doc-rewrite)
 
 **GAP-002** · Token Coverage
-> `tokens.md` still has speculative blue05/blue06 language. Actual token is `ui/ui22` → #0056e0. Source data in `checkbox-figma.md §3` and `checkbox-usage.md` Behaviour table.
+> `tokens.md` still has speculative blue05/blue06 language. Actual token is `ui/ui22` → `#0056e0`. Source data in `checkbox-figma.md §3` and `checkbox-usage.md` Behaviour table.
 > **Fix:** Update `tokens.md` with confirmed semantic tokens from `checkbox-figma.md`.
 
 **GAP-007** · Examples Quality

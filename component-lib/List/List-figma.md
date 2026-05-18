@@ -217,8 +217,8 @@ Background token is the same for `selected?=true` and `selected?=false` at each 
 
 | State | Trigger | Background change | Visual notes |
 |-------|---------|-------------------|--------------|
-| `hover` | Pointer over item | `ui/ui06` → `ui/ui02` | #F4F3EE light / #3D3D3D dark |
-| `active` | Pointer down | `ui/ui06` → `ui/ui01` | #EBEAE1 light / #666666 dark |
+| `hover` | Pointer over item | `ui/ui06` → `ui/ui02` | `#F4F3EE` light / `#3D3D3D` dark |
+| `active` | Pointer down | `ui/ui06` → `ui/ui01` | `#EBEAE1` light / `#666666` dark |
 | `focus` | Keyboard Tab | `ui/ui06` (no bg change) | Focus ring expected — not confirmed from node data |
 | `disabled` | `state=disabled` | `ui/ui06` (no bg change) | Opacity reduction applied |
 | `selected?=true` | Programmatic | No bg change vs unselected | Trailing icon becomes visible (checkmark/radio/checkbox) |
