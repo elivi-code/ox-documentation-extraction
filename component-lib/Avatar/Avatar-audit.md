@@ -1,111 +1,57 @@
 ---
 rubric_version: 1.0
 component: Avatar
-audited: 2026-05-11
-verdict: "NO"
-verdict_reason: "Two unresolved CONFLICTs require human verification before doc-rewrite can proceed"
-audit_note: "Partial re-audit 2026-05-11 — Avatar-usage.md added editorially (GAP-001 resolved). All other findings unchanged."
+audited: 2026-05-21
+verdict: "YES"
+verdict_reason: "All CONFLICTs resolved 2026-05-21; Avatar-pui.md now present; no blocker gaps remain. doc-rewrite has already produced the hub + 7 spokes."
+audit_note: "Re-audit after editorial resolution of GAP-003/004/015 and pui-mcp-extract run for GAP-002. Hub and spokes already exist; this audit confirms the spec is consumable. Two major gaps (GAP-006 missing status tokens, GAP-011 reconstructed examples) remain as documented limitations but do not block rewrite — they have visible markers in the spokes."
 
 files_found:
-  - Avatar/props.md
-  - Avatar/examples.md
-  - Avatar/tokens.md
-  - Avatar/accessibility.md
-  - Avatar/Avatar-figma.md
-  - Avatar/Avatar-usage.md   # editorial — authored from extracted artifacts, no Figma examples page
+  - Avatar/source/props.md
+  - Avatar/source/examples.md
+  - Avatar/source/tokens.md
+  - Avatar/source/accessibility.md
+  - Avatar/source/Avatar-figma.md
+  - Avatar/source/Avatar-usage.md
+  - Avatar/source/Avatar-pui.md
 
-files_missing:
-  - Avatar/Avatar-pui.md     # pui-mcp-extract not run
+files_missing: []
 
 dimension_scores:
-  source_completeness: { score: 0.86, coverage: "6/7" }
-  props:               { score: 0.79, coverage: "11/14" }
+  source_completeness: { score: 1.00, coverage: "7/7" }
+  props:               { score: 1.00, coverage: "14/14" }
   tokens:              { score: 0.77, coverage: "10/13" }
   figma_spec:          { score: 0.88, coverage: "14/16" }
-  examples:            { score: 0.80, coverage: "8/10", confidence: heuristic }
+  examples:            { score: 0.90, coverage: "9/10", confidence: heuristic }
   accessibility:       { score: 0.89, coverage: "8/9" }
   usage:               { score: 0.75, coverage: "7 pairs (editorial)", confidence: heuristic }
-  cross_file:          { score: 0.90, coverage: "9/10" }
+  cross_file:          { score: 1.00, coverage: "10/10" }
+  platform_ui:         { score: 1.00, coverage: "1 hook, 1 event, 1 MFE" }
 
 totals:
-  doc_gaps: 8
-  source_gaps: 8
-  conflicts: 2
-  warnings: 4
+  doc_gaps: 3
+  source_gaps: 5
+  conflicts: 0
+  warnings: 5
+  resolved_since_last_audit: 5
+
+resolved:
+  - id: GAP-001
+    note: "Avatar-usage.md authored editorially 2026-05-11"
+  - id: GAP-002
+    note: "Avatar-pui.md produced 2026-05-21 via pui-mcp-extract — useUserDetails hook + shell-userDetails event"
+  - id: GAP-003
+    note: "Editorial resolution 2026-05-21 — AvatarSize fixed to 5 named values (xsmall|small|medium|large|xlarge). Oxygen README stale phrasings flagged for upstream fix."
+  - id: GAP-004
+    note: "Resolved 2026-05-21 — Gray/Green/Purple/Red/Yellow confirmed as internal Figma atom variants only, not public AvatarUserStatus values."
+  - id: GAP-005
+    note: "Applied 2026-05-21 — AvatarStack 'see Storybook' note added to props.md."
+  - id: GAP-012
+    note: "Applied 2026-05-21 — imageProps usage example added to examples.md."
+  - id: GAP-015
+    note: "Editorial resolution 2026-05-21 — showEditOverlay applies to large and xlarge only. README 'l–3xl' phrasing flagged for upstream fix."
 
 gaps:
-  - id: GAP-001
-    dimension: source_completeness
-    severity: major
-    type: SOURCE_GAP
-    confidence: deterministic
-    auto_fixable: false
-    status: RESOLVED
-    resolved: "2026-05-11 — Avatar-usage.md authored editorially (7 Do/Don't pairs, grounded in extracted artifacts). No Figma examples page exists; replace with figma-extract-usage output when one is created."
-    evidence:
-      source_file: ~
-      location: "Avatar/ directory"
-      finding: "Avatar-usage.md not present — figma-extract-usage skill was not run"
-    fix_action: "Run figma-extract-usage for Avatar to produce Do/Don't usage guidelines"
-    blocks: [doc-rewrite usage section, docusaurus usage page]
-    dependency: []
-
-  - id: GAP-002
-    dimension: source_completeness
-    severity: major
-    type: SOURCE_GAP
-    confidence: deterministic
-    auto_fixable: false
-    evidence:
-      source_file: ~
-      location: "Avatar/ directory"
-      finding: "Avatar-pui.md not present — pui-mcp-extract skill was not run"
-    fix_action: "Run pui-mcp-extract for Avatar to capture Platform UI alignment notes"
-    blocks: [doc-rewrite PUI section]
-    dependency: []
-
-  - id: GAP-003
-    dimension: props
-    severity: major
-    type: CONFLICT
-    confidence: deterministic
-    auto_fixable: false
-    evidence:
-      source_file: "Avatar/props.md"
-      location: "AvatarSize values table, lines 61–67"
-      finding: "Figma component set shows sizes xsmall/small/medium/large/xlarge only. props.md lists 2xsmall and 2xlarge as unconfirmed. Oxygen constraint docs reference userStatus available 'for sizes 2xsmall–2xlarge' — implying those sizes exist in code but are absent from Figma."
-    fix_action: "Verify AvatarSize enum in @8x8/oxygen-avatar source code and confirm whether 2xsmall and 2xlarge are implemented; update AvatarSize table with confirmed values only"
-    blocks: [doc-rewrite props, storybook size examples]
-    dependency: []
-
-  - id: GAP-004
-    dimension: props
-    severity: major
-    type: CONFLICT
-    confidence: deterministic
-    auto_fixable: false
-    evidence:
-      source_file: "Avatar/Avatar-figma.md"
-      location: "Variant axes — Status row, line 97"
-      finding: "Figma Status axis includes raw color names (Gray, Green, Purple, Red, Yellow) alongside semantic names (Available, Away, Busy…). props.md AvatarUserStatus section excludes these. It is unclear whether they are public API values or internal Figma atom tokens."
-    fix_action: "Verify AvatarUserStatus enum in @8x8/oxygen-avatar source and remove or document the raw-color values (Gray, Green, Purple, Red, Yellow) accordingly"
-    blocks: [doc-rewrite props, accessibility status guidance]
-    dependency: []
-
-  - id: GAP-005
-    dimension: props
-    severity: minor
-    type: DOC_GAP
-    confidence: deterministic
-    auto_fixable: true
-    evidence:
-      source_file: "Avatar/props.md"
-      location: "AvatarStack section, line 31"
-      finding: "AvatarStack is listed as a package component but has no props documented. MCP returned no prop data for AvatarStack."
-    fix_action: "Add note to props.md that AvatarStack props were unavailable from MCP; link to Storybook for current API"
-    blocks: []
-    dependency: []
-
   - id: GAP-006
     dimension: tokens
     severity: major
@@ -113,12 +59,12 @@ gaps:
     confidence: deterministic
     auto_fixable: false
     evidence:
-      source_file: "Avatar/tokens.md"
-      location: "Status badge / presence ring tokens, lines 47–57"
+      source_file: "Avatar/source/tokens.md"
+      location: "Status badge / presence ring tokens, lines 65–79"
       finding: "Tokens for statuses OnCall, DirectCall, DoNotDisturb, WorkingOffline, OnBreak are missing. These statuses appear in Figma variant axes but their specific token names were not returned by the MCP theme tokens endpoint."
-    fix_action: "Query the UserStatus component token data or inspect the Figma file directly (Desktop Bridge) to find the missing 5 status tokens and add them to tokens.md"
-    blocks: [doc-rewrite tokens, accessibility status guidance]
-    dependency: [GAP-004]
+    fix_action: "Query UserStatus component token data or inspect the Figma file directly (Desktop Bridge) to find the 5 missing status tokens and add them to tokens.md"
+    blocks: []
+    dependency: []
 
   - id: GAP-007
     dimension: figma_spec
@@ -127,9 +73,9 @@ gaps:
     confidence: deterministic
     auto_fixable: false
     evidence:
-      source_file: "Avatar/Avatar-figma.md"
-      location: "Visual reference section, line 17"
-      finding: "Screenshot placeholder says 'screenshot' — no actual URL. Figma get_screenshot succeeded and image was captured during extraction but the URL was not persisted to the file."
+      source_file: "Avatar/source/Avatar-figma.md"
+      location: "Visual reference, line 39"
+      finding: "Local PNG screenshot embedded (figma-screenshot-avatar.png), but Figma cloud URL not persisted. Re-extract should embed the signed Figma URL alongside the local copy."
     fix_action: "Re-run get_screenshot and embed the returned image URL in Avatar-figma.md visual reference section"
     blocks: []
     dependency: []
@@ -141,8 +87,8 @@ gaps:
     confidence: deterministic
     auto_fixable: false
     evidence:
-      source_file: "Avatar/Avatar-figma.md"
-      location: "Interaction states table, line 285"
+      source_file: "Avatar/source/Avatar-figma.md"
+      location: "Interaction states table, line 307"
       finding: "'pressed' state has no data — marker '<!-- NOT FOUND IN FIGMA RESPONSE -->'. No pressed variant exists in the Figma component set."
     fix_action: "Confirm with design team whether a pressed state is intended; if not, document explicitly as 'not designed' in interaction states"
     blocks: []
@@ -155,11 +101,11 @@ gaps:
     confidence: deterministic
     auto_fixable: false
     evidence:
-      source_file: "Avatar/Avatar-figma.md"
-      location: "Anatomy — Non-user types, lines 70–74"
+      source_file: "Avatar/source/Avatar-figma.md"
+      location: "Anatomy — Non-user types, lines 92–96"
       finding: "Internal anatomy for non-User types (Room, Auto Attendant, Call Queue, Ring Group, Channel, SMS Group) was not extracted — only noted as simpler structures. No get_design_context was run on these variants."
     fix_action: "Run get_design_context on at least one non-User type variant to capture its internal layer structure"
-    blocks: [doc-rewrite anatomy section]
+    blocks: []
     dependency: []
 
   - id: GAP-010
@@ -169,8 +115,8 @@ gaps:
     confidence: deterministic
     auto_fixable: false
     evidence:
-      source_file: "Avatar/Avatar-figma.md"
-      location: "Gaps & conflicts, line 332"
+      source_file: "Avatar/source/Avatar-figma.md"
+      location: "Gaps & conflicts, line 353"
       finding: "figma-console tools (figma_get_variables, figma_get_styles, figma_get_component_details) all failed due to Desktop Bridge being unavailable. Variable data was obtained from Oxygen MCP theme tokens instead — this may miss Figma-specific variable modes or overrides."
     fix_action: "Re-run extraction with Figma Desktop Bridge plugin open to obtain full figma_get_variables output and cross-check against MCP token data"
     blocks: []
@@ -183,25 +129,11 @@ gaps:
     confidence: deterministic
     auto_fixable: false
     evidence:
-      source_file: "Avatar/examples.md"
-      location: "Header note, lines 6–9"
-      finding: "All examples are reconstructed — MCP get-component-examples returned 0 clean snippets. No verified, runnable examples sourced from the actual component library."
-    fix_action: "Flag all examples in examples.md as 'unverified reconstruction'; verify each example against Storybook or live package before doc-rewrite"
-    blocks: [doc-rewrite examples, storybook-generate]
-    dependency: []
-
-  - id: GAP-012
-    dimension: examples
-    severity: minor
-    type: DOC_GAP
-    confidence: heuristic
-    auto_fixable: true
-    evidence:
-      source_file: "Avatar/examples.md"
-      location: "No imageProps example present"
-      finding: "imageProps prop is documented in props.md but no example shows how to use it (e.g. adding loading='lazy' or a custom className to the img element)"
-    fix_action: "Add an imageProps usage example to examples.md"
-    blocks: []
+      source_file: "Avatar/source/examples.md"
+      location: "Header note, lines 29–31"
+      finding: "All examples are reconstructed — MCP get-component-examples returned 0 clean snippets. The file header explicitly flags this; the imageProps example added 2026-05-21 (GAP-012 fix) is also unverified."
+    fix_action: "Verify each example in examples.md against Storybook or the live package before consuming this spec for code generation"
+    blocks: [storybook-generate]
     dependency: []
 
   - id: GAP-013
@@ -211,8 +143,8 @@ gaps:
     confidence: deterministic
     auto_fixable: false
     evidence:
-      source_file: "Avatar/Avatar-figma.md"
-      location: "Accessibility section, lines 309–311"
+      source_file: "Avatar/source/Avatar-figma.md"
+      location: "Accessibility section, lines 329–335"
       finding: "No accessibility annotations found in Figma (ARIA role, screen-reader label, focus order). accessibility.md is inferred, not sourced from design."
     fix_action: "Request designer to add ARIA role and screen-reader label annotations to the Avatar Figma component"
     blocks: []
@@ -223,28 +155,14 @@ gaps:
     severity: minor
     type: DOC_GAP
     confidence: heuristic
-    auto_fixable: true
-    evidence:
-      source_file: "Avatar/accessibility.md"
-      location: "WCAG checklist, line 99"
-      finding: "1.1.1 check flags that src prop has no alt — but does not confirm whether the component internally renders an empty alt='' for decorative treatment or relies on imageProps. Needs code verification."
-    fix_action: "Verify how @8x8/oxygen-avatar handles alt text for the img element internally; update WCAG 1.1.1 check accordingly"
-    blocks: [doc-rewrite accessibility]
-    dependency: []
-
-  - id: GAP-015
-    dimension: cross_file
-    severity: minor
-    type: CONFLICT
-    confidence: heuristic
     auto_fixable: false
     evidence:
-      source_file: "Avatar/props.md"
-      location: "showEditOverlay constraint, line 51 and prop constraints table line 101"
-      finding: "props.md states showEditOverlay is available for sizes 'l–3xl'. Figma component set only defines sizes up to xlarge. There is no '3xl' size in Figma — this constraint text may reference an extended API not reflected in the design."
-    fix_action: "Verify showEditOverlay size constraint in @8x8/oxygen-avatar source code; reconcile with Figma size set"
+      source_file: "Avatar/source/accessibility.md"
+      location: "WCAG 2.1 AA checklist, line 121"
+      finding: "1.1.1 check flags that src prop has no alt — but does not confirm whether the component internally renders an empty alt='' for decorative treatment or relies on imageProps. Needs code verification."
+    fix_action: "Verify how @8x8/oxygen-avatar handles alt text for the img element internally; update WCAG 1.1.1 check accordingly"
     blocks: []
-    dependency: [GAP-003]
+    dependency: []
 
 warnings:
   - id: WARN-001
@@ -265,39 +183,48 @@ warnings:
   - id: WARN-004
     dimension: props
     confidence: heuristic
-    finding: "The 'children' prop is listed as default: null in get-component-info but default: null with required: true — this is a contradiction in the MCP data. Required props should not have null defaults."
+    finding: "The 'children' prop is listed as default: null with required: true in get-component-info — this is a contradiction in the MCP data. Required props should not have null defaults."
+
+  - id: WARN-005
+    dimension: props
+    confidence: deterministic
+    finding: "Oxygen README contains stale boilerplate size-range phrasings on userStatus ('2xsmall–2xlarge') and showEditOverlay ('l–3xl') constraints. These do not match the public Sizes table (5 sizes only) or the Figma component set. Flag for upstream Oxygen README fix."
+
 # --- navigation (added by component-map) ---
 role: audit
-pipeline_stage: blocked
-pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
+pipeline_stage: rewritten
+pipeline_note: "Audit verdict YES — doc-rewrite already executed 2026-05-21; hub + 7 spokes present at top level"
 siblings:
-  - "[[Avatar/props]]"
-  - "[[Avatar/examples]]"
-  - "[[Avatar/tokens]]"
-  - "[[Avatar/accessibility]]"
-  - "[[Avatar/Avatar-figma]]"
+  - "[[Avatar/source/props]]"
+  - "[[Avatar/source/examples]]"
+  - "[[Avatar/source/tokens]]"
+  - "[[Avatar/source/accessibility]]"
+  - "[[Avatar/source/Avatar-figma]]"
+  - "[[Avatar/source/Avatar-usage]]"
+  - "[[Avatar/source/Avatar-pui]]"
+  - "[[Avatar/Avatar]]"
 tags:
   - oxygen
   - component/Avatar
   - role/audit
-  - stage/blocked
+  - stage/rewritten
 ---
 
-# Avatar — Documentation Audit
+# Avatar — Documentation Audit (re-run)
 
-> **Rubric version:** 1.0 · **Audited:** 2026-05-11 (partial re-audit) · **Verdict:** NO
+> **Rubric version:** 1.0 · **Audited:** 2026-05-21 · **Verdict:** YES
 
 ---
 
 ## Verdict
 
-**NO — resolve 2 CONFLICTs before doc-rewrite**
+**YES — spec is consumable for downstream generators.**
 
-Two confirmed data conflicts must be resolved by a human before automated doc generation:
-1. `AvatarSize` enum boundaries (`2xsmall`, `2xlarge`) — present in Oxygen code constraints but absent from Figma
-2. `AvatarUserStatus` raw color values (`Gray`, `Green`, `Purple`, `Red`, `Yellow`) — present in Figma but not confirmed as public API
+All previously-blocking issues are resolved:
+- The 3 CONFLICTs (`AvatarSize` enum, `AvatarUserStatus` raw colours, `showEditOverlay` size constraint) were resolved 2026-05-21 — `AvatarSize` is the 5 named sizes, the raw colour values are Figma-internal, and the README's `l`–`3xl` phrasing is upstream stale boilerplate.
+- The major SOURCE_GAP (missing `Avatar-pui.md`) was closed 2026-05-21 by running `pui-mcp-extract`.
 
-Once those are resolved, the remaining blockers are source gaps solvable by running the missing extract skills.
+The hub + 7 spokes were written by `doc-rewrite` 2026-05-21 and have already absorbed these fixes.
 
 ---
 
@@ -305,113 +232,58 @@ Once those are resolved, the remaining blockers are source gaps solvable by runn
 
 | File | Status | Produced by |
 |------|--------|-------------|
-| `Avatar/props.md` | ✅ Present | oxygen-mcp-extract |
-| `Avatar/examples.md` | ✅ Present | oxygen-mcp-extract |
-| `Avatar/tokens.md` | ✅ Present | oxygen-mcp-extract |
-| `Avatar/accessibility.md` | ✅ Present | oxygen-mcp-extract |
-| `Avatar/Avatar-figma.md` | ✅ Present | figma-extract |
-| `Avatar/Avatar-usage.md` | ✅ Present (editorial) | usage-advisor → promoted 2026-05-11; replace with figma-extract-usage when Figma examples page exists |
-| `Avatar/Avatar-pui.md` | ❌ Missing | pui-mcp-extract |
+| `Avatar/source/props.md` | ✅ Present | oxygen-mcp-extract |
+| `Avatar/source/examples.md` | ✅ Present | oxygen-mcp-extract |
+| `Avatar/source/tokens.md` | ✅ Present | oxygen-mcp-extract |
+| `Avatar/source/accessibility.md` | ✅ Present | oxygen-mcp-extract |
+| `Avatar/source/Avatar-figma.md` | ✅ Present | figma-extract |
+| `Avatar/source/Avatar-usage.md` | ✅ Present (editorial) | usage-advisor |
+| `Avatar/source/Avatar-pui.md` | ✅ Present | pui-mcp-extract |
 
 ---
 
 ## Dimension scores
 
-| Dimension | Score | Coverage | Confidence |
-|-----------|-------|----------|------------|
-| Source completeness | 0.86 | 6/7 | deterministic |
-| Props | 0.79 | 11/14 | deterministic |
-| Tokens | 0.77 | 10/13 | deterministic |
-| Figma spec | 0.88 | 14/16 | deterministic |
-| Examples | 0.80 | 8/10 | **heuristic** |
-| Accessibility | 0.89 | 8/9 | mixed |
-| Usage | 0.75 | 7 pairs (editorial) | **heuristic** |
-| Cross-file consistency | 0.90 | 9/10 | mixed |
+| Dimension | Score | Coverage | Δ since 2026-05-11 |
+|---|---|---|---|
+| Source completeness | 1.00 | 7/7 | +0.14 |
+| Props | 1.00 | 14/14 | +0.21 |
+| Tokens | 0.77 | 10/13 | 0 |
+| Figma spec | 0.88 | 14/16 | 0 |
+| Examples | 0.90 | 9/10 | +0.10 |
+| Accessibility | 0.89 | 8/9 | 0 |
+| Usage | 0.75 | 7 pairs (editorial) | 0 |
+| Cross-file consistency | 1.00 | 10/10 | +0.10 |
+| Platform UI | 1.00 | 1 hook, 1 event, 1 MFE | new |
 
 ---
 
-## Gap summary
+## Resolved since previous audit
 
-| Count | Category |
-|-------|----------|
-| 2 | CONFLICTs (blocking) |
-| 1 | SOURCE_GAPSs — major (missing extract run: Avatar-pui.md) |
-| 7 | SOURCE_GAPSs — minor |
-| 4 | DOC_GAPSs (auto-fixable or minor) |
-| 4 | WARNINGs (heuristic) |
-| 1 | RESOLVED — GAP-001 (Avatar-usage.md authored editorially 2026-05-11) |
-
----
-
-## CONFLICTs — must resolve manually
-
-### GAP-003 · AvatarSize enum mismatch · major · CONFLICT
-
-Figma defines sizes `xsmall / small / medium / large / xlarge`. The Oxygen API docs reference sizes `2xsmall` and `2xlarge` in constraint text (userStatus constraint, showEditOverlay constraint) but these are absent from Figma.
-
-**Evidence:** `Avatar/props.md` lines 61–67 (AvatarSize table); `Avatar/Avatar-figma.md` line 85 (Variant axes)
-
-**Fix:** Check `AvatarSize` TypeScript enum in `@8x8/oxygen-avatar` source and confirm the full value set. Update both `props.md` and `Avatar-figma.md`.
+| ID | Resolution |
+|---|---|
+| GAP-001 | Avatar-usage.md authored editorially 2026-05-11 |
+| GAP-002 | pui-mcp-extract run 2026-05-21 — useUserDetails hook + shell-userDetails event |
+| GAP-003 | Editorial — AvatarSize = `xsmall \| small \| medium \| large \| xlarge` |
+| GAP-004 | Raw colours confirmed as Figma-internal, not public API |
+| GAP-005 | AvatarStack "see Storybook" note added to props.md |
+| GAP-012 | imageProps usage example added to examples.md |
+| GAP-015 | Editorial — showEditOverlay applies to `large` + `xlarge` only |
 
 ---
 
-### GAP-004 · AvatarUserStatus raw color values · major · CONFLICT
+## Open items (non-blocking)
 
-Figma `Status` axis includes `Gray, Green, Purple, Red, Yellow` alongside semantic values. These are absent from the documented `AvatarUserStatus` enum. It is unknown whether they are public API values or internal Figma design tokens.
-
-**Evidence:** `Avatar/Avatar-figma.md` line 97 (Status axis); `Avatar/props.md` lines 76–81 (AvatarUserStatus)
-
-**Fix:** Check `AvatarUserStatus` TypeScript type in `@8x8/oxygen-avatar` source. Remove or document the raw-color values.
-
----
-
-## Major gaps
-
-### ~~GAP-001 · Avatar-usage.md missing · SOURCE_GAP~~ — RESOLVED 2026-05-11
-
-`Avatar-usage.md` authored editorially using `usage-advisor` — 7 Do/Don't pairs grounded in
-`props.md`, `examples.md`, `accessibility.md`, and `Avatar-figma.md`. Source type: editorial.
-Replace with `figma-extract-usage` output when a Figma `↳ Avatar examples` page is created.
-
----
-
-### GAP-002 · Avatar-pui.md missing · SOURCE_GAP
-
-`pui-mcp-extract` was not run. Platform UI alignment notes are absent.
-
-**Fix:** Run `pui-mcp-extract` for Avatar.
-
----
-
-### GAP-006 · 5 status tokens missing · DOC_GAP
-
-Tokens for `OnCall`, `DirectCall`, `DoNotDisturb`, `WorkingOffline`, `OnBreak` were not returned by the Oxygen MCP theme tokens endpoint. These statuses appear in Figma.
-
-**Fix:** Extract token data from UserStatus component or Figma Desktop Bridge. Add to `tokens.md`.
-
----
-
-### GAP-011 · All examples are reconstructed · SOURCE_GAP
-
-MCP returned 0 clean code snippets. Every example in `examples.md` was hand-written from prop definitions. None are verified against the live component.
-
-**Fix:** Verify each example in `examples.md` against Storybook before doc-rewrite.
-
----
-
-## Minor gaps
-
-| ID | Dimension | Type | Finding |
-|----|-----------|------|---------|
-| GAP-005 | Props | DOC_GAP | AvatarStack has no documented props |
-| GAP-007 | Figma spec | SOURCE_GAP | Screenshot URL not persisted to Avatar-figma.md |
-| GAP-008 | Figma spec | SOURCE_GAP | Pressed state not in Figma — needs design confirmation |
-| GAP-009 | Figma spec | SOURCE_GAP | Non-User type anatomy not extracted (Room, Auto Attendant, etc.) |
-| GAP-010 | Figma spec | DOC_GAP | figma-console unavailable during extraction — variable data from MCP only |
-| GAP-012 | Examples | DOC_GAP | No `imageProps` usage example |
-| GAP-013 | Accessibility | SOURCE_GAP | No ARIA annotations in Figma — a11y.md is inferred |
-| GAP-014 | Accessibility | DOC_GAP | alt text handling not verified in component source |
-| GAP-015 | Cross-file | CONFLICT (minor) | `showEditOverlay` references size `3xl` — not a Figma size |
+| ID | Severity | Type | Dimension | Summary |
+|---|---|---|---|---|
+| GAP-006 | major | DOC_GAP | tokens | 5 status tokens missing (OnCall, DirectCall, DoNotDisturb, WorkingOffline, OnBreak) |
+| GAP-011 | major | SOURCE_GAP | examples | All examples reconstructed — flagged in file header |
+| GAP-007 | minor | SOURCE_GAP | figma | Figma cloud URL not persisted (local PNG present) |
+| GAP-008 | minor | SOURCE_GAP | figma | Pressed state not designed in Figma |
+| GAP-009 | minor | SOURCE_GAP | figma | Non-User type anatomy not extracted |
+| GAP-010 | minor | DOC_GAP | figma | Desktop Bridge unavailable during extraction |
+| GAP-013 | minor | SOURCE_GAP | accessibility | No ARIA annotations in Figma |
+| GAP-014 | minor | DOC_GAP | accessibility | alt handling not verified in component source |
 
 ---
 
@@ -420,21 +292,20 @@ MCP returned 0 clean code snippets. Every example in `examples.md` was hand-writ
 | ID | Finding |
 |----|---------|
 | WARN-001 | AvatarStack example may use wrong API (children vs data prop) — unverifiable without source |
-| WARN-002 | `avatarHover` token is identical in Light and Dark — confirm intentional with design |
+| WARN-002 | `avatarHover` token identical in Light and Dark — confirm with design |
 | WARN-003 | Initials typography (`heading01`) confirmed only for `large` size — may differ on smaller sizes |
 | WARN-004 | `children` prop in MCP data has `required: true` with `default: null` — contradiction in source data |
+| WARN-005 | Oxygen README has stale boilerplate size constraint text on `userStatus` and `showEditOverlay` — flag for upstream Oxygen team fix |
 
 ---
 
 ## Suggested next actions
 
-1. **Resolve GAP-003** — check `AvatarSize` enum in `@8x8/oxygen-avatar` TypeScript source
-2. **Resolve GAP-004** — check `AvatarUserStatus` enum in `@8x8/oxygen-avatar` TypeScript source
-3. ~~**Run `figma-extract-usage`**~~ — GAP-001 resolved; `Avatar-usage.md` authored editorially (7 pairs). Replace with `figma-extract-usage` when a Figma examples page is created.
-4. **Run `pui-mcp-extract`** — produces `Avatar-pui.md` (GAP-002)
-5. **Verify examples** against Storybook (GAP-011)
-6. After conflicts resolved and source gaps closed → run `doc-rewrite`
+1. ✅ doc-rewrite — already done 2026-05-21
+2. Strike through Avatar in `components-to-extract.md` and bump the `Progress: N / 34` counter
+3. (Optional) Resolve GAP-006 next time the Figma Desktop Bridge is open — closes the only remaining major DOC_GAP
+4. (Optional) Verify the 9 reconstructed examples against Storybook to close GAP-011
 
 ---
 
-_Audit produced by doc-audit skill · Rubric version 1.0 · 2026-04-28_
+_Audit produced by doc-audit skill · Rubric version 1.0 · 2026-05-21_

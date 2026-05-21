@@ -133,6 +133,27 @@ import { Avatar } from '@8x8/oxygen-avatar';
 
 ---
 
+## With imageProps
+
+```tsx
+{/* Pass extra <img> attributes via imageProps — only applied when src is provided. */}
+{/* `src` and `alt` are intentionally omitted from the imageProps type. */}
+<Avatar
+  src="/path/to/photo.jpg"
+  name="Jane Smith"
+  size="medium"
+  imageProps={{
+    loading: 'lazy',
+    className: 'avatar-photo',
+    referrerPolicy: 'no-referrer',
+  }}
+/>
+```
+
+> `imageProps` is ignored when no `src` is provided (initials or icon fallback).
+
+---
+
 ## Custom children
 
 ```tsx
