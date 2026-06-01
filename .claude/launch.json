@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Docusaurus Dev Server",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["--cwd", "/Users/elivi/Documents/Official Repos/platform-ui-docs", "start"],
+      "port": 3000
+    },
+    {
+      "name": "Docusaurus Production Preview",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["--cwd", "/Users/elivi/Documents/Official Repos/platform-ui-docs", "serve"],
+      "port": 3000,
+      "autoPort": true
+    }
+  ]
+}
