@@ -70,6 +70,7 @@ The Oxygen `Button` uses the `isDisabled` prop rather than the native HTML `disa
 | `IconButton` | Always pair with `<Tooltip title="…">` — the tooltip text serves as the accessible name |
 | `DropdownButton` | Ensure the popover/menu it opens is correctly linked with `aria-controls` and `aria-expanded` |
 | Destructive action | Confirm dialog pattern is recommended; announce consequence in button label or `aria-describedby` |
+| Toggle button (`isActive`) | For icon-only or toggle buttons that use `isActive` to represent an on/off state, set `aria-pressed` to match (`aria-pressed={isActive}`) so assistive tech announces the pressed/unpressed state |
 
 ### IconButton + Tooltip pattern
 

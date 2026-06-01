@@ -55,6 +55,11 @@ import Button from '@8x8/oxygen-button';
 <Button variant="secondary" isActive>Click me</Button>
 <Button variant="secondary" isDisabled>Click me</Button>
 
+// Tertiary (control action — use with isCircular)
+<Button variant="tertiary">Click me</Button>
+<Button variant="tertiary" isActive>Click me</Button>
+<Button variant="tertiary" isDisabled>Click me</Button>
+
 // Tertiary Reversed (use on dark/inverted backgrounds)
 <Button variant="tertiaryReversed">Click me</Button>
 <Button variant="tertiaryReversed" isActive>Click me</Button>
@@ -89,6 +94,9 @@ import Button from '@8x8/oxygen-button';
 
 // Large (recommended for touch targets)
 <Button size="large">Click me</Button>
+
+// Big (extra large)
+<Button size="big">Click me</Button>
 ```
 
 ---
@@ -153,7 +161,7 @@ import { PlusIcon, LoginIcon } from '@8x8/oxygen-icon';
 
 ```tsx
 import Button from '@8x8/oxygen-button';
-import { AddReactionIcon, MicSlashIcon, PhoneIcon } from '@8x8/oxygen-icon';
+import { AddReactionIcon, MicSlashIcon, PhoneIcon, HangupIcon } from '@8x8/oxygen-icon';
 
 // Default circular
 <Button isCircular><AddReactionIcon /></Button>
@@ -307,8 +315,8 @@ import Tooltip from '@8x8/oxygen-tooltip';
   <AddReactionIcon />
 </IconButton>
 
-// Custom size
-<IconButton size={iconButtonSize.${size}}>
+// Custom size (any IconButtonSize enum member, e.g. mediumIconM)
+<IconButton size={iconButtonSize.mediumIconM}>
   <AddReactionIcon />
 </IconButton>
 

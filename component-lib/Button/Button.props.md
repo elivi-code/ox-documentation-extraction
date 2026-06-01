@@ -1,67 +1,19 @@
 ---
+parent: "[[Button]]"
+section: props
 component: Button
 package: "@8x8/oxygen-button"
-category: interaction
-role: props
-role_description: "API props reference — all component properties with types, defaults, and descriptions"
-pipeline_stage: blocked
-pipeline_note: "Audit verdict NO — resolve CONFLICTs before rewrite"
-audit_verdict: NO
-files_present:
-  - props
-  - examples
-  - tokens
-  - accessibility
-  - figma
-  - audit
-siblings:
-  - "[[Button/examples]]"
-  - "[[Button/tokens]]"
-  - "[[Button/accessibility]]"
-  - "[[Button/Button-figma]]"
-  - "[[Button/Button-usage]]"
-  - "[[Button/Button-audit]]"
-tags:
-  - oxygen
-  - component/Button
-  - role/props
-  - stage/blocked
-  - category/interaction
+tags: [oxygen, component/Button, role/props, section/props]
 ---
+
 # Button — Props
 
-> **See also:** [Examples](examples.md) · [Tokens](tokens.md) · [Accessibility](accessibility.md) · [Usage](Button-usage.md)
-
-## Installation
-
-**Package:** `@8x8/oxygen-button`
-
-```bash
-# yarn
-yarn add @8x8/oxygen-button
-
-# npm
-npm install @8x8/oxygen-button
-```
-
-**Registry prerequisite** — add to `.npmrc` (VPN required):
-```
-@8x8:registry=https://artifactory.es.8x8.com/artifactory/api/npm/npm-repository/
-```
-
-Or for Yarn (`.yarnrc.yml`):
-```yaml
-npmScopes:
-  8x8:
-    npmRegistryServer: "https://artifactory.es.8x8.com/artifactory/api/npm/npm-repository/"
-
-nodeLinker: node-modules
-```
+Full API reference for `Button` and its sibling exports `ButtonGroup`, `DropdownButton`, and `IconButton`.
 
 ## Import
 
 ```tsx
-import Button, { ButtonGroup, DropdownButton, IconButton } from '@8x8/oxygen-button';
+import Button, { ButtonGroup, DropdownButton, IconButton, iconButtonSize } from '@8x8/oxygen-button';
 ```
 
 ---
@@ -83,6 +35,8 @@ import Button, { ButtonGroup, DropdownButton, IconButton } from '@8x8/oxygen-but
 | `theme` | `object` | `{}` | no | Per-instance theme customisation |
 | `secondary` | `boolean` | — | no | **Deprecated** — use `variant="secondary"` instead |
 | `hasShadow` | `boolean` | — | no | **Deprecated** |
+
+<!-- SKIP:GAP-008 manual="Figma Label Button has a 'Fluid 100%' axis (full-width). props.md documents fullWidth for DropdownButton only — confirm whether Button itself supports fullWidth." -->
 
 ### ButtonVariant values
 
@@ -135,12 +89,34 @@ import Button, { ButtonGroup, DropdownButton, IconButton } from '@8x8/oxygen-but
 
 | Prop | Type | Default | Required | Description |
 |------|------|---------|----------|-------------|
-| `children` | `ReactNode` | — | no | Icon child |
-| `size` | `iconButtonSize` enum | — | no | Icon button size |
+| `children` | `ReactNode` | — | **yes** | Icon child |
+| `size` | `IconButtonSize` | `'default'` | no | Icon button size (see values below) |
+| `isActive` | `boolean` | — | no | Active state |
+| `isDisabled` | `boolean` | — | no | Disabled state |
 | `isInverted` | `boolean` | — | no | Inverted styling for dark backgrounds |
+| `testId` | `string` | — | no | Selector for automated testing |
+| `as` | `keyof React.JSX.IntrinsicElements \| React.ComponentType<any>` | — | no | Render as a different element/component |
 
 > Always pair `IconButton` with a `Tooltip` to provide an accessible text label.
 
----
+### IconButtonSize values
 
-_Source: Oxygen MCP · Extracted 2026-04-28_
+| Value | Notes |
+|-------|-------|
+| `'default'` | Default icon button size |
+| `'small2XIconXs'` | Small-2X button, XS icon |
+| `'smallXIconS'` | Small-X button, S icon |
+| `'smallIconM'` | Small button, M icon |
+| `'smallIconS'` | Small button, S icon |
+| `'smallIconXs'` | Small button, XS icon |
+| `'mediumIconL'` | Medium button, L icon |
+| `'mediumIconM'` | Medium button, M icon |
+| `'mediumIconS'` | Medium button, S icon |
+| `'largeIconL'` | Large button, L icon |
+| `'largeIconM'` | Large button, M icon |
+
+> Imported as the `iconButtonSize` enum: `import { iconButtonSize } from '@8x8/oxygen-button'`.
+
+<!-- SKIP:GAP-007 manual="Default values absent for ButtonGroup (spacing, align), DropdownButton (size, isActive, isDisabled, fullWidth), and IconButton (isInverted) props — add defaults or mark '—' per prop." -->
+
+> ⚠️ **WARN-001:** `theme` prop is typed as a bare `object` with no shape documentation. Downstream tooling (Storybook, Docusaurus) cannot generate a control for it — request a TypeScript interface from source.

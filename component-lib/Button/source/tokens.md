@@ -43,6 +43,7 @@ All tokens listed below are semantic tokens from the Oxygen theme. Values are sh
 | `action12` | Primary danger button inverted background; text button danger inverted text | `#D83848` | `red06` | `#CB2233` | `red05` |
 | `textColor09` | Text inside primary and secondary buttons | `#FFFFFF` | `white` | `#000000` | `black` |
 | `textColor11` | Text inside primary and secondary inverted buttons | `#000000` | `black` | `#FFFFFF` | `white` |
+| `ui01` | Tertiary button background (also card/divider border, selected list-item bg) | `#EBEAE1` | `offwhite09` | `#666666` | `gray05` |
 
 ---
 
@@ -107,11 +108,14 @@ All tokens listed below are semantic tokens from the Oxygen theme. Values are sh
 | Text (danger) | — | `hover19` | — | `action03` |
 | Text (inverted) | — | `hover22` | `active20` | `action10` |
 | Text danger (inverted) | — | `hover23` | `active18` | `action12` |
+| Tertiary | `ui01` | — | — | — |
 | Destructive control | — | `hover03` | `active03` | — |
 | Success control | — | `hover04` | — | — |
 | Tertiary reversed | — | `hover09` | `active09` | — |
 | Icon button | — | `hover13` | `active12` | — |
 | Icon button (active/sticky) | — | `hover14` | `active13` | — |
+
+> **Tertiary (non-reversed):** Only the rest background token `ui01` is confirmed in the Oxygen theme ("tertiary button background"). Dedicated hover/active tokens for non-reversed tertiary are not documented separately — `hover09`/`active09` belong to the **tertiary reversed** variant. Confirm with the token owner if distinct tertiary hover/active states are required.
 
 ---
 
