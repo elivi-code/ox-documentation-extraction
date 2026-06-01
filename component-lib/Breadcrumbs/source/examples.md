@@ -12,6 +12,7 @@ siblings:
   - "[[Breadcrumbs/tokens]]"
   - "[[Breadcrumbs/accessibility]]"
   - "[[Breadcrumbs/Breadcrumbs-figma]]"
+  - "[[Breadcrumbs/Breadcrumbs-usage]]"
   - "[[Breadcrumbs/Breadcrumbs-pui]]"
   - "[[Breadcrumbs/Breadcrumbs-audit]]"
 tags:
@@ -23,7 +24,7 @@ tags:
 ---
 # Breadcrumbs — Examples
 
-> **See also:** [props.md](props.md) | [tokens.md](tokens.md) | [accessibility.md](accessibility.md)
+> **See also:** [props.md](props.md) | [tokens.md](tokens.md) | [accessibility.md](accessibility.md) | [Breadcrumbs-figma.md](Breadcrumbs-figma.md) | [Breadcrumbs-usage.md](Breadcrumbs-usage.md)
 
 ## Basic usage
 

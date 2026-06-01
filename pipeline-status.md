@@ -3,7 +3,7 @@ title: "OX Pipeline Status"
 description: "Quick-reference status table — pipeline stage, audit verdict, and blocker for every component"
 role: pipeline_status
 workspace: OX Documentation Extraction
-last_updated: 2026-05-15
+last_updated: 2026-05-19
 tags:
   - oxygen
   - navigation
@@ -12,14 +12,14 @@ tags:
 # OX Pipeline Status
 
 > **Quick reference for AI and humans.** Load this file for instant orientation; open `component-map.yaml` for full detail.
-> Last updated: 2026-05-15
+> Last updated: 2026-05-19
 
 ## Summary
 
 | Stage | Count |
 |-------|-------|
-| ✅ SPEC COMPLETE | 1 |
-| 🟢 SPEC READY | 17 |
+| ✅ SPEC COMPLETE | 3 |
+| 🟢 SPEC READY | 15 |
 | 🔴 BLOCKED | 18 |
 | 🟡 EXTRACTED | 0 |
 | ⬜ N/A — covered elsewhere | 1 |
@@ -32,6 +32,8 @@ tags:
 
 | Component | Category | Verdict | Score | Blocker / Note |
 |-----------|----------|---------|-------|----------------|
+| [[component-lib/Accordion/Accordion|Accordion]] | layout overlay | 🟢 YES | 0.73 | Spec written 2026-05-19. 6 auto-fixable gaps applied. 7 SOURCE_GAPs stubbed. 4 manual gaps open (GAP-004, GAP-007, GAP-008, GAP-010). |
+| [[component-lib/Breadcrumbs/Breadcrumbs|Breadcrumbs]] | navigation | 🟢 YES | 0.73 | Spec written 2026-06-01. Source normalized to source/. 2 auto-fixable gaps applied (GAP-002 token migration, GAP-007 cross-links). 7 SOURCE_GAPs stubbed. 2 manual gaps open (GAP-008 isActive, GAP-010 examples); usage editorial (GAP-012). |
 | [[component-lib/Tabs/Tabs|Tabs]] | layout overlay | 🟢 YES | 0.68 | Zero CONFLICTs. Token dimension improved on re-audit 2026-05-05. Tabs-usage.md added editorially 2026-05-15 (Figma Do/Don't cards still pending). |
 
 ---
@@ -41,9 +43,7 @@ tags:
 
 | Component | Category | Verdict | Score | Blocker / Note |
 |-----------|----------|---------|-------|----------------|
-| [[component-lib/Accordion/Accordion|Accordion]] | layout overlay | 🟢 YES | 0.73 | All core files present. No CONFLICTs. Usage and PUI SOURCE_GAPs are non-... |
 | [[component-lib/Badge/Badge|Badge]] | data display | 🟡 PARTIAL | — | One blocker SOURCE_GAP (badge-figma.md absent — figma-extract not run). Zero CONFLICTs. Rewrite can proceed on props, examples, accessibility, usage_patterns. |
-| [[component-lib/Breadcrumbs/Breadcrumbs|Breadcrumbs]] | navigation | 🟢 YES | 0.62 | Zero CONFLICTs. Token dimension re-scored 0.25→0.55 after re-audit. Zero... |
 | [[component-lib/Card/Card|Card]] | layout overlay | 🟢 YES | — | Deprecated package. Zero CONFLICTs. Deprecation banner documented. Rewri... |
 | [[component-lib/Checkbox/Checkbox|Checkbox]] | form inputs | 🟢 YES | 0.68 | Zero CONFLICTs. Token SOURCE_GAPs from prior audit resolved. doc-rewrite... |
 | [[component-lib/DateTimeRangeSelector/DateTimeRangeSelector|DateTimeRangeSelector]] | date time | 🟢 YES | 0.59 | Zero CONFLICTs and zero blocker-severity gaps. All 6 expected files pres... |

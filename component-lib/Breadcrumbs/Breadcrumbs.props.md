@@ -1,49 +1,7 @@
 ---
-component: Breadcrumbs
-package: "@8x8/oxygen-breadcrumbs"
-category: navigation
-role: props
-role_description: "API props reference — all component properties with types, defaults, and descriptions"
-pipeline_stage: spec_ready
-pipeline_note: "Audit verdict YES/PARTIAL — doc-rewrite can run"
-audit_verdict: YES
-files_present:
-  - props
-  - examples
-  - tokens
-  - accessibility
-  - figma
-  - pui
-  - audit
-siblings:
-  - "[[Breadcrumbs/examples]]"
-  - "[[Breadcrumbs/tokens]]"
-  - "[[Breadcrumbs/accessibility]]"
-  - "[[Breadcrumbs/Breadcrumbs-figma]]"
-  - "[[Breadcrumbs/Breadcrumbs-pui]]"
-  - "[[Breadcrumbs/Breadcrumbs-audit]]"
-tags:
-  - oxygen
-  - component/Breadcrumbs
-  - role/props
-  - stage/spec_ready
-  - category/navigation
+parent: "[[Breadcrumbs]]"
+section: props
 ---
-# Breadcrumbs — Props
-
-> **See also:** [examples.md](examples.md) | [tokens.md](tokens.md) | [accessibility.md](accessibility.md)
-
-## Installation
-
-```sh
-# yarn
-$ yarn add @8x8/oxygen-breadcrumbs
-
-# npm
-$ npm install @8x8/oxygen-breadcrumbs
-```
-
-> **Registry note:** Add `@8x8:registry=https://artifactory.es.8x8.com/artifactory/api/npm/npm-repository/` to `.npmrc` and connect to 8x8 VPN before installing.
 
 ## `Breadcrumbs` Props
 
@@ -58,6 +16,9 @@ $ npm install @8x8/oxygen-breadcrumbs
 | `collapsedTitle` | `string` | `'Show all links'` | — | Title text shown on the collapsed items button. |
 | `theme` | `object` | — | — | Breadcrumb theme object. |
 
+<!-- STUB:GAP-009 source="Inspect @8x8/oxygen-breadcrumbs TypeScript types or source for the BreadcrumbsTheme interface shape; document the theme prop structure (property names, token references, accepted value types) in props.md." -->
+> **`theme` prop shape unresolved (GAP-009):** The `theme` prop type is documented only as `object`. Its internal shape (property names, token references, accepted value types) was not returned by the Oxygen MCP and is not documented in any extracted source.
+
 ## `Breadcrumb` Props
 
 `Breadcrumb` inherits all props from the native `<a>` element (`href`, `title`, `target`, `onClick`, etc.).
@@ -69,6 +30,7 @@ $ npm install @8x8/oxygen-breadcrumbs
 | `target` | `string` | — | — | Link target (native `<a>` prop). |
 | `onClick` | `MouseEventHandler` | — | — | Click handler (native `<a>` prop). |
 
-> **Note on `isActive`:** This prop was observed in the storybook example code but was not returned by `get-component-props`. Treat its exact signature as unverified.
+<!-- SKIP:GAP-008 type=DOC_GAP manual="Verify isActive prop existence, type, default, and behaviour against @8x8/oxygen-breadcrumbs source or published TypeScript types; update props.md." -->
+> **`isActive` unverified (GAP-008):** This prop was observed in the storybook example code but was **not** returned by `get-component-props`. Its type (`boolean`), default (`false`), and behaviour (renders as plain text, not a link) are inferred — treat the exact signature as unverified until confirmed against source.
 
-_Source: Oxygen MCP · Extracted 2026-04-30_
+_Source: [[Breadcrumbs/props]] · Oxygen MCP · Extracted 2026-04-30_

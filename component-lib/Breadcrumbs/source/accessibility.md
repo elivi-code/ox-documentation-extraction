@@ -12,6 +12,7 @@ siblings:
   - "[[Breadcrumbs/examples]]"
   - "[[Breadcrumbs/tokens]]"
   - "[[Breadcrumbs/Breadcrumbs-figma]]"
+  - "[[Breadcrumbs/Breadcrumbs-usage]]"
   - "[[Breadcrumbs/Breadcrumbs-pui]]"
   - "[[Breadcrumbs/Breadcrumbs-audit]]"
 tags:
@@ -23,7 +24,7 @@ tags:
 ---
 # Breadcrumbs — Accessibility
 
-> **See also:** [props.md](props.md) | [examples.md](examples.md) | [tokens.md](tokens.md)
+> **See also:** [props.md](props.md) | [examples.md](examples.md) | [tokens.md](tokens.md) | [Breadcrumbs-figma.md](Breadcrumbs-figma.md) | [Breadcrumbs-usage.md](Breadcrumbs-usage.md)
 
 ## ARIA roles and structure
 
