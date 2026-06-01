@@ -10,7 +10,9 @@ Track progress in [components-to-extract.md](components-to-extract.md) — 37 co
 
 ## Per-component output layout
 
-Each component lives in `component-lib/{ComponentName}/`. Filenames are produced by specific skills and consumed by later stages:
+Each component lives in `component-lib/{ComponentName}/`. Files split into two groups:
+
+**Source files** — raw extract outputs, live in `component-lib/{ComponentName}/source/`:
 
 | File | Source skill | Notes |
 | --- | --- | --- |
@@ -19,8 +21,20 @@ Each component lives in `component-lib/{ComponentName}/`. Filenames are produced
 | `{component}-pui.md` | `pui-mcp-extract` | Only present when the component has Platform UI infra concerns (notifications, navigation, session, event bus). Many components don't need one. |
 | `{component}-usage.md` | `figma-extract-usage` | Do/Don't editorial guidance from a Figma "{Component} — Examples" page. Often missing. |
 | `{component}-usage.html` | `figma-extract-usage` | HTML render of the usage examples; produced alongside `-usage.md`. |
+
+**Pipeline outputs** — live at `component-lib/{ComponentName}/` (top level):
+
+| File | Source skill | Notes |
+| --- | --- | --- |
 | `{component}-audit.md` | `doc-audit` | YAML-frontmatter gap report scoring 7 dimensions (props, examples, tokens, accessibility, figma, usage, pui). Required input for `doc-rewrite`. |
-| `{component}-spec.md` | `doc-rewrite` | Canonical merged spec — final pipeline output. |
+| `{ComponentName}.md` | `doc-rewrite` | Hub — relationships, prop names+types, spoke summaries (~800 tokens). |
+| `{ComponentName}.props.md` | `doc-rewrite` | Spoke — full prop table. |
+| `{ComponentName}.anatomy.md` | `doc-rewrite` | Spoke — anatomy, variants, states. |
+| `{ComponentName}.tokens.md` | `doc-rewrite` | Spoke — token table by variant/element/state. |
+| `{ComponentName}.usage.md` | `doc-rewrite` | Spoke — Do/Don't pairs. |
+| `{ComponentName}.accessibility.md` | `doc-rewrite` | Spoke — keyboard, ARIA, focus. |
+| `{ComponentName}.platform.md` | `doc-rewrite` | Spoke — PUI hooks, events, MFEs. |
+| `{ComponentName}.composition.md` | `doc-rewrite` | Spoke — subcomponent/pattern usage. |
 
 ## Navigation files
 
@@ -42,7 +56,7 @@ The skills are designed to be run in this order for each component:
    - `figma-extract-usage` → `{component}-usage.md` (skip if no Examples page exists)
    - `pui-mcp-extract` → `{component}-pui.md` (skip if component has no application-layer concerns)
 2. **Audit** with `doc-audit` → `{component}-audit.md`. The frontmatter classifies every gap as `DOC_GAP` (auto-fixable), `SOURCE_GAP` (needs upstream Figma/MCP work), or `CONFLICT` (human decision). The `verdict:` field decides whether rewrite can proceed.
-3. **Rewrite** with `doc-rewrite` once the audit verdict is `YES` → `{component}-spec.md`. `CONFLICT` gaps must be resolved before rewrite runs.
+3. **Rewrite** with `doc-rewrite` once the audit verdict is `YES` → hub + 7 spokes (`{ComponentName}.md` + `.props.md`, `.anatomy.md`, `.tokens.md`, `.usage.md`, `.accessibility.md`, `.platform.md`, `.composition.md`). `CONFLICT` gaps must be resolved before rewrite runs.
 
 When a user asks to "document X", route to the skill that fits the current stage — don't replay earlier steps if their outputs already exist.
 

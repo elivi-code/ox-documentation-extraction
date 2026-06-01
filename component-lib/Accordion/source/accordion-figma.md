@@ -78,6 +78,8 @@ Element structure extracted from the Figma layer tree of the `Accordion` compone
 | `mode` | `light`, `dark` | `light` |
 | `isOpen?` | `true`, `false` | `false` |
 
+> **Code mapping:** Figma `isOpen?` corresponds to the code prop `isExpanded` on `<Accordion>`. Figma property names rarely match code prop names exactly; this is the only renamed axis on this component.
+
 ### Accordion boolean toggles
 
 | Property | Default | Notes |

@@ -43,6 +43,7 @@ tags:
 | Content panel | `role="region"` | The expanded content area |
 | Content panel | `aria-labelledby` | Should reference the header button's ID |
 | Disabled accordion | `aria-disabled="true"` | Matches the Figma `disabled` state |
+| Accordion header | `aria-controls` | WAI-ARIA APG Accordion pattern recommends `aria-controls` pointing to the panel ID. Implementation not confirmed from component source — verify before publishing. |
 
 ---
 

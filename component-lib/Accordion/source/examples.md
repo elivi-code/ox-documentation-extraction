@@ -137,6 +137,27 @@ content panel fills the remaining space. Content becomes scrollable automaticall
 
 ---
 
+## Forced height on a standalone accordion
+
+`forcedHeight` constrains a single `Accordion`'s content to a fixed pixel height, independently of `AccordionGroup.hasFixedHeight`. Combine with `isContentScrollable={true}` to allow the user to scroll the clamped content.
+
+```tsx
+<Accordion
+  title="Long content section"
+  forcedHeight={200}
+  isContentScrollable={true}
+>
+  <p>Line 1</p>
+  <p>Line 2</p>
+  {/* … many lines … */}
+  <p>Line N</p>
+</Accordion>
+```
+
+> **Difference from `AccordionGroup hasFixedHeight`:** `hasFixedHeight` makes the group fill its parent container and limits the group to one open accordion at a time. `forcedHeight` on a standalone `Accordion` sets an absolute pixel cap on that accordion's content area only — multiple accordions in the same group can be open simultaneously.
+
+---
+
 ## Nested accordion (max 2 levels)
 
 The design system supports a maximum of two nested accordion levels.
@@ -199,6 +220,16 @@ Return `false` from `AccordionGroup.onChange` to prevent an accordion from openi
   <Accordion id="locked-section" title="Locked">Hidden content</Accordion>
 </AccordionGroup>
 ```
+
+---
+
+## Dark mode and theming
+
+Dark mode is controlled via CSS custom properties, not a component prop. The Accordion reads design tokens (`--ui/ui06`, `--text/textcolor01`, etc.) that automatically resolve to dark values when the Oxygen theme class is applied to a parent element.
+
+There is no `mode` or `theme` prop on `Accordion` or `AccordionGroup`. Apply theming at the application level.
+
+> For token resolved values in light and dark modes see [tokens.md](./tokens.md) and [accordion-figma.md](./accordion-figma.md#color--token-bindings).
 
 ---
 

@@ -81,6 +81,10 @@ nodeLinker: node-modules
 | `onChange` | `(id: string, isExpanded: boolean) => void` | — | — | Callback fired when accordion state changes |
 | `shouldCloseOnActiveClick` | `boolean` | — | — | **@deprecated** If true, clicking the active Accordion will close it |
 
+> **Figma-only — `divider?`:** The Figma component exposes a `divider?` boolean toggle (default: `true`) that shows a 1px separator below the accordion row. There is no corresponding code prop — the divider is always rendered in the DOM. Use CSS overrides to suppress it if needed.
+
+> **Figma-only — `scrollbar?`:** The Figma component exposes a `scrollbar?` boolean toggle (default: `false`) that renders a Mac OS–style scrollbar overlay in design previews. There is no corresponding code prop — scroll behaviour in code is governed by `isContentScrollable` and `forcedHeight`. The browser's native scrollbar renders automatically when content overflows a fixed-height container.
+
 ---
 
 ## `AccordionGroup`
