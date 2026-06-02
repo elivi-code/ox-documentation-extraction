@@ -91,6 +91,26 @@ Registry configuration required before installing (must be on 8x8 VPN):
 
 ---
 
+## Type definitions
+
+Shapes for the composite prop types referenced in the table above.
+
+```ts
+// Passed to `range`; returned by `onRangeChange` and `onPreviewChange`
+interface DateRange {
+  startDate?: Date;
+  endDate?: Date;
+}
+
+// Passed to `dateOptions`
+interface DateOptions {
+  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6; // 0 = Sunday … 6 = Saturday
+  customEvenMonths?: boolean;               // aligns row count across adjacent Month grids
+}
+```
+
+---
+
 ## `Month` (sub-component)
 
 | Prop | Type | Default | Required | Description |

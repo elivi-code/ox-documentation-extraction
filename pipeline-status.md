@@ -3,7 +3,7 @@ title: "OX Pipeline Status"
 description: "Quick-reference status table — pipeline stage, audit verdict, and blocker for every component"
 role: pipeline_status
 workspace: OX Documentation Extraction
-last_updated: 2026-05-19
+last_updated: 2026-06-02
 tags:
   - oxygen
   - navigation
@@ -12,15 +12,15 @@ tags:
 # OX Pipeline Status
 
 > **Quick reference for AI and humans.** Load this file for instant orientation; open `component-map.yaml` for full detail.
-> Last updated: 2026-05-19
+> Last updated: 2026-06-02
 
 ## Summary
 
 | Stage | Count |
 |-------|-------|
-| ✅ SPEC COMPLETE | 3 |
+| ✅ SPEC COMPLETE | 4 |
 | 🟢 SPEC READY | 15 |
-| 🔴 BLOCKED | 18 |
+| 🔴 BLOCKED | 17 |
 | 🟡 EXTRACTED | 0 |
 | ⬜ N/A — covered elsewhere | 1 |
 | **Total** | **37** |
@@ -35,6 +35,7 @@ tags:
 | [[component-lib/Accordion/Accordion|Accordion]] | layout overlay | 🟢 YES | 0.73 | Spec written 2026-05-19. 6 auto-fixable gaps applied. 7 SOURCE_GAPs stubbed. 4 manual gaps open (GAP-004, GAP-007, GAP-008, GAP-010). |
 | [[component-lib/Breadcrumbs/Breadcrumbs|Breadcrumbs]] | navigation | 🟢 YES | 0.73 | Spec written 2026-06-01. Source normalized to source/. 2 auto-fixable gaps applied (GAP-002 token migration, GAP-007 cross-links). 7 SOURCE_GAPs stubbed. 2 manual gaps open (GAP-008 isActive, GAP-010 examples); usage editorial (GAP-012). |
 | [[component-lib/Tabs/Tabs|Tabs]] | layout overlay | 🟢 YES | 0.68 | Zero CONFLICTs. Token dimension improved on re-audit 2026-05-05. Tabs-usage.md added editorially 2026-05-15 (Figma Do/Don't cards still pending). |
+| [[component-lib/Calendar/Calendar|Calendar]] | date time | 🟢 YES | 0.75 | Spec written 2026-06-02. Source normalized to source/. 2 auto-fixable gaps applied (GAP-004 DateRange, GAP-005 DateOptions); GAP-006 stubbed (no default in source). 5 SOURCE_GAPs stubbed (GAP-001/002/007/008/009); GAP-010 skipped (blocked on token resolution). GAP-011 resolved (Option A); usage editorial (GAP-003). No PUI. |
 
 ---
 
@@ -69,7 +70,6 @@ tags:
 | [[component-lib/AlertBanner/AlertBanner|AlertBanner]] | feedback status | 🔴 NO | 0.51 | 2 CONFLICTs — Figma exposes mode and breakpoint variant axes not present... |
 | [[component-lib/Avatar/Avatar|Avatar]] | data display | 🔴 NO | — | 2 CONFLICTs — require human verification before doc-rewrite can proceed. |
 | [[component-lib/Button/Button|Button]] | interaction | 🔴 NO | — | 3 CONFLICTs — Secondary rest bg token ($action01 vs action02); Text butt... |
-| [[component-lib/Calendar/Calendar|Calendar]] | date time | 🔴 NO | 0.63 | One CONFLICT (GAP-011) requires human decision before doc-rewrite can pr... |
 | [[component-lib/DataTable/DataTable|DataTable]] | data display | 🔴 NO | — | 2 CONFLICTs (Pagination interface GAP-001, cell type mapping GAP-002) block doc-rewrite. Usage doc added 2026-05-14 (editorial derivation-only — published Oxygen Table docs page is "In progress" placeholder; no Figma Do/Don't cards). |
 | [[component-lib/Input/Input|Input]] | form inputs | 🔴 NO | 0.82 | 1 CONFLICT — Search input isReadOnly discrepancy. Editorial Input-usage.md added 2026-05-14 (mirrors published docs page; 8 Do/Don't pairs; +HTML render). |
 | [[component-lib/Label/Label|Label]] | data display | 🔴 NO | — | 2 CONFLICTs — token names/sizes diverge (MCP label01 12px vs Figma body01 14px); information→infoBox prop mapping unverified. Editorial label-usage.md added 2026-05-14 (derivation-only — Oxygen docs page 404; 8 Do/Don't pairs; +HTML render). |
